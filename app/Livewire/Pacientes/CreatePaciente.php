@@ -23,15 +23,15 @@ class CreatePaciente extends Component
     public $ocupacao, $renda_familiar, $beneficio_id, $reside_id, $num_pss_casa;
 
     // Etapa 2: Histórico do Paciente
-    public $tipo_diabetes_id, $cirurgia_motivo, $amputacao_onde, $amputacao_quando;
-    public $n_cigarros, $inicio_tabagismo, $inicio_etilismo;
+    public $tipo_diabetes_id, $cirurgia_motivo,$realizou_amputacao = null, $amputacao_onde = null, $amputacao_quando = null;
+    public $tabagista, $n_cigarros = "Não fuma", $inicio_tabagismo = null,$etilista, $inicio_etilismo = null;
     public $comorbidades = []; // Nova variável para comorbidades
     public $alergias = []; // Nova variável para alergias
     public $comorbidadesList = [];
     public $alergiasList = [];
 
     // Etapa 3: Medicamentos 
-    public $medicamentos = [];
+    public $medicamentos = []; 
     public $nome_generico, $via, $dose;
 
     //Etapa 4: Resultados
@@ -78,11 +78,11 @@ class CreatePaciente extends Component
 
     public function nextStep()
     {
-        $this->validateStep();
+        //$this->validateStep();
 
         $this->currentStep++;
     }
-
+ 
     public function previousStep()
     {
         $this->currentStep--;

@@ -69,5 +69,5 @@ class ShowProntuario extends Component
                     ->paginate($this->perPage),
 
         ]);
-    }
+    } 
 }

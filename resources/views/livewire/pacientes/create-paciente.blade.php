@@ -4,7 +4,7 @@
             {{-- Etapa 1: Dados Sociodemográficos --}}
             @if ($currentStep == 1)
                 <div class="p-6 bg-white rounded-lg shadow-md step">
-                    <h2 class="py-5 text-lg font-bold">Dados Sociodemográficos</h2>
+                    <h2 class="py-5 text-xl font-bold">Dados Sociodemográficos</h2>
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <div class="mb-4">
                             <label for="cpf" class="block font-medium text-gray-700">CPF</label>
@@ -111,7 +111,7 @@
                         <div class="mb-4">
                             <label for="numero" class="block font-medium text-gray-700">Número</label>
                             <input type="number" wire:model="numero" id="numero"
-                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o número">
                             @error('numero')
                                 <span class="text-sm text-red-500">{{ $message }}</span>
@@ -207,7 +207,8 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="num_pss_casa" class="block font-medium text-gray-700">Número de Pessoas em Casa</label>
+                            <label for="num_pss_casa" class="block font-medium text-gray-700">Número de Pessoas em
+                                Casa</label>
                             <input type="number" wire:model="num_pss_casa" id="num_pss_casa"
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o número de pessoas morando em casa">
@@ -217,9 +218,9 @@
                         </div>
                         <!-- Adicione os demais campos da etapa 1 aqui -->
 
-                        <div class="flex justify-center w-full mt-8">
+                        <div class="flex justify-center w-full py-3 mt-4">
                             <button type="button" wire:click="nextStep"
-                                class="px-4 py-2 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-50">
+                                class="px-2 py-2 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-50">
                                 Continuar
                             </button>
                         </div>
@@ -231,13 +232,13 @@
             {{-- Etapa 2: Histórico do Paciente --}}
             @if ($currentStep == 2)
                 <div class="step">
-                    <h2 class="py-5 text-lg font-bold">Histórico do Paciente</h2>
+                    <h2 class="py-5 text-xl font-bold">Histórico do Paciente</h2>
 
                     <div class="mb-6">
                         <label for="tipo_diabetes_id" class="block mb-2 font-medium text-gray-700">Tipo de
                             Diabetes</label>
                         <select wire:model="tipo_diabetes_id" id="tipo_diabetes_id"
-                            class="block w-full p-2 border-gray-300 rounded-lg shadow-sm form-select focus:ring-blue-500 focus:border-blue-500">
+                            class="block w-1/3 p-2 border-gray-300 rounded-lg shadow-sm form-select focus:ring-indigo-500 focus:border-indigo-500">
                             <option value="">Selecione</option>
                             @foreach ($tipoDiabetes as $tipo)
                                 <option value="{{ $tipo->id }}">{{ $tipo->tipo }}</option>
@@ -251,7 +252,7 @@
                     <!-- Comorbidades -->
                     <div class="mb-6">
                         <label class="block mb-2 font-medium text-gray-700">Comorbidades</label>
-                        <div class="space-y-2">
+                        <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
                             @foreach ($comorbidadesList as $comorbidade)
                                 <div class="flex items-center">
                                     <input type="checkbox" wire:model="comorbidades" value="{{ $comorbidade->id }}"
@@ -271,12 +272,12 @@
                     <!-- Alergias -->
                     <div class="mb-6">
                         <label class="block mb-2 font-medium text-gray-700">Alergias</label>
-                        <div class="space-y-2">
+                        <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
                             @foreach ($alergiasList as $alergia)
                                 <div class="flex items-center">
                                     <input type="checkbox" wire:model="alergias" value="{{ $alergia->id }}"
                                         id="alergia-{{ $alergia->id }}"
-                                        class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                                        class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
                                     <label for="alergia-{{ $alergia->id }}" class="ml-2 text-gray-700">
                                         {{ $alergia->descricao }}
                                     </label>
@@ -292,71 +293,122 @@
                         <label for="cirurgia_motivo" class="block mb-2 font-medium text-gray-700">Já realizaou alguma
                             cirurgia? Se sim qual?</label>
                         <input type="text" wire:model="cirurgia_motivo" id="cirurgia_motivo"
-                            class="block w-full border-gray-300 rounded-lg shadow-sm form-input focus:ring-blue-500 focus:border-blue-500">
+                            class="block w-1/2 border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500">
                         @error('cirurgia_motivo')
                             <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
-
                     <div class="mb-6">
-                        <label for="amputacao_onde" class="block mb-2 font-medium text-gray-700">Já realizaou alguma
-                            amputação? Se sim onde?
-                            <input type="text" wire:model="amputacao_onde" id="amputacao_onde"
-                                class="block w-full border-gray-300 rounded-lg shadow-sm form-input focus:ring-blue-500 focus:border-blue-500">
+                        <label for="realizou_amputacao" class="block mb-2 font-medium text-gray-700">Já realizou
+                            amputação?</label>
+                        <div class="flex items-center space-x-4">
+                            <button type="button" wire:click="$set('realizou_amputacao', 'sim')"
+                                class="px-4 py-2 text-black rounded bg-cyan-100 focus:outline-none hover:bg-cyan-200">
+                                Sim
+                            </button>
+                            <button type="button" wire:click="$set('realizou_amputacao', 'nao')"
+                                class="px-4 py-2 text-black bg-red-100 rounded focus:outline-none hover:bg-red-200">
+                                Não
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Exibe os campos de amputação somente se a resposta for "sim" -->
+                    @if ($realizou_amputacao === 'sim')
+                        <div class="mb-6">
+                            <label for="amputacao_onde" class="block mb-2 font-medium text-gray-700">Onde realizou a
+                                amputação?</label>
+                            <input type="text" wire:model.lazy="amputacao_onde" id="amputacao_onde"
+                                class="block w-1/3 border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500">
                             @error('amputacao_onde')
                                 <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
                             @enderror
-                    </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="amputacao_quando" class="block mb-2 font-medium text-gray-700">Quando foi a
+                                Amputação?</label>
+                            <input type="date" wire:model.lazy="amputacao_quando" id="amputacao_quando"
+                                class="block w-1/3 border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500">
+                            @error('amputacao_quando')
+                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    @endif
 
                     <div class="mb-6">
-                        <label for="amputacao_quando" class="block mb-2 font-medium text-gray-700">Quando foi a
-                            Amputação?</label>
-                        <input type="date" wire:model="amputacao_quando" id="amputacao_quando"
-                            class="block w-full border-gray-300 rounded-lg shadow-sm form-input focus:ring-blue-500 focus:border-blue-500">
-                        @error('amputacao_quando')
-                            <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                        @enderror
+                        <label for="tabagista" class="block mb-2 font-medium text-gray-700">É tabagista?</label>
+                        <div class="flex items-center space-x-4">
+                            <button type="button" wire:click="$set('tabagista', 'sim')"
+                                class="px-4 py-2 text-black rounded bg-cyan-100 focus:outline-none hover:bg-cyan-200">
+                                Sim
+                            </button>
+                            <button type="button" wire:click="$set('tabagista', 'nao')"
+                                class="px-4 py-2 text-black bg-red-100 rounded focus:outline-none hover:bg-red-200">
+                                Não
+                            </button>
+                        </div>
                     </div>
 
-                    <div class="mb-6">
-                        <label for="n_cigarros" class="block mb-2 font-medium text-gray-700">Número de Cigarros
-                            Diários</label>
-                        <input type="number" wire:model="n_cigarros" id="n_cigarros"
-                            class="block w-full border-gray-300 rounded-lg shadow-sm form-input focus:ring-blue-500 focus:border-blue-500"
-                            min="0">
-                        @error('n_cigarros')
-                            <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div> 
+                    <!-- Exibe os campos adicionais somente se a resposta for "sim" -->
+                    @if ($tabagista === 'sim')
+                        <div class="mb-6">
+                            <label for="n_cigarros" class="block mb-2 font-medium text-gray-700">Número de Cigarros
+                                Diários</label>
+                            <input type="number" wire:model.lazy="n_cigarros" id="n_cigarros"
+                                class="block w-1/3 border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500"
+                                min="0">
+                            @error('n_cigarros')
+                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="inicio_tabagismo" class="block mb-2 font-medium text-gray-700">Início do
+                                Tabagismo</label>
+                            <input type="date" wire:model.lazy="inicio_tabagismo" id="inicio_tabagismo"
+                                class="block w-1/3 border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500">
+                            @error('inicio_tabagismo')
+                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    @endif
 
                     <div class="mb-6">
-                        <label for="inicio_tabagismo" class="block mb-2 font-medium text-gray-700">Início do
-                            Tabagismo</label>
-                        <input type="date" wire:model="inicio_tabagismo" id="inicio_tabagismo"
-                            class="block w-full border-gray-300 rounded-lg shadow-sm form-input focus:ring-blue-500 focus:border-blue-500">
-                        @error('inicio_tabagismo')
-                            <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                        @enderror
+                        <label for="etilista" class="block mb-2 font-medium text-gray-700">É Etilista?</label>
+                        <div class="flex items-center space-x-4">
+                            <button type="button" wire:click="$set('etilista', 'sim')"
+                                class="px-4 py-2 text-black rounded bg-cyan-100 focus:outline-none hover:bg-cyan-200">
+                                Sim
+                            </button>
+                            <button type="button" wire:click="$set('etilista', 'nao')"
+                                class="px-4 py-2 text-black bg-red-100 rounded focus:outline-none hover:bg-red-200">
+                                Não
+                            </button>
+                        </div>
                     </div>
 
-                    <div class="mb-6">
-                        <label for="inicio_etilismo" class="block mb-2 font-medium text-gray-700">Início do
-                            Etilismo</label>
-                        <input type="date" wire:model="inicio_etilismo" id="inicio_etilismo"
-                            class="block w-full border-gray-300 rounded-lg shadow-sm form-input focus:ring-blue-500 focus:border-blue-500">
-                        @error('inicio_etilismo')
-                            <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    <!-- Exibe os campos adicionais somente se a resposta for "sim" -->
+                    @if ($etilista === 'sim')
+                        <div class="mb-6">
+                            <label for="inicio_etilismo" class="block mb-2 font-medium text-gray-700">Início do
+                                Etilismo</label>
+                            <input type="date" wire:model.lazy="inicio_etilismo" id="inicio_etilismo"
+                                class="block w-1/3 border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500">
+                            @error('inicio_etilismo')
+                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    @endif
 
                     <!-- Adicione os demais campos da etapa 2 aqui -->
                     <div class="flex justify-center w-full mt-8">
                         <button type="button" wire:click="previousStep"
-                            class="px-4 py-2 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                            class="px-4 py-2 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
                             Voltar
                         </button>
                         <button type="button" wire:click="nextStep"
-                            class="px-4 py-2 ml-4 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                            class="px-4 py-2 ml-4 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
                             Continuar
                         </button>
                     </div>
@@ -367,61 +419,63 @@
             {{-- Etapa 3: Medicamentos --}}
             @if ($currentStep == 3)
                 <div class="step">
-                    <h2 class="py-5 text-lg font-bold">Medicamentos</h2>
+                    <h2 class="py-5 text-xl font-bold text-center">Medicamentos</h2>
 
                     @foreach ($medicamentos as $index => $medicamento)
-                        <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm">
-                            <h3 class="mb-3 text-lg font-semibold">Medicamento {{ $index + 1 }}</h3>
+                        <div class= "flex justify-center">
+                            <div class="w-5/6 p-5 mb-6 bg-white border border-gray-200 rounded-lg shadow-sm">
+                                <h3 class="mb-3 text-lg font-semibold">Medicamento {{ $index + 1 }}</h3>
 
-                            <div class="mb-4">
-                                <label for="medicamentos.{{ $index }}.nome_generico"
-                                    class="block text-sm font-medium text-gray-700">Nome Genérico</label>
-                                <input type="text" wire:model="medicamentos.{{ $index }}.nome_generico"
-                                    id="medicamentos.{{ $index }}.nome_generico"
-                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                @error('medicamentos.' . $index . '.nome_generico')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
+                                <div class="mb-4">
+                                    <label for="medicamentos.{{ $index }}.nome_generico"
+                                        class="block text-sm font-medium text-gray-700">Nome Genérico</label>
+                                    <input type="text" wire:model="medicamentos.{{ $index }}.nome_generico"
+                                        id="medicamentos.{{ $index }}.nome_generico"
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    @error('medicamentos.' . $index . '.nome_generico')
+                                        <span class="text-sm text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="medicamentos.{{ $index }}.via"
+                                        class="block text-sm font-medium text-gray-700">Via</label>
+                                    <input type="text" wire:model="medicamentos.{{ $index }}.via"
+                                        id="medicamentos.{{ $index }}.via"
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    @error('medicamentos.' . $index . '.via')
+                                        <span class="text-sm text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="medicamentos.{{ $index }}.dose"
+                                        class="block text-sm font-medium text-gray-700">Dose</label>
+                                    <input type="text" wire:model="medicamentos.{{ $index }}.dose"
+                                        id="medicamentos.{{ $index }}.dose"
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    @error('medicamentos.' . $index . '.dose')
+                                        <span class="text-sm text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <button type="button" wire:click="removeMedicamento({{ $index }})"
+                                    class="px-4 py-2 font-semibold text-white bg-red-500 rounded-lg shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                                    Remover
+                                </button>
                             </div>
-
-                            <div class="mb-4">
-                                <label for="medicamentos.{{ $index }}.via"
-                                    class="block text-sm font-medium text-gray-700">Via</label>
-                                <input type="text" wire:model="medicamentos.{{ $index }}.via"
-                                    id="medicamentos.{{ $index }}.via"
-                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                @error('medicamentos.' . $index . '.via')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-4">
-                                <label for="medicamentos.{{ $index }}.dose"
-                                    class="block text-sm font-medium text-gray-700">Dose</label>
-                                <input type="text" wire:model="medicamentos.{{ $index }}.dose"
-                                    id="medicamentos.{{ $index }}.dose"
-                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                @error('medicamentos.' . $index . '.dose')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <button type="button" wire:click="removeMedicamento({{ $index }})"
-                                class="px-4 py-2 font-semibold text-white bg-red-500 rounded-lg shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
-                                Remover
-                            </button>
                         </div>
                     @endforeach
 
                     <button type="button" wire:click="addMedicamento"
-                        class="px-4 py-2 mb-4 font-semibold text-white bg-blue-500 rounded-lg shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        class="px-4 py-2 mb-4 ml-24 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm ml-18 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Adicionar Medicamento
                     </button>
 
                     <!-- Botões de Navegação e Salvar -->
                     <div class="flex justify-center w-full mt-8">
                         <button type="button" wire:click="previousStep"
-                            class="px-4 py-2 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                            class="px-4 py-2 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
                             Voltar
                         </button>
                         <button type="submit"
@@ -433,7 +487,7 @@
             @endif
         </div>
     </form>
- 
+
     {{-- Mensagem de Sucesso --}}
     @if (session()->has('message'))
         <div class="mt-4 alert alert-success">
