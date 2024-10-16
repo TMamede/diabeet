@@ -1,9 +1,7 @@
 <?php
 
-use App\Livewire\Pacientes\CreatePaciente;
-use App\Livewire\Questionarios\CreateQuestionario;
+
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Questionarios\IndexQuestionario;
 
 Route::view('/', 'welcome');
 

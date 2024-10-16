@@ -8,6 +8,7 @@ use App\Models\Historico;
 use App\Models\Medicamento;
 use App\Models\Endereco;
 use App\Models\Paciente;
+use App\Models\Resultado;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -16,7 +17,7 @@ use Illuminate\Validation\Rule;
 
 class SearchPaciente extends Component
 {
-    use WithPagination; 
+    use WithPagination;
 
     // Etapa 1: Dados Sociodemográficos
     public $IdPaciente, $cpf, $email, $nome, $prontuario, $data_nasc;
@@ -36,9 +37,14 @@ class SearchPaciente extends Component
     public $medicamentos = [];
     public $nome_generico, $via, $dose;
 
+    // Etapa 4: Resultados
+    public $resultados = [];
+    public $texto_resultado;
+
     public function mount()
     {
         $this->addMedicamento();
+        $this->addResultado();
     }
 
 
@@ -98,6 +104,7 @@ class SearchPaciente extends Component
                 $this->alergias = $paciente->historico->alergias->pluck('id')->toArray();
             }
             $this->medicamentos = $paciente->medicamentos()->get()->toArray();
+            $this->resultados = $paciente->resultados()->get()->toArray();
         }
     }
 
@@ -143,6 +150,10 @@ class SearchPaciente extends Component
                 'medicamentos.*.via' => 'required|string|max:255',
                 'medicamentos.*.dose' => 'required|string|max:255',
             ]);
+        } elseif ($this->currentStep == 5) {
+            $this->validate([
+                'resultados.*.texto_resultado' => 'required|string',
+            ]);
         }
     }
 
@@ -155,7 +166,7 @@ class SearchPaciente extends Component
     }
     public function nextStepAndValidate()
     {
-        $this->validateStep();
+        //$this->validateStep();
         $this->nextStep();
     }
     public function nextStep()
@@ -165,7 +176,7 @@ class SearchPaciente extends Component
 
     public function nextStepFirst()
     {
-        $this->validateStep();
+        //$this->validateStep();
         $this->currentStep = 1;
     }
     public function nextStepSecond()
@@ -181,6 +192,11 @@ class SearchPaciente extends Component
         $this->currentStep = 4;
     }
 
+    public function nextStepFifth()
+    {
+        $this->currentStep = 5;
+    }
+
     public function updatedSearch()
     {
         $this->resetPage();
@@ -191,6 +207,11 @@ class SearchPaciente extends Component
         $this->medicamentos[] = ['nome_generico' => '', 'via' => '', 'dose' => ''];
     }
 
+    public function addResultado()
+    {
+        $this->resultados[] = ['texto_resultado' => ''];
+    }
+
     public function removeMedicamento($index, $IdPaciente)
     {
         // Pegue o ID do medicamento que você quer remover
@@ -199,7 +220,7 @@ class SearchPaciente extends Component
         // Se já estiver salvo no banco de dados, remova o relacionamento
         if (isset($medicamento['id'])) {
             $paciente = Paciente::find($IdPaciente);
-    
+
             // Verifique se o paciente existe antes de tentar remover
             if ($paciente) {
                 $paciente->medicamentos()->detach($medicamento['id']);
@@ -209,6 +230,27 @@ class SearchPaciente extends Component
         // Remova do array em memória do Livewire
         unset($this->medicamentos[$index]);
         $this->medicamentos = array_values($this->medicamentos); // Reindexa o array
+    }
+
+    public function removeResultado($index, $IdPaciente)
+    {
+        // Pegue o resultado que você quer remover
+        $resultado = $this->resultados[$index];
+
+        // Se o resultado já estiver salvo no banco de dados, remova-o
+        if (isset($resultado['id'])) {
+            // Tente encontrar o resultado no banco de dados
+            $resultadoModel = Resultado::find($resultado['id']);
+
+            // Verifique se o resultado existe antes de tentar remover
+            if ($resultadoModel) {
+                $resultadoModel->delete();
+            }
+        }
+
+        // Remova do array em memória do Livewire
+        unset($this->resultados[$index]);
+        $this->resultados = array_values($this->resultados); // Reindexa o array
     }
 
     public function setSortBy($sortByField)
@@ -236,20 +278,20 @@ class SearchPaciente extends Component
                 'comorbidadesList' => $this->comorbidadesList,
                 'alergiasList' => $this->alergiasList,
                 'pacientes' => Paciente::search($this->search)
-                ->where('user_id', Auth::id()) // Filtra pelos pacientes do usuário autenticado
-                ->when($this->sortBy, function ($query) {
-                    if ($this->sortBy === 'user_name') {
-                        $query->join('users', 'pacientes.user_id', '=', 'users.id')
-                            ->orderBy('users.name', $this->sortDir);
-                    } else {
-                        $query->orderBy($this->sortBy, $this->sortDir);
-                    }
-                })
-                ->orderBy($this->sortBy, $this->sortDir)
-                ->paginate($this->perPage),
+                    ->where('user_id', Auth::id()) // Filtra pelos pacientes do usuário autenticado
+                    ->when($this->sortBy, function ($query) {
+                        if ($this->sortBy === 'user_name') {
+                            $query->join('users', 'pacientes.user_id', '=', 'users.id')
+                                ->orderBy('users.name', $this->sortDir);
+                        } else {
+                            $query->orderBy($this->sortBy, $this->sortDir);
+                        }
+                    })
+                    ->orderBy($this->sortBy, $this->sortDir)
+                    ->paginate($this->perPage),
             ]
         );
-    } 
+    }
 
     public function updatePaciente($pacienteId)
     {
@@ -328,7 +370,20 @@ class SearchPaciente extends Component
             $paciente->medicamentos()->syncWithoutDetaching([$medicamento->id]);
         }
 
-        // Mensagem de sucesso
-        session()->flash('message', 'Dados do paciente atualizados com sucesso!');
+        // Atualiza ou cria os resultados
+        foreach ($this->resultados as $resultadoData) {
+            // Atualiza ou cria o resultado associado ao paciente
+            $resultado = Resultado::updateOrCreate(
+                [
+                    'id' => isset($resultadoData['id']) ? $resultadoData['id'] : null, // Se houver um ID, ele atualiza o resultado, caso contrário cria um novo
+                ],
+                [
+                    'texto_resultado' => $resultadoData['texto_resultado'],
+                    'paciente_id' => $pacienteId, // Vincula o resultado ao paciente
+                ]
+            );
+        }
+
+        
     }
 }

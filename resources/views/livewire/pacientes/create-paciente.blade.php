@@ -428,7 +428,7 @@
 
                                 <div class="mb-4">
                                     <label for="medicamentos.{{ $index }}.nome_generico"
-                                        class="block text-sm font-medium text-gray-700">Nome Genérico</label>
+                                        class="block text-base font-medium text-gray-700">Nome Genérico</label>
                                     <input type="text" wire:model="medicamentos.{{ $index }}.nome_generico"
                                         id="medicamentos.{{ $index }}.nome_generico"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
@@ -439,7 +439,7 @@
 
                                 <div class="mb-4">
                                     <label for="medicamentos.{{ $index }}.via"
-                                        class="block text-sm font-medium text-gray-700">Via</label>
+                                        class="block text-base font-medium text-gray-700">Via</label>
                                     <input type="text" wire:model="medicamentos.{{ $index }}.via"
                                         id="medicamentos.{{ $index }}.via"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
@@ -450,7 +450,7 @@
 
                                 <div class="mb-4">
                                     <label for="medicamentos.{{ $index }}.dose"
-                                        class="block text-sm font-medium text-gray-700">Dose</label>
+                                        class="block text-base font-medium text-gray-700">Dose</label>
                                     <input type="text" wire:model="medicamentos.{{ $index }}.dose"
                                         id="medicamentos.{{ $index }}.dose"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
@@ -470,6 +470,57 @@
                     <button type="button" wire:click="addMedicamento"
                         class="px-4 py-2 mb-4 ml-24 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm ml-18 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Adicionar Medicamento
+                    </button>
+
+                    <!-- Botões de Navegação e Salvar -->
+                    <div class="flex justify-center w-full mt-8">
+                        <button type="button" wire:click="previousStep"
+                            class="px-4 py-2 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
+                            Voltar
+                        </button>
+                        <button type="button" wire:click="nextStep"
+                            class="px-4 py-2 ml-4 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
+                            Continuar
+                        </button>
+                    </div>
+                </div>
+            @endif
+        </div>
+        <div x-show="step === 4" x-transition>
+            {{-- Etapa 4: Resultados --}}
+            @if ($currentStep == 4)
+                <div class="step">
+                    <h2 class="py-5 text-xl font-bold text-center">Resultados</h2>
+
+                    @foreach ($resultados as $index => $resultado)
+                        <div class="flex justify-center">
+                            <div class="w-5/6 p-5 mb-6 bg-white border border-gray-200 rounded-lg shadow-sm">
+                                <h3 class="mb-3 text-lg font-semibold">Resultado {{ $index + 1 }}</h3>
+
+                                <div class="mb-4">
+                                    <label for="resultados.{{ $index }}.texto_resultado"
+                                        class="block text-base font-medium text-gray-700">Descrição</label>
+
+                                    <textarea wire:model="resultados.{{ $index }}.texto_resultado"
+                                        id="resultados.{{ $index }}.texto_resultado" rows="4"
+                                        class="block w-full p-3 mt-1 transition duration-150 ease-in-out border border-gray-300 rounded-md shadow-sm resize-none form-textarea focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-gray-50 hover:bg-white"></textarea>
+
+                                    @error('resultados.' . $index . '.texto_resultado')
+                                        <span class="text-sm text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <button type="button" wire:click="removeResultado({{ $index }})"
+                                    class="px-4 py-2 font-semibold text-white bg-red-500 rounded-lg shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                                    Remover
+                                </button>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    <button type="button" wire:click="addResultado"
+                        class="px-4 py-2 mb-4 ml-24 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        Adicionar Resultado
                     </button>
 
                     <!-- Botões de Navegação e Salvar -->

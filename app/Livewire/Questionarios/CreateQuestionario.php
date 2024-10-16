@@ -226,25 +226,169 @@ class CreateQuestionario extends Component
         ]);
     }
 
-
     public function nextStep()
     {
         //$this->validateStep();
-
-
         $this->currentStep++;
     }
-
 
     public function previousStep()
     {
         $this->currentStep--;
     }
 
+    public function validateStep()
+    {
+        if ($this->currentStep == 2) {
+            $this->validate([
+                'orientado' => 'required|boolean',
+                'comportamento_regulacao_neuro_id' => 'required|exists:comportamento_regulacao_neuros,id',
+
+                'olho_direito' => 'required|boolean',
+                'olho_esquerdo' => 'required|boolean',
+                'ouvido' => 'required|boolean',
+                'analise_tato_id' => 'required|exists:analise_tatos,id',
+                'risco_queda' => 'required|boolean',
+
+                'liquido_diario' => 'required|numeric|min:0',
+                'tipo_pele_id' => 'required|exists:tipo_peles,id',
+
+                'alimento_consumo_id' => 'required|exists:alimento_consumos,id',
+                'refeicaos' => 'nullable|array',
+                'restricaos' => 'nullable|array',
+
+                'horas_sono' => 'required|numeric|min:0',
+                'acorda_noite' => 'required|boolean',
+                'qualidade_sono_id' => 'required|exists:qualidade_sonos,id',
+                'problema_sonos' => 'nullable|array',
+                'medicamentos_sono' => 'required|string|max:255',
+
+                'realiza' => 'required|boolean',
+                'frequencia_exercicio_id' => 'required|exists:frequencia_exercicios,id',
+                'duracao' => 'required|numeric|min:0',
+
+                'zona_moradia_id' => 'required|exists:zona_moradias,id',
+                'luz_publica' => 'required|boolean',
+                'coleta_lixo' => 'required|boolean',
+                'agua_tratada' => 'required|boolean',
+                'rede_esgoto_id' => 'required|exists:rede_esgotos,id',
+                'animais_domesticos' => 'required|boolean',
+
+                'altura' => 'required|numeric|min:0',
+                'peso' => 'required|numeric|min:0',
+                'circunferencia_abdnominal' => 'required|numeric|min:0',
+                'glicemia_capilar' => 'required|numeric|min:0',
+                'jejum' => 'required|boolean',
+                'pos_prandial' => 'required|boolean',
+
+                'temp_enchimento_capilar' => 'required|numeric|min:0',
+                'frequencia_respiratoria' => 'required|numeric|min:0',
+                'satO2' => 'required|numeric|min:0',
+
+                'temperatura' => 'required|numeric|min:0',
+
+                'dor_urinar' => 'required|boolean',
+                'incontinencia_urina' => 'required|boolean',
+                'uso_laxante' => 'required|boolean',
+                'uso_fraldas' => 'required|boolean',
+                'dor_eliminacoes' => 'required|boolean',
+                'incontinencia_eliminacao' => 'required|boolean',
+                'constipacao' => 'required|boolean',
+                'diarreia' => 'required|boolean',
+                'equipamento_externo' => 'required|string|max:255',
+
+                'vida_sex_ativa' => 'required|boolean',
+                'disturbio_sexuals' => 'nullable|array',
+
+                'tipo_locomocaos' => 'nullable|array',
+                'sapato_adequado' => 'required|boolean',
+                'sandalia_cicatrizacao' => 'required|boolean',
+
+                'pressao_arterial' => 'required|numeric|min:0',
+                'frequencia_cardiaca' => 'required|numeric|min:0',
+                'psatp_direito' => 'required|numeric|min:0',
+                'psap_direito' => 'required|numeric|min:0',
+                'psab_direito' => 'required|numeric|min:0',
+                'psatp_esquerdo' => 'required|numeric|min:0',
+                'psap_esquerdo' => 'required|numeric|min:0',
+                'psab_esquerdo' => 'required|numeric|min:0',
+
+                'sintomas_percepcaos' => 'nullable|array',
+                'pe_neuropatico' => 'required|boolean',
+                'arco_desabado' => 'required|boolean',
+                'valgismo' => 'required|boolean',
+                'dedos_em_garra' => 'required|boolean',
+                'estado_unhas_id' => 'required|exists:estado_unhas,id',
+                'corte_unhas' => 'required|boolean',
+                'fissuras' => 'required|boolean',
+                'calosidades' => 'required|boolean',
+                'micose' => 'required|boolean',
+                'percepcao_direito' => 'required|boolean',
+                'percepcao_esquerdo' => 'required|boolean',
+
+                'sinais_infeccaos' => 'nullable|array',
+                'comprimentoD' => 'required|numeric|min:0',
+                'larguraD' => 'required|numeric|min:0',
+                'regiao_pe_direito_id' => 'required|exists:regiao_pes,id',
+                'localizacao_lesao_direito_id' => 'required|exists:localizacao_lesaos,id',
+                'lesao_amputacaoD' => 'required|boolean',
+                'comprimentoE' => 'required|numeric|min:0',
+                'larguraE' => 'required|numeric|min:0',
+                'regiao_pe_esquerdo_id' => 'required|exists:regiao_pes,id',
+                'localizacao_lesao_esquerdo_id' => 'required|exists:localizacao_lesaos,id',
+                'lesao_amputacaoE' => 'required|boolean',
+                'bordas_ferida_id' => 'required|exists:bordas_feridas,id',
+                'pele_periferida_id' => 'required|exists:pele_periferidas,id',
+                'profundidade_id' => 'required|exists:profundidades,id',
+                'tipo_tecido_ferida_id' => 'required|exists:tipo_tecido_feridas,id',
+                'aspecto_exudato_id' => 'required|exists:aspecto_exudatos,id',
+                'quantidade_exudato_id' => 'required|exists:quantidades_exudatos,id',
+                'edema' => 'required|boolean',
+                'odor_exudato' => 'required|boolean',
+                'dor' => 'required|boolean',
+
+                'limpeza_lesaos' => 'nullable|array',
+                'coberturas' => 'nullable|array',
+                'desbridamento_id' => 'required|exists:desbridamentos,id',
+                'avaliacao_ferida_id' => 'required|exists:avaliacao_feridas,id',
+                'aplicacao_laserterapia' => 'required|boolean',
+                'terapia_fotodinamica' => 'required|boolean',
+            ]);
+        } else if ($this->currentStep == 3) {
+            $this->validate([
+                'monitoramento_glicemia_dia' => 'required|integer|min:0',
+                'cuidado_pes' => 'required|boolean',
+                'uso_sapato' => 'required|boolean',
+                'alimentacao' => 'required|boolean',
+                'regime_terapeutico' => 'required|boolean',
+
+                'recreacaos' => 'nullable|array',
+                
+                'acompanhado' => 'required|boolean',
+                'opnioes_de_si' => 'required|boolean',
+                'auxiliador' => 'required|string|max:255',
+                'emocionals' => 'nullable|array',
+
+                'apoio' => 'required|boolean',
+                'interacao_Social' => 'required|boolean',
+            ]);
+        } else if ($this->currentStep == 4) {
+            $this->validate([
+                'religiao' => 'required|string|max:255',
+
+                'nome_unidade' => 'required|string|max:255',
+                'endereco_unidade' => 'required|string|max:255',
+
+                'impressoes' => 'required|string',
+            ]);
+        }
+    }
+
+
 
     public function submitForm()
     {
-
+        //$this->validateStep();
 
         $regulacao_neuro = Regulacao_neuro::firstOrCreate(
             [
@@ -252,7 +396,7 @@ class CreateQuestionario extends Component
                 'comportamento_regulacao_neuro_id' => $this->comportamento_regulacao_neuro_id,
             ]
         );
-       
+
         $percepcao_sentido = Percepcao_sentido::firstOrCreate(
             [
                 'olho_direito' => $this->olho_direito,
@@ -262,20 +406,20 @@ class CreateQuestionario extends Component
                 'risco_queda' => $this->risco_queda,
             ]
         );
-       
+
         $hidratacao = Hidratacao::firstOrCreate(
             [
                 'liquido_diario' => $this->liquido_diario,
                 'tipo_pele_id' => $this->tipo_pele_id,
             ]
         );
-       
+
         $nutricao = Nutricao::firstOrCreate(
             [
                 'alimento_consumo_id' => $this->alimento_consumo_id,
             ]
         );
-       
+
         $sono = Sono::firstOrCreate(
             [
                 'horas_sono' => $this->horas_sono,
@@ -284,7 +428,7 @@ class CreateQuestionario extends Component
                 'medicamentos_sono' => $this->medicamentos_sono,
             ]
         );
-       
+
         $exercicio_fisico = Exercicio_fisico::firstOrCreate(
             [
                 'realiza' => $this->realiza,
@@ -292,18 +436,18 @@ class CreateQuestionario extends Component
                 'duracao' => $this->duracao,
             ]
         );
-       
+
         $abrigo = Abrigo::firstOrCreate(
             [
                 'zona_moradia_id' => $this->zona_moradia_id,
-                'Luz_publica' => $this->luz_publica,
-                'Coleta_lixo' => $this->coleta_lixo,
-                'Agua_tratada' => $this->agua_tratada,
+                'luz_publica' => $this->luz_publica,
+                'coleta_lixo' => $this->coleta_lixo,
+                'agua_tratada' => $this->agua_tratada,
                 'rede_esgoto_id' => $this->rede_esgoto_id,
-                'Animais_domesticos' => $this->animais_domesticos,
+                'animais_domesticos' => $this->animais_domesticos,
             ]
         );
-       
+
         $regulacao_hormonal = Regulacao_hormonal::firstOrCreate(
             [
                 'altura' => $this->altura,
@@ -314,7 +458,7 @@ class CreateQuestionario extends Component
                 'pos_prandial' => $this->pos_prandial,
             ]
         );
-       
+
         $oxigenacao = Oxigenacao::firstOrCreate(
             [
                 'temp_enchimento_capilar' => $this->temp_enchimento_capilar,
@@ -324,13 +468,13 @@ class CreateQuestionario extends Component
         );
 
 
-        $regulacao_termica = Regulacao_termica::create([
+        $regulacao_termica = Regulacao_termica::firstOrcreate([
             'temperatura' => $this->temperatura,
             'tipo_temperatura_id' => $this->tipo_temperatura_id,
         ]);
 
 
-        $eliminacao = Eliminacao::create([
+        $eliminacao = Eliminacao::firstOrcreate([
             'dor_urinar' => $this->dor_urinar,
             'incontinencia_urina' => $this->incontinencia_urina,
             'uso_laxante' => $this->uso_laxante,
@@ -342,18 +486,18 @@ class CreateQuestionario extends Component
         ]);
 
 
-        $sexualidade = Sexualidade::create([
+        $sexualidade = Sexualidade::firstOrcreate([
             'vida_sex_ativa' => $this->vida_sex_ativa,
         ]);
 
 
-        $locomocao = Locomocao::create([
+        $locomocao = Locomocao::firstOrcreate([
             'sapato_adequado' => $this->sapato_adequado,
             'sandalia_cicatrizacao' => $this->sandalia_cicatrizacao,
         ]);
 
 
-        $regulacao_vascular = Regulacao_vascular::create([
+        $regulacao_vascular = Regulacao_vascular::firstOrcreate([
             'pressao_arterial' => $this->pressao_arterial,
             'frequencia_cardiaca' => $this->frequencia_cardiaca,
             'psatp_direito' => $this->psatp_direito,
@@ -365,7 +509,7 @@ class CreateQuestionario extends Component
         ]);
 
 
-        $senso_percepcao = Senso_percepcao::create([
+        $senso_percepcao = Senso_percepcao::firstOrcreate([
             'pe_neuropatico' => $this->pe_neuropatico,
             'arco_desabado' => $this->arco_desabado,
             'valgismo' => $this->valgismo,
@@ -381,7 +525,7 @@ class CreateQuestionario extends Component
         ]);
 
 
-        $integridade_direito = Integridade_direito::create([
+        $integridade_direito = Integridade_direito::firstOrcreate([
             'comprimento' => $this->comprimentoD,
             'largura' => $this->larguraD,
             'regiao_pe_id' => $this->regiao_pe_direito_id, // ID da região do pé
@@ -390,7 +534,7 @@ class CreateQuestionario extends Component
         ]);
 
 
-        $integridade_esquerdo = Integridade_esquerdo::create([
+        $integridade_esquerdo = Integridade_esquerdo::firstOrcreate([
             'comprimento' => $this->comprimentoE,
             'largura' => $this->larguraE,
             'regiao_pe_id' => $this->regiao_pe_esquerdo_id, // ID da região do pé
@@ -399,7 +543,7 @@ class CreateQuestionario extends Component
         ]);
 
 
-        $integridade_cutanea = Integridade_cutanea::create([
+        $integridade_cutanea = Integridade_cutanea::firstOrcreate([
             'integridade_direito_id' => $integridade_direito->id, // ID da integridade do direito
             'integridade_esquerdo_id' => $integridade_esquerdo->id, // ID da integridade do esquerdo
             'bordas_ferida_id' => $this->bordas_ferida_id, // ID das bordas da ferida
@@ -414,7 +558,7 @@ class CreateQuestionario extends Component
         ]);
 
 
-        $cuidado_ferida = Cuidado_ferida::create([
+        $cuidado_ferida = Cuidado_ferida::firstOrcreate([
             'desbridamento_id' => $this->desbridamento_id, // ID do desbridamento
             'avaliacao_ferida_id' => $this->avaliacao_ferida_id, // ID da avaliação da ferida
             'aplicacao_laserterapia' => $this->aplicacao_laserterapia,
@@ -422,13 +566,13 @@ class CreateQuestionario extends Component
         ]);
 
 
-        $comunicacao = Comunicacao::create([
+        $comunicacao = Comunicacao::firstOrcreate([
             'apoio' => $this->apoio,
             'interacao_social' => $this->interacao_social,
         ]);
 
 
-        $cuidado = Cuidado::create([
+        $cuidado = Cuidado::firstOrcreate([
             'acompanhado' => $this->acompanhado,
             'emocional_id' => $this->emocional_id, // Usando a referência da tabela emocional
             'opiniao_de_si' => $this->opiniao_de_si, // Note que o nome da variável deve ser o mesmo definido na tabela
@@ -436,7 +580,7 @@ class CreateQuestionario extends Component
         ]);
 
 
-        $aprendizagem = Aprendizagem::create([
+        $aprendizagem = Aprendizagem::firstOrcreate([
             'monitoramento_glicemia_dia' => $this->monitoramento_glicemia_dia,
             'cuidado_pes' => $this->cuidado_pes,
             'uso_sapato' => $this->uso_sapato,
@@ -445,14 +589,12 @@ class CreateQuestionario extends Component
         ]);
 
 
-        $unidade_saude = Unidade_saude::create([
+        $unidade_saude = Unidade_saude::firstOrcreate([
             'nome' => $this->nome_unidade,
             'endereco' => $this->endereco_unidade,
         ]);
 
-
-       
-        $nss_biologicas = Nss_biologicas::create([
+        $nss_biologicas = Nss_biologicas::firstOrcreate([
             'regulacao_neuro_id' => $regulacao_neuro->id,
             'percepcao_sentido_id' => $percepcao_sentido->id,
             'hidratacao_id' => $hidratacao->id,
@@ -471,24 +613,24 @@ class CreateQuestionario extends Component
             'integridade_cutanea_id' => $integridade_cutanea->id,
             'cuidado_ferida_id' => $cuidado_ferida->id,
         ]);
-       
-        $nss_sociais = Nss_sociais::create([
+
+        $nss_sociais = Nss_sociais::firstOrcreate([
             'aprendizagem_id' => $aprendizagem->id,
             'cuidado_id' => $cuidado->id,
             'comunicacao_id' => $comunicacao->id,
         ]);
-       
-        $nss_espirituais = Nss_espirituais::create([
+
+        $nss_espirituais = Nss_espirituais::firstOrcreate([
             'religiao' => $this->religiao,
         ]);
-       
+
         $questionario = Questionario::create([
             'paciente_id' => $this->selectedPaciente,
             'user_id' => Auth::id(),
-            'unidade_saude_id' => $unidade_saude->id,
-            'nss_biologicas_id' => $nss_biologicas->id, // Corrigido
-            'nss_sociais_id' => $nss_sociais->id,     // Corrigido
-            'nss_espirituais_id' => $nss_espirituais->id, // Corrigido
+            'nss_biologicas_id' => $nss_biologicas->id, 
+            'nss_sociais_id' => $nss_sociais->id,     
+            'nss_espirituais_id' => $nss_espirituais->id,
+            'unidade_saude_id' => $unidade_saude->id, 
             'impressoes' => $this->impressoes,
         ]);
 

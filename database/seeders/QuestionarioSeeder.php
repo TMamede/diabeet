@@ -16,9 +16,9 @@ class QuestionarioSeeder extends Seeder
     {
         // nss_espirituais
         DB::table('nss_espirituais')->insert([
-            ['religiao' => 'Catolica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['religiao' => 'Evangelica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['religiao' => 'Nenhuma', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['religiao' => 'Católica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['religiao' => 'Evangélica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['religiao' => 'Espirita', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['religiao' => 'Judaica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['religiao' => 'Ateu', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -26,7 +26,8 @@ class QuestionarioSeeder extends Seeder
 
         // recreacoes
         DB::table('recreacaos')->insert([
-            ['descricao' => 'Televisao', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Nenhuma', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Televisão', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Rádio', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Igreja', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Livros', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -42,7 +43,7 @@ class QuestionarioSeeder extends Seeder
             ['descricao' => 'Ansiedade', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Choro', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Angustia', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Agitacao', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Agitação', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Medo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
@@ -55,12 +56,12 @@ class QuestionarioSeeder extends Seeder
 
         // analises_tatos
         DB::table('analise_tatos')->insert([
-            ['descricao' => 'Sem Alteracoes', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Percepcao Dolorosa Diminuida', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Percepcao Termica Diminuida', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Percepcao Tatil Diminuida', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Sem Alterações', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Percepção Dolorosa Diminuida', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Percepção Termica Diminuida', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Percepção Tátil Diminuida', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Formigamento', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Dormencia', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Dormência', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // tipo_peles
@@ -82,9 +83,9 @@ class QuestionarioSeeder extends Seeder
 
         // refeicaos
         DB::table('refeicaos')->insert([
-            ['descricao' => 'Cafe da Manha', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Colacao', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Almoco', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Café da Manhã', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Colação', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Almoço', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Lanche da Tarde', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Jantar', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Ceia', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -92,15 +93,16 @@ class QuestionarioSeeder extends Seeder
 
         // restricao_alimentos
         DB::table('restricao_alimentos')->insert([
-            ['descricao' => 'Acucar', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Gluten', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+
+            ['descricao' => 'Açúcar', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Glúten', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Lactose', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Sal', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // qualidade_sonos
         DB::table('qualidade_sonos')->insert([
-            ['descricao' => 'Otimo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Ótimo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Bom', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Regular', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Ruim', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -128,14 +130,14 @@ class QuestionarioSeeder extends Seeder
             ['descricao' => 'Urbana', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Rural', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Institucionalizado', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Situacao de Rua', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Situação de Rua', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // rede_esgotos
         DB::table('rede_esgotos')->insert([
-            ['descricao' => 'Publica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Pública', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Fossa', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Ceu Aberto', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Céu Aberto', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // regulacao_termicas
@@ -149,33 +151,33 @@ class QuestionarioSeeder extends Seeder
 
         // disturbio_sexuals
         DB::table('disturbio_sexuals')->insert([
-            ['descricao' => 'Alteracao da Libido', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Disfuncao Eretil', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Alteração da Libido', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Disfunção Eretil', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Dispaurenia', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Ressecamento Vaginal', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // tipo_locomocaos
         DB::table('tipo_locomocaos')->insert([
+            ['descricao' => 'Força Motora Preservada', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Deambula', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Forca Motora Preservada', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Deambula Com Dispositivo de Marcha', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Deambula com Dificuldade', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Nao Deambula', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Não Deambula', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Fadiga', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Paralisia', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Paresia', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Parestesia', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Atrofia Muscular', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Amputacao do Membro Inferior', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Amputação do Membro Inferior', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Deformidade em Membro Inferior', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Uso de Cadeira de Rodas', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Mobilidade Limitada das Articulacoes Pe e Tornozelo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Mobilidade Limitada das Articulações Pé e Tornozelo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // estado_unhas
         DB::table('estado_unhas')->insert([
-            ['descricao' => 'Sem Alteracoes', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Sem Alterações', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Onicomicoses', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Onicogrifoses', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Onicocriptoses', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -184,6 +186,7 @@ class QuestionarioSeeder extends Seeder
 
         // sintomas_percepcaos
         DB::table('sintomas_percepcaos')->insert([
+            ['descricao' => 'Sem Sintomas', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Dor na Perna em Repouso', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Gangrena', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Rubor Dependente', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -206,17 +209,17 @@ class QuestionarioSeeder extends Seeder
 
         // desbridamentos
         DB::table('desbridamentos')->insert([
-            ['descricao' => 'Nao Aplica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Mecanico', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Não Aplica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Mecânico', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Cirurgico', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Enzimatico', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Autolitico', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Enzimático', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Autolítico', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Instrumental', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // avaliacao_feridas
         DB::table('avaliacao_feridas')->insert([
-            ['descricao' => 'Diaria', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Diária', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Semanal', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => '2x semana', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => '3x semana', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -224,25 +227,25 @@ class QuestionarioSeeder extends Seeder
 
         // limpeza_lesaos
         DB::table('limpeza_lesaos')->insert([
-            ['descricao' => 'Soro Fisiologico', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Agua Destilada', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Soro Fisiológico', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Água Destilada', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'PHMB', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Agua Ozonizada', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Água Ozonizada', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // cobertura_feridas
         DB::table('cobertura_feridas')->insert([
-            ['descricao' => 'Carvao Ativado com Prata', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Alginato de Calcio', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Alginato de Calcio com Prata', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Carvão Ativado com Prata', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Alginato de Cálcio', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Alginato de Cálcio com Prata', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Espuma de Poliuretano', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Espuma de Poliuretano com Prata', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Hidrofibra', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Hidrofibra com Prata', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Tela Nao Aderente', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Papaina', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Tela Não Aderente', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Papaína', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Colagenase', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Acido Graxo Essencial', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Ácido Graxo Essencial', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Hidrogel', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Cloreto de Dialquil Carbamoil', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Creme', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -282,10 +285,10 @@ class QuestionarioSeeder extends Seeder
 
         // Inserir dados na tabela tipo_tecido_feridas
         DB::table('tipo_tecido_feridas')->insert([
-            ['descricao' => 'Granulacao', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Epitelizacao', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Granulação', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Epitelização', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Necrose Seca', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Necrose Umida', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Necrose Úmida', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // Inserir dados na tabela sinais_infeccaos
@@ -298,7 +301,7 @@ class QuestionarioSeeder extends Seeder
             ['descricao' => 'Aumento de Tecido Necrosado', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Aumento do Tamanho da Ferida', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Aumento do Exudato', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Exposicao Ossea', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Exposição Óssea', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // Inserir dados na tabela profundidades
@@ -318,7 +321,7 @@ class QuestionarioSeeder extends Seeder
             ['descricao' => 'Pruriginosa', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Hiperpigmentada', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Fibrótica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Rigida', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Rígida', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // Inserir dados na tabela regiao_pes
@@ -332,9 +335,9 @@ class QuestionarioSeeder extends Seeder
 
         // Inserir dados na tabela localizacao_lesaos
         DB::table('localizacao_lesaos')->insert([
-            ['descricao' => 'Antepe', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Mediope', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Retrope', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Antepé', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Mediopé', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Retropé', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
     }
 }

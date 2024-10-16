@@ -1088,47 +1088,48 @@
                         @enderror
                     </div <div class="flex mb-4 space-x-4">
 
-                    
-                    <!-- Primeiro div: Sapato adequado -->
-                    <div class="w-1/3">
-                        <label for="sapato_adequado" class="block mb-2 font-medium text-gray-700">Sapato
-                            adequado:</label>
-                        <div class="flex items-center mt-1 space-x-6">
-                            <label class="inline-flex items-center">
-                                <input type="radio" wire:model="sapato_adequado" value="1"
-                                    class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                <span class="ml-2 text-gray-700">Sim</span>
-                            </label>
-                            <label class="inline-flex items-center">
-                                <input type="radio" wire:model="sapato_adequado" value="0"
-                                    class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                <span class="ml-2 text-gray-700">Não</span>
-                            </label>
+                    <div class="flex items-center mb-4 space-x-6">
+                        <!-- Primeiro div: Sapato adequado -->
+                        <div class="w-1/3">
+                            <label for="sapato_adequado" class="block mb-2 font-medium text-gray-700">Sapato
+                                adequado:</label>
+                            <div class="flex items-center mt-1 space-x-6">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" wire:model="sapato_adequado" value="1"
+                                        class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
+                                    <span class="ml-2 text-gray-700">Sim</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" wire:model="sapato_adequado" value="0"
+                                        class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
+                                    <span class="ml-2 text-gray-700">Não</span>
+                                </label>
+                            </div>
+                            @error('sapato_adequado')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
-                        @error('sapato_adequado')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
 
-                    <!-- Segundo div: Sandália de cicatrização/offloading -->
-                    <div class="w-1/3">
-                        <label for="sandalia_cicatrizacao" class="block mb-2 font-medium text-gray-700">Sandália
-                            de cicatrização/offloading:</label>
-                        <div class="flex items-center mt-1 space-x-6">
-                            <label class="inline-flex items-center">
-                                <input type="radio" wire:model="sandalia_cicatrizacao" value="1"
-                                    class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                <span class="ml-2 text-gray-700">Sim</span>
-                            </label>
-                            <label class="inline-flex items-center">
-                                <input type="radio" wire:model="sandalia_cicatrizacao" value="0"
-                                    class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                <span class="ml-2 text-gray-700">Não</span>
-                            </label>
+                        <!-- Segundo div: Sandália de cicatrização/offloading -->
+                        <div class="w-1/3">
+                            <label for="sandalia_cicatrizacao" class="block mb-2 font-medium text-gray-700">Sandália
+                                de cicatrização/offloading:</label>
+                            <div class="flex items-center mt-1 space-x-6">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" wire:model="sandalia_cicatrizacao" value="1"
+                                        class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
+                                    <span class="ml-2 text-gray-700">Sim</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" wire:model="sandalia_cicatrizacao" value="0"
+                                        class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
+                                    <span class="ml-2 text-gray-700">Não</span>
+                                </label>
+                            </div>
+                            @error('sandalia_cicatrizacao')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
-                        @error('sandalia_cicatrizacao')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                        @enderror
                     </div>
                 </div>
         </div>

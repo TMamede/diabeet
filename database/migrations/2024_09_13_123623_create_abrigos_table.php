@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('abrigos', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Zona_moradia::class);
-            $table->boolean('Luz_publica');
-            $table->boolean('Coleta_lixo');
-            $table->boolean('Agua_tratada');
+            $table->boolean('luz_publica');
+            $table->boolean('coleta_lixo');
+            $table->boolean('agua_tratada');
             $table->foreignIdFor(Rede_esgoto::class);
-            $table->boolean('Animais_domesticos');
+            $table->boolean('animais_domesticos');
             $table->timestamps();
         });
     }

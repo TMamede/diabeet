@@ -9,9 +9,10 @@ use App\Models\Paciente;
 use App\Models\Historico;
 use App\Models\Medicamento;
 use App\Models\Endereco;
+use App\Models\Resultado;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
- 
+
 class CreatePaciente extends Component
 {
     public $currentStep = 1;
@@ -23,20 +24,21 @@ class CreatePaciente extends Component
     public $ocupacao, $renda_familiar, $beneficio_id, $reside_id, $num_pss_casa;
 
     // Etapa 2: Histórico do Paciente
-    public $tipo_diabetes_id, $cirurgia_motivo,$realizou_amputacao = null, $amputacao_onde = null, $amputacao_quando = null;
-    public $tabagista, $n_cigarros = "Não fuma", $inicio_tabagismo = null,$etilista, $inicio_etilismo = null;
+    public $tipo_diabetes_id, $cirurgia_motivo, $realizou_amputacao = null, $amputacao_onde = null, $amputacao_quando = null;
+    public $tabagista, $n_cigarros = "Não fuma", $inicio_tabagismo = null, $etilista, $inicio_etilismo = null;
     public $comorbidades = []; // Nova variável para comorbidades
     public $alergias = []; // Nova variável para alergias
     public $comorbidadesList = [];
     public $alergiasList = [];
 
     // Etapa 3: Medicamentos 
-    public $medicamentos = []; 
+    public $medicamentos = [];
     public $nome_generico, $via, $dose;
 
     //Etapa 4: Resultados
     public $resultados = [];
-    
+    public $texto_resultado;
+
 
     public function render()
     {
@@ -53,12 +55,13 @@ class CreatePaciente extends Component
             'alergiasList' => $this->alergiasList,
         ]);
     }
- 
+
     public function mount()
     {
         $this->comorbidadesList = Comorbidade::all();
         $this->alergiasList = Alergia::all();
         $this->addMedicamento();
+        $this->addResultado();
     }
 
     public function addMedicamento()
@@ -70,10 +73,23 @@ class CreatePaciente extends Component
         ];
     }
 
+    public function addResultado()
+    {
+        $this->resultados[] = [
+            'texto_resultado' => '',
+        ];
+    }
+
     public function removeMedicamento($index)
     {
         unset($this->medicamentos[$index]);
         $this->medicamentos = array_values($this->medicamentos);
+    }
+
+    public function removeResultado($index)
+    {
+        unset($this->resultados[$index]);
+        $this->resultados = array_values($this->resultados);
     }
 
     public function nextStep()
@@ -82,13 +98,13 @@ class CreatePaciente extends Component
 
         $this->currentStep++;
     }
- 
+
     public function previousStep()
     {
         $this->currentStep--;
     }
 
-    public function validateStep() 
+    public function validateStep()
     {
         if ($this->currentStep == 1) {
             $this->validate([
@@ -130,12 +146,16 @@ class CreatePaciente extends Component
                 'medicamentos.*.via' => 'required|string|max:255',
                 'medicamentos.*.dose' => 'required|string|max:255',
             ]);
+        } elseif ($this->currentStep == 4) {
+            $this->validate([
+                'resultados.*.texto_resultado' => 'required|string',
+            ]);
         }
     }
 
     public function submitForm()
     {
-        $this->validateStep();
+        //$this->validateStep();
 
         $endereco = Endereco::where('rua', $this->rua)
             ->where('numero', $this->numero)
@@ -177,6 +197,11 @@ class CreatePaciente extends Component
             // 'historico_id' será definido após criar o histórico
         ]);
 
+        
+        if (is_null($this->amputacao_onde) || trim($this->amputacao_onde) === '') {
+            $this->amputacao_onde = 'Não realizou';
+        }
+        
         // Criar o histórico
         $historico = Historico::create([
             'tipo_diabetes_id' => $this->tipo_diabetes_id,
@@ -204,10 +229,18 @@ class CreatePaciente extends Component
             $paciente->medicamentos()->syncWithoutDetaching([$medicamento->id]);
         }
 
+        // Associar resultados
+        foreach ($this->resultados as $resultadoData) {
+            $resultado = Resultado::create([
+                'texto_resultado' => $resultadoData['texto_resultado'],
+                'paciente_id' => $paciente->id,  // Associar o resultado ao paciente
+            ]);
+        }
+
         foreach ($this->comorbidades as $comorbidadeId) {
             $historico->comorbidades()->attach($comorbidadeId);
         }
-    
+
         // Associar alergias ao histórico
         foreach ($this->alergias as $alergiaId) {
             $historico->alergias()->attach($alergiaId);

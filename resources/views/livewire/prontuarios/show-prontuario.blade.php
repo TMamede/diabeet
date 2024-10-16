@@ -16,7 +16,7 @@
                             </div>
                             <input wire:model.live.debounce.300ms ="search" type="text"
                                 class="block w-full py-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg px-80 bg-gray-50 focus:ring-primary-500 focus:border-primary-500 "
-                                placeholder="Search" required="">
+                                placeholder="Pesquise" required="">
                         </div>
                     </div>
                 </div>
