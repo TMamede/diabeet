@@ -151,7 +151,7 @@
                         <div class="mb-4">
                             <label for="uf" class="block font-medium text-gray-700">UF</label>
                             <input type="text" wire:model="uf" id="uf"
-                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                                class="block w-full mt-1 uppercase border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 maxlength="2" placeholder="Digite a UF">
                             @error('uf')
                                 <span class="text-sm text-red-500">{{ $message }}</span>

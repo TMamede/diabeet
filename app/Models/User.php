@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Questionario::class);
     }
+
+    public function contatos()
+    {
+        return $this->hasMany(Contato::class);
+    }
 }

@@ -50,9 +50,6 @@ use Livewire\Component;
 class CreateQuestionario extends Component
 {
 
-
-
-
     public $currentStep = 1;
     public $selectedOption = null;
     public $search = "";
@@ -63,6 +60,12 @@ class CreateQuestionario extends Component
     public function selectPaciente($pacienteId)
     {
         $this->selectedPaciente = Paciente::find($pacienteId);
+        $this->search = "";
+    }
+
+    public function selectUnidade($unidadeId)
+    {
+        $this->unidade_saude_id = Unidade_saude::find($unidadeId);
         $this->search = "";
     }
 
@@ -101,7 +104,7 @@ class CreateQuestionario extends Component
 
     //Etapa 4 - Necessidades Espirituais e Finalização
     public $religiao;
-    public $unidade_saude, $nome_unidade, $endereco_unidade, $impressoes;
+    public $unidade_saude_id = null, $impressoes;
 
 
     public function calcularIMC()
@@ -182,6 +185,8 @@ class CreateQuestionario extends Component
     {
         $pacientes = [];
 
+        $unidades = [];
+
 
         if (strlen($this->search) >= 1) {
             $pacientes = Paciente::where('nome', 'like', '%' . $this->search . '%')
@@ -190,9 +195,16 @@ class CreateQuestionario extends Component
                 ->get();
         }
 
+        if (strlen($this->search) >= 1) {
+            $unidades = Unidade_saude::where('nome', 'like', '%' . $this->search . '%')
+                ->limit(3)
+                ->get();
+        }
+
 
         return view('livewire.questionarios.create-questionario', [
             'pacientes' => $pacientes,
+            'unidades' => $unidades,
             'recreacaosList' => $this->recreacaosList,
             'emocionalsList' => $this->emocionalsList,
             'refeicaosList' => $this->refeicaosList,
@@ -223,6 +235,7 @@ class CreateQuestionario extends Component
             'pelesPeriferida' => \App\Models\Pele_periferida::all(),
             'tiposTecido' => \App\Models\Tipo_tecido_ferida::all(),
             'bordasFerida' => \App\Models\Bordas_ferida::all(),
+            'unidadesSaude' => \App\Models\Unidade_saude::all(),
         ]);
     }
 
@@ -376,8 +389,7 @@ class CreateQuestionario extends Component
             $this->validate([
                 'religiao' => 'required|string|max:255',
 
-                'nome_unidade' => 'required|string|max:255',
-                'endereco_unidade' => 'required|string|max:255',
+                'unidade_saude_id' => 'required|exists:unidade_saudes,id',
 
                 'impressoes' => 'required|string',
             ]);
@@ -557,14 +569,12 @@ class CreateQuestionario extends Component
             'dor' => $this->dor,
         ]);
 
-
         $cuidado_ferida = Cuidado_ferida::firstOrcreate([
             'desbridamento_id' => $this->desbridamento_id, // ID do desbridamento
             'avaliacao_ferida_id' => $this->avaliacao_ferida_id, // ID da avaliação da ferida
             'aplicacao_laserterapia' => $this->aplicacao_laserterapia,
             'terapia_fotodinamica' => $this->terapia_fotodinamica,
         ]);
-
 
         $comunicacao = Comunicacao::firstOrcreate([
             'apoio' => $this->apoio,
@@ -586,12 +596,6 @@ class CreateQuestionario extends Component
             'uso_sapato' => $this->uso_sapato,
             'alimentacao' => $this->alimentacao,
             'regime_terapeutico' => $this->regime_terapeutico,
-        ]);
-
-
-        $unidade_saude = Unidade_saude::firstOrcreate([
-            'nome' => $this->nome_unidade,
-            'endereco' => $this->endereco_unidade,
         ]);
 
         $nss_biologicas = Nss_biologicas::firstOrcreate([
@@ -630,7 +634,7 @@ class CreateQuestionario extends Component
             'nss_biologicas_id' => $nss_biologicas->id, 
             'nss_sociais_id' => $nss_sociais->id,     
             'nss_espirituais_id' => $nss_espirituais->id,
-            'unidade_saude_id' => $unidade_saude->id, 
+            'unidade_saude_id' => $this->unidade_saude_id, 
             'impressoes' => $this->impressoes,
         ]);
 

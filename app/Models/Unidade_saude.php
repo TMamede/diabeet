@@ -10,12 +10,16 @@ class Unidade_saude extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function scopeSearch($query, $value){
+        $query->where('nome', 'like', "%{$value}%");
+    }
+
     public function questionarios()
     {
         return $this->hasMany(Questionario::class);
     }
 
-    public function enderecos()
+    public function endereco()
     {
         return $this->belongsTo(Endereco::class);
     }

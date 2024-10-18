@@ -2255,40 +2255,45 @@
             <div class="mb-4">
                 <label for="religiao" class="block font-medium text-gray-700">Religião/Espiritualidade:</label>
                 <input type="text" wire:model="religiao" id="religiao"
-                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                    class="block w-full px-6 py-3 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                     placeholder="Digite sua religião/espiritualidade">
                 @error('religiao')
                     <span class="text-sm text-red-500">{{ $message }}</span>
                 @enderror
             </div>
 
-            <div class="mb-4">
-                <h3 class="py-4 text-2xl font-bold">Unidade de Saúde</h3>
-                <div class="mb-3">
-                    <label for="nome_unidade" class="block font-medium text-gray-700">Nome:</label>
-                    <input type="text" wire:model="nome_unidade" id="nome_unidade"
-                        class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                        placeholder="Digite o nome da Unidade de Saúde">
-                    @error('nome_unidade')
-                        <span class="text-sm text-red-500">{{ $message }}</span>
-                    @enderror
+            <h2 class="py-5 text-3xl font-bold text-indigo-950">Unidade de Saúde</h2>
+
+            <!-- Formulário de Busca -->
+            <form class="flex justify-center" role="search">
+                <input wire:model.live.debounce.300ms="search"
+                    class="block w-full px-6 py-3 mb-4 border border-gray-300 rounded-lg shadow-sm form-control focus:ring-indigo-500 focus:border-indigo-500"
+                    type="search" placeholder="Pesquise o nome da unidade de saúde" aria-label="Search">
+            </form>
+
+            <!-- Resultados de Pesquisa -->
+            @if (sizeof($unidades) > 0)
+                <div class="mt-4 mb-6 bg-white rounded-lg shadow-lg">
+                    @foreach ($unidades as $unidade)
+                        <div class="py-3 border-b border-gray-200 cursor-pointer hover:bg-gray-100"
+                            wire:click="selectUnidade({{ $unidade->id }})">
+                            <div class="flex flex-col px-6">
+                                <span class="text-lg font-medium text-gray-900">{{ $unidade->nome }}</span>
+                                <small class="text-gray-500">Rua: {{ $unidade->endereco->rua }}</small>
+                                <small class="text-gray-500">Bairro: {{ $unidade->endereco->bairro }}</small>
+                                <small class="text-gray-500">Cidade: {{ $unidade->endereco->cidade }}</small>
+                                <small class="text-gray-500">Unidade Federativa: {{ $unidade->endereco->uf }}</small>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-                <div class="mb-3">
-                    <label for="endereco_unidade" class="block font-medium text-gray-700">Endereço</label>
-                    <input type="text" wire:model="endereco_unidade" id="endereco_unidade"
-                        class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                        placeholder="Digite o endereço da Unidade de Saúde">
-                    @error('endereco_unidade')
-                        <span class="text-sm text-red-500">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
+            @endif
 
             <div class="mb-4">
-                <label for="impressoes" class="block mb-2 font-medium text-gray-700">Impressões do
+                <label for="impressoes" class="block mb-2 text-lg font-medium text-gray-700">Impressões do
                     enfermeiro:</label>
                 <textarea wire:model="impressoes" id="impressoes"
-                    class="block w-full px-4 py-3 mt-1 placeholder-gray-400 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                    class="block w-full px-6 py-4 mt-1 placeholder-gray-400 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                     placeholder="Digite suas impressões sobre a realização do questionário" rows="6"></textarea>
                 @error('impressoes')
                     <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
