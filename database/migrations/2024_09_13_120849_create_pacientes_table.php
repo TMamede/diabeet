@@ -38,7 +38,6 @@ return new class extends Migration
             $table->tinyInteger('num_pss_casa');
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Historico::class)->nullable();
-            $table->foreignIdFor(Resultado::class)->nullable();
             $table->timestamps();
         });
     }

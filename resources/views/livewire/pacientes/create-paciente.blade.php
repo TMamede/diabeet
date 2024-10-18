@@ -437,14 +437,19 @@
                                     @enderror
                                 </div>
 
-                                <div class="mb-4">
-                                    <label for="medicamentos.{{ $index }}.via"
-                                        class="block text-base font-medium text-gray-700">Via</label>
-                                    <input type="text" wire:model="medicamentos.{{ $index }}.via"
-                                        id="medicamentos.{{ $index }}.via"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                    @error('medicamentos.' . $index . '.via')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
+                                <div class="mb-6">
+                                    <label for="medicamentos.{{ $index }}.via_id"
+                                        class="block mb-2 font-medium text-gray-700">Via</label>
+                                    <select wire:model="medicamentos.{{ $index }}.via_id"
+                                        id="medicamentos.{{ $index }}.via_id"
+                                        class="block w-full p-2 border-gray-300 rounded-lg shadow-sm form-select focus:ring-indigo-500 focus:border-indigo-500">
+                                        <option value="">Selecione</option>
+                                        @foreach ($vias as $via)
+                                            <option value="{{ $via->id }}">{{ $via->descricao }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('medicamentos.' . $index . '.via_id')
+                                        <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
                                     @enderror
                                 </div>
 

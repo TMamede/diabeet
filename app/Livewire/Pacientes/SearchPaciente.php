@@ -4,7 +4,6 @@ namespace App\Livewire\Pacientes;
 
 use App\Models\Alergia;
 use App\Models\Comorbidade;
-use App\Models\Historico;
 use App\Models\Medicamento;
 use App\Models\Endereco;
 use App\Models\Paciente;
@@ -13,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Validation\Rule;
 
 class SearchPaciente extends Component
 {
@@ -35,7 +33,7 @@ class SearchPaciente extends Component
 
     // Etapa 3: Medicamentos
     public $medicamentos = [];
-    public $nome_generico, $via, $dose;
+    public $nome_generico, $via_id, $dose;
 
     // Etapa 4: Resultados
     public $resultados = [];
@@ -52,7 +50,7 @@ class SearchPaciente extends Component
     #[Url(history: true)]
     public $search = '';
     #[Url()]
-    public $perPage = 5;
+    public $perPage = 10;
     #[Url(history: true)]
     public $sortBy = 'created_at';
     #[Url(history: true)]
@@ -147,7 +145,7 @@ class SearchPaciente extends Component
         } elseif ($this->currentStep == 4) {
             $this->validate([
                 'medicamentos.*.nome_generico' => 'required|string|max:255',
-                'medicamentos.*.via' => 'required|string|max:255',
+                'medicamentos.*.via_id' => 'required|exists:vias,id',
                 'medicamentos.*.dose' => 'required|string|max:255',
             ]);
         } elseif ($this->currentStep == 5) {
@@ -204,7 +202,7 @@ class SearchPaciente extends Component
 
     public function addMedicamento()
     {
-        $this->medicamentos[] = ['nome_generico' => '', 'via' => '', 'dose' => ''];
+        $this->medicamentos[] = ['nome_generico' => '', 'via_id' => '', 'dose' => ''];
     }
 
     public function addResultado()
@@ -275,6 +273,7 @@ class SearchPaciente extends Component
                 'enderecos' => \App\Models\Endereco::all(),
                 'beneficios' => \App\Models\Beneficio::all(),
                 'resides' => \App\Models\Reside::all(),
+                'vias' => \App\Models\Via::all(),
                 'comorbidadesList' => $this->comorbidadesList,
                 'alergiasList' => $this->alergiasList,
                 'pacientes' => Paciente::search($this->search)
@@ -361,7 +360,7 @@ class SearchPaciente extends Component
             $medicamento = Medicamento::updateOrCreate(
                 [
                     'nome_generico' => $medicamentoData['nome_generico'],
-                    'via' => $medicamentoData['via'],
+                    'via_id' => $medicamentoData['via_id'],
                     'dose' => $medicamentoData['dose'],
                 ]
             );

@@ -14,7 +14,7 @@ class HistoricoFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition(): array  
     {
         return [
             'tipo_diabetes_id' => $this->faker->randomElement([1, 2]), // Randomiza entre 1 e 2

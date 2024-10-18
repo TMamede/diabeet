@@ -5,7 +5,7 @@
                 <section class="p-1 mt-10">
                     <div class="max-w-screen-xl px-4 mx-auto lg:px-12">
                         <!-- Start coding here -->
-                        <div class="relative overflow-hidden bg-white shadow-md sm:rounded-lg">
+                        <div class="relative mb-10 overflow-hidden bg-white shadow-md sm:rounded-lg">
                             <div class="flex items-center justify-between p-4 d">
                                 <div class="flex">
                                     <div class="relative w-full">
@@ -37,7 +37,7 @@
                                             </th>
                                             @include('components.table-sortable-th', [
                                                 'nome' => 'data_nasc',
-                                                'displayName' => 'DATA DE NASCIMENTO',
+                                                'displayName' => 'NASCIMENTO',
                                             ])
                                             @include('components.table-sortable-th', [
                                                 'nome' => 'user_name',
@@ -89,8 +89,6 @@
                                         <label class="w-40 p-1 text-sm font-medium text-gray-900">Por Página</label>
                                         <select wire:model.live='perPage'
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5">
-                                            <option value="1">1</option>
-                                            <option value="5">5</option>
                                             <option value="10">10</option>
                                             <option value="15">15</option>
                                             <option value="20">20</option>
@@ -531,7 +529,7 @@
                                 @error('cirurgia_motivo')
                                     <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
                                 @enderror
-                            </div> 
+                            </div>
 
                             <div class="mb-6">
                                 <label for="amputacao_onde" class="block mb-2 font-medium text-gray-700">Já realizaou
@@ -545,8 +543,7 @@
 
                             <div class="mb-6">
                                 <label for="amputacao_quando" class="block mb-2 font-medium text-gray-700">Quando foi
-                                    a
-                                    Amputação?</label>
+                                    a Amputação?</label>
                                 <input type="date" wire:model="amputacao_quando" id="amputacao_quando"
                                     class="block w-full border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500">
                                 @error('amputacao_quando')
@@ -725,14 +722,19 @@
                                     @enderror
                                 </div>
 
-                                <div class="mb-4">
-                                    <label for="medicamentos.{{ $index }}.via"
-                                        class="block text-sm font-medium text-gray-700">Via</label>
-                                    <input type="text" wire:model="medicamentos.{{ $index }}.via"
-                                        id="medicamentos.{{ $index }}.via"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                    @error('medicamentos.' . $index . '.via')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
+                                <div class="mb-6">
+                                    <label for="medicamentos.{{ $index }}.via_id"
+                                        class="block mb-2 font-medium text-gray-700">Via</label>
+                                    <select wire:model="medicamentos.{{ $index }}.via_id"
+                                        id="medicamentos.{{ $index }}.via_id"
+                                        class="block w-full p-2 border-gray-300 rounded-lg shadow-sm form-select focus:ring-indigo-500 focus:border-indigo-500">
+                                        <option value="">Selecione</option>
+                                        @foreach ($vias as $via)
+                                            <option value="{{ $via->id }}">{{ $via->descricao }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('medicamentos.' . $index . '.via_id')
+                                        <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
                                     @enderror
                                 </div>
 
@@ -841,7 +843,7 @@
                     <!-- Conteúdo da Página -->
                     <main class="flex-1 p-6 ml-1">
 
-                        
+
 
                         <div class="flex items-center justify-between">
                             <h2 class="pt-2 pb-4 text-5xl font-semibold">{{ $nome }}</h2>

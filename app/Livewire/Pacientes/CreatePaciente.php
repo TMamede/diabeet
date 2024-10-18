@@ -25,7 +25,7 @@ class CreatePaciente extends Component
 
     // Etapa 2: Histórico do Paciente
     public $tipo_diabetes_id, $cirurgia_motivo, $realizou_amputacao = null, $amputacao_onde = null, $amputacao_quando = null;
-    public $tabagista, $n_cigarros = "Não fuma", $inicio_tabagismo = null, $etilista, $inicio_etilismo = null;
+    public $tabagista, $n_cigarros = null, $inicio_tabagismo = null, $etilista, $inicio_etilismo = null;
     public $comorbidades = []; // Nova variável para comorbidades
     public $alergias = []; // Nova variável para alergias
     public $comorbidadesList = [];
@@ -33,7 +33,7 @@ class CreatePaciente extends Component
 
     // Etapa 3: Medicamentos 
     public $medicamentos = [];
-    public $nome_generico, $via, $dose;
+    public $nome_generico, $via_id, $dose;
 
     //Etapa 4: Resultados
     public $resultados = [];
@@ -51,6 +51,7 @@ class CreatePaciente extends Component
             'enderecos' => \App\Models\Endereco::all(),
             'beneficios' => \App\Models\Beneficio::all(),
             'resides' => \App\Models\Reside::all(),
+            'vias' => \App\Models\Via::all(),
             'comorbidadesList' => $this->comorbidadesList,
             'alergiasList' => $this->alergiasList,
         ]);
@@ -68,7 +69,7 @@ class CreatePaciente extends Component
     {
         $this->medicamentos[] = [
             'nome_generico' => '',
-            'via' => '',
+            'via_id' => '',
             'dose' => '',
         ];
     }
@@ -143,7 +144,7 @@ class CreatePaciente extends Component
         } elseif ($this->currentStep == 3) {
             $this->validate([
                 'medicamentos.*.nome_generico' => 'required|string|max:255',
-                'medicamentos.*.via' => 'required|string|max:255',
+                'medicamentos.*.via_id' => 'required|exists:via,id',
                 'medicamentos.*.dose' => 'required|string|max:255',
             ]);
         } elseif ($this->currentStep == 4) {
@@ -201,6 +202,9 @@ class CreatePaciente extends Component
         if (is_null($this->amputacao_onde) || trim($this->amputacao_onde) === '') {
             $this->amputacao_onde = 'Não realizou';
         }
+        if (is_null($this->n_cigarros) || trim($this->n_cigarros) === '') {
+            $this->n_cigarros = '0';
+        }
         
         // Criar o histórico
         $historico = Historico::create([
@@ -221,7 +225,7 @@ class CreatePaciente extends Component
         foreach ($this->medicamentos as $medicamentoData) {
             $medicamento = Medicamento::firstOrCreate([
                 'nome_generico' => $medicamentoData['nome_generico'],
-                'via' => $medicamentoData['via'],
+                'via_id' => $medicamentoData['via_id'],
                 'dose' => $medicamentoData['dose'],
             ]);
 

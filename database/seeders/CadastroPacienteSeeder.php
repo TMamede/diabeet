@@ -7,10 +7,16 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+
 class CadastroPacienteSeeder extends Seeder
 {
     public function run()
     {
+        Orientacao_sexual::create(['descricao' => 'Heterossexual']);
+        Orientacao_sexual::create(['descricao' => 'Homossexual']);
+        Orientacao_sexual::create(['descricao' => 'Bissexual']);
+        Orientacao_sexual::create(['descricao' => 'Outros']);
+
         // Inserir estado civils
         DB::table('estado_civils')->insert([
             ['descricao' => 'Solteiro', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -76,9 +82,18 @@ class CadastroPacienteSeeder extends Seeder
             ['descricao' => 'Alergia Medicamentosa', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
-        Orientacao_sexual::create(['descricao' => 'Heterossexual']);
-        Orientacao_sexual::create(['descricao' => 'Homossexual']);
-        Orientacao_sexual::create(['descricao' => 'Bissexual']);
-        Orientacao_sexual::create(['descricao' => 'Outros']);
+        DB::table('vias')->insert([
+            ['descricao' => 'Oral', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Sublingual', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Retal', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Intravenosa', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Intramuscular', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Subcutânea', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Respiratória', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Tópica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Ocular', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Nasal', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Auricular', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+        ]);
     }
 }
