@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Cuidado;
+use App\Models\Emocional;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,6 +18,15 @@ return new class extends Migration
             $table->string('descricao');
             $table->timestamps();
         });
+
+        Schema::create('emocionals_cuidados', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Emocional::class);
+            $table->foreignIdFor(Cuidado::class);
+            $table->timestamps();
+        });
+
+
     }
 
     /**
@@ -24,5 +35,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('emocionals');
+        Schema::dropIfExists('emocionals_cuidados');
     }
 };

@@ -12,6 +12,6 @@ class Disturbio_sexual extends Model
 
     public function sexualidades()
     {
-        return $this->belongsToMany(Sexualidade::class);
+        return $this->belongsToMany(Sexualidade::class,'disturbios_sexualidade');
     }
 }

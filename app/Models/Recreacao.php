@@ -12,6 +12,6 @@ class Recreacao extends Model
 
     public function nss_sociais()
     {
-        return $this->belongsToMany(Nss_sociais::class);
+        return $this->belongsToMany(Nss_sociais::class,'nss_sociais_recreacao');
     }
 }

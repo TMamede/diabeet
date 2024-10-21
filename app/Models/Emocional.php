@@ -12,6 +12,6 @@ class Emocional extends Model
 
     public function cuidados()
     {
-        return $this->hasMany(Cuidado::class);
+        return $this->belongsToMany(Cuidado::class,'emocionals_cuidados');
     }
 }

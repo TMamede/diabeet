@@ -54,18 +54,22 @@ class CreateQuestionario extends Component
     public $selectedOption = null;
     public $search = "";
     public $selectedPaciente = null;
+    public $idPacienteSelected=null;
+    public $idUnidadeSelected=null;
 
 
     // Etapa 1 - Mostrar Paciente
     public function selectPaciente($pacienteId)
     {
         $this->selectedPaciente = Paciente::find($pacienteId);
+        $this->idPacienteSelected = $pacienteId;
         $this->search = "";
     }
 
     public function selectUnidade($unidadeId)
     {
         $this->unidade_saude_id = Unidade_saude::find($unidadeId);
+        $this->idUnidadeSelected = $unidadeId;
         $this->search = "";
     }
 
@@ -89,7 +93,7 @@ class CreateQuestionario extends Component
     public $locomocao, $tipo_locomocaos = [], $tiposLocomocaoList = [], $sapato_adequado, $sandalia_cicatrizacao;
     public $regulacao_vascular, $pressao_arterial, $frequencia_cardiaca, $psatp_direito, $psap_direito, $psab_direito, $psatp_esquerdo, $psap_esquerdo, $psab_esquerdo;
     public $senso_percepcao, $sintomas_percepcaos = [], $sintomasPercepcaoList = [], $pe_neuropatico, $arco_desabado, $valgismo, $dedos_em_garra, $estado_unhas_id;
-    public $corte_unhas, $fissuras, $calosidades, $micose, $teste_senso_percepcaos = null, $percepcao_direito, $percepcao_esquerdo;
+    public $corte_unhas, $fissuras, $calosidades, $micose, $teste_senso_percepcao_id = null, $percepcao_direito, $percepcao_esquerdo;
     public $edema, $comprimentoD, $comprimentoE, $larguraD, $larguraE, $lesao_amputacaoD, $lesao_amputacaoE, $odor_exudato, $dor, $bordas_ferida_id, $pele_periferida_id, $profundidade_id, $tipo_tecido_ferida_id, $aspecto_exudato_id, $quantidade_exudato_id;
     public $integridade_cutanea, $integridade_direito, $integridade_esquerdo, $regiao_pe_direito_id, $localizacao_lesao_direito_id, $regiao_pe_esquerdo_id, $localizacao_lesao_esquerdo_id;
     public $desbridamento_id, $avaliacao_ferida_id, $aplicacao_laserterapia, $terapia_fotodinamica;
@@ -99,7 +103,7 @@ class CreateQuestionario extends Component
     public $aprendizagem, $monitoramento_glicemia_dia, $cuidado_pes, $uso_sapato, $alimentacao, $regime_terapeutico;
     public $recreacaos = [], $recreacaosList = [];
     public $cuidado, $acompanhado, $opnioes_de_si, $auxiliador, $emocionals = [], $emocionalsList = [];
-    public $comunicacao, $apoio, $interacao_Social;
+    public $comunicacao, $apoio, $interacao_social;
 
 
     //Etapa 4 - Necessidades Espirituais e Finalização
@@ -161,7 +165,7 @@ class CreateQuestionario extends Component
     public function selectOption($option)
     {
         $this->selectedOption = $option;
-        $this->teste_senso_percepcaos = $option;
+        $this->teste_senso_percepcao_id = $option;
     }
 
 
@@ -383,13 +387,13 @@ class CreateQuestionario extends Component
                 'emocionals' => 'nullable|array',
 
                 'apoio' => 'required|boolean',
-                'interacao_Social' => 'required|boolean',
+                'interacao_social' => 'required|boolean',
             ]);
         } else if ($this->currentStep == 4) {
             $this->validate([
                 'religiao' => 'required|string|max:255',
 
-                'unidade_saude_id' => 'required|exists:unidade_saudes,id',
+                'idUnidadeSelected' => 'required|exists:unidade_saudes,id',
 
                 'impressoes' => 'required|string',
             ]);
@@ -482,7 +486,6 @@ class CreateQuestionario extends Component
 
         $regulacao_termica = Regulacao_termica::firstOrcreate([
             'temperatura' => $this->temperatura,
-            'tipo_temperatura_id' => $this->tipo_temperatura_id,
         ]);
 
 
@@ -494,6 +497,7 @@ class CreateQuestionario extends Component
             'dor_eliminacoes' => $this->dor_eliminacoes,
             'incontinencia_eliminacao' => $this->incontinencia_eliminacao,
             'diarreia' => $this->diarreia,
+            'constipacao' =>$this->constipacao,
             'equipamento_externo' => $this->equipamento_externo,
         ]);
 
@@ -520,7 +524,6 @@ class CreateQuestionario extends Component
             'psab_esquerdo' => $this->psab_esquerdo,
         ]);
 
-
         $senso_percepcao = Senso_percepcao::firstOrcreate([
             'pe_neuropatico' => $this->pe_neuropatico,
             'arco_desabado' => $this->arco_desabado,
@@ -535,7 +538,6 @@ class CreateQuestionario extends Component
             'percepcao_direito' => $this->percepcao_direito,
             'percepcao_esquerdo' => $this->percepcao_esquerdo,
         ]);
-
 
         $integridade_direito = Integridade_direito::firstOrcreate([
             'comprimento' => $this->comprimentoD,
@@ -584,8 +586,7 @@ class CreateQuestionario extends Component
 
         $cuidado = Cuidado::firstOrcreate([
             'acompanhado' => $this->acompanhado,
-            'emocional_id' => $this->emocional_id, // Usando a referência da tabela emocional
-            'opiniao_de_si' => $this->opiniao_de_si, // Note que o nome da variável deve ser o mesmo definido na tabela
+            'opnioes_de_si' => $this->opnioes_de_si, // Note que o nome da variável deve ser o mesmo definido na tabela
             'auxiliador' => $this->auxiliador,
         ]);
 
@@ -629,12 +630,12 @@ class CreateQuestionario extends Component
         ]);
 
         $questionario = Questionario::create([
-            'paciente_id' => $this->selectedPaciente,
+            'paciente_id' => $this->idPacienteSelected,
             'user_id' => Auth::id(),
             'nss_biologicas_id' => $nss_biologicas->id, 
             'nss_sociais_id' => $nss_sociais->id,     
             'nss_espirituais_id' => $nss_espirituais->id,
-            'unidade_saude_id' => $this->unidade_saude_id, 
+            'unidade_saude_id' => $this->idUnidadeSelected, 
             'impressoes' => $this->impressoes,
         ]);
 
@@ -647,39 +648,39 @@ class CreateQuestionario extends Component
             $nss_sociais->recreacoes()->attach($recreacaosId);
         }
         foreach ($this->emocionals as $emocionalId) {
-            $nss_sociais->cuidado->emocional()->attach($emocionalId);
+            $cuidado->emocionais()->attach($emocionalId);
         }
         foreach ($this->refeicaos as $refeicaoId) {
-            $nss_biologicas->nutricao->refeicoes()->attach($refeicaoId);
+            $nutricao->refeicoes()->attach($refeicaoId);
         }
         foreach ($this->restricaos as $restricaoId) {
-            $nss_biologicas->nutricao->restricoes_alimentar()->attach($restricaoId);
+            $nutricao->restricoes_alimentar()->attach($restricaoId);
         }
         foreach ($this->problema_sonos as $problema_sonoId) {
-            $nss_biologicas->sono->problemas_sono()->attach($problema_sonoId);
+            $sono->problemas_sono()->attach($problema_sonoId);
         }
         foreach ($this->disturbio_sexuals as $disturbio_sexualId) {
-            $nss_biologicas->sexualidade->disturbios_sexual()->attach($disturbio_sexualId);
+            $sexualidade->disturbios_sexual()->attach($disturbio_sexualId);
         }
         foreach ($this->tipo_locomocaos as $tipo_locomocaoId) {
-            $nss_biologicas->locomocao->tipos_locomocao()->attach($tipo_locomocaoId);
+            $locomocao->tipos_locomocao()->attach($tipo_locomocaoId);
         }
         foreach ($this->sintomas_percepcaos as $sintomas_percepcaoId) {
-            $nss_biologicas->senso_percepcao->sintomas_percepcao()->attach($sintomas_percepcaoId);
+            $senso_percepcao->sintomas_percepcao()->attach($sintomas_percepcaoId);
         }
         foreach ($this->limpeza_lesaos as $limpeza_lesaoId) {
-            $nss_biologicas->cuidado_ferida->limpezas_lesao()->attach($limpeza_lesaoId);
+            $cuidado_ferida->limpezas_lesao()->attach($limpeza_lesaoId);
         }
         foreach ($this->coberturas as $coberturaId) {
-            $nss_biologicas->cuidado_ferida->coberturas_ferida()->attach($coberturaId);
+            $cuidado_ferida->coberturas_ferida()->attach($coberturaId);
         }
         foreach ($this->sinais_infeccaos as $sinais_infeccaoId) {
-            $nss_biologicas->integridade_cutanea->sinais_infeccao()->attach($sinais_infeccaoId);
+            $integridade_cutanea->sinais_infeccao()->attach($sinais_infeccaoId);
         }
 
 
         // Resetar o formulário ou redirecionar conforme necessário
         session()->flash('message', 'Questionário criado com sucesso!');
-        return redirect()->route('questionario.index');
+        return redirect()->route('paciente.index');
     }
 }

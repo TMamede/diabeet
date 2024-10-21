@@ -131,7 +131,7 @@
                                             <h4 class="mb-2 text-xl font-semibold text-gray-900">
                                                 {{ $medicamento->nome_generico }}</h4>
                                             <p class="mb-1 text-gray-700"><span class="font-medium">Via:</span>
-                                                {{ $medicamento->via }}</p>
+                                                {{ $medicamento->via->descricao }}</p>
                                             <p class="text-gray-700"><span class="font-medium">Dose:</span>
                                                 {{ $medicamento->dose }}</p>
                                         </div>
@@ -156,7 +156,7 @@
             @if ($currentStep == 2)
                 <div class="step">
                     <h2 class="py-5 text-4xl font-bold text-indigo-950">Necessidades PsicoBiológicas</h2>
-                    <div>
+                    <div class= "">
                         <h2 class="py-5 text-lg font-bold">Regulação Neurológica</h2>
 
                         <div class="flex mb-4 space-x-4">
@@ -1174,7 +1174,7 @@
                     <label for="psap_direito" class="block font-medium text-gray-700">Pressão Sistólica
                         Arteria Pediosa Direito</label>
                     <input type="text" wire:model="psap_direito" id="psap_direito"
-                        class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                        class="block w-full border border-gray-300 rounded-lg shadow-sm mt-7 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                         placeholder="Digite o psap direito">
                     @error('psap_direito')
                         <span class="text-sm text-red-500">{{ $message }}</span>
@@ -1438,21 +1438,21 @@
                     <div>
                         <button type="button" @click="selectedOption = 1" wire:click="selectOption(1)"
                             :class="selectedOption === 1 ? 'border-2 border-indigo-900' : ''"
-                            class="px-4 py-2 text-white bg-indigo-500 rounded hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 ">
+                            class="px-4 py-2 text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 ">
                             Percepção da sensibilidade protetora
                         </button>
                     </div>
                     <div>
                         <button type="button" @click="selectedOption = 2" wire:click="selectOption(2)"
                             :class="selectedOption === 2 ? 'border-2 border-indigo-900' : ''"
-                            class="px-4 py-2 text-white bg-indigo-500 rounded hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            class="px-4 py-2 text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600">
                             Sensibilidade vibratória
                         </button>
                     </div>
                     <div>
                         <button type="button" @click="selectedOption = 3" wire:click="selectOption(3)"
                             :class="selectedOption === 3 ? 'border-2 border-indigo-900' : ''"
-                            class="px-4 py-2 text-white bg-indigo-500 rounded hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            class="px-4 py-2 text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600">
                             Ipswich Touch Test
                         </button>
                     </div>
@@ -2212,21 +2212,21 @@
 
                     <!-- Segundo div -->
                     <div class="w-1/3">
-                        <label for="interacao_Social" class="block mb-2 font-medium text-gray-700">Interação
+                        <label for="interacao_social" class="block mb-2 font-medium text-gray-700">Interação
                             com as pessoas:</label>
                         <div class="flex items-center mt-1 space-x-6">
                             <label class="inline-flex items-center">
-                                <input type="radio" wire:model="interacao_Social" value="1"
+                                <input type="radio" wire:model="interacao_social" value="1"
                                     class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                 <span class="ml-2 text-gray-700">Sim</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="radio" wire:model="interacao_Social" value="0"
+                                <input type="radio" wire:model="interacao_social" value="0"
                                     class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                 <span class="ml-2 text-gray-700">Não</span>
                             </label>
                         </div>
-                        @error('interacao_Social')
+                        @error('interacao_social')
                             <span class="text-sm text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
@@ -2306,7 +2306,7 @@
                     class="px-4 py-2 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                     Voltar
                 </button>
-                <button type="submit" wire:click="submitForm"
+                <button type="button" wire:click="submitForm"
                     class="px-4 py-2 font-semibold text-white bg-teal-500 rounded-lg shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                     Salvar
                 </button>

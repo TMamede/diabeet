@@ -15,7 +15,6 @@ return new class extends Migration
         Schema::create('regulacao_termicas', function (Blueprint $table) {
             $table->id();
             $table->decimal('temperatura');
-            $table->foreignIdFor(Tipo_temperatura::class);
             $table->timestamps();
         });
     }

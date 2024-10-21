@@ -12,7 +12,7 @@ class Limpeza_lesao extends Model
 
     public function cuidados_ferida()
     {
-        return $this->belongsToMany(Cuidado_ferida::class);
+        return $this->belongsToMany(Cuidado_ferida::class,'limpezas_ferida');
     }
 
     

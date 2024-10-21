@@ -22,12 +22,12 @@ class Cuidado_ferida extends Model
 
     public function coberturas_ferida()
     {
-        return $this->belongsToMany(Cobertura_ferida::class);
+        return $this->belongsToMany(Cobertura_ferida::class,'coberturas_cuidado');
     }
     
     public function limpezas_lesao()
     {
-        return $this->belongsToMany(Limpeza_lesao::class);
+        return $this->belongsToMany(Limpeza_lesao::class,'limpezas_ferida');
     }
 
     public function nss_biologicas()

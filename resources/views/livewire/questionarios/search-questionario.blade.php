@@ -64,7 +64,7 @@
                                             Visualizar
                                         </button>
                                         <button wire:click="DeleteQuestionario('{{ $questionario->id }}')"
-                                            class="px-6 py-2 text-white bg-red-900 rounded hover:bg-red-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                            class="px-6 py-2 ml-3 text-white bg-red-900 rounded hover:bg-red-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                                             X
                                         </button>
                                     </td>

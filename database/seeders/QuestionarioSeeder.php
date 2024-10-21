@@ -94,6 +94,7 @@ class QuestionarioSeeder extends Seeder
         // restricao_alimentos
         DB::table('restricao_alimentos')->insert([
 
+            ['descricao' => 'Nenhuma', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Açúcar', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Glúten', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Lactose', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -110,6 +111,7 @@ class QuestionarioSeeder extends Seeder
 
         // problemas_sonos
         DB::table('problema_sonos')->insert([
+            ['descricao' => 'Nenhum', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Insonia', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Sono Agitado', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Pesadelos', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -120,6 +122,7 @@ class QuestionarioSeeder extends Seeder
 
         // frequencia_exercicios
         DB::table('frequencia_exercicios')->insert([
+            ['descricao' => 'Não realiza', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Diariamente', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => '1x/semana', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => '2x/semana', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -151,6 +154,7 @@ class QuestionarioSeeder extends Seeder
 
         // disturbio_sexuals
         DB::table('disturbio_sexuals')->insert([
+            ['descricao' => 'Nenhum', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Alteração da Libido', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Disfunção Eretil', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Dispaurenia', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -219,6 +223,7 @@ class QuestionarioSeeder extends Seeder
 
         // avaliacao_feridas
         DB::table('avaliacao_feridas')->insert([
+            ['descricao' => 'Não Realiza', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Diária', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Semanal', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => '2x semana', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -227,6 +232,7 @@ class QuestionarioSeeder extends Seeder
 
         // limpeza_lesaos
         DB::table('limpeza_lesaos')->insert([
+            ['descricao' => 'Não Realiza', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Soro Fisiológico', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Água Destilada', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'PHMB', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -235,6 +241,7 @@ class QuestionarioSeeder extends Seeder
 
         // cobertura_feridas
         DB::table('cobertura_feridas')->insert([
+            ['descricao' => 'Nenhuma', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Carvão Ativado com Prata', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Alginato de Cálcio', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Alginato de Cálcio com Prata', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],

@@ -12,6 +12,6 @@ class Sinais_infeccao extends Model
 
     public function integridades()
     {
-        return $this->belongsToMany(Integridade_cutanea::class);
+        return $this->belongsToMany(Integridade_cutanea::class,'sinais_integridade');
     }
 }

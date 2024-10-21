@@ -12,6 +12,6 @@ class Refeicao extends Model
 
     public function nutricoes()
     {
-        return $this->belongsToMany(Nutricao::class);
+        return $this->belongsToMany(Nutricao::class,'refeicaos_nutricao');
     }
 }

@@ -17,7 +17,7 @@ class Locomocao extends Model
 
     public function tipos_locomocao()
     {
-        return $this->belongsToMany(Tipo_locomocao::class);
+        return $this->belongsToMany(Tipo_locomocao::class,'tipos_loc');
     }
 
 }

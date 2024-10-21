@@ -20,7 +20,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-         Schema::create('pacientes', function (Blueprint $table) {
+        Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
             $table->char('cpf')->unique();
             $table->string('email')->unique();

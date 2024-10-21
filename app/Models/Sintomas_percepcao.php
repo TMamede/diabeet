@@ -12,6 +12,6 @@ class Sintomas_percepcao extends Model
 
     public function sensos_percepcao()
     {
-        return $this->belongsToMany(Senso_percepcao::class);
+        return $this->belongsToMany(Senso_percepcao::class,'sintomas_senso');
     }
 }

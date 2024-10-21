@@ -17,7 +17,7 @@ class Sono extends Model
     
     public function problemas_sono()
     {
-        return $this->belongsToMany(Problema_sono::class);
+        return $this->belongsToMany(Problema_sono::class,'problema_repouso');
     }
 
     public function qualidade_sono()

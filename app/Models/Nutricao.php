@@ -22,11 +22,11 @@ class Nutricao extends Model
 
     public function refeicoes()
     {
-        return $this->belongsToMany(Refeicao::class);
+        return $this->belongsToMany(Refeicao::class,'refeicaos_nutricao');
     }
 
     public function restricoes_alimentar()
     {
-        return $this->belongsToMany(Restricao_alimento::class);
+        return $this->belongsToMany(Restricao_alimento::class,'restricao_alimentos_nutricao');
     }
 }
