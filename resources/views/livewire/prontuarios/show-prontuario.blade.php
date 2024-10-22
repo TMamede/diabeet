@@ -39,9 +39,9 @@
                                     'nome' => 'created_at',
                                     'displayName' => 'DATA DE CADASTRO',
                                 ])
-                                <th scope="col" class="px-4 py-3">
+                                {{-- <th scope="col" class="px-4 py-3">
                                     Diagnósticos
-                                </th>
+                                </th> --}}
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
                                 </th>

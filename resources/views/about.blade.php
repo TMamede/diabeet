@@ -4,10 +4,10 @@
             {{ __('Sobre') }}
         </h2>
     </x-slot>
-
+  
     <div class="flex flex-col min-h-screen ">
         <div class="flex-grow py-10">
-            <div class="container px-6 mx-auto lg:px-8">
+            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="overflow-hidden bg-white rounded-lg shadow-lg">
                     <div class="p-6 md:p-12">
                         <h3 class="mb-6 text-2xl font-semibold text-gray-800">Bem-vindo ao nosso sistema!</h3>
