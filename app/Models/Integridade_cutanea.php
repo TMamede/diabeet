@@ -48,6 +48,6 @@ class Integridade_cutanea extends Model
     }
     public function sinais_infeccao()
     {
-        return $this->belongsToMany(Sinais_infeccao::class,'sinais_integridade');
+        return $this->belongsToMany(Sinais_infeccao::class);
     }
 }

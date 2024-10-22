@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('comunicacaos', function (Blueprint $table) {
             $table->id();
             $table->boolean('apoio');
-            $table->boolean('interacao_social');
+            $table->boolean('interacao_Social');
             $table->timestamps();
         });
     }

@@ -5,14 +5,15 @@
                 <section class="p-1 mt-10">
                     <div class="max-w-screen-xl px-4 mx-auto lg:px-12">
                         <!-- Start coding here -->
-                        <div class="relative mb-10 overflow-hidden bg-white shadow-md sm:rounded-lg">
+                        <div class="relative overflow-hidden bg-white shadow-md sm:rounded-lg">
                             <div class="flex items-center justify-between p-4 d">
                                 <div class="flex">
                                     <div class="relative w-full">
                                         <div
                                             class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 " fill="currentColor"
-                                                viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 "
+                                                fill="currentColor" viewbox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd"
                                                     d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                                                     clip-rule="evenodd" />
@@ -20,7 +21,7 @@
                                         </div>
                                         <input wire:model.live.debounce.300ms ="search" type="text"
                                             class="block w-full py-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg px-80 bg-gray-50 focus:ring-primary-500 focus:border-primary-500 "
-                                            placeholder="Pesquise" required="">
+                                            placeholder="Search" required="">
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +38,7 @@
                                             </th>
                                             @include('components.table-sortable-th', [
                                                 'nome' => 'data_nasc',
-                                                'displayName' => 'NASCIMENTO',
+                                                'displayName' => 'DATA DE NASCIMENTO',
                                             ])
                                             @include('components.table-sortable-th', [
                                                 'nome' => 'user_name',
@@ -63,9 +64,7 @@
                                                     class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">
                                                     {{ $paciente->nome }}</th>
                                                 <td class="px-4 py-3">{{ $paciente->prontuario }}</td>
-                                                <td class="px-4 py-3">
-                                                    {{ \Carbon\Carbon::parse($paciente->data_nasc)->format('d-m-Y') }}
-                                                </td>
+                                                <td class="px-4 py-3">{{ \Carbon\Carbon::parse($paciente->data_nasc)->format('d-m-Y') }}</td>
                                                 <td class="px-4 py-3 text-indigo-500">
                                                     {{ $paciente->user->name }}</td>
                                                 <td class="px-4 py-3">{{ $paciente->created_at }}</td>
@@ -74,7 +73,7 @@
                                                     <button
                                                         wire:click="nextStepAndSelectPaciente('{{ $paciente->id }}')"
                                                         class="px-6 py-2 text-white bg-indigo-900 rounded hover:bg-indigo-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                        Alterar
+                                                        Alterar 
                                                     </button>
                                                 </td>
                                             </tr>
@@ -89,6 +88,8 @@
                                         <label class="w-40 p-1 text-sm font-medium text-gray-900">Por Página</label>
                                         <select wire:model.live='perPage'
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5">
+                                            <option value="1">1</option>
+                                            <option value="5">5</option>
                                             <option value="10">10</option>
                                             <option value="15">15</option>
                                             <option value="20">20</option>
@@ -153,19 +154,6 @@
                                 </button>
                             </li>
 
-                            <!-- Resultados -->
-                            <li>
-                                <button wire:click="nextStepFifth"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-indigo-500"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Resultados</span>
-                                </button>
-                            </li>
-
                             <!-- Voltar -->
                             <li>
                                 <button wire:click="nextStepFirst"
@@ -187,7 +175,7 @@
                             <h2 class="pt-2 pb-4 text-5xl font-semibold">{{ $nome }}</h2>
                             <!-- Botões de Navegação e Salvar -->
                             <div class="mt-8">
-                                <button wire:click="updatePaciente('{{ $IdPaciente }}')"
+                                <button wire:click="updatePaciente('{{$IdPaciente}}')" 
                                     class="px-4 py-2 font-semibold text-white bg-teal-500 rounded-lg shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                                     Salvar
                                 </button>
@@ -461,19 +449,6 @@
                                 </button>
                             </li>
 
-                            <!-- Resultados -->
-                            <li>
-                                <button wire:click="nextStepFifth"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-indigo-500"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Resultados</span>
-                                </button>
-                            </li>
-
                             <!-- Voltar -->
                             <li>
                                 <button wire:click="nextStepFirst"
@@ -495,7 +470,7 @@
                             <h2 class="pt-2 pb-4 text-5xl font-semibold">{{ $nome }}</h2>
                             <!-- Botões de Navegação e Salvar -->
                             <div class="mt-8">
-                                <button wire:click="updatePaciente('{{ $IdPaciente }}')"
+                                <button wire:click="updatePaciente('{{ $IdPaciente}}')" 
                                     class="px-4 py-2 font-semibold text-white bg-teal-500 rounded-lg shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                                     Salvar
                                 </button>
@@ -543,7 +518,8 @@
 
                             <div class="mb-6">
                                 <label for="amputacao_quando" class="block mb-2 font-medium text-gray-700">Quando foi
-                                    a Amputação?</label>
+                                    a
+                                    Amputação?</label>
                                 <input type="date" wire:model="amputacao_quando" id="amputacao_quando"
                                     class="block w-full border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500">
                                 @error('amputacao_quando')
@@ -665,19 +641,6 @@
                                 </button>
                             </li>
 
-                            <!-- Resultados -->
-                            <li>
-                                <button wire:click="nextStepFifth"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-indigo-500"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Resultados</span>
-                                </button>
-                            </li>
-
                             <!-- Voltar -->
                             <li>
                                 <button wire:click="nextStepFirst"
@@ -699,7 +662,7 @@
                             <h2 class="pt-2 pb-4 text-5xl font-semibold">{{ $nome }}</h2>
                             <!-- Botões de Navegação e Salvar -->
                             <div class="mt-8">
-                                <button wire:click="updatePaciente('{{ $IdPaciente }}')"
+                                <button wire:click="updatePaciente('{{ $IdPaciente}}')" 
                                     class="px-4 py-2 font-semibold text-white bg-teal-500 rounded-lg shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                                     Salvar
                                 </button>
@@ -722,19 +685,14 @@
                                     @enderror
                                 </div>
 
-                                <div class="mb-6">
-                                    <label for="medicamentos.{{ $index }}.via_id"
-                                        class="block mb-2 font-medium text-gray-700">Via</label>
-                                    <select wire:model="medicamentos.{{ $index }}.via_id"
-                                        id="medicamentos.{{ $index }}.via_id"
-                                        class="block w-full p-2 border-gray-300 rounded-lg shadow-sm form-select focus:ring-indigo-500 focus:border-indigo-500">
-                                        <option value="">Selecione</option>
-                                        @foreach ($vias as $via)
-                                            <option value="{{ $via->id }}">{{ $via->descricao }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('medicamentos.' . $index . '.via_id')
-                                        <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                <div class="mb-4">
+                                    <label for="medicamentos.{{ $index }}.via"
+                                        class="block text-sm font-medium text-gray-700">Via</label>
+                                    <input type="text" wire:model="medicamentos.{{ $index }}.via"
+                                        id="medicamentos.{{ $index }}.via"
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    @error('medicamentos.' . $index . '.via')
+                                        <span class="text-sm text-red-500">{{ $message }}</span>
                                     @enderror
                                 </div>
 
@@ -749,8 +707,7 @@
                                     @enderror
                                 </div>
 
-                                <button type="button"
-                                    wire:click="removeMedicamento({{ $index }}, {{ $IdPaciente }})"
+                                <button type="button" wire:click="removeMedicamento({{ $index }}, {{ $IdPaciente }})"
                                     class="px-4 py-2 font-semibold text-white rounded-lg shadow-sm bg-rose-700 hover:bg-rose-800 focus:outline-none focus:ring-2 focus:ring-rose-600 focus:ring-offset-2">
                                     Remover
                                 </button>
@@ -760,133 +717,6 @@
                         <button type="button" wire:click="addMedicamento"
                             class="px-4 py-2 mb-4 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                             Adicionar Medicamento
-                        </button>
-                    </main>
-                </div>
-            </div>
-        @endif
-    </div>
-    <div x-show="step === 5" x-transition>
-        @if ($currentStep == 5)
-            <div class="step">
-                <div class="flex">
-                    <!-- Barra de Navegação -->
-                    <nav class="left-0 w-1/5 h-screen p-6 bg-white border-r border-gray-300 shadow-lg">
-                        <ul class="space-y-4">
-                            <!-- Dados Sociodemográficos -->
-                            <li>
-                                <button wire:click="nextStepSecond"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Dados Sociodemográficos</span>
-                                </button>
-                            </li>
-
-                            <!-- Histórico do Paciente -->
-                            <li>
-                                <button wire:click="nextStepThird"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Histórico do Paciente</span>
-                                </button>
-                            </li>
-
-                            <!-- Medicamentos -->
-                            <li>
-                                <button wire:click="nextStepFourth"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Medicamentos</span>
-                                </button>
-                            </li>
-
-                            <!-- Resultados -->
-                            <li>
-                                <button wire:click="nextStepFifth"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-indigo-500"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Resultados</span>
-                                </button>
-                            </li>
-
-                            <!-- Voltar -->
-                            <li>
-                                <button wire:click="nextStepFirst"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 19l-7-7 7-7" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Voltar</span>
-                                </button>
-                            </li>
-                        </ul>
-                    </nav>
-
-                    <!-- Conteúdo da Página -->
-                    <main class="flex-1 p-6 ml-1">
-
-
-
-                        <div class="flex items-center justify-between">
-                            <h2 class="pt-2 pb-4 text-5xl font-semibold">{{ $nome }}</h2>
-                            <!-- Botões de Navegação e Salvar -->
-                            <div class="mt-8">
-                                <button wire:click="updatePaciente('{{ $IdPaciente }}')"
-                                    class="px-4 py-2 font-semibold text-white bg-teal-500 rounded-lg shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
-                                    Salvar
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Resultados Médicos Prévios -->
-                        <h2 class="py-5 text-lg font-bold">Resultados Médicos Prévios</h2>
-
-                        @foreach ($resultados as $index => $resultado)
-                            <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm">
-                                <h3 class="mb-3 text-lg font-semibold">Resultado {{ $index + 1 }}</h3>
-
-                                <div class="mb-6">
-                                    <label for="resultados.{{ $index }}.texto_resultado"
-                                        class="block text-sm font-medium text-gray-700">Descrição</label>
-                                    <textarea wire:model="resultados.{{ $index }}.texto_resultado"
-                                        id="resultados.{{ $index }}.texto_resultado" rows="4"
-                                        class="block w-full p-3 mt-1 transition duration-150 ease-in-out border border-gray-300 rounded-md shadow-sm resize-none form-textarea focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-gray-50 hover:bg-white"></textarea>
-                                    @error('resultados.' . $index . '.texto_resultado')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <!-- Botão de Remover Resultado -->
-                                <button type="button"
-                                    wire:click="removeResultado({{ $index }}, {{ $IdPaciente }})"
-                                    class="px-4 py-2 font-semibold text-white rounded-lg shadow-sm bg-rose-700 hover:bg-rose-800 focus:outline-none focus:ring-2 focus:ring-rose-600 focus:ring-offset-2">
-                                    Remover
-                                </button>
-                            </div>
-                        @endforeach
-
-                        <!-- Botão de Adicionar Novo Resultado -->
-                        <button type="button" wire:click="addResultado"
-                            class="px-4 py-2 mt-1 mb-4 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                            Adicionar Resultado
                         </button>
                     </main>
                 </div>

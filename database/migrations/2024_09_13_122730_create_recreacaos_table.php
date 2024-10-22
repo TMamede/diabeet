@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('nss_sociais_recreacao', function (Blueprint $table) {
+        Schema::create('recreacaos_nss', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Recreacao::class);
             $table->foreignIdFor(Nss_sociais::class);
@@ -33,6 +33,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('recreacaos');
-        Schema::dropIfExists('nss_sociais_recreacao');
+        Schema::dropIfExists('recreacaos_nss');
     }
 };

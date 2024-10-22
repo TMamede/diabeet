@@ -9,10 +9,9 @@ use App\Models\Paciente;
 use App\Models\Historico;
 use App\Models\Medicamento;
 use App\Models\Endereco;
-use App\Models\Resultado;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
-
+ 
 class CreatePaciente extends Component
 {
     public $currentStep = 1;
@@ -24,8 +23,8 @@ class CreatePaciente extends Component
     public $ocupacao, $renda_familiar, $beneficio_id, $reside_id, $num_pss_casa;
 
     // Etapa 2: Histórico do Paciente
-    public $tipo_diabetes_id, $cirurgia_motivo, $realizou_amputacao = null, $amputacao_onde = null, $amputacao_quando = null;
-    public $tabagista, $n_cigarros = null, $inicio_tabagismo = null, $etilista, $inicio_etilismo = null;
+    public $tipo_diabetes_id, $cirurgia_motivo, $amputacao_onde, $amputacao_quando;
+    public $n_cigarros, $inicio_tabagismo, $inicio_etilismo;
     public $comorbidades = []; // Nova variável para comorbidades
     public $alergias = []; // Nova variável para alergias
     public $comorbidadesList = [];
@@ -33,12 +32,11 @@ class CreatePaciente extends Component
 
     // Etapa 3: Medicamentos 
     public $medicamentos = [];
-    public $nome_generico, $via_id, $dose;
+    public $nome_generico, $via, $dose;
 
     //Etapa 4: Resultados
     public $resultados = [];
-    public $texto_resultado;
-
+    
 
     public function render()
     {
@@ -51,33 +49,24 @@ class CreatePaciente extends Component
             'enderecos' => \App\Models\Endereco::all(),
             'beneficios' => \App\Models\Beneficio::all(),
             'resides' => \App\Models\Reside::all(),
-            'vias' => \App\Models\Via::all(),
             'comorbidadesList' => $this->comorbidadesList,
             'alergiasList' => $this->alergiasList,
         ]);
     }
-
+ 
     public function mount()
     {
         $this->comorbidadesList = Comorbidade::all();
         $this->alergiasList = Alergia::all();
         $this->addMedicamento();
-        $this->addResultado();
     }
 
     public function addMedicamento()
     {
         $this->medicamentos[] = [
             'nome_generico' => '',
-            'via_id' => '',
+            'via' => '',
             'dose' => '',
-        ];
-    }
-
-    public function addResultado()
-    {
-        $this->resultados[] = [
-            'texto_resultado' => '',
         ];
     }
 
@@ -87,15 +76,9 @@ class CreatePaciente extends Component
         $this->medicamentos = array_values($this->medicamentos);
     }
 
-    public function removeResultado($index)
-    {
-        unset($this->resultados[$index]);
-        $this->resultados = array_values($this->resultados);
-    }
-
     public function nextStep()
     {
-        //$this->validateStep();
+        $this->validateStep();
 
         $this->currentStep++;
     }
@@ -105,7 +88,7 @@ class CreatePaciente extends Component
         $this->currentStep--;
     }
 
-    public function validateStep()
+    public function validateStep() 
     {
         if ($this->currentStep == 1) {
             $this->validate([
@@ -144,19 +127,15 @@ class CreatePaciente extends Component
         } elseif ($this->currentStep == 3) {
             $this->validate([
                 'medicamentos.*.nome_generico' => 'required|string|max:255',
-                'medicamentos.*.via_id' => 'required|exists:via,id',
+                'medicamentos.*.via' => 'required|string|max:255',
                 'medicamentos.*.dose' => 'required|string|max:255',
-            ]);
-        } elseif ($this->currentStep == 4) {
-            $this->validate([
-                'resultados.*.texto_resultado' => 'required|string',
             ]);
         }
     }
 
     public function submitForm()
     {
-        //$this->validateStep();
+        $this->validateStep();
 
         $endereco = Endereco::where('rua', $this->rua)
             ->where('numero', $this->numero)
@@ -198,14 +177,6 @@ class CreatePaciente extends Component
             // 'historico_id' será definido após criar o histórico
         ]);
 
-        
-        if (is_null($this->amputacao_onde) || trim($this->amputacao_onde) === '') {
-            $this->amputacao_onde = 'Não realizou';
-        }
-        if (is_null($this->n_cigarros) || trim($this->n_cigarros) === '') {
-            $this->n_cigarros = '0';
-        }
-        
         // Criar o histórico
         $historico = Historico::create([
             'tipo_diabetes_id' => $this->tipo_diabetes_id,
@@ -225,7 +196,7 @@ class CreatePaciente extends Component
         foreach ($this->medicamentos as $medicamentoData) {
             $medicamento = Medicamento::firstOrCreate([
                 'nome_generico' => $medicamentoData['nome_generico'],
-                'via_id' => $medicamentoData['via_id'],
+                'via' => $medicamentoData['via'],
                 'dose' => $medicamentoData['dose'],
             ]);
 
@@ -233,18 +204,10 @@ class CreatePaciente extends Component
             $paciente->medicamentos()->syncWithoutDetaching([$medicamento->id]);
         }
 
-        // Associar resultados
-        foreach ($this->resultados as $resultadoData) {
-            $resultado = Resultado::create([
-                'texto_resultado' => $resultadoData['texto_resultado'],
-                'paciente_id' => $paciente->id,  // Associar o resultado ao paciente
-            ]);
-        }
-
         foreach ($this->comorbidades as $comorbidadeId) {
             $historico->comorbidades()->attach($comorbidadeId);
         }
-
+    
         // Associar alergias ao histórico
         foreach ($this->alergias as $alergiaId) {
             $historico->alergias()->attach($alergiaId);

@@ -14,8 +14,4 @@ class Medicamento extends Model
     {
         return $this->belongsToMany(Paciente::class, 'medicamentos_paciente');
     }
-
-    public function via(){
-        return $this->belongsTo(Via::class);
-    }
 }

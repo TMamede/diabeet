@@ -32,6 +32,6 @@ class Nss_sociais extends Model
 
     public function recreacoes()
     {
-        return $this->belongsToMany(Recreacao::class,'nss_sociais_recreacao');
+        return $this->belongsToMany(Recreacao::class);
     }
 }

@@ -10,9 +10,9 @@ class Cuidado extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function emocionais()
+    public function emocional()
     {
-        return $this->belongsToMany(Emocional::class,'emocionals_cuidados');
+        return $this->belongsTo(Emocional::class);
     }
     public function nss_sociais()
     {

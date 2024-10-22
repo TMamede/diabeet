@@ -19,7 +19,6 @@ return new class extends Migration
             $table->decimal('largura');
             $table->foreignIdFor(Regiao_pe::class);
             $table->foreignIdFor(Localizacao_lesao::class);
-            $table->boolean('lesao_amputacao');
             $table->timestamps();
         });
     }

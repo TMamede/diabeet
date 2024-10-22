@@ -68,7 +68,7 @@
             </div>
         </div>
 
-        <footer class="py-4 my-0 text-white bg-indigo-800">
+        <footer class="py-4 my-0 text-white bg-indigo-950">
             <div class="container px-6 mx-auto text-center">
                 <p>&copy; 2024 Diabeet. Todos os direitos reservados.</p>
             </div>

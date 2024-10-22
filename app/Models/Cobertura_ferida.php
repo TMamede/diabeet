@@ -12,6 +12,6 @@ class Cobertura_ferida extends Model
 
     public function cuidados_ferida()
     {
-        return $this->belongsToMany(Cuidado_ferida::class,'coberturas_cuidado');
+        return $this->belongsToMany(Cuidado_ferida::class);
     }
 }

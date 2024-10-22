@@ -16,7 +16,7 @@
                             </div>
                             <input wire:model.live.debounce.300ms ="search" type="text"
                                 class="block w-full py-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg px-80 bg-gray-50 focus:ring-primary-500 focus:border-primary-500 "
-                                placeholder="Pesquise" required="">
+                                placeholder="Search" required="">
                         </div>
                     </div>
                 </div>
@@ -63,10 +63,10 @@
                                             class="px-6 py-2 text-white bg-indigo-900 rounded hover:bg-indigo-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                             Visualizar
                                         </button>
-                                        {{-- <button wire:click="DeleteQuestionario('{{ $questionario->id }}')"
-                                            class="px-6 py-2 ml-3 text-white bg-red-900 rounded hover:bg-red-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                        <button wire:click="DeleteQuestionario('{{ $questionario->id }}')"
+                                            class="px-6 py-2 text-white bg-red-900 rounded hover:bg-red-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                                             X
-                                        </button> --}}
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach

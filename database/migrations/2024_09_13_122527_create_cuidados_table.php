@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('cuidados', function (Blueprint $table) {
             $table->id();
             $table->boolean('acompanhado');
+            $table->foreignIdFor(Emocional::class);
             $table->boolean('opnioes_de_si');
             $table->string('auxiliador');
             $table->timestamps();

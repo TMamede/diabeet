@@ -16,7 +16,7 @@
                             </div>
                             <input wire:model.live.debounce.300ms ="search" type="text"
                                 class="block w-full py-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg px-80 bg-gray-50 focus:ring-primary-500 focus:border-primary-500 "
-                                placeholder="Pesquise" required="">
+                                placeholder="Search" required="">
                         </div>
                     </div>
                 </div>
@@ -39,9 +39,9 @@
                                     'nome' => 'created_at',
                                     'displayName' => 'DATA DE CADASTRO',
                                 ])
-                                {{-- <th scope="col" class="px-4 py-3">
+                                <th scope="col" class="px-4 py-3">
                                     Diagnósticos
-                                </th> --}}
+                                </th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
                                 </th>
@@ -57,15 +57,11 @@
                                         {{ $questionario->paciente->nome }}</th>
                                     <td class="px-4 py-3 text-blue-500">{{ $questionario->user->name }}</td>
                                     <td class="px-4 py-3">{{ $questionario->created_at }}</td>
+                                    //precisa adicionar aqui para pegar o número de prescrições associadas
                                     <td class="flex items-center justify-end px-4 py-3 mr-5">
-                                        <button wire:click="SelectedQuestionario('{{ $questionario->id }}')"
-                                            class="px-6 py-2 text-white bg-indigo-900 rounded hover:bg-indigo-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                            Visualizar
-                                        </button>
-                                        <button wire:click="DeleteQuestionario('{{ $questionario->id }}')"
-                                            class="px-6 py-2 ml-3 text-white rounded bg-cyan-900 hover:bg-cyan-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
-                                            Criar
-                                        </button>
+                                        <button
+                                            class="px-6 py-2 text-white bg-indigo-800 rounded hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Alterar</button>
+                                        <button class="px-3 py-1 text-white bg-red-500 rounded">X</button>
                                     </td>
                                 </tr>
                             @endforeach

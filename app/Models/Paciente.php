@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Paciente extends Model 
+class Paciente extends Model
 {
     use HasFactory;
 
@@ -13,10 +13,11 @@ class Paciente extends Model
         'id',
     ];
 
-    public function scopeSearch($query, $value){
+    public function scopeSearch($query, $value)
+    {
         $query->where('nome', 'like', "%{$value}%")->orWhereHas('user', function ($query) use ($value) {
-          $query->where('name', 'like', "%{$value}%");
-      });
+            $query->where('name', 'like', "%{$value}%");
+        });
     }
 
     public function questionarios()
