@@ -99,6 +99,16 @@
                         </div>
 
                         <div class="mb-4">
+                            <label for="cep" class="block font-medium text-gray-700">CEP</label>
+                            <input type="text" wire:model="cep" id="cep"
+                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                                placeholder="Digite o CEP">
+                            @error('cep')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="mb-4">
                             <label for="rua" class="block font-medium text-gray-700">Rua</label>
                             <input type="text" wire:model="rua" id="rua"
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
@@ -110,20 +120,10 @@
 
                         <div class="mb-4">
                             <label for="numero" class="block font-medium text-gray-700">Número</label>
-                            <input type="number" wire:model="numero" id="numero"
+                            <input type="text" wire:model="numero" id="numero"
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o número">
                             @error('numero')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="cep" class="block font-medium text-gray-700">CEP</label>
-                            <input type="text" wire:model="cep" id="cep"
-                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite o CEP">
-                            @error('cep')
                                 <span class="text-sm text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
@@ -151,7 +151,7 @@
                         <div class="mb-4">
                             <label for="uf" class="block font-medium text-gray-700">UF</label>
                             <input type="text" wire:model="uf" id="uf"
-                                class="block w-full mt-1 uppercase border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 maxlength="2" placeholder="Digite a UF">
                             @error('uf')
                                 <span class="text-sm text-red-500">{{ $message }}</span>
@@ -170,7 +170,7 @@
 
                         <div class="mb-4">
                             <label for="renda_familiar" class="block font-medium text-gray-700">Renda Familiar</label>
-                            <input type="number" wire:model="renda_familiar" id="renda_familiar"
+                            <input ttext" wire:model="renda_familiar" id="renda_familiar"
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 step="0.01" min="0" placeholder="Digite a renda familiar">
                             @error('renda_familiar')
