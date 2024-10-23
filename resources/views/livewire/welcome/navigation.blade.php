@@ -6,13 +6,13 @@
         </a>
     @else
         <a href="{{ route('login') }}"
-            class="px-3 py-2 text-lg font-semibold text-black transition duration-300 ease-in-out hover:text-[#315474] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-[#FF2D20] dark:focus-visible:ring-white">
+            class="px-3 py-2 text-lg font-semibold text-black transition duration-500 ease-in-out  hover:text-[#315474] hover:shadow-lg rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-[#4338ca] dark:focus-visible:ring-white">
             Entrar
         </a>
 
         @if (Route::has('register'))
             <a href="{{ route('register') }}"
-                class="px-3 py-2 text-lg font-semibold text-black transition duration-300 ease-in-out hover:text-[#315474] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-[#FF2D20] dark:focus-visible:ring-white">
+                class="px-3 py-2 text-lg font-semibold text-black transition duration-500 ease-in-out  hover:text-[#315474] hover:shadow-lg rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-[#4338ca] dark:focus-visible:ring-white">
                 Cadastrar
             </a>
         @endif
