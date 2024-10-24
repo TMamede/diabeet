@@ -37,7 +37,7 @@ class PacientesSeeder extends Seeder
                 'beneficio_id' => $faker->numberBetween(1, 3), // Valor entre 1 e 3 para benefício
                 'reside_id' => $faker->numberBetween(1, 4), // Valor entre 1 e 4 para reside
                 'num_pss_casa' => $faker->numberBetween(1, 8), // Número de pessoas na casa
-                'user_id' => $faker->numberBetween(1), // Valor entre 1 e 2 para user
+                'user_id' => 1, // Valor entre 1 e 2 para user
                 'historico_id' => $faker->numberBetween(1, 20), // Valor entre 1 e 20 ou nulo para histórico
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

@@ -10,6 +10,8 @@ use App\Models\Paciente;
 use App\Models\Resultado;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Url;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -198,6 +200,42 @@ class SearchPaciente extends Component
     public function updatedSearch()
     {
         $this->resetPage();
+    }
+
+    public function buscarEndereco()
+    {
+        // Confere se o CEP tem 8 dígitos
+        if (strlen($this->cep) === 8) {
+            $cacheKey = 'cep_' . $this->cep;
+
+            // Tenta pegar o endereço do cache
+            $data = Cache::remember($cacheKey, 3600, function () {
+                $response = Http::get("https://viacep.com.br/ws/{$this->cep}/json/");
+                return $response->json();
+            });
+
+            // Checa se houve erro na resposta da API
+            if (isset($data['erro'])) {
+                $this->resetEndereco();
+                session()->flash('message', 'CEP inválido.');
+            } else {
+                // Preenche os campos de endereço com os dados retornados
+                $this->rua = $data['logradouro'] ?? '';
+                $this->bairro = $data['bairro'] ?? '';
+                $this->cidade = $data['localidade'] ?? '';
+                $this->uf = $data['uf'] ?? '';
+            }
+        } else {
+            $this->resetEndereco();
+        }
+    }
+
+    public function resetEndereco()
+    {
+        $this->rua = '';
+        $this->bairro = '';
+        $this->cidade = '';
+        $this->uf = '';
     }
 
     public function addMedicamento()

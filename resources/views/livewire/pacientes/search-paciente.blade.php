@@ -291,6 +291,17 @@
                             </div>
 
                             <div class="mb-4">
+                                <label for="cep" class="block font-medium text-gray-700">CEP</label>
+                                <input type="text" wire:model="cep" id="cep"
+                                    wire:keydown.enter="buscarEndereco"
+                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                                    placeholder="Digite o CEP">
+                                @error('cep')
+                                    <span class="text-sm text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-4">
                                 <label for="rua" class="block font-medium text-gray-700">Rua</label>
                                 <input type="text" wire:model="rua" id="rua"
                                     class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
@@ -306,16 +317,6 @@
                                     class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                     placeholder="Digite o número">
                                 @error('numero')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-4">
-                                <label for="cep" class="block font-medium text-gray-700">CEP</label>
-                                <input type="text" wire:model="cep" id="cep"
-                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                    placeholder="Digite o CEP">
-                                @error('cep')
                                     <span class="text-sm text-red-500">{{ $message }}</span>
                                 @enderror
                             </div>

@@ -11,6 +11,8 @@ use App\Models\Medicamento;
 use App\Models\Endereco;
 use App\Models\Resultado;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\Rule;
 
 class CreatePaciente extends Component
@@ -65,6 +67,42 @@ class CreatePaciente extends Component
         $this->addResultado();
     }
 
+    public function buscarEndereco()
+    {
+        // Confere se o CEP tem 8 dígitos
+        if (strlen($this->cep) === 8) {
+            $cacheKey = 'cep_' . $this->cep;
+
+            // Tenta pegar o endereço do cache
+            $data = Cache::remember($cacheKey, 3600, function () {
+                $response = Http::get("https://viacep.com.br/ws/{$this->cep}/json/");
+                return $response->json();
+            });
+
+            // Checa se houve erro na resposta da API
+            if (isset($data['erro'])) {
+                $this->resetEndereco();
+                session()->flash('message', 'CEP inválido.');
+            } else {
+                // Preenche os campos de endereço com os dados retornados
+                $this->rua = $data['logradouro'] ?? '';
+                $this->bairro = $data['bairro'] ?? '';
+                $this->cidade = $data['localidade'] ?? '';
+                $this->uf = $data['uf'] ?? '';
+            }
+        } else {
+            $this->resetEndereco();
+        }
+    }
+
+    public function resetEndereco()
+    {
+        $this->rua = '';
+        $this->bairro = '';
+        $this->cidade = '';
+        $this->uf = '';
+    }
+
     public function addMedicamento()
     {
         $this->medicamentos[] = [
@@ -117,12 +155,12 @@ class CreatePaciente extends Component
                 'orientacao_sexual_id' => 'required|exists:orientacao_sexuals,id',
                 'estado_civil_id' => 'required|exists:estado_civils,id',
                 'etnia_id' => 'required|exists:etnias,id',
+                'cep' => 'required|digits:8',
                 'rua' => 'required|string|max:255',
-                'numero' => 'required|integer',
-                'cep' => 'required|string|max:255',
+                'numero' => 'required|string|max:255',
                 'bairro' => 'required|string|max:255',
                 'cidade' => 'required|string|max:255',
-                'uf' => 'required|string|max:255',
+                'uf' => 'required|string|max:2',
                 'ocupacao' => 'required|string|max:255',
                 'renda_familiar' => 'required|numeric',
                 'beneficio_id' => 'required|exists:beneficios,id',
@@ -198,14 +236,14 @@ class CreatePaciente extends Component
             // 'historico_id' será definido após criar o histórico
         ]);
 
-        
+
         if (is_null($this->amputacao_onde) || trim($this->amputacao_onde) === '') {
             $this->amputacao_onde = 'Não realizou';
         }
         if (is_null($this->n_cigarros) || trim($this->n_cigarros) === '') {
             $this->n_cigarros = '0';
         }
-        
+
         // Criar o histórico
         $historico = Historico::create([
             'tipo_diabetes_id' => $this->tipo_diabetes_id,

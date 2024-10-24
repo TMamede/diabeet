@@ -100,7 +100,7 @@
 
                         <div class="mb-4">
                             <label for="cep" class="block font-medium text-gray-700">CEP</label>
-                            <input type="text" wire:model="cep" id="cep"
+                            <input type="text" wire:model="cep" id="cep" wire:keydown.enter="buscarEndereco"
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o CEP">
                             @error('cep')
@@ -170,7 +170,7 @@
 
                         <div class="mb-4">
                             <label for="renda_familiar" class="block font-medium text-gray-700">Renda Familiar</label>
-                            <input ttext" wire:model="renda_familiar" id="renda_familiar"
+                            <input type="text" wire:model="renda_familiar" id="renda_familiar"
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 step="0.01" min="0" placeholder="Digite a renda familiar">
                             @error('renda_familiar')
