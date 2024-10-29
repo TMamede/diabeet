@@ -166,7 +166,7 @@ class SearchPaciente extends Component
     }
     public function nextStepAndValidate()
     {
-        //$this->validateStep();
+        $this->validateStep();
         $this->nextStep();
     }
     public function nextStep()
@@ -176,7 +176,7 @@ class SearchPaciente extends Component
 
     public function nextStepFirst()
     {
-        //$this->validateStep();
+        $this->validateStep();
         $this->currentStep = 1;
     }
     public function nextStepSecond()

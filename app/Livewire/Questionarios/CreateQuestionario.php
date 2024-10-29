@@ -245,7 +245,7 @@ class CreateQuestionario extends Component
 
     public function nextStep()
     {
-        //$this->validateStep();
+        $this->validateStep();
         $this->currentStep++;
     }
 
@@ -404,7 +404,7 @@ class CreateQuestionario extends Component
 
     public function submitForm()
     {
-        //$this->validateStep();
+        $this->validateStep();
 
         $regulacao_neuro = Regulacao_neuro::firstOrCreate(
             [
