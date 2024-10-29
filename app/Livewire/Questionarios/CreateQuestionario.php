@@ -54,8 +54,8 @@ class CreateQuestionario extends Component
     public $selectedOption = null;
     public $search = "";
     public $selectedPaciente = null;
-    public $idPacienteSelected=null;
-    public $idUnidadeSelected=null;
+    public $idPacienteSelected = null;
+    public $idUnidadeSelected = null;
 
 
     // Etapa 1 - Mostrar Paciente
@@ -192,12 +192,13 @@ class CreateQuestionario extends Component
         $unidades = [];
 
 
-        if (strlen($this->search) >= 1) {
-            $pacientes = Paciente::where('nome', 'like', '%' . $this->search . '%')
-                ->orWhere('prontuario', 'like', '%' . $this->search . '%')
-                ->limit(5)
-                ->get();
-        }
+        $pacientes = Paciente::where('user_id', Auth::id())
+            ->where(function ($query) {
+                $query->where('nome', 'like', '%' . $this->search . '%')
+                    ->orWhere('prontuario', 'like', '%' . $this->search . '%');
+            })
+            ->limit(5)
+            ->get();
 
         if (strlen($this->search) >= 1) {
             $unidades = Unidade_saude::where('nome', 'like', '%' . $this->search . '%')
@@ -380,7 +381,7 @@ class CreateQuestionario extends Component
                 'regime_terapeutico' => 'required|boolean',
 
                 'recreacaos' => 'nullable|array',
-                
+
                 'acompanhado' => 'required|boolean',
                 'opnioes_de_si' => 'required|boolean',
                 'auxiliador' => 'required|string|max:255',
@@ -497,7 +498,7 @@ class CreateQuestionario extends Component
             'dor_eliminacoes' => $this->dor_eliminacoes,
             'incontinencia_eliminacao' => $this->incontinencia_eliminacao,
             'diarreia' => $this->diarreia,
-            'constipacao' =>$this->constipacao,
+            'constipacao' => $this->constipacao,
             'equipamento_externo' => $this->equipamento_externo,
         ]);
 
@@ -632,10 +633,10 @@ class CreateQuestionario extends Component
         $questionario = Questionario::create([
             'paciente_id' => $this->idPacienteSelected,
             'user_id' => Auth::id(),
-            'nss_biologicas_id' => $nss_biologicas->id, 
-            'nss_sociais_id' => $nss_sociais->id,     
+            'nss_biologicas_id' => $nss_biologicas->id,
+            'nss_sociais_id' => $nss_sociais->id,
             'nss_espirituais_id' => $nss_espirituais->id,
-            'unidade_saude_id' => $this->idUnidadeSelected, 
+            'unidade_saude_id' => $this->idUnidadeSelected,
             'impressoes' => $this->impressoes,
         ]);
 
