@@ -1,13 +1,13 @@
 <?php
 
-namespace Database\Seeders\CriarQuestionario;
+namespace Database\Seeders\CriarQuestionario\NssBio;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 
-class NecessidadeSocioSeeder extends Seeder
+class RegulacaoTermicaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,10 +17,8 @@ class NecessidadeSocioSeeder extends Seeder
         $faker = Faker::create();
 
         foreach (range(1, 10) as $index) {
-            DB::table('nss_sociais')->insert([
-                'aprendizagem' => $faker->numberBetween(1, 10),
-                'cuidado' => $faker->numberBetween(1, 10),
-                'comunicacao' => $faker->numberBetween(1, 10),
+            DB::table('regulacao_termicas')->insert([
+                'temperatura' => $faker->randomFloat(1, 35.0, 40.0), // Gera valores de temperatura entre 35.0 e 40.0
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

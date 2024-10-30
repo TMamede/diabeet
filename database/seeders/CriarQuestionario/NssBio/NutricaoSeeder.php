@@ -1,13 +1,13 @@
 <?php
 
-namespace Database\Seeders\CriarQuestionario;
+namespace Database\Seeders\CriarQuestionario\NssBio;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 
-class NecessidadeSocioSeeder extends Seeder
+class NutricaoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,10 +17,8 @@ class NecessidadeSocioSeeder extends Seeder
         $faker = Faker::create();
 
         foreach (range(1, 10) as $index) {
-            DB::table('nss_sociais')->insert([
-                'aprendizagem' => $faker->numberBetween(1, 10),
-                'cuidado' => $faker->numberBetween(1, 10),
-                'comunicacao' => $faker->numberBetween(1, 10),
+            DB::table('nutricaos')->insert([
+                'alimento_consumo_id' => $faker->numberBetween(1, 4),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

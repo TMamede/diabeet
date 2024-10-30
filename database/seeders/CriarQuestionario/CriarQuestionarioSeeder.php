@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\CriarQuestionario;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -21,8 +21,8 @@ class CriarQuestionarioSeeder extends Seeder
                 'paciente_id' => $faker->numberBetween(1, 20),
                 'user_id' => 1,
                 'unidade_saude_id' => $faker->numberBetween(1, 10),
-                'nss_biologicas_id' => $faker->numberBetween(1, 5),
-                'nss_sociais_id' => $faker->numberBetween(1, 5),
+                'nss_biologicas_id' => $faker->numberBetween(1, 10),
+                'nss_sociais_id' => $faker->numberBetween(1, 10),
                 'nss_espirituais_id' => $faker->numberBetween(1, 6),
                 'impressoes' => $faker->text,
                 'created_at' => now(),

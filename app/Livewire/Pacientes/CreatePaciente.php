@@ -133,7 +133,7 @@ class CreatePaciente extends Component
 
     public function nextStep()
     {
-        $this->validateStep();
+        //$this->validateStep();
 
         $this->currentStep++;
     }
@@ -194,7 +194,7 @@ class CreatePaciente extends Component
 
     public function submitForm()
     {
-        $this->validateStep();
+        //$this->validateStep();
 
         $endereco = Endereco::where('rua', $this->rua)
             ->where('numero', $this->numero)

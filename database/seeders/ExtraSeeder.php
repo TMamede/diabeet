@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Database\Seeders\CriarQuestionario\CriarQuestionarioSeeder;
 
 class ExtraSeeder extends Seeder
 {
@@ -19,6 +20,7 @@ class ExtraSeeder extends Seeder
         $this->call(HistoricoSeeder::class);
         $this->call(EnderecoSeeder::class);
         $this->call(UnidadeSaudeSeeder::class);
-        // $this->call(PacientesSeeder::class);
+        $this->call(PacientesSeeder::class);
+        $this->call(CriarQuestionarioSeeder::class);
     }
 }
