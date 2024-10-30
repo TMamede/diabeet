@@ -1,17 +1,17 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\CriarQuestionario;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CriarQuestionarioSeeder extends Seeder
+class NecessidadeBioSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        
+        //
     }
 }

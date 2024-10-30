@@ -70,7 +70,7 @@ class CreateQuestionario extends Component
     {
         $this->unidade_saude_id = Unidade_saude::find($unidadeId);
         $this->idUnidadeSelected = $unidadeId;
-        $this->search = "";
+        $this->search = $this->unidade_saude_id->nome;
     }
 
 
@@ -247,7 +247,7 @@ class CreateQuestionario extends Component
 
     public function nextStep()
     {
-        $this->validateStep();
+        //$this->validateStep();
         $this->currentStep++;
     }
 
@@ -405,7 +405,7 @@ class CreateQuestionario extends Component
 
     public function submitForm()
     {
-        $this->validateStep();
+        //$this->validateStep();
         $regulacao_neuro = Regulacao_neuro::firstOrCreate(
             [
                 'orientado' => $this->orientado,

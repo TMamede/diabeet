@@ -2282,7 +2282,8 @@
                                 <small class="text-gray-500">Rua: {{ $unidade->endereco->rua }}</small>
                                 <small class="text-gray-500">Bairro: {{ $unidade->endereco->bairro }}</small>
                                 <small class="text-gray-500">Cidade: {{ $unidade->endereco->cidade }}</small>
-                                <small class="text-gray-500">Unidade Federativa: {{ $unidade->endereco->uf }}</small>
+                                <small class="text-gray-500">Unidade Federativa:
+                                    {{ $unidade->endereco->uf }}</small>
                             </div>
                         </div>
                     @endforeach
