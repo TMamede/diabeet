@@ -4,7 +4,7 @@
             {{-- Etapa 1: Dados Sociodemográficos --}}
             @if ($currentStep == 1)
                 <div class="p-6 bg-white rounded-lg shadow-md step">
-                    <h2 class="py-5 text-xl font-bold">Dados Sociodemográficos</h2>
+                    <h2 class="py-5 text-xl font-bold text-indigo-900">Dados Sociodemográficos</h2>
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <div class="mb-4">
                             <label for="cpf" class="block font-medium text-gray-700">CPF</label>

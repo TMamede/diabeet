@@ -61,6 +61,9 @@ class SearchPaciente extends Component
     public $currentStep = 1;
     public $paciente = " ";
 
+    //Mensagem de alterações salvas com sucesso!
+    public $successMessage = '';
+
     public function SelectedPaciente($pacienteId)
     {
         $paciente = Paciente::find($pacienteId);
@@ -420,7 +423,7 @@ class SearchPaciente extends Component
                 ]
             );
         }
-
+        $this->successMessage = 'Alterações salvas com sucesso!!!';
         
     }
 }

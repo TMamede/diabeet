@@ -20,7 +20,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-indigo-50">
         <livewire:layout.navigation />
 
         <!-- Page Heading -->
