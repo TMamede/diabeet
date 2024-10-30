@@ -403,11 +403,9 @@ class CreateQuestionario extends Component
     }
 
 
-
     public function submitForm()
     {
         $this->validateStep();
-
         $regulacao_neuro = Regulacao_neuro::firstOrCreate(
             [
                 'orientado' => $this->orientado,

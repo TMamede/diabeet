@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Diagnostico;
+use App\Models\Intervencao;
+use App\Models\Motivo;
+use App\Models\Origem;
 use App\Models\Prontuario;
 use App\Models\Questionario;
 use Illuminate\Database\Migrations\Migration;
@@ -15,17 +19,35 @@ return new class extends Migration
     {
         Schema::create('prontuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('origem');
-            $table->string('motivo');
-            $table->string('diagnostico');
-            $table->text('intervencao');
+            $table->foreignIdFor(Questionario::class);
             $table->timestamps();
         });
 
-        Schema::create('prontuario_questionario', function (Blueprint $table) {
+        Schema::create('prontuario_origem', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Prontuario::class);
-            $table->foreignIdFor(Questionario::class);
+            $table->foreignIdFor(Origem::class);
+            $table->timestamps();
+        });
+
+        Schema::create('prontuario_motivo', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Prontuario::class);
+            $table->foreignIdFor(Motivo::class);
+            $table->timestamps();
+        });
+
+        Schema::create('prontuario_diagnostico', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Prontuario::class);
+            $table->foreignIdFor(Diagnostico::class);
+            $table->timestamps();
+        });
+
+        Schema::create('prontuario_intervencao', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Prontuario::class);
+            $table->foreignIdFor(Intervencao::class);
             $table->timestamps();
         });
     }
@@ -36,6 +58,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('prontuarios');
-        Schema::dropIfExists('prontuario_questionario');
+        Schema::dropIfExists('prontuario_origem');
+        Schema::dropIfExists('prontuario_motivo');
+        Schema::dropIfExists('prontuario_diagnostico');
+        Schema::dropIfExists('prontuario_intervencao');
     }
 };
