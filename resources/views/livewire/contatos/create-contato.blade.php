@@ -1,5 +1,5 @@
 <div class="flex flex-col min-h-screen">
-    <div class="flex-grow py-10 bg-gray-100">
+    <div class="flex-grow py-10">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white border border-gray-200 shadow-lg sm:rounded-lg">
                 <div class="p-8 text-gray-900">

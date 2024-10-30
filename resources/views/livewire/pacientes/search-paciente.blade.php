@@ -96,7 +96,7 @@
                                         </select>
                                     </div>
                                     <div class="flex items-center ml-5">
-                                        {{ $pacientes->links() }}
+                                        {{ $pacientes->links('vendor.pagination.tailwind') }}
                                     </div>
                                 </div>
                             </div>
