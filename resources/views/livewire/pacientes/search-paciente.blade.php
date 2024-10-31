@@ -183,10 +183,9 @@
 
                     <!-- Conteúdo da Página -->
                     <main class="flex-1 p-6 bg-stone-50">
-                        <div class="flex flex-row justify-between w-full">
+                        <div class="flex flex-row justify-between w-full pr-36">
                             <div class="flex items-center">
                                 <h2 class="pt-2 pb-4 text-5xl font-semibold text-indigo-900">{{ $nome }}</h2>
-                                <!-- Botões de Navegação e Salvar -->
                             </div>
                             <div class="flex items-center ml-auto">
                                 <button wire:click="updatePaciente('{{ $IdPaciente }}')"
@@ -504,7 +503,7 @@
 
                     <!-- Conteúdo da Página -->
                     <main class="flex-1 p-6 bg-stone-50">
-                        <div class="flex flex-row w-11/12 space-x-96">
+                        <div class="flex flex-row justify-between w-full pr-36">
                             <div class="flex items-center">
                                 <h2 class="pt-2 pb-4 text-5xl font-semibold text-indigo-900">{{ $nome }}</h2>
                                 <!-- Botões de Navegação e Salvar -->
@@ -606,13 +605,13 @@
                             </div>
 
                             <div class="p-4">
-                                <h2 class="mb-1 text-lg font-bold">Comorbidades</h2>
+                                <h2 class="mb-1 text-lg font-bold text-indigo-900">Comorbidades</h2>
                                 <div class="grid grid-cols-2 gap-2">
                                     @foreach ($comorbidadesList as $comorbidade)
                                         <div class="flex items-center ">
                                             <input type="checkbox" id="comorbidade_{{ $comorbidade->id }}"
                                                 wire:model="comorbidades" value="{{ $comorbidade->id }}"
-                                                class="mr-1.5"
+                                                class="mr-1.5 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                                                 {{ in_array($comorbidade->id, $comorbidades) ? 'checked' : '' }}>
                                             <label for="comorbidade_{{ $comorbidade->id }}"
                                                 class="text-sm">{{ $comorbidade->descricao }}</label>
@@ -622,12 +621,12 @@
                             </div>
 
                             <div class="p-4">
-                                <h2 class="mb-1 text-lg font-bold">Alergias</h2>
+                                <h2 class="mb-1 text-lg font-bold text-indigo-900">Alergias</h2>
                                 <div class="grid grid-cols-2 gap-2">
                                     @foreach ($alergiasList as $alergia)
                                         <div class="flex items-center mb-2">
                                             <input type="checkbox" id="alergia_{{ $alergia->id }}"
-                                                wire:model="alergias" value="{{ $alergia->id }}" class="mr-2"
+                                                wire:model="alergias" value="{{ $alergia->id }}" class="w-4 h-4 mr-2 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                                                 {{ in_array($alergia->id, $alergias) ? 'checked' : '' }}>
                                             <label for="alergia_{{ $alergia->id }}"
                                                 class="text-sm">{{ $alergia->descricao }}</label>
@@ -636,7 +635,7 @@
                                 </div>
                             </div>
                         </div>
-                        </>
+                        
                 </div>
             </div>
         @endif
@@ -716,7 +715,7 @@
                     </nav>
                     <!-- Conteúdo da Página -->
                     <main class="flex-1 p-6 bg-stone-50">
-                        <div class="flex flex-row w-11/12 space-x-96">
+                        <div class="flex flex-row justify-between w-full pr-36">
                             <div class="flex items-center">
                                 <h2 class="pt-2 pb-4 text-5xl font-semibold text-indigo-900">{{ $nome }}</h2>
                                 <!-- Botões de Navegação e Salvar -->
@@ -875,13 +874,12 @@
 
 
 
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between w-full pr-36">
                             <h2 class="pt-2 pb-4 text-5xl font-semibold text-indigo-900">{{ $nome }}</h2>
-                            <!-- Botões de Navegação e Salvar -->
                             <div class="mt-8">
                                 <button wire:click="updatePaciente('{{ $IdPaciente }}')"
                                     class="px-4 py-2 font-semibold text-white bg-teal-500 rounded-lg shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
-                                    Salvar
+                                    Salvar alterações
                                 </button>
                             </div>
                         </div>
