@@ -93,6 +93,6 @@
 
     <!-- Componente ShowQuestionario -->
     @if ($selectedQuestionarioId)
-        <livewire:show-questionario :questionario_id="$selectedQuestionarioId" />
+        <livewire:questionarios.show-questionario :questionario_id="$selectedQuestionarioId" />
     @endif
 </div>

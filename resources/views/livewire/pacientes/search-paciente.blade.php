@@ -201,7 +201,7 @@
                         @endif
 
                         <h2 class="py-5 text-lg font-bold">Dados Sociodemográficos</h2>
-                        <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                        <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
                             <div class="mb-4">
                                 <label for="cpf" class="block font-medium text-gray-700">CPF</label>
                                 <input type="text" wire:model="cpf" id="cpf"
@@ -604,6 +604,7 @@
                                 @enderror
                             </div>
 
+<<<<<<< Updated upstream
                             <div class="p-4">
                                 <h2 class="mb-1 text-lg font-bold text-indigo-900">Comorbidades</h2>
                                 <div class="grid grid-cols-2 gap-2">
@@ -636,6 +637,49 @@
                             </div>
                         </div>
                         
+=======
+
+                        </div>
+                        <div class="p-6 rounded-lg shadow-md bg-gray-50">
+                            <div class="flex space-x-4">
+                                <!-- Comorbidades -->
+                                <div class="w-5/6">
+                                    <h3 class="mb-4 text-lg font-semibold text-gray-800">Comorbidades</h3>
+                                    <div class="grid grid-cols-3 gap-4">
+                                        @foreach ($comorbidadesList as $comorbidade)
+                                            <div class="flex items-center p-4 transition duration-200 bg-white border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50"
+                                                onclick="document.getElementById('comorbidade_{{ $comorbidade->id }}').click()">
+                                                <input type="checkbox" id="comorbidade_{{ $comorbidade->id }}"
+                                                    wire:model="comorbidades" value="{{ $comorbidade->id }}"
+                                                    class="mr-2 text-blue-600 focus:ring-blue-500"
+                                                    {{ in_array($comorbidade->id, $comorbidades) ? 'checked' : '' }}>
+                                                <label for="comorbidade_{{ $comorbidade->id }}"
+                                                    class="text-sm text-gray-700">{{ $comorbidade->descricao }}</label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <!-- Alergias -->
+                                <div class="w-1/2">
+                                    <h3 class="mb-4 text-lg font-semibold text-gray-800">Alergias</h3>
+                                    <div class="grid grid-cols-1 gap-4"> <!-- Mudando para 1 coluna -->
+                                        @foreach ($alergiasList as $alergia)
+                                            <div class="flex items-center p-4 transition duration-200 bg-white border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50"
+                                                onclick="document.getElementById('alergia_{{ $alergia->id }}').click()">
+                                                <input type="checkbox" id="alergia_{{ $alergia->id }}"
+                                                    wire:model="alergias" value="{{ $alergia->id }}"
+                                                    class="mr-2 text-blue-600 focus:ring-blue-500"
+                                                    {{ in_array($alergia->id, $alergias) ? 'checked' : '' }}>
+                                                <label for="alergia_{{ $alergia->id }}"
+                                                    class="text-sm text-gray-700">{{ $alergia->descricao }}</label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+>>>>>>> Stashed changes
                 </div>
             </div>
         @endif
@@ -740,12 +784,13 @@
                             <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm">
                                 <h3 class="mb-3 text-lg font-semibold">Medicamento {{ $index + 1 }}</h3>
 
-                                <div class="mb-4">
+                                <div class="mb-6">
                                     <label for="medicamentos.{{ $index }}.nome_generico"
-                                        class="block text-sm font-medium text-gray-700">Nome Genérico</label>
+                                        class="block font-medium text-gray-700">Nome Genérico</label>
                                     <input type="text" wire:model="medicamentos.{{ $index }}.nome_generico"
                                         id="medicamentos.{{ $index }}.nome_generico"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                        class="block w-full p-3 mt-1 border border-gray-300 rounded-lg shadow-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-gradient-to-r from-gray-100 to-gray-200 hover:bg-gray-200 focus:bg-white placeholder:text-gray-400"
+                                        placeholder="Digite o nome genérico">
                                     @error('medicamentos.' . $index . '.nome_generico')
                                         <span class="text-sm text-red-500">{{ $message }}</span>
                                     @enderror
@@ -756,7 +801,7 @@
                                         class="block mb-2 font-medium text-gray-700">Via</label>
                                     <select wire:model="medicamentos.{{ $index }}.via_id"
                                         id="medicamentos.{{ $index }}.via_id"
-                                        class="block w-full p-2 border-gray-300 rounded-lg shadow-sm form-select focus:ring-indigo-500 focus:border-indigo-500">
+                                        class="block w-full p-3 border border-gray-300 rounded-lg shadow-md focus:ring-indigo-500 focus:border-indigo-500 bg-gradient-to-r from-gray-100 to-gray-200 hover:bg-gray-200 focus:bg-white">
                                         <option value="">Selecione</option>
                                         @foreach ($vias as $via)
                                             <option value="{{ $via->id }}">{{ $via->descricao }}</option>
@@ -767,12 +812,13 @@
                                     @enderror
                                 </div>
 
-                                <div class="mb-4">
+                                <div class="mb-6">
                                     <label for="medicamentos.{{ $index }}.dose"
-                                        class="block text-sm font-medium text-gray-700">Dose</label>
+                                        class="block font-medium text-gray-700">Dose</label>
                                     <input type="text" wire:model="medicamentos.{{ $index }}.dose"
                                         id="medicamentos.{{ $index }}.dose"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                        class="block w-full p-3 mt-1 border border-gray-300 rounded-lg shadow-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-gradient-to-r from-gray-100 to-gray-200 hover:bg-gray-200 focus:bg-white placeholder:text-gray-400"
+                                        placeholder="Digite a dose">
                                     @error('medicamentos.' . $index . '.dose')
                                         <span class="text-sm text-red-500">{{ $message }}</span>
                                     @enderror
@@ -893,10 +939,11 @@
 
                                 <div class="mb-6">
                                     <label for="resultados.{{ $index }}.texto_resultado"
-                                        class="block text-sm font-medium text-gray-700">Descrição</label>
+                                        class="block text-base font-medium text-gray-700">Descrição</label>
                                     <textarea wire:model="resultados.{{ $index }}.texto_resultado"
                                         id="resultados.{{ $index }}.texto_resultado" rows="4"
-                                        class="block w-full p-3 mt-1 transition duration-150 ease-in-out border border-gray-300 rounded-md shadow-sm resize-none form-textarea focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-gray-50 hover:bg-white"></textarea>
+                                        class="block w-full p-4 mt-2 transition duration-150 ease-in-out border border-gray-300 rounded-lg shadow-md resize-none form-textarea focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-gradient-to-r from-gray-100 to-gray-200 hover:bg-gray-200 hover:shadow-lg focus:bg-white focus:shadow-lg focus:outline-none"
+                                        placeholder="Digite sua descrição aqui..."></textarea>
                                     @error('resultados.' . $index . '.texto_resultado')
                                         <span class="text-sm text-red-500">{{ $message }}</span>
                                     @enderror

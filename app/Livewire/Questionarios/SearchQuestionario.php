@@ -7,6 +7,7 @@ use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 use App\Models\Questionario;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Livewire;
 
 class SearchQuestionario extends Component
 {
@@ -41,11 +42,9 @@ class SearchQuestionario extends Component
 
     public function SelectedQuestionario($questionarioId){
         $this->selectedQuestionarioId = $questionarioId;
-
-        // Opcional: você pode emitir um evento para abrir o componente `ShowQuestionario`
-        $this->emit('loadQuestionario', $questionarioId);
+        $this->dispatch('questionario-selected', questionarioId: $questionarioId);
     }
-
+    
     public function render()
     {
         return view(

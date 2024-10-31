@@ -205,6 +205,16 @@ class SearchPaciente extends Component
         $this->resetPage();
     }
 
+    public function salvarComorbidades()
+    {
+        // Lógica para salvar as comorbidades selecionadas
+        // Por exemplo, você pode salvar em um banco de dados ou associá-las a um paciente
+        // Aqui está um exemplo básico:
+        $paciente = Paciente::find($this->pacienteId); // Altere conforme necessário
+        $paciente->comorbidades()->sync($this->comorbidades); // Sincroniza as comorbidades selecionadas
+        session()->flash('message', 'Comorbidades salvas com sucesso!'); // Mensagem de sucesso
+    }
+
     public function buscarEndereco()
     {
         // Confere se o CEP tem 8 dígitos
