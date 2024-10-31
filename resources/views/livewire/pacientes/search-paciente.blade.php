@@ -96,7 +96,7 @@
                                         </select>
                                     </div>
                                     <div class="flex items-center ml-5">
-                                        {{ $pacientes->links('vendor.pagination.tailwind') }}
+                                        {{ $pacientes->links() }}
                                     </div>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@
                     <div class="step">
                         <div class="flex">
                             <!-- Barra de Navegação -->
-                            <nav class="left-0 flex w-64 min-h-screen p-6 bg-white border-r shadow-lg border-indigo-50">
+                            <nav class="left-0 flex w-64 min-h-screen p-6 bg-white">
                                 <ul class="space-y-4">
                                     <!-- Dados Sociodemográficos -->
                                     <li>
@@ -182,12 +182,26 @@
                             </nav>
 
                             <!-- Conteúdo da Página -->
-                            <main class="flex-1 p-6 ml-1 bg-white">
-                                <div class="flex items-center justify-between">
+                            <main class="flex-1 p-6 bg-stone-50">
+                                <div class="flex flex-row w-11/12 space-x-96">
+                                <div class="flex items-center">
                                     <h2 class="pt-2 pb-4 text-5xl font-semibold text-indigo-900">{{ $nome }}</h2>
                                     <!-- Botões de Navegação e Salvar -->
-
+                            
                                 </div>
+                                <div class="flex items-center">
+                                        <button wire:click="updatePaciente('{{ $IdPaciente }}')"
+                                            class="items-center w-40 px-5 py-2 text-white bg-teal-500 rounded-md shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 ">
+                                        Salvar alterações
+                                        </button>
+                                        
+                                </div>
+                                </div>
+                                    @if ($successMessage)
+                                            <div class="h-10 py-2 pl-3 mt-6 mb-4 text-green-600 bg-green-200 rounded-lg w-128">
+                                                    {{ $successMessage }}
+                                            </div>
+                                        @endif
 
                                 <h2 class="py-5 text-lg font-bold">Dados Sociodemográficos</h2>
                                 <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -405,18 +419,7 @@
                                             <span class="text-sm text-red-500">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="mb-6">
-                                        <button wire:click="updatePaciente('{{ $IdPaciente }}')"
-                                            class="px-4 py-2 font-semibold text-white bg-teal-500 rounded-lg shadow-sm mt-7 hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
-                                        Salvar alterações
-                                        </button>
-                                        
-                                    </div>
-                                    @if ($successMessage)
-                                            <div class="h-10 py-2 pl-3 mt-6 mb-4 text-green-600 bg-green-200 rounded-lg w-128">
-                                                    {{ $successMessage }}
-                                            </div>
-                                        @endif
+                                
                                 </div>
 
                             </main>
@@ -432,87 +435,96 @@
             <div class="step">
                 <div class="flex">
                     <!-- Barra de Navegação -->
-                    <nav class="left-0 w-1/5 h-screen p-6 bg-white border-r border-gray-300 shadow-lg">
-                        <ul class="space-y-4">
-                            <!-- Dados Sociodemográficos -->
-                            <li>
-                                <button wire:click="nextStepSecond"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Dados Sociodemográficos</span>
-                                </button>
-                            </li>
+                    <nav class="left-0 flex w-64 min-h-screen p-6 bg-white">
+                                <ul class="space-y-4">
+                                    <!-- Dados Sociodemográficos -->
+                                    <li>
+                                        <button wire:click="nextStepSecond"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Dados Sociodemográficos</span>
+                                        </button>
+                                    </li>
 
-                            <!-- Histórico do Paciente -->
-                            <li>
-                                <button wire:click="nextStepThird"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Histórico do Paciente</span>
-                                </button>
-                            </li>
+                                    <!-- Histórico do Paciente -->
+                                    <li>
+                                        <button wire:click="nextStepThird"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Histórico do Paciente</span>
+                                        </button>
+                                    </li>
 
-                            <!-- Medicamentos -->
-                            <li>
-                                <button wire:click="nextStepFourth"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Medicamentos</span>
-                                </button>
-                            </li>
+                                    <!-- Medicamentos -->
+                                    <li>
+                                        <button wire:click="nextStepFourth"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Medicamentos</span>
+                                        </button>
+                                    </li>
 
-                            <!-- Resultados -->
-                            <li>
-                                <button wire:click="nextStepFifth"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-indigo-500"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Resultados</span>
-                                </button>
-                            </li>
+                                    <!-- Resultados -->
+                                    <li>
+                                        <button wire:click="nextStepFifth"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-indigo-500"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Resultados</span>
+                                        </button>
+                                    </li>
 
-                            <!-- Voltar -->
-                            <li>
-                                <button wire:click="nextStepFirst"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 19l-7-7 7-7" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Voltar</span>
-                                </button>
-                            </li>
-                        </ul>
-                    </nav>
+                                    <!-- Voltar -->
+                                    <li>
+                                        <button wire:click="nextStepFirst"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg class="w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 19l-7-7 7-7" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Voltar</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
 
                     <!-- Conteúdo da Página -->
-                    <main class="flex-1 p-6 ml-1">
-                        <div class="flex items-center justify-between">
-                            <h2 class="pt-2 pb-4 text-5xl font-semibold">{{ $nome }}</h2>
-                            <!-- Botões de Navegação e Salvar -->
-                            <div class="mt-8">
-                                <button wire:click="updatePaciente('{{ $IdPaciente }}')"
-                                    class="px-4 py-2 font-semibold text-white bg-teal-500 rounded-lg shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
-                                    Salvar
-                                </button>
-                            </div>
-                        </div>
+                    <main class="flex-1 p-6 bg-stone-50">
+                                <div class="flex flex-row w-11/12 space-x-96">
+                                <div class="flex items-center">
+                                    <h2 class="pt-2 pb-4 text-5xl font-semibold text-indigo-900">{{ $nome }}</h2>
+                                    <!-- Botões de Navegação e Salvar -->
+                            
+                                </div>
+                                <div class="flex items-center">
+                                        <button wire:click="updatePaciente('{{ $IdPaciente }}')"
+                                            class="items-center w-40 px-5 py-2 text-white bg-teal-500 rounded-md shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 ">
+                                        Salvar alterações
+                                        </button>
+                                        
+                                </div>
+                                </div>
+                                    @if ($successMessage)
+                                            <div class="h-10 py-2 pl-3 mt-6 mb-4 text-green-600 bg-green-200 rounded-lg w-128">
+                                                    {{ $successMessage }}
+                                            </div>
+                                        @endif
                         <h2 class="py-5 text-lg font-bold">Histórico do Paciente</h2>
                         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                             <div class="mb-6">
@@ -626,7 +638,7 @@
                                 </div>
                             </div>
                         </div>
-                    </main>
+                    </>
                 </div>
             </div>
         @endif
@@ -636,87 +648,95 @@
             <div class="step">
                 <div class="flex">
                     <!-- Barra de Navegação -->
-                    <nav class="left-0 w-1/5 h-screen p-6 bg-white border-r border-gray-300 shadow-lg">
-                        <ul class="space-y-4">
-                            <!-- Dados Sociodemográficos -->
-                            <li>
-                                <button wire:click="nextStepSecond"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Dados Sociodemográficos</span>
-                                </button>
-                            </li>
+                    <nav class="left-0 flex w-64 min-h-screen p-6 bg-white">
+                                <ul class="space-y-4">
+                                    <!-- Dados Sociodemográficos -->
+                                    <li>
+                                        <button wire:click="nextStepSecond"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Dados Sociodemográficos</span>
+                                        </button>
+                                    </li>
 
-                            <!-- Histórico do Paciente -->
-                            <li>
-                                <button wire:click="nextStepThird"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Histórico do Paciente</span>
-                                </button>
-                            </li>
+                                    <!-- Histórico do Paciente -->
+                                    <li>
+                                        <button wire:click="nextStepThird"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Histórico do Paciente</span>
+                                        </button>
+                                    </li>
 
-                            <!-- Medicamentos -->
-                            <li>
-                                <button wire:click="nextStepFourth"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Medicamentos</span>
-                                </button>
-                            </li>
+                                    <!-- Medicamentos -->
+                                    <li>
+                                        <button wire:click="nextStepFourth"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Medicamentos</span>
+                                        </button>
+                                    </li>
 
-                            <!-- Resultados -->
-                            <li>
-                                <button wire:click="nextStepFifth"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-indigo-500"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Resultados</span>
-                                </button>
-                            </li>
+                                    <!-- Resultados -->
+                                    <li>
+                                        <button wire:click="nextStepFifth"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-indigo-500"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Resultados</span>
+                                        </button>
+                                    </li>
 
-                            <!-- Voltar -->
-                            <li>
-                                <button wire:click="nextStepFirst"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 19l-7-7 7-7" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Voltar</span>
-                                </button>
-                            </li>
-                        </ul>
-                    </nav>
-
+                                    <!-- Voltar -->
+                                    <li>
+                                        <button wire:click="nextStepFirst"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg class="w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 19l-7-7 7-7" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Voltar</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
                     <!-- Conteúdo da Página -->
-                    <main class="flex-1 p-6 ml-1">
-                        <div class="flex items-center justify-between">
-                            <h2 class="pt-2 pb-4 text-5xl font-semibold">{{ $nome }}</h2>
-                            <!-- Botões de Navegação e Salvar -->
-                            <div class="mt-8">
-                                <button wire:click="updatePaciente('{{ $IdPaciente }}')"
-                                    class="px-4 py-2 font-semibold text-white bg-teal-500 rounded-lg shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
-                                    Salvar
-                                </button>
-                            </div>
-                        </div>
+                    <main class="flex-1 p-6 bg-stone-50">
+                                <div class="flex flex-row w-11/12 space-x-96">
+                                <div class="flex items-center">
+                                    <h2 class="pt-2 pb-4 text-5xl font-semibold text-indigo-900">{{ $nome }}</h2>
+                                    <!-- Botões de Navegação e Salvar -->
+                            
+                                </div>
+                                <div class="flex items-center">
+                                        <button wire:click="updatePaciente('{{ $IdPaciente }}')"
+                                            class="items-center w-40 px-5 py-2 text-white bg-teal-500 rounded-md shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 ">
+                                        Salvar alterações
+                                        </button>
+                                        
+                                </div>
+                                </div>
+                                    @if ($successMessage)
+                                            <div class="h-10 py-2 pl-3 mt-6 mb-4 text-green-600 bg-green-200 rounded-lg w-128">
+                                                    {{ $successMessage }}
+                                            </div>
+                                        @endif
                         <h2 class="py-5 text-lg font-bold">Medicamentos Usados</h2>
 
                         @foreach ($medicamentos as $index => $medicamento)
@@ -783,82 +803,82 @@
             <div class="step">
                 <div class="flex">
                     <!-- Barra de Navegação -->
-                    <nav class="left-0 w-1/5 h-screen p-6 bg-white border-r border-gray-300 shadow-lg">
-                        <ul class="space-y-4">
-                            <!-- Dados Sociodemográficos -->
-                            <li>
-                                <button wire:click="nextStepSecond"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Dados Sociodemográficos</span>
-                                </button>
-                            </li>
+                    <nav class="left-0 flex w-64 min-h-screen p-6 bg-white">
+                                <ul class="space-y-4">
+                                    <!-- Dados Sociodemográficos -->
+                                    <li>
+                                        <button wire:click="nextStepSecond"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Dados Sociodemográficos</span>
+                                        </button>
+                                    </li>
 
-                            <!-- Histórico do Paciente -->
-                            <li>
-                                <button wire:click="nextStepThird"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Histórico do Paciente</span>
-                                </button>
-                            </li>
+                                    <!-- Histórico do Paciente -->
+                                    <li>
+                                        <button wire:click="nextStepThird"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Histórico do Paciente</span>
+                                        </button>
+                                    </li>
 
-                            <!-- Medicamentos -->
-                            <li>
-                                <button wire:click="nextStepFourth"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Medicamentos</span>
-                                </button>
-                            </li>
+                                    <!-- Medicamentos -->
+                                    <li>
+                                        <button wire:click="nextStepFourth"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Medicamentos</span>
+                                        </button>
+                                    </li>
 
-                            <!-- Resultados -->
-                            <li>
-                                <button wire:click="nextStepFifth"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-indigo-500"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Resultados</span>
-                                </button>
-                            </li>
+                                    <!-- Resultados -->
+                                    <li>
+                                        <button wire:click="nextStepFifth"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-indigo-500"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Resultados</span>
+                                        </button>
+                                    </li>
 
-                            <!-- Voltar -->
-                            <li>
-                                <button wire:click="nextStepFirst"
-                                    class="flex items-center justify-start w-full py-3 pl-0 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 19l-7-7 7-7" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Voltar</span>
-                                </button>
-                            </li>
-                        </ul>
-                    </nav>
+                                    <!-- Voltar -->
+                                    <li>
+                                        <button wire:click="nextStepFirst"
+                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
+                                            <svg class="w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 19l-7-7 7-7" />
+                                            </svg>
+                                            <span class="flex-1 text-left">Voltar</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
 
                     <!-- Conteúdo da Página -->
-                    <main class="flex-1 p-6 ml-1">
+                    <main class="flex-1 p-6 bg-stone-50">
 
 
 
                         <div class="flex items-center justify-between">
-                            <h2 class="pt-2 pb-4 text-5xl font-semibold">{{ $nome }}</h2>
+                            <h2 class="pt-2 pb-4 text-5xl font-semibold text-indigo-900">{{ $nome }}</h2>
                             <!-- Botões de Navegação e Salvar -->
                             <div class="mt-8">
                                 <button wire:click="updatePaciente('{{ $IdPaciente }}')"

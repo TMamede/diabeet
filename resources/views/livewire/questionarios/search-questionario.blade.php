@@ -75,20 +75,19 @@
                 </div>
 
                 <div class="px-3 py-4">
-                    <div class="flex items-center justify-between">
+                    <div class="flex ">
                         <div class="flex items-center mb-3 space-x-4">
                             <label class="w-40 p-1 text-sm font-medium text-gray-900">Por Página</label>
                             <select wire:model.live='perPage'
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 ">
+                                <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
                                 <option value="20">20</option>
                                 <option value="30">30</option>
                             </select>
                         </div>
-                        <div class="flex items-center ml-5">
-                            {{ $questionarios->links('vendor.pagination.tailwind') }}
-                        </div>
+                        {{ $questionarios->links() }}
                     </div>
                 </div>
             </div>

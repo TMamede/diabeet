@@ -16,7 +16,7 @@ class SearchQuestionario extends Component
     #[Url(history: true)]
     public $search = '';
     #[Url()]
-    public $perPage = 10;
+    public $perPage = 5;
     #[Url(history: true)]
     public $sortBy = 'created_at';
     #[Url(history: true)]

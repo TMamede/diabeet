@@ -232,7 +232,7 @@
             {{-- Etapa 2: Histórico do Paciente --}}
             @if ($currentStep == 2)
                 <div class="step">
-                    <h2 class="py-5 text-xl font-bold">Histórico do Paciente</h2>
+                    <h2 class="py-5 text-xl font-bold text-indigo-900">Histórico do Paciente</h2>
 
                     <div class="mb-6">
                         <label for="tipo_diabetes_id" class="block mb-2 font-medium text-gray-700">Tipo de
