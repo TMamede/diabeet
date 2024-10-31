@@ -51,7 +51,6 @@ class SearchQuestionario extends Component
             'livewire.questionarios.search-questionario',
             [
                 'questionarios' => Questionario::search($this->search)
-                    ->where('user_id', Auth::id())
                     ->when($this->sortBy, function ($query) {
                         if ($this->sortBy === 'user_name') {
                             $query->join('users', 'questionarios.user_id', '=', 'users.id')

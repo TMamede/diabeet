@@ -327,8 +327,7 @@ class SearchPaciente extends Component
                 'vias' => \App\Models\Via::all(),
                 'comorbidadesList' => $this->comorbidadesList,
                 'alergiasList' => $this->alergiasList,
-                'pacientes' => Paciente::search($this->search)
-                    ->where('user_id', Auth::id()) // Filtra pelos pacientes do usuário autenticado
+                'pacientes' => Paciente::search($this->search) // Filtra pelos pacientes do usuário autenticado
                     ->when($this->sortBy, function ($query) {
                         if ($this->sortBy === 'user_name') {
                             $query->join('users', 'pacientes.user_id', '=', 'users.id')

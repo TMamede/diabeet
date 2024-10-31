@@ -192,14 +192,11 @@ class CreateQuestionario extends Component
         $unidades = [];
 
 
-        if(strlen($this->search) >=1){
-            $pacientes = Paciente::where('user_id', Auth::id())
-            ->where(function ($query) {
-                $query->where('nome', 'like', '%' . $this->search . '%')
-                    ->orWhere('prontuario', 'like', '%' . $this->search . '%');
-            })
-            ->limit(5)
-            ->get();
+        if (strlen($this->search) >= 1) {
+            $pacientes = Paciente::where('nome', 'like', '%' . $this->search . '%')
+                ->orWhere('prontuario', 'like', '%' . $this->search . '%')
+                ->limit(5)
+                ->get();
         }
         if (strlen($this->search) >= 1) {
             $unidades = Unidade_saude::where('nome', 'like', '%' . $this->search . '%')
@@ -402,7 +399,7 @@ class CreateQuestionario extends Component
         }
     }
 
-    
+
     public function submitForm()
     {
         //$this->validateStep();
