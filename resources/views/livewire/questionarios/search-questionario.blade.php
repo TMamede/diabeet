@@ -63,10 +63,6 @@
                                             class="px-6 py-2 text-white bg-indigo-900 rounded hover:bg-indigo-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                             Visualizar
                                         </button>
-                                        {{-- <button wire:click="DeleteQuestionario('{{ $questionario->id }}')"
-                                            class="px-6 py-2 ml-3 text-white bg-red-900 rounded hover:bg-red-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                                            X
-                                        </button> --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -94,4 +90,9 @@
             </div>
         </div>
     </section>
+
+    <!-- Componente ShowQuestionario -->
+    @if ($selectedQuestionarioId)
+        <livewire:show-questionario :questionario_id="$selectedQuestionarioId" />
+    @endif
 </div>

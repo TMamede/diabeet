@@ -37,6 +37,15 @@ class SearchQuestionario extends Component
         $this->sortDir = 'DESC';
     }
 
+    public $selectedQuestionarioId;
+
+    public function SelectedQuestionario($questionarioId){
+        $this->selectedQuestionarioId = $questionarioId;
+
+        // Opcional: você pode emitir um evento para abrir o componente `ShowQuestionario`
+        $this->emit('loadQuestionario', $questionarioId);
+    }
+
     public function render()
     {
         return view(
