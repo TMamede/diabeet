@@ -183,22 +183,18 @@
 
                     <!-- Conteúdo da Página -->
                     <main class="flex-1 p-6 bg-stone-50">
-                        <div class="flex flex-row justify-between w-full pr-36">
+                        <div class="flex flex-row justify-between w-full">
                             <div class="flex items-center">
                                 <h2 class="pt-2 pb-4 text-5xl font-semibold text-indigo-900">{{ $nome }}</h2>
+                                <!-- Botões de Navegação e Salvar -->
                             </div>
-                            <div class="flex items-center ml-auto">
+                            <div class="flex items-center ml-auto"> <!-- Adicione ml-auto aqui -->
                                 <button wire:click="updatePaciente('{{ $IdPaciente }}')"
                                     class="items-center w-40 px-5 py-2 text-white bg-teal-500 rounded-md shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                                     Salvar alterações
                                 </button>
                             </div>
                         </div>
-                        @if ($successMessage)
-                            <div class="h-10 py-2 pl-3 mt-6 mb-4 text-green-600 bg-green-200 rounded-lg w-128">
-                                {{ $successMessage }}
-                            </div>
-                        @endif
 
                         <h2 class="py-5 text-lg font-bold">Dados Sociodemográficos</h2>
                         <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -503,25 +499,18 @@
 
                     <!-- Conteúdo da Página -->
                     <main class="flex-1 p-6 bg-stone-50">
-                        <div class="flex flex-row justify-between w-full pr-36">
+                        <div class="flex flex-row justify-between w-full">
                             <div class="flex items-center">
                                 <h2 class="pt-2 pb-4 text-5xl font-semibold text-indigo-900">{{ $nome }}</h2>
                                 <!-- Botões de Navegação e Salvar -->
-
                             </div>
-                            <div class="flex items-center">
+                            <div class="flex items-center ml-auto"> <!-- Adicione ml-auto aqui -->
                                 <button wire:click="updatePaciente('{{ $IdPaciente }}')"
-                                    class="items-center w-40 px-5 py-2 text-white bg-teal-500 rounded-md shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 ">
+                                    class="items-center w-40 px-5 py-2 text-white bg-teal-500 rounded-md shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                                     Salvar alterações
                                 </button>
-
                             </div>
                         </div>
-                        @if ($successMessage)
-                            <div class="h-10 py-2 pl-3 mt-6 mb-4 text-green-600 bg-green-200 rounded-lg w-128">
-                                {{ $successMessage }}
-                            </div>
-                        @endif
                         <h2 class="py-5 text-lg font-bold">Histórico do Paciente</h2>
                         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                             <div class="mb-6">
@@ -603,42 +592,6 @@
                                     <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
                                 @enderror
                             </div>
-
-<<<<<<< Updated upstream
-                            <div class="p-4">
-                                <h2 class="mb-1 text-lg font-bold text-indigo-900">Comorbidades</h2>
-                                <div class="grid grid-cols-2 gap-2">
-                                    @foreach ($comorbidadesList as $comorbidade)
-                                        <div class="flex items-center ">
-                                            <input type="checkbox" id="comorbidade_{{ $comorbidade->id }}"
-                                                wire:model="comorbidades" value="{{ $comorbidade->id }}"
-                                                class="mr-1.5 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                                                {{ in_array($comorbidade->id, $comorbidades) ? 'checked' : '' }}>
-                                            <label for="comorbidade_{{ $comorbidade->id }}"
-                                                class="text-sm">{{ $comorbidade->descricao }}</label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-
-                            <div class="p-4">
-                                <h2 class="mb-1 text-lg font-bold text-indigo-900">Alergias</h2>
-                                <div class="grid grid-cols-2 gap-2">
-                                    @foreach ($alergiasList as $alergia)
-                                        <div class="flex items-center mb-2">
-                                            <input type="checkbox" id="alergia_{{ $alergia->id }}"
-                                                wire:model="alergias" value="{{ $alergia->id }}" class="w-4 h-4 mr-2 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                                                {{ in_array($alergia->id, $alergias) ? 'checked' : '' }}>
-                                            <label for="alergia_{{ $alergia->id }}"
-                                                class="text-sm">{{ $alergia->descricao }}</label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        
-=======
-
                         </div>
                         <div class="p-6 rounded-lg shadow-md bg-gray-50">
                             <div class="flex space-x-4">
@@ -679,7 +632,6 @@
                                 </div>
                             </div>
                         </div>
->>>>>>> Stashed changes
                 </div>
             </div>
         @endif
@@ -759,18 +711,16 @@
                     </nav>
                     <!-- Conteúdo da Página -->
                     <main class="flex-1 p-6 bg-stone-50">
-                        <div class="flex flex-row justify-between w-full pr-36">
+                        <div class="flex flex-row justify-between w-full">
                             <div class="flex items-center">
                                 <h2 class="pt-2 pb-4 text-5xl font-semibold text-indigo-900">{{ $nome }}</h2>
                                 <!-- Botões de Navegação e Salvar -->
-
                             </div>
-                            <div class="flex items-center">
+                            <div class="flex items-center ml-auto"> <!-- Adicione ml-auto aqui -->
                                 <button wire:click="updatePaciente('{{ $IdPaciente }}')"
-                                    class="items-center w-40 px-5 py-2 text-white bg-teal-500 rounded-md shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 ">
+                                    class="items-center w-40 px-5 py-2 text-white bg-teal-500 rounded-md shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                                     Salvar alterações
                                 </button>
-
                             </div>
                         </div>
                         @if ($successMessage)
@@ -920,11 +870,14 @@
 
 
 
-                        <div class="flex items-center justify-between w-full pr-36">
-                            <h2 class="pt-2 pb-4 text-5xl font-semibold text-indigo-900">{{ $nome }}</h2>
-                            <div class="mt-8">
+                        <div class="flex flex-row justify-between w-full">
+                            <div class="flex items-center">
+                                <h2 class="pt-2 pb-4 text-5xl font-semibold text-indigo-900">{{ $nome }}</h2>
+                                <!-- Botões de Navegação e Salvar -->
+                            </div>
+                            <div class="flex items-center ml-auto"> <!-- Adicione ml-auto aqui -->
                                 <button wire:click="updatePaciente('{{ $IdPaciente }}')"
-                                    class="px-4 py-2 font-semibold text-white bg-teal-500 rounded-lg shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
+                                    class="items-center w-40 px-5 py-2 text-white bg-teal-500 rounded-md shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                                     Salvar alterações
                                 </button>
                             </div>
