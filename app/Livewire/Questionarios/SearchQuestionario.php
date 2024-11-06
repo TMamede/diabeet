@@ -45,6 +45,27 @@ class SearchQuestionario extends Component
         $this->dispatch('questionario-selected', questionarioId: $questionarioId);
     }
     
+    public $questionarioIdToDelete = null;
+    public function deleteQuestionario()
+    {
+        // Verifica se o usuário autenticado é um gerenciador (ou tem permissão para excluir)
+        if (Auth::check() && Auth::user()->user_type === 'gerenciador') {
+            $questionario = Questionario::find($this->questionarioIdToDelete); // Usa a variável pública
+
+            if ($questionario) {
+                $questionario->delete();
+                session()->flash('message', 'questionario excluído com sucesso.');
+            } else {
+                session()->flash('error', 'questionario não encontrado.');
+            }
+        } else {
+            session()->flash('error', 'Você não tem permissão para excluir questionarios.');
+        }
+
+        $this->questionarioIdToDelete = null; // Reseta o ID após a exclusão
+    }
+
+
     public function render()
     {
         return view(

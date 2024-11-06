@@ -32,6 +32,11 @@ new class extends Component {
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Início') }}
                     </x-nav-link>
+                    @if (Auth::check() && Auth::user()->user_type === 'gerenciador')
+                        <x-nav-link :href="route('enfermeiro.index')" :active="request()->routeIs('enfermeiro.index')" wire:navigate>
+                            {{ __('Enfermeiro') }}
+                        </x-nav-link>
+                    @endif
                     <x-nav-link :href="route('paciente.index')" :active="request()->routeIs('paciente.index')" wire:navigate>
                         {{ __('Paciente') }}
                     </x-nav-link>

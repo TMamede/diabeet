@@ -19,7 +19,9 @@ return new class extends Migration
     {
         Schema::create('prontuarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Questionario::class);
+            $table->foreignIdFor(Questionario::class)
+                  ->constrained()
+                  ->onDelete('cascade'); // Excluir prontuários ao apagar questionário
             $table->timestamps();
         });
 

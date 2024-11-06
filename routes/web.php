@@ -1,10 +1,9 @@
 <?php
 
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\EnderecoController;
 
-Route::get('enderecos/{cep}', [EnderecoController::class, 'show']);
+
 
 Route::view('/', 'welcome');
 
@@ -55,6 +54,14 @@ Route::middleware(['auth'])->group(function () {
 Route::view('prontuario', 'prontuario.index')
     ->middleware(['auth'])
     ->name('prontuario.index');
+
+    Route::get('/enfermeiro', function () {
+        if (Auth::check() && Auth::user()->user_type === 'gerenciador') {
+            return view('enfermeiro.index'); // Retorne a view específica
+        }
+        
+        return redirect()->route('dashboard'); // Redireciona para uma página de acesso negado
+    })->name('enfermeiro.index');
 
 
 require __DIR__ . '/auth.php';

@@ -111,6 +111,26 @@ class SearchPaciente extends Component
         }
     }
 
+    public $pacienteIdToDelete = null;
+    public function deletePaciente()
+    {
+        // Verifica se o usuário autenticado é um gerenciador (ou tem permissão para excluir)
+        if (Auth::check() && Auth::user()->user_type === 'gerenciador') {
+            $paciente = Paciente::find($this->pacienteIdToDelete); // Usa a variável pública
+
+            if ($paciente) {
+                $paciente->delete();
+                session()->flash('message', 'paciente excluído com sucesso.');
+            } else {
+                session()->flash('error', 'paciente não encontrado.');
+            }
+        } else {
+            session()->flash('error', 'Você não tem permissão para excluir pacientes.');
+        }
+
+        $this->pacienteIdToDelete = null; // Reseta o ID após a exclusão
+    }
+
     public function validateStep()
     {
         if ($this->currentStep == 2) {

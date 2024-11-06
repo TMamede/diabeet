@@ -20,7 +20,9 @@ return new class extends Migration
     {
         Schema::create('questionarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Paciente::class);
+            $table->foreignIdFor(Paciente::class)
+                  ->constrained()
+                  ->onDelete('cascade'); // Excluir questionários ao apagar paciente
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Unidade_saude::class);
             $table->foreignIdFor(Nss_biologicas::class);
