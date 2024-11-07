@@ -12,7 +12,18 @@ class Prontuario extends Model
 
     public function questionarios()
     {
-        return $this->belongsToMany(Questionario::class);
+        return $this->belongsTo(Questionario::class);
     }
+
+    public function origens()
+    {
+        return $this->belongsToMany(Origem::class,'prontuario_origem');
+    }
+
+    public function motivos()
+    {
+        return $this->belongsToMany(Motivo::class,'prontuario_motivo');
+    }
+    
 
 }

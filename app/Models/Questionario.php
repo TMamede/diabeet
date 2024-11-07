@@ -57,6 +57,6 @@ class Questionario extends Model
 
     public function prontuarios()
     {
-        return $this->belongsToMany(Prontuario::class);
+        return $this->hasOne(Prontuario::class);
     }
 }
