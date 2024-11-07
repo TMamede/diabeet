@@ -302,14 +302,23 @@
                         <label for="realizou_amputacao" class="block mb-2 font-medium text-gray-700">Já realizou
                             amputação?</label>
                         <div class="flex items-center space-x-4">
-                            <button type="button" wire:click="$set('realizou_amputacao', 'sim')"
-                                class="px-4 py-2 text-black rounded bg-cyan-100 focus:outline-none hover:bg-cyan-200">
-                                Sim
-                            </button>
-                            <button type="button" wire:click="$set('realizou_amputacao', 'nao')"
-                                class="px-4 py-2 text-black bg-red-100 rounded focus:outline-none hover:bg-red-200">
-                                Não
-                            </button>
+                            <div x-data="{ selecionado: @entangle('realizou_amputacao') }">
+                                <button 
+                                    type="button" 
+                                    wire:click="$set('realizou_amputacao', 'sim')"
+                                    :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'" 
+                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-cyan-200">
+                                    Sim
+                                </button>
+                                
+                                <button 
+                                    type="button" 
+                                    wire:click="$set('realizou_amputacao', 'nao')"
+                                    :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'" 
+                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-red-200">
+                                    Não
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -339,14 +348,23 @@
                     <div class="mb-6">
                         <label for="tabagista" class="block mb-2 font-medium text-gray-700">É tabagista?</label>
                         <div class="flex items-center space-x-4">
-                            <button type="button" wire:click="$set('tabagista', 'sim')"
-                                class="px-4 py-2 text-black rounded bg-cyan-100 focus:outline-none hover:bg-cyan-200">
-                                Sim
-                            </button>
-                            <button type="button" wire:click="$set('tabagista', 'nao')"
-                                class="px-4 py-2 text-black bg-red-100 rounded focus:outline-none hover:bg-red-200">
-                                Não
-                            </button>
+                            <div x-data="{ selecionado: @entangle('tabagista') }">
+                                <button 
+                                    type="button" 
+                                    wire:click="$set('tabagista', 'sim')"
+                                    :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'" 
+                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-cyan-200">
+                                    Sim
+                                </button>
+                            
+                                <button 
+                                    type="button" 
+                                    wire:click="$set('tabagista', 'nao')"
+                                    :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'" 
+                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-red-200">
+                                    Não
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -377,14 +395,23 @@
                     <div class="mb-6">
                         <label for="etilista" class="block mb-2 font-medium text-gray-700">É Etilista?</label>
                         <div class="flex items-center space-x-4">
-                            <button type="button" wire:click="$set('etilista', 'sim')"
-                                class="px-4 py-2 text-black rounded bg-cyan-100 focus:outline-none hover:bg-cyan-200">
-                                Sim
-                            </button>
-                            <button type="button" wire:click="$set('etilista', 'nao')"
-                                class="px-4 py-2 text-black bg-red-100 rounded focus:outline-none hover:bg-red-200">
-                                Não
-                            </button>
+                            <div x-data="{ selecionado: @entangle('etilista') }">
+                                <button 
+                                    type="button" 
+                                    wire:click="$set('etilista', 'sim')"
+                                    :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'" 
+                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-cyan-200">
+                                    Sim
+                                </button>
+                            
+                                <button 
+                                    type="button" 
+                                    wire:click="$set('etilista', 'nao')"
+                                    :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'" 
+                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-red-200">
+                                    Não
+                                </button>
+                            </div>
                         </div>
                     </div>
 

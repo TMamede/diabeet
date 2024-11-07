@@ -45,10 +45,12 @@ use App\Models\Tipo_locomocao;
 use App\Models\Unidade_saude;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 
 class CreateQuestionario extends Component
 {
+    use WithFileUploads;
 
     public $currentStep = 1;
     public $selectedOption = null;
@@ -57,6 +59,10 @@ class CreateQuestionario extends Component
     public $idPacienteSelected = null;
     public $idUnidadeSelected = null;
 
+    protected $messages = [
+        'imagem_avaliacao_pe.image' => 'O arquivo deve ser uma imagem.',
+        'imagem_avaliacao_pe.max' => 'A imagem não pode ser maior que 1MB.',
+    ];
 
     // Etapa 1 - Mostrar Paciente
     public function selectPaciente($pacienteId)
@@ -99,6 +105,7 @@ class CreateQuestionario extends Component
     public $desbridamento_id, $avaliacao_ferida_id, $aplicacao_laserterapia, $terapia_fotodinamica;
     public $cuidado_ferida, $coberturas = [], $coberturasList = [], $limpeza_lesaos = [], $limpezaLesaosList = [], $sinais_infeccaos = [], $sinaisInfeccaoList = [];
     public $regiao_pe_id;
+    public $imagem_avaliacao_pe;
     //Etapa 3 - Necessidades Sociais
     public $aprendizagem, $monitoramento_glicemia_dia, $cuidado_pes, $uso_sapato, $alimentacao, $regime_terapeutico;
     public $recreacaos = [], $recreacaosList = [];
@@ -369,6 +376,7 @@ class CreateQuestionario extends Component
                 'avaliacao_ferida_id' => 'required|exists:avaliacao_feridas,id',
                 'aplicacao_laserterapia' => 'required|boolean',
                 'terapia_fotodinamica' => 'required|boolean',
+                'imagem_avaliacao_pe' => 'image|max:4096',
             ]);
         } else if ($this->currentStep == 3) {
             $this->validate([
@@ -626,6 +634,8 @@ class CreateQuestionario extends Component
             'religiao' => $this->religiao,
         ]);
 
+        $path = $this->imagem_avaliacao_pe->store('avaliacao_pe', 'public');
+
         $questionario = Questionario::create([
             'paciente_id' => $this->idPacienteSelected,
             'user_id' => Auth::id(),
@@ -634,6 +644,7 @@ class CreateQuestionario extends Component
             'nss_espirituais_id' => $nss_espirituais->id,
             'unidade_saude_id' => $this->idUnidadeSelected,
             'impressoes' => $this->impressoes,
+            'imagem_avaliacao_pe_url' => $path,
         ]);
 
 
