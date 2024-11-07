@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Origem extends Model
 {
     use HasFactory;
+
+    public function prontuarios()
+    {
+        return $this->belongsToMany(Prontuario::class,'prontuario_origem');
+    }
+
 }
