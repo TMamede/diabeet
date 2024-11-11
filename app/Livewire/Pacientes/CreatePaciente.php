@@ -143,6 +143,90 @@ class CreatePaciente extends Component
         $this->currentStep--;
     }
 
+    public function messages()
+    {
+        return [
+            // Step 1
+            'cpf.required' => 'O CPF é obrigatório.',
+            'cpf.digits' => 'O CPF deve ter exatamente 11 dígitos.',
+            'cpf.unique' => 'Este CPF já está cadastrado.',
+
+            'email.required' => 'O campo email é obrigatório.',
+            'email.email' => 'Informe um endereço de email válido.',
+
+            'nome.required' => 'O nome é obrigatório.',
+
+            'prontuario.required' => 'O prontuário é obrigatório.',
+
+            'data_nasc.required' => 'A data de nascimento é obrigatória.',
+            'data_nasc.date' => 'Informe uma data válida.',
+
+            'orientacao_sexual_id.required' => 'O campo orientação sexual é obrigatório.',
+            'orientacao_sexual_id.exists' => 'A orientação sexual selecionada é inválida.',
+
+            'estado_civil_id.required' => 'O estado civil é obrigatório.',
+            'estado_civil_id.exists' => 'O estado civil selecionado é inválido.',
+
+            'etnia_id.required' => 'A etnia é obrigatória.',
+            'etnia_id.exists' => 'A etnia selecionada é inválida.',
+
+            'cep.required' => 'O CEP é obrigatório.',
+            'cep.digits' => 'O CEP deve ter exatamente 8 dígitos.',
+
+            'rua.required' => 'A rua é obrigatória.',
+
+            'numero.required' => 'O número é obrigatório.',
+
+            'bairro.required' => 'O bairro é obrigatório.',
+
+
+            'cidade.required' => 'A cidade é obrigatória.',
+
+            'uf.required' => 'O estado (UF) é obrigatório.',
+            'uf.max' => 'O estado (UF) deve ter exatamente 2 caracteres.',
+
+            'ocupacao.required' => 'A ocupação é obrigatória.',
+
+            'renda_familiar.required' => 'A renda familiar é obrigatória.',
+            'renda_familiar.numeric' => 'A renda familiar deve ser um valor numérico.',
+
+            'beneficio_id.required' => 'O benefício é obrigatório.',
+            'beneficio_id.exists' => 'O benefício selecionado é inválido.',
+
+            'reside_id.required' => 'O campo residência é obrigatório.',
+            'reside_id.exists' => 'A residência selecionada é inválida.',
+
+            'num_pss_casa.required' => 'O número de pessoas na casa é obrigatório.',
+            'num_pss_casa.integer' => 'O número de pessoas deve ser um número inteiro.',
+            'num_pss_casa.min' => 'O número de pessoas na casa deve ser pelo menos 1.',
+
+            // Step 2
+            'tipo_diabetes_id.required' => 'O tipo de diabetes é obrigatório.',
+            'tipo_diabetes_id.exists' => 'O tipo de diabetes selecionado é inválido.',
+
+            'cirurgia_motivo.max' => 'O motivo da cirurgia não pode ter mais que 255 caracteres.',
+            'amputacao_onde.max' => 'O campo "onde foi a amputação" não pode ter mais que 255 caracteres.',
+            'amputacao_quando.date' => 'Informe uma data válida para a amputação.',
+            'n_cigarros.integer' => 'O número de cigarros deve ser um número inteiro.',
+            'n_cigarros.min' => 'O número de cigarros deve ser pelo menos 0.',
+            'inicio_tabagismo.date' => 'Informe uma data válida para o início do tabagismo.',
+            'inicio_etilismo.date' => 'Informe uma data válida para o início do etilismo.',
+            'comorbidades.array' => 'As comorbidades devem ser uma lista.',
+            'alergias.array' => 'As alergias devem ser uma lista.',
+
+            // Step 3
+            'medicamentos.*.nome_generico.required' => 'O nome genérico do medicamento é obrigatório.',
+            'medicamentos.*.nome_generico.max' => 'O nome genérico do medicamento não pode ter mais que 255 caracteres.',
+            'medicamentos.*.via_id.required' => 'A via de administração do medicamento é obrigatória.',
+            'medicamentos.*.via_id.exists' => 'A via de administração selecionada é inválida.',
+            'medicamentos.*.dose.required' => 'A dose do medicamento é obrigatória.',
+            'medicamentos.*.dose.max' => 'A dose do medicamento não pode ter mais que 255 caracteres.',
+
+            // Step 4
+            'resultados.*.texto_resultado.string' => 'O resultado deve ser um texto válido.',
+        ];
+    }
+
     public function validateStep()
     {
         if ($this->currentStep == 1) {
@@ -165,7 +249,7 @@ class CreatePaciente extends Component
                 'renda_familiar' => 'required|numeric',
                 'beneficio_id' => 'required|exists:beneficios,id',
                 'reside_id' => 'required|exists:resides,id',
-                'num_pss_casa' => 'required|integer|min:0',
+                'num_pss_casa' => 'required|integer|min:1',
             ]);
         } elseif ($this->currentStep == 2) {
             $this->validate([
@@ -187,7 +271,7 @@ class CreatePaciente extends Component
             ]);
         } elseif ($this->currentStep == 4) {
             $this->validate([
-                'resultados.*.texto_resultado' => 'required|string',
+                'resultados.*.texto_resultado' => 'string',
             ]);
         }
     }
