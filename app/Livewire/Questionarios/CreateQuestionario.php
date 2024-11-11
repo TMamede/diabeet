@@ -20,14 +20,17 @@ use App\Models\Integridade_direito;
 use App\Models\Integridade_esquerdo;
 use App\Models\Limpeza_lesao;
 use App\Models\Locomocao;
+use App\Models\Motivo;
 use App\Models\Nss_biologicas;
 use App\Models\Nss_espirituais;
 use App\Models\Nss_sociais;
 use App\Models\Nutricao;
+use App\Models\Origem;
 use App\Models\Oxigenacao;
 use App\Models\Paciente;
 use App\Models\Percepcao_sentido;
 use App\Models\Problema_sono;
+use App\Models\Prontuario;
 use App\Models\Questionario;
 use App\Models\Recreacao;
 use App\Models\Refeicao;
@@ -116,6 +119,8 @@ class CreateQuestionario extends Component
     //Etapa 4 - Necessidades Espirituais e Finalização
     public $religiao;
     public $unidade_saude_id = null, $impressoes;
+    //Etapa 5 
+    public $origem, $motivo, $diagnostico, $intervencao;
 
 
     public function calcularIMC()
@@ -406,7 +411,567 @@ class CreateQuestionario extends Component
             ]);
         }
     }
+    public function ColetarProntuario($questionario)
+    {
 
+
+        $prontuario = Prontuario::Create(
+            [
+                'questionario_id' => $this->$questionario->id,
+            ]
+        );
+
+        if (($questionario->paciente->renda_familiar) <= 2824) {
+            $origem = Origem::firstOrCreate(
+                [
+                    'descricao' => "Dados Sociodemográficos",
+                ]
+            );
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::firstOrCreate(
+                [
+                    'descricao' => "Renda Familiar Menor ou Igual a Dois Salários Mínimos",
+                    'origem_id' => $this->$origem->id,
+                ]
+            );
+            $prontuario->motivos()->attach($motivo->id);
+        }
+
+        if (($questionario->paciente->historico()->inicio_etilismo) != null) {
+            $origem = Origem::firstOrCreate(
+                [
+                    'descricao' => "Histórico pregressa",
+                ]
+            );
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::firstOrCreate(
+                [
+                    'descricao' => "É etilista",
+                    'origem_id' => $this->$origem->id,
+                ]
+            );
+            $prontuario->motivos()->attach($motivo->id);
+
+        }
+        if (($questionario->paciente->historico()->inicio_tabagismo) != null) {
+            $origem = Origem::firstOrCreate(
+                [
+                    'descricao' => "Histórico pregressa",
+                ]
+            );
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::firstOrCreate(
+                [
+                    'descricao' => "É tabagista",
+                    'origem_id' => $this->$origem->id,
+                ]
+            );
+            $prontuario->motivos()->attach($motivo->id);
+        }
+            if (($questionario->nss_biologica()->regulacao_neuro()->comportamento_reg_neuro()->id == 2 ) ) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Regulação neurológica",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Confuso",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->regulacao_neuro()->comportamento_reg_neuro()->id == 3 )) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Regulação neurológica",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Agitado",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->percepcoes()->id)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Percepção dos orgãos do sentido",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Acuidade da visão diminuída",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->percepcao_sentidos()->risco_queda)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Percepção dos orgãos do sentido",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Risco de queda",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->id == 4)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Percepção dos orgãos do sentido",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Percepção tátil diminuída",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->id == 5)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Percepção dos orgãos do sentido",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Formigamento",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->id == 6)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Percepção dos orgãos do sentido",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Dormência",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->percepcao_sentidos()->ouvido)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Percepção dos orgãos do sentido",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Acuidade auditiva diminuída",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->nutricao()->alimento_consumo()->id == 3)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Nutrição",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Maior consumo de alimentos processados",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->nutricao()->alimento_consumo()->id == 4)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Nutrição",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Maior consumo de alimentos ultraprocessados",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //PROBLEMA PRA DEPOIS
+            // if (($questionario->nss_biologica()->nutricao()->restricoes_alimentar())) {
+            //     $origem = Origem::firstOrCreate(
+            //         [
+            //             'descricao' => "Nutrição",
+            //         ]
+            //     );
+            //     $prontuario->origens()->attach($origem->id);
+    
+            //     $motivo = Motivo::firstOrCreate(
+            //         [
+            //             'descricao' => "Restrições alimentares",
+            //             'origem_id' => $this->$origem->id,
+            //         ]
+            //     );
+            //     $prontuario->motivos()->attach($motivo->id);
+    
+            // }
+            if (($questionario->nss_biologica()->sono()->qualidade_sono()->acorda_noite)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Sono e repouso",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Acorda a noite",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->sono()->qualidade_sono()->id == 3)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Sono e repouso",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Qualidade de sono regular",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->sono()->qualidade_sono()->id == 4)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Sono e repouso",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Qualidade de sono ruim",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 2) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Sono e repouso",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Insonia",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 3) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Sono e repouso",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Sono agitado",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 4) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Sono e repouso",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Pesadelos",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 5) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Sono e repouso",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Ronco",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 6) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Sono e repouso",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Sono interrompido",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 7) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Sono e repouso",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Dificuldade de iniciar sono",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->exercicio_fisico()->frequencias_exercicio()->id == 1)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Exercícios físicos",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Não realiza exercícios físicos",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //to em duvida nesse trem aqui
+            if (($questionario->nss_biologica()->abrigo()->zona_moradia())) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Abrigo",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Zona de moradia",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->abrigo()->zona_moradia()-> id == 3)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Abrigo",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Institucionalizado",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->abrigo()->zona_moradia()-> id == 4)) {
+                $origem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Abrigo",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Situação de rua",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->abrigo()->luz_publica)){
+                $oripgem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Abrigo",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Não possui luz pública",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->abrigo()->coleta_lixo)){
+                $oripgem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Abrigo",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Não possui coleta de lixo",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->abrigo()->agua_tratada)){
+                $oripgem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Abrigo",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Não possui água tratada",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->abrigo()->rede_esgoto()-> id ==2)){
+                $oripgem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Abrigo",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Rede de esgoto: fossa",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->abrigo()->rede_esgoto()-> id == 3)){
+                $oripgem = Origem::firstOrCreate(
+                    [
+                        'descricao' => "Abrigo",
+                    ]
+                );
+                $prontuario->origens()->attach($origem->id);
+    
+                $motivo = Motivo::firstOrCreate(
+                    [
+                        'descricao' => "Rede de esgoto: céu aberto",
+                        'origem_id' => $this->$origem->id,
+                    ]
+                );
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+        
+        
+        
+    
+
+    }
 
     public function submitForm()
     {
