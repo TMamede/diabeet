@@ -34,7 +34,7 @@ class OrigemSeeder extends Seeder
             ['descricao' => 'Cuidados com a Ferida', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Aprendizagem (Educação a Saúde)', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Recreação/Lazer/Criatividade', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Amor/Aceitação/Atenção/Gregária/Autoestima/Segurança  ', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Amor/Aceitação/Atenção/Gregária/Autoestima/Segurança', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Comunicação e Gregária', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Religião', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);

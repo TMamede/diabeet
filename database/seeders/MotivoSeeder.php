@@ -80,39 +80,84 @@ class MotivoSeeder extends Seeder
             ['descricao' => 'Deambula com Dispositivo de Marcha', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Deambula com Dificuldade', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Não Deambula', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Fadiga', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Paralisia', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Paresia', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Parestesia', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Atrofia Muscular', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Amputação de Membro Inferior', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Deformidade em Membro Inferior', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Uso de Cadeira de Rodas', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Mobilidade Limitada das Articulações Pé e Tornozelo', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Fadiga', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Paralisia', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Paresia', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Parestesia', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Atrofia Muscular', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Realizou Amputação de Membro Inferior', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'ApresentaDeformidade em Membro Inferior', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Faz Uso de Cadeira de Rodas', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Possui Mobilidade Limitada das Articulações Pé e Tornozelo', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
 
             // // Origem: Regulação vascular
-            // ['descricao' => 'Pressão arterial alterada', 'origem_id' => 14, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            // ['descricao' => 'Pulso Arterial Pedioso Pulso Arterial Tibial', 'origem_id' => 14, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => ' Pulso Arterial Tibial Alterado', 'origem_id' => 14, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Pulso Arterial Pedioso Alterado', 'origem_id' => 14, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
 
             // Origem: Sensopercepção
-            ['descricao' => 'Regime de cuidados com as unhas prejudicado', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Marcha prejudicada (claudicação)', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Coloração da pele alterada', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Unhas Com Onicomicoses', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Unhas Com Onicocriptoses', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Unhas Com Onicogrifoses', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Unhas Com Bromidose', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Realiza Corte de Unhas Correto', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Gangrena', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Rubor Dependente', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Palidez Com a Perna Elevada', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Pele Brilhante', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Pele Descamativa', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Cianose', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Ocorre Perda de Pelos Sobre o Dorso do Pé', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Possui Calosidades', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Presença de hematomas', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Possui Fissuras', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Pé Neuropático', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Arco Desabado', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Valgismo', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Dedos Em Garra', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Possui Percepção Ausente Em Ambos Pés', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()], 
 
             // Origem: Integridade cutâneo-mucosa
-            ['descricao' => 'Integridade tissular prejudicada', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Infecção', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Risco de infecção', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-
+            ['descricao' => 'Bordas da Ferida Macerada', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Possui Edema', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Quantidade de Exudato Moderado', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Quantidade de Exudato Grande', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Exudato Possui Odor', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Exudato com Aspecto Seroso', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Exudato com Aspecto Sanguinolento', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Exudato com Aspecto Serosanguinolento', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Exudato com Aspecto Purulento', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Exudato com Aspecto Piosanguinolento', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Necrose Seca (Escara) no Tecido no Leito da Ferida', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Necrose Úmida (Esfacelo) no Tecido no Leito da Ferida', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Sinal de Infecção', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            
+            //Origem: Cuidado com a ferida
+            ['descricao' => 'Análise do Cuidado Com a Ferida', 'origem_id' => 18, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            
             // Origem: Aprendizagem (Educação a Saúde)
-            ['descricao' => 'Não adesão ao regime terapêutico', 'origem_id' => 17, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Déficit de autocuidado', 'origem_id' => 17, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Não Adesão ao Regime Terapêutico', 'origem_id' => 18, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Não Realiza Automonitoramento da Glicemia Capilar', 'origem_id' => 18, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Realiza Automonitoramento da Glicemia Capilar', 'origem_id' => 18, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
 
             // Origem: Recreação/Lazer/Criatividade
-            ['descricao' => 'Capacidade para lazer prejudicada', 'origem_id' => 18, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Marcou Nenhuma ou Só Uma', 'origem_id' => 19, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
 
+            //Origem: Amor/Aceitação/Atenção/Gregária/Autoestima/Segurança
+            ['descricao' => 'Não Foi Acompanhado(a) no Momento da Consulta', 'origem_id' => 20, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Establidade Emocional Preservada', 'origem_id' => 20, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Ansiedade', 'origem_id' => 20, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Choro', 'origem_id' => 20, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Angústia', 'origem_id' => 20, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Agitação', 'origem_id' => 20, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Medo', 'origem_id' => 20, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Opnião Negativa Sobre Si', 'origem_id' => 20, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+
+            //Origem: Comunicação e Gregária
+            ['descricao' => 'Não Realiza Interação com as Pessoas', 'origem_id' => 21, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Não Realiza Interação com Amigos e Família', 'origem_id' => 21, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            
             // Origem: Religião
-            ['descricao' => 'Paciente Não Religioso', 'origem_id' => 19, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Paciente Não Religioso', 'origem_id' => 22, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
     }
 }
