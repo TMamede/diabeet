@@ -65,6 +65,7 @@ class MotivoSeeder extends Seeder
 
             // Origem: Regulação hormonal
             ['descricao' => 'Valor Alto de IMC', 'origem_id' => 9, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Valor Baixo de Glicemia Capilar do Momento', 'origem_id' => 9, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Valor Alto de Glicemia Capilar do Momento', 'origem_id' => 9, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
        
             // Origem: Oxigenação
@@ -154,8 +155,10 @@ class MotivoSeeder extends Seeder
 
             //Origem: Comunicação e Gregária
             ['descricao' => 'Não Realiza Interação com as Pessoas', 'origem_id' => 21, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Não Realiza Interação com Amigos e Família', 'origem_id' => 21, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            
+            ['descricao' => 'Não Possui Apoio de Amigos e Família', 'origem_id' => 21, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Realiza Interação com as Pessoas', 'origem_id' => 21, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Possui Apoio de Amigos e Família', 'origem_id' => 21, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+
             // Origem: Religião
             ['descricao' => 'Paciente Não Religioso', 'origem_id' => 22, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
