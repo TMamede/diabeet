@@ -753,222 +753,113 @@ class CreateQuestionario extends Component
         );
 
         if (($questionario->paciente->renda_familiar) <= 2824) {
-            $origem = Origem::firstOrCreate(
-                [
-                    'descricao' => "Dados Sociodemográficos",
-                ]
-            );
+            $origem = Origem::Find(1);
             $prontuario->origens()->attach($origem->id);
 
-            $motivo = Motivo::firstOrCreate(
-                [
-                    'descricao' => "Renda Familiar Menor ou Igual a Dois Salários Mínimos",
-                    'origem_id' => $this->$origem->id,
-                ]
-            );
+            $motivo = Motivo::Find(1);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->paciente->beneficio())) {
+            $origem = Origem::Find(1);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(2);
             $prontuario->motivos()->attach($motivo->id);
         }
 
         if (($questionario->paciente->historico()->inicio_etilismo) != null) {
-            $origem = Origem::firstOrCreate(
-                [
-                    'descricao' => "Histórico pregressa",
-                ]
-            );
+            $origem = Origem::Find(2);
             $prontuario->origens()->attach($origem->id);
 
-            $motivo = Motivo::firstOrCreate(
-                [
-                    'descricao' => "É etilista",
-                    'origem_id' => $this->$origem->id,
-                ]
-            );
+            $motivo = Motivo::Find(3);
             $prontuario->motivos()->attach($motivo->id);
+        
 
         }
         if (($questionario->paciente->historico()->inicio_tabagismo) != null) {
-            $origem = Origem::firstOrCreate(
-                [
-                    'descricao' => "Histórico pregressa",
-                ]
-            );
+            $origem = Origem::Find(2);
             $prontuario->origens()->attach($origem->id);
 
-            $motivo = Motivo::firstOrCreate(
-                [
-                    'descricao' => "É tabagista",
-                    'origem_id' => $this->$origem->id,
-                ]
-            );
+            $motivo = Motivo::Find(4);
             $prontuario->motivos()->attach($motivo->id);
         }
             if (($questionario->nss_biologica()->regulacao_neuro()->comportamento_reg_neuro()->id == 2 ) ) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Regulação neurológica",
-                    ]
-                );
+                $origem = Origem::Find(3);
                 $prontuario->origens()->attach($origem->id);
     
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Confuso",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+                $motivo = Motivo::Find(5);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->regulacao_neuro()->comportamento_reg_neuro()->id == 3 )) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Regulação neurológica",
-                    ]
-                );
+                $origem = Origem::Find(3);
                 $prontuario->origens()->attach($origem->id);
     
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Agitado",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+                $motivo = Motivo::Find(6);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->percepcoes()->id)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Percepção dos orgãos do sentido",
-                    ]
-                );
+            if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->percepcoes()->olho_direito == true) || ($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->percepcoes()->olho_esquerdo == true )) {
+                $origem = Origem::Find(4);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Acuidade da visão diminuída",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(7);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->percepcao_sentidos()->risco_queda)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Percepção dos orgãos do sentido",
-                    ]
-                );
+                $origem = Origem::Find(4);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Risco de queda",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(8);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->id == 4)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Percepção dos orgãos do sentido",
-                    ]
-                );
+                $origem = Origem::Find(4);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Percepção tátil diminuída",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(9);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->id == 5)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Percepção dos orgãos do sentido",
-                    ]
-                );
+                $origem = Origem::Find(4);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Formigamento",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(10);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->id == 6)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Percepção dos orgãos do sentido",
-                    ]
-                );
+                $origem = Origem::Find(4);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Dormência",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(11);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->percepcao_sentidos()->ouvido)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Percepção dos orgãos do sentido",
-                    ]
-                );
+                $origem = Origem::Find(4);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Acuidade auditiva diminuída",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(12);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->nutricao()->alimento_consumo()->id == 3)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Nutrição",
-                    ]
-                );
+                $origem = Origem::Find(5);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Maior consumo de alimentos processados",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(13);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->nutricao()->alimento_consumo()->id == 4)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Nutrição",
-                    ]
-                );
+                $origem = Origem::Find(5);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Maior consumo de alimentos ultraprocessados",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(14);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -991,313 +882,709 @@ class CreateQuestionario extends Component
     
             // }
             if (($questionario->nss_biologica()->sono()->qualidade_sono()->acorda_noite)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Sono e repouso",
-                    ]
-                );
+                $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Acorda a noite",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(15);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->sono()->qualidade_sono()->id == 3)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Sono e repouso",
-                    ]
-                );
+                $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Qualidade de sono regular",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(16);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->sono()->qualidade_sono()->id == 4)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Sono e repouso",
-                    ]
-                );
+                $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Qualidade de sono ruim",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(17);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 2) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Sono e repouso",
-                    ]
-                );
+                $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Insonia",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(18);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 3) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Sono e repouso",
-                    ]
-                );
+                $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Sono agitado",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(19);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 4) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Sono e repouso",
-                    ]
-                );
+                $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Pesadelos",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(20);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 5) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Sono e repouso",
-                    ]
-                );
+                $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Ronco",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(21);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 6) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Sono e repouso",
-                    ]
-                );
+                $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Sono interrompido",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(22);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 7) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Sono e repouso",
-                    ]
-                );
+                $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Dificuldade de iniciar sono",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(23);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->exercicio_fisico()->frequencias_exercicio()->id == 1)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Exercícios físicos",
-                    ]
-                );
+                $origem = Origem::Find(7);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Não realiza exercícios físicos",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(24);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            //to em duvida nesse trem aqui
+
             if (($questionario->nss_biologica()->abrigo()->zona_moradia())) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Abrigo",
-                    ]
-                );
+                $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Zona de moradia",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(25);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->abrigo()->zona_moradia()-> id == 3)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Abrigo",
-                    ]
-                );
+                $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Institucionalizado",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(26);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->abrigo()->zona_moradia()-> id == 4)) {
-                $origem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Abrigo",
-                    ]
-                );
+                $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Situação de rua",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(27);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->abrigo()->luz_publica)){
-                $oripgem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Abrigo",
-                    ]
-                );
+                $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Não possui luz pública",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(28);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->abrigo()->coleta_lixo)){
-                $oripgem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Abrigo",
-                    ]
-                );
+                $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Não possui coleta de lixo",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(29);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->abrigo()->agua_tratada)){
-                $oripgem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Abrigo",
-                    ]
-                );
+                $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Não possui água tratada",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(30);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->abrigo()->rede_esgoto()-> id ==2)){
-                $oripgem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Abrigo",
-                    ]
-                );
+                $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Rede de esgoto: fossa",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(31);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             if (($questionario->nss_biologica()->abrigo()->rede_esgoto()-> id == 3)){
-                $oripgem = Origem::firstOrCreate(
-                    [
-                        'descricao' => "Abrigo",
-                    ]
-                );
+                $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::firstOrCreate(
-                    [
-                        'descricao' => "Rede de esgoto: céu aberto",
-                        'origem_id' => $this->$origem->id,
-                    ]
-                );
+
+                $motivo = Motivo::Find(32);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-        
+            $this->calcularIMC();
+            if ($this->imc >= 25 ){
+                $origem = Origem::Find(9);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(33);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //PROBLEMA PRA DEPOIS HIPERGLICEMIA/HIPOGLICEMIA
+            if (($questionario->nss_biologica()->oxigenacao()->temp_enchimento_capilar)< 2){
+                $origem = Origem::Find(10);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(34);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            $this->calcularClassificacaoTemperatura();
+
+            if (($this->temperatura >= 37.6)){
+                $origem = Origem::Find(11);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(35);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //PROBLEMA PRA DEPOIS???
+            if (($questionario->nss_biologica()->sexualidade()->disturbios_sexual())){
+                $origem = Origem::Find(12);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(36);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 3)){
+                $origem = Origem::Find(13);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(37);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id==4)){
+                $origem = Origem::Find(13);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(38);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 5)){
+                $origem = Origem::Find(13);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(39);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 6)){
+                $origem = Origem::Find(13);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(40);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 7)){
+                $origem = Origem::Find(13);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(41);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 8)){
+                $origem = Origem::Find(13);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(42);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 9)){
+                $origem = Origem::Find(13);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(43);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 10)){
+                $origem = Origem::Find(13);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(44);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 11)){
+                $origem = Origem::Find(13);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(45);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 12)){
+                $origem = Origem::Find(13);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(46);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 13)){
+                $origem = Origem::Find(13);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(47);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 14)){
+                $origem = Origem::Find(13);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(48);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->regulacao_vascular()->pressao_arterial)){
+                $origem = Origem::Find(14);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(49);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //FREQUENCIA CADA PÉ?
+            if (($questionario->nss_biologica()->regulacao_vascular()->frequencia_cardiaca)){
+                $origem = Origem::Find(14);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(50);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 2)){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(51);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 3)){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(52);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 4)){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(53);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()-> id == 5)){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(54);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            // é false?
+            if (($questionario->nss_biologica()->senso_percepcao()->corte_unhas == false)){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(55);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //cade essa claudicação
+            //sitomas percepçao
+            //granguena
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(56);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //rubor
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(57);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(58);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(59);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(60);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //cianose
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(61);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //perda de cabelo dorso do pe
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(62);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->calosidades)){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(63);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //hematoma?
+            if (($questionario->nss_biologica()->senso_percepcao())){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(64);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->fissuras)){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(65);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //TESTE
+            if (($questionario->nss_biologica()->senso_percepcao()->pe_neuropatico)){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(66);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->arco_desabado)){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(67);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->valgismo)){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(68);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->dedos_em_garra)){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(69);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->percepcao_direito && $questionario->nss_biologica()->senso_percepcao()->percepcao_esquerdo )){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(70);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->integridade_cutanea()->borda_ferida()-> id == 6)){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(71);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->integridade_cutanea()->edema)){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(72);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->integridade_cutanea()->quantidade_exudato()-> id == 3)){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(73);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->integridade_cutanea()->quantidade_exudato()-> id == 4)){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(74);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->integridade_cutanea()->odor_exudato)){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(75);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 2)){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(76);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 3)){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(77);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 4)){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(78);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 5)){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(79);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 6)){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(80);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->integridade_cutanea()->tipo_tecido_ferida()-> id == 3)){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(81);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->integridade_cutanea()->tipo_tecido_ferida()-> id == 4)){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(82);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->integridade_cutanea()->sinais_infeccao())){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(83);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->cuidado_ferida()->avaliacao_ferida())){
+                $origem = Origem::Find(17);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(84);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //aprendizagem 
+            if (($questionario->nss_sociais()->aprendizagem()->regime_terapeutico == false)){
+                $origem = Origem::Find(18);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(85);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_sociais()->aprendizagem()->monitoramento_glicemia_dia == 0)){
+                $origem = Origem::Find(18);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(86);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_sociais()->aprendizagem()->monitoramento_glicemia_dia != 0)){
+                $origem = Origem::Find(18);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(87);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //marcou nenhuma ou só uma (???)
+            if (($questionario->nss_sociais()->recreacoes()->id == 1)){
+                $origem = Origem::Find(19);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(88);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_sociais()->cuidado()->acompanhado == true)){
+                $origem = Origem::Find(20);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(89);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_sociais()->cuidado()->emocionais()-> id == 1)){
+                $origem = Origem::Find(20);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(90);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_sociais()->cuidado()->emocionais()-> id == 2)){
+                $origem = Origem::Find(20);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(91);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_sociais()->cuidado()->emocionais()-> id == 3)){
+                $origem = Origem::Find(20);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(92);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_sociais()->cuidado()->emocionais()-> id == 4)){
+                $origem = Origem::Find(20);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(93);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_sociais()->cuidado()->emocionais()-> id == 5)){
+                $origem = Origem::Find(20);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(94);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_sociais()->cuidado()->emocionais()-> id == 6)){
+                $origem = Origem::Find(20);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(95);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_sociais()->cuidado()->opnioes_de_si == true)){
+                $origem = Origem::Find(20);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(96);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_sociais()->comunicacao()->interacao_social ==  false)){
+                $origem = Origem::Find(21);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(97);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //apoio na seeder e nao interacao
+            if (($questionario->nss_sociais()->comunicacao()->apoio ==  false)){
+                $origem = Origem::Find(21);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(98);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            //diferente de null??
+            if (($questionario->nss_espiritual()->religiao)){
+                $origem = Origem::Find(22);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(99);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            
+    
+
+            
         
         
     
