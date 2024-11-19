@@ -53,6 +53,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AprendizagemSeeder::class);
         $this->call(ComunicacaoSeeder::class);
         $this->call(CuidadoSeeder::class);
+        $this->call(ExtraSeeder::class);
 
     }
 }

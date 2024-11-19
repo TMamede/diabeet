@@ -146,6 +146,25 @@
                             @endforelse
                         </div>
                     </div>
+                    <!-- Resultados -->
+                    <div class="max-w-4xl p-8 mx-auto mt-10 bg-white rounded-lg shadow-lg">
+                        <h2 class="py-5 pb-4 mb-6 text-2xl font-bold text-gray-800 border-b">Resultados</h2>
+
+                        <!-- Grid para os Resultados -->
+                        <div class="space-y-4">
+                            @forelse ($selectedPaciente->resultados as $resultado)
+                            <div
+                                class="p-6 transition duration-150 ease-in-out bg-gray-300 border border-gray-300 rounded-lg shadow-md">
+                                <h4 class="mb-2 text-xl font-semibold text-gray-900">Resultado #{{ $loop->iteration }}
+                                </h4>
+                                <p class="text-gray-700">{{
+                                    $resultado->texto_resultado }}</p>
+                            </div>
+                            @empty
+                            <p class="text-gray-500">Nenhum resultado registrado.</p>
+                            @endforelse
+                        </div>
+                    </div>
                     <div class="flex justify-center w-full mt-8">
                         <button type="button" wire:click="nextStep"
                             class="px-4 py-2 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
@@ -1957,36 +1976,41 @@
                 </div>
 
                 <div>
-                    <label for="imagem_avaliacao_pe" class="block mt-4 text-lg font-medium text-gray-700">Avaliação do Pé (Imagem)</label>
-                    
-                    <div class="flex items-center justify-between p-4 mt-5 transition duration-300 ease-in-out border-2 border-gray-300 rounded-lg hover:border-indigo-500 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-300">
-                        
+                    <label for="imagem_avaliacao_pe" class="block mt-4 text-lg font-medium text-gray-700">Avaliação do
+                        Pé (Imagem)</label>
+
+                    <div
+                        class="flex items-center justify-between p-4 mt-5 transition duration-300 ease-in-out border-2 border-gray-300 rounded-lg hover:border-indigo-500 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-300">
+
                         <label for="imagem_avaliacao_pe" class="flex items-center space-x-2 cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                             </svg>
                             <span class="ml-6 text-base font-semibold text-indigo-500">Escolher arquivo</span>
                         </label>
-                        
+
                         <input type="file" id="imagem_avaliacao_pe" wire:model="imagem_avaliacao_pe" class="hidden">
                     </div>
-                
+
                     <!-- Exibindo Mensagens de Erro -->
-                    @error('imagem_avaliacao_pe') 
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @error('imagem_avaliacao_pe')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
-                
+
                     @if ($imagem_avaliacao_pe)
                     <div class="mt-6">
                         <p class="mb-4 text-xs text-gray-600">Pré-visualização da Imagem</p>
-                        <div class="w-full max-w-4xl p-6 mx-auto border border-indigo-100 rounded-lg shadow-lg bg-gray-50">
+                        <div
+                            class="w-full max-w-4xl p-6 mx-auto border border-indigo-100 rounded-lg shadow-lg bg-gray-50">
                             <img src="{{ $imagem_avaliacao_pe->temporaryUrl() }}" alt="Pré-visualização da imagem"
                                 class="object-contain w-full rounded-lg h-96">
                         </div>
                     </div>
                     @endif
                 </div>
-                
+
 
             </div>
 

@@ -59,10 +59,10 @@
                                     <td class="px-4 py-3">{{ $questionario->created_at }}</td>
                                     <td class="px-4 py-3">{{ $questionario->updated_at }}</td>
                                     <td class="flex items-center justify-end px-4 py-3 mr-5">
-                                        <button wire:click="SelectedQuestionario('{{ $questionario->id }}')"
+                                        <a href="{{ route('questionario.show', ['id' => $questionario->id]) }}"
                                             class="px-6 py-2 text-white bg-indigo-900 rounded hover:bg-indigo-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                             Visualizar
-                                        </button>
+                                        </a>
                                         @if (Auth::check() && Auth::user()->user_type === 'gerenciador')
                                             <button x-data=""
                                                 x-on:click.prevent="$dispatch('open-modal', 'confirm-questionario-deletion-{{ $questionario->id }}'); @this.set('questionarioIdToDelete', {{ $questionario->id }})"
@@ -113,9 +113,4 @@
             </div>
         </div>
     </section>
-
-    <!-- Componente ShowQuestionario -->
-    @if ($selectedQuestionarioId)
-        <livewire:questionarios.show-questionario :questionario_id="$selectedQuestionarioId" />
-    @endif
 </div>
