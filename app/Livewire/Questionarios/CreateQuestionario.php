@@ -909,7 +909,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(18);
+                $motivo = Motivo::Find(17);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -917,7 +917,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(19);
+                $motivo = Motivo::Find(18);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -925,7 +925,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(20);
+                $motivo = Motivo::Find(19);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -933,7 +933,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(21);
+                $motivo = Motivo::Find(20);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -941,7 +941,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(22);
+                $motivo = Motivo::Find(21);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -949,7 +949,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(6);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(23);
+                $motivo = Motivo::Find(22);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -957,7 +957,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(7);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(24);
+                $motivo = Motivo::Find(23);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -966,7 +966,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(25);
+                $motivo = Motivo::Find(24);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -974,7 +974,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(26);
+                $motivo = Motivo::Find(25);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -982,7 +982,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(27);
+                $motivo = Motivo::Find(26);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -990,7 +990,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(28);
+                $motivo = Motivo::Find(27);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -998,7 +998,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(29);
+                $motivo = Motivo::Find(28);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1006,7 +1006,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(30);
+                $motivo = Motivo::Find(29);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1014,7 +1014,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(31);
+                $motivo = Motivo::Find(30);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1022,7 +1022,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(8);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(32);
+                $motivo = Motivo::Find(31);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1031,16 +1031,24 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(9);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(33);
+                $motivo = Motivo::Find(32);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
             //PROBLEMA PRA DEPOIS HIPERGLICEMIA/HIPOGLICEMIA
-            if (($questionario->nss_biologica()->oxigenacao()->temp_enchimento_capilar)< 2){
+            if (($questionario->nss_biologica()->regulacao_neuro())){
                 $origem = Origem::Find(10);
                 $prontuario->origens()->attach($origem->id);
 
                 $motivo = Motivo::Find(34);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->oxigenacao()->temp_enchimento_capilar)< 2){
+                $origem = Origem::Find(10);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(35);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1050,16 +1058,16 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(11);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(35);
+                $motivo = Motivo::Find(36);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            //PROBLEMA PRA DEPOIS???
+            //PROBLEMA PRA DEPOIS
             if (($questionario->nss_biologica()->sexualidade()->disturbios_sexual())){
                 $origem = Origem::Find(12);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(36);
+                $motivo = Motivo::Find(37);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1067,19 +1075,11 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(13);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(37);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id==4)){
-                $origem = Origem::Find(13);
-                $prontuario->origens()->attach($origem->id);
-
                 $motivo = Motivo::Find(38);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 5)){
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 4)){
                 $origem = Origem::Find(13);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1087,7 +1087,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 6)){
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 5)){
                 $origem = Origem::Find(13);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1095,7 +1095,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 7)){
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 6)){
                 $origem = Origem::Find(13);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1103,7 +1103,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 8)){
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 7)){
                 $origem = Origem::Find(13);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1111,7 +1111,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 9)){
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 8)){
                 $origem = Origem::Find(13);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1119,7 +1119,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 10)){
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 9)){
                 $origem = Origem::Find(13);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1127,7 +1127,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 11)){
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 10)){
                 $origem = Origem::Find(13);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1135,7 +1135,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 12)){
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 11)){
                 $origem = Origem::Find(13);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1143,7 +1143,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 13)){
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 12)){
                 $origem = Origem::Find(13);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1151,7 +1151,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 14)){
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 13)){
                 $origem = Origem::Find(13);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1159,16 +1159,15 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->regulacao_vascular()->pressao_arterial)){
-                $origem = Origem::Find(14);
+            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 14)){
+                $origem = Origem::Find(13);
                 $prontuario->origens()->attach($origem->id);
 
                 $motivo = Motivo::Find(49);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            //FREQUENCIA CADA PÉ?
-            if (($questionario->nss_biologica()->regulacao_vascular()->frequencia_cardiaca)){
+            if (($questionario->nss_biologica()->regulacao_vascular()->pressao_arterial)){
                 $origem = Origem::Find(14);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1176,15 +1175,17 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 2)){
-                $origem = Origem::Find(15);
+            //FREQUENCIA CADA PÉ?
+            //ITB
+            if (($questionario->nss_biologica()->regulacao_vascular()->frequencia_cardiaca)){
+                $origem = Origem::Find(14);
                 $prontuario->origens()->attach($origem->id);
 
                 $motivo = Motivo::Find(51);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 3)){
+            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 2)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1192,7 +1193,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 4)){
+            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 3)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1200,11 +1201,19 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()-> id == 5)){
+            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 4)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
                 $motivo = Motivo::Find(54);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()-> id == 5)){
+                $origem = Origem::Find(15);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(55);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1213,23 +1222,11 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(55);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            //cade essa claudicação
-            //sitomas percepçao
-            //granguena
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
                 $motivo = Motivo::Find(56);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            //rubor
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 3)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1237,7 +1234,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 4)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1245,7 +1242,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 5)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1253,7 +1250,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 8)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1261,8 +1258,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            //cianose
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 9)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1270,8 +1266,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            //perda de cabelo dorso do pe
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao())){
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 12)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1279,7 +1274,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->senso_percepcao()->calosidades)){
+            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 6)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1287,8 +1282,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            //hematoma?
-            if (($questionario->nss_biologica()->senso_percepcao())){
+            if (($questionario->nss_biologica()->senso_percepcao()->calosidades)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1296,7 +1290,8 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->senso_percepcao()->fissuras)){
+
+            if (($questionario->nss_biologica()->senso_percepcao()-> sintomas_percepcao()-> id == 10)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1304,8 +1299,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            //TESTE
-            if (($questionario->nss_biologica()->senso_percepcao()->pe_neuropatico)){
+            if (($questionario->nss_biologica()->senso_percepcao()->fissuras)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1313,7 +1307,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->senso_percepcao()->arco_desabado)){
+            if (($questionario->nss_biologica()->senso_percepcao()->pe_neuropatico)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1321,7 +1315,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->senso_percepcao()->valgismo)){
+            if (($questionario->nss_biologica()->senso_percepcao()->arco_desabado)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1329,7 +1323,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->senso_percepcao()->dedos_em_garra)){
+            if (($questionario->nss_biologica()->senso_percepcao()->valgismo)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1337,7 +1331,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->senso_percepcao()->percepcao_direito && $questionario->nss_biologica()->senso_percepcao()->percepcao_esquerdo )){
+            if (($questionario->nss_biologica()->senso_percepcao()->dedos_em_garra)){
                 $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1345,15 +1339,15 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->integridade_cutanea()->borda_ferida()-> id == 6)){
-                $origem = Origem::Find(16);
+            if (($questionario->nss_biologica()->senso_percepcao()->percepcao_direito && $questionario->nss_biologica()->senso_percepcao()->percepcao_esquerdo )){
+                $origem = Origem::Find(15);
                 $prontuario->origens()->attach($origem->id);
 
                 $motivo = Motivo::Find(71);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->integridade_cutanea()->edema)){
+            if (($questionario->nss_biologica()->integridade_cutanea()->borda_ferida()-> id == 6)){
                 $origem = Origem::Find(16);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1361,7 +1355,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->integridade_cutanea()->quantidade_exudato()-> id == 3)){
+            if (($questionario->nss_biologica()->integridade_cutanea()->edema)){
                 $origem = Origem::Find(16);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1369,7 +1363,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->integridade_cutanea()->quantidade_exudato()-> id == 4)){
+            if (($questionario->nss_biologica()->integridade_cutanea()->quantidade_exudato()-> id == 3)){
                 $origem = Origem::Find(16);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1377,7 +1371,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->integridade_cutanea()->odor_exudato)){
+            if (($questionario->nss_biologica()->integridade_cutanea()->quantidade_exudato()-> id == 4)){
                 $origem = Origem::Find(16);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1385,7 +1379,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 2)){
+            if (($questionario->nss_biologica()->integridade_cutanea()->odor_exudato)){
                 $origem = Origem::Find(16);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1393,7 +1387,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 3)){
+            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 2)){
                 $origem = Origem::Find(16);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1401,7 +1395,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 4)){
+            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 3)){
                 $origem = Origem::Find(16);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1409,7 +1403,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 5)){
+            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 4)){
                 $origem = Origem::Find(16);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1417,7 +1411,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 6)){
+            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 5)){
                 $origem = Origem::Find(16);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1425,7 +1419,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->integridade_cutanea()->tipo_tecido_ferida()-> id == 3)){
+            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 6)){
                 $origem = Origem::Find(16);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1433,7 +1427,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->integridade_cutanea()->tipo_tecido_ferida()-> id == 4)){
+            if (($questionario->nss_biologica()->integridade_cutanea()->tipo_tecido_ferida()-> id == 3)){
                 $origem = Origem::Find(16);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1441,7 +1435,7 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            if (($questionario->nss_biologica()->integridade_cutanea()->sinais_infeccao())){
+            if (($questionario->nss_biologica()->integridade_cutanea()->tipo_tecido_ferida()-> id == 4)){
                 $origem = Origem::Find(16);
                 $prontuario->origens()->attach($origem->id);
 
@@ -1449,11 +1443,19 @@ class CreateQuestionario extends Component
                 $prontuario->motivos()->attach($motivo->id);
     
             }
+            if (($questionario->nss_biologica()->integridade_cutanea()->sinais_infeccao())){
+                $origem = Origem::Find(16);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(84);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
             if (($questionario->nss_biologica()->cuidado_ferida()->avaliacao_ferida())){
                 $origem = Origem::Find(17);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(84);
+                $motivo = Motivo::Find(85);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1462,7 +1464,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(18);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(85);
+                $motivo = Motivo::Find(86);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1470,7 +1472,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(18);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(86);
+                $motivo = Motivo::Find(87);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1478,7 +1480,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(18);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(87);
+                $motivo = Motivo::Find(88);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1487,7 +1489,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(19);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(88);
+                $motivo = Motivo::Find(89);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1495,7 +1497,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(20);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(89);
+                $motivo = Motivo::Find(90);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1503,7 +1505,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(20);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(90);
+                $motivo = Motivo::Find(91);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1511,7 +1513,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(20);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(91);
+                $motivo = Motivo::Find(92);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1519,7 +1521,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(20);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(92);
+                $motivo = Motivo::Find(93);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1527,7 +1529,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(20);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(93);
+                $motivo = Motivo::Find(94);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1535,7 +1537,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(20);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(94);
+                $motivo = Motivo::Find(95);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1543,7 +1545,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(20);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(95);
+                $motivo = Motivo::Find(96);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1551,7 +1553,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(20);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(96);
+                $motivo = Motivo::Find(97);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1559,16 +1561,31 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(21);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(97);
+                $motivo = Motivo::Find(98);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
-            //apoio na seeder e nao interacao
             if (($questionario->nss_sociais()->comunicacao()->apoio ==  false)){
                 $origem = Origem::Find(21);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(98);
+                $motivo = Motivo::Find(99);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_sociais()->comunicacao()->interacao_social ==  true)){
+                $origem = Origem::Find(21);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(100);
+                $prontuario->motivos()->attach($motivo->id);
+    
+            }
+            if (($questionario->nss_sociais()->comunicacao()->apoio ==  true)){
+                $origem = Origem::Find(21);
+                $prontuario->origens()->attach($origem->id);
+
+                $motivo = Motivo::Find(101);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
@@ -1577,7 +1594,7 @@ class CreateQuestionario extends Component
                 $origem = Origem::Find(22);
                 $prontuario->origens()->attach($origem->id);
 
-                $motivo = Motivo::Find(99);
+                $motivo = Motivo::Find(102);
                 $prontuario->motivos()->attach($motivo->id);
     
             }
