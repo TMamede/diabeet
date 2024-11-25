@@ -27,7 +27,7 @@ return new class extends Migration
             $table->foreignIdFor(Unidade_saude::class);
             $table->foreignIdFor(Nss_biologicas::class);
             $table->foreignIdFor(Nss_sociais::class);
-            $table->foreignIdFor(Nss_espirituais::class);
+            $table->foreignIdFor(Nss_espirituais::class)->nullable;
             $table->text('impressoes')->nullable();
             $table->string('imagem_avaliacao_pe_url')->nullable();
             $table->timestamps();

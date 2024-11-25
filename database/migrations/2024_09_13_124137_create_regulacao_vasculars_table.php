@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('regulacao_vasculars', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('pressao_arterial');
+            $table->string('pressao_arterial');
             $table->tinyInteger('frequencia_cardiaca');
             $table->decimal('psatp_direito');
             $table->decimal('psap_direito');

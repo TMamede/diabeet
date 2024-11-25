@@ -46,11 +46,11 @@ new class extends Component {
                     <x-nav-link :href="route('prontuario.index')" :active="request()->routeIs('prontuario.index')" wire:navigate>
                         {{ __('Prontuário') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
+                        {{ __('Sobre Nós') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')" wire:navigate>
                         {{ __('Contato') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
-                        {{ __('Sobre') }}
                     </x-nav-link>
                     <x-nav-link :href="route('termos')" :active="request()->routeIs('termos')" wire:navigate>
                         {{ __('Termos de Uso') }}
@@ -132,11 +132,11 @@ new class extends Component {
             <x-responsive-nav-link :href="route('prontuario.index')" :active="request()->routeIs('prontuario.index')" wire:navigate>
                 {{ __('Prontuário') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
+                {{ __('Sobre Nós') }}
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('contact')" :active="request()->routeIs('contact')" wire:navigate>
                 {{ __('Contato') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
-                {{ __('Sobre') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('termos')" :active="request()->routeIs('termos')" wire:navigate>
                 {{ __('Termos de Uso') }}

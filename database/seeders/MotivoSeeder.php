@@ -38,6 +38,7 @@ class MotivoSeeder extends Seeder
             // Origem: Nutrição
             ['descricao' => 'Consumo de Alimentos Processados', 'origem_id' => 5, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Consumo de Alimentos Ultraprocessados', 'origem_id' => 5, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            
 
             // Origem: Sono e Repouso
             ['descricao' => 'Acorda a Noite', 'origem_id' => 6, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -87,7 +88,7 @@ class MotivoSeeder extends Seeder
             ['descricao' => 'Apresenta Parestesia', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Apresenta Atrofia Muscular', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Realizou Amputação de Membro Inferior', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'ApresentaDeformidade em Membro Inferior', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Apresenta Deformidade em Membro Inferior', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Faz Uso de Cadeira de Rodas', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Possui Mobilidade Limitada das Articulações Pé e Tornozelo', 'origem_id' => 13, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
 
@@ -161,6 +162,10 @@ class MotivoSeeder extends Seeder
 
             // Origem: Religião
             ['descricao' => 'Paciente Não Religioso', 'origem_id' => 22, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+        
+            //Origem: Nutrição pt.2
+            ['descricao' => 'Possui Restrições Alimentares', 'origem_id' => 5, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+
         ]);
     }
 }

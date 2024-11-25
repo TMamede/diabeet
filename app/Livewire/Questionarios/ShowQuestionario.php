@@ -13,7 +13,7 @@ class ShowQuestionario extends Component
     public $questionario;
 
 
-    public $nss_sociais, $nss_biologicas, $nss_espirituais;
+    public $nss_sociais, $nss_biologicas, $nss_espirituais, $paciente, $enfermeiro, $impressoes, $imagem_avaliacao_pe;
 
 
     //Etapa 2 - Necessidades Biológicas
@@ -38,7 +38,7 @@ class ShowQuestionario extends Component
     public $desbridamento_id, $avaliacao_ferida_id, $aplicacao_laserterapia, $terapia_fotodinamica;
     public $cuidado_ferida, $coberturas = [], $coberturasList = [], $limpeza_lesaos = [], $limpezaLesaosList = [], $sinais_infeccaos = [], $sinaisInfeccaoList = [];
     public $regiao_pe_id;
-    public $imagem_avaliacao_pe;
+  
     //Etapa 3 - Necessidades Sociais
     public $aprendizagem, $monitoramento_glicemia_dia, $cuidado_pes, $uso_sapato, $alimentacao, $regime_terapeutico;
     public $recreacaos = [], $recreacaosList = [];
@@ -48,10 +48,10 @@ class ShowQuestionario extends Component
 
     //Etapa 4 - Necessidades Espirituais e Finalização
     public $religiao;
-    public $unidade_saude_id = null, $impressoes;
+    public $unidade_saude_id = null;
 
     public $successMessage = '';
-    public $questionarioId;
+    public $IdQuestionario;
 
     public function mount($id)
     {
@@ -60,10 +60,17 @@ class ShowQuestionario extends Component
 
     public function loadQuestionarioData($questionarioId)
     {
-        $this->questionario = Questionario::with([
+        $this->questionario = Questionario::findOrFail($questionarioId);
 
-        ])->findOrFail($questionarioId);
-    }
+        $this->IdQuestionario = $this->questionario->id;
+        $this->nss_biologicas = $this->questionario->nss_biologica;
+        $this->nss_espirituais = $this->questionario->nss_espiritual;
+        $this->nss_sociais = $this->questionario->nss_sociais;
+        $this->paciente = $this->questionario->paciente;
+        $this->enfermeiro = $this->questionario->user;
+        $this->impressoes = $this->questionario->impressoes;
+            
+    }   
 
 
 
@@ -254,28 +261,28 @@ class ShowQuestionario extends Component
 
     public function nextStepFirst()
     {
-        $this->validateStep();
+        // $this->validateStep();
         $this->currentStep = 1;
     }
     public function nextStepSecond()
     {
-        $this->validateStep();
+        // $this->validateStep();
         $this->currentStep = 2;
     }
     public function nextStepThird()
     {
-        $this->validateStep();
+        // $this->validateStep();
         $this->currentStep = 3;
     }
     public function nextStepFourth()
     {
-        $this->validateStep();
+        // $this->validateStep();
         $this->currentStep = 4;
     }
 
     public function nextStepFifth()
     {
-        $this->validateStep();
+        // $this->validateStep();
         $this->currentStep = 5;
     }
 

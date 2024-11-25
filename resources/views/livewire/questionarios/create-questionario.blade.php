@@ -2307,7 +2307,28 @@
     @if ($currentStep == 4)
     <div class="step">
         <h2 class="py-5 text-4xl font-bold text-indigo-950">Necessidades PsicoEspirituais</h2>
-        <div class="mb-4">
+        <div class="mb-6">
+            <label for="e_religioso" class="block mb-2 font-medium text-gray-700">Tem Religião?</label>
+            <div class="flex items-center space-x-4">
+                <div x-data="{ selecionado: @entangle('e_religioso') }">
+                    <button type="button" wire:click="$set('e_religioso', 'sim')"
+                        :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'"
+                        class="px-4 py-2 text-black rounded focus:outline-none hover:bg-cyan-200">
+                        Sim
+                    </button>
+
+                    <button type="button" wire:click="$set('e_religioso', 'nao')"
+                        :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'"
+                        class="px-4 py-2 text-black rounded focus:outline-none hover:bg-red-200">
+                        Não
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exibe os campos adicionais somente se a resposta for "sim" -->
+        @if ($e_religioso === 'sim')
+        <div class="mb-6">
             <label for="religiao" class="block font-medium text-gray-700">Religião/Espiritualidade:</label>
             <input type="text" wire:model="religiao" id="religiao"
                 class="block w-full px-6 py-3 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
@@ -2316,6 +2337,7 @@
             <span class="text-sm text-red-500">{{ $message }}</span>
             @enderror
         </div>
+        @endif
 
         <h2 class="py-5 text-3xl font-bold text-indigo-950">Unidade de Saúde</h2>
 

@@ -117,7 +117,7 @@ class CreateQuestionario extends Component
 
 
     //Etapa 4 - Necessidades Espirituais e Finalização
-    public $religiao;
+    public $religiao = null, $e_religioso;
     public $unidade_saude_id = null, $impressoes;
     //Etapa 5 
     public $origem, $motivo, $diagnostico, $intervencao;
@@ -266,337 +266,336 @@ class CreateQuestionario extends Component
     }
 
     public function messages()
-{
-    return [
-        // Step 2
-        'orientado.required' => 'O campo "Orientado" é obrigatório.',
-        'orientado.boolean' => 'O campo "Orientado" deve ser verdadeiro ou falso.',
-        'comportamento_regulacao_neuro_id.required' => 'O campo "Comportamento de Regulação Neuro" é obrigatório.',
-        'comportamento_regulacao_neuro_id.exists' => 'O comportamento de regulação neuro selecionado não é válido.',
-
-        'olho_direito.required' => 'O campo "Olho Direito" é obrigatório.',
-        'olho_direito.boolean' => 'O campo "Olho Direito" deve ser verdadeiro ou falso.',
-        'olho_esquerdo.required' => 'O campo "Olho Esquerdo" é obrigatório.',
-        'olho_esquerdo.boolean' => 'O campo "Olho Esquerdo" deve ser verdadeiro ou falso.',
-        'ouvido.required' => 'O campo "Ouvido" é obrigatório.',
-        'ouvido.boolean' => 'O campo "Ouvido" deve ser verdadeiro ou falso.',
-        'analise_tato_id.required' => 'O campo "Análise de Tato" é obrigatório.',
-        'analise_tato_id.exists' => 'A análise de tato selecionada não é válida.',
-        'risco_queda.required' => 'O campo "Risco de Queda" é obrigatório.',
-        'risco_queda.boolean' => 'O campo "Risco de Queda" deve ser verdadeiro ou falso.',
-
-        'liquido_diario.required' => 'O campo "Líquido Diário" é obrigatório.',
-        'liquido_diario.numeric' => 'O campo "Líquido Diário" deve ser um número.',
-        'liquido_diario.min' => 'O campo "Líquido Diário" deve ser um número maior ou igual a zero.',
-        'tipo_pele_id.required' => 'O campo "Tipo de Pele" é obrigatório.',
-        'tipo_pele_id.exists' => 'O tipo de pele selecionado não é válido.',
-
-        'alimento_consumo_id.required' => 'O campo "Consumo de Alimento" é obrigatório.',
-        'alimento_consumo_id.exists' => 'O consumo de alimento selecionado não é válido.',
-        'refeicaos.array' => 'O campo "Refeições" deve ser uma lista.',
-        'restricaos.array' => 'O campo "Restrições" deve ser uma lista.',
-
-        'horas_sono.required' => 'O campo "Horas de Sono" é obrigatório.',
-        'horas_sono.numeric' => 'O campo "Horas de Sono" deve ser um número.',
-        'horas_sono.min' => 'O campo "Horas de Sono" deve ser maior ou igual a zero.',
-        'acorda_noite.required' => 'O campo "Acorda à Noite" é obrigatório.',
-        'acorda_noite.boolean' => 'O campo "Acorda à Noite" deve ser verdadeiro ou falso.',
-        'qualidade_sono_id.required' => 'O campo "Qualidade do Sono" é obrigatório.',
-        'qualidade_sono_id.exists' => 'A qualidade do sono selecionada não é válida.',
-        'problema_sonos.array' => 'O campo "Problemas com o Sono" deve ser uma lista.',
-        'medicamentos_sono.required' => 'O campo "Medicamentos para o Sono" é obrigatório.',
-        'medicamentos_sono.string' => 'O campo "Medicamentos para o Sono" deve ser um texto.',
-        'medicamentos_sono.max' => 'O campo "Medicamentos para o Sono" não pode exceder 255 caracteres.',
-
-        'realiza.required' => 'O campo "Realiza Exercício" é obrigatório.',
-        'realiza.boolean' => 'O campo "Realiza Exercício" deve ser verdadeiro ou falso.',
-        'frequencia_exercicio_id.required' => 'O campo "Frequência de Exercício" é obrigatório.',
-        'frequencia_exercicio_id.exists' => 'A frequência de exercício selecionada não é válida.',
-        'duracao.required' => 'O campo "Duração" é obrigatório.',
-        'duracao.numeric' => 'O campo "Duração" deve ser um número.',
-        'duracao.min' => 'O campo "Duração" deve ser maior ou igual a zero.',
-
-        'zona_moradia_id.required' => 'O campo "Zona de Moradia" é obrigatório.',
-        'zona_moradia_id.exists' => 'A zona de moradia selecionada não é válida.',
-        'luz_publica.required' => 'O campo "Luz Pública" é obrigatório.',
-        'luz_publica.boolean' => 'O campo "Luz Pública" deve ser verdadeiro ou falso.',
-        'coleta_lixo.required' => 'O campo "Coleta de Lixo" é obrigatório.',
-        'coleta_lixo.boolean' => 'O campo "Coleta de Lixo" deve ser verdadeiro ou falso.',
-        'agua_tratada.required' => 'O campo "Água Tratada" é obrigatório.',
-        'agua_tratada.boolean' => 'O campo "Água Tratada" deve ser verdadeiro ou falso.',
-        'rede_esgoto_id.required' => 'O campo "Rede de Esgoto" é obrigatório.',
-        'rede_esgoto_id.exists' => 'A rede de esgoto selecionada não é válida.',
-        'animais_domesticos.required' => 'O campo "Animais Domésticos" é obrigatório.',
-        'animais_domesticos.boolean' => 'O campo "Animais Domésticos" deve ser verdadeiro ou falso.',
-
-        'altura.required' => 'O campo "Altura" é obrigatório.',
-        'altura.numeric' => 'O campo "Altura" deve ser um número.',
-        'altura.min' => 'O campo "Altura" deve ser maior ou igual a zero.',
-        'peso.required' => 'O campo "Peso" é obrigatório.',
-        'peso.numeric' => 'O campo "Peso" deve ser um número.',
-        'peso.min' => 'O campo "Peso" deve ser maior ou igual a zero.',
-        'circunferencia_abdnominal.required' => 'O campo "Circunferência Abdominal" é obrigatório.',
-        'circunferencia_abdnominal.numeric' => 'O campo "Circunferência Abdominal" deve ser um número.',
-        'circunferencia_abdnominal.min' => 'O campo "Circunferência Abdominal" deve ser maior ou igual a zero.',
-        'glicemia_capilar.required' => 'O campo "Glicemia Capilar" é obrigatório.',
-        'glicemia_capilar.numeric' => 'O campo "Glicemia Capilar" deve ser um número.',
-        'glicemia_capilar.min' => 'O campo "Glicemia Capilar" deve ser maior ou igual a zero.',
-        'jejum.required' => 'O campo "Jejum" é obrigatório.',
-        'jejum.boolean' => 'O campo "Jejum" deve ser verdadeiro ou falso.',
-        'pos_prandial.required' => 'O campo "Pós-prandial" é obrigatório.',
-        'pos_prandial.boolean' => 'O campo "Pós-prandial" deve ser verdadeiro ou falso.',
-
-        'temp_enchimento_capilar.required' => 'O campo "Tempo de Enchimento Capilar" é obrigatório.',
-        'temp_enchimento_capilar.numeric' => 'O campo "Tempo de Enchimento Capilar" deve ser um número.',
-        'temp_enchimento_capilar.min' => 'O campo "Tempo de Enchimento Capilar" deve ser maior ou igual a zero.',
-        'frequencia_respiratoria.required' => 'O campo "Frequência Respiratória" é obrigatório.',
-        'frequencia_respiratoria.numeric' => 'O campo "Frequência Respiratória" deve ser um número.',
-        'frequencia_respiratoria.min' => 'O campo "Frequência Respiratória" deve ser maior ou igual a zero.',
-        'satO2.required' => 'O campo "Saturação de Oxigênio (SatO2)" é obrigatório.',
-        'satO2.numeric' => 'O campo "Saturação de Oxigênio (SatO2)" deve ser um número.',
-        'satO2.min' => 'O campo "Saturação de Oxigênio (SatO2)" deve ser maior ou igual a zero.',
-
-        'temperatura.required' => 'O campo "Temperatura" é obrigatório.',
-        'temperatura.numeric' => 'O campo "Temperatura" deve ser um número.',
-        'temperatura.min' => 'O campo "Temperatura" deve ser maior ou igual a zero.',
-
-        'dor_urinar.required' => 'O campo "Dor ao Urinar" é obrigatório.',
-        'dor_urinar.boolean' => 'O campo "Dor ao Urinar" deve ser verdadeiro ou falso.',
-        
-        'incontinencia_urina.required' => 'O campo "Incontinência Urinária" é obrigatório.',
-        'incontinencia_urina.boolean' => 'O campo "Incontinência Urinária" deve ser verdadeiro ou falso.',
-        
-        'uso_laxante.required' => 'O campo "Uso de Laxante" é obrigatório.',
-        'uso_laxante.boolean' => 'O campo "Uso de Laxante" deve ser verdadeiro ou falso.',
-        
-        'uso_fraldas.required' => 'O campo "Uso de Fraldas" é obrigatório.',
-        'uso_fraldas.boolean' => 'O campo "Uso de Fraldas" deve ser verdadeiro ou falso.',
-        
-        'dor_eliminacoes.required' => 'O campo "Dor nas Eliminações" é obrigatório.',
-        'dor_eliminacoes.boolean' => 'O campo "Dor nas Eliminações" deve ser verdadeiro ou falso.',
-        
-        'incontinencia_eliminacao.required' => 'O campo "Incontinência nas Eliminações" é obrigatório.',
-        'incontinencia_eliminacao.boolean' => 'O campo "Incontinência nas Eliminações" deve ser verdadeiro ou falso.',
-        
-        'constipacao.required' => 'O campo "Constipação" é obrigatório.',
-        'constipacao.boolean' => 'O campo "Constipação" deve ser verdadeiro ou falso.',
-        
-        'diarreia.required' => 'O campo "Diarreia" é obrigatório.',
-        'diarreia.boolean' => 'O campo "Diarreia" deve ser verdadeiro ou falso.',
-        
-        'equipamento_externo.required' => 'O campo "Equipamento Externo" é obrigatório.',
-        'equipamento_externo.string' => 'O campo "Equipamento Externo" deve ser um texto.',
-        'equipamento_externo.max' => 'O campo "Equipamento Externo" não pode exceder 255 caracteres.',
-
-        'vida_sex_ativa.required' => 'O campo "Vida Sexual Ativa" é obrigatório.',
-        'vida_sex_ativa.boolean' => 'O campo "Vida Sexual Ativa" deve ser verdadeiro ou falso.',
-
-        'disturbio_sexuals.array' => 'O campo "Distúrbios Sexuais" deve ser uma lista.',
-
-        'tipo_locomocaos.array' => 'O campo "Tipos de Locomoção" deve ser uma lista.',
-        
-        'sapato_adequado.required' => 'O campo "Sapato Adequado" é obrigatório.',
-        'sapato_adequado.boolean' => 'O campo "Sapato Adequado" deve ser verdadeiro ou falso.',
-        
-        'sandalia_cicatrizacao.required' => 'O campo "Sandália de Cicatrização" é obrigatório.',
-        'sandalia_cicatrizacao.boolean' => 'O campo "Sandália de Cicatrização" deve ser verdadeiro ou falso.',
-
-        'pressao_arterial.required' => 'O campo "Pressão Arterial" é obrigatório.',
-        'pressao_arterial.numeric' => 'O campo "Pressão Arterial" deve ser um número.',
-        'pressao_arterial.min' => 'O campo "Pressão Arterial" deve ser maior ou igual a zero.',
+    {
+        return [
+            // Step 2
+            'orientado.required' => 'O campo "Orientado" é obrigatório.',
+            'orientado.boolean' => 'O campo "Orientado" deve ser verdadeiro ou falso.',
+            'comportamento_regulacao_neuro_id.required' => 'O campo "Comportamento de Regulação Neuro" é obrigatório.',
+            'comportamento_regulacao_neuro_id.exists' => 'O comportamento de regulação neuro selecionado não é válido.',
+
+            'olho_direito.required' => 'O campo "Olho Direito" é obrigatório.',
+            'olho_direito.boolean' => 'O campo "Olho Direito" deve ser verdadeiro ou falso.',
+            'olho_esquerdo.required' => 'O campo "Olho Esquerdo" é obrigatório.',
+            'olho_esquerdo.boolean' => 'O campo "Olho Esquerdo" deve ser verdadeiro ou falso.',
+            'ouvido.required' => 'O campo "Ouvido" é obrigatório.',
+            'ouvido.boolean' => 'O campo "Ouvido" deve ser verdadeiro ou falso.',
+            'analise_tato_id.required' => 'O campo "Análise de Tato" é obrigatório.',
+            'analise_tato_id.exists' => 'A análise de tato selecionada não é válida.',
+            'risco_queda.required' => 'O campo "Risco de Queda" é obrigatório.',
+            'risco_queda.boolean' => 'O campo "Risco de Queda" deve ser verdadeiro ou falso.',
+
+            'liquido_diario.required' => 'O campo "Líquido Diário" é obrigatório.',
+            'liquido_diario.numeric' => 'O campo "Líquido Diário" deve ser um número.',
+            'liquido_diario.min' => 'O campo "Líquido Diário" deve ser um número maior ou igual a zero.',
+            'tipo_pele_id.required' => 'O campo "Tipo de Pele" é obrigatório.',
+            'tipo_pele_id.exists' => 'O tipo de pele selecionado não é válido.',
+
+            'alimento_consumo_id.required' => 'O campo "Consumo de Alimento" é obrigatório.',
+            'alimento_consumo_id.exists' => 'O consumo de alimento selecionado não é válido.',
+            'refeicaos.array' => 'O campo "Refeições" deve ser uma lista.',
+            'restricaos.array' => 'O campo "Restrições" deve ser uma lista.',
+
+            'horas_sono.required' => 'O campo "Horas de Sono" é obrigatório.',
+            'horas_sono.numeric' => 'O campo "Horas de Sono" deve ser um número.',
+            'horas_sono.min' => 'O campo "Horas de Sono" deve ser maior ou igual a zero.',
+            'acorda_noite.required' => 'O campo "Acorda à Noite" é obrigatório.',
+            'acorda_noite.boolean' => 'O campo "Acorda à Noite" deve ser verdadeiro ou falso.',
+            'qualidade_sono_id.required' => 'O campo "Qualidade do Sono" é obrigatório.',
+            'qualidade_sono_id.exists' => 'A qualidade do sono selecionada não é válida.',
+            'problema_sonos.array' => 'O campo "Problemas com o Sono" deve ser uma lista.',
+            'medicamentos_sono.required' => 'O campo "Medicamentos para o Sono" é obrigatório.',
+            'medicamentos_sono.string' => 'O campo "Medicamentos para o Sono" deve ser um texto.',
+            'medicamentos_sono.max' => 'O campo "Medicamentos para o Sono" não pode exceder 255 caracteres.',
+
+            'realiza.required' => 'O campo "Realiza Exercício" é obrigatório.',
+            'realiza.boolean' => 'O campo "Realiza Exercício" deve ser verdadeiro ou falso.',
+            'frequencia_exercicio_id.required' => 'O campo "Frequência de Exercício" é obrigatório.',
+            'frequencia_exercicio_id.exists' => 'A frequência de exercício selecionada não é válida.',
+            'duracao.required' => 'O campo "Duração" é obrigatório.',
+            'duracao.numeric' => 'O campo "Duração" deve ser um número.',
+            'duracao.min' => 'O campo "Duração" deve ser maior ou igual a zero.',
+
+            'zona_moradia_id.required' => 'O campo "Zona de Moradia" é obrigatório.',
+            'zona_moradia_id.exists' => 'A zona de moradia selecionada não é válida.',
+            'luz_publica.required' => 'O campo "Luz Pública" é obrigatório.',
+            'luz_publica.boolean' => 'O campo "Luz Pública" deve ser verdadeiro ou falso.',
+            'coleta_lixo.required' => 'O campo "Coleta de Lixo" é obrigatório.',
+            'coleta_lixo.boolean' => 'O campo "Coleta de Lixo" deve ser verdadeiro ou falso.',
+            'agua_tratada.required' => 'O campo "Água Tratada" é obrigatório.',
+            'agua_tratada.boolean' => 'O campo "Água Tratada" deve ser verdadeiro ou falso.',
+            'rede_esgoto_id.required' => 'O campo "Rede de Esgoto" é obrigatório.',
+            'rede_esgoto_id.exists' => 'A rede de esgoto selecionada não é válida.',
+            'animais_domesticos.required' => 'O campo "Animais Domésticos" é obrigatório.',
+            'animais_domesticos.boolean' => 'O campo "Animais Domésticos" deve ser verdadeiro ou falso.',
+
+            'altura.required' => 'O campo "Altura" é obrigatório.',
+            'altura.numeric' => 'O campo "Altura" deve ser um número.',
+            'altura.min' => 'O campo "Altura" deve ser maior ou igual a zero.',
+            'peso.required' => 'O campo "Peso" é obrigatório.',
+            'peso.numeric' => 'O campo "Peso" deve ser um número.',
+            'peso.min' => 'O campo "Peso" deve ser maior ou igual a zero.',
+            'circunferencia_abdnominal.required' => 'O campo "Circunferência Abdominal" é obrigatório.',
+            'circunferencia_abdnominal.numeric' => 'O campo "Circunferência Abdominal" deve ser um número.',
+            'circunferencia_abdnominal.min' => 'O campo "Circunferência Abdominal" deve ser maior ou igual a zero.',
+            'glicemia_capilar.required' => 'O campo "Glicemia Capilar" é obrigatório.',
+            'glicemia_capilar.numeric' => 'O campo "Glicemia Capilar" deve ser um número.',
+            'glicemia_capilar.min' => 'O campo "Glicemia Capilar" deve ser maior ou igual a zero.',
+            'jejum.required' => 'O campo "Jejum" é obrigatório.',
+            'jejum.boolean' => 'O campo "Jejum" deve ser verdadeiro ou falso.',
+            'pos_prandial.required' => 'O campo "Pós-prandial" é obrigatório.',
+            'pos_prandial.boolean' => 'O campo "Pós-prandial" deve ser verdadeiro ou falso.',
+
+            'temp_enchimento_capilar.required' => 'O campo "Tempo de Enchimento Capilar" é obrigatório.',
+            'temp_enchimento_capilar.numeric' => 'O campo "Tempo de Enchimento Capilar" deve ser um número.',
+            'temp_enchimento_capilar.min' => 'O campo "Tempo de Enchimento Capilar" deve ser maior ou igual a zero.',
+            'frequencia_respiratoria.required' => 'O campo "Frequência Respiratória" é obrigatório.',
+            'frequencia_respiratoria.numeric' => 'O campo "Frequência Respiratória" deve ser um número.',
+            'frequencia_respiratoria.min' => 'O campo "Frequência Respiratória" deve ser maior ou igual a zero.',
+            'satO2.required' => 'O campo "Saturação de Oxigênio (SatO2)" é obrigatório.',
+            'satO2.numeric' => 'O campo "Saturação de Oxigênio (SatO2)" deve ser um número.',
+            'satO2.min' => 'O campo "Saturação de Oxigênio (SatO2)" deve ser maior ou igual a zero.',
+
+            'temperatura.required' => 'O campo "Temperatura" é obrigatório.',
+            'temperatura.numeric' => 'O campo "Temperatura" deve ser um número.',
+            'temperatura.min' => 'O campo "Temperatura" deve ser maior ou igual a zero.',
+
+            'dor_urinar.required' => 'O campo "Dor ao Urinar" é obrigatório.',
+            'dor_urinar.boolean' => 'O campo "Dor ao Urinar" deve ser verdadeiro ou falso.',
+
+            'incontinencia_urina.required' => 'O campo "Incontinência Urinária" é obrigatório.',
+            'incontinencia_urina.boolean' => 'O campo "Incontinência Urinária" deve ser verdadeiro ou falso.',
+
+            'uso_laxante.required' => 'O campo "Uso de Laxante" é obrigatório.',
+            'uso_laxante.boolean' => 'O campo "Uso de Laxante" deve ser verdadeiro ou falso.',
 
-        'frequencia_cardiaca.required' => 'O campo "Frequência Cardíaca" é obrigatório.',
-        'frequencia_cardiaca.numeric' => 'O campo "Frequência Cardíaca" deve ser um número.',
-        'frequencia_cardiaca.min' => 'O campo "Frequência Cardíaca" deve ser maior ou igual a zero.',
+            'uso_fraldas.required' => 'O campo "Uso de Fraldas" é obrigatório.',
+            'uso_fraldas.boolean' => 'O campo "Uso de Fraldas" deve ser verdadeiro ou falso.',
 
-        'psatp_direito.required' => 'O campo "Pressão Sístole Ápice TP Direito" é obrigatório.',
-        'psatp_direito.numeric' => 'O campo "Pressão Sístole Ápice TP Direito" deve ser um número.',
-        'psatp_direito.min' => 'O campo "Pressão Sístole Ápice TP Direito" deve ser maior ou igual a zero.',
+            'dor_eliminacoes.required' => 'O campo "Dor nas Eliminações" é obrigatório.',
+            'dor_eliminacoes.boolean' => 'O campo "Dor nas Eliminações" deve ser verdadeiro ou falso.',
 
-        'psap_direito.required' => 'O campo "Pressão Sístole Ápice Direito" é obrigatório.',
-        'psap_direito.numeric' => 'O campo "Pressão Sístole Ápice Direito" deve ser um número.',
-        'psap_direito.min' => 'O campo "Pressão Sístole Ápice Direito" deve ser maior ou igual a zero.',
+            'incontinencia_eliminacao.required' => 'O campo "Incontinência nas Eliminações" é obrigatório.',
+            'incontinencia_eliminacao.boolean' => 'O campo "Incontinência nas Eliminações" deve ser verdadeiro ou falso.',
 
-        'psab_direito.required' => 'O campo "Pressão Sístole Ábice Direito" é obrigatório.',
-        'psab_direito.numeric' => 'O campo "Pressão Sístole Ábice Direito" deve ser um número.',
-        'psab_direito.min' => 'O campo "Pressão Sístole Ábice Direito" deve ser maior ou igual a zero.',
+            'constipacao.required' => 'O campo "Constipação" é obrigatório.',
+            'constipacao.boolean' => 'O campo "Constipação" deve ser verdadeiro ou falso.',
 
-        'psatp_esquerdo.required' => 'O campo "Pressão Sístole Ápice TP Esquerdo" é obrigatório.',
-        'psatp_esquerdo.numeric' => 'O campo "Pressão Sístole Ápice TP Esquerdo" deve ser um número.',
-        'psatp_esquerdo.min' => 'O campo "Pressão Sístole Ápice TP Esquerdo" deve ser maior ou igual a zero.',
+            'diarreia.required' => 'O campo "Diarreia" é obrigatório.',
+            'diarreia.boolean' => 'O campo "Diarreia" deve ser verdadeiro ou falso.',
 
-        'psap_esquerdo.required' => 'O campo "Pressão Sístole Ápice Esquerdo" é obrigatório.',
-        'psap_esquerdo.numeric' => 'O campo "Pressão Sístole Ápice Esquerdo" deve ser um número.',
-        'psap_esquerdo.min' => 'O campo "Pressão Sístole Ápice Esquerdo" deve ser maior ou igual a zero.',
+            'equipamento_externo.required' => 'O campo "Equipamento Externo" é obrigatório.',
+            'equipamento_externo.string' => 'O campo "Equipamento Externo" deve ser um texto.',
+            'equipamento_externo.max' => 'O campo "Equipamento Externo" não pode exceder 255 caracteres.',
 
-        'psab_esquerdo.required' => 'O campo "Pressão Sístole Ábice Esquerdo" é obrigatório.',
-        'psab_esquerdo.numeric' => 'O campo "Pressão Sístole Ábice Esquerdo" deve ser um número.',
-        'psab_esquerdo.min' => 'O campo "Pressão Sístole Ábice Esquerdo" deve ser maior ou igual a zero.',
+            'vida_sex_ativa.required' => 'O campo "Vida Sexual Ativa" é obrigatório.',
+            'vida_sex_ativa.boolean' => 'O campo "Vida Sexual Ativa" deve ser verdadeiro ou falso.',
 
-        'sintomas_percepcaos.array' => 'O campo "Sintomas de Percepção" deve ser uma lista.',
+            'disturbio_sexuals.array' => 'O campo "Distúrbios Sexuais" deve ser uma lista.',
 
-        'pe_neuropatico.required' => 'O campo "Pé Neuropático" é obrigatório.',
-        'pe_neuropatico.boolean' => 'O campo "Pé Neuropático" deve ser verdadeiro ou falso.',
+            'tipo_locomocaos.array' => 'O campo "Tipos de Locomoção" deve ser uma lista.',
 
-        'arco_desabado.required' => 'O campo "Arco Desabado" é obrigatório.',
-        'arco_desabado.boolean' => 'O campo "Arco Desabado" deve ser verdadeiro ou falso.',
+            'sapato_adequado.required' => 'O campo "Sapato Adequado" é obrigatório.',
+            'sapato_adequado.boolean' => 'O campo "Sapato Adequado" deve ser verdadeiro ou falso.',
 
-        'valgismo.required' => 'O campo "Valgismo" é obrigatório.',
-        'valgismo.boolean' => 'O campo "Valgismo" deve ser verdadeiro ou falso.',
+            'sandalia_cicatrizacao.required' => 'O campo "Sandália de Cicatrização" é obrigatório.',
+            'sandalia_cicatrizacao.boolean' => 'O campo "Sandália de Cicatrização" deve ser verdadeiro ou falso.',
 
-        'dedos_em_garra.required' => 'O campo "Dedos em Garra" é obrigatório.',
-        'dedos_em_garra.boolean' => 'O campo "Dedos em Garra" deve ser verdadeiro ou falso.',
+            'pressao_arterial.required' => 'O campo "Pressão Arterial" é obrigatório.',
+            'pressao_arterial.numeric' => 'O campo "Pressão Arterial" deve ser um número.',
+            'pressao_arterial.min' => 'O campo "Pressão Arterial" deve ser maior ou igual a zero.',
 
-        'estado_unhas_id.required' => 'O campo "Estado das Unhas" é obrigatório.',
-        'estado_unhas_id.exists' => 'O estado das unhas selecionado não é válido.',
+            'frequencia_cardiaca.required' => 'O campo "Frequência Cardíaca" é obrigatório.',
+            'frequencia_cardiaca.numeric' => 'O campo "Frequência Cardíaca" deve ser um número.',
+            'frequencia_cardiaca.min' => 'O campo "Frequência Cardíaca" deve ser maior ou igual a zero.',
 
-        'corte_unhas.required' => 'O campo "Corte das Unhas" é obrigatório.',
-        'corte_unhas.boolean' => 'O campo "Corte das Unhas" deve ser verdadeiro ou falso.',
+            'psatp_direito.required' => 'O campo "Pressão Sístole Ápice TP Direito" é obrigatório.',
+            'psatp_direito.numeric' => 'O campo "Pressão Sístole Ápice TP Direito" deve ser um número.',
+            'psatp_direito.min' => 'O campo "Pressão Sístole Ápice TP Direito" deve ser maior ou igual a zero.',
 
-        'fissuras.required' => 'O campo "Fissuras" é obrigatório.',
-        'fissuras.boolean' => 'O campo "Fissuras" deve ser verdadeiro ou falso.',
+            'psap_direito.required' => 'O campo "Pressão Sístole Ápice Direito" é obrigatório.',
+            'psap_direito.numeric' => 'O campo "Pressão Sístole Ápice Direito" deve ser um número.',
+            'psap_direito.min' => 'O campo "Pressão Sístole Ápice Direito" deve ser maior ou igual a zero.',
 
-        'calosidades.required' => 'O campo "Calosidades" é obrigatório.',
-        'calosidades.boolean' => 'O campo "Calosidades" deve ser verdadeiro ou falso.',
+            'psab_direito.required' => 'O campo "Pressão Sístole Ábice Direito" é obrigatório.',
+            'psab_direito.numeric' => 'O campo "Pressão Sístole Ábice Direito" deve ser um número.',
+            'psab_direito.min' => 'O campo "Pressão Sístole Ábice Direito" deve ser maior ou igual a zero.',
 
-        'micose.required' => 'O campo "Micose" é obrigatório.',
-        'micose.boolean' => 'O campo "Micose" deve ser verdadeiro ou falso.',
+            'psatp_esquerdo.required' => 'O campo "Pressão Sístole Ápice TP Esquerdo" é obrigatório.',
+            'psatp_esquerdo.numeric' => 'O campo "Pressão Sístole Ápice TP Esquerdo" deve ser um número.',
+            'psatp_esquerdo.min' => 'O campo "Pressão Sístole Ápice TP Esquerdo" deve ser maior ou igual a zero.',
 
-        'percepcao_direito.required' => 'O campo "Percepção Direito" é obrigatório.',
-        'percepcao_direito.boolean' => 'O campo "Percepção Direito" deve ser verdadeiro ou falso.',
+            'psap_esquerdo.required' => 'O campo "Pressão Sístole Ápice Esquerdo" é obrigatório.',
+            'psap_esquerdo.numeric' => 'O campo "Pressão Sístole Ápice Esquerdo" deve ser um número.',
+            'psap_esquerdo.min' => 'O campo "Pressão Sístole Ápice Esquerdo" deve ser maior ou igual a zero.',
 
-        'percepcao_esquerdo.required' => 'O campo "Percepção Esquerdo" é obrigatório.',
-        'percepcao_esquerdo.boolean' => 'O campo "Percepção Esquerdo" deve ser verdadeiro ou falso.',
+            'psab_esquerdo.required' => 'O campo "Pressão Sístole Ábice Esquerdo" é obrigatório.',
+            'psab_esquerdo.numeric' => 'O campo "Pressão Sístole Ábice Esquerdo" deve ser um número.',
+            'psab_esquerdo.min' => 'O campo "Pressão Sístole Ábice Esquerdo" deve ser maior ou igual a zero.',
 
-        'sinais_infeccaos.array' => 'O campo "Sinais de Infecção" deve ser uma lista.',
+            'sintomas_percepcaos.array' => 'O campo "Sintomas de Percepção" deve ser uma lista.',
 
-        'comprimentoD.required' => 'O campo "Comprimento (Pé Direito)" é obrigatório.',
-        'comprimentoD.numeric' => 'O campo "Comprimento (Pé Direito)" deve ser um número.',
-        'comprimentoD.min' => 'O campo "Comprimento (Pé Direito)" deve ser maior ou igual a zero.',
+            'pe_neuropatico.required' => 'O campo "Pé Neuropático" é obrigatório.',
+            'pe_neuropatico.boolean' => 'O campo "Pé Neuropático" deve ser verdadeiro ou falso.',
 
-        'larguraD.required' => 'O campo "Largura (Pé Direito)" é obrigatório.',
-        'larguraD.numeric' => 'O campo "Largura (Pé Direito)" deve ser um número.',
-        'larguraD.min' => 'O campo "Largura (Pé Direito)" deve ser maior ou igual a zero.',
+            'arco_desabado.required' => 'O campo "Arco Desabado" é obrigatório.',
+            'arco_desabado.boolean' => 'O campo "Arco Desabado" deve ser verdadeiro ou falso.',
 
-        'regiao_pe_direito_id.required' => 'O campo "Região do Pé Direito" é obrigatório.',
-        'regiao_pe_direito_id.exists' => 'A região do pé direito selecionada não é válida.',
+            'valgismo.required' => 'O campo "Valgismo" é obrigatório.',
+            'valgismo.boolean' => 'O campo "Valgismo" deve ser verdadeiro ou falso.',
 
-        'localizacao_lesao_direito_id.required' => 'O campo "Localização da Lesão (Pé Direito)" é obrigatório.',
-        'localizacao_lesao_direito_id.exists' => 'A localização da lesão no pé direito selecionada não é válida.',
+            'dedos_em_garra.required' => 'O campo "Dedos em Garra" é obrigatório.',
+            'dedos_em_garra.boolean' => 'O campo "Dedos em Garra" deve ser verdadeiro ou falso.',
 
-        'lesao_amputacaoD.required' => 'O campo "Lesão ou Amputação (Pé Direito)" é obrigatório.',
-        'lesao_amputacaoD.boolean' => 'O campo "Lesão ou Amputação (Pé Direito)" deve ser verdadeiro ou falso.',
+            'estado_unhas_id.required' => 'O campo "Estado das Unhas" é obrigatório.',
+            'estado_unhas_id.exists' => 'O estado das unhas selecionado não é válido.',
 
-        'comprimentoE.required' => 'O campo "Comprimento (Pé Esquerdo)" é obrigatório.',
-        'comprimentoE.numeric' => 'O campo "Comprimento (Pé Esquerdo)" deve ser um número.',
-        'comprimentoE.min' => 'O campo "Comprimento (Pé Esquerdo)" deve ser maior ou igual a zero.',
+            'corte_unhas.required' => 'O campo "Corte das Unhas" é obrigatório.',
+            'corte_unhas.boolean' => 'O campo "Corte das Unhas" deve ser verdadeiro ou falso.',
 
-        'larguraE.required' => 'O campo "Largura (Pé Esquerdo)" é obrigatório.',
-        'larguraE.numeric' => 'O campo "Largura (Pé Esquerdo)" deve ser um número.',
-        'larguraE.min' => 'O campo "Largura (Pé Esquerdo)" deve ser maior ou igual a zero.',
+            'fissuras.required' => 'O campo "Fissuras" é obrigatório.',
+            'fissuras.boolean' => 'O campo "Fissuras" deve ser verdadeiro ou falso.',
 
-        'regiao_pe_esquerdo_id.required' => 'O campo "Região do Pé Esquerdo" é obrigatório.',
-        'regiao_pe_esquerdo_id.exists' => 'A região do pé esquerdo selecionada não é válida.',
+            'calosidades.required' => 'O campo "Calosidades" é obrigatório.',
+            'calosidades.boolean' => 'O campo "Calosidades" deve ser verdadeiro ou falso.',
 
-        'localizacao_lesao_esquerdo_id.required' => 'O campo "Localização da Lesão (Pé Esquerdo)" é obrigatório.',
-        'localizacao_lesao_esquerdo_id.exists' => 'A localização da lesão no pé esquerdo selecionada não é válida.',
+            'micose.required' => 'O campo "Micose" é obrigatório.',
+            'micose.boolean' => 'O campo "Micose" deve ser verdadeiro ou falso.',
 
-        'lesao_amputacaoE.required' => 'O campo "Lesão ou Amputação (Pé Esquerdo)" é obrigatório.',
-        'lesao_amputacaoE.boolean' => 'O campo "Lesão ou Amputação (Pé Esquerdo)" deve ser verdadeiro ou falso.',
+            'percepcao_direito.required' => 'O campo "Percepção Direito" é obrigatório.',
+            'percepcao_direito.boolean' => 'O campo "Percepção Direito" deve ser verdadeiro ou falso.',
 
-        'bordas_ferida_id.required' => 'O campo "Bordas da Ferida" é obrigatório.',
-        'bordas_ferida_id.exists' => 'As bordas da ferida selecionadas não são válidas.',
+            'percepcao_esquerdo.required' => 'O campo "Percepção Esquerdo" é obrigatório.',
+            'percepcao_esquerdo.boolean' => 'O campo "Percepção Esquerdo" deve ser verdadeiro ou falso.',
 
-        'pele_periferida_id.required' => 'O campo "Pele ao Redor da Ferida" é obrigatório.',
-        'pele_periferida_id.exists' => 'A pele ao redor da ferida selecionada não é válida.',
+            'sinais_infeccaos.array' => 'O campo "Sinais de Infecção" deve ser uma lista.',
 
-        'profundidade_id.required' => 'O campo "Profundidade" é obrigatório.',
-        'profundidade_id.exists' => 'A profundidade selecionada não é válida.',
+            'comprimentoD.required' => 'O campo "Comprimento (Pé Direito)" é obrigatório.',
+            'comprimentoD.numeric' => 'O campo "Comprimento (Pé Direito)" deve ser um número.',
+            'comprimentoD.min' => 'O campo "Comprimento (Pé Direito)" deve ser maior ou igual a zero.',
 
-        'tipo_tecido_ferida_id.required' => 'O campo "Tipo de Tecido na Ferida" é obrigatório.',
-        'tipo_tecido_ferida_id.exists' => 'O tipo de tecido na ferida selecionado não é válido.',
+            'larguraD.required' => 'O campo "Largura (Pé Direito)" é obrigatório.',
+            'larguraD.numeric' => 'O campo "Largura (Pé Direito)" deve ser um número.',
+            'larguraD.min' => 'O campo "Largura (Pé Direito)" deve ser maior ou igual a zero.',
 
-        'aspecto_exudato_id.required' => 'O campo "Aspecto do Exsudato" é obrigatório.',
-        'aspecto_exudato_id.exists' => 'O aspecto do exsudato selecionado não é válido.',
+            'regiao_pe_direito_id.required' => 'O campo "Região do Pé Direito" é obrigatório.',
+            'regiao_pe_direito_id.exists' => 'A região do pé direito selecionada não é válida.',
 
-        'quantidade_exudato_id.required' => 'O campo "Quantidade de Exsudato" é obrigatório.',
-        'quantidade_exudato_id.exists' => 'A quantidade de exsudato selecionada não é válida.',
+            'localizacao_lesao_direito_id.required' => 'O campo "Localização da Lesão (Pé Direito)" é obrigatório.',
+            'localizacao_lesao_direito_id.exists' => 'A localização da lesão no pé direito selecionada não é válida.',
 
-        'edema.required' => 'O campo "Edema" é obrigatório.',
-        'edema.boolean' => 'O campo "Edema" deve ser verdadeiro ou falso.',
+            'lesao_amputacaoD.required' => 'O campo "Lesão ou Amputação (Pé Direito)" é obrigatório.',
+            'lesao_amputacaoD.boolean' => 'O campo "Lesão ou Amputação (Pé Direito)" deve ser verdadeiro ou falso.',
 
-        'odor_exudato.required' => 'O campo "Odor do Exsudato" é obrigatório.',
-        'odor_exudato.boolean' => 'O campo "Odor do Exsudato" deve ser verdadeiro ou falso.',
+            'comprimentoE.required' => 'O campo "Comprimento (Pé Esquerdo)" é obrigatório.',
+            'comprimentoE.numeric' => 'O campo "Comprimento (Pé Esquerdo)" deve ser um número.',
+            'comprimentoE.min' => 'O campo "Comprimento (Pé Esquerdo)" deve ser maior ou igual a zero.',
 
-        'dor.required' => 'O campo "Dor" é obrigatório.',
-        'dor.boolean' => 'O campo "Dor" deve ser verdadeiro ou falso.',
+            'larguraE.required' => 'O campo "Largura (Pé Esquerdo)" é obrigatório.',
+            'larguraE.numeric' => 'O campo "Largura (Pé Esquerdo)" deve ser um número.',
+            'larguraE.min' => 'O campo "Largura (Pé Esquerdo)" deve ser maior ou igual a zero.',
 
-        'limpeza_lesaos.array' => 'O campo "Limpeza de Lesões" deve ser uma lista.',
+            'regiao_pe_esquerdo_id.required' => 'O campo "Região do Pé Esquerdo" é obrigatório.',
+            'regiao_pe_esquerdo_id.exists' => 'A região do pé esquerdo selecionada não é válida.',
 
-        'coberturas.array' => 'O campo "Coberturas" deve ser uma lista.',
+            'localizacao_lesao_esquerdo_id.required' => 'O campo "Localização da Lesão (Pé Esquerdo)" é obrigatório.',
+            'localizacao_lesao_esquerdo_id.exists' => 'A localização da lesão no pé esquerdo selecionada não é válida.',
 
-        'desbridamento_id.required' => 'O campo "Desbridamento" é obrigatório.',
-        'desbridamento_id.exists' => 'O desbridamento selecionado não é válido.',
+            'lesao_amputacaoE.required' => 'O campo "Lesão ou Amputação (Pé Esquerdo)" é obrigatório.',
+            'lesao_amputacaoE.boolean' => 'O campo "Lesão ou Amputação (Pé Esquerdo)" deve ser verdadeiro ou falso.',
 
-        'avaliacao_ferida_id.required' => 'O campo "Avaliação da Ferida" é obrigatório.',
-        'avaliacao_ferida_id.exists' => 'A avaliação da ferida selecionada não é válida.',
+            'bordas_ferida_id.required' => 'O campo "Bordas da Ferida" é obrigatório.',
+            'bordas_ferida_id.exists' => 'As bordas da ferida selecionadas não são válidas.',
 
-        'aplicacao_laserterapia.required' => 'O campo "Aplicação de Laserterapia" é obrigatório.',
-        'aplicacao_laserterapia.boolean' => 'O campo "Aplicação de Laserterapia" deve ser verdadeiro ou falso.',
+            'pele_periferida_id.required' => 'O campo "Pele ao Redor da Ferida" é obrigatório.',
+            'pele_periferida_id.exists' => 'A pele ao redor da ferida selecionada não é válida.',
 
-        'terapia_fotodinamica.required' => 'O campo "Terapia Fotodinâmica" é obrigatório.',
-        'terapia_fotodinamica.boolean' => 'O campo "Terapia Fotodinâmica" deve ser verdadeiro ou falso.',
+            'profundidade_id.required' => 'O campo "Profundidade" é obrigatório.',
+            'profundidade_id.exists' => 'A profundidade selecionada não é válida.',
 
-        'imagem_avaliacao_pe.image' => 'O campo "Imagem de Avaliação do Pé" deve ser uma imagem.',
-        'imagem_avaliacao_pe.max' => 'O campo "Imagem de Avaliação do Pé" não pode exceder 2MB.',
+            'tipo_tecido_ferida_id.required' => 'O campo "Tipo de Tecido na Ferida" é obrigatório.',
+            'tipo_tecido_ferida_id.exists' => 'O tipo de tecido na ferida selecionado não é válido.',
 
-        'monitoramento_glicemia_dia.required' => 'O campo "Monitoramento de Glicemia por Dia" é obrigatório.',
-        'monitoramento_glicemia_dia.integer' => 'O campo "Monitoramento de Glicemia por Dia" deve ser um número inteiro.',
-        'monitoramento_glicemia_dia.min' => 'O campo "Monitoramento de Glicemia por Dia" deve ser maior ou igual a zero.',
+            'aspecto_exudato_id.required' => 'O campo "Aspecto do Exsudato" é obrigatório.',
+            'aspecto_exudato_id.exists' => 'O aspecto do exsudato selecionado não é válido.',
 
-        'cuidado_pes.required' => 'O campo "Cuidados com os Pés" é obrigatório.',
-        'cuidado_pes.boolean' => 'O campo "Cuidados com os Pés" deve ser verdadeiro ou falso.',
+            'quantidade_exudato_id.required' => 'O campo "Quantidade de Exsudato" é obrigatório.',
+            'quantidade_exudato_id.exists' => 'A quantidade de exsudato selecionada não é válida.',
 
-        'uso_sapato.required' => 'O campo "Uso de Sapato" é obrigatório.',
-        'uso_sapato.boolean' => 'O campo "Uso de Sapato" deve ser verdadeiro ou falso.',
+            'edema.required' => 'O campo "Edema" é obrigatório.',
+            'edema.boolean' => 'O campo "Edema" deve ser verdadeiro ou falso.',
 
-        'alimentacao.required' => 'O campo "Alimentação" é obrigatório.',
-        'alimentacao.boolean' => 'O campo "Alimentação" deve ser verdadeiro ou falso.',
+            'odor_exudato.required' => 'O campo "Odor do Exsudato" é obrigatório.',
+            'odor_exudato.boolean' => 'O campo "Odor do Exsudato" deve ser verdadeiro ou falso.',
 
-        'regime_terapeutico.required' => 'O campo "Regime Terapêutico" é obrigatório.',
-        'regime_terapeutico.boolean' => 'O campo "Regime Terapêutico" deve ser verdadeiro ou falso.',
+            'dor.required' => 'O campo "Dor" é obrigatório.',
+            'dor.boolean' => 'O campo "Dor" deve ser verdadeiro ou falso.',
 
-        'recreacaos.array' => 'O campo "Recreações" deve ser uma lista.',
+            'limpeza_lesaos.array' => 'O campo "Limpeza de Lesões" deve ser uma lista.',
 
-        'acompanhado.required' => 'O campo "Acompanhado" é obrigatório.',
-        'acompanhado.boolean' => 'O campo "Acompanhado" deve ser verdadeiro ou falso.',
+            'coberturas.array' => 'O campo "Coberturas" deve ser uma lista.',
 
-        'opnioes_de_si.required' => 'O campo "Opinião sobre Si" é obrigatório.',
-        'opnioes_de_si.boolean' => 'O campo "Opinião sobre Si" deve ser verdadeiro ou falso.',
+            'desbridamento_id.required' => 'O campo "Desbridamento" é obrigatório.',
+            'desbridamento_id.exists' => 'O desbridamento selecionado não é válido.',
 
-        'auxiliador.required' => 'O campo "Auxiliador" é obrigatório.',
-        'auxiliador.string' => 'O campo "Auxiliador" deve ser um texto.',
-        'auxiliador.max' => 'O campo "Auxiliador" não pode exceder 255 caracteres.',
+            'avaliacao_ferida_id.required' => 'O campo "Avaliação da Ferida" é obrigatório.',
+            'avaliacao_ferida_id.exists' => 'A avaliação da ferida selecionada não é válida.',
 
-        'emocionals.array' => 'O campo "Aspectos Emocionais" deve ser uma lista.',
+            'aplicacao_laserterapia.required' => 'O campo "Aplicação de Laserterapia" é obrigatório.',
+            'aplicacao_laserterapia.boolean' => 'O campo "Aplicação de Laserterapia" deve ser verdadeiro ou falso.',
 
-        'apoio.required' => 'O campo "Apoio" é obrigatório.',
-        'apoio.boolean' => 'O campo "Apoio" deve ser verdadeiro ou falso.',
+            'terapia_fotodinamica.required' => 'O campo "Terapia Fotodinâmica" é obrigatório.',
+            'terapia_fotodinamica.boolean' => 'O campo "Terapia Fotodinâmica" deve ser verdadeiro ou falso.',
 
-        'interacao_social.required' => 'O campo "Interação Social" é obrigatório.',
-        'interacao_social.boolean' => 'O campo "Interação Social" deve ser verdadeiro ou falso.',
+            'imagem_avaliacao_pe.image' => 'O campo "Imagem de Avaliação do Pé" deve ser uma imagem.',
+            'imagem_avaliacao_pe.max' => 'O campo "Imagem de Avaliação do Pé" não pode exceder 2MB.',
 
-        'religiao.required' => 'O campo "Religião" é obrigatório.',
-        'religiao.string' => 'O campo "Religião" deve ser um texto.',
-        'religiao.max' => 'O campo "Religião" não pode exceder 255 caracteres.',
+            'monitoramento_glicemia_dia.required' => 'O campo "Monitoramento de Glicemia por Dia" é obrigatório.',
+            'monitoramento_glicemia_dia.integer' => 'O campo "Monitoramento de Glicemia por Dia" deve ser um número inteiro.',
+            'monitoramento_glicemia_dia.min' => 'O campo "Monitoramento de Glicemia por Dia" deve ser maior ou igual a zero.',
 
-        'idUnidadeSelected.required' => 'O campo "Unidade de Saúde" é obrigatório.',
-        'idUnidadeSelected.exists' => 'A unidade de saúde selecionada não é válida.',
+            'cuidado_pes.required' => 'O campo "Cuidados com os Pés" é obrigatório.',
+            'cuidado_pes.boolean' => 'O campo "Cuidados com os Pés" deve ser verdadeiro ou falso.',
 
-        'impressoes.required' => 'O campo "Impressões" é obrigatório.',
-        'impressoes.string' => 'O campo "Impressões" deve ser um texto.',
-    ];
-}
+            'uso_sapato.required' => 'O campo "Uso de Sapato" é obrigatório.',
+            'uso_sapato.boolean' => 'O campo "Uso de Sapato" deve ser verdadeiro ou falso.',
+
+            'alimentacao.required' => 'O campo "Alimentação" é obrigatório.',
+            'alimentacao.boolean' => 'O campo "Alimentação" deve ser verdadeiro ou falso.',
+
+            'regime_terapeutico.required' => 'O campo "Regime Terapêutico" é obrigatório.',
+            'regime_terapeutico.boolean' => 'O campo "Regime Terapêutico" deve ser verdadeiro ou falso.',
+
+            'recreacaos.array' => 'O campo "Recreações" deve ser uma lista.',
+
+            'acompanhado.required' => 'O campo "Acompanhado" é obrigatório.',
+            'acompanhado.boolean' => 'O campo "Acompanhado" deve ser verdadeiro ou falso.',
+
+            'opnioes_de_si.required' => 'O campo "Opinião sobre Si" é obrigatório.',
+            'opnioes_de_si.boolean' => 'O campo "Opinião sobre Si" deve ser verdadeiro ou falso.',
+
+            'auxiliador.required' => 'O campo "Auxiliador" é obrigatório.',
+            'auxiliador.string' => 'O campo "Auxiliador" deve ser um texto.',
+            'auxiliador.max' => 'O campo "Auxiliador" não pode exceder 255 caracteres.',
+
+            'emocionals.array' => 'O campo "Aspectos Emocionais" deve ser uma lista.',
+
+            'apoio.required' => 'O campo "Apoio" é obrigatório.',
+            'apoio.boolean' => 'O campo "Apoio" deve ser verdadeiro ou falso.',
+
+            'interacao_social.required' => 'O campo "Interação Social" é obrigatório.',
+            'interacao_social.boolean' => 'O campo "Interação Social" deve ser verdadeiro ou falso.',
+
+            'religiao.string' => 'O campo "Religião" deve ser um texto.',
+            'religiao.max' => 'O campo "Religião" não pode exceder 255 caracteres.',
+
+            'idUnidadeSelected.required' => 'O campo "Unidade de Saúde" é obrigatório.',
+            'idUnidadeSelected.exists' => 'A unidade de saúde selecionada não é válida.',
+
+            'impressoes.required' => 'O campo "Impressões" é obrigatório.',
+            'impressoes.string' => 'O campo "Impressões" deve ser um texto.',
+        ];
+    }
 
     public function validateStep()
     {
@@ -736,7 +735,7 @@ class CreateQuestionario extends Component
             ]);
         } else if ($this->currentStep == 4) {
             $this->validate([
-                'religiao' => 'required|string|max:255',
+                'religiao' => 'string|max:255',
 
                 'idUnidadeSelected' => 'required|exists:unidade_saudes,id',
 
@@ -767,845 +766,749 @@ class CreateQuestionario extends Component
             $prontuario->motivos()->attach($motivo->id);
         }
 
-        if (($questionario->paciente->historico()->inicio_etilismo) != null) {
+        if (($questionario->paciente->historico()->inicio_etilismo) == 0) {
             $origem = Origem::Find(2);
             $prontuario->origens()->attach($origem->id);
 
             $motivo = Motivo::Find(3);
             $prontuario->motivos()->attach($motivo->id);
-        
-
         }
-        if (($questionario->paciente->historico()->inicio_tabagismo) != null) {
+        if (($questionario->paciente->historico()->inicio_tabagismo) == 0) {
             $origem = Origem::Find(2);
             $prontuario->origens()->attach($origem->id);
 
             $motivo = Motivo::Find(4);
             $prontuario->motivos()->attach($motivo->id);
         }
-            if (($questionario->nss_biologica()->regulacao_neuro()->comportamento_reg_neuro()->id == 2 ) ) {
-                $origem = Origem::Find(3);
-                $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::Find(5);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->regulacao_neuro()->comportamento_reg_neuro()->id == 3 )) {
-                $origem = Origem::Find(3);
-                $prontuario->origens()->attach($origem->id);
-    
-                $motivo = Motivo::Find(6);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->percepcoes()->olho_direito == true) || ($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->percepcoes()->olho_esquerdo == true )) {
-                $origem = Origem::Find(4);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(7);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->percepcao_sentidos()->risco_queda)) {
-                $origem = Origem::Find(4);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(8);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->id == 4)) {
-                $origem = Origem::Find(4);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(9);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->id == 5)) {
-                $origem = Origem::Find(4);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(10);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->id == 6)) {
-                $origem = Origem::Find(4);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(11);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->percepcao_sentidos()->ouvido)) {
-                $origem = Origem::Find(4);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(12);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->nutricao()->alimento_consumo()->id == 3)) {
-                $origem = Origem::Find(5);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(13);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->nutricao()->alimento_consumo()->id == 4)) {
-                $origem = Origem::Find(5);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(14);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            //PROBLEMA PRA DEPOIS
-            // if (($questionario->nss_biologica()->nutricao()->restricoes_alimentar())) {
-            //     $origem = Origem::firstOrCreate(
-            //         [
-            //             'descricao' => "Nutrição",
-            //         ]
-            //     );
-            //     $prontuario->origens()->attach($origem->id);
-    
-            //     $motivo = Motivo::firstOrCreate(
-            //         [
-            //             'descricao' => "Restrições alimentares",
-            //             'origem_id' => $this->$origem->id,
-            //         ]
-            //     );
-            //     $prontuario->motivos()->attach($motivo->id);
-    
-            // }
-            if (($questionario->nss_biologica()->sono()->qualidade_sono()->acorda_noite)) {
-                $origem = Origem::Find(6);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(15);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->sono()->qualidade_sono()->id == 3)) {
-                $origem = Origem::Find(6);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(16);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->sono()->qualidade_sono()->id == 4)) {
-                $origem = Origem::Find(6);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(17);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 2) {
-                $origem = Origem::Find(6);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(17);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 3) {
-                $origem = Origem::Find(6);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(18);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 4) {
-                $origem = Origem::Find(6);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(19);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 5) {
-                $origem = Origem::Find(6);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(20);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 6) {
-                $origem = Origem::Find(6);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(21);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 7) {
-                $origem = Origem::Find(6);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(22);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->exercicio_fisico()->frequencias_exercicio()->id == 1)) {
-                $origem = Origem::Find(7);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(23);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-
-            if (($questionario->nss_biologica()->abrigo()->zona_moradia())) {
-                $origem = Origem::Find(8);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(24);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->abrigo()->zona_moradia()-> id == 3)) {
-                $origem = Origem::Find(8);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(25);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->abrigo()->zona_moradia()-> id == 4)) {
-                $origem = Origem::Find(8);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(26);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->abrigo()->luz_publica)){
-                $origem = Origem::Find(8);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(27);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->abrigo()->coleta_lixo)){
-                $origem = Origem::Find(8);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(28);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->abrigo()->agua_tratada)){
-                $origem = Origem::Find(8);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(29);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->abrigo()->rede_esgoto()-> id ==2)){
-                $origem = Origem::Find(8);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(30);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->abrigo()->rede_esgoto()-> id == 3)){
-                $origem = Origem::Find(8);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(31);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            $this->calcularIMC();
-            if ($this->imc >= 25 ){
-                $origem = Origem::Find(9);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(32);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            //PROBLEMA PRA DEPOIS HIPERGLICEMIA/HIPOGLICEMIA
-            if (($questionario->nss_biologica()->regulacao_neuro())){
-                $origem = Origem::Find(10);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(34);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->oxigenacao()->temp_enchimento_capilar)< 2){
-                $origem = Origem::Find(10);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(35);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            $this->calcularClassificacaoTemperatura();
-
-            if (($this->temperatura >= 37.6)){
-                $origem = Origem::Find(11);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(36);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            //PROBLEMA PRA DEPOIS
-            if (($questionario->nss_biologica()->sexualidade()->disturbios_sexual())){
-                $origem = Origem::Find(12);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(37);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 3)){
-                $origem = Origem::Find(13);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(38);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 4)){
-                $origem = Origem::Find(13);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(39);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 5)){
-                $origem = Origem::Find(13);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(40);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 6)){
-                $origem = Origem::Find(13);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(41);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 7)){
-                $origem = Origem::Find(13);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(42);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 8)){
-                $origem = Origem::Find(13);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(43);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 9)){
-                $origem = Origem::Find(13);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(44);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 10)){
-                $origem = Origem::Find(13);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(45);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 11)){
-                $origem = Origem::Find(13);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(46);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 12)){
-                $origem = Origem::Find(13);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(47);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 13)){
-                $origem = Origem::Find(13);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(48);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()-> id == 14)){
-                $origem = Origem::Find(13);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(49);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->regulacao_vascular()->pressao_arterial)){
-                $origem = Origem::Find(14);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(50);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            //FREQUENCIA CADA PÉ?
-            //ITB
-            if (($questionario->nss_biologica()->regulacao_vascular()->frequencia_cardiaca)){
-                $origem = Origem::Find(14);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(51);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 2)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(52);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 3)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(53);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 4)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(54);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()-> id == 5)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(55);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            // é false?
-            if (($questionario->nss_biologica()->senso_percepcao()->corte_unhas == false)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(56);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 3)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(57);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 4)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(58);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 5)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(59);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 8)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(60);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 9)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(61);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 12)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(62);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 6)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(63);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->calosidades)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(64);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-
-            if (($questionario->nss_biologica()->senso_percepcao()-> sintomas_percepcao()-> id == 10)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(65);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->fissuras)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(66);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->pe_neuropatico)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(67);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->arco_desabado)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(68);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->valgismo)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(69);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->dedos_em_garra)){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(70);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->senso_percepcao()->percepcao_direito && $questionario->nss_biologica()->senso_percepcao()->percepcao_esquerdo )){
-                $origem = Origem::Find(15);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(71);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->integridade_cutanea()->borda_ferida()-> id == 6)){
-                $origem = Origem::Find(16);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(72);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->integridade_cutanea()->edema)){
-                $origem = Origem::Find(16);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(73);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->integridade_cutanea()->quantidade_exudato()-> id == 3)){
-                $origem = Origem::Find(16);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(74);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->integridade_cutanea()->quantidade_exudato()-> id == 4)){
-                $origem = Origem::Find(16);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(75);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->integridade_cutanea()->odor_exudato)){
-                $origem = Origem::Find(16);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(76);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 2)){
-                $origem = Origem::Find(16);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(77);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 3)){
-                $origem = Origem::Find(16);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(78);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 4)){
-                $origem = Origem::Find(16);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(79);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 5)){
-                $origem = Origem::Find(16);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(80);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->integridade_cutanea()-> aspecto_exudato()-> id == 6)){
-                $origem = Origem::Find(16);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(81);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->integridade_cutanea()->tipo_tecido_ferida()-> id == 3)){
-                $origem = Origem::Find(16);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(82);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->integridade_cutanea()->tipo_tecido_ferida()-> id == 4)){
-                $origem = Origem::Find(16);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(83);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->integridade_cutanea()->sinais_infeccao())){
-                $origem = Origem::Find(16);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(84);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_biologica()->cuidado_ferida()->avaliacao_ferida())){
-                $origem = Origem::Find(17);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(85);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            //aprendizagem 
-            if (($questionario->nss_sociais()->aprendizagem()->regime_terapeutico == false)){
-                $origem = Origem::Find(18);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(86);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->aprendizagem()->monitoramento_glicemia_dia == 0)){
-                $origem = Origem::Find(18);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(87);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->aprendizagem()->monitoramento_glicemia_dia != 0)){
-                $origem = Origem::Find(18);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(88);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            //marcou nenhuma ou só uma (???)
-            if (($questionario->nss_sociais()->recreacoes()->id == 1)){
-                $origem = Origem::Find(19);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(89);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->cuidado()->acompanhado == true)){
-                $origem = Origem::Find(20);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(90);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->cuidado()->emocionais()-> id == 1)){
-                $origem = Origem::Find(20);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(91);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->cuidado()->emocionais()-> id == 2)){
-                $origem = Origem::Find(20);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(92);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->cuidado()->emocionais()-> id == 3)){
-                $origem = Origem::Find(20);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(93);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->cuidado()->emocionais()-> id == 4)){
-                $origem = Origem::Find(20);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(94);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->cuidado()->emocionais()-> id == 5)){
-                $origem = Origem::Find(20);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(95);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->cuidado()->emocionais()-> id == 6)){
-                $origem = Origem::Find(20);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(96);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->cuidado()->opnioes_de_si == true)){
-                $origem = Origem::Find(20);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(97);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->comunicacao()->interacao_social ==  false)){
-                $origem = Origem::Find(21);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(98);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->comunicacao()->apoio ==  false)){
-                $origem = Origem::Find(21);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(99);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->comunicacao()->interacao_social ==  true)){
-                $origem = Origem::Find(21);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(100);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            if (($questionario->nss_sociais()->comunicacao()->apoio ==  true)){
-                $origem = Origem::Find(21);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(101);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            //diferente de null??
-            if (($questionario->nss_espiritual()->religiao)){
-                $origem = Origem::Find(22);
-                $prontuario->origens()->attach($origem->id);
-
-                $motivo = Motivo::Find(102);
-                $prontuario->motivos()->attach($motivo->id);
-    
-            }
-            
-    
-
-            
-        
-        
-    
-
+        if (($questionario->nss_biologica()->regulacao_neuro()->comportamento_reg_neuro()->id == 2)) {
+            $origem = Origem::Find(3);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(5);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->regulacao_neuro()->comportamento_reg_neuro()->id == 3)) {
+            $origem = Origem::Find(3);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(6);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->percepcoes()->olho_direito == 1) || ($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->percepcoes()->olho_esquerdo == 1)) {
+            $origem = Origem::Find(4);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(7);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->percepcao_sentidos()->risco_queda == 1)) {
+            $origem = Origem::Find(4);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(8);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->id == 4)) {
+            $origem = Origem::Find(4);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(9);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->id == 5)) {
+            $origem = Origem::Find(4);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(10);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->percepcao_sentidos()->analise_tato()->id == 6)) {
+            $origem = Origem::Find(4);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(11);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->percepcao_sentidos()->ouvido == 1)) {
+            $origem = Origem::Find(4);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(12);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->nutricao()->alimento_consumo()->id == 3)) {
+            $origem = Origem::Find(5);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(13);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->nutricao()->alimento_consumo()->id == 4)) {
+            $origem = Origem::Find(5);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(14);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (!($this->restricaos == null)) {
+            $origem = Origem::Find(5);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(103);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+
+        if (($questionario->nss_biologica()->sono()->qualidade_sono()->acorda_noite == 1)) {
+            $origem = Origem::Find(6);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(15);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->sono()->qualidade_sono()->id == 3)) {
+            $origem = Origem::Find(6);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(16);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->sono()->qualidade_sono()->id == 4)) {
+            $origem = Origem::Find(6);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(17);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 2) {
+            $origem = Origem::Find(6);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(17);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 3) {
+            $origem = Origem::Find(6);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(18);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 4) {
+            $origem = Origem::Find(6);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(19);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 5) {
+            $origem = Origem::Find(6);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(20);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 6) {
+            $origem = Origem::Find(6);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(21);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->sono()->problemas_sono())->id == 7) {
+            $origem = Origem::Find(6);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(22);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->exercicio_fisico()->frequencias_exercicio()->id == 1)) {
+            $origem = Origem::Find(7);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(23);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+
+        if (($questionario->nss_biologica()->abrigo()->zona_moradia()->id == 3)) {
+            $origem = Origem::Find(8);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(25);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->abrigo()->zona_moradia()->id == 4)) {
+            $origem = Origem::Find(8);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(26);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->abrigo()->luz_publica == 0)) {
+            $origem = Origem::Find(8);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(27);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->abrigo()->coleta_lixo == 0)) {
+            $origem = Origem::Find(8);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(28);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->abrigo()->agua_tratada  == 0)) {
+            $origem = Origem::Find(8);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(29);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->abrigo()->rede_esgoto()->id == 2)) {
+            $origem = Origem::Find(8);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(30);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->abrigo()->rede_esgoto()->id == 3)) {
+            $origem = Origem::Find(8);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(31);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        $this->calcularIMC();
+        if ($this->imc >= 25) {
+            $origem = Origem::Find(9);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(32);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+
+        if (($questionario->nss_biologica()->regulacao_hormonal()->glicemia_capilar < 70)) {
+            $origem = Origem::Find(9);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(33);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->regulacao_hormonal()->glicemia_capilar < 100)) {
+            $origem = Origem::Find(9);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(34);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+
+        if (($questionario->nss_biologica()->oxigenacao()->temp_enchimento_capilar) < 2) {
+            $origem = Origem::Find(10);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(35);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        $this->calcularClassificacaoTemperatura();
+
+        if (($this->temperatura >= 37.6)) {
+            $origem = Origem::Find(11);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(36);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+
+        if (!($this->disturbio_sexuals == null)) {
+            $origem = Origem::Find(12);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(37);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+
+        if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 3)) {
+            $origem = Origem::Find(13);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(38);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+
+        if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 4)) {
+            $origem = Origem::Find(13);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(39);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 5)) {
+            $origem = Origem::Find(13);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(40);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 6)) {
+            $origem = Origem::Find(13);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(41);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 7)) {
+            $origem = Origem::Find(13);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(42);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 8)) {
+            $origem = Origem::Find(13);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(43);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 9)) {
+            $origem = Origem::Find(13);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(44);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 10)) {
+            $origem = Origem::Find(13);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(45);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 11)) {
+            $origem = Origem::Find(13);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(46);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 12)) {
+            $origem = Origem::Find(13);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(47);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 13)) {
+            $origem = Origem::Find(13);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(48);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->locomocao()->tipos_locomocao()->id == 14)) {
+            $origem = Origem::Find(13);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(49);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->regulacao_vascular()->pressao_arterial) == "120/80") {
+            $origem = Origem::Find(14);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(50);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+
+        $paciente = null;
+        $questionarioAnterior = null;
+
+        $paciente = $questionario->paciente;
+
+        $questionarioAnterior = $paciente->questionarios()
+            ->where('id', '<', $questionario->id) // Pega apenas questionários mais antigos
+            ->orderBy('id', 'desc') // Ordena do mais recente ao mais antigo (entre os antigos)
+            ->first(); // Obtém o primeiro da lista (mais próximo ao atual)
+
+        $psatp_atual_direito = $questionario->nss_biologica()->regulacao_vascular()->psatp_direito;
+        $psatp_antigo_direito =  $questionarioAnterior->nss_biologica()->regulacao_vascular()->psatp_direito;
+        $psatp_atual_esquerdo = $questionario->nss_biologica()->regulacao_vascular()->psatp_esquerdo;
+        $psatp_antigo_esquerdo =  $questionarioAnterior->nss_biologica()->regulacao_vascular()->psatp_esquerdo;
+        $psap_atual_direito = $questionario->nss_biologica()->regulacao_vascular()->psap_direito;
+        $psap_antigo_direito =  $questionarioAnterior->nss_biologica()->regulacao_vascular()->psap_direito;
+        $psap_atual_esquerdo = $questionario->nss_biologica()->regulacao_vascular()->psap_esquerdo;
+        $psap_antigo_esquerdo =  $questionarioAnterior->nss_biologica()->regulacao_vascular()->psap_esquerdo;
+
+        if (($psatp_atual_direito) == 0 || ($psatp_antigo_direito != $psatp_atual_direito) || ($psatp_atual_esquerdo) == 0 || ($psatp_antigo_esquerdo != $psatp_atual_esquerdo) || ($psap_atual_direito) == 0 || ($psap_antigo_direito != $psap_atual_direito) || ($psap_atual_esquerdo) == 0 || ($psap_antigo_esquerdo != $psap_atual_esquerdo)) {
+            $origem = Origem::Find(14);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(51);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+
+        if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 2)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(52);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 3)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(53);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 4)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(54);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->estado_unha()->id == 5)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(55);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        // é false?
+        if (($questionario->nss_biologica()->senso_percepcao()->corte_unhas == 0)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(56);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 3)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(57);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 4)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(58);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 5)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(59);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 8)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(60);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 9)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(61);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 12)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(62);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 6)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(63);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->calosidades == 1)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(64);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+
+        if (($questionario->nss_biologica()->senso_percepcao()->sintomas_percepcao()->id == 10)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(65);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->fissuras == 1)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(66);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->pe_neuropatico == 1)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(67);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->arco_desabado == 1)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(68);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->valgismo == 1)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(69);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->dedos_em_garra == 1)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(70);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->senso_percepcao()->percepcao_direito == 0) && ($questionario->nss_biologica()->senso_percepcao()->percepcao_esquerdo == 0)) {
+            $origem = Origem::Find(15);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(71);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->integridade_cutanea()->borda_ferida()->id == 6)) {
+            $origem = Origem::Find(16);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(72);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->integridade_cutanea()->edema == 1)) {
+            $origem = Origem::Find(16);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(73);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->integridade_cutanea()->quantidade_exudato()->id == 3)) {
+            $origem = Origem::Find(16);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(74);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->integridade_cutanea()->quantidade_exudato()->id == 4)) {
+            $origem = Origem::Find(16);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(75);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->integridade_cutanea()->odor_exudato == 1)) {
+            $origem = Origem::Find(16);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(76);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->integridade_cutanea()->aspecto_exudato()->id == 2)) {
+            $origem = Origem::Find(16);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(77);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->integridade_cutanea()->aspecto_exudato()->id == 3)) {
+            $origem = Origem::Find(16);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(78);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->integridade_cutanea()->aspecto_exudato()->id == 4)) {
+            $origem = Origem::Find(16);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(79);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->integridade_cutanea()->aspecto_exudato()->id == 5)) {
+            $origem = Origem::Find(16);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(80);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->integridade_cutanea()->aspecto_exudato()->id == 6)) {
+            $origem = Origem::Find(16);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(81);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->integridade_cutanea()->tipo_tecido_ferida()->id == 3)) {
+            $origem = Origem::Find(16);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(82);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_biologica()->integridade_cutanea()->tipo_tecido_ferida()->id == 4)) {
+            $origem = Origem::Find(16);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(83);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (!($this->sinais_infeccaos == null)){
+            $origem = Origem::Find(16);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(84);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if ($questionario->nss_biologica()->cuidado_ferida()) {
+            $origem = Origem::Find(17);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(85);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        //aprendizagem 
+        if (($questionario->nss_sociais()->aprendizagem()->regime_terapeutico == 0)) {
+            $origem = Origem::Find(18);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(86);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->aprendizagem()->monitoramento_glicemia_dia == 0)) {
+            $origem = Origem::Find(18);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(87);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->aprendizagem()->monitoramento_glicemia_dia == 1)) {
+            $origem = Origem::Find(18);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(88);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        //marcou nenhuma ou só uma (???)
+        if (($questionario->nss_sociais()->recreacoes()->id == 1)) {
+            $origem = Origem::Find(19);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(89);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->cuidado()->acompanhado == true)) {
+            $origem = Origem::Find(20);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(90);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->cuidado()->emocionais()->id == 1)) {
+            $origem = Origem::Find(20);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(91);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->cuidado()->emocionais()->id == 2)) {
+            $origem = Origem::Find(20);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(92);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->cuidado()->emocionais()->id == 3)) {
+            $origem = Origem::Find(20);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(93);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->cuidado()->emocionais()->id == 4)) {
+            $origem = Origem::Find(20);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(94);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->cuidado()->emocionais()->id == 5)) {
+            $origem = Origem::Find(20);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(95);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->cuidado()->emocionais()->id == 6)) {
+            $origem = Origem::Find(20);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(96);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->cuidado()->opnioes_de_si == true)) {
+            $origem = Origem::Find(20);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(97);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->comunicacao()->interacao_social ==  false)) {
+            $origem = Origem::Find(21);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(98);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->comunicacao()->apoio ==  false)) {
+            $origem = Origem::Find(21);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(99);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->comunicacao()->interacao_social ==  true)) {
+            $origem = Origem::Find(21);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(100);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        if (($questionario->nss_sociais()->comunicacao()->apoio ==  1)) {
+            $origem = Origem::Find(21);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(101);
+            $prontuario->motivos()->attach($motivo->id);
+        }
+        //diferente de null??
+        if (($questionario->nss_espiritual()->religiao == null)) {
+            $origem = Origem::Find(22);
+            $prontuario->origens()->attach($origem->id);
+
+            $motivo = Motivo::Find(102);
+            $prontuario->motivos()->attach($motivo->id);
+        }
     }
 
     public function submitForm()
