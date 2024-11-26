@@ -37,7 +37,7 @@ class Questionario extends Model
 
     public function nss_biologica()
     {
-        return $this->belongsTo(Nss_biologicas::class);
+        return $this->belongsTo(Nss_biologicas::class,'nss_biologicas_id');
     }
 
     public function nss_sociais()
@@ -47,7 +47,7 @@ class Questionario extends Model
 
     public function nss_espiritual()
     {
-        return $this->belongsTo(Nss_espirituais::class);
+        return $this->belongsTo(Nss_espirituais::class, 'nss_espirituais_id');
     }
 
     public function user()

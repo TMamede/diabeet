@@ -18,9 +18,9 @@ class NecessidadeSocioSeeder extends Seeder
 
         foreach (range(1, 10) as $index) {
             DB::table('nss_sociais')->insert([
-                'aprendizagem' => $faker->numberBetween(1, 10),
-                'cuidado' => $faker->numberBetween(1, 10),
-                'comunicacao' => $faker->numberBetween(1, 10),
+                'aprendizagem_id' => $faker->numberBetween(1, 10),
+                'cuidado_id' => $faker->numberBetween(1, 10),
+                'comunicacao_id' => $faker->numberBetween(1, 10),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

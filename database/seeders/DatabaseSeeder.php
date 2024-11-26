@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Database\Seeders\CriarQuestionario\NecessidadeBioSeeder;
+use Database\Seeders\CriarQuestionario\NecessidadeSocioSeeder;
 use Database\Seeders\CriarQuestionario\NssBio\AbrigoSeeder;
 use Database\Seeders\CriarQuestionario\NssBio\CuidadoFeridaSeeder;
 use Database\Seeders\CriarQuestionario\NssBio\EliminacaoSeeder;
@@ -53,6 +55,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AprendizagemSeeder::class);
         $this->call(ComunicacaoSeeder::class);
         $this->call(CuidadoSeeder::class);
+        $this->call(NecessidadeBioSeeder::class);
+        $this->call(NecessidadeSocioSeeder::class);
         $this->call(ExtraSeeder::class);
 
     }

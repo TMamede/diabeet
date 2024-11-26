@@ -22,7 +22,7 @@ class Nss_biologicas extends Model
 
     public function percepcao_sentidos()
     {
-        return $this->belongsTo(Percepcao_sentido::class);
+        return $this->belongsTo(Percepcao_sentido::class, "percepcao_sentido_id");
     }
 
     public function hidratacao()
