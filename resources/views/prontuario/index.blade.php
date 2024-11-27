@@ -6,6 +6,6 @@
     </x-slot>
 
     <div class="py-1">
-        <livewire:prontuarios.show-prontuario />
+        <livewire:prontuarios.search-prontuario />
     </div>
 </x-app-layout>
