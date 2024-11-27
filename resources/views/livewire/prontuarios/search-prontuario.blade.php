@@ -2,7 +2,7 @@
     <section class="p-1 mt-10">
         <div class="max-w-screen-xl px-4 mx-auto lg:px-12">
             <!-- Start coding here -->
-            <div class="relative overflow-hidden bg-white shadow-md sm:rounded-lg">
+            <div class="relative mb-10 overflow-hidden bg-white shadow-md sm:rounded-lg">
                 <div class="flex items-center justify-between p-4 d">
                     <div class="flex">
                         <div class="relative w-full">

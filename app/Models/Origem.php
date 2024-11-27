@@ -14,4 +14,9 @@ class Origem extends Model
         return $this->belongsToMany(Prontuario::class,'prontuario_origem');
     }
 
+    public function motivos()
+    {
+        return $this->hasMany(Motivo::class);
+    }
+
 }

@@ -55,7 +55,7 @@ class Questionario extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function prontuarios()
+    public function prontuario()
     {
         return $this->hasOne(Prontuario::class);
     }

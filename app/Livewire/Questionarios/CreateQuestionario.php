@@ -1417,7 +1417,7 @@ class CreateQuestionario extends Component
             $motivo = Motivo::Find(89);
             $prontuario->motivos()->attach($motivo->id);
         }
-        if (($questionario->nss_sociais()->cuidado()->acompanhado == true)) {
+        if (($questionario->nss_sociais()->cuidado()->acompanhado == 1)) {
             $origem = Origem::Find(20);
             $prontuario->origens()->attach($origem->id);
 
@@ -1466,28 +1466,28 @@ class CreateQuestionario extends Component
             $motivo = Motivo::Find(96);
             $prontuario->motivos()->attach($motivo->id);
         }
-        if (($questionario->nss_sociais()->cuidado()->opnioes_de_si == true)) {
+        if (($questionario->nss_sociais()->cuidado()->opnioes_de_si == 1)) {
             $origem = Origem::Find(20);
             $prontuario->origens()->attach($origem->id);
 
             $motivo = Motivo::Find(97);
             $prontuario->motivos()->attach($motivo->id);
         }
-        if (($questionario->nss_sociais()->comunicacao()->interacao_social ==  false)) {
+        if (($questionario->nss_sociais()->comunicacao()->interacao_social == 0)) {
             $origem = Origem::Find(21);
             $prontuario->origens()->attach($origem->id);
 
             $motivo = Motivo::Find(98);
             $prontuario->motivos()->attach($motivo->id);
         }
-        if (($questionario->nss_sociais()->comunicacao()->apoio ==  false)) {
+        if (($questionario->nss_sociais()->comunicacao()->apoio == 0)) {
             $origem = Origem::Find(21);
             $prontuario->origens()->attach($origem->id);
 
             $motivo = Motivo::Find(99);
             $prontuario->motivos()->attach($motivo->id);
         }
-        if (($questionario->nss_sociais()->comunicacao()->interacao_social ==  true)) {
+        if (($questionario->nss_sociais()->comunicacao()->interacao_social == 1)) {
             $origem = Origem::Find(21);
             $prontuario->origens()->attach($origem->id);
 
@@ -1789,9 +1789,12 @@ class CreateQuestionario extends Component
             $integridade_cutanea->sinais_infeccao()->attach($sinais_infeccaoId);
         }
 
+        $this->ColetarProntuario($questionario);
+
+        $this->dispatch('questionario-for-prontuario', questionarioId: $questionario->id);
 
         // Resetar o formulário ou redirecionar conforme necessário
         session()->flash('message', 'Questionário criado com sucesso!');
-        return redirect()->route('paciente.index');
+        return redirect()->route('prontuario.create');
     }
 }

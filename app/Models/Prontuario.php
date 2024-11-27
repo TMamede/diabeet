@@ -25,5 +25,15 @@ class Prontuario extends Model
         return $this->belongsToMany(Motivo::class,'prontuario_motivo');
     }
     
+    public function diagnosticos()
+    {
+        return $this->belongsToMany(Diagnostico::class, 'prontuario_diagnostico');
+    }
+
+    public function intervencoes()
+    {
+        return $this->belongsToMany(Intervencao::class, 'prontuario_intervencao');
+    }
+    
 
 }

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Pacientes\ShowPaciente;
+use App\Livewire\Prontuarios\CreateProntuario;
+use App\Livewire\Prontuarios\ShowProntuario;
 use App\Livewire\Questionarios\ShowQuestionario;
 
 Route::view('/', 'welcome');
@@ -59,16 +61,27 @@ Route::get('/enfermeiro', function () {
     if (Auth::check() && Auth::user()->user_type === 'gerenciador') {
         return view('enfermeiro.index'); // Retorne a view específica
     }
-
     return redirect()->route('dashboard'); // Redireciona para uma página de acesso negado
 })->name('enfermeiro.index');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/paciente/{id}', ShowPaciente::class)->name('paciente.show');
+    Route::get('/paciente/{id}', 
+    ShowPaciente::class)->name('paciente.show');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/questionario/{id}', ShowQuestionario::class)->name('questionario.show');
+    Route::get('/questionario/{id}', 
+    ShowQuestionario::class)->name('questionario.show');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/criar-prontuario/questionario/{id}', 
+    CreateProntuario::class)->name('prontuario.create');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/prontuario/{id}', 
+    ShowProntuario::class)->name('prontuario.show');
 });
 
 require __DIR__ . '/auth.php';

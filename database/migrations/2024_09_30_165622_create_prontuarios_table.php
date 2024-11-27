@@ -21,35 +21,51 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Questionario::class)
                   ->constrained()
-                  ->onDelete('cascade'); // Excluir prontuários ao apagar questionário
+                  ->onDelete('cascade'); // Exclui o prontuário se o questionário for deletado
             $table->timestamps();
         });
-
+        
         Schema::create('prontuario_origem', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Prontuario::class);
-            $table->foreignIdFor(Origem::class);
+            $table->foreignIdFor(Prontuario::class)
+                  ->constrained()
+                  ->onDelete('cascade'); // Exclui associação com prontuário
+            $table->foreignIdFor(Origem::class)
+                  ->constrained()
+                  ->onDelete('cascade'); // Exclui se a origem for deletada
             $table->timestamps();
         });
-
+        
         Schema::create('prontuario_motivo', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Prontuario::class);
-            $table->foreignIdFor(Motivo::class);
+            $table->foreignIdFor(Prontuario::class)
+                  ->constrained()
+                  ->onDelete('cascade'); // Exclui associação com prontuário
+            $table->foreignIdFor(Motivo::class)
+                  ->constrained()
+                  ->onDelete('cascade'); // Exclui se o motivo for deletado
             $table->timestamps();
         });
-
+        
         Schema::create('prontuario_diagnostico', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Prontuario::class);
-            $table->foreignIdFor(Diagnostico::class);
+            $table->foreignIdFor(Prontuario::class)
+                  ->constrained()
+                  ->onDelete('cascade'); // Exclui associação com prontuário
+            $table->foreignIdFor(Diagnostico::class)
+                  ->constrained()
+                  ->onDelete('cascade'); // Exclui se o diagnóstico for deletado
             $table->timestamps();
         });
-
+        
         Schema::create('prontuario_intervencao', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Prontuario::class);
-            $table->foreignIdFor(Intervencao::class);
+            $table->foreignIdFor(Prontuario::class)
+                  ->constrained()
+                  ->onDelete('cascade'); // Exclui associação com prontuário
+            $table->foreignIdFor(Intervencao::class)
+                  ->constrained()
+                  ->onDelete('cascade'); // Exclui se a intervenção for deletada
             $table->timestamps();
         });
     }

@@ -13,4 +13,14 @@ class Motivo extends Model
     {
         return $this->belongsToMany(Prontuario::class,'prontuario_motivo');
     }
+
+    public function origem()
+    {
+        return $this->belongsTo(Origem::class);
+    }
+
+    public function diagnosticos()
+    {
+        return $this->belongsToMany(Diagnostico::class,'motivo_diagnostico');
+    }
 }
