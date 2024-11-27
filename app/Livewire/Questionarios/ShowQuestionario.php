@@ -51,15 +51,17 @@ use Livewire\WithFileUploads;
 
 class ShowQuestionario extends Component
 {
+    use WithFileUploads;
     public $currentStep = 1;
 
     public $questionario;
 
 
-    public $nss_sociais, $nss_biologicas, $nss_espirituais, $selectedPaciente, $IdselectedPaciente , $enfermeiro, $impressoes, $imagem_avaliacao_pe;
+    public $nss_sociais, $nss_biologicas, $nss_espirituais, $selectedPaciente, $IdselectedPaciente , $enfermeiro, $impressoes, $imagem_avaliacao_pe,$imagem_avaliacao_pe_url;
 
 
-
+    
+    public $selectedOption = null;
     //Etapa 2 - Necessidades Biológicas
     public $regulacao_neuro, $orientado, $comportamento_regulacao_neuro_id;
     public $percepcao_sentido, $olho_direito, $olho_esquerdo, $ouvido, $analise_tato_id, $risco_queda;
@@ -102,6 +104,62 @@ class ShowQuestionario extends Component
         $this->loadQuestionarioData($id);
     }
 
+    public function selectOption($option)
+    {
+        $this->selectedOption = $option;
+        $this->teste_senso_percepcao_id = $option;
+    }
+
+    public function calcularIMC()
+    {
+        // Lógica para verificar se altura e peso estão preenchidos
+        if ($this->altura && $this->peso) {
+            $alturaMetros = $this->altura / 100;
+            $this->imc = $this->peso / ($alturaMetros * $alturaMetros);
+
+
+            // Classificação do IMC
+            if ($this->imc < 18.5) {
+                $this->classificacao = 'Magro ou baixo peso (Risco normal ou elevado)';
+            } elseif ($this->imc >= 18.5 && $this->imc <= 24.9) {
+                $this->classificacao = 'Normal ou eutrófico (Risco normal)';
+            } elseif ($this->imc >= 25 && $this->imc <= 29.9) {
+                $this->classificacao = 'Sobrepeso ou pré-obeso (Risco pouco elevado)';
+            } elseif ($this->imc >= 30 && $this->imc <= 34.9) {
+                $this->classificacao = 'Obesidade Grau I (Risco elevado)';
+            } elseif ($this->imc >= 35 && $this->imc <= 39.9) {
+                $this->classificacao = 'Obesidade Grau II (Risco muito elevado)';
+            } else {
+                $this->classificacao = 'Obesidade grave Grau III (Risco muitíssimo elevado)';
+            }
+        } else {
+            // Se a altura e o peso não estiverem preenchidos, gerar erros
+            $this->addError('altura', 'Por favor, informe sua altura.');
+            $this->addError('peso', 'Por favor, informe seu peso.');
+        }
+    }
+
+
+    public function calcularClassificacaoTemperatura()
+    {
+        if ($this->temperatura !== null) {
+            // Classificação da temperatura
+            if ($this->temperatura < 36.1) {
+                $this->classificacaoTemperatura = 'Hipotermia';
+            } elseif ($this->temperatura >= 36.1 && $this->temperatura <= 37.5) {
+                $this->classificacaoTemperatura = 'Normal';
+            } elseif ($this->temperatura > 37.5 && $this->temperatura < 38.5) {
+                $this->classificacaoTemperatura = 'Febre Leve';
+            } elseif ($this->temperatura >= 38.5 && $this->temperatura < 39.5) {
+                $this->classificacaoTemperatura = 'Febre Moderada';
+            } else {
+                $this->classificacaoTemperatura = 'Febre Alta';
+            }
+        } else {
+            $this->addError('temperatura', 'Por favor, informe a temperatura.');
+        }
+    }
+
     public function loadQuestionarioData($questionarioId)
     {
         $this->questionario = Questionario::findOrFail($questionarioId);
@@ -115,7 +173,7 @@ class ShowQuestionario extends Component
         $this->impressoes = $this->questionario->impressoes;
         $this->unidade_saude_id = $this->questionario->unidade_saude_id;
         $this->unidade = Unidade_saude::Find($this->unidade_saude_id);
-        $this->imagem_avaliacao_pe = $this->questionario->imagem_avaliacao_pe_url;
+        $this->imagem_avaliacao_pe_url = $this->questionario->imagem_avaliacao_pe_url;
 
 
         $this->orientado = $this->questionario->nss_biologica->regulacao_neuro->orientado;
@@ -736,11 +794,10 @@ class ShowQuestionario extends Component
             ]
         );
 
-        // Salva a imagem de avaliação do pé
         if ($this->imagem_avaliacao_pe) {
             $path = $this->imagem_avaliacao_pe->store('avaliacao_pe', 'public');
         } else {
-            $path = null; // Define um valor padrão caso a imagem não seja enviada
+            $path = $this->imagem_avaliacao_pe_url; // Mantém o caminho existente se nenhuma nova imagem for enviada
         }
 
         // Atualização ou criação do questionário
