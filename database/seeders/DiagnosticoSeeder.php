@@ -73,6 +73,11 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
+            [
+                'descricao' => 'Comunicação prejudicada', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
             // Diagnósticos nutricionais
             [
                 'descricao' => 'Alimentação prejudicada', 
@@ -209,20 +214,146 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnóstico de integridade cutânea
             [
-                'descricao' => 'Integridade tissular prejudicada', 
+                'descricao' => 'Regime de cuidados com as unhas, prejudicado', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Marcha prejudicada', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Coloração da pele alterada', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Crescimento de pelos, ausente', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Calo', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Hematoma', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Pele Seca', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Função neurovascular periférica, prejudicada', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Processo do sistema musculoesquelético, prejudicado', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Equilíbrio, prejudicado', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Maceração', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Edema periférico', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+             // Diagnóstico de risco de infecção
+            [
+                'descricao' => 'Infecção', 
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
 
-            // Diagnóstico de risco de infecção
             [
                 'descricao' => 'Risco de infecção', 
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
+            [
+                'descricao' => 'Sangramento da úlcera', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+
+            // Diagnóstico de integridade cutânea
+            [
+                'descricao' => 'Integridade tissular prejudicada (Exsudato/Hipergranulação/ Maceração/Necrose)', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Intergridade da pele prejudicada (Descamação da pele/Eczema/ Eritema/Escoriação/Hiperemia/ Lipodermatoesclerose/Pele perilesional seca)', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Inflamação', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Cicatrização da ferida, prejudicada', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Dor', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Úlcera diabética', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Necessidade de cuidado, alta', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Não adesão ao regime terapêutico', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Déficit de autocuidado', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Risco de comportamento autodestrutivo', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Baixo autocontrole', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Responsividade ao tratamento, baixa', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+
 
             // Diagnósticos emocionais e psicológicos
             [
@@ -251,17 +382,75 @@ class DiagnosticoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
 
-            // Diagnósticos de autocuidado
             [
-                'descricao' => 'Déficit de autocuidado', 
+                'descricao' => 'Atitude em Relação ao Cuidado, Positiva', 
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Não adesão ao regime terapêutico', 
+                'descricao' => 'Capacidade para Executar Atividade de Lazer, Prejudicada', 
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
-            ]
+            ],
+            //Diagnóstico apoio
+            [
+                'descricao' => 'Falta de apoio familiar', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            //Diagnóstico emocional
+            [
+                'descricao' => 'Problema emocional', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Medo', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => ' Ansiedade', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Sofrimento', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Risco de suicídio', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Autoimagem, negativa', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Capacidade para socialização, prejudicada', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Apoio familiar, positivo', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Apoio social, eficaz', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Risco de Angústia Espiritual', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            
+            
         ]);
     }
 }
