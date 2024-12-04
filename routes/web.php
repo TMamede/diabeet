@@ -70,14 +70,11 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/questionario/{id}', 
-    ShowQuestionario::class)->name('questionario.show');
+    Route::get('/questionario/{id}', ShowQuestionario::class)->name('questionario.show');
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/criar-prontuario/questionario/{id}', 
-    CreateProntuario::class)->name('prontuario.create');
-});
+Route::get('/prontuarios/create/{id?}', CreateProntuario::class)->name('prontuario.create');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/prontuario/{id}', 

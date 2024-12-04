@@ -5,12 +5,12 @@
                 {{ __('Questionário') }}
             </h2>
             <a href="{{ route('questionario.create') }}"
-                class="inline-flex items-center px-4 py-2 text-white transition duration-300 bg-indigo-600 rounded-md shadow-md hover:bg-indigo-700">
+                class="inline-flex items-center px-4 py-2 mr-4 text-white transition duration-300 bg-indigo-600 rounded-md shadow-md hover:bg-indigo-700">
                 Criar Questionário
             </a>
         </div>
     </x-slot>
-    <div class="py-1">
+    <div class="py-0">
         <livewire:questionarios.search-questionario />
     </div>
 </x-app-layout>

@@ -6,7 +6,7 @@
             </h2>
         </div>
     </x-slot>
-    <div class="py-1">
+    <div class="py-0">
         <livewire:enfermeiros.show-enfermeiro />
     </div>
 </x-app-layout>

@@ -17,6 +17,6 @@ class Regulacao_neuro extends Model
 
     public function comportamento_reg_neuro()
     {
-        return $this->hasMany(Comportamento_regulacao_neuro::class);
+        return $this->belongsTo(Comportamento_regulacao_neuro::class);
     }
 }

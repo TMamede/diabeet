@@ -59,11 +59,11 @@
                                     <td class="px-4 py-3 text-blue-500">{{ $questionario->user->name }}</td>
                                     <td class="px-4 py-3">{{ $questionario->created_at }}</td>
                                     <td class="flex items-center justify-end px-4 py-3 mr-5">
-                                        <button wire:click="CreateProntuario('{{ $questionario->id }}')"
+                                        <button 
                                             class="px-6 py-2 text-white bg-indigo-900 rounded hover:bg-indigo-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                             Visualizar
                                         </button>
-                                        <button wire:click="ShowProntuario('{{ $questionario->id }}')"
+                                        <button wire:click="CreateProntuario('{{ $questionario->id }}')"
                                             class="px-6 py-2 ml-3 text-white rounded bg-cyan-900 hover:bg-cyan-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
                                             Criar
                                         </button>

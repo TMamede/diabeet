@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-1">
+    <div class="py-0">
         <livewire:prontuarios.search-prontuario />
     </div>
 </x-app-layout>

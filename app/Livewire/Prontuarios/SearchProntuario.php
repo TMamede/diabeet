@@ -39,47 +39,46 @@ class SearchProntuario extends Component
 
     public $selectedProntuarioId;
 
-    public function CreateProntuario($prontuarioId){
-        $this->selectedProntuarioId = $prontuarioId;
-        $this->dispatch('prontuario-selected', prontuarioId: $prontuarioId);
+    public function CreateProntuario($prontuarioId)
+    {
+        return redirect()->route('prontuario.create', ['id' => $prontuarioId]);
     }
 
-    public function ShowProntuario($prontuarioId){
-        $this->selectedProntuarioId = $prontuarioId;
-        $this->dispatch('prontuario-selected', prontuarioId: $prontuarioId);
-    }
-    
 
     public function render()
     {
-        return view('livewire.prontuarios.search-prontuario',[
+        return view('livewire.prontuarios.search-prontuario', [
             'questionarios' => Questionario::search($this->search)
-                    ->when($this->sortBy, function ($query) {
-                        if ($this->sortBy === 'user_name') {
-                            $query->join('users', 'questionarios.user_id', '=', 'users.id')
-                                ->orderBy('users.name', $this->sortDir);
-                        } else {
-                            $query->orderBy($this->sortBy, $this->sortDir);
-                        }
-                    })
-                    ->when($this->sortBy, function ($query) {
-                        if ($this->sortBy === 'paciente_nome') {
-                            $query->join('pacientes', 'questionarios.paciente_id', '=', 'pacientes.id')
-                                ->orderBy('pacientes.nome', $this->sortDir);
-                        } else {
-                            $query->orderBy($this->sortBy, $this->sortDir);
-                        }
-                    })
-                    ->when($this->sortBy, function ($query) {
-                        if ($this->sortBy === 'questionario_id') {
-                            $query->join('questionarios', 'questionarios.id', '=', 'questionarios.id')
-                                ->orderBy('questionarios.id', $this->sortDir);
-                        } else {
-                            $query->orderBy($this->sortBy, $this->sortDir);
-                        }
-                    })
-                    ->orderBy($this->sortBy, $this->sortDir)
-                    ->paginate($this->perPage),
+                // Filtra os questionários que têm um registro correspondente em 'prontuarios'
+                ->whereHas('prontuario', function ($query) {
+                    $query->whereNotNull('questionario_id'); // Apenas questionários que têm 'questionario_id' em prontuarios
+                })
+                ->when($this->sortBy, function ($query) {
+                    if ($this->sortBy === 'user_name') {
+                        $query->join('users', 'questionarios.user_id', '=', 'users.id')
+                            ->orderBy('users.name', $this->sortDir);
+                    } else {
+                        $query->orderBy($this->sortBy, $this->sortDir);
+                    }
+                })
+                ->when($this->sortBy, function ($query) {
+                    if ($this->sortBy === 'paciente_nome') {
+                        $query->join('pacientes', 'questionarios.paciente_id', '=', 'pacientes.id')
+                            ->orderBy('pacientes.nome', $this->sortDir);
+                    } else {
+                        $query->orderBy($this->sortBy, $this->sortDir);
+                    }
+                })
+                ->when($this->sortBy, function ($query) {
+                    if ($this->sortBy === 'questionario_id') {
+                        $query->join('questionarios', 'questionarios.id', '=', 'questionarios.id')
+                            ->orderBy('questionarios.id', $this->sortDir);
+                    } else {
+                        $query->orderBy($this->sortBy, $this->sortDir);
+                    }
+                })
+                ->orderBy($this->sortBy, $this->sortDir)
+                ->paginate($this->perPage),
         ]);
     }
 }

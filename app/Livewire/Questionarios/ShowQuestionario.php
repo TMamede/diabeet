@@ -335,7 +335,7 @@ class ShowQuestionario extends Component
             'tiposTecido' => \App\Models\Tipo_tecido_ferida::all(),
             'bordasFerida' => \App\Models\Bordas_ferida::all(),
             'unidadesSaude' => \App\Models\Unidade_saude::all(),
-        ])->layout('layouts.app');;
+        ])->layout('layouts.app');
     }
 
     public function validateStep()

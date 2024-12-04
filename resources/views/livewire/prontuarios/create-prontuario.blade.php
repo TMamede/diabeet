@@ -1,62 +1,48 @@
-<div>
-    <!-- Header com botão de salvar -->
-    <div class="flex items-center justify-between p-4 bg-indigo-100">
-        <h1 class="text-2xl font-bold">Prontuário - Questionário #{{ $questionarioId }}</h1>
-        <button 
-            wire:click="salvarProntuario"
-            class="px-4 py-2 text-white bg-indigo-600 rounded-lg hover:bg-indigo-700"
-            @disabled(!$statusProntuario)>
-            Salvar Prontuário
-        </button>
-    </div>
+<div class="min-h-screen px-6 py-8 bg-gray-50">
+    <h1 class="text-2xl font-bold text-indigo-600">Criar Prontuário</h1>
 
-    <!-- Navegação lateral -->
-    <div class="flex">
-        <aside class="w-1/4 p-4 bg-gray-100">
-            <ul>
-                @foreach ($origens as $origem)
-                    <li>
-                        <button 
-                            wire:click="selectOrigem({{ $origem->id }})"
-                            class="block w-full text-left px-4 py-2 rounded-lg {{ $statusOrigens[$origem->id] === 'green' ? 'bg-green-200' : 'bg-red-200' }}">
-                            {{ $origem->nome }}
-                        </button>
-                    </li>
-                @endforeach
-            </ul>
-        </aside>
+    <p class="mt-4 text-sm text-gray-700">
+        <span class="text-lg font-semibold text-gray-900">Questionário ID:</span> {{ $questionarioId }}
+    </p>
 
-        <!-- Conteúdo da origem selecionada -->
-        <div class="w-3/4 p-4">
-            @if ($selectedOrigem)
-                <h2 class="text-xl font-semibold">{{ $selectedOrigem->nome }}</h2>
 
-                @foreach ($selectedOrigem->motivos as $motivo)
-                    <div class="p-4 mb-4 border rounded-lg">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-lg font-bold">{{ $motivo->nome }}</h3>
-                            <div>
-                                <button wire:click="confirmarMotivo({{ $motivo->id }})" class="text-green-500">Confirmar</button>
-                                <button wire:click="deletarMotivo({{ $motivo->id }})" class="text-red-500">Deletar</button>
-                            </div>
-                        </div>
+    <h2 class="mt-8 text-xl font-bold text-gray-800 border-b border-gray-300">Origens Associadas</h2>
 
-                        <div class="mt-4">
-                            <label class="block font-medium">Diagnósticos:</label>
-                            <ul>
-                                @foreach ($motivo->diagnosticos as $diagnostico)
-                                    <li class="flex items-center justify-between">
-                                        <span>{{ $diagnostico->nome }}</span>
-                                        <button wire:click="deletarDiagnostico({{ $diagnostico->id }})" class="text-red-500">Deletar</button>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                @endforeach
-            @else
-                <p class="text-gray-500">Selecione uma origem para visualizar os detalhes.</p>
-            @endif
+    @foreach ($origens as $index => $origem)
+    <div class="p-5 mt-6 bg-white border border-gray-200 rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold text-gray-700">Origem {{ $index + 1 }}</h3>
+        <div class="mt-4">
+            <label for="origens.{{ $index }}.descricao" class="block text-sm font-medium text-gray-700">
+                Descrição
+            </label>
+            <input type="text" wire:model="origens.{{ $index }}.descricao" id="origens.{{ $index }}.descricao"
+                class="block w-full p-3 mt-2 text-sm placeholder-gray-400 border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-gray-50"
+                placeholder="Digite a origem">
         </div>
     </div>
+    @endforeach
+
+    <h2 class="mt-12 text-xl font-bold text-gray-800 border-b border-gray-300">Motivos Associados</h2>
+
+    @foreach ($motivos as $index => $motivo)
+    <div class="p-5 mt-6 bg-white border border-gray-200 rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold text-gray-700">Motivo {{ $index + 1 }}</h3>
+        <div class="mt-4">
+            <label for="motivos.{{ $index }}.descricao" class="block text-sm font-medium text-gray-700">
+                Descrição
+            </label>
+            <input type="text" wire:model="motivos.{{ $index }}.descricao" id="motivos.{{ $index }}.descricao"
+                class="block w-full p-3 mt-2 text-sm placeholder-gray-400 border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-gray-50"
+                placeholder="Digite o motivo">
+        </div>
+        <div class="mt-4">
+            <label for="motivos.{{ $index }}.origem_id" class="block text-sm font-medium text-gray-700">
+                Id da Origem Associda
+            </label>
+            <input type="text" wire:model="motivos.{{ $index }}.origem_id" id="motivos.{{ $index }}.origem_id"
+                class="block w-full p-3 mt-2 text-sm placeholder-gray-400 border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-gray-50"
+                placeholder="Digite o motivo">
+        </div>
+    </div>
+    @endforeach
 </div>
