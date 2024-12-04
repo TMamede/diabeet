@@ -1625,7 +1625,6 @@ class CreateQuestionario extends Component
         $this->ColetarProntuario($questionario);
 
         $this->dispatch('questionario-for-prontuario', questionarioId: $questionario->id);
-
         // Resetar o formulário ou redirecionar conforme necessário
         session()->flash('message', 'Questionário criado com sucesso!');
         return redirect()->route('prontuario.create');
