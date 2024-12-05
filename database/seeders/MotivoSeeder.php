@@ -68,7 +68,7 @@ class MotivoSeeder extends Seeder
             ['descricao' => 'Valor Alto de IMC', 'origem_id' => 9, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Valor Baixo de Glicemia Capilar do Momento', 'origem_id' => 9, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Valor Alto de Glicemia Capilar do Momento', 'origem_id' => 9, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-       
+            
             // Origem: Oxigenação
             ['descricao' => 'Tempo de Enchimento Capilar Menor que 2 segundos', 'origem_id' => 10, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
 

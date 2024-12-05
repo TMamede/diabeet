@@ -15,14 +15,11 @@ class DiagnosticoSeeder extends Seeder
     public function run(): void
     {
         DB::table('diagnosticos')->insert([
-            // Diagnósticos relacionados à renda inadequada e fatores econômicos
             [
                 'descricao' => 'Renda inadequada', 
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnósticos relacionados ao uso de álcool
             [
                 'descricao' => 'Alcoolismo', 
                 'created_at' => Carbon::now(), 
@@ -33,8 +30,6 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnósticos relacionados ao uso de tabaco
             [
                 'descricao' => 'Tabagismo', 
                 'created_at' => Carbon::now(), 
@@ -45,29 +40,21 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnósticos neurológicos
             [
                 'descricao' => 'Cognição prejudicada', 
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnósticos relacionados à visão
             [
                 'descricao' => 'Visão prejudicada', 
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnóstico relacionado a risco de queda
             [
                 'descricao' => 'Risco de queda', 
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnósticos relacionados à percepção tátil
             [
                 'descricao' => 'Percepção tátil prejudicada', 
                 'created_at' => Carbon::now(), 
@@ -78,7 +65,6 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-            // Diagnósticos nutricionais
             [
                 'descricao' => 'Alimentação prejudicada', 
                 'created_at' => Carbon::now(), 
@@ -94,15 +80,11 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnósticos relacionados ao sono
             [
                 'descricao' => 'Sono prejudicado', 
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnósticos relacionados à atividade física
             [
                 'descricao' => 'Não adesão ao regime de exercício físico', 
                 'created_at' => Carbon::now(), 
@@ -113,15 +95,11 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnóstico relacionado à condição habitacional
             [
                 'descricao' => 'Condição habitacional de risco', 
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnósticos relacionados ao peso e regulação hormonal
             [
                 'descricao' => 'Sobrepeso', 
                 'created_at' => Carbon::now(), 
@@ -132,8 +110,6 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnósticos glicêmicos
             [
                 'descricao' => 'Hiperglicemia', 
                 'created_at' => Carbon::now(), 
@@ -144,15 +120,11 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnóstico relacionado à respiração
             [
                 'descricao' => 'Condição respiratória prejudicada', 
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnóstico relacionado à regulação térmica
             [
                 'descricao' => 'Hipertermia', 
                 'created_at' => Carbon::now(), 
@@ -163,15 +135,11 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnóstico relacionado ao desempenho sexual
             [
                 'descricao' => 'Desempenho sexual prejudicado', 
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnósticos musculoesqueléticos e de locomoção
             [
                 'descricao' => 'Processo do sistema musculoesquelético prejudicado', 
                 'created_at' => Carbon::now(), 
@@ -192,8 +160,6 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnósticos vasculares
             [
                 'descricao' => 'Pressão arterial alterada', 
                 'created_at' => Carbon::now(), 
@@ -274,7 +240,6 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-             // Diagnóstico de risco de infecção
             [
                 'descricao' => 'Infecção', 
                 'created_at' => Carbon::now(), 
@@ -291,8 +256,6 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-            // Diagnóstico de integridade cutânea
             [
                 'descricao' => 'Integridade tissular prejudicada (Exsudato/Hipergranulação/ Maceração/Necrose)', 
                 'created_at' => Carbon::now(), 
@@ -353,9 +316,22 @@ class DiagnosticoSeeder extends Seeder
                 'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now()
             ],
-
-
-            // Diagnósticos emocionais e psicológicos
+            [
+                'descricao' => 'Atitude em Relação ao Cuidado, Positiva', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Capacidade para Executar Atividade de Lazer, Prejudicada', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
+            //Diagnóstico apoio
+            [
+                'descricao' => 'Falta de apoio familiar', 
+                'created_at' => Carbon::now(), 
+                'updated_at' => Carbon::now()
+            ],
             [
                 'descricao' => 'Problema emocional', 
                 'created_at' => Carbon::now(), 
@@ -382,22 +358,6 @@ class DiagnosticoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
 
-            [
-                'descricao' => 'Atitude em Relação ao Cuidado, Positiva', 
-                'created_at' => Carbon::now(), 
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'descricao' => 'Capacidade para Executar Atividade de Lazer, Prejudicada', 
-                'created_at' => Carbon::now(), 
-                'updated_at' => Carbon::now()
-            ],
-            //Diagnóstico apoio
-            [
-                'descricao' => 'Falta de apoio familiar', 
-                'created_at' => Carbon::now(), 
-                'updated_at' => Carbon::now()
-            ],
             //Diagnóstico emocional
             [
                 'descricao' => 'Problema emocional', 
