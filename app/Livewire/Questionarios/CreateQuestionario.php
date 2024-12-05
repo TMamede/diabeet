@@ -160,6 +160,7 @@ class CreateQuestionario extends Component
         }
     }
 
+    
 
     public function calcularClassificacaoTemperatura()
     {

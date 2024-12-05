@@ -45,7 +45,9 @@
         </main>
         @livewireStyles
         @livewireScripts
+        
     </div>
+    
 </body>
 
 </html>

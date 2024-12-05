@@ -167,6 +167,7 @@
                     </div>
                     <div class="flex justify-center w-full mt-8">
                         <button type="button" wire:click="nextStep"
+                            @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
                             class="px-4 py-2 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                             Continuar
                         </button>
@@ -2040,11 +2041,11 @@
 
                 <!-- Botões de Navegação -->
                 <div class="flex justify-between mt-24">
-                    <button type="button" wire:click="previousStep"
+                    <button type="button" wire:click="previousStep" @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
                         class="px-4 py-2 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Voltar
                     </button>
-                    <button type="button" wire:click="nextStep"
+                    <button type="button" wire:click="nextStep" @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
                         class="px-4 py-2 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Continuar
                     </button>
@@ -2317,11 +2318,11 @@
 
         <!-- Botões de Navegação -->
         <div class="flex justify-between mt-28">
-            <button type="button" wire:click="previousStep"
+            <button type="button" wire:click="previousStep" @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
                 class="px-4 py-2 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 Voltar
             </button>
-            <button type="button" wire:click="nextStep"
+            <button type="button" wire:click="nextStep" @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
                 class="px-4 py-2 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 Continuar
             </button>
@@ -2408,7 +2409,7 @@
 
         <!-- Botões de Navegação e Salvar -->
         <div class="flex justify-between mt-4">
-            <button type="button" wire:click="previousStep"
+            <button type="button" wire:click="previousStep" @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
                 class="px-4 py-2 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 Voltar
             </button>
