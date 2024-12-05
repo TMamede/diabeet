@@ -75,7 +75,6 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/prontuarios/create/{id?}', CreateProntuario::class)->name('prontuario.create');
 
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/prontuario/{id}', 
     ShowProntuario::class)->name('prontuario.show');

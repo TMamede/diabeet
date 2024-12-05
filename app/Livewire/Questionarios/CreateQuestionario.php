@@ -160,7 +160,7 @@ class CreateQuestionario extends Component
         }
     }
 
-    
+
 
     public function calcularClassificacaoTemperatura()
     {
@@ -1036,7 +1036,6 @@ class CreateQuestionario extends Component
             ->orderBy('id', 'desc') // Ordena do mais recente ao mais antigo (entre os antigos)
             ->first(); // Obtém o primeiro da lista (mais próximo ao atual)
 
-        // Garantir que questionarioAnterior não é nulo
         if ($questionarioAnterior) {
             // Garantir que nss_biologica está presente e não é nulo
             if ($questionario->nss_biologica && $questionarioAnterior->nss_biologica) {
@@ -1044,28 +1043,35 @@ class CreateQuestionario extends Component
                 $regulacaoVascularAtual = $questionario->nss_biologica->regulacao_vascular;
                 $regulacaoVascularAntiga = $questionarioAnterior->nss_biologica->regulacao_vascular;
 
-                // Dados para PSATP (Pressão Sistólica Arterial no Tornozelo) 
+                // Inicializar as variáveis PSATP com valores padrão
                 $psatp_atual_direito = $psatp_atual_direito ?? 0; // Se for null, define como 0
                 $psatp_antigo_direito = $psatp_antigo_direito ?? 0; // Se for null, define como 0
                 $psatp_atual_esquerdo = $psatp_atual_esquerdo ?? 0; // Se for null, define como 0
                 $psatp_antigo_esquerdo = $psatp_antigo_esquerdo ?? 0; // Se for null, define como 0
 
-                // Dados para PSAP (Pressão Sistólica Arterial no Pé) 
+                // Inicializar as variáveis PSAP com valores padrão
                 $psap_atual_direito = $psap_atual_direito ?? 0; // Se for null, define como 0
                 $psap_antigo_direito = $psap_antigo_direito ?? 0; // Se for null, define como 0
                 $psap_atual_esquerdo = $psap_atual_esquerdo ?? 0; // Se for null, define como 0
                 $psap_antigo_esquerdo = $psap_antigo_esquerdo ?? 0; // Se for null, define como 0
-
             } else {
                 // Tratar caso onde nss_biologica ou regulacao_vascular não existam
                 // Você pode lançar um erro ou definir valores padrão
-                // Exemplo: 
                 $regulacaoVascularAtual = $regulacaoVascularAntiga = null;
             }
         } else {
             // Tratar caso onde questionarioAnterior não foi encontrado
             // Exemplo: Definir valores padrão ou lançar um erro
             $regulacaoVascularAtual = $regulacaoVascularAntiga = null;
+            // Inicializar as variáveis PSATP e PSAP
+            $psatp_atual_direito = 0;
+            $psatp_antigo_direito = 0;
+            $psatp_atual_esquerdo = 0;
+            $psatp_antigo_esquerdo = 0;
+            $psap_atual_direito = 0;
+            $psap_antigo_direito = 0;
+            $psap_atual_esquerdo = 0;
+            $psap_antigo_esquerdo = 0;
         }
 
         $condicoes = [
@@ -1101,8 +1107,8 @@ class CreateQuestionario extends Component
             ],
             [
                 'condicao' => (
-                    $questionario->nss_biologica?->percepcao_sentidos?->analise_tato?->percepcoes?->olho_direito == 1 ||
-                    $questionario->nss_biologica?->percepcao_sentidos?->analise_tato?->percepcoes?->olho_esquerdo == 1
+                    $questionario->nss_biologica?->percepcao_sentidos?->olho_direito == 1 ||
+                    $questionario->nss_biologica?->percepcao_sentidos?->olho_esquerdo == 1
                 ),
                 'origem' => 4,
                 'motivo' => 7,
@@ -1148,7 +1154,7 @@ class CreateQuestionario extends Component
                 'motivo' => 103,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->sono?->qualidade_sono?->acorda_noite == 1,
+                'condicao' => $questionario->nss_biologica?->sono?->acorda_noite == 1,
                 'origem' => 6,
                 'motivo' => 15,
             ],
@@ -1163,33 +1169,32 @@ class CreateQuestionario extends Component
                 'motivo' => 17,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->sono?->problemas_sono?->id == 2,
+                'condicao' => $questionario->nss_biologica?->sono?->problemas_sono?->contains('id', 2),
                 'origem' => 6,
                 'motivo' => 17,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->sono?->problemas_sono?->id == 3,
+                'condicao' => $questionario->nss_biologica?->sono?->problemas_sono?->contains('id', 3),
                 'origem' => 6,
                 'motivo' => 18,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->sono?->problemas_sono?->id == 4,
+                'condicao' => $questionario->nss_biologica?->sono?->problemas_sono?->contains('id', 4),
                 'origem' => 6,
                 'motivo' => 19,
             ],
-            // Problemas de sono
             [
-                'condicao' => $questionario->nss_biologica?->sono?->problemas_sono?->id == 5,
+                'condicao' => $questionario->nss_biologica?->sono?->problemas_sono?->contains('id', 5),
                 'origem' => 6,
                 'motivo' => 20,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->sono?->problemas_sono?->id == 6,
+                'condicao' => $questionario->nss_biologica?->sono?->problemas_sono?->contains('id', 6),
                 'origem' => 6,
                 'motivo' => 21,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->sono?->problemas_sono?->id == 7,
+                'condicao' => $questionario->nss_biologica?->sono?->problemas_sono?->contains('id', 7),
                 'origem' => 6,
                 'motivo' => 22,
             ],
@@ -1278,62 +1283,62 @@ class CreateQuestionario extends Component
             ],
             // Tipos de locomoção com id de 3 a 7
             [
-                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->id == 3,
+                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->contains('id', 3),
                 'origem' => 13,
                 'motivo' => 38,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->id == 4,
+                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->contains('id', 4),
                 'origem' => 13,
                 'motivo' => 39,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->id == 5,
+                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->contains('id', 5),
                 'origem' => 13,
                 'motivo' => 40,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->id == 6,
+                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->contains('id', 6),
                 'origem' => 13,
                 'motivo' => 41,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->id == 7,
+                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->contains('id', 7),
                 'origem' => 13,
                 'motivo' => 42,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->id == 8,
+                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->contains('id', 8),
                 'origem' => 13,
                 'motivo' => 43,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->id == 9,
+                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->contains('id', 9),
                 'origem' => 13,
                 'motivo' => 44,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->id == 10,
+                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->contains('id', 10),
                 'origem' => 13,
                 'motivo' => 45,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->id == 11,
+                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->contains('id', 11),
                 'origem' => 13,
                 'motivo' => 46,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->id == 12,
+                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->contains('id', 12),
                 'origem' => 13,
                 'motivo' => 47,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->id == 13,
+                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->contains('id', 13),
                 'origem' => 13,
                 'motivo' => 48,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->id == 14,
+                'condicao' => $questionario->nss_biologica?->locomocao?->tipos_locomocao?->contains('id', 14),
                 'origem' => 13,
                 'motivo' => 49,
             ],
@@ -1373,37 +1378,37 @@ class CreateQuestionario extends Component
                 'motivo' => 56,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->id == 3,
+                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->contains('id', 3),
                 'origem' => 15,
                 'motivo' => 57,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->id == 4,
+                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->contains('id', 4),
                 'origem' => 15,
                 'motivo' => 58,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->id == 5,
+                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->contains('id', 5),
                 'origem' => 15,
                 'motivo' => 59,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->id == 8,
+                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->contains('id', 8),
                 'origem' => 15,
                 'motivo' => 60,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->id == 9,
+                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->contains('id', 9),
                 'origem' => 15,
                 'motivo' => 61,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->id == 12,
+                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->contains('id', 12),
                 'origem' => 15,
                 'motivo' => 62,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->id == 6,
+                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->contains('id', 6),
                 'origem' => 15,
                 'motivo' => 63,
             ],
@@ -1413,7 +1418,7 @@ class CreateQuestionario extends Component
                 'motivo' => 64,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->id == 10,
+                'condicao' => $questionario->nss_biologica?->senso_percepcao?->sintomas_percepcao?->contains('id', 10),
                 'origem' => 15,
                 'motivo' => 65,
             ],
@@ -1533,7 +1538,7 @@ class CreateQuestionario extends Component
                 'motivo' => 88,
             ],
             [
-                'condicao' => $questionario->nss_sociais?->recreacoes?->id == 1,
+                'condicao' => $questionario->nss_sociais?->recreacoes?->contains('id', 1),
                 'origem' => 19,
                 'motivo' => 89,
             ],
@@ -1543,32 +1548,32 @@ class CreateQuestionario extends Component
                 'motivo' => 90,
             ],
             [
-                'condicao' => $questionario->nss_sociais?->cuidado?->emocionais?->id == 1,
+                'condicao' => $questionario->nss_sociais?->cuidado?->emocionais?->contains('id', 1),
                 'origem' => 20,
                 'motivo' => 91,
             ],
             [
-                'condicao' => $questionario->nss_sociais?->cuidado?->emocionais?->id == 2,
+                'condicao' => $questionario->nss_sociais?->cuidado?->emocionais?->contains('id', 2),
                 'origem' => 20,
                 'motivo' => 92,
             ],
             [
-                'condicao' => $questionario->nss_sociais?->cuidado?->emocionais?->id == 3,
+                'condicao' => $questionario->nss_sociais?->cuidado?->emocionais?->contains('id', 3),
                 'origem' => 20,
                 'motivo' => 93,
             ],
             [
-                'condicao' => $questionario->nss_sociais?->cuidado?->emocionais?->id == 4,
+                'condicao' => $questionario->nss_sociais?->cuidado?->emocionais?->contains('id', 4),
                 'origem' => 20,
                 'motivo' => 94,
             ],
             [
-                'condicao' => $questionario->nss_sociais?->cuidado?->emocionais?->id == 5,
+                'condicao' => $questionario->nss_sociais?->cuidado?->emocionais?->contains('id', 5),
                 'origem' => 20,
                 'motivo' => 95,
             ],
             [
-                'condicao' => $questionario->nss_sociais?->cuidado?->emocionais?->id == 6,
+                'condicao' => $questionario->nss_sociais?->cuidado?->emocionais?->contains('id', 6),
                 'origem' => 20,
                 'motivo' => 96,
             ],
@@ -1903,8 +1908,11 @@ class CreateQuestionario extends Component
         $this->ColetarProntuario($questionario);
 
         $this->dispatch('questionario-for-prontuario', questionarioId: $questionario->id);
+
         // Resetar o formulário ou redirecionar conforme necessário
         session()->flash('message', 'Questionário criado com sucesso!');
-        return redirect()->route('prontuario.create');
+
+        // Redirecionar para o create prontuário, passando o ID do questionário
+        return redirect()->route('prontuario.create', ['id' => $questionario->id]);
     }
 }

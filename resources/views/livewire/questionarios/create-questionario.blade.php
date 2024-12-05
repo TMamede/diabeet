@@ -1202,7 +1202,7 @@
                             <label for="psap_direito" class="block font-medium text-gray-700">Pressão Sistólica
                                 Arteria Pediosa Direito</label>
                             <input type="text" wire:model="psap_direito" id="psap_direito"
-                                class="block w-full border border-gray-300 rounded-lg shadow-sm mt-7 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o psap direito">
                             @error('psap_direito')
                             <span class="text-sm text-red-500">{{ $message }}</span>
@@ -1558,7 +1558,7 @@
                             @enderror
                         </div>
 
-                        <h2 class="py-5 text-base font-semibold">Pé Direito</h2>
+                        <h2 class="py-5 text-lg font-semibold">Pé Direito</h2>
                         <div class="flex items-center mb-4 space-x-10">
                             <div>
                                 <label for="comprimentoD" class="block font-medium text-gray-700">Comprimento
@@ -1632,7 +1632,7 @@
                         </div>
                     </div>
                     <div>
-                        <h2 class="py-5 text-base font-semibold">Pé Esquerdo</h2>
+                        <h2 class="py-5 text-lg font-semibold">Pé Esquerdo</h2>
                         <div class="flex items-center mb-4 space-x-10">
                             <div>
                                 <label for="comprimentoE" class="block font-medium text-gray-700">Comprimento
@@ -2067,7 +2067,7 @@
                 <label for="monitoramento_glicemia_dia" class="block font-medium text-gray-700">Frequência
                     por dia de automonitoramento da glicemia capilar:</label>
                 <input type="text" wire:model="monitoramento_glicemia_dia" id="monitoramento_glicemia_dia"
-                    class="block w-3/5 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                    class="block w-4/6 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                     placeholder="Digite o número de vezes por dia que é realizado o automonitoramento da glicemia capilar">
                 @error('monitoramento_glicemia_dia')
                 <span class="text-sm text-red-500">{{ $message }}</span>
