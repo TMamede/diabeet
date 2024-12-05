@@ -162,7 +162,20 @@ class ShowQuestionario extends Component
 
     public function loadQuestionarioData($questionarioId)
     {
-        $this->questionario = Questionario::findOrFail($questionarioId);
+        $this->questionario = Questionario::with([
+            'nss_sociais.recreacoes', // Carregando as recreações do questionário
+            'nss_sociais.cuidado.emocionais', // Carregando os emocionais do questionário
+            'nss_biologica.nutricao.refeicoes', // Carregando as refeições do questionário
+            'nss_biologica.nutricao.restricoes_alimentar', // Carregando as restrições alimentares
+            'nss_biologica.sono.problemas_sono', // Carregando os problemas de sono
+            'nss_biologica.sexualidade.disturbios_sexual', // Carregando os distúrbios sexuais
+            'nss_biologica.locomocao.tipos_locomocao', // Carregando os tipos de locomoção
+            'nss_biologica.senso_percepcao.sintomas_percepcao', // Carregando os sintomas de percepção
+            'nss_biologica.cuidado_ferida.limpezas_lesao', // Carregando as limpezas de lesão
+            'nss_biologica.cuidado_ferida.coberturas_ferida', // Carregando as coberturas de ferida
+            'nss_biologica.integridade_cutanea.sinais_infeccao', // Carregando os sinais de infecção
+        ])->findOrFail($questionarioId);
+
         $this->IdQuestionario = $this->questionario->id;
         $this->nss_biologicas = $this->questionario->nss_biologica;
         $this->nss_espirituais = $this->questionario->nss_espiritual;
@@ -297,6 +310,39 @@ class ShowQuestionario extends Component
         $this->regime_terapeutico = $this->questionario->nss_sociais->aprendizagem->regime_terapeutico;
 
         $this->religiao = $this->questionario->nss_espiritual->religiao;
+
+        $this->recreacaosList = Recreacao::all();
+        $this->recreacaos = $this->questionario->nss_sociais->recreacoes->pluck('id')->toArray();
+
+        $this->emocionalsList = Emocional::all();
+        $this->emocionals = $this->questionario->nss_sociais->cuidado->emocionais->pluck('id')->toArray();
+
+        $this->refeicaosList = Refeicao::all();
+        $this->refeicaos= $this->questionario->nss_biologica->nutricao->refeicoes->pluck('id')->toArray();
+
+        $this->restricaosList = Restricao_alimento::all();
+        $this->restricaos = $this->questionario->nss_biologica->nutricao->restricoes_alimentar->pluck('id')->toArray();
+
+        $this->problemaSonoList = Problema_sono::all();
+        $this->problema_sonos = $this->questionario->nss_biologica->sono->problemas_sono->pluck('id')->toArray();
+
+        $this->disturbiosSexualList = Disturbio_sexual::all();
+        $this->disturbio_sexuals = $this->questionario->nss_biologica->sexualidade->disturbios_sexual->pluck('id')->toArray();
+
+        $this->tiposLocomocaoList = Tipo_locomocao::all();
+        $this->tipo_locomocaos = $this->questionario->nss_biologica->locomocao->tipos_locomocao->pluck('id')->toArray();
+
+        $this->sintomasPercepcaoList = Sintomas_percepcao::all();
+        $this->sintomas_percepcaos = $this->questionario->nss_biologica->senso_percepcao->sintomas_percepcao->pluck('id')->toArray();
+
+        $this->limpezaLesaosList = Limpeza_lesao::all();
+        $this->limpeza_lesaos = $this->questionario->nss_biologica->cuidado_ferida->limpezas_lesao->pluck('id')->toArray();
+
+        $this->coberturasList = Cobertura_ferida::all();
+        $this->coberturas = $this->questionario->nss_biologica->cuidado_ferida->coberturas_ferida->pluck('id')->toArray();
+
+        $this->sinaisInfeccaoList = Sinais_infeccao::all();
+        $this->sinais_infeccaos = $this->questionario->nss_biologica->integridade_cutanea->sinais_infeccao->pluck('id')->toArray();
     }
 
 
