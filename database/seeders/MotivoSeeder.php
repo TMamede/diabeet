@@ -165,7 +165,9 @@ class MotivoSeeder extends Seeder
         
             //Origem: Nutrição pt.2
             ['descricao' => 'Possui Restrições Alimentares', 'origem_id' => 5, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-
+        
+            //Origem: Pressão arterial
+            ['descricao' => 'Pressão Arterial Alterada', 'origem_id' => 14, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
     }
 }
