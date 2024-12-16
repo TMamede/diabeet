@@ -58,6 +58,10 @@ class DatabaseSeeder extends Seeder
         $this->call(NecessidadeBioSeeder::class);
         $this->call(NecessidadeSocioSeeder::class);
         $this->call(ExtraSeeder::class);
+        $this->call(OrigemSeeder::class);
+        $this->call(MotivoSeeder::class);
+        $this->call(DiagnosticoSeeder::class);
+        $this->call(IntervencaoSeeder::class);
 
     }
 }
