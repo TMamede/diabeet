@@ -45,7 +45,7 @@ new class extends Component {
                     </x-nav-link>
                     <x-nav-link :href="route('prontuario.index')" :active="request()->routeIs('prontuario.index')" wire:navigate>
                         {{ __('Prontuário') }}
-                    </x-nav-link>
+                    </x-nav-link> 
                     <x-nav-link :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
                         {{ __('Sobre Nós') }}
                     </x-nav-link>
@@ -131,7 +131,7 @@ new class extends Component {
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('prontuario.index')" :active="request()->routeIs('prontuario.index')" wire:navigate>
                 {{ __('Prontuário') }}
-            </x-responsive-nav-link>
+            </x-responsive-nav-link> 
             <x-responsive-nav-link :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
                 {{ __('Sobre Nós') }}
             </x-responsive-nav-link>
