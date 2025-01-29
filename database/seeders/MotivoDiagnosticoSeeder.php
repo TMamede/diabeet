@@ -15,7 +15,7 @@ class MotivoDiagnosticoSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('motivos')->insert([
+        DB::table('motivo_diagnostico')->insert([
             // Origem: Identificação e informações sociodemográficas
             ['motivo_id' => 1, 'diagnostico_id' => 1, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['motivo_id' => 2, 'diagnostico_id' => 1, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
