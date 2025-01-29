@@ -2357,7 +2357,7 @@
 
         <!-- Exibe os campos adicionais somente se a resposta for "sim" -->
         @if ($e_religioso === 'sim')
-        <div class="mb-6">
+        <div class="mt-2 mb-6">
             <label for="religiao" class="block font-medium text-gray-700">Religião/Espiritualidade:</label>
             <input type="text" wire:model="religiao" id="religiao"
                 class="block w-full px-6 py-3 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"

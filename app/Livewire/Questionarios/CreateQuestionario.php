@@ -1126,7 +1126,7 @@ class CreateQuestionario extends Component
                 'motivo' => 1,
             ],
             [
-                'condicao' => $questionario->paciente?->beneficio,
+                'condicao' => $questionario->paciente?->beneficio != 1,
                 'origem' => 1,
                 'motivo' => 2,
             ],
@@ -1648,7 +1648,7 @@ class CreateQuestionario extends Component
                 'motivo' => 101,
             ],
             [
-                'condicao' => $questionario->nss_espiritual?->religiao == null,
+                'condicao' => $questionario->nss_espiritual?->religiao == 1,
                 'origem' => 22,
                 'motivo' => 102,
             ],
@@ -1661,11 +1661,13 @@ class CreateQuestionario extends Component
         //Processando cada condição
         foreach ($condicoes as $condicao) {
             if ($condicao['condicao']) {
+                // Buscar a origem e associá-la ao prontuário, se necessário
                 $origem = Origem::find($condicao['origem']);
-                $prontuario->origens()->attach($origem->id);
-
+                $prontuario->origens()->syncWithoutDetaching([$origem->id]);
+        
+                // Buscar o motivo e associá-lo ao prontuário, se necessário
                 $motivo = Motivo::find($condicao['motivo']);
-                $prontuario->motivos()->attach($motivo->id);
+                $prontuario->motivos()->syncWithoutDetaching([$motivo->id]);
             }
         }
     }
@@ -1891,7 +1893,9 @@ class CreateQuestionario extends Component
             'cuidado_id' => $cuidado->id,
             'comunicacao_id' => $comunicacao->id,
         ]);
-
+        if($this->religiao == null){
+            $this->religiao = 'Nenhuma';
+        }
         $nss_espirituais = Nss_espirituais::firstOrcreate([
             'religiao' => $this->religiao,
         ]);
