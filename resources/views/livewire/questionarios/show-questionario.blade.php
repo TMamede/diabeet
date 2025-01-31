@@ -2149,8 +2149,7 @@
                             </div>
 
                             <div>
-                                <label for="imagem_avaliacao_pe" class="block mt-4 text-lg font-medium text-gray-700">Avaliação do Pé (Imagem)</label>
-                            
+                                <label for="imagem_avaliacao_pe" class="block mt-4 text-lg font-medium text-gray-700">Avaliação do Pé (Imagem)</label>          
                                 <div
                                     class="flex items-center justify-between p-4 mt-5 transition duration-300 ease-in-out border-2 border-gray-300 rounded-lg hover:border-indigo-500 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-300">
                                     <label for="imagem_avaliacao_pe" class="flex items-center space-x-2 cursor-pointer">
@@ -2184,8 +2183,6 @@
                                 </div>
                                 @endif
                             </div>
-
-
                         </div>
                     </div>
                 </main>
@@ -2718,7 +2715,6 @@
                     @else
                     <p class="mt-6 text-center text-gray-500">Nenhuma unidade foi selecionada.</p>
                     @endif
-
 
                     <div class="mt-4 mb-4">
                         <h2 class="py-5 text-3xl font-bold text-indigo-950">Impressões do Enfermeiro</h2>

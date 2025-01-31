@@ -1126,7 +1126,7 @@ class CreateQuestionario extends Component
                 'motivo' => 1,
             ],
             [
-                'condicao' => $questionario->paciente?->beneficio != 1,
+                'condicao' => $questionario->paciente?->beneficio->id != 1,
                 'origem' => 1,
                 'motivo' => 2,
             ],
@@ -1558,12 +1558,12 @@ class CreateQuestionario extends Component
                 'motivo' => 83,
             ],
             [
-                'condicao' => $this->sinais_infeccaos !== null,
+                'condicao' => $this->sinais_infeccaos != null,
                 'origem' => 16,
                 'motivo' => 84,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->cuidado_ferida !== null,
+                'condicao' => $questionario->nss_biologica?->cuidado_ferida != null,
                 'origem' => 17,
                 'motivo' => 85,
             ],

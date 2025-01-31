@@ -13,24 +13,23 @@ class CreateProntuario extends Component
     public $origensSelecionadas = [];
     public $motivosSelecionados = [];
     public $diagnosticosSelecionados = [];
+    public $intervencoesSelecionadas = [];
 
     public function mount($id = null)
     {
         $this->questionarioId = $id;
-
-        // Carrega o prontuário baseado no questionário
         $this->prontuario = Prontuario::where('questionario_id', $id)->firstOrFail();
 
-        // Carrega as origens associadas ao prontuário com seus motivos e diagnósticos
         $this->origens = $this->prontuario->origens()
             ->with(['motivos' => function ($query) {
-                // Filtra os motivos associados ao prontuário por meio da tabela intermediária 'prontuario_motivo'
                 $query->whereHas('prontuarios', function ($q) {
                     $q->where('prontuarios.id', $this->prontuario->id);
                 })
-                    ->with('diagnosticos'); // Carrega os diagnósticos associados
+                ->with(['diagnosticos' => function ($query) {
+                    $query->with('intervencaos');
+                }]);
             }])
-            ->distinct() // Evita duplicação de origens
+            ->distinct()
             ->get()
             ->toArray();
     }
@@ -50,20 +49,17 @@ class CreateProntuario extends Component
         }
     }
 
-    public function toggleMotivo($motivoId)
+    public function toggleIntervencao($intervencaoId)
     {
-        $origemId = $this->getOrigemFromMotivo($motivoId);
+        $diagnosticoId = $this->getDiagnosticoFromIntervencao($intervencaoId);
 
-        if (in_array($motivoId, $this->motivosSelecionados)) {
-            $this->motivosSelecionados = array_diff($this->motivosSelecionados, [$motivoId]);
-            $this->diagnosticosSelecionados = array_filter($this->diagnosticosSelecionados, function ($diagnosticoId) use ($motivoId) {
-                return !$this->isDiagnosticoFromMotivo($motivoId, $diagnosticoId);
-            });
+        if (in_array($intervencaoId, $this->intervencoesSelecionadas)) {
+            $this->intervencoesSelecionadas = array_diff($this->intervencoesSelecionadas, [$intervencaoId]);
         } else {
-            $this->motivosSelecionados[] = $motivoId;
+            $this->intervencoesSelecionadas[] = $intervencaoId;
 
-            if (!in_array($origemId, $this->origensSelecionadas)) {
-                $this->origensSelecionadas[] = $origemId;
+            if ($diagnosticoId && !in_array($diagnosticoId, $this->diagnosticosSelecionados)) {
+                $this->toggleDiagnostico($diagnosticoId);
             }
         }
     }
@@ -78,13 +74,39 @@ class CreateProntuario extends Component
         } else {
             $this->diagnosticosSelecionados[] = $diagnosticoId;
 
-            if (!in_array($motivoId, $this->motivosSelecionados)) {
-                $this->motivosSelecionados[] = $motivoId;
+            if ($motivoId && !in_array($motivoId, $this->motivosSelecionados)) {
+                $this->toggleMotivo($motivoId);
             }
-            if (!in_array($origemId, $this->origensSelecionadas)) {
+        }
+    }
+
+    public function toggleMotivo($motivoId)
+    {
+        $origemId = $this->getOrigemFromMotivo($motivoId);
+
+        if (in_array($motivoId, $this->motivosSelecionados)) {
+            $this->motivosSelecionados = array_diff($this->motivosSelecionados, [$motivoId]);
+        } else {
+            $this->motivosSelecionados[] = $motivoId;
+
+            if ($origemId && !in_array($origemId, $this->origensSelecionadas)) {
                 $this->origensSelecionadas[] = $origemId;
             }
         }
+    }
+
+    private function getDiagnosticoFromIntervencao($intervencaoId)
+    {
+        foreach ($this->origens as $origem) {
+            foreach ($origem['motivos'] as $motivo) {
+                foreach ($motivo['diagnosticos'] as $diagnostico) {
+                    if (collect($diagnostico['intervencaos'])->pluck('id')->contains($intervencaoId)) {
+                        return $diagnostico['id'];
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     private function getOrigemFromMotivo($motivoId)
@@ -145,6 +167,22 @@ class CreateProntuario extends Component
         return false;
     }
 
+    private function isIntervencaoFromDiagnostico($diagnosticoId, $intervencaoId)
+    {
+        foreach ($this->origens as $origem) {
+            foreach ($origem['motivos'] as $motivo) {
+                foreach ($motivo['diagnosticos'] as $diagnostico) {
+                    if ($diagnostico['id'] === $diagnosticoId) {
+                        return collect($diagnostico['intervencaos'])->pluck('id')->contains($intervencaoId);
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    
+
     public function render()
     {
         return view('livewire.prontuarios.create-prontuario')->layout('layouts.app');
@@ -152,23 +190,16 @@ class CreateProntuario extends Component
 
     public function finalizarProntuario()
     {
-        // Verificar se todas as origens, motivos e diagnósticos estão selecionados
-
         if (empty($this->origensSelecionadas) || empty($this->motivosSelecionados) || empty($this->diagnosticosSelecionados)) {
             session()->flash('error', 'É necessário selecionar pelo menos uma origem, motivo e diagnóstico.');
             return;
         }
 
-        // Sincronizar as origens selecionadas com o prontuário
         $this->prontuario->origens()->sync($this->origensSelecionadas);
-
-        // Sincronizar os motivos selecionados com o prontuário
         $this->prontuario->motivos()->sync($this->motivosSelecionados);
-
-        // Sincronizar os diagnósticos selecionados com o prontuário
         $this->prontuario->diagnosticos()->sync($this->diagnosticosSelecionados);
+        $this->prontuario->intervencoes()->sync($this->intervencoesSelecionadas);
 
-        // Exibir mensagem de sucesso
         session()->flash('success', 'Prontuário atualizado com sucesso!');
         redirect()->route('prontuario.index');
     }
