@@ -44,7 +44,6 @@ class ShowPaciente extends Component
     //Mensagem de alterações salvas com sucesso!
     public $successMessage = '';
     public $pacienteId;
-
     public function mount($id)
     {
         $this->loadPacienteData($id);
@@ -383,6 +382,7 @@ class ShowPaciente extends Component
                 ]
             );
         }
-        $this->successMessage = 'Alterações salvas com sucesso!!!';
+        //Mensagem de alterações salvas com sucesso
+        $this->dispatch('notify', 'Alterações salvas com sucesso!');;
     }
 }

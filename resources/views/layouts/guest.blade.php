@@ -25,7 +25,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="font-sans antialiased text-gray-900">
+<body class="font-sans antialiased text-gray-900 md:w-auto">
     <div
         class="flex flex-col items-center min-h-screen pt-6 bg-gradient-to-br from-indigo-50 via-indigo-100 to-indigo-300 sm:justify-center sm:pt-0">
         <div>
