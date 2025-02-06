@@ -46,7 +46,7 @@ class SearchProntuario extends Component
 
     public function gerarPDF($prontuarioId)
     {
-        return redirect()->route('prontuario.show', ['id' => $prontuarioId]);
+        return redirect()->route('prontuario.pdf', ['id' => $prontuarioId]);
     }
 
 

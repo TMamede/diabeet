@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,65 +7,80 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-        }
-        h1, h2, h3 {
+            font-size: 14px;
             color: #333;
+            line-height: 1.6;
+            margin: 40px;
+        }
+        .header {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
         .section {
             margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-color: #f9f9f9;
         }
-        .section h2 {
-            margin-bottom: 10px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
+        .section-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #000;
+            padding-bottom: 3px;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
+        .content {
+            margin-left: 10px;
+            margin-top: 5px;
         }
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f5f5f5;
+        .list-item {
+            margin-left: 15px;
         }
     </style>
 </head>
 <body>
-    <h1>Prontuário #{{ $prontuario->id }}</h1>
-    <p>Data de Criação: {{ $prontuario->created_at->format('d/m/Y H:i') }}</p>
 
+    <div class="header">Prontuário #{{ $prontuario->id }}</div>
+
+    <!-- Informações do Paciente -->
     <div class="section">
-        <h2>Origens</h2>
-        <ul>
-            @foreach ($prontuario->origens as $origem)
-                <li>{{ $origem->descricao }}</li>
-            @endforeach
-        </ul>
+        <div class="section-title">Paciente</div>
+        <div class="content">{{ $prontuario->questionarios->paciente->nome ?? 'Não informado' }}</div>
     </div>
 
+    <!-- Exibindo todas as Origens e seus detalhes -->
+    @foreach ($prontuario->origens as $origem)
     <div class="section">
-        <h2>Motivos</h2>
-        <ul>
-            @foreach ($prontuario->motivos as $motivo)
-                <li>{{ $motivo->descricao }}</li>
-            @endforeach
-        </ul>
+        <div class="section-title">Origem: {{ $origem->descricao }}</div>
+        
+        <!-- Motivos Relacionados -->
+        @foreach ($origem->motivos as $motivo)
+        <div class="content">
+            <strong>Motivo:</strong> {{ $motivo->descricao }}
+            
+            <!-- Diagnósticos Relacionados -->
+            <ul>
+                @foreach ($motivo->diagnosticos as $diagnostico)
+                <li class="list-item">
+                    <strong>Diagnóstico:</strong> {{ $diagnostico->descricao }}
+                    
+                    <!-- Intervenções Relacionadas -->
+                    <ul>
+                        @foreach ($diagnostico->intervencaos as $intervencao)
+                        <li class="list-item">Intervenção: {{ $intervencao->descricao }}</li>
+                        @endforeach
+                    </ul>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        @endforeach
     </div>
+    @endforeach
 
-    <div class="section">
-        <h2>Diagnósticos</h2>
-        <ul>
-            @foreach ($prontuario->diagnosticos as $diagnostico)
-                <li>{{ $diagnostico->descricao }}</li>
-            @endforeach
-        </ul>
-    </div>
 </body>
 </html>

@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Pacientes\ShowPaciente;
 use App\Livewire\Prontuarios\CreateProntuario;
-use App\Livewire\Prontuarios\ShowProntuario;
 use App\Livewire\Questionarios\ShowQuestionario;
+use App\Http\Controllers\ProntuarioPDFController;
 
 Route::view('/', 'welcome');
 
@@ -75,6 +75,9 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/prontuarios/create/{id?}', CreateProntuario::class)->name('prontuario.create');
 
-Route::get('/prontuarios/show/{id?}', ShowProntuario::class)->name('prontuario.show');
+
+
+Route::get('/prontuario/{id}/pdf', [ProntuarioPDFController::class, 'gerarPDF'])
+    ->name('prontuario.pdf');
 
 require __DIR__ . '/auth.php';
