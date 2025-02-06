@@ -48,9 +48,9 @@
 
         <!-- Botão "Iniciar" com animação de hover -->
         <a href="{{ route('register') }}">
-            <x-primary-button class="px-8 py-4 text-lg text-white transition-transform transform bg-indigo-600 rounded-full shadow-lg hover:bg-indigo-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
+            <button class="px-8 py-4 text-2xl font-bold text-white transition-transform transform bg-indigo-600 rounded-full shadow-lg hover:bg-indigo-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
                 Iniciar
-            </x-primary-button>
+            </button>
         </a>
     </div>
 

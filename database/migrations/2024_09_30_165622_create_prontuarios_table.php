@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreignIdFor(Questionario::class)
                   ->constrained()
                   ->onDelete('cascade'); // Exclui o prontuário se o questionário for deletado
+            $table->boolean('gerado')->default(false);
             $table->timestamps();
         });
         

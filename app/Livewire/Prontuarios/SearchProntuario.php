@@ -53,11 +53,8 @@ class SearchProntuario extends Component
     public function render()
     {
         return view('livewire.prontuarios.search-prontuario', [
-            'questionarios' => Questionario::search($this->search)
-                // Filtra os questionários que têm um registro correspondente em 'prontuarios'
-                ->whereHas('prontuario', function ($query) {
-                    $query->whereNotNull('questionario_id'); // Apenas questionários que têm 'questionario_id' em prontuarios
-                })
+            'questionarios' => Questionario::with('prontuario') // Carrega o prontuário relacionado
+                ->search($this->search)
                 ->when($this->sortBy, function ($query) {
                     if ($this->sortBy === 'user_name') {
                         $query->join('users', 'questionarios.user_id', '=', 'users.id')
@@ -70,14 +67,6 @@ class SearchProntuario extends Component
                     if ($this->sortBy === 'paciente_nome') {
                         $query->join('pacientes', 'questionarios.paciente_id', '=', 'pacientes.id')
                             ->orderBy('pacientes.nome', $this->sortDir);
-                    } else {
-                        $query->orderBy($this->sortBy, $this->sortDir);
-                    }
-                })
-                ->when($this->sortBy, function ($query) {
-                    if ($this->sortBy === 'questionario_id') {
-                        $query->join('questionarios', 'questionarios.id', '=', 'questionarios.id')
-                            ->orderBy('questionarios.id', $this->sortDir);
                     } else {
                         $query->orderBy($this->sortBy, $this->sortDir);
                     }

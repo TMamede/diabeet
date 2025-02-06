@@ -320,13 +320,6 @@
                     <div class="flex flex-row justify-between w-5/6">
                         <h2 class="py-5 text-3xl font-bold">Necessidades Biológicas</h2>
 
-                        <div class="flex items-center ml-auto">
-                            <!-- Adicione ml-auto aqui -->
-                            <button wire:click="updateQuestionario('{{ $IdQuestionario }}')"
-                                class="items-center w-40 px-5 py-2 text-white bg-teal-500 rounded-md shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
-                                Salvar alterações
-                            </button>
-                        </div>
                     </div>
 
                     <div class="">
@@ -338,12 +331,12 @@
                                     tempo/espaço:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="orientado" value="1"
+                                        <input type="radio" wire:model="orientado" value="1" disabled 
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="orientado" value="0"
+                                        <input type="radio" wire:model="orientado" value="0" disabled 
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -358,6 +351,7 @@
                                     class="block font-medium text-gray-700">Comportamento</label>
                                 <select wire:model="comportamento_regulacao_neuro_id"
                                     id="comportamento_regulacao_neuro_id"
+                                    disabled
                                     class="block w-1/2 p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                     <option value="">Selecione</option>
                                     @foreach ($comportamentosNeuro as $comportamento)
@@ -382,12 +376,12 @@
                                         visual diminuída no olho direito</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="olho_direito" value="1"
+                                            <input type="radio" wire:model="olho_direito" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="olho_direito" value="0"
+                                            <input type="radio" wire:model="olho_direito" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -402,12 +396,12 @@
                                         visual diminuída no olho esquerdo</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="olho_esquerdo" value="1"
+                                            <input type="radio" wire:model="olho_esquerdo" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="olho_esquerdo" value="0"
+                                            <input type="radio" wire:model="olho_esquerdo" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -422,12 +416,12 @@
                                         auditiva diminuída</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="ouvido" value="1"
+                                            <input type="radio" wire:model="ouvido" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="ouvido" value="0"
+                                            <input type="radio" wire:model="ouvido" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -442,7 +436,7 @@
                             <div class="w-1/2">
                                 <div class="mb-4">
                                     <label for="analise_tato_id" class="block font-medium text-gray-700">Tato</label>
-                                    <select wire:model="analise_tato_id" id="analise_tato_id"
+                                    <select wire:model="analise_tato_id" id="analise_tato_id" disabled
                                         class="block w-1/2 p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                         <option value="">Selecione</option>
                                         @foreach ($analiseTatos as $tato)
@@ -459,12 +453,12 @@
                                         queda</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="risco_queda" value="1"
+                                            <input type="radio" wire:model="risco_queda" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="risco_queda" value="0"
+                                            <input type="radio" wire:model="risco_queda" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -483,7 +477,7 @@
                             <!-- Primeiro div: Pele -->
                             <div class="w-1/3">
                                 <label for="tipo_pele_id" class="block font-medium text-gray-700">Pele</label>
-                                <select wire:model="tipo_pele_id" id="tipo_pele_id"
+                                <select wire:model="tipo_pele_id" id="tipo_pele_id" disabled
                                     class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                     <option value="">Selecione</option>
                                     @foreach ($tipoPeles as $pele)
@@ -500,7 +494,7 @@
                                 <label for="liquido_diario" class="block font-medium text-gray-700">Volume de
                                     líquido
                                     diário</label>
-                                <input type="number" wire:model="liquido_diario" id="liquido_diario"
+                                <input type="number" wire:model="liquido_diario" id="liquido_diario" disabled
                                     class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                     placeholder="Digite em litros o valor de líquido diário">
                                 @error('liquido_diario')
@@ -520,8 +514,8 @@
                                 <div class="space-y-2">
                                     @foreach ($refeicaosList as $refeicao)
                                     <div class="flex items-center">
-                                        <input type="checkbox" wire:model="refeicaos" value="{{ $refeicao->id }}"
-                                            id="refeicao-{{ $refeicao->id }}"
+                                        <input type="checkbox" wire:model="refeicaos" value="{{ $refeicao->id }}" disabled
+                                            id="refeicao-{{ $refeicao->id }}" 
                                             class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
                                         <label for="refeicao-{{ $refeicao->id }}" class="ml-2 text-gray-700">
                                             {{ $refeicao->descricao }}
@@ -540,7 +534,7 @@
                                 <div class="space-y-2">
                                     @foreach ($restricaosList as $restricao)
                                     <div class="flex items-center">
-                                        <input type="checkbox" wire:model="restricaos" value="{{ $restricao->id }}"
+                                        <input type="checkbox" wire:model="restricaos" value="{{ $restricao->id }}" disabled
                                             id="restricao-{{ $restricao->id }}"
                                             class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
                                         <label for="restricao-{{ $restricao->id }}" class="ml-2 text-gray-700">
@@ -558,7 +552,7 @@
                         <div class="mb-4">
                             <label for="alimento_consumo_id" class="block font-medium text-gray-700">Maior consmo
                                 de:</label>
-                            <select wire:model="alimento_consumo_id" id="alimento_consumo_id"
+                            <select wire:model="alimento_consumo_id" id="alimento_consumo_id" disabled
                                 class="block w-1/3 p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                 <option value="">Selecione</option>
                                 @foreach ($alimentoConsumos as $alimento)
@@ -579,7 +573,7 @@
                                 <div class="mb-4">
                                     <label for="horas_sono" class="block font-medium text-gray-700">Horas de
                                         Sono</label>
-                                    <input type="number" wire:model="horas_sono" id="horas_sono"
+                                    <input type="number" wire:model="horas_sono" id="horas_sono" disabled
                                         class="block w-4/5 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                         placeholder="Digite o número de horas de sono">
                                     @error('horas_sono')
@@ -592,12 +586,12 @@
                                         noite</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="acorda_noite" value="1"
+                                            <input type="radio" wire:model="acorda_noite" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="acorda_noite" value="0"
+                                            <input type="radio" wire:model="acorda_noite" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -611,7 +605,7 @@
                                     <label for="qualidade_sono_id" class="block font-medium text-gray-700">Qualidade
                                         do
                                         Sono:</label>
-                                    <select wire:model="qualidade_sono_id" id="qualidade_sono_id"
+                                    <select wire:model="qualidade_sono_id" id="qualidade_sono_id" disabled
                                         class="block w-1/3 p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                         <option value="">Selecione</option>
                                         @foreach ($qualidadeSonos as $qualidade)
@@ -633,7 +627,7 @@
                                         @foreach ($problemaSonoList as $problema)
                                         <div class="flex items-center">
                                             <input type="checkbox" wire:model="problema_sonos"
-                                                value="{{ $problema->id }}" id="problema-{{ $problema->id }}"
+                                                value="{{ $problema->id }}" id="problema-{{ $problema->id }}" disabled
                                                 class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
                                             <label for="problema-{{ $problema->id }}" class="ml-2 text-gray-700">
                                                 {{ $problema->descricao }}
@@ -651,7 +645,7 @@
                         <div class="mb-4">
                             <label for="medicamentos_sono" class="block font-medium text-gray-700">Utilização de
                                 medicamentos para dormir - Classe medicamentosa</label>
-                            <input type="text" wire:model="medicamentos_sono" id="medicamentos_sono"
+                            <input type="text" wire:model="medicamentos_sono" id="medicamentos_sono" disabled
                                 class="block w-1/2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite, se usar, a classe do medicamento usado para dormir">
                             @error('medicamentos_sono')
@@ -668,12 +662,12 @@
                                 Físicos</label>
                             <div class="flex items-center mt-1 space-x-6">
                                 <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="realiza" value="1"
+                                    <input type="radio" wire:model="realiza" value="1" disabled
                                         class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                     <span class="ml-2 text-gray-700">Sim</span>
                                 </label>
                                 <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="realiza" value="0"
+                                    <input type="radio" wire:model="realiza" value="0" disabled
                                         class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                     <span class="ml-2 text-gray-700">Não</span>
                                 </label>
@@ -687,7 +681,7 @@
                             <label for="frequencia_exercicio_id" class="block font-medium text-gray-700">Frequência
                                 de
                                 exercício físico:</label>
-                            <select wire:model="frequencia_exercicio_id" id="frequencia_exercicio_id"
+                            <select wire:model="frequencia_exercicio_id" id="frequencia_exercicio_id" disabled
                                 class="block w-1/3 p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                 <option value="">Selecione</option>
                                 @foreach ($frequenciasExercicio as $frequencia)
@@ -702,7 +696,7 @@
                         <div class="mb-4">
                             <label for="duracao" class="block font-medium text-gray-700">Duração do exercício
                                 físico</label>
-                            <input type="number" wire:model="duracao" id="duracao"
+                            <input type="number" wire:model="duracao" id="duracao" disabled
                                 class="block w-1/2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o número da média, em minutos, da duração do exercício">
                             @error('duracao')
@@ -720,7 +714,7 @@
                             <div class="w-1/4">
                                 <label for="zona_moradia_id" class="block font-medium text-gray-700">Zona de
                                     Moradia:</label>
-                                <select wire:model="zona_moradia_id" id="zona_moradia_id"
+                                <select wire:model="zona_moradia_id" id="zona_moradia_id" disabled
                                     class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                     <option value="">Selecione</option>
                                     @foreach ($zonasMoradia as $zona)
@@ -736,7 +730,7 @@
                             <div class="w-1/4">
                                 <label for="rede_esgoto_id" class="block font-medium text-gray-700">Rede de
                                     Esgoto:</label>
-                                <select wire:model="rede_esgoto_id" id="rede_esgoto_id"
+                                <select wire:model="rede_esgoto_id" id="rede_esgoto_id" disabled
                                     class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                     <option value="">Selecione</option>
                                     @foreach ($redesEsgoto as $rede)
@@ -756,12 +750,12 @@
                                     Pública:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="luz_publica" value="1"
+                                        <input type="radio" wire:model="luz_publica" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="luz_publica" value="0"
+                                        <input type="radio" wire:model="luz_publica" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -777,12 +771,12 @@
                                     lixo:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="coleta_lixo" value="1"
+                                        <input type="radio" wire:model="coleta_lixo" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="coleta_lixo" value="0"
+                                        <input type="radio" wire:model="coleta_lixo" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -801,12 +795,12 @@
                                     tratada:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="agua_tratada" value="1"
+                                        <input type="radio" wire:model="agua_tratada" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="agua_tratada" value="0"
+                                        <input type="radio" wire:model="agua_tratada" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -822,12 +816,12 @@
                                     de animais domésticos:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="animais_domesticos" value="1"
+                                        <input type="radio" wire:model="animais_domesticos" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="animais_domesticos" value="0"
+                                        <input type="radio" wire:model="animais_domesticos" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -845,20 +839,20 @@
                         <div class="flex items-center mb-4 space-x-4">
                             <div>
                                 <label for="altura" class="block font-medium text-gray-700">Altura (cm):</label>
-                                <input type="number" wire:model.defer="altura" id="altura"
+                                <input type="number" wire:model.defer="altura" id="altura" disabled
                                     placeholder="Digite a altura em cm"
                                     class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                             </div>
 
                             <div>
                                 <label for="peso" class="block font-medium text-gray-700">Peso (kg):</label>
-                                <input type="number" wire:model.defer="peso" id="peso" placeholder="Digite o peso em kg"
+                                <input type="number" wire:model.defer="peso" id="peso" placeholder="Digite o peso em kg" disabled
                                     class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                             </div>
 
                             <!-- Botão para calcular o IMC -->
                             <div class="flex items-center mt-6">
-                                <button type="button" wire:click="calcularIMC"
+                                <button type="button" wire:click="calcularIMC" 
                                     class="px-4 py-2 text-white bg-indigo-600 rounded-lg shadow hover:bg-indigo-700">
                                     Calcular IMC
                                 </button>
@@ -887,7 +881,7 @@
                             <label for="circunferencia_abdnominal"
                                 class="block font-medium text-gray-700">Circunferência
                                 abdominal</label>
-                            <input type="number" wire:model="circunferencia_abdnominal" id="circunferencia_abdnominal"
+                            <input type="number" wire:model="circunferencia_abdnominal" id="circunferencia_abdnominal" disabled
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite a circunferência abdominal em cm">
                             @error('circunferencia_abdnominal')
@@ -899,7 +893,7 @@
                             <label for="glicemia_capilar" class="block font-medium text-gray-700">Glicemia capilar
                                 do
                                 momento</label>
-                            <input type="number" wire:model="glicemia_capilar" id="glicemia_capilar"
+                            <input type="number" wire:model="glicemia_capilar" id="glicemia_capilar" disabled
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite a glicemia capilar do momento em mg/dl">
                             @error('glicemia_capilar')
@@ -912,12 +906,12 @@
                             <label for="jejum" class="block mb-2 font-medium text-gray-700">Jejum:</label>
                             <div class="flex items-center mt-1 space-x-6">
                                 <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="jejum" value="1"
+                                    <input type="radio" wire:model="jejum" value="1" disabled
                                         class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                     <span class="ml-2 text-gray-700">Sim</span>
                                 </label>
                                 <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="jejum" value="0"
+                                    <input type="radio" wire:model="jejum" value="0" disabled
                                         class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                     <span class="ml-2 text-gray-700">Não</span>
                                 </label>
@@ -931,12 +925,12 @@
                             <label for="pos_prandial" class="block mb-2 font-medium text-gray-700">Pós-Prandial:</label>
                             <div class="flex items-center mt-1 space-x-6">
                                 <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="pos_prandial" value="1"
+                                    <input type="radio" wire:model="pos_prandial" value="1" disabled
                                         class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                     <span class="ml-2 text-gray-700">Sim</span>
                                 </label>
                                 <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="pos_prandial" value="0"
+                                    <input type="radio" wire:model="pos_prandial" value="0" disabled
                                         class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                     <span class="ml-2 text-gray-700">Não</span>
                                 </label>
@@ -953,7 +947,7 @@
                         <div class="mb-4">
                             <label for="temp_enchimento_capilar" class="block font-medium text-gray-700">Tempo de
                                 enchimento capilar:</label>
-                            <input type="number" wire:model="temp_enchimento_capilar" id="temp_enchimento_capilar"
+                            <input type="number" wire:model="temp_enchimento_capilar" id="temp_enchimento_capilar" disabled
                                 class="block w-2/5 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o tempo de enchimento capilar em segundos">
                             @error('temp_enchimento_capilar')
@@ -964,7 +958,7 @@
                         <div class="mb-4">
                             <label for="frequencia_respiratoria" class="block font-medium text-gray-700">Frequência
                                 respiratória:</label>
-                            <input type="number" wire:model="frequencia_respiratoria" id="frequencia_respiratoria"
+                            <input type="number" wire:model="frequencia_respiratoria" id="frequencia_respiratoria" disabled
                                 class="block w-2/5 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite a freqûencia respiratória em irpm">
                             @error('frequencia_respiratoria')
@@ -974,7 +968,7 @@
 
                         <div class="mb-4">
                             <label for="satO2" class="block font-medium text-gray-700">SatO2</label>
-                            <input type="number" wire:model="satO2" id="satO2"
+                            <input type="number" wire:model="satO2" id="satO2" disabled
                                 class="block w-2/5 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite a porcentagem de saturação do oxigênio">
                             @error('satO2')
@@ -987,7 +981,7 @@
 
                         <div class="mb-4">
                             <label for="temperatura" class="block font-medium text-gray-700">Temperatura:</label>
-                            <input type="number" wire:model="temperatura" id="temperatura"
+                            <input type="number" wire:model="temperatura" id="temperatura" disabled
                                 class="block w-1/4 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite a temperatura em °C">
                             @error('temperatura')
@@ -1021,12 +1015,12 @@
                                     urinar:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="dor_urinar" value="1"
+                                        <input type="radio" wire:model="dor_urinar" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="dor_urinar" value="0"
+                                        <input type="radio" wire:model="dor_urinar" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1043,12 +1037,12 @@
                                     urina:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="incontinencia_urina" value="1"
+                                        <input type="radio" wire:model="incontinencia_urina" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="incontinencia_urina" value="0"
+                                        <input type="radio" wire:model="incontinencia_urina" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1066,12 +1060,12 @@
                                     gastrointestinal:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="dor_eliminacoes" value="1"
+                                        <input type="radio" wire:model="dor_eliminacoes" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="dor_eliminacoes" value="0"
+                                        <input type="radio" wire:model="dor_eliminacoes" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1089,12 +1083,12 @@
                                     gastrointestinal:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="incontinencia_eliminacao" value="1"
+                                        <input type="radio" wire:model="incontinencia_eliminacao" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="incontinencia_eliminacao" value="0"
+                                        <input type="radio" wire:model="incontinencia_eliminacao" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1111,12 +1105,12 @@
                                     class="block mb-2 font-medium text-gray-700">Constipação:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="constipacao" value="1"
+                                        <input type="radio" wire:model="constipacao" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="constipacao" value="0"
+                                        <input type="radio" wire:model="constipacao" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1131,12 +1125,12 @@
                                 <label for="diarreia" class="block mb-2 font-medium text-gray-700">Diarreia:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="diarreia" value="1"
+                                        <input type="radio" wire:model="diarreia" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="diarreia" value="0"
+                                        <input type="radio" wire:model="diarreia" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1153,12 +1147,12 @@
                                     Laxante:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="uso_laxante" value="1"
+                                        <input type="radio" wire:model="uso_laxante" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="uso_laxante" value="0"
+                                        <input type="radio" wire:model="uso_laxante" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1174,12 +1168,12 @@
                                     Fraldas:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="uso_fraldas" value="1"
+                                        <input type="radio" wire:model="uso_fraldas" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="uso_fraldas" value="0"
+                                        <input type="radio" wire:model="uso_fraldas" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1193,7 +1187,7 @@
                         <div class="mb-4">
                             <label for="equipamento_externo" class="block font-medium text-gray-700">Uso de
                                 equipamento coletor ou dispositivo externo:</label>
-                            <input type="text" wire:model="equipamento_externo" id="equipamento_externo"
+                            <input type="text" wire:model="equipamento_externo" id="equipamento_externo" disabled
                                 class="block w-1/2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite se usa equipamento coletor ou dispositivo externo, se sim qual">
                             @error('equipamento_externo')
@@ -1209,12 +1203,12 @@
                                 Ativa:</label>
                             <div class="flex items-center mt-1 space-x-6">
                                 <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="vida_sex_ativa" value="1"
+                                    <input type="radio" wire:model="vida_sex_ativa" value="1" disabled
                                         class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                     <span class="ml-2 text-gray-700">Sim</span>
                                 </label>
                                 <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="vida_sex_ativa" value="0"
+                                    <input type="radio" wire:model="vida_sex_ativa" value="0" disabled
                                         class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                     <span class="ml-2 text-gray-700">Não</span>
                                 </label>
@@ -1230,7 +1224,7 @@
                                 @foreach ($disturbiosSexualList as $disturbio)
                                 <div class="flex items-center">
                                     <input type="checkbox" wire:model="disturbio_sexuals" value="{{ $disturbio->id }}"
-                                        id="disturbio-{{ $disturbio->id }}"
+                                        id="disturbio-{{ $disturbio->id }}" disabled
                                         class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
                                     <label for="disturbio-{{ $disturbio->id }}" class="ml-2 text-gray-700">
                                         {{ $disturbio->descricao }}
@@ -1253,7 +1247,7 @@
                                 @foreach ($tiposLocomocaoList as $tipoLoc)
                                 <div class="flex items-center">
                                     <input type="checkbox" wire:model="tipo_locomocaos" value="{{ $tipoLoc->id }}"
-                                        id="tipoLoc-{{ $tipoLoc->id }}"
+                                        id="tipoLoc-{{ $tipoLoc->id }}" disabled
                                         class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
                                     <label for="tipoLoc-{{ $tipoLoc->id }}" class="ml-2 text-gray-700">
                                         {{ $tipoLoc->descricao }}
@@ -1273,12 +1267,12 @@
                                     adequado:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="sapato_adequado" value="1"
+                                        <input type="radio" wire:model="sapato_adequado" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="sapato_adequado" value="0"
+                                        <input type="radio" wire:model="sapato_adequado" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1294,12 +1288,12 @@
                                     de cicatrização/offloading:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="sandalia_cicatrizacao" value="1"
+                                        <input type="radio" wire:model="sandalia_cicatrizacao" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="sandalia_cicatrizacao" value="0"
+                                        <input type="radio" wire:model="sandalia_cicatrizacao" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1318,7 +1312,7 @@
                         <div class="w-1/3">
                             <label for="pressao_arterial" class="block font-medium text-gray-700">Pressão
                                 arterial:</label>
-                            <input type="text" wire:model="pressao_arterial" id="pressao_arterial"
+                            <input type="text" wire:model="pressao_arterial" id="pressao_arterial" disabled
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite a pressão arterial em mmHg">
                             @error('pressao_arterial')
@@ -1329,7 +1323,7 @@
                         <div class="w-1/3">
                             <label for="frequencia_cardiaca" class="block font-medium text-gray-700">Frequência
                                 Cardíaca:</label>
-                            <input type="text" wire:model="frequencia_cardiaca" id="frequencia_cardiaca"
+                            <input type="text" wire:model="frequencia_cardiaca" id="frequencia_cardiaca" disabled
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite a frequência cardíaca em bpm">
                             @error('frequencia_cardiaca')
@@ -1341,7 +1335,7 @@
                         <div class="w-1/4">
                             <label for="psatp_direito" class="block font-medium text-gray-700">Pressão Sistólica
                                 Arteria Tibial Posterior Direito</label>
-                            <input type="text" wire:model="psatp_direito" id="psatp_direito"
+                            <input type="text" wire:model="psatp_direito" id="psatp_direito" disabled
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o psatp direito">
                             @error('psatp_direito')
@@ -1351,7 +1345,7 @@
                         <div class="w-1/4">
                             <label for="psap_direito" class="block font-medium text-gray-700">Pressão Sistólica
                                 Arteria Pediosa Direito</label>
-                            <input type="text" wire:model="psap_direito" id="psap_direito"
+                            <input type="text" wire:model="psap_direito" id="psap_direito" disabled
                                 class="block w-full border border-gray-300 rounded-lg shadow-sm mt-7 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o psap direito">
                             @error('psap_direito')
@@ -1361,7 +1355,7 @@
                         <div class="w-1/4">
                             <label for="psab_direito" class="block font-medium text-gray-700">Pressão Sistólica
                                 Artéria Braquial Direito</label>
-                            <input type="text" wire:model="psab_direito" id="psab_direito"
+                            <input type="text" wire:model="psab_direito" id="psab_direito" disabled
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o psab direito">
                             @error('psab_direito')
@@ -1374,7 +1368,7 @@
                         <div class="w-1/4">
                             <label for="psatp_esquerdo" class="block font-medium text-gray-700">Pressão Sistólica
                                 Arteria Tibial Posterior Esquerdo</label>
-                            <input type="text" wire:model="psatp_esquerdo" id="psatp_esquerdo"
+                            <input type="text" wire:model="psatp_esquerdo" id="psatp_esquerdo" disabled
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o psatp esquerdo">
                             @error('psatp_esquerdo')
@@ -1384,7 +1378,7 @@
                         <div class="w-1/4">
                             <label for="psap_esquerdo" class="block font-medium text-gray-700">Pressão Sistólica
                                 Arteria Pediosa Esquerdo</label>
-                            <input type="text" wire:model="psap_esquerdo" id="psap_esquerdo"
+                            <input type="text" wire:model="psap_esquerdo" id="psap_esquerdo" disabled
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o psap esquerdo">
                             @error('psap_esquerdo')
@@ -1394,7 +1388,7 @@
                         <div class="w-1/4">
                             <label for="psab_esquerdo" class="block font-medium text-gray-700">Pressão Sistólica
                                 Artéria Braquial Esquerdo</label>
-                            <input type="text" wire:model="psab_esquerdo" id="psab_esquerdo"
+                            <input type="text" wire:model="psab_esquerdo" id="psab_esquerdo" disabled
                                 class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o psab esquerdo">
                             @error('psab_esquerdo')
@@ -1413,7 +1407,7 @@
                                 @foreach ($sintomasPercepcaoList as $sintomas)
                                 <div class="flex items-center">
                                     <input type="checkbox" wire:model="sintomas_percepcaos" value="{{ $sintomas->id }}"
-                                        id="sintomas-{{ $sintomas->id }}"
+                                        id="sintomas-{{ $sintomas->id }}" disabled
                                         class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
                                     <label for="sintomas-{{ $sintomas->id }}" class="ml-2 text-gray-700">
                                         {{ $sintomas->descricao }}
@@ -1437,12 +1431,12 @@
                                     (Cavus)</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="pe_neuropatico" value="1"
+                                        <input type="radio" wire:model="pe_neuropatico" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="pe_neuropatico" value="0"
+                                        <input type="radio" wire:model="pe_neuropatico" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1457,12 +1451,12 @@
                                     (Charcot)</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="arco_desabado" value="1"
+                                        <input type="radio" wire:model="arco_desabado" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="arco_desabado" value="0"
+                                        <input type="radio" wire:model="arco_desabado" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1476,12 +1470,12 @@
                                 <label for="valgismo" class="block mb-2 font-medium text-gray-700">Valgismo</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="valgismo" value="1"
+                                        <input type="radio" wire:model="valgismo" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="valgismo" value="0"
+                                        <input type="radio" wire:model="valgismo" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1497,12 +1491,12 @@
                                     Guerra</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="dedos_em_garra" value="1"
+                                        <input type="radio" wire:model="dedos_em_garra" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="dedos_em_garra" value="0"
+                                        <input type="radio" wire:model="dedos_em_garra" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1519,12 +1513,12 @@
                                     Correto:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="corte_unhas" value="1"
+                                        <input type="radio" wire:model="corte_unhas" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="corte_unhas" value="0"
+                                        <input type="radio" wire:model="corte_unhas" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1539,12 +1533,12 @@
                                     Interdigital:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="micose" value="1"
+                                        <input type="radio" wire:model="micose" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="micose" value="0"
+                                        <input type="radio" wire:model="micose" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1559,12 +1553,12 @@
                                 <label for="fissuras" class="block mb-2 font-medium text-gray-700">Fissuras:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="fissuras" value="1"
+                                        <input type="radio" wire:model="fissuras" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="fissuras" value="0"
+                                        <input type="radio" wire:model="fissuras" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1579,12 +1573,12 @@
                                     class="block mb-2 font-medium text-gray-700">Calosidades:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="calosidades" value="1"
+                                        <input type="radio" wire:model="calosidades" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="calosidades" value="0"
+                                        <input type="radio" wire:model="calosidades" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -1597,7 +1591,7 @@
                         <div class="mb-4">
                             <label for="estado_unhas_id" class="block font-medium text-gray-700">Estado das
                                 Unhas:</label>
-                            <select wire:model="estado_unhas_id" id="estado_unhas_id"
+                            <select wire:model="estado_unhas_id" id="estado_unhas_id" disabled
                                 class="block w-1/3 p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                 <option value="">Selecione</option>
                                 @foreach ($estadoUnhas as $unhas)
@@ -1649,13 +1643,13 @@
                                             Direito</label>
                                         <div class="flex items-center space-x-6">
                                             <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="percepcao_direito" value="1"
+                                                <input type="radio" wire:model="percepcao_direito" value="1" disabled
                                                     class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                                 <span class="ml-2 text-gray-700">Percepção presente (responder
                                                     corretamente em duas das três aplicações).</span>
                                             </label>
                                             <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="percepcao_direito" value="0"
+                                                <input type="radio" wire:model="percepcao_direito" value="0" disabled
                                                     class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                                 <span class="ml-2 text-gray-700">Percepção ausente (responder
                                                     corretamente
@@ -1669,13 +1663,13 @@
                                             Esquerdo</label>
                                         <div class="flex items-center space-x-6">
                                             <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="percepcao_esquerdo" value="1"
+                                                <input type="radio" wire:model="percepcao_esquerdo" value="1" disabled
                                                     class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                                 <span class="ml-2 text-gray-700">Percepção presente (responder
                                                     corretamente em duas das três aplicações). </span>
                                             </label>
                                             <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="percepcao_esquerdo" value="0"
+                                                <input type="radio" wire:model="percepcao_esquerdo" value="0" disabled
                                                     class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                                 <span class="ml-2 text-gray-700">Percepção ausente (responder
                                                     corretamente
@@ -1695,7 +1689,7 @@
                                         @foreach ($sinaisInfeccaoList as $sinais)
                                         <div class="flex items-center">
                                             <input type="checkbox" wire:model="sinais_infeccaos"
-                                                value="{{ $sinais->id }}" id="sinais-{{ $sinais->id }}"
+                                                value="{{ $sinais->id }}" id="sinais-{{ $sinais->id }}" disabled
                                                 class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
                                             <label for="sinais-{{ $sinais->id }}" class="ml-2 text-gray-700">
                                                 {{ $sinais->descricao }}
@@ -1713,7 +1707,7 @@
                                     <div>
                                         <label for="comprimentoD" class="block font-medium text-gray-700">Comprimento
                                             (cm):</label>
-                                        <input type="number" wire:model="comprimentoD" id="comprimentoD"
+                                        <input type="number" wire:model="comprimentoD" id="comprimentoD" disabled
                                             placeholder="Digite o comprimento"
                                             class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                     </div>
@@ -1721,7 +1715,7 @@
                                     <div>
                                         <label for="larguraD" class="block font-medium text-gray-700">Largura
                                             (cm):</label>
-                                        <input type="number" wire:model="larguraD" id="larguraD"
+                                        <input type="number" wire:model="larguraD" id="larguraD" disabled
                                             placeholder="Digite a largura"
                                             class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                     </div>
@@ -1733,7 +1727,7 @@
                                             class="block font-medium text-gray-700">Localização Anatômica da
                                             lesão:</label>
                                         <select wire:model="localizacao_lesao_direito_id"
-                                            id="localizacao_lesao_direito_id"
+                                            id="localizacao_lesao_direito_id" disabled
                                             class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                             <option value="">Selecione</option>
                                             @foreach ($localizacaoLesao as $localizacao)
@@ -1750,7 +1744,7 @@
                                     <div class="w-1/4">
                                         <label for="regiao_pe_direito_id"
                                             class="block font-medium text-gray-700">Região:</label>
-                                        <select wire:model="regiao_pe_direito_id" id="regiao_pe_direito_id"
+                                        <select wire:model="regiao_pe_direito_id" id="regiao_pe_direito_id" disabled
                                             class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                             <option value="">Selecione</option>
                                             @foreach ($regiaoPe as $regiao)
@@ -1767,12 +1761,12 @@
                                         Decorrete de Amputação:</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="lesao_amputacaoD" value="1"
+                                            <input type="radio" wire:model="lesao_amputacaoD" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="lesao_amputacaoD" value="0"
+                                            <input type="radio" wire:model="lesao_amputacaoD" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -1788,7 +1782,7 @@
                                     <div>
                                         <label for="comprimentoE" class="block font-medium text-gray-700">Comprimento
                                             (cm):</label>
-                                        <input type="number" wire:model="comprimentoE" id="comprimentoE"
+                                        <input type="number" wire:model="comprimentoE" id="comprimentoE" disabled
                                             placeholder="Digite o comprimento"
                                             class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                     </div>
@@ -1796,7 +1790,7 @@
                                     <div>
                                         <label for="larguraE" class="block font-medium text-gray-700">Largura
                                             (cm):</label>
-                                        <input type="number" wire:model="larguraE" id="larguraE"
+                                        <input type="number" wire:model="larguraE" id="larguraE" disabled
                                             placeholder="Digite a largura"
                                             class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                     </div>
@@ -1807,7 +1801,7 @@
                                         <label for="localizacao_lesao_esquerdo_id"
                                             class="block font-medium text-gray-700">Localização Anatômica da
                                             lesão:</label>
-                                        <select wire:model="localizacao_lesao_esquerdo_id"
+                                        <select wire:model="localizacao_lesao_esquerdo_id" disabled
                                             id="localizacao_lesao_esquerdo_id"
                                             class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                             <option value="">Selecione</option>
@@ -1825,7 +1819,7 @@
                                     <div class="w-1/4">
                                         <label for="regiao_pe_esquerdo_id"
                                             class="block font-medium text-gray-700">Região:</label>
-                                        <select wire:model="regiao_pe_esquerdo_id" id="regiao_pe_esquerdo_id"
+                                        <select wire:model="regiao_pe_esquerdo_id" id="regiao_pe_esquerdo_id" disabled
                                             class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                             <option value="">Selecione</option>
                                             @foreach ($regiaoPe as $regiao)
@@ -1842,12 +1836,12 @@
                                         Decorrete de Amputação:</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="lesao_amputacaoE" value="1"
+                                            <input type="radio" wire:model="lesao_amputacaoE" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="lesao_amputacaoE" value="0"
+                                            <input type="radio" wire:model="lesao_amputacaoE" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -1864,7 +1858,7 @@
                                 <div class="w-1/4">
                                     <label for="bordas_ferida_id" class="block font-medium text-gray-700">Bordas da
                                         Ferida</label>
-                                    <select wire:model="bordas_ferida_id" id="bordas_ferida_id"
+                                    <select wire:model="bordas_ferida_id" id="bordas_ferida_id" disabled
                                         class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                         <option value="">Selecione</option>
                                         @foreach ($bordasFerida as $borda)
@@ -1880,7 +1874,7 @@
                                 <div class="w-1/4">
                                     <label for="tipo_tecido_ferida_id" class="block font-medium text-gray-700">Tipo de
                                         Tecido no Leito da Ferida</label>
-                                    <select wire:model="tipo_tecido_ferida_id" id="tipo_tecido_ferida_id"
+                                    <select wire:model="tipo_tecido_ferida_id" id="tipo_tecido_ferida_id" disabled
                                         class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                         <option value="">Selecione</option>
                                         @foreach ($tiposTecido as $tipo)
@@ -1898,7 +1892,7 @@
                                 <div class="w-1/4">
                                     <label for="profundidade_id"
                                         class="block font-medium text-gray-700">Profundidade</label>
-                                    <select wire:model="profundidade_id" id="profundidade_id"
+                                    <select wire:model="profundidade_id" id="profundidade_id" disabled
                                         class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                         <option value="">Selecione</option>
                                         @foreach ($profundidades as $profundidade)
@@ -1915,7 +1909,7 @@
                                 <div class="w-1/4">
                                     <label for="pele_periferida_id" class="block font-medium text-gray-700">Pele
                                         Periferida</label>
-                                    <select wire:model="pele_periferida_id" id="pele_periferida_id"
+                                    <select wire:model="pele_periferida_id" id="pele_periferida_id" disabled
                                         class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                         <option value="">Selecione</option>
                                         @foreach ($pelesPeriferida as $pele)
@@ -1934,7 +1928,7 @@
                                     <label for="quantidade_exudato_id"
                                         class="block font-medium text-gray-700">Quantidade de
                                         Exudato</label>
-                                    <select wire:model="quantidade_exudato_id" id="quantidade_exudato_id"
+                                    <select wire:model="quantidade_exudato_id" id="quantidade_exudato_id" disabled
                                         class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                         <option value="">Selecione</option>
                                         @foreach ($quantidadesExudato as $quantidade)
@@ -1951,7 +1945,7 @@
                                 <div class="w-1/4">
                                     <label for="aspecto_exudato_id" class="block font-medium text-gray-700">Aspecto do
                                         Exudato</label>
-                                    <select wire:model="aspecto_exudato_id" id="aspecto_exudato_id"
+                                    <select wire:model="aspecto_exudato_id" id="aspecto_exudato_id" disabled
                                         class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                         <option value="">Selecione</option>
                                         @foreach ($aspectosExudato as $aspecto)
@@ -1970,12 +1964,12 @@
                                         exudato:</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="odor_exudato" value="1"
+                                            <input type="radio" wire:model="odor_exudato" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="odor_exudato" value="0"
+                                            <input type="radio" wire:model="odor_exudato" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -1990,12 +1984,12 @@
                                     <label for="edema" class="block mb-2 font-medium text-gray-700">Edema:</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="edema" value="1"
+                                            <input type="radio" wire:model="edema" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="edema" value="0"
+                                            <input type="radio" wire:model="edema" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -2008,7 +2002,7 @@
 
                             <div class="mb-4">
                                 <label for="dor" class="block font-medium text-gray-700">Dor:</label>
-                                <input type="number" wire:model="dor" id="dor"
+                                <input type="number" wire:model="dor" id="dor" disabled
                                     class="block w-2/5 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                     placeholder="Digite a dor do paciente (1 a 10)">
                                 @error('dor')
@@ -2026,8 +2020,8 @@
                                     <div class="space-y-2">
                                         @foreach ($limpezaLesaosList as $limpeza)
                                         <div class="flex items-center">
-                                            <input type="checkbox" wire:model="limpeza_lesaos"
-                                                value="{{ $limpeza->id }}" id="limpeza-{{ $limpeza->id }}"
+                                            <input type="checkbox" wire:model="limpeza_lesaos" 
+                                                value="{{ $limpeza->id }}" id="limpeza-{{ $limpeza->id }}" disabled
                                                 class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
                                             <label for="limpeza-{{ $limpeza->id }}" class="ml-2 text-gray-700">
                                                 {{ $limpeza->descricao }}
@@ -2047,7 +2041,7 @@
                                         @foreach ($coberturasList as $cobertura)
                                         <div class="flex items-center">
                                             <input type="checkbox" wire:model="coberturas" value="{{ $cobertura->id }}"
-                                                id="cobertura-{{ $cobertura->id }}"
+                                                id="cobertura-{{ $cobertura->id }}" disabled
                                                 class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
                                             <label for="cobertura-{{ $cobertura->id }}" class="ml-2 text-gray-700">
                                                 {{ $cobertura->descricao }}
@@ -2067,7 +2061,7 @@
                                     <div class="w-full">
                                         <label for="desbridamento_id" class="block font-medium text-gray-700">Tipos de
                                             Desbridamento:</label>
-                                        <select wire:model="desbridamento_id" id="desbridamento_id"
+                                        <select wire:model="desbridamento_id" id="desbridamento_id" disabled
                                             class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                             <option value="">Selecione</option>
                                             @foreach ($desbridamentos as $desbridamento)
@@ -2087,7 +2081,7 @@
                                         <label for="avaliacao_ferida_id"
                                             class="block font-medium text-gray-700">Avaliação da
                                             Ferida:</label>
-                                        <select wire:model="avaliacao_ferida_id" id="avaliacao_ferida_id"
+                                        <select wire:model="avaliacao_ferida_id" id="avaliacao_ferida_id" disabled
                                             class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                                             <option value="">Selecione</option>
                                             @foreach ($avaliacaoFeridas as $avaliacao)
@@ -2110,12 +2104,12 @@
                                         de Laserterapia:</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="aplicacao_laserterapia" value="1"
+                                            <input type="radio" wire:model="aplicacao_laserterapia" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="aplicacao_laserterapia" value="0"
+                                            <input type="radio" wire:model="aplicacao_laserterapia" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -2132,12 +2126,12 @@
                                         fotodinâmica:</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="terapia_fotodinamica" value="1"
+                                            <input type="radio" wire:model="terapia_fotodinamica" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="terapia_fotodinamica" value="0"
+                                            <input type="radio" wire:model="terapia_fotodinamica" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -2159,7 +2153,7 @@
                                         <span class="ml-6 text-base font-semibold text-indigo-500">Escolher arquivo</span>
                                     </label>
                             
-                                    <input type="file" id="imagem_avaliacao_pe" wire:model="imagem_avaliacao_pe" class="hidden">
+                                    <input type="file" id="imagem_avaliacao_pe" disabled wire:model="imagem_avaliacao_pe" class="hidden"> 
                                 </div>
                             
                                 <!-- Exibindo Mensagens de Erro -->
@@ -2282,13 +2276,6 @@
                     <div class="flex flex-row justify-between w-5/6">
                         <h2 class="py-5 text-3xl font-bold">Necessidades Sociais</h2>
 
-                        <div class="flex items-center ml-auto">
-                            <!-- Adicione ml-auto aqui -->
-                            <button wire:click="updateQuestionario('{{ $IdQuestionario }}')"
-                                class="items-center w-40 px-5 py-2 text-white bg-teal-500 rounded-md shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
-                                Salvar alterações
-                            </button>
-                        </div>
                     </div>
 
                     <div>
@@ -2297,7 +2284,7 @@
                         <div class="mb-4">
                             <label for="monitoramento_glicemia_dia" class="block font-medium text-gray-700">Frequência
                                 por dia de automonitoramento da glicemia capilar:</label>
-                            <input type="text" wire:model="monitoramento_glicemia_dia" id="monitoramento_glicemia_dia"
+                            <input type="text" wire:model="monitoramento_glicemia_dia" id="monitoramento_glicemia_dia" disabled
                                 class="block w-3/5 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite o número de vezes por dia que é realizado o automonitoramento da glicemia capilar">
                             @error('monitoramento_glicemia_dia')
@@ -2313,12 +2300,12 @@
                                         orientado sobre autocuidado com os pés:</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="cuidado_pes" value="1"
+                                            <input type="radio" wire:model="cuidado_pes" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="cuidado_pes" value="0"
+                                            <input type="radio" wire:model="cuidado_pes" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -2336,12 +2323,12 @@
                                         sobre uso de sapatos adequados:</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="uso_sapato" value="1"
+                                            <input type="radio" wire:model="uso_sapato" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="uso_sapato" value="0"
+                                            <input type="radio" wire:model="uso_sapato" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -2362,12 +2349,12 @@
                                         alimentação:</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="alimentacao" value="1"
+                                            <input type="radio" wire:model="alimentacao" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="alimentacao" value="0"
+                                            <input type="radio" wire:model="alimentacao" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -2386,12 +2373,12 @@
                                         regime terapêutico adequadamente:</label>
                                     <div class="flex items-center mt-1 space-x-6">
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="regime_terapeutico" value="1"
+                                            <input type="radio" wire:model="regime_terapeutico" value="1" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                             <span class="ml-2 text-gray-700">Sim</span>
                                         </label>
                                         <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="regime_terapeutico" value="0"
+                                            <input type="radio" wire:model="regime_terapeutico" value="0" disabled
                                                 class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                             <span class="ml-2 text-gray-700">Não</span>
                                         </label>
@@ -2413,7 +2400,7 @@
                                 @foreach ($recreacaosList as $recreacao)
                                 <div class="flex items-center">
                                     <input type="checkbox" wire:model="recreacaos" value="{{ $recreacao->id }}"
-                                        id="recreacao-{{ $recreacao->id }}"
+                                        id="recreacao-{{ $recreacao->id }}" disabled
                                         class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
                                     <label for="recreacao-{{ $recreacao->id }}" class="ml-2 text-gray-700">
                                         {{ $recreacao->descricao }}
@@ -2433,12 +2420,12 @@
                                 momento da consulta:</label>
                             <div class="flex items-center mt-1 space-x-6">
                                 <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="acompanhado" value="1"
+                                    <input type="radio" wire:model="acompanhado" value="1" disabled
                                         class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                     <span class="ml-2 text-gray-700">Sim</span>
                                 </label>
                                 <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="acompanhado" value="0"
+                                    <input type="radio" wire:model="acompanhado" value="0" disabled
                                         class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                     <span class="ml-2 text-gray-700">Não</span>
                                 </label>
@@ -2454,7 +2441,7 @@
                                 @foreach ($emocionalsList as $emocional)
                                 <div class="flex items-center">
                                     <input type="checkbox" wire:model="emocionals" value="{{ $emocional->id }}"
-                                        id="emocional-{{ $emocional->id }}"
+                                        id="emocional-{{ $emocional->id }}" disabled
                                         class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
                                     <label for="emocional-{{ $emocional->id }}" class="ml-2 text-gray-700">
                                         {{ $emocional->descricao }}
@@ -2472,12 +2459,12 @@
                                 mesmo sobre sua lesão:</label>
                             <div class="flex items-center mt-1 space-x-6">
                                 <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="opnioes_de_si" value="1"
+                                    <input type="radio" wire:model="opnioes_de_si" value="1" disabled
                                         class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                     <span class="ml-2 text-gray-700">Positiva</span>
                                 </label>
                                 <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="opnioes_de_si" value="0"
+                                    <input type="radio" wire:model="opnioes_de_si" value="0" disabled
                                         class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                     <span class="ml-2 text-gray-700">Negativa</span>
                                 </label>
@@ -2490,7 +2477,7 @@
                         <div class="mb-4">
                             <label for="auxiliador" class="block font-medium text-gray-700">Quem mais auxilia no seu
                                 tratamento:</label>
-                            <input type="text" wire:model="auxiliador" id="auxiliador"
+                            <input type="text" wire:model="auxiliador" id="auxiliador" disabled
                                 class="block w-1/2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                 placeholder="Digite quem mais auxilia no tratamento">
                             @error('auxiliador')
@@ -2507,12 +2494,12 @@
                                     familiar/amigos:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="apoio" value="1"
+                                        <input type="radio" wire:model="apoio" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="apoio" value="0"
+                                        <input type="radio" wire:model="apoio" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -2528,12 +2515,12 @@
                                     com as pessoas:</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="interacao_social" value="1"
+                                        <input type="radio" wire:model="interacao_social" value="1" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
                                         <span class="ml-2 text-gray-700">Sim</span>
                                     </label>
                                     <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="interacao_social" value="0"
+                                        <input type="radio" wire:model="interacao_social" value="0" disabled
                                             class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
                                         <span class="ml-2 text-gray-700">Não</span>
                                     </label>
@@ -2643,39 +2630,17 @@
                     <div class="flex flex-row justify-between w-5/6">
                         <h2 class="py-5 text-3xl font-bold">Informações Finais</h2>
 
-                        <div class="flex items-center ml-auto">
-                            <!-- Adicione ml-auto aqui -->
-                            <button wire:click="updateQuestionario('{{ $IdQuestionario }}')"
-                                class="items-center w-40 px-5 py-2 text-white bg-teal-500 rounded-md shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
-                                Salvar alterações
-                            </button>
-                        </div>
                     </div>
                     
 
                     <div class="mb-6">
-                        <label for="e_religioso" class="block mb-2 font-medium text-gray-700">Tem Religião?</label>
-                        <div class="flex items-center space-x-4">
-                            <div x-data="{ selecionado: @entangle('e_religioso') }">
-                                <button type="button" wire:click="$set('e_religioso', 'sim')"
-                                    :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'"
-                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-cyan-200">
-                                    Sim
-                                </button>
-
-                                <button type="button" wire:click="$set('e_religioso', 'nao')"
-                                    :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'"
-                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-red-200">
-                                    Não
-                                </button>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <!-- Exibe os campos adicionais somente se a resposta for "sim" -->
-                    @if ($e_religioso === 'sim')
+                    @if ($e_religioso = 'sim')
                     <div class="mb-6">
-                        <label for="religiao" class="block font-medium text-gray-700">Religião/Espiritualidade:</label>
+                        <label for="religiao" class="block mb-4 text-3xl font-bold text-gray-700 ">Religião/Espiritualidade:</label>
                         <input type="text" wire:model="religiao" id="religiao"
                             class="block w-full px-6 py-3 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                             placeholder="Digite sua religião/espiritualidade">
@@ -2718,7 +2683,7 @@
 
                     <div class="mt-4 mb-4">
                         <h2 class="py-5 text-3xl font-bold text-indigo-950">Impressões do Enfermeiro</h2>
-                        <textarea wire:model="impressoes" id="impressoes"
+                        <textarea wire:model="impressoes" id="impressoes" disabled
                             class="block w-full px-6 py-4 mt-1 placeholder-gray-400 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                             placeholder="Digite suas impressões sobre a realização do questionário" rows="6"></textarea>
                         @error('impressoes')

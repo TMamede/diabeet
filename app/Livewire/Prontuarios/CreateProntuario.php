@@ -199,8 +199,11 @@ class CreateProntuario extends Component
         $this->prontuario->motivos()->sync($this->motivosSelecionados);
         $this->prontuario->diagnosticos()->sync($this->diagnosticosSelecionados);
         $this->prontuario->intervencoes()->sync($this->intervencoesSelecionadas);
+        
+        $this->prontuario->gerado = true; // Atualiza o atributo gerado
+        $this->prontuario->save(); // Salva no banco
 
-        session()->flash('success', 'Prontuário atualizado com sucesso!');
-        redirect()->route('prontuario.index');
+        session()->flash('success', 'Prontuário finalizado com sucesso!');
+        return redirect()->route('prontuario.index');
     }
 }
