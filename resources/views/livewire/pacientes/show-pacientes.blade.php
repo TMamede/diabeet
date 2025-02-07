@@ -829,7 +829,7 @@
             <div x-show="step === 3" x-transition>
                 @if ($currentStep == 3)
                     <div class="step">
-                        <div class="flex flex-col lg:flex-row"></div>
+                        <div class="flex flex-row bg-stone-50 lg:h-full lg:flex-row">
                         <!-- Barra de Navegação -->
 
                         <!-- Barra de Navegação Mobile esquerda!-->
@@ -952,7 +952,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--Barra navegação lg -->
+                        <!--Barra navegação xl -->
                         <nav class="flex min-h-full p-6 bg-white lg:w-64 lg:block"
                             :class="{ 'block': open, 'hidden': !open }">
                             <ul class="space-y-4">
