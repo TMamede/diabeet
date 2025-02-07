@@ -57,7 +57,7 @@ class SearchProntuario extends Component
                 ->search($this->search)
                 ->when($this->sortBy, function ($query) {
                     if ($this->sortBy === 'user_name') {
-                        $query->join('users', 'questionarios.user_id', '=', 'users.id')
+                        $query->join('users', 'questionario.user_id', '=', 'users.id')
                             ->orderBy('users.name', $this->sortDir);
                     } else {
                         $query->orderBy($this->sortBy, $this->sortDir);
@@ -65,7 +65,7 @@ class SearchProntuario extends Component
                 })
                 ->when($this->sortBy, function ($query) {
                     if ($this->sortBy === 'paciente_nome') {
-                        $query->join('pacientes', 'questionarios.paciente_id', '=', 'pacientes.id')
+                        $query->join('pacientes', 'questionario.paciente_id', '=', 'pacientes.id')
                             ->orderBy('pacientes.nome', $this->sortDir);
                     } else {
                         $query->orderBy($this->sortBy, $this->sortDir);

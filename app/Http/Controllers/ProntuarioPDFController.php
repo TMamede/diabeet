@@ -10,13 +10,36 @@ class ProntuarioPDFController extends Controller
 {
     public function gerarPDF($id)
     {
-        // Busca o prontuário com os relacionamentos necessários
-        $prontuario = Prontuario::with(['origens', 'motivos', 'diagnosticos','intervencoes'])->findOrFail($id);
+        $prontuario = Prontuario::with([
+            'questionario.paciente',
+            'origens',
+            'motivos',
+            'diagnosticos',
+            'intervencoes'
+        ])->findOrFail($id);
 
-        // Gera o PDF usando a view específica
-        $pdf = Pdf::loadView('pdfs.prontuario', ['prontuario' => $prontuario]);
+        // Pré-processar os dados para a view
+        $dados = [
+            'prontuario' => $prontuario,
+            'motivosPorOrigem' => $prontuario->origens->mapWithKeys(function ($origem) use ($prontuario) {
+                return [
+                    $origem->id => $prontuario->motivos->where('origem_id', $origem->id)
+                ];
+            }),
+            'diagnosticosPorMotivo' => $prontuario->motivos->mapWithKeys(function ($motivo) use ($prontuario) {
+                return [
+                    $motivo->id => $prontuario->diagnosticos->whereIn('id', $motivo->diagnosticos->pluck('id'))
+                ];
+            }),
+            'intervencoesPorDiagnostico' => $prontuario->diagnosticos->mapWithKeys(function ($diagnostico) use ($prontuario) {
+                return [
+                    $diagnostico->id => $prontuario->intervencoes->whereIn('id', $diagnostico->intervencaos->pluck('id'))
+                ];
+            })
+        ];
 
-        // Retorna o PDF para download
+        $pdf = Pdf::loadView('pdfs.prontuario', $dados);
+
         return $pdf->download("prontuario_{$id}.pdf");
     }
 }

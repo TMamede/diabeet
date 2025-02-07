@@ -10,7 +10,7 @@ class Prontuario extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function questionarios()
+    public function questionario()
     {
         return $this->belongsTo(Questionario::class);
     }
