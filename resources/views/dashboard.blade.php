@@ -11,7 +11,7 @@
             <main class="py-20">
                 <section class="container px-6 pb-12 mx-auto text-center">
                     <h2 class="mb-4 text-5xl font-extrabold text-indigo-900">
-                        <span class="text-indigo-700">Bem-vindo ao</span> Diafeet
+                        <span class="text-indigo-700">Bem-vindo ao</span> SoPeP
                     </h2>
                     <p class="mb-8 text-lg text-gray-700">
                         Nosso sistema oferece suporte clínico e monitoramento eficaz para pacientes com pé diabético.
@@ -91,7 +91,7 @@
         <!-- Footer -->
         <footer class="py-6 text-indigo-100 bg-indigo-800">
             <div class="container px-6 mx-auto text-center">
-                <p>&copy; 2024 Diafeet. Todos os direitos reservados.</p>
+                <p>&copy; 2024 SoPeP. Todos os direitos reservados.</p>
             </div>
         </footer>
     </div>

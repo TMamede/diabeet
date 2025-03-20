@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Diafeet</title>
+    <title>SoPeP</title>
 
     <!-- Fonts -->
     <link rel="icon" href="{{ asset('bluepe.svg') }}" type="image/svg+xml">
@@ -41,7 +41,7 @@
     <!-- Conteúdo Central -->
     <div class="z-10 flex flex-col items-center space-y-8">
         <!-- Título com sombra -->
-        <h1 class="font-bold text-gray-800 text-7xl drop-shadow-lg">Diafeet</h1>
+        <h1 class="font-bold text-gray-800 text-7xl drop-shadow-lg">SoPeP</h1>
         
         <!-- Logo centralizada com animação de escala -->
         <x-application-logo class="w-48 h-48 transition-transform duration-300 ease-in-out transform drop-shadow-lg hover:scale-110" />
@@ -56,7 +56,7 @@
 
     <!-- Rodapé decorativo -->
     <footer class="absolute bottom-0 w-full py-4 text-sm text-center text-gray-500">
-        <p>© {{ date('Y') }} Diafeet. Todos direitos reservados.</p>
+        <p>© {{ date('Y') }} SoPeP. Todos direitos reservados.</p>
     </footer>
 
     <!-- Animações CSS -->

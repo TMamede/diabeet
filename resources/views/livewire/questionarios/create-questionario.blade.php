@@ -4,7 +4,7 @@
             {{-- Etapa 1: Amostra de dados do paciente --}}
             @if ($currentStep == 1)
             <div class="step">
-                <div class="w-full py-12 bg-gray-100">
+                <div class="w-full py-24">
                     <div id="search-bar" class="w-full max-w-2xl mx-auto">
                         <!-- Título -->
                         <h2 class="mb-6 text-3xl font-semibold text-center text-gray-800">Pesquise o paciente</h2>
@@ -710,7 +710,7 @@
                         <!-- Botão para calcular o IMC -->
                         <div class="flex items-center mt-6">
                             <button type="button" wire:click="calcularIMC"
-                                class="px-4 py-2 text-white bg-indigo-600 rounded-lg shadow hover:bg-indigo-700">
+                                class="px-4 py-2 text-white bg-indigo-800 rounded-lg shadow hover:bg-indigo-900">
                                 Calcular IMC
                             </button>
                         </div>
@@ -850,7 +850,7 @@
                     <!-- Botão para calcular a classificação da temperatura -->
                     <div class="flex items-center mt-6">
                         <button type="button" wire:click="calcularClassificacaoTemperatura"
-                            class="px-4 py-2 text-white bg-indigo-600 rounded-lg shadow hover:bg-indigo-700">
+                            class="px-4 py-2 text-white bg-indigo-800 rounded-lg shadow hover:bg-indigo-900">
                             Mostrar Classificação
                         </button>
                     </div>
@@ -1161,7 +1161,6 @@
                     </div>
                 </div>
 
-
                 <div class="pb-5 border-b border-gray-300">
                     <h2 class="py-5 text-lg font-bold">Regulação Vascular</h2>
                     <div class="flex mb-4 space-x-4">
@@ -1187,69 +1186,106 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="flex flex-wrap mt-2 mb-4 space-x-6">
-                        <div class="w-1/4">
-                            <label for="psatp_direito" class="block font-medium text-gray-700">Pressão Sistólica
-                                Arteria Tibial Posterior Direito</label>
-                            <input type="text" wire:model="psatp_direito" id="psatp_direito"
-                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite o psatp direito">
-                            @error('psatp_direito')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="w-1/4">
-                            <label for="psap_direito" class="block font-medium text-gray-700">Pressão Sistólica
-                                Arteria Pediosa Direito</label>
-                            <input type="text" wire:model="psap_direito" id="psap_direito"
-                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite o psap direito">
-                            @error('psap_direito')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="w-1/4">
-                            <label for="psab_direito" class="block font-medium text-gray-700">Pressão Sistólica
-                                Artéria Braquial Direito</label>
-                            <input type="text" wire:model="psab_direito" id="psab_direito"
-                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite o psab direito">
-                            @error('psab_direito')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
+                    <div>
+                        <h2 class="py-5 ml-2 text-xl font-semibold ">Calcule o Índice Tornozelo Braço</h2>
 
-                    <div class="flex flex-wrap mb-4 space-x-6">
-                        <div class="w-1/4">
-                            <label for="psatp_esquerdo" class="block font-medium text-gray-700">Pressão Sistólica
-                                Arteria Tibial Posterior Esquerdo</label>
-                            <input type="text" wire:model="psatp_esquerdo" id="psatp_esquerdo"
-                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite o psatp esquerdo">
-                            @error('psatp_esquerdo')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
+                        <div class="flex flex-wrap mt-2 mb-4 space-x-6">
+                            <div class="w-1/4">
+                                <label for="psatp_direito" class="block font-medium text-gray-700">Pressão Sistólica
+                                    Arteria Tibial Posterior Direito</label>
+                                <input type="text" wire:model="psatp_direito" id="psatp_direito"
+                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                                    placeholder="Digite o psatp direito">
+                                @error('psatp_direito')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="w-1/4">
+                                <label for="psap_direito" class="block font-medium text-gray-700">Pressão Sistólica
+                                    Arteria Pediosa Direito</label>
+                                <input type="text" wire:model="psap_direito" id="psap_direito"
+                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                                    placeholder="Digite o psap direito">
+                                @error('psap_direito')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="w-1/4">
+                                <label for="psab_direito" class="block font-medium text-gray-700">Pressão Sistólica
+                                    Artéria Braquial Direito</label>
+                                <input type="text" wire:model="psab_direito" id="psab_direito"
+                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                                    placeholder="Digite o psab direito">
+                                @error('psab_direito')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <!-- Botão para calcular o ITBD -->
+                            <div class="flex items-center mt-12">
+                                <button type="button" wire:click="calcularITBDireito"
+                                    class="px-4 py-2 text-white bg-indigo-800 rounded-lg shadow hover:bg-indigo-900">
+                                    ITB Direito
+                                </button>
+                            </div>
+                            @if ($itbD)
+                            <div class="flex items-center gap-3 p-3 mt-4 bg-gray-100 rounded-lg shadow-sm">
+                                <p class="text-lg font-semibold text-gray-800">ITB Direito:</p>
+                                <span class="text-lg font-bold text-blue-600">{{ $itbD }}</span>
+                                <p class="ml-5 text-lg font-semibold text-gray-800">Classificação:</p>
+                                <span class="text-lg font-bold text-blue-600">{{ $classITBD }}</span>
+                            </div>
+                            @endif
+
                         </div>
-                        <div class="w-1/4">
-                            <label for="psap_esquerdo" class="block font-medium text-gray-700">Pressão Sistólica
-                                Arteria Pediosa Esquerdo</label>
-                            <input type="text" wire:model="psap_esquerdo" id="psap_esquerdo"
-                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite o psap esquerdo">
-                            @error('psap_esquerdo')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="w-1/4">
-                            <label for="psab_esquerdo" class="block font-medium text-gray-700">Pressão Sistólica
-                                Artéria Braquial Esquerdo</label>
-                            <input type="text" wire:model="psab_esquerdo" id="psab_esquerdo"
-                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite o psab esquerdo">
-                            @error('psab_esquerdo')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
+
+                        <div class="flex flex-wrap mb-4 space-x-6">
+                            <div class="w-1/4">
+                                <label for="psatp_esquerdo" class="block font-medium text-gray-700">Pressão Sistólica
+                                    Arteria Tibial Posterior Esquerdo</label>
+                                <input type="text" wire:model="psatp_esquerdo" id="psatp_esquerdo"
+                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                                    placeholder="Digite o psatp esquerdo">
+                                @error('psatp_esquerdo')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="w-1/4">
+                                <label for="psap_esquerdo" class="block font-medium text-gray-700">Pressão Sistólica
+                                    Arteria Pediosa Esquerdo</label>
+                                <input type="text" wire:model="psap_esquerdo" id="psap_esquerdo"
+                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                                    placeholder="Digite o psap esquerdo">
+                                @error('psap_esquerdo')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="w-1/4">
+                                <label for="psab_esquerdo" class="block font-medium text-gray-700">Pressão Sistólica
+                                    Artéria Braquial Esquerdo</label>
+                                <input type="text" wire:model="psab_esquerdo" id="psab_esquerdo"
+                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                                    placeholder="Digite o psab esquerdo">
+                                @error('psab_esquerdo')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <!-- Botão para calcular o ITBE -->
+                            <div class="flex items-center mt-12">
+                                <button type="button" wire:click="calcularITBEsquerdo"
+                                    class="px-4 py-2 text-white bg-indigo-800 rounded-lg shadow hover:bg-indigo-900">
+                                    ITB Esquerdo
+                                </button>
+                            </div>
+
+                            @if ($itbE)
+                            <div class="flex items-center gap-3 p-3 py-2 mt-4 bg-gray-100 rounded-lg shadow-sm">
+                                <p class="text-lg font-semibold text-gray-800">ITB Esquerdo:</p>
+                                <span class="text-lg font-bold text-blue-600">{{ $itbE }}</span>
+                                <p class="ml-5 text-lg font-semibold text-gray-800">Classificação:</p>
+                                <span class="text-lg font-bold text-blue-600">{{ $classITBE }}</span>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -2041,7 +2077,8 @@
 
                 <!-- Botões de Navegação -->
                 <div class="flex justify-between mt-24">
-                    <button type="button" wire:click="previousStep" @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                    <button type="button" wire:click="previousStep"
+                        @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
                         class="px-4 py-2 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Voltar
                     </button>

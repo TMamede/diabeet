@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Diafeet</title>
+    <title>SoPeP</title>
 
     <!-- Fonts -->
     <!-- Favicon SVG -->
@@ -27,7 +27,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class=" bg-indigo-50">
+    <div class="min-h-screen bg-indigo-50">
         <livewire:layout.navigation />
 
         <!-- Page Heading -->

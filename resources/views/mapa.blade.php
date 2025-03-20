@@ -189,7 +189,7 @@
     </div>
     <footer class="py-4 text-white bg-indigo-800">
         <div class="container px-6 mx-auto text-center">
-            <p>&copy; 2024 Diabeet. Todos os direitos reservados.</p>
+            <p>&copy; 2024 SoPeP. Todos os direitos reservados.</p>
         </div>
     </footer>
 </x-app-layout>

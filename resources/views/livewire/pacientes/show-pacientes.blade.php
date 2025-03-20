@@ -1027,7 +1027,7 @@
                             </ul>
                         </nav>
                         <!-- Conteúdo da Página -->
-                        <main class="flex-1 p-6 bg-stone-50">
+                        <main class="flex-1 min-h-screen p-6 bg-stone-50">
                             <div class="flex flex-col w-full gap-4 sm:flex-row sm:justify-between sm:items-center">
                                 <div class="flex items-center">
                                     <h2
@@ -1333,7 +1333,7 @@
                             </nav>
 
                             <!-- Conteúdo da Página -->
-                            <main class="flex-1 p-6 bg-stone-50">
+                            <main class="flex-1 min-h-screen p-6 bg-stone-50">
                                 <div class="flex flex-col w-full gap-4 sm:flex-row sm:justify-between sm:items-center">
                                     <div class="flex items-center">
                                         <h2

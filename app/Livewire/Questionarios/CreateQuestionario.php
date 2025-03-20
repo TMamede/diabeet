@@ -92,7 +92,7 @@ class CreateQuestionario extends Component
     }
 
 
-    public $nss_sociais, $nss_biologicas, $nss_espirituais, $questionario, $imagem_avaliacao_pe, $imagem_avaliacao_pe_url;
+    public $nss_sociais, $nss_biologicas, $nss_espirituais, $questionario, $imagem_avaliacao_pe, $imagem_avaliacao_pe_url, $IdselectedPaciente;
 
 
     //Etapa 2 - Necessidades Biológicas
@@ -130,6 +130,7 @@ class CreateQuestionario extends Component
     //Etapa 5 
     public $origem, $motivo, $diagnostico, $intervencao;
 
+    public $itbD = null, $itbE = null, $classITBE = null, $classITBD = null;
 
     public function calcularIMC()
     {
@@ -182,6 +183,54 @@ class CreateQuestionario extends Component
         }
     }
 
+    public function calcularITBDireito()
+    {
+        if ($this->psatp_direito && $this->psap_direito && $this->psab_direito) {
+            $maiorValor = max($this->psatp_direito, $this->psap_direito);
+            $this->itbD = number_format($maiorValor / $this->psab_direito, 2, '.', '');
+
+            // Classificação do ITB Esquerdo
+            if ($this->itbD > 1.30) {
+                $this->classITBD = "Calcificação (risco de DCV)";
+            } elseif ($this->itbD >= 0.90 && $this->itbD <= 1.30) {
+                $this->classITBD = "Normal";
+            } elseif ($this->itbD >= 0.60 && $this->itbD < 0.90) {
+                $this->classITBD = "Anormal (Sugestivo de DAP)";
+            } else {
+                $this->classITBD = "Isquemia significativa";
+            }
+
+        } else {
+            $this->addError('psatp_direito', 'Por favor, informe a pressão sistólica do tornozelo direito.');
+            $this->addError('psap_direito', 'Por favor, informe a pressão sistólica do braço direito.');
+            $this->addError('psab_direito', 'Por favor, informe a pressão sistólica do tornozelo direito.');
+        }
+    }
+
+
+    public function calcularITBEsquerdo()
+    {
+        if ($this->psatp_esquerdo && $this->psap_esquerdo && $this->psab_esquerdo) {
+            $maiorValor = max($this->psatp_esquerdo, $this->psap_esquerdo);
+            $this->itbE = number_format($maiorValor / $this->psab_esquerdo, 2, '.', '');
+
+            // Classificação do ITB Esquerdo
+            if ($this->itbE > 1.30) {
+                $this->classITBE = "Calcificação (risco de DCV)";
+            } elseif ($this->itbE >= 0.90 && $this->itbE <= 1.30) {
+                $this->classITBE = "Normal";
+            } elseif ($this->itbE >= 0.60 && $this->itbE < 0.90) {
+                $this->classITBE = "Anormal (Sugestivo de DAP)";
+            } else {
+                $this->classITBE = "Isquemia significativa";
+            }
+        } else {
+            $this->addError('psatp_esquerdo', 'Por favor, informe a pressão sistólica do tornozelo esquerdo.');
+            $this->addError('psap_esquerdo', 'Por favor, informe a pressão sistólica do braço esquerdo.');
+            $this->addError('psab_esquerdo', 'Por favor, informe a pressão sistólica do tornozelo esquerdo.');
+        }
+    }
+
 
     public function selectOption($option)
     {
@@ -204,10 +253,11 @@ class CreateQuestionario extends Component
         $this->coberturasList = Cobertura_ferida::all();
         $this->sinaisInfeccaoList = Sinais_infeccao::all();
     }
+    public $IdQuestionario, $enfermeiro, $unidade;
 
     public function loadQuestionarioData($questionarioId)
     {
-        if ($questionarioId != 0) {
+        
             $this->questionario = Questionario::with([
                 'nss_sociais.recreacoes', // Carregando as recreações do questionário
                 'nss_sociais.cuidado.emocionais', // Carregando os emocionais do questionário
@@ -221,59 +271,63 @@ class CreateQuestionario extends Component
                 'nss_biologica.cuidado_ferida.coberturas_ferida', // Carregando as coberturas de ferida
                 'nss_biologica.integridade_cutanea.sinais_infeccao', // Carregando os sinais de infecção
             ])->findOrFail($questionarioId);
-            
+    
+            $this->IdQuestionario = $this->questionario->id;
             $this->nss_biologicas = $this->questionario->nss_biologica;
             $this->nss_espirituais = $this->questionario->nss_espiritual;
             $this->nss_sociais = $this->questionario->nss_sociais;
             $this->selectedPaciente = $this->questionario->paciente;
+            $this->IdselectedPaciente = $this->selectedPaciente->id;
+            $this->enfermeiro = $this->questionario->user;
             $this->impressoes = $this->questionario->impressoes;
             $this->unidade_saude_id = $this->questionario->unidade_saude_id;
+            $this->unidade = Unidade_saude::Find($this->unidade_saude_id);
             $this->imagem_avaliacao_pe_url = $this->questionario->imagem_avaliacao_pe_url;
-
-
+    
+    
             $this->orientado = $this->questionario->nss_biologica->regulacao_neuro->orientado;
             $this->comportamento_regulacao_neuro_id = $this->questionario->nss_biologica->regulacao_neuro->comportamento_regulacao_neuro_id;
-
+    
             $this->olho_direito = $this->questionario->nss_biologica->percepcao_sentidos->olho_direito;
             $this->olho_esquerdo = $this->questionario->nss_biologica->percepcao_sentidos->olho_esquerdo;
             $this->ouvido = $this->questionario->nss_biologica->percepcao_sentidos->ouvido;
             $this->analise_tato_id = $this->questionario->nss_biologica->percepcao_sentidos->analise_tato_id;
             $this->risco_queda = $this->questionario->nss_biologica->percepcao_sentidos->risco_queda;
-
+    
             $this->liquido_diario = $this->questionario->nss_biologica->hidratacao->liquido_diario;
             $this->tipo_pele_id = $this->questionario->nss_biologica->hidratacao->tipo_pele_id;
-
+    
             $this->alimento_consumo_id = $this->questionario->nss_biologica->nutricao->alimento_consumo_id;
-
+    
             $this->horas_sono = $this->questionario->nss_biologica->sono->horas_sono;
             $this->acorda_noite = $this->questionario->nss_biologica->sono->acorda_noite;
             $this->qualidade_sono_id = $this->questionario->nss_biologica->sono->qualidade_sono_id;
             $this->medicamentos_sono = $this->questionario->nss_biologica->sono->medicamentos_sono;
-
+    
             $this->realiza = $this->questionario->nss_biologica->exercicio_fisico->realiza;
             $this->frequencia_exercicio_id = $this->questionario->nss_biologica->exercicio_fisico->frequencia_exercicio_id;
             $this->duracao = $this->questionario->nss_biologica->exercicio_fisico->duracao;
-
+    
             $this->zona_moradia_id = $this->questionario->nss_biologica->abrigo->zona_moradia_id;
             $this->luz_publica = $this->questionario->nss_biologica->abrigo->luz_publica;
             $this->coleta_lixo = $this->questionario->nss_biologica->abrigo->coleta_lixo;
             $this->agua_tratada = $this->questionario->nss_biologica->abrigo->agua_tratada;
             $this->rede_esgoto_id = $this->questionario->nss_biologica->abrigo->rede_esgoto_id;
             $this->animais_domesticos = $this->questionario->nss_biologica->abrigo->animais_domesticos;
-
+    
             $this->altura = $this->questionario->nss_biologica->regulacao_hormonal->altura;
             $this->peso = $this->questionario->nss_biologica->regulacao_hormonal->peso;
             $this->circunferencia_abdnominal = $this->questionario->nss_biologica->regulacao_hormonal->circunferencia_abdnominal;
             $this->glicemia_capilar = $this->questionario->nss_biologica->regulacao_hormonal->glicemia_capilar;
             $this->jejum = $this->questionario->nss_biologica->regulacao_hormonal->jejum;
             $this->pos_prandial = $this->questionario->nss_biologica->regulacao_hormonal->pos_prandial;
-
+    
             $this->temp_enchimento_capilar = $this->questionario->nss_biologica->oxigenacao->temp_enchimento_capilar;
             $this->frequencia_respiratoria = $this->questionario->nss_biologica->oxigenacao->frequencia_respiratoria;
             $this->satO2 = $this->questionario->nss_biologica->oxigenacao->satO2;
-
+    
             $this->temperatura = $this->questionario->nss_biologica->regulacao_termica->temperatura;
-
+    
             $this->dor_urinar = $this->questionario->nss_biologica->eliminacao->dor_urinar;
             $this->incontinencia_urina = $this->questionario->nss_biologica->eliminacao->incontinencia_urina;
             $this->uso_laxante = $this->questionario->nss_biologica->eliminacao->uso_laxante;
@@ -283,12 +337,12 @@ class CreateQuestionario extends Component
             $this->diarreia = $this->questionario->nss_biologica->eliminacao->diarreia;
             $this->constipacao = $this->questionario->nss_biologica->eliminacao->constipacao;
             $this->equipamento_externo = $this->questionario->nss_biologica->eliminacao->equipamento_externo;
-
+    
             $this->vida_sex_ativa = $this->questionario->nss_biologica->sexualidade->vida_sex_ativa;
-
+    
             $this->sapato_adequado = $this->questionario->nss_biologica->locomocao->sapato_adequado;
             $this->sandalia_cicatrizacao = $this->questionario->nss_biologica->locomocao->sandalia_cicatrizacao;
-
+    
             $this->pressao_arterial = $this->questionario->nss_biologica->regulacao_vascular->pressao_arterial;
             $this->frequencia_cardiaca = $this->questionario->nss_biologica->regulacao_vascular->frequencia_cardiaca;
             $this->psatp_direito = $this->questionario->nss_biologica->regulacao_vascular->psatp_direito;
@@ -297,7 +351,7 @@ class CreateQuestionario extends Component
             $this->psatp_esquerdo = $this->questionario->nss_biologica->regulacao_vascular->psatp_esquerdo;
             $this->psap_esquerdo = $this->questionario->nss_biologica->regulacao_vascular->psap_esquerdo;
             $this->psab_esquerdo = $this->questionario->nss_biologica->regulacao_vascular->psab_esquerdo;
-
+    
             $this->pe_neuropatico = $this->questionario->nss_biologica->senso_percepcao->pe_neuropatico;
             $this->arco_desabado = $this->questionario->nss_biologica->senso_percepcao->arco_desabado;
             $this->valgismo = $this->questionario->nss_biologica->senso_percepcao->valgismo;
@@ -310,19 +364,19 @@ class CreateQuestionario extends Component
             $this->teste_senso_percepcao_id = $this->questionario->nss_biologica->senso_percepcao->teste_senso_percepcao_id;
             $this->percepcao_direito = $this->questionario->nss_biologica->senso_percepcao->percepcao_direito;
             $this->percepcao_esquerdo = $this->questionario->nss_biologica->senso_percepcao->percepcao_esquerdo;
-
+    
             $this->comprimentoD = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->comprimento;
             $this->larguraD = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->largura;
             $this->regiao_pe_direito_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->regiao_pe_id;
             $this->localizacao_lesao_direito_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->localizacao_lesao_id;
             $this->lesao_amputacaoD = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->lesao_amputacao;
-
+    
             $this->comprimentoE = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->comprimento;
             $this->larguraE = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->largura;
             $this->regiao_pe_esquerdo_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->regiao_pe_id;
             $this->localizacao_lesao_esquerdo_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->localizacao_lesao_id;
             $this->lesao_amputacaoE = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->lesao_amputacao;
-
+    
             $this->bordas_ferida_id = $this->questionario->nss_biologica->integridade_cutanea->bordas_ferida_id;
             $this->edema = $this->questionario->nss_biologica->integridade_cutanea->edema;
             $this->quantidade_exudato_id = $this->questionario->nss_biologica->integridade_cutanea->quantidade_exudato_id;
@@ -332,26 +386,27 @@ class CreateQuestionario extends Component
             $this->profundidade_id = $this->questionario->nss_biologica->integridade_cutanea->profundidade_id;
             $this->pele_periferida_id = $this->questionario->nss_biologica->integridade_cutanea->pele_periferida_id;
             $this->dor = $this->questionario->nss_biologica->integridade_cutanea->dor;
-
+    
             $this->desbridamento_id = $this->questionario->nss_biologica->cuidado_ferida->desbridamento_id;
             $this->avaliacao_ferida_id = $this->questionario->nss_biologica->cuidado_ferida->avaliacao_ferida_id;
             $this->aplicacao_laserterapia = $this->questionario->nss_biologica->cuidado_ferida->aplicacao_laserterapia;
             $this->terapia_fotodinamica = $this->questionario->nss_biologica->cuidado_ferida->terapia_fotodinamica;
-
+    
             $this->apoio = $this->questionario->nss_sociais->comunicacao->apoio;
             $this->interacao_social = $this->questionario->nss_sociais->comunicacao->interacao_social;
-
+    
             $this->acompanhado = $this->questionario->nss_sociais->cuidado->acompanhado;
             $this->opnioes_de_si = $this->questionario->nss_sociais->cuidado->opnioes_de_si;
             $this->auxiliador = $this->questionario->nss_sociais->cuidado->auxiliador;
-
+    
             $this->monitoramento_glicemia_dia = $this->questionario->nss_sociais->aprendizagem->monitoramento_glicemia_dia;
             $this->cuidado_pes = $this->questionario->nss_sociais->aprendizagem->cuidado_pes;
             $this->uso_sapato = $this->questionario->nss_sociais->aprendizagem->uso_sapato;
             $this->alimentacao = $this->questionario->nss_sociais->aprendizagem->alimentacao;
             $this->regime_terapeutico = $this->questionario->nss_sociais->aprendizagem->regime_terapeutico;
-
+    
             $this->religiao = $this->questionario->nss_espiritual->religiao;
+    
             $this->recreacaosList = Recreacao::all();
             $this->recreacaos = $this->questionario->nss_sociais->recreacoes->pluck('id')->toArray();
     
@@ -384,136 +439,8 @@ class CreateQuestionario extends Component
     
             $this->sinaisInfeccaoList = Sinais_infeccao::all();
             $this->sinais_infeccaos = $this->questionario->nss_biologica->integridade_cutanea->sinais_infeccao->pluck('id')->toArray();
-        } else {
-
-            $this->nss_biologicas = null;
-            $this->nss_espirituais = null;
-            $this->nss_sociais = null;
-            $this->impressoes = null;
-            $this->unidade_saude_id = null;
-            $this->imagem_avaliacao_pe_url = null;
-
-            $this->orientado = null;
-            $this->comportamento_regulacao_neuro_id = null;
-
-            $this->olho_direito = null;
-            $this->olho_esquerdo = null;
-            $this->ouvido = null;
-            $this->analise_tato_id = null;
-            $this->risco_queda = null;
-
-            $this->liquido_diario = null;
-            $this->tipo_pele_id = null;
-            $this->alimento_consumo_id = null;
-
-            $this->horas_sono = null;
-            $this->acorda_noite = null;
-            $this->qualidade_sono_id = null;
-            $this->medicamentos_sono = null;
-
-            $this->realiza = null;
-            $this->frequencia_exercicio_id = null;
-            $this->duracao = null;
-
-            $this->zona_moradia_id = null;
-            $this->luz_publica = null;
-            $this->coleta_lixo = null;
-            $this->agua_tratada = null;
-            $this->rede_esgoto_id = null;
-            $this->animais_domesticos = null;
-
-            $this->altura = null;
-            $this->peso = null;
-            $this->circunferencia_abdnominal = null;
-            $this->glicemia_capilar = null;
-            $this->jejum = null;
-            $this->pos_prandial = null;
-
-            $this->temp_enchimento_capilar = null;
-            $this->frequencia_respiratoria = null;
-            $this->satO2 = null;
-
-            $this->temperatura = null;
-
-            $this->dor_urinar = null;
-            $this->incontinencia_urina = null;
-            $this->uso_laxante = null;
-            $this->uso_fraldas = null;
-            $this->dor_eliminacoes = null;
-            $this->incontinencia_eliminacao = null;
-            $this->diarreia = null;
-            $this->constipacao = null;
-            $this->equipamento_externo = null;
-
-            $this->vida_sex_ativa = null;
-
-            $this->sapato_adequado = null;
-            $this->sandalia_cicatrizacao = null;
-
-            $this->pressao_arterial = null;
-            $this->frequencia_cardiaca = null;
-            $this->psatp_direito = null;
-            $this->psap_direito = null;
-            $this->psab_direito = null;
-            $this->psatp_esquerdo = null;
-            $this->psap_esquerdo = null;
-            $this->psab_esquerdo = null;
-
-            $this->pe_neuropatico = null;
-            $this->arco_desabado = null;
-            $this->valgismo = null;
-            $this->dedos_em_garra = null;
-            $this->estado_unhas_id = null;
-            $this->corte_unhas = null;
-            $this->fissuras = null;
-            $this->calosidades = null;
-            $this->micose = null;
-            $this->teste_senso_percepcao_id = null;
-            $this->percepcao_direito = null;
-            $this->percepcao_esquerdo = null;
-
-            $this->comprimentoD = null;
-            $this->larguraD = null;
-            $this->regiao_pe_direito_id = null;
-            $this->localizacao_lesao_direito_id = null;
-            $this->lesao_amputacaoD = null;
-
-            $this->comprimentoE = null;
-            $this->larguraE = null;
-            $this->regiao_pe_esquerdo_id = null;
-            $this->localizacao_lesao_esquerdo_id = null;
-            $this->lesao_amputacaoE = null;
-
-            $this->bordas_ferida_id = null;
-            $this->edema = null;
-            $this->quantidade_exudato_id = null;
-            $this->odor_exudato = null;
-            $this->aspecto_exudato_id = null;
-            $this->tipo_tecido_ferida_id = null;
-            $this->profundidade_id = null;
-            $this->pele_periferida_id = null;
-            $this->dor = null;
-
-            $this->desbridamento_id = null;
-            $this->avaliacao_ferida_id = null;
-            $this->aplicacao_laserterapia = null;
-            $this->terapia_fotodinamica = null;
-
-            $this->apoio = null;
-            $this->interacao_social = null;
-
-            $this->acompanhado = null;
-            $this->opnioes_de_si = null;
-            $this->auxiliador = null;
-
-            $this->monitoramento_glicemia_dia = null;
-            $this->cuidado_pes = null;
-            $this->uso_sapato = null;
-            $this->alimentacao = null;
-            $this->regime_terapeutico = null;
-
-            $this->religiao = null;
-        }
+        
+        
     }
 
 
@@ -585,6 +512,7 @@ class CreateQuestionario extends Component
     {
         $this->currentStep--;
     }
+
 
     public function messages()
     {
@@ -1664,7 +1592,7 @@ class CreateQuestionario extends Component
                 // Buscar a origem e associá-la ao prontuário, se necessário
                 $origem = Origem::find($condicao['origem']);
                 $prontuario->origens()->syncWithoutDetaching([$origem->id]);
-        
+
                 // Buscar o motivo e associá-lo ao prontuário, se necessário
                 $motivo = Motivo::find($condicao['motivo']);
                 $prontuario->motivos()->syncWithoutDetaching([$motivo->id]);
@@ -1893,7 +1821,7 @@ class CreateQuestionario extends Component
             'cuidado_id' => $cuidado->id,
             'comunicacao_id' => $comunicacao->id,
         ]);
-        if($this->religiao == null){
+        if ($this->religiao == null) {
             $this->religiao = 'Nenhuma';
         }
         $nss_espirituais = Nss_espirituais::firstOrcreate([
