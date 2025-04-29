@@ -2,46 +2,39 @@
 
 namespace App\Livewire\Prontuarios;
 
-use Livewire\Component;
-use Livewire\Attributes\Url;
-use Livewire\WithPagination;
+use App\Models\Paciente;
 use App\Models\Questionario;
-use App\Models\Prontuario;
+use Livewire\Component;
+use Livewire\WithPagination;
 
 class SearchProntuario extends Component
 {
-
     use WithPagination;
 
-    #[Url(history: true)]
-    public $search = '';
-    #[Url()]
+    public Paciente $paciente;
+
     public $perPage = 10;
-    #[Url(history: true)]
     public $sortBy = 'created_at';
-    #[Url(history: true)]
     public $sortDir = 'DESC';
 
-    public function updatedSearch()
+    public function mount(Paciente $paciente)
     {
-        $this->resetPage();
+        $this->paciente = $paciente;
     }
 
     public function setSortBy($sortByField)
     {
         if ($this->sortBy === $sortByField) {
-            $this->sortDir = ($this->sortDir == "ASC") ? 'DESC' : "ASC";
-            return;
+            $this->sortDir = ($this->sortDir === 'ASC') ? 'DESC' : 'ASC';
+        } else {
+            $this->sortBy = $sortByField;
+            $this->sortDir = 'ASC';
         }
-        $this->sortBy = $sortByField;
-        $this->sortDir = 'DESC';
     }
 
-    public $selectedProntuarioId;
-
-    public function CreateProntuario($prontuarioId)
+    public function CreateProntuario($questionarioId)
     {
-        return redirect()->route('prontuario.create', ['id' => $prontuarioId]);
+        return redirect()->route('prontuario.create', ['id' => $questionarioId]);
     }
 
     public function gerarPDF($prontuarioId)
@@ -49,30 +42,18 @@ class SearchProntuario extends Component
         return redirect()->route('prontuario.pdf', ['id' => $prontuarioId]);
     }
 
-
     public function render()
     {
+        $questionarios = Questionario::with(['user', 'prontuario'])
+            ->where('paciente_id', $this->paciente->id)
+            ->orderBy($this->sortBy, $this->sortDir)
+            ->paginate($this->perPage);
+
         return view('livewire.prontuarios.search-prontuario', [
-            'questionarios' => Questionario::with('prontuario') // Carrega o prontuário relacionado
-                ->search($this->search)
-                ->when($this->sortBy, function ($query) {
-                    if ($this->sortBy === 'user_name') {
-                        $query->join('users', 'questionario.user_id', '=', 'users.id')
-                            ->orderBy('users.name', $this->sortDir);
-                    } else {
-                        $query->orderBy($this->sortBy, $this->sortDir);
-                    }
-                })
-                ->when($this->sortBy, function ($query) {
-                    if ($this->sortBy === 'paciente_nome') {
-                        $query->join('pacientes', 'questionario.paciente_id', '=', 'pacientes.id')
-                            ->orderBy('pacientes.nome', $this->sortDir);
-                    } else {
-                        $query->orderBy($this->sortBy, $this->sortDir);
-                    }
-                })
-                ->orderBy($this->sortBy, $this->sortDir)
-                ->paginate($this->perPage),
-        ]);
+            'questionarios' => $questionarios,
+            'paciente' => $this->paciente,
+            'sortBy' => $this->sortBy,
+            'sortDir' => $this->sortDir
+        ])->layout('layouts.app');
     }
 }

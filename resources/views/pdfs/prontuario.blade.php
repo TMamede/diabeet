@@ -137,7 +137,7 @@
         @if (isset($motivosPorOrigem[$origem->id]))
         @foreach ($motivosPorOrigem[$origem->id] as $motivo)
         <div class="content">
-            <strong>Motivo:</strong> {{ $motivo->descricao }}
+            <strong>Indicador Clínico:</strong> {{ $motivo->descricao }}
 
             @if (isset($diagnosticosPorMotivo[$motivo->id]))
             <ul>

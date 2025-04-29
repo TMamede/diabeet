@@ -20,18 +20,32 @@ class CreateProntuario extends Component
         $this->questionarioId = $id;
         $this->prontuario = Prontuario::where('questionario_id', $id)->firstOrFail();
 
-        $this->origens = $this->prontuario->origens()
+        $origens = $this->prontuario->origens()
             ->with(['motivos' => function ($query) {
                 $query->whereHas('prontuarios', function ($q) {
                     $q->where('prontuarios.id', $this->prontuario->id);
                 })
-                ->with(['diagnosticos' => function ($query) {
-                    $query->with('intervencaos');
-                }]);
+                    ->with(['diagnosticos' => function ($query) {
+                        $query->with('intervencaos');
+                    }]);
             }])
             ->distinct()
             ->get()
             ->toArray();
+
+        // Agrupa diagnósticos por origem sem repetições
+        $this->origens = collect($origens)->map(function ($origem) {
+            $diagnosticosUnicos = [];
+
+            foreach ($origem['motivos'] as $motivo) {
+                foreach ($motivo['diagnosticos'] as $diagnostico) {
+                    $diagnosticosUnicos[$diagnostico['id']] = $diagnostico; // sobrescreve duplicados
+                }
+            }
+
+            $origem['diagnosticos_unicos'] = array_values($diagnosticosUnicos);
+            return $origem;
+        })->toArray();
     }
 
     public function toggleOrigem($origemId)
@@ -181,7 +195,7 @@ class CreateProntuario extends Component
         return false;
     }
 
-    
+
 
     public function render()
     {
@@ -199,7 +213,7 @@ class CreateProntuario extends Component
         $this->prontuario->motivos()->sync($this->motivosSelecionados);
         $this->prontuario->diagnosticos()->sync($this->diagnosticosSelecionados);
         $this->prontuario->intervencoes()->sync($this->intervencoesSelecionadas);
-        
+
         $this->prontuario->gerado = true; // Atualiza o atributo gerado
         $this->prontuario->save(); // Salva no banco
 

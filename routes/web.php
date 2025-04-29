@@ -6,6 +6,7 @@ use App\Livewire\Pacientes\ShowPaciente;
 use App\Livewire\Prontuarios\CreateProntuario;
 use App\Livewire\Questionarios\ShowQuestionario;
 use App\Http\Controllers\ProntuarioPDFController;
+use App\Livewire\Prontuarios\SearchProntuario;
 
 Route::view('/', 'welcome');
 
@@ -53,10 +54,6 @@ Route::middleware(['auth'])->group(function () {
     })->name('questionario.create');
 });
 
-Route::view('prontuario', 'prontuario.index')
-    ->middleware(['auth'])
-    ->name('prontuario.index');
-
 Route::get('/enfermeiro', function () {
     if (Auth::check() && Auth::user()->user_type === 'gerenciador') {
         return view('enfermeiro.index'); // Retorne a view específica
@@ -65,8 +62,10 @@ Route::get('/enfermeiro', function () {
 })->name('enfermeiro.index');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/paciente/{id}', 
-    ShowPaciente::class)->name('paciente.show');
+    Route::get(
+        '/paciente/{id}',
+        ShowPaciente::class
+    )->name('paciente.show');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -75,7 +74,15 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/prontuarios/create/{id?}', CreateProntuario::class)->name('prontuario.create');
 
+Route::view('prontuario', 'prontuario.index')
+    ->middleware(['auth'])
+    ->name('prontuario.index');
 
+
+
+Route::get('/prontuario/paciente/{paciente}', SearchProntuario::class)
+    ->middleware(['auth'])
+    ->name('prontuario.paciente');
 
 Route::get('/prontuario/{id}/pdf', [ProntuarioPDFController::class, 'gerarPDF'])
     ->name('prontuario.pdf');

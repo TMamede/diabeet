@@ -1,84 +1,102 @@
-<div class="min-h-screen py-8 px-28 bg-gray-50">
-    <!-- Mensagens de Sucesso ou Erro -->
-    @if (session()->has('success'))
-        <div class="p-4 mb-6 text-green-800 bg-green-100 rounded-lg">
+<div class="min-h-screen px-6 py-8 bg-gradient-to-b from-indigo-50 via-gray-100 to-gray-200">
+    <div class="max-w-6xl px-6 mx-auto">
+
+        {{-- Título principal com destaque --}}
+        <div class="relative flex flex-col items-center justify-center mb-12">
+            <h1 class="text-5xl font-extrabold text-indigo-900 drop-shadow-md">
+                Criar Prontuário
+            </h1>
+            <div class="w-24 h-1 mt-4 bg-indigo-500 rounded-full"></div>
+        </div>
+
+        {{-- Mensagens de sucesso/erro --}}
+        @if (session()->has('success'))
+        <div class="p-4 mb-6 text-green-800 bg-green-100 border border-green-300 rounded-lg shadow">
             {{ session('success') }}
         </div>
-    @endif
+        @endif
 
-    @if (session()->has('error'))
-        <div class="p-4 mb-6 text-red-800 bg-red-100 rounded-lg">
+        @if (session()->has('error'))
+        <div class="p-4 mb-6 text-red-800 bg-red-100 border border-red-300 rounded-lg shadow">
             {{ session('error') }}
         </div>
-    @endif
+        @endif
 
-    <!-- Título principal -->
-    <h1 class="mb-8 text-4xl font-extrabold text-center text-gray-900">Criar Prontuário</h1>
+        {{-- Lista de Origens --}}
+        @foreach ($origens as $origem)
+        <div
+            class="p-6 mb-10 transition bg-white border border-gray-300 shadow-md bg-opacity-90 rounded-2xl hover:shadow-lg">
+            {{-- Título da Origem --}}
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">
+                    Necessidade Humana Básica: {{ $origem['descricao'] }}
+                </h2>
+                <input type="checkbox" wire:click="toggleOrigem({{ $origem['id'] }})"
+                    @if(in_array($origem['id'],$origensSelecionadas)) checked @endif
+                    class="w-6 h-6 text-indigo-600 border-2 border-gray-400 rounded-lg focus:ring-2 focus:ring-indigo-500">
+            </div>
 
-    <!-- Loop para exibir as origens -->
-    @foreach ($origens as $origem)
-    <div class="p-6 mt-6 bg-white border border-gray-200 rounded-lg shadow-md hover:border-indigo-300">
-        <!-- Origem -->
-        <div class="flex items-center justify-between mb-4">
-            <h3 class="text-2xl font-bold text-gray-800">Origem: {{ $origem['descricao'] }}</h3>
-            <input type="checkbox" wire:click="toggleOrigem({{ $origem['id'] }})"
-                @if (in_array($origem['id'], $origensSelecionadas)) checked @endif
-                class="w-6 h-6 text-indigo-600 bg-gray-100 border-2 border-gray-400 rounded-lg focus:ring-2 focus:ring-indigo-500 hover:bg-gray-200">
-        </div>
+            {{-- Diagnósticos --}}
+            @foreach ($origem['diagnosticos_unicos'] as $diagnostico)
+            <div x-data="{ open: false }" class="mb-4">
+                {{-- Botão do Diagnóstico --}}
+                <button @click="open = !open"
+                    class="flex items-center justify-between w-full px-6 py-3 text-lg font-semibold text-indigo-800 transition bg-indigo-100 border border-indigo-300 rounded-lg hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                    <span>{{ $diagnostico['descricao'] }}</span>
+                    <svg :class="{'transform rotate-180': open}" class="w-5 h-5 transition-transform" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
 
-        <!-- Loop para exibir os motivos -->
-        @foreach ($origem['motivos'] as $motivo)
-        <div x-data="{ open: false }" class="mb-4">
-            <button @click="open = !open"
-                class="w-1/6 px-4 py-2 text-sm font-medium text-indigo-700 border border-indigo-300 rounded-md bg-indigo-50 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-300">
-                <span x-text="open ? 'Esconder Motivo' : 'Mostrar Motivo'"></span>
-            </button>
-
-            <div x-show="open" x-transition class="p-6 mt-4 border border-gray-200 rounded-lg shadow-md bg-gray-50">
-                <div class="flex items-center justify-between mb-4">
-                    <p class="text-xl font-semibold text-gray-800">{{ $motivo['descricao'] }}</p>
-                    <input type="checkbox" wire:click="toggleMotivo({{ $motivo['id'] }})"
-                        @if (in_array($motivo['id'], $motivosSelecionados)) checked @endif
-                        class="w-6 h-6 text-indigo-600 bg-gray-100 border-2 border-gray-400 rounded-lg focus:ring-2 focus:ring-indigo-500 hover:bg-gray-200">
-                </div>
-
-                <p class="mb-2 ml-1">Diagnosticos:</p>
-
-                <!-- Diagnósticos -->
-                @foreach ($motivo['diagnosticos'] as $diagnostico)
-                <div class="p-4 mb-4 bg-gray-100 border border-gray-300 rounded-md hover:border-indigo-200">
-                    <div class="flex items-center justify-between">
-                        <p class="text-lg font-medium text-gray-800">{{ $diagnostico['descricao'] }}</p>
+                {{-- Conteúdo expandido --}}
+                <div x-show="open" x-transition class="p-6 mt-4 border border-gray-300 bg-gray-50 rounded-xl">
+                    {{-- Checkbox do Diagnóstico --}}
+                    <div class="flex items-center justify-between mb-4">
+                        <p class="text-lg font-bold text-gray-700">{{ $diagnostico['descricao'] }}</p>
                         <input type="checkbox" wire:click="toggleDiagnostico({{ $diagnostico['id'] }})"
-                            @if (in_array($diagnostico['id'], $diagnosticosSelecionados)) checked @endif
-                            class="w-6 h-6 text-indigo-600 bg-gray-100 border-2 border-gray-400 rounded-lg focus:ring-2 focus:ring-indigo-500 hover:bg-gray-200">
+                            @if(in_array($diagnostico['id'], $diagnosticosSelecionados)) checked @endif
+                            class="w-6 h-6 text-indigo-600 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
                     </div>
 
-                    <!-- Intervenções -->
-                    <div class="mt-3">
-                        <p class="text-gray-600">Intervenções:</p>
+                    {{-- Intervenções --}}
+                    <div class="mb-6">
+                        <p class="mb-2 text-sm font-medium text-gray-600">Intervenções:</p>
                         @foreach ($diagnostico['intervencaos'] as $intervencao)
-                        <div class="flex items-center justify-between p-2 mt-2 bg-white border border-gray-300 rounded-md hover:border-indigo-200">
-                            <p class="text-sm text-gray-700">{{ $intervencao['descricao'] }}</p>
+                        <div
+                            class="flex items-center justify-between p-2 mb-2 bg-white border border-gray-300 rounded-md hover:border-indigo-300">
+                            <p class="text-gray-700">{{ $intervencao['descricao'] }}</p>
                             <input type="checkbox" wire:click="toggleIntervencao({{ $intervencao['id'] }})"
-                                @if (in_array($intervencao['id'], $intervencoesSelecionadas)) checked @endif
-                                class="w-5 h-5 text-indigo-600 bg-gray-100 border-2 border-gray-400 rounded-lg focus:ring-2 focus:ring-indigo-500 hover:bg-gray-200">
+                                @if(in_array($intervencao['id'], $intervencoesSelecionadas)) checked @endif
+                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
                         </div>
                         @endforeach
                     </div>
+
+                    {{-- Indicadores Clínicos --}}
+                    <div class="mt-6">
+                        <p class="mb-2 text-lg font-bold text-indigo-700">Indicadores Clínicos:</p>
+                        <ul class="ml-5 text-gray-700 list-disc list-inside">
+                            @foreach ($origem['motivos'] as $motivoCheck)
+                            @if (collect($motivoCheck['diagnosticos'])->pluck('id')->contains($diagnostico['id']))
+                            <li>{{ $motivoCheck['descricao'] }}</li>
+                            @endif
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
-                @endforeach
             </div>
+            @endforeach
+
         </div>
         @endforeach
-    </div>
-    @endforeach
 
-    <!-- Botão para Finalizar o Prontuário -->
-<div class="flex justify-center my-8">
-    <button wire:click="finalizarProntuario" 
-            class="px-8 py-4 text-lg font-medium text-white transition-all duration-300 bg-indigo-700 shadow-md rounded-xl hover:bg-indigo-800 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500">
-        Finalizar Prontuário
-    </button>
-</div>
+        {{-- Botão de Finalizar --}}
+        <div class="flex justify-center mt-10">
+            <button wire:click="finalizarProntuario"
+                class="px-10 py-4 text-lg font-semibold text-white transition bg-indigo-700 rounded-xl hover:bg-indigo-800 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-400">
+                Finalizar Prontuário
+            </button>
+        </div>
+    </div>
 </div>

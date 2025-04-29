@@ -1,100 +1,79 @@
-<div>
-    <section class="p-1 mt-10">
-        <div class="max-w-screen-xl px-4 mx-auto lg:px-12">
-            <!-- Start coding here -->
-            <div class="relative mb-10 overflow-hidden bg-white shadow-md sm:rounded-lg">
-                <div class="flex items-center justify-between p-4 d">
-                    <div class="flex">
-                        <div class="relative w-full">
-                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 
-                                    fill=" currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <input wire:model.live.debounce.300ms="search" type="text"
-                                class="block w-full py-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg px-80 bg-gray-50 focus:ring-primary-500 focus:border-primary-500 "
-                                placeholder="Pesquise" required="">
-                        </div>
-                    </div>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left text-gray-500 ">
-                        <thead class="text-sm text-gray-700 uppercase bg-gray-50">
-                            <tr>
-                                <th scope="col" class="px-4 py-3">
-                                    Id Questionário
-                                </th>
-                                @include('components.table-sortable-th', [
-                                'nome' => 'paciente_nome',
-                                'displayName' => 'PACIENTE',
-                                ])
-                                @include('components.table-sortable-th', [
-                                'nome' => 'user_name',
-                                'displayName' => 'ENFERMEIRO',
-                                ])
-                                @include('components.table-sortable-th', [
-                                'nome' => 'created_at',
-                                'displayName' => 'DATA DE CADASTRO',
-                                ])
-                                {{-- <th scope="col" class="px-4 py-3">
-                                    Diagnósticos
-                                </th> --}}
-                                <th scope="col" class="px-4 py-3">
-                                    <span class="sr-only">Actions</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($questionarios as $questionario)
-                            <tr wire:key="{{ $questionario->id }}" class="border-b">
-                                <td class="px-4 py-3">
-                                    {{ $questionario->id }}</td>
-                                <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
-                                    {{ $questionario->paciente->nome }}</th>
-                                <td class="px-4 py-3 text-blue-500">{{ $questionario->user->name }}</td>
-                                <td class="px-4 py-3">{{ $questionario->created_at }}</td>
-                                <td class="flex items-center justify-end px-4 py-3 mr-5">
-                                    @if($questionario->prontuario && $questionario->prontuario->gerado)
-                                        <!-- Se o prontuário foi gerado, exibe apenas o botão Visualizar -->
-                                        <button wire:click="gerarPDF('{{ $questionario->prontuario->id }}')"
-                                            class="px-6 py-2 text-white bg-indigo-900 rounded hover:bg-indigo-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                            Visualizar
-                                        </button>
-                                    @else
-                                        <!-- Se o prontuário ainda não foi gerado, exibe apenas o botão Criar -->
-                                        <button wire:click="CreateProntuario('{{ $questionario->id }}')"
-                                            class="px-6 py-2 ml-3 text-white rounded bg-cyan-900 hover:bg-cyan-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
-                                            Criar
-                                        </button>
-                                    @endif
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+<div class="mt-10">
+    <div class="max-w-screen-xl px-4 mx-auto lg:px-12">
+        <div class="relative overflow-hidden bg-white shadow-lg sm:rounded-lg">
 
-                <div class="px-3 py-4">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center mb-3 space-x-4">
-                            <label class="w-40 p-1 text-sm font-medium text-gray-900">Por Página</label>
-                            <select wire:model.live='perPage'
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                            </select>
-                        </div>
-                        <div class="flex items-center ml-5">
-                            {{ $questionarios->links('vendor.pagination.tailwind') }}
-                        </div>
+            {{-- Cabeçalho bonito com nome do paciente --}}
+            <div
+                class="flex items-center justify-between px-6 py-5 text-white rounded-t-lg shadow bg-gradient-to-r from-indigo-800 to-indigo-600">
+                <div class="flex items-center space-x-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5.121 17.804A13.937 13.937 0 0112 15c2.76 0 5.304.836 7.379 2.254M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <div>
+                        <h2 class="text-3xl font-bold leading-tight">Prontuários do Paciente</h2>
+                        <p class="text-xl text-gray-200">{{ $paciente->nome }}</p>
                     </div>
                 </div>
             </div>
+
+            {{-- Tabela --}}
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-600">
+                    <thead class="text-xs text-gray-700 uppercase border-b bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-3">ID Questionário</th>
+                            <th class="px-4 py-3">Enfermeiro</th>
+                            <th class="px-4 py-3">Data de Cadastro</th>
+                            <th class="px-4 py-3 text-right">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($questionarios as $questionario)
+                        <tr class="transition border-b hover:bg-gray-50">
+                            <td class="px-4 py-3">{{ $questionario->id }}</td>
+                            <td class="px-4 py-3 font-medium text-indigo-600">{{ $questionario->user->name }}</td>
+                            <td class="px-4 py-3">{{ \Carbon\Carbon::parse($questionario->created_at)->format('d/m/Y')
+                                }}</td>
+                            <td class="flex items-center justify-end px-4 py-3 space-x-2">
+                                @if ($questionario->prontuario && $questionario->prontuario->gerado)
+                                <button wire:click="gerarPDF('{{ $questionario->prontuario->id }}')"
+                                    class="px-4 py-2 text-white transition bg-indigo-700 rounded shadow-sm hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400">
+                                    Visualizar
+                                </button>
+                                @else
+                                <button wire:click="CreateProntuario('{{ $questionario->id }}')"
+                                    class="px-4 py-2 text-white transition rounded shadow-sm bg-cyan-700 hover:bg-cyan-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-400">
+                                    Criar
+                                </button>
+                                @endif
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            {{-- Paginação e filtro --}}
+            <div class="px-6 py-4 border-t bg-gray-50">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <label class="text-sm font-medium text-gray-700">Exibir por página:</label>
+                        <select wire:model.live="perPage"
+                            class="text-sm text-gray-900 border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+                    <div>
+                        {{ $questionarios->links('vendor.pagination.tailwind') }}
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
 </div>
