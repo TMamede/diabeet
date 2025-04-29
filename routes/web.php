@@ -79,7 +79,6 @@ Route::view('prontuario', 'prontuario.index')
     ->name('prontuario.index');
 
 
-
 Route::get('/prontuario/paciente/{paciente}', SearchProntuario::class)
     ->middleware(['auth'])
     ->name('prontuario.paciente');
