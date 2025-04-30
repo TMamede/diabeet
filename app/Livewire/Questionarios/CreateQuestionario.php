@@ -69,20 +69,20 @@ class CreateQuestionario extends Component
 
     // Etapa 1 - Mostrar Paciente
     public function selectPaciente($pacienteId)
-    {
+{
+    $this->selectedPaciente = Paciente::findOrFail($pacienteId);
+    $this->idPacienteSelected = $pacienteId;
+    $this->search = "";
 
-        $this->selectedPaciente = Paciente::find($pacienteId);
-        $this->idPacienteSelected = $pacienteId;
-        $this->search = "";
-        $ultimoQuestionario = Questionario::where('paciente_id', $this->idPacienteSelected)
-            ->first();
+    $ultimoQuestionario = Questionario::where('paciente_id', $pacienteId)
+        ->latest('created_at') // pega o mais recente
+        ->first();
 
-        if ($ultimoQuestionario) {
-            $this->loadQuestionarioData($ultimoQuestionario->id);
-        } else {
-            $this->loadQuestionarioData(0);
-        }
+    if ($ultimoQuestionario) {
+        $this->loadUltimoQuestionarioDoPaciente($pacienteId);
+    }// você pode criar essa função para limpar os campos
     }
+
 
     public function selectUnidade($unidadeId)
     {
@@ -199,7 +199,6 @@ class CreateQuestionario extends Component
             } else {
                 $this->classITBD = "Isquemia significativa";
             }
-
         } else {
             $this->addError('psatp_direito', 'Por favor, informe a pressão sistólica do tornozelo direito.');
             $this->addError('psap_direito', 'Por favor, informe a pressão sistólica do braço direito.');
@@ -255,192 +254,202 @@ class CreateQuestionario extends Component
     }
     public $IdQuestionario, $enfermeiro, $unidade;
 
-    public function loadQuestionarioData($questionarioId)
-    {
-        
-            $this->questionario = Questionario::with([
-                'nss_sociais.recreacoes', // Carregando as recreações do questionário
-                'nss_sociais.cuidado.emocionais', // Carregando os emocionais do questionário
-                'nss_biologica.nutricao.refeicoes', // Carregando as refeições do questionário
-                'nss_biologica.nutricao.restricoes_alimentar', // Carregando as restrições alimentares
-                'nss_biologica.sono.problemas_sono', // Carregando os problemas de sono
-                'nss_biologica.sexualidade.disturbios_sexual', // Carregando os distúrbios sexuais
-                'nss_biologica.locomocao.tipos_locomocao', // Carregando os tipos de locomoção
-                'nss_biologica.senso_percepcao.sintomas_percepcao', // Carregando os sintomas de percepção
-                'nss_biologica.cuidado_ferida.limpezas_lesao', // Carregando as limpezas de lesão
-                'nss_biologica.cuidado_ferida.coberturas_ferida', // Carregando as coberturas de ferida
-                'nss_biologica.integridade_cutanea.sinais_infeccao', // Carregando os sinais de infecção
-            ])->findOrFail($questionarioId);
-    
-            $this->IdQuestionario = $this->questionario->id;
-            $this->nss_biologicas = $this->questionario->nss_biologica;
-            $this->nss_espirituais = $this->questionario->nss_espiritual;
-            $this->nss_sociais = $this->questionario->nss_sociais;
-            $this->selectedPaciente = $this->questionario->paciente;
-            $this->IdselectedPaciente = $this->selectedPaciente->id;
-            $this->enfermeiro = $this->questionario->user;
-            $this->impressoes = $this->questionario->impressoes;
-            $this->unidade_saude_id = $this->questionario->unidade_saude_id;
-            $this->unidade = Unidade_saude::Find($this->unidade_saude_id);
-            $this->imagem_avaliacao_pe_url = $this->questionario->imagem_avaliacao_pe_url;
-    
-    
-            $this->orientado = $this->questionario->nss_biologica->regulacao_neuro->orientado;
-            $this->comportamento_regulacao_neuro_id = $this->questionario->nss_biologica->regulacao_neuro->comportamento_regulacao_neuro_id;
-    
-            $this->olho_direito = $this->questionario->nss_biologica->percepcao_sentidos->olho_direito;
-            $this->olho_esquerdo = $this->questionario->nss_biologica->percepcao_sentidos->olho_esquerdo;
-            $this->ouvido = $this->questionario->nss_biologica->percepcao_sentidos->ouvido;
-            $this->analise_tato_id = $this->questionario->nss_biologica->percepcao_sentidos->analise_tato_id;
-            $this->risco_queda = $this->questionario->nss_biologica->percepcao_sentidos->risco_queda;
-    
-            $this->liquido_diario = $this->questionario->nss_biologica->hidratacao->liquido_diario;
-            $this->tipo_pele_id = $this->questionario->nss_biologica->hidratacao->tipo_pele_id;
-    
-            $this->alimento_consumo_id = $this->questionario->nss_biologica->nutricao->alimento_consumo_id;
-    
-            $this->horas_sono = $this->questionario->nss_biologica->sono->horas_sono;
-            $this->acorda_noite = $this->questionario->nss_biologica->sono->acorda_noite;
-            $this->qualidade_sono_id = $this->questionario->nss_biologica->sono->qualidade_sono_id;
-            $this->medicamentos_sono = $this->questionario->nss_biologica->sono->medicamentos_sono;
-    
-            $this->realiza = $this->questionario->nss_biologica->exercicio_fisico->realiza;
-            $this->frequencia_exercicio_id = $this->questionario->nss_biologica->exercicio_fisico->frequencia_exercicio_id;
-            $this->duracao = $this->questionario->nss_biologica->exercicio_fisico->duracao;
-    
-            $this->zona_moradia_id = $this->questionario->nss_biologica->abrigo->zona_moradia_id;
-            $this->luz_publica = $this->questionario->nss_biologica->abrigo->luz_publica;
-            $this->coleta_lixo = $this->questionario->nss_biologica->abrigo->coleta_lixo;
-            $this->agua_tratada = $this->questionario->nss_biologica->abrigo->agua_tratada;
-            $this->rede_esgoto_id = $this->questionario->nss_biologica->abrigo->rede_esgoto_id;
-            $this->animais_domesticos = $this->questionario->nss_biologica->abrigo->animais_domesticos;
-    
-            $this->altura = $this->questionario->nss_biologica->regulacao_hormonal->altura;
-            $this->peso = $this->questionario->nss_biologica->regulacao_hormonal->peso;
-            $this->circunferencia_abdnominal = $this->questionario->nss_biologica->regulacao_hormonal->circunferencia_abdnominal;
-            $this->glicemia_capilar = $this->questionario->nss_biologica->regulacao_hormonal->glicemia_capilar;
-            $this->jejum = $this->questionario->nss_biologica->regulacao_hormonal->jejum;
-            $this->pos_prandial = $this->questionario->nss_biologica->regulacao_hormonal->pos_prandial;
-    
-            $this->temp_enchimento_capilar = $this->questionario->nss_biologica->oxigenacao->temp_enchimento_capilar;
-            $this->frequencia_respiratoria = $this->questionario->nss_biologica->oxigenacao->frequencia_respiratoria;
-            $this->satO2 = $this->questionario->nss_biologica->oxigenacao->satO2;
-    
-            $this->temperatura = $this->questionario->nss_biologica->regulacao_termica->temperatura;
-    
-            $this->dor_urinar = $this->questionario->nss_biologica->eliminacao->dor_urinar;
-            $this->incontinencia_urina = $this->questionario->nss_biologica->eliminacao->incontinencia_urina;
-            $this->uso_laxante = $this->questionario->nss_biologica->eliminacao->uso_laxante;
-            $this->uso_fraldas = $this->questionario->nss_biologica->eliminacao->uso_fraldas;
-            $this->dor_eliminacoes = $this->questionario->nss_biologica->eliminacao->dor_eliminacoes;
-            $this->incontinencia_eliminacao = $this->questionario->nss_biologica->eliminacao->incontinencia_eliminacao;
-            $this->diarreia = $this->questionario->nss_biologica->eliminacao->diarreia;
-            $this->constipacao = $this->questionario->nss_biologica->eliminacao->constipacao;
-            $this->equipamento_externo = $this->questionario->nss_biologica->eliminacao->equipamento_externo;
-    
-            $this->vida_sex_ativa = $this->questionario->nss_biologica->sexualidade->vida_sex_ativa;
-    
-            $this->sapato_adequado = $this->questionario->nss_biologica->locomocao->sapato_adequado;
-            $this->sandalia_cicatrizacao = $this->questionario->nss_biologica->locomocao->sandalia_cicatrizacao;
-    
-            $this->pressao_arterial = $this->questionario->nss_biologica->regulacao_vascular->pressao_arterial;
-            $this->frequencia_cardiaca = $this->questionario->nss_biologica->regulacao_vascular->frequencia_cardiaca;
-            $this->psatp_direito = $this->questionario->nss_biologica->regulacao_vascular->psatp_direito;
-            $this->psap_direito = $this->questionario->nss_biologica->regulacao_vascular->psap_direito;
-            $this->psab_direito = $this->questionario->nss_biologica->regulacao_vascular->psab_direito;
-            $this->psatp_esquerdo = $this->questionario->nss_biologica->regulacao_vascular->psatp_esquerdo;
-            $this->psap_esquerdo = $this->questionario->nss_biologica->regulacao_vascular->psap_esquerdo;
-            $this->psab_esquerdo = $this->questionario->nss_biologica->regulacao_vascular->psab_esquerdo;
-    
-            $this->pe_neuropatico = $this->questionario->nss_biologica->senso_percepcao->pe_neuropatico;
-            $this->arco_desabado = $this->questionario->nss_biologica->senso_percepcao->arco_desabado;
-            $this->valgismo = $this->questionario->nss_biologica->senso_percepcao->valgismo;
-            $this->dedos_em_garra = $this->questionario->nss_biologica->senso_percepcao->dedos_em_garra;
-            $this->estado_unhas_id = $this->questionario->nss_biologica->senso_percepcao->estado_unhas_id;
-            $this->corte_unhas = $this->questionario->nss_biologica->senso_percepcao->corte_unhas;
-            $this->fissuras = $this->questionario->nss_biologica->senso_percepcao->fissuras;
-            $this->calosidades = $this->questionario->nss_biologica->senso_percepcao->calosidades;
-            $this->micose = $this->questionario->nss_biologica->senso_percepcao->micose;
-            $this->teste_senso_percepcao_id = $this->questionario->nss_biologica->senso_percepcao->teste_senso_percepcao_id;
-            $this->percepcao_direito = $this->questionario->nss_biologica->senso_percepcao->percepcao_direito;
-            $this->percepcao_esquerdo = $this->questionario->nss_biologica->senso_percepcao->percepcao_esquerdo;
-    
-            $this->comprimentoD = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->comprimento;
-            $this->larguraD = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->largura;
-            $this->regiao_pe_direito_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->regiao_pe_id;
-            $this->localizacao_lesao_direito_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->localizacao_lesao_id;
-            $this->lesao_amputacaoD = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->lesao_amputacao;
-    
-            $this->comprimentoE = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->comprimento;
-            $this->larguraE = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->largura;
-            $this->regiao_pe_esquerdo_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->regiao_pe_id;
-            $this->localizacao_lesao_esquerdo_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->localizacao_lesao_id;
-            $this->lesao_amputacaoE = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->lesao_amputacao;
-    
-            $this->bordas_ferida_id = $this->questionario->nss_biologica->integridade_cutanea->bordas_ferida_id;
-            $this->edema = $this->questionario->nss_biologica->integridade_cutanea->edema;
-            $this->quantidade_exudato_id = $this->questionario->nss_biologica->integridade_cutanea->quantidade_exudato_id;
-            $this->odor_exudato = $this->questionario->nss_biologica->integridade_cutanea->odor_exudato;
-            $this->aspecto_exudato_id = $this->questionario->nss_biologica->integridade_cutanea->aspecto_exudato_id;
-            $this->tipo_tecido_ferida_id = $this->questionario->nss_biologica->integridade_cutanea->tipo_tecido_ferida_id;
-            $this->profundidade_id = $this->questionario->nss_biologica->integridade_cutanea->profundidade_id;
-            $this->pele_periferida_id = $this->questionario->nss_biologica->integridade_cutanea->pele_periferida_id;
-            $this->dor = $this->questionario->nss_biologica->integridade_cutanea->dor;
-    
-            $this->desbridamento_id = $this->questionario->nss_biologica->cuidado_ferida->desbridamento_id;
-            $this->avaliacao_ferida_id = $this->questionario->nss_biologica->cuidado_ferida->avaliacao_ferida_id;
-            $this->aplicacao_laserterapia = $this->questionario->nss_biologica->cuidado_ferida->aplicacao_laserterapia;
-            $this->terapia_fotodinamica = $this->questionario->nss_biologica->cuidado_ferida->terapia_fotodinamica;
-    
-            $this->apoio = $this->questionario->nss_sociais->comunicacao->apoio;
-            $this->interacao_social = $this->questionario->nss_sociais->comunicacao->interacao_social;
-    
-            $this->acompanhado = $this->questionario->nss_sociais->cuidado->acompanhado;
-            $this->opnioes_de_si = $this->questionario->nss_sociais->cuidado->opnioes_de_si;
-            $this->auxiliador = $this->questionario->nss_sociais->cuidado->auxiliador;
-    
-            $this->monitoramento_glicemia_dia = $this->questionario->nss_sociais->aprendizagem->monitoramento_glicemia_dia;
-            $this->cuidado_pes = $this->questionario->nss_sociais->aprendizagem->cuidado_pes;
-            $this->uso_sapato = $this->questionario->nss_sociais->aprendizagem->uso_sapato;
-            $this->alimentacao = $this->questionario->nss_sociais->aprendizagem->alimentacao;
-            $this->regime_terapeutico = $this->questionario->nss_sociais->aprendizagem->regime_terapeutico;
-    
-            $this->religiao = $this->questionario->nss_espiritual->religiao;
-    
-            $this->recreacaosList = Recreacao::all();
-            $this->recreacaos = $this->questionario->nss_sociais->recreacoes->pluck('id')->toArray();
-    
-            $this->emocionalsList = Emocional::all();
-            $this->emocionals = $this->questionario->nss_sociais->cuidado->emocionais->pluck('id')->toArray();
-    
-            $this->refeicaosList = Refeicao::all();
-            $this->refeicaos= $this->questionario->nss_biologica->nutricao->refeicoes->pluck('id')->toArray();
-    
-            $this->restricaosList = Restricao_alimento::all();
-            $this->restricaos = $this->questionario->nss_biologica->nutricao->restricoes_alimentar->pluck('id')->toArray();
-    
-            $this->problemaSonoList = Problema_sono::all();
-            $this->problema_sonos = $this->questionario->nss_biologica->sono->problemas_sono->pluck('id')->toArray();
-    
-            $this->disturbiosSexualList = Disturbio_sexual::all();
-            $this->disturbio_sexuals = $this->questionario->nss_biologica->sexualidade->disturbios_sexual->pluck('id')->toArray();
-    
-            $this->tiposLocomocaoList = Tipo_locomocao::all();
-            $this->tipo_locomocaos = $this->questionario->nss_biologica->locomocao->tipos_locomocao->pluck('id')->toArray();
-    
-            $this->sintomasPercepcaoList = Sintomas_percepcao::all();
-            $this->sintomas_percepcaos = $this->questionario->nss_biologica->senso_percepcao->sintomas_percepcao->pluck('id')->toArray();
-    
-            $this->limpezaLesaosList = Limpeza_lesao::all();
-            $this->limpeza_lesaos = $this->questionario->nss_biologica->cuidado_ferida->limpezas_lesao->pluck('id')->toArray();
-    
-            $this->coberturasList = Cobertura_ferida::all();
-            $this->coberturas = $this->questionario->nss_biologica->cuidado_ferida->coberturas_ferida->pluck('id')->toArray();
-    
-            $this->sinaisInfeccaoList = Sinais_infeccao::all();
-            $this->sinais_infeccaos = $this->questionario->nss_biologica->integridade_cutanea->sinais_infeccao->pluck('id')->toArray();
-        
-        
+    public function loadUltimoQuestionarioDoPaciente($pacienteId)
+{
+    $this->selectedPaciente = Paciente::findOrFail($pacienteId);
+    $this->IdselectedPaciente = $this->selectedPaciente->id;
+
+    $this->questionario = Questionario::with([
+        'nss_sociais.recreacoes',
+        'nss_sociais.cuidado.emocionais',
+        'nss_biologica.nutricao.refeicoes',
+        'nss_biologica.nutricao.restricoes_alimentar',
+        'nss_biologica.sono.problemas_sono',
+        'nss_biologica.sexualidade.disturbios_sexual',
+        'nss_biologica.locomocao.tipos_locomocao',
+        'nss_biologica.senso_percepcao.sintomas_percepcao',
+        'nss_biologica.cuidado_ferida.limpezas_lesao',
+        'nss_biologica.cuidado_ferida.coberturas_ferida',
+        'nss_biologica.integridade_cutanea.sinais_infeccao',
+        'user',
+        'unidade_saude',
+    ])
+    ->where('paciente_id', $pacienteId)
+    ->latest('created_at') // aqui garante que é o último
+    ->first();
+
+    if (!$this->questionario) {
+        session()->flash('error', 'Este paciente ainda não possui questionários anteriores.');
+        return;
+    }
+
+        $this->IdQuestionario = $this->questionario->id;
+        $this->nss_biologicas = $this->questionario->nss_biologica;
+        $this->nss_espirituais = $this->questionario->nss_espiritual;
+        $this->nss_sociais = $this->questionario->nss_sociais;
+        $this->selectedPaciente = $this->questionario->paciente;
+        $this->IdselectedPaciente = $this->selectedPaciente->id;
+        $this->enfermeiro = $this->questionario->user;
+        $this->impressoes = $this->questionario->impressoes;
+        $this->unidade_saude_id = $this->questionario->unidade_saude_id;
+        $this->unidade = Unidade_saude::Find($this->unidade_saude_id);
+        $this->imagem_avaliacao_pe_url = $this->questionario->imagem_avaliacao_pe_url;
+
+
+        $this->orientado = $this->questionario->nss_biologica->regulacao_neuro->orientado;
+        $this->comportamento_regulacao_neuro_id = $this->questionario->nss_biologica->regulacao_neuro->comportamento_regulacao_neuro_id;
+
+        $this->olho_direito = $this->questionario->nss_biologica->percepcao_sentidos->olho_direito;
+        $this->olho_esquerdo = $this->questionario->nss_biologica->percepcao_sentidos->olho_esquerdo;
+        $this->ouvido = $this->questionario->nss_biologica->percepcao_sentidos->ouvido;
+        $this->analise_tato_id = $this->questionario->nss_biologica->percepcao_sentidos->analise_tato_id;
+        $this->risco_queda = $this->questionario->nss_biologica->percepcao_sentidos->risco_queda;
+
+        $this->liquido_diario = $this->questionario->nss_biologica->hidratacao->liquido_diario;
+        $this->tipo_pele_id = $this->questionario->nss_biologica->hidratacao->tipo_pele_id;
+
+        $this->alimento_consumo_id = $this->questionario->nss_biologica->nutricao->alimento_consumo_id;
+
+        $this->horas_sono = $this->questionario->nss_biologica->sono->horas_sono;
+        $this->acorda_noite = $this->questionario->nss_biologica->sono->acorda_noite;
+        $this->qualidade_sono_id = $this->questionario->nss_biologica->sono->qualidade_sono_id;
+        $this->medicamentos_sono = $this->questionario->nss_biologica->sono->medicamentos_sono;
+
+        $this->realiza = $this->questionario->nss_biologica->exercicio_fisico->realiza;
+        $this->frequencia_exercicio_id = $this->questionario->nss_biologica->exercicio_fisico->frequencia_exercicio_id;
+        $this->duracao = $this->questionario->nss_biologica->exercicio_fisico->duracao;
+
+        $this->zona_moradia_id = $this->questionario->nss_biologica->abrigo->zona_moradia_id;
+        $this->luz_publica = $this->questionario->nss_biologica->abrigo->luz_publica;
+        $this->coleta_lixo = $this->questionario->nss_biologica->abrigo->coleta_lixo;
+        $this->agua_tratada = $this->questionario->nss_biologica->abrigo->agua_tratada;
+        $this->rede_esgoto_id = $this->questionario->nss_biologica->abrigo->rede_esgoto_id;
+        $this->animais_domesticos = $this->questionario->nss_biologica->abrigo->animais_domesticos;
+
+        $this->altura = $this->questionario->nss_biologica->regulacao_hormonal->altura;
+        $this->peso = $this->questionario->nss_biologica->regulacao_hormonal->peso;
+        $this->circunferencia_abdnominal = $this->questionario->nss_biologica->regulacao_hormonal->circunferencia_abdnominal;
+        $this->glicemia_capilar = $this->questionario->nss_biologica->regulacao_hormonal->glicemia_capilar;
+        $this->jejum = $this->questionario->nss_biologica->regulacao_hormonal->jejum;
+        $this->pos_prandial = $this->questionario->nss_biologica->regulacao_hormonal->pos_prandial;
+
+        $this->temp_enchimento_capilar = $this->questionario->nss_biologica->oxigenacao->temp_enchimento_capilar;
+        $this->frequencia_respiratoria = $this->questionario->nss_biologica->oxigenacao->frequencia_respiratoria;
+        $this->satO2 = $this->questionario->nss_biologica->oxigenacao->satO2;
+
+        $this->temperatura = $this->questionario->nss_biologica->regulacao_termica->temperatura;
+
+        $this->dor_urinar = $this->questionario->nss_biologica->eliminacao->dor_urinar;
+        $this->incontinencia_urina = $this->questionario->nss_biologica->eliminacao->incontinencia_urina;
+        $this->uso_laxante = $this->questionario->nss_biologica->eliminacao->uso_laxante;
+        $this->uso_fraldas = $this->questionario->nss_biologica->eliminacao->uso_fraldas;
+        $this->dor_eliminacoes = $this->questionario->nss_biologica->eliminacao->dor_eliminacoes;
+        $this->incontinencia_eliminacao = $this->questionario->nss_biologica->eliminacao->incontinencia_eliminacao;
+        $this->diarreia = $this->questionario->nss_biologica->eliminacao->diarreia;
+        $this->constipacao = $this->questionario->nss_biologica->eliminacao->constipacao;
+        $this->equipamento_externo = $this->questionario->nss_biologica->eliminacao->equipamento_externo;
+
+        $this->vida_sex_ativa = $this->questionario->nss_biologica->sexualidade->vida_sex_ativa;
+
+        $this->sapato_adequado = $this->questionario->nss_biologica->locomocao->sapato_adequado;
+        $this->sandalia_cicatrizacao = $this->questionario->nss_biologica->locomocao->sandalia_cicatrizacao;
+
+        $this->pressao_arterial = $this->questionario->nss_biologica->regulacao_vascular->pressao_arterial;
+        $this->frequencia_cardiaca = $this->questionario->nss_biologica->regulacao_vascular->frequencia_cardiaca;
+        $this->psatp_direito = $this->questionario->nss_biologica->regulacao_vascular->psatp_direito;
+        $this->psap_direito = $this->questionario->nss_biologica->regulacao_vascular->psap_direito;
+        $this->psab_direito = $this->questionario->nss_biologica->regulacao_vascular->psab_direito;
+        $this->psatp_esquerdo = $this->questionario->nss_biologica->regulacao_vascular->psatp_esquerdo;
+        $this->psap_esquerdo = $this->questionario->nss_biologica->regulacao_vascular->psap_esquerdo;
+        $this->psab_esquerdo = $this->questionario->nss_biologica->regulacao_vascular->psab_esquerdo;
+
+        $this->pe_neuropatico = $this->questionario->nss_biologica->senso_percepcao->pe_neuropatico;
+        $this->arco_desabado = $this->questionario->nss_biologica->senso_percepcao->arco_desabado;
+        $this->valgismo = $this->questionario->nss_biologica->senso_percepcao->valgismo;
+        $this->dedos_em_garra = $this->questionario->nss_biologica->senso_percepcao->dedos_em_garra;
+        $this->estado_unhas_id = $this->questionario->nss_biologica->senso_percepcao->estado_unhas_id;
+        $this->corte_unhas = $this->questionario->nss_biologica->senso_percepcao->corte_unhas;
+        $this->fissuras = $this->questionario->nss_biologica->senso_percepcao->fissuras;
+        $this->calosidades = $this->questionario->nss_biologica->senso_percepcao->calosidades;
+        $this->micose = $this->questionario->nss_biologica->senso_percepcao->micose;
+        $this->teste_senso_percepcao_id = $this->questionario->nss_biologica->senso_percepcao->teste_senso_percepcao_id;
+        $this->percepcao_direito = $this->questionario->nss_biologica->senso_percepcao->percepcao_direito;
+        $this->percepcao_esquerdo = $this->questionario->nss_biologica->senso_percepcao->percepcao_esquerdo;
+
+        $this->comprimentoD = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->comprimento;
+        $this->larguraD = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->largura;
+        $this->regiao_pe_direito_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->regiao_pe_id;
+        $this->localizacao_lesao_direito_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->localizacao_lesao_id;
+        $this->lesao_amputacaoD = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->lesao_amputacao;
+
+        $this->comprimentoE = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->comprimento;
+        $this->larguraE = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->largura;
+        $this->regiao_pe_esquerdo_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->regiao_pe_id;
+        $this->localizacao_lesao_esquerdo_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->localizacao_lesao_id;
+        $this->lesao_amputacaoE = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->lesao_amputacao;
+
+        $this->bordas_ferida_id = $this->questionario->nss_biologica->integridade_cutanea->bordas_ferida_id;
+        $this->edema = $this->questionario->nss_biologica->integridade_cutanea->edema;
+        $this->quantidade_exudato_id = $this->questionario->nss_biologica->integridade_cutanea->quantidade_exudato_id;
+        $this->odor_exudato = $this->questionario->nss_biologica->integridade_cutanea->odor_exudato;
+        $this->aspecto_exudato_id = $this->questionario->nss_biologica->integridade_cutanea->aspecto_exudato_id;
+        $this->tipo_tecido_ferida_id = $this->questionario->nss_biologica->integridade_cutanea->tipo_tecido_ferida_id;
+        $this->profundidade_id = $this->questionario->nss_biologica->integridade_cutanea->profundidade_id;
+        $this->pele_periferida_id = $this->questionario->nss_biologica->integridade_cutanea->pele_periferida_id;
+        $this->dor = $this->questionario->nss_biologica->integridade_cutanea->dor;
+
+        $this->desbridamento_id = $this->questionario->nss_biologica->cuidado_ferida->desbridamento_id;
+        $this->avaliacao_ferida_id = $this->questionario->nss_biologica->cuidado_ferida->avaliacao_ferida_id;
+        $this->aplicacao_laserterapia = $this->questionario->nss_biologica->cuidado_ferida->aplicacao_laserterapia;
+        $this->terapia_fotodinamica = $this->questionario->nss_biologica->cuidado_ferida->terapia_fotodinamica;
+
+        $this->apoio = $this->questionario->nss_sociais->comunicacao->apoio;
+        $this->interacao_social = $this->questionario->nss_sociais->comunicacao->interacao_social;
+
+        $this->acompanhado = $this->questionario->nss_sociais->cuidado->acompanhado;
+        $this->opnioes_de_si = $this->questionario->nss_sociais->cuidado->opnioes_de_si;
+        $this->auxiliador = $this->questionario->nss_sociais->cuidado->auxiliador;
+
+        $this->monitoramento_glicemia_dia = $this->questionario->nss_sociais->aprendizagem->monitoramento_glicemia_dia;
+        $this->cuidado_pes = $this->questionario->nss_sociais->aprendizagem->cuidado_pes;
+        $this->uso_sapato = $this->questionario->nss_sociais->aprendizagem->uso_sapato;
+        $this->alimentacao = $this->questionario->nss_sociais->aprendizagem->alimentacao;
+        $this->regime_terapeutico = $this->questionario->nss_sociais->aprendizagem->regime_terapeutico;
+
+        $this->religiao = $this->questionario->nss_espiritual->religiao;
+
+        $this->recreacaosList = Recreacao::all();
+        $this->recreacaos = $this->questionario->nss_sociais->recreacoes->pluck('id')->toArray();
+
+        $this->emocionalsList = Emocional::all();
+        $this->emocionals = $this->questionario->nss_sociais->cuidado->emocionais->pluck('id')->toArray();
+
+        $this->refeicaosList = Refeicao::all();
+        $this->refeicaos = $this->questionario->nss_biologica->nutricao->refeicoes->pluck('id')->toArray();
+
+        $this->restricaosList = Restricao_alimento::all();
+        $this->restricaos = $this->questionario->nss_biologica->nutricao->restricoes_alimentar->pluck('id')->toArray();
+
+        $this->problemaSonoList = Problema_sono::all();
+        $this->problema_sonos = $this->questionario->nss_biologica->sono->problemas_sono->pluck('id')->toArray();
+
+        $this->disturbiosSexualList = Disturbio_sexual::all();
+        $this->disturbio_sexuals = $this->questionario->nss_biologica->sexualidade->disturbios_sexual->pluck('id')->toArray();
+
+        $this->tiposLocomocaoList = Tipo_locomocao::all();
+        $this->tipo_locomocaos = $this->questionario->nss_biologica->locomocao->tipos_locomocao->pluck('id')->toArray();
+
+        $this->sintomasPercepcaoList = Sintomas_percepcao::all();
+        $this->sintomas_percepcaos = $this->questionario->nss_biologica->senso_percepcao->sintomas_percepcao->pluck('id')->toArray();
+
+        $this->limpezaLesaosList = Limpeza_lesao::all();
+        $this->limpeza_lesaos = $this->questionario->nss_biologica->cuidado_ferida->limpezas_lesao->pluck('id')->toArray();
+
+        $this->coberturasList = Cobertura_ferida::all();
+        $this->coberturas = $this->questionario->nss_biologica->cuidado_ferida->coberturas_ferida->pluck('id')->toArray();
+
+        $this->sinaisInfeccaoList = Sinais_infeccao::all();
+        $this->sinais_infeccaos = $this->questionario->nss_biologica->integridade_cutanea->sinais_infeccao->pluck('id')->toArray();
     }
 
 
@@ -1226,13 +1235,13 @@ class CreateQuestionario extends Component
             ],
             // Glicemia capilar abaixo de 70
             [
-                'condicao' => $questionario->nss_biologica?->regulacao_hormonal?->glicemia_capilar < 70,
+                'condicao' => $questionario->nss_biologica?->regulacao_hormonal?->glicemia_capilar <= 70,
                 'origem' => 9,
                 'motivo' => 33,
             ],
             // Glicemia capilar abaixo de 100
             [
-                'condicao' => $questionario->nss_biologica?->regulacao_hormonal?->glicemia_capilar < 100,
+                'condicao' => $questionario->nss_biologica?->regulacao_hormonal?->glicemia_capilar >= 100,
                 'origem' => 9,
                 'motivo' => 34,
             ],
@@ -1627,13 +1636,13 @@ class CreateQuestionario extends Component
             ]
         );
 
-        $nutricao = Nutricao::firstOrCreate(
+        $nutricao = Nutricao::create(
             [
                 'alimento_consumo_id' => $this->alimento_consumo_id,
             ]
         );
 
-        $sono = Sono::firstOrCreate(
+        $sono = Sono::create(
             [
                 'horas_sono' => $this->horas_sono,
                 'acorda_noite' => $this->acorda_noite,
@@ -1699,12 +1708,12 @@ class CreateQuestionario extends Component
         ]);
 
 
-        $sexualidade = Sexualidade::firstOrcreate([
+        $sexualidade = Sexualidade::create([
             'vida_sex_ativa' => $this->vida_sex_ativa,
         ]);
 
 
-        $locomocao = Locomocao::firstOrcreate([
+        $locomocao = Locomocao::create([
             'sapato_adequado' => $this->sapato_adequado,
             'sandalia_cicatrizacao' => $this->sandalia_cicatrizacao,
         ]);
@@ -1721,7 +1730,7 @@ class CreateQuestionario extends Component
             'psab_esquerdo' => $this->psab_esquerdo,
         ]);
 
-        $senso_percepcao = Senso_percepcao::firstOrcreate([
+        $senso_percepcao = Senso_percepcao::create([
             'pe_neuropatico' => $this->pe_neuropatico,
             'arco_desabado' => $this->arco_desabado,
             'valgismo' => $this->valgismo,
@@ -1754,7 +1763,7 @@ class CreateQuestionario extends Component
         ]);
 
 
-        $integridade_cutanea = Integridade_cutanea::firstOrcreate([
+        $integridade_cutanea = Integridade_cutanea::create([
             'integridade_direito_id' => $integridade_direito->id, // ID da integridade do direito
             'integridade_esquerdo_id' => $integridade_esquerdo->id, // ID da integridade do esquerdo
             'bordas_ferida_id' => $this->bordas_ferida_id, // ID das bordas da ferida
@@ -1768,14 +1777,14 @@ class CreateQuestionario extends Component
             'dor' => $this->dor,
         ]);
 
-        $cuidado_ferida = Cuidado_ferida::firstOrcreate([
+        $cuidado_ferida = Cuidado_ferida::create([
             'desbridamento_id' => $this->desbridamento_id, // ID do desbridamento
             'avaliacao_ferida_id' => $this->avaliacao_ferida_id, // ID da avaliação da ferida
             'aplicacao_laserterapia' => $this->aplicacao_laserterapia,
             'terapia_fotodinamica' => $this->terapia_fotodinamica,
         ]);
 
-        $comunicacao = Comunicacao::firstOrcreate([
+        $comunicacao = Comunicacao::create([
             'apoio' => $this->apoio,
             'interacao_social' => $this->interacao_social,
         ]);
@@ -1816,7 +1825,7 @@ class CreateQuestionario extends Component
             'cuidado_ferida_id' => $cuidado_ferida->id,
         ]);
 
-        $nss_sociais = Nss_sociais::firstOrcreate([
+        $nss_sociais = Nss_sociais::create([
             'aprendizagem_id' => $aprendizagem->id,
             'cuidado_id' => $cuidado->id,
             'comunicacao_id' => $comunicacao->id,

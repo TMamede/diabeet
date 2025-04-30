@@ -134,7 +134,7 @@ class MotivoSeeder extends Seeder
             ['descricao' => 'Apresenta Sinal de Infecção', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             
             //Origem: Cuidado com a ferida
-            ['descricao' => 'Análise do Cuidado Com a Ferida', 'origem_id' => 18, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Análise do Cuidado Com a Ferida', 'origem_id' => 17, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             
             // Origem: Aprendizagem (Educação a Saúde)
             ['descricao' => 'Não Adesão ao Regime Terapêutico', 'origem_id' => 18, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],

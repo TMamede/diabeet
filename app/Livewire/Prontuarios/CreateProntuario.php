@@ -20,32 +20,29 @@ class CreateProntuario extends Component
         $this->questionarioId = $id;
         $this->prontuario = Prontuario::where('questionario_id', $id)->firstOrFail();
 
-        $origens = $this->prontuario->origens()
-            ->with(['motivos' => function ($query) {
-                $query->whereHas('prontuarios', function ($q) {
-                    $q->where('prontuarios.id', $this->prontuario->id);
-                })
-                    ->with(['diagnosticos' => function ($query) {
-                        $query->with('intervencaos');
-                    }]);
-            }])
-            ->distinct()
-            ->get()
-            ->toArray();
+       $origens = $this->prontuario->origens()
+    ->with(['motivos' => function ($query) {
+        $query->whereHas('prontuarios', function ($q) {
+            $q->where('prontuarios.id', $this->prontuario->id);
+        })->with(['diagnosticos' => function ($query) {
+            $query->with('intervencaos');
+        }]);
+    }])
+    ->get()
+    ->toArray();
 
-        // Agrupa diagnósticos por origem sem repetições
-        $this->origens = collect($origens)->map(function ($origem) {
-            $diagnosticosUnicos = [];
+$this->origens = collect($origens)->map(function ($origem) {
+    $diagnosticosUnicos = [];
 
-            foreach ($origem['motivos'] as $motivo) {
-                foreach ($motivo['diagnosticos'] as $diagnostico) {
-                    $diagnosticosUnicos[$diagnostico['id']] = $diagnostico; // sobrescreve duplicados
-                }
-            }
+    foreach ($origem['motivos'] as $motivo) {
+        foreach ($motivo['diagnosticos'] as $diagnostico) {
+            $diagnosticosUnicos[$diagnostico['id']] = $diagnostico;
+        }
+    }
 
-            $origem['diagnosticos_unicos'] = array_values($diagnosticosUnicos);
-            return $origem;
-        })->toArray();
+    $origem['diagnosticos_unicos'] = array_values($diagnosticosUnicos);
+    return $origem;
+})->toArray();
     }
 
     public function toggleOrigem($origemId)

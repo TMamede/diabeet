@@ -23,7 +23,7 @@
 
         /* Definição da página para o PDF */
         @page {
-            border: solid 5px black; 
+            border: solid 5px black;
             margin: 40px;
         }
 
@@ -62,6 +62,7 @@
             border: 1px solid var(--border-gray);
             background-color: var(--light-gray);
         }
+
         .section-info {
             margin-bottom: 20px;
             padding: 18px;
@@ -69,6 +70,7 @@
             border: 1px solid var(--border-gray);
             background-color: #dfe2e5;
         }
+
         .section-title {
             font-weight: bold;
             font-size: 16px;
@@ -131,35 +133,36 @@
 
     <!-- Exibindo todas as Origens e seus detalhes -->
     @foreach ($prontuario->origens as $origem)
-    <div class="section">
-        <div class="section-title">Origem: {{ $origem->descricao }}</div>
+        <div class="section">
+            <div class="section-title">Necessidade Humana Básica: {{ $origem->descricao }}</div>
 
-        @if (isset($motivosPorOrigem[$origem->id]))
-        @foreach ($motivosPorOrigem[$origem->id] as $motivo)
-        <div class="content">
-            <strong>Indicador Clínico:</strong> {{ $motivo->descricao }}
+            @if (isset($motivosPorOrigem[$origem->id]))
+                @foreach ($motivosPorOrigem[$origem->id] as $motivo)
+                    <div class="content">
+                        <strong>Indicador Clínico:</strong> {{ $motivo->descricao }}
 
-            @if (isset($diagnosticosPorMotivo[$motivo->id]))
-            <ul>
-                @foreach ($diagnosticosPorMotivo[$motivo->id] as $diagnostico)
-                <li class="list-item">
-                    <strong>Diagnóstico:</strong> {{ $diagnostico->descricao }}
+                        @if (isset($diagnosticosPorMotivo[$motivo->id]))
+                            <ul>
+                                @foreach ($diagnosticosPorMotivo[$motivo->id] as $diagnostico)
+                                    <li class="list-item">
+                                        <strong>Diagnóstico:</strong> {{ $diagnostico->descricao }}
 
-                    @if (isset($intervencoesPorDiagnostico[$diagnostico->id]))
-                    <ul>
-                        @foreach ($intervencoesPorDiagnostico[$diagnostico->id] as $intervencao)
-                        <li class="list-item">Intervenção: {{ $intervencao->descricao }}</li>
-                        @endforeach
-                    </ul>
-                    @endif
-                </li>
+                                        @if (isset($intervencoesPorDiagnostico[$diagnostico->id]))
+                                            <ul>
+                                                @foreach ($intervencoesPorDiagnostico[$diagnostico->id] as $intervencao)
+                                                    <li class="list-item">Intervenção: {{ $intervencao->descricao }}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
                 @endforeach
-            </ul>
             @endif
         </div>
-        @endforeach
-        @endif
-    </div>
     @endforeach
 
 

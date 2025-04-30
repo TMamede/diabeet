@@ -261,13 +261,6 @@ class MotivoDiagnosticoSeeder extends Seeder
             ['motivo_id' => 84, 'diagnostico_id' => 51, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['motivo_id' => 84, 'diagnostico_id' => 52, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['motivo_id' => 84, 'diagnostico_id' => 53, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['motivo_id' => 85, 'diagnostico_id' => 47, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['motivo_id' => 85, 'diagnostico_id' => 48, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['motivo_id' => 85, 'diagnostico_id' => 49, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['motivo_id' => 85, 'diagnostico_id' => 50, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['motivo_id' => 85, 'diagnostico_id' => 51, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['motivo_id' => 85, 'diagnostico_id' => 52, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['motivo_id' => 85, 'diagnostico_id' => 53, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             
             //Origem: Cuidado com a ferida
             ['motivo_id' => 85, 'diagnostico_id' => 54, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],

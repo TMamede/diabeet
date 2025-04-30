@@ -4,7 +4,7 @@
             {{-- Etapa 1: Dados Sociodemográficos --}}
             @if ($currentStep == 1)
                 <div class="p-6 bg-white rounded-lg shadow-md step">
-                    <h2 class="py-5 text-xl font-bold text-indigo-900">Dados Sociodemográficos</h2>
+                    <h2 class="py-5 mb-10 text-4xl font-bold text-indigo-900">Dados Sociodemográficos</h2>
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <div class="mb-4">
                             <label for="cpf" class="block font-medium text-gray-700">CPF</label>
@@ -218,10 +218,11 @@
                         </div>
                         <!-- Adicione os demais campos da etapa 1 aqui -->
 
-                        <div class="flex justify-center w-full py-3 mt-4">
+                        <div class="flex justify-center w-full py-6 mt-6">
                             <button type="button" wire:click="nextStep"
-                                class="px-2 py-2 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-50">
-                                Continuar
+                                class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                <span class="z-10">Continuar</span>
+                                <div class="absolute inset-0 bg-white opacity-5"></div>
                             </button>
                         </div>
                     </div>
@@ -232,7 +233,7 @@
             {{-- Etapa 2: Histórico do Paciente --}}
             @if ($currentStep == 2)
                 <div class="step">
-                    <h2 class="py-5 text-xl font-bold text-indigo-900">Histórico do Paciente</h2>
+                    <h2 class="py-5 mb-10 text-4xl font-bold text-indigo-900">Histórico do Paciente</h2>
 
                     <div class="mb-6">
                         <label for="tipo_diabetes_id" class="block mb-2 font-medium text-gray-700">Tipo de
@@ -303,18 +304,14 @@
                             amputação?</label>
                         <div class="flex items-center space-x-4">
                             <div x-data="{ selecionado: @entangle('realizou_amputacao') }">
-                                <button 
-                                    type="button" 
-                                    wire:click="$set('realizou_amputacao', 'sim')"
-                                    :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'" 
+                                <button type="button" wire:click="$set('realizou_amputacao', 'sim')"
+                                    :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'"
                                     class="px-4 py-2 text-black rounded focus:outline-none hover:bg-cyan-200">
                                     Sim
                                 </button>
-                                
-                                <button 
-                                    type="button" 
-                                    wire:click="$set('realizou_amputacao', 'nao')"
-                                    :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'" 
+
+                                <button type="button" wire:click="$set('realizou_amputacao', 'nao')"
+                                    :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'"
                                     class="px-4 py-2 text-black rounded focus:outline-none hover:bg-red-200">
                                     Não
                                 </button>
@@ -349,18 +346,14 @@
                         <label for="tabagista" class="block mb-2 font-medium text-gray-700">É tabagista?</label>
                         <div class="flex items-center space-x-4">
                             <div x-data="{ selecionado: @entangle('tabagista') }">
-                                <button 
-                                    type="button" 
-                                    wire:click="$set('tabagista', 'sim')"
-                                    :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'" 
+                                <button type="button" wire:click="$set('tabagista', 'sim')"
+                                    :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'"
                                     class="px-4 py-2 text-black rounded focus:outline-none hover:bg-cyan-200">
                                     Sim
                                 </button>
-                            
-                                <button 
-                                    type="button" 
-                                    wire:click="$set('tabagista', 'nao')"
-                                    :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'" 
+
+                                <button type="button" wire:click="$set('tabagista', 'nao')"
+                                    :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'"
                                     class="px-4 py-2 text-black rounded focus:outline-none hover:bg-red-200">
                                     Não
                                 </button>
@@ -396,18 +389,14 @@
                         <label for="etilista" class="block mb-2 font-medium text-gray-700">É Etilista?</label>
                         <div class="flex items-center space-x-4">
                             <div x-data="{ selecionado: @entangle('etilista') }">
-                                <button 
-                                    type="button" 
-                                    wire:click="$set('etilista', 'sim')"
-                                    :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'" 
+                                <button type="button" wire:click="$set('etilista', 'sim')"
+                                    :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'"
                                     class="px-4 py-2 text-black rounded focus:outline-none hover:bg-cyan-200">
                                     Sim
                                 </button>
-                            
-                                <button 
-                                    type="button" 
-                                    wire:click="$set('etilista', 'nao')"
-                                    :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'" 
+
+                                <button type="button" wire:click="$set('etilista', 'nao')"
+                                    :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'"
                                     class="px-4 py-2 text-black rounded focus:outline-none hover:bg-red-200">
                                     Não
                                 </button>
@@ -429,14 +418,19 @@
                     @endif
 
                     <!-- Adicione os demais campos da etapa 2 aqui -->
-                    <div class="flex justify-center w-full mt-8">
+                    <div class="flex justify-center w-full mt-8 space-x-4">
+                        {{-- Botão Voltar (Secundário, visual leve) --}}
                         <button type="button" wire:click="previousStep"
-                            class="px-4 py-2 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
-                            Voltar
+                            class="relative inline-flex items-center justify-center px-8 py-3 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                            <span class="z-10">Voltar</span>
+                            <div class="absolute inset-0 bg-indigo-100 opacity-10 pointer-events-none"></div>
                         </button>
+
+                        {{-- Botão Continuar (Primário, destaque com gradiente) --}}
                         <button type="button" wire:click="nextStep"
-                            class="px-4 py-2 ml-4 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
-                            Continuar
+                            class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                            <span class="z-10">Continuar</span>
+                            <div class="absolute inset-0 bg-white opacity-5"></div>
                         </button>
                     </div>
                 </div>
@@ -446,7 +440,7 @@
             {{-- Etapa 3: Medicamentos --}}
             @if ($currentStep == 3)
                 <div class="step">
-                    <h2 class="py-5 text-xl font-bold text-center">Medicamentos</h2>
+                    <h2 class="py-5 mb-10 text-4xl font-bold text-center">Medicamentos</h2>
 
                     @foreach ($medicamentos as $index => $medicamento)
                         <div class= "flex justify-center">
@@ -505,14 +499,19 @@
                     </button>
 
                     <!-- Botões de Navegação e Salvar -->
-                    <div class="flex justify-center w-full mt-8">
+                    <div class="flex justify-center w-full mt-8 space-x-4">
+                        {{-- Botão Voltar (Secundário, visual leve) --}}
                         <button type="button" wire:click="previousStep"
-                            class="px-4 py-2 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
-                            Voltar
+                            class="relative inline-flex items-center justify-center px-8 py-3 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                            <span class="z-10">Voltar</span>
+                            <div class="absolute inset-0 bg-indigo-100 opacity-10 pointer-events-none"></div>
                         </button>
+
+                        {{-- Botão Continuar (Primário, destaque com gradiente) --}}
                         <button type="button" wire:click="nextStep"
-                            class="px-4 py-2 ml-4 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
-                            Continuar
+                            class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                            <span class="z-10">Continuar</span>
+                            <div class="absolute inset-0 bg-white opacity-5"></div>
                         </button>
                     </div>
                 </div>
@@ -522,7 +521,7 @@
             {{-- Etapa 4: Resultados --}}
             @if ($currentStep == 4)
                 <div class="step">
-                    <h2 class="py-5 text-xl font-bold text-center">Resultados</h2>
+                    <h2 class="py-5 mb-10 text-4xl font-bold text-center">Resultados</h2>
 
                     @foreach ($resultados as $index => $resultado)
                         <div class="flex justify-center">
@@ -556,14 +555,17 @@
                     </button>
 
                     <!-- Botões de Navegação e Salvar -->
-                    <div class="flex justify-center w-full mt-8">
+                    <div class="flex justify-center w-full mt-8 space-x-4">
+                        {{-- Botão Voltar (Secundário, visual leve) --}}
                         <button type="button" wire:click="previousStep"
-                            class="px-4 py-2 text-white transition duration-150 ease-in-out bg-indigo-500 rounded-lg shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
-                            Voltar
+                            class="relative inline-flex items-center justify-center px-8 py-3 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                            <span class="z-10">Voltar</span>
+                            <div class="absolute inset-0 bg-indigo-100 opacity-10 pointer-events-none"></div>
                         </button>
                         <button type="submit"
-                            class="px-4 py-2 ml-4 font-semibold text-white bg-teal-500 rounded-lg shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
-                            Salvar
+                            class="relative inline-flex items-center justify-center px-8 py-3 ml-4 text-lg font-semibold text-white bg-gradient-to-r from-teal-500 to-teal-700 rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-teal-300">
+                            <span class="z-10">Salvar</span>
+                            <div class="absolute inset-0 bg-white opacity-5"></div>
                         </button>
                     </div>
                 </div>
