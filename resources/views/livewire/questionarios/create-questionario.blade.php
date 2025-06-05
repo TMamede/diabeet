@@ -368,7 +368,7 @@
                             <!-- Segundo div: Volume de líquido diário -->
                             <div class="w-1/3">
                                 <label for="liquido_diario" class="block font-medium text-gray-700">Volume de líquido
-                                    diário</label>
+                                    diário ingerido</label>
                                 <input type="number" wire:model="liquido_diario" id="liquido_diario"
                                     class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                                     placeholder="Digite em litros o valor de líquido diário">
@@ -1639,7 +1639,7 @@
                                 @enderror
                             </div>
 
-                            <h2 class="py-5 text-lg font-semibold">Pé Direito</h2>
+                            <h2 class="py-5 text-lg font-semibold">Lesão em Pé Direito</h2>
                             <div class="flex items-center mb-4 space-x-10">
                                 <div>
                                     <label for="comprimentoD" class="block font-medium text-gray-700">Comprimento
@@ -1715,7 +1715,7 @@
                             </div>
                         </div>
                         <div>
-                            <h2 class="py-5 text-lg font-semibold">Pé Esquerdo</h2>
+                            <h2 class="py-5 text-lg font-semibold">Lesão em Pé Esquerdo</h2>
                             <div class="flex items-center mb-4 space-x-10">
                                 <div>
                                     <label for="comprimentoE" class="block font-medium text-gray-700">Comprimento

@@ -1,5 +1,5 @@
 <div class="flex flex-col min-h-screen bg-gradient-to-b from-indigo-50 via-gray-100 to-gray-200">
-    <div class="flex-grow py-16 px-4 sm:px-6 lg:px-8">
+    <div class="flex-grow py-10 px-4 sm:px-6 lg:px-8">
         <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
             <div class="grid grid-cols-1 md:grid-cols-2">
 

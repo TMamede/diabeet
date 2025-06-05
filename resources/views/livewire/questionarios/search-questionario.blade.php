@@ -38,7 +38,7 @@
                                 ])
                                 @include('components.table-sortable-th', [
                                     'nome' => 'created_at',
-                                    'displayName' => 'DATA DE CADASTRO',
+                                    'displayName' => 'DATA DE ATENDIMENTO',
                                 ])
                                 <th scope="col" class="px-4 py-3">
                                     Última Atualização
@@ -69,21 +69,29 @@
                                                 class="px-6 py-2 ml-3 text-white rounded bg-rose-900 hover:bg-rose-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500">
                                                 Excluir
                                             </button>
-                                            @endif
+                                        @endif
                                     </td>
                                 </tr>
                                 <x-new-modal name="confirm-questionario-deletion-{{ $questionario->id }}"
                                     :show="$errors->isNotEmpty()" focusable>
                                     <form wire:submit.prevent="deletequestionario" class="p-2">
-                                        <h2 class="text-lg font-medium text-gray-900">{{ __('Você tem certeza de que
-                                            deseja excluir este questionario?') }}</h2>
-                                        <h2 class="text-sm font-medium text-gray-900">{{ __('Se excluí-lo os prontuários associados a ele também serão excluidos.')}}</h2>
-                                        <p class="mt-1 text-sm text-gray-600">{{ __('Essa ação não pode ser
-                                            desfeita.') }}</p>
+                                        <h2 class="text-lg font-medium text-gray-900">
+                                            {{ __('Você tem certeza de que
+                                                                                        deseja excluir este questionario?') }}
+                                        </h2>
+                                        <h2 class="text-sm font-medium text-gray-900">
+                                            {{ __('Se excluí-lo os prontuários associados a ele também serão excluidos.') }}
+                                        </h2>
+                                        <p class="mt-1 text-sm text-gray-600">
+                                            {{ __('Essa ação não pode ser
+                                                                                        desfeita.') }}
+                                        </p>
                                         <div class="flex justify-end mt-6">
                                             <x-secondary-button x-on:click="$dispatch('close')">{{ __('Cancelar') }}
                                             </x-secondary-button>
-                                            <x-danger-button wire:click="deleteQuestionario" x-on:click="$dispatch('close')" class="ms-3">{{ __('Excluir Questionario') }}
+                                            <x-danger-button wire:click="deleteQuestionario"
+                                                x-on:click="$dispatch('close')"
+                                                class="ms-3">{{ __('Excluir Questionario') }}
                                             </x-danger-button>
                                         </div>
                                     </form>

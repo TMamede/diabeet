@@ -65,9 +65,6 @@ class CadastroPacienteSeeder extends Seeder
             ['descricao' => 'Retinopatia Diabetica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Doença Renal Diabetica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Neuropatia Diabetica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Cetoacidose/Coma Hiperosmolar', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Hipoglicemia 70 a 54 mg/dl', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Hipoglicemia < 54 mg/dl', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Doenca Periodontal', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Tireoide de Hashimoto', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Hipertireodismo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -94,6 +91,13 @@ class CadastroPacienteSeeder extends Seeder
             ['descricao' => 'Ocular', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Nasal', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Auricular', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+        ]);
+
+        DB::table('horario_meds')->insert([
+            ['descricao' => 'Manhã', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Tarde', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Noite', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+
         ]);
     }
 }

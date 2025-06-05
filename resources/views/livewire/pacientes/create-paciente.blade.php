@@ -291,7 +291,7 @@
                     </div>
 
                     <div class="mb-6">
-                        <label for="cirurgia_motivo" class="block mb-2 font-medium text-gray-700">Já realizaou alguma
+                        <label for="cirurgia_motivo" class="block mb-2 font-medium text-gray-700">Já realizou alguma
                             cirurgia? Se sim qual?</label>
                         <input type="text" wire:model="cirurgia_motivo" id="cirurgia_motivo"
                             class="block w-1/2 border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500">
@@ -449,7 +449,7 @@
 
                                 <div class="mb-4">
                                     <label for="medicamentos.{{ $index }}.nome_generico"
-                                        class="block text-base font-medium text-gray-700">Nome Genérico</label>
+                                        class="block text-base font-medium text-gray-700">Nome</label>
                                     <input type="text" wire:model="medicamentos.{{ $index }}.nome_generico"
                                         id="medicamentos.{{ $index }}.nome_generico"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
@@ -521,7 +521,7 @@
             {{-- Etapa 4: Resultados --}}
             @if ($currentStep == 4)
                 <div class="step">
-                    <h2 class="py-5 mb-10 text-4xl font-bold text-center">Resultados</h2>
+                    <h2 class="py-5 mb-10 text-4xl font-bold text-center">Resultados de Exames</h2>
 
                     @foreach ($resultados as $index => $resultado)
                         <div class="flex justify-center">

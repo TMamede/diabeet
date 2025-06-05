@@ -84,7 +84,6 @@ class QuestionarioSeeder extends Seeder
         // refeicaos
         DB::table('refeicaos')->insert([
             ['descricao' => 'Café da Manhã', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Colação', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Almoço', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Lanche da Tarde', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Jantar', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
