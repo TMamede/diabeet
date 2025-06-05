@@ -19,6 +19,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome_generico');
             $table->foreignIdFor(Via::class);
+            $table->foreignIdFor(HorarioMed::class);
             $table->string('dose');
             $table->timestamps();
         });
