@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'coren',
+        'profile_photo',
     ];
 
     /**
@@ -62,6 +63,13 @@ class User extends Authenticatable
         $query->where('name', 'like', "%{$value}%")
             ->orWhere('coren', 'like', "%%{$value}%"); 
     }
+
+    public function getProfilePhotoUrlAttribute()
+{
+    return $this->profile_photo
+        ? asset('storage/profile' . $this->profile_photo)
+        : asset('images/default-avatar.png');
+}
 
     public function pacientes()
     {
