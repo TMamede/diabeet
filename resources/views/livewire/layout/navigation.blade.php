@@ -23,7 +23,7 @@ new class extends Component {
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
                     <a href="{{ route('dashboard') }}" wire:navigate>
-                        <x-application-logo class="block w-auto h-14 text-gray-800 fill-current" />
+                        <x-application-logo class="block w-auto text-gray-800 fill-current h-14" />
                     </a>
                 </div>
 
@@ -44,7 +44,7 @@ new class extends Component {
                         {{ __('Questionário') }}
                     </x-nav-link>
                     <x-nav-link :href="route('prontuario.index')" :active="request()->routeIs('prontuario.index')" wire:navigate>
-                        {{ __('Prontuário') }}
+                        {{ __('Prescrição') }}
                     </x-nav-link>
                     <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')" wire:navigate>
                         {{ __('Contato') }}
@@ -63,16 +63,16 @@ new class extends Component {
                 <x-dropdown align="right" width="64">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-4 py-3 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-lg hover:text-gray-800 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm">
+                            class="inline-flex items-center px-4 py-3 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-lg shadow-sm hover:text-gray-800 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                             <!-- Profile Photo -->
                             <div class="flex items-center space-x-3">
                                 @if (auth()->user()->profile_photo_path ?? false)
-                                    <img class="w-8 h-8 rounded-full object-cover border-2 border-gray-200"
+                                    <img class="object-cover w-8 h-8 border-2 border-gray-200 rounded-full"
                                         src="{{ Storage::url(auth()->user()->profile_photo_path) }}"
                                         alt="{{ auth()->user()->name }}">
                                 @else
                                     <!-- Default Avatar -->
-                                    <div class="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center">
+                                    <div class="flex items-center justify-center w-8 h-8 bg-indigo-500 rounded-full">
                                         <span class="text-sm font-medium text-white">
                                             {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                                         </span>
@@ -90,7 +90,7 @@ new class extends Component {
                             </div>
 
                             <div class="ms-2">
-                                <svg class="w-4 h-4 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                                <svg class="w-4 h-4 text-gray-400 fill-current" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -105,11 +105,11 @@ new class extends Component {
                         <div class="px-4 py-3 border-b border-gray-100">
                             <div class="flex items-center space-x-3">
                                 @if (auth()->user()->profile_photo_path ?? false)
-                                    <img class="w-10 h-10 rounded-full object-cover border-2 border-gray-200"
+                                    <img class="object-cover w-10 h-10 border-2 border-gray-200 rounded-full"
                                         src="{{ Storage::url(auth()->user()->profile_photo_path) }}"
                                         alt="{{ auth()->user()->name }}">
                                 @else
-                                    <div class="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center">
+                                    <div class="flex items-center justify-center w-10 h-10 bg-indigo-500 rounded-full">
                                         <span class="text-lg font-medium text-white">
                                             {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                                         </span>
@@ -199,7 +199,7 @@ new class extends Component {
                 {{ __('Questionário') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('prontuario.index')" :active="request()->routeIs('prontuario.index')" wire:navigate>
-                {{ __('Prontuário') }}
+                {{ __('Prescrição') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('contact')" :active="request()->routeIs('contact')" wire:navigate>
                 {{ __('Contato') }}
@@ -218,11 +218,11 @@ new class extends Component {
             <div class="px-4 py-3 bg-gray-50">
                 <div class="flex items-center space-x-4">
                     @if (auth()->user()->profile_photo_path ?? false)
-                        <img class="w-12 h-12 rounded-full object-cover border-2 border-gray-200"
+                        <img class="object-cover w-12 h-12 border-2 border-gray-200 rounded-full"
                             src="{{ Storage::url(auth()->user()->profile_photo_path) }}"
                             alt="{{ auth()->user()->name }}">
                     @else
-                        <div class="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center">
+                        <div class="flex items-center justify-center w-12 h-12 bg-indigo-500 rounded-full">
                             <span class="text-lg font-medium text-white">
                                 {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                             </span>

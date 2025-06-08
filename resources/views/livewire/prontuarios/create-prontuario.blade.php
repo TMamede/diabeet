@@ -4,7 +4,7 @@
         {{-- Título principal com destaque --}}
         <div class="relative flex flex-col items-center justify-center mb-12">
             <h1 class="text-5xl font-extrabold text-indigo-900 drop-shadow-md">
-                Criar Prontuário
+                Criar Prescrição
             </h1>
             <div class="w-24 h-1 mt-4 bg-indigo-500 rounded-full"></div>
         </div>
@@ -97,7 +97,7 @@
         <div class="flex justify-center mt-10">
             <button wire:click="finalizarProntuario"
                 class="px-10 py-4 text-lg font-semibold text-white transition bg-indigo-700 rounded-xl hover:bg-indigo-800 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-400">
-                Finalizar Prontuário
+                Finalizar Prescrição
             </button>
         </div>
     </div>
