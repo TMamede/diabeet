@@ -1,46 +1,46 @@
 <x-app-layout>
-    <div class="flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 relative">
+    <div class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
         <!-- Elementos decorativos de fundo -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <div
-                class="absolute top-10 left-10 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 ">
+                class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-30 ">
             </div>
             <div
-                class="absolute top-20 right-10 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-25 ">
+                class="absolute bg-purple-200 rounded-full opacity-25 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl ">
             </div>
             <div
-                class="absolute bottom-10 left-20 w-64 h-64 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-20">
+                class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-20">
             </div>
         </div>
 
-        <div class="flex-grow py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="relative z-10 flex-grow px-4 py-12 sm:px-6 lg:px-8">
             <div class="max-w-6xl mx-auto">
                 <!-- Header Section -->
-                <div class="text-center mb-12">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
+                <div class="mb-12 text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 mb-4 bg-indigo-100 rounded-full">
                         <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
                             </path>
                         </svg>
                     </div>
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    <h1 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
                         Termos de <span
                             class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Uso</span>
                     </h1>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    <p class="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
                         Plataforma desenvolvida para auxiliar profissionais da enfermagem no cuidado especializado de
                         pacientes com pé diabético
                     </p>
                 </div>
 
                 <!-- Introduction Cards -->
-                <div class="grid md:grid-cols-2 gap-6 mb-12">
+                <div class="grid gap-6 mb-12 md:grid-cols-2">
                     <div
-                        class="bg-white/95 backdrop-blur-sm border border-white/20 shadow-2xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                        class="p-8 transition-all duration-300 border shadow-2xl bg-white/95 backdrop-blur-sm border-white/20 rounded-3xl hover:shadow-2xl hover:-translate-y-1">
                         <div class="flex items-center mb-4">
                             <div
-                                class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl mr-4">
+                                class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl">
                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -49,7 +49,7 @@
                             </div>
                             <h4 class="text-xl font-bold text-gray-800">Importante</h4>
                         </div>
-                        <p class="text-gray-700 leading-relaxed">
+                        <p class="leading-relaxed text-gray-700">
                             Este documento estabelece os Termos de Uso do sistema SoPeP, plataforma desenvolvida com o
                             objetivo de auxiliar profissionais da enfermagem na coleta de informações, monitoramento e
                             planejamento terapêutico de pacientes com diagnóstico de pé diabético.
@@ -57,10 +57,10 @@
                     </div>
 
                     <div
-                        class="bg-white/95 backdrop-blur-sm border border-white/20 shadow-2xl rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                        class="p-8 transition-all duration-300 border shadow-2xl bg-white/95 backdrop-blur-sm border-white/20 rounded-3xl hover:shadow-2xl hover:-translate-y-1">
                         <div class="flex items-center mb-4">
                             <div
-                                class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl mr-4">
+                                class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl">
                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -69,7 +69,7 @@
                             </div>
                             <h4 class="text-xl font-bold text-gray-800">Concordância</h4>
                         </div>
-                        <p class="text-gray-700 leading-relaxed">
+                        <p class="leading-relaxed text-gray-700">
                             Ao acessar e utilizar o sistema SoPeP, o usuário declara estar ciente e de acordo com as
                             condições aqui descritas. A utilização do sistema implica na aceitação plena e irrestrita de
                             todos os termos.
@@ -78,16 +78,16 @@
                 </div>
 
                 <!-- Terms Container -->
-                <div class="bg-white/95 rounded-3xl shadow-2xl overflow-hidden backdrop-blur-sm border border-white/20">
+                <div class="overflow-hidden border shadow-2xl bg-white/95 rounded-3xl backdrop-blur-sm border-white/20">
                     <!-- Terms Sections -->
                     <div class="space-y-0">
                         <!-- Section 1 -->
-                        <div class="border-b border-gray-100 hover:bg-gray-50/50 transition-all duration-300">
-                            <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 px-8 py-4">
+                        <div class="transition-all duration-300 border-b border-gray-100 hover:bg-gray-50/50">
+                            <div class="px-8 py-4 bg-gradient-to-r from-indigo-500 to-indigo-600">
                                 <div class="flex items-center">
                                     <div
-                                        class="flex items-center justify-center w-8 h-8 bg-white bg-opacity-20 rounded-lg mr-3">
-                                        <span class="text-white font-bold">1</span>
+                                        class="flex items-center justify-center w-8 h-8 mr-3 bg-white rounded-lg bg-opacity-20">
+                                        <span class="font-bold text-white">1</span>
                                     </div>
                                     <h4 class="text-xl font-bold text-white">Objetivo do Sistema</h4>
                                 </div>
@@ -95,7 +95,7 @@
                             <div class="px-8 py-6">
                                 <div class="flex items-start">
                                     <div
-                                        class="flex items-center justify-center w-10 h-10 bg-indigo-100 rounded-xl mr-4 mt-1 flex-shrink-0">
+                                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-1 mr-4 bg-indigo-100 rounded-xl">
                                         <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -103,7 +103,7 @@
                                             </path>
                                         </svg>
                                     </div>
-                                    <p class="text-gray-700 leading-relaxed text-lg">
+                                    <p class="text-lg leading-relaxed text-gray-700">
                                         O sistema tem por finalidade oferecer um ambiente seguro e estruturado para o
                                         registro de dados clínicos e sociais de pacientes atendidos por enfermeiros(as).
                                         Através de
@@ -119,12 +119,12 @@
                         </div>
 
                         <!-- Section 2 -->
-                        <div class="border-b border-gray-100 hover:bg-gray-50/50 transition-all duration-300">
-                            <div class="bg-gradient-to-r from-purple-500 to-purple-600 px-8 py-4">
+                        <div class="transition-all duration-300 border-b border-gray-100 hover:bg-gray-50/50">
+                            <div class="px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-600">
                                 <div class="flex items-center">
                                     <div
-                                        class="flex items-center justify-center w-8 h-8 bg-white bg-opacity-20 rounded-lg mr-3">
-                                        <span class="text-white font-bold">2</span>
+                                        class="flex items-center justify-center w-8 h-8 mr-3 bg-white rounded-lg bg-opacity-20">
+                                        <span class="font-bold text-white">2</span>
                                     </div>
                                     <h4 class="text-xl font-bold text-white">Responsabilidades do Usuário</h4>
                                 </div>
@@ -132,7 +132,7 @@
                             <div class="px-8 py-6">
                                 <div class="flex items-start">
                                     <div
-                                        class="flex items-center justify-center w-10 h-10 bg-purple-100 rounded-xl mr-4 mt-1 flex-shrink-0">
+                                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-1 mr-4 bg-purple-100 rounded-xl">
                                         <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -140,7 +140,7 @@
                                             </path>
                                         </svg>
                                     </div>
-                                    <p class="text-gray-700 leading-relaxed text-lg">
+                                    <p class="text-lg leading-relaxed text-gray-700">
                                         É de responsabilidade exclusiva do usuário fornecer informações verídicas,
                                         completas
                                         e atualizadas no momento do cadastro e utilização do sistema. O acesso indevido,
@@ -155,12 +155,12 @@
                         </div>
 
                         <!-- Section 3 -->
-                        <div class="border-b border-gray-100 hover:bg-gray-50/50 transition-all duration-300">
-                            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-4">
+                        <div class="transition-all duration-300 border-b border-gray-100 hover:bg-gray-50/50">
+                            <div class="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600">
                                 <div class="flex items-center">
                                     <div
-                                        class="flex items-center justify-center w-8 h-8 bg-white bg-opacity-20 rounded-lg mr-3">
-                                        <span class="text-white font-bold">3</span>
+                                        class="flex items-center justify-center w-8 h-8 mr-3 bg-white rounded-lg bg-opacity-20">
+                                        <span class="font-bold text-white">3</span>
                                     </div>
                                     <h4 class="text-xl font-bold text-white">Privacidade e Proteção de Dados</h4>
                                 </div>
@@ -168,7 +168,7 @@
                             <div class="px-8 py-6">
                                 <div class="flex items-start">
                                     <div
-                                        class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl mr-4 mt-1 flex-shrink-0">
+                                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-1 mr-4 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl">
                                         <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -177,7 +177,7 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <p class="text-gray-700 leading-relaxed text-lg mb-3">
+                                        <p class="mb-3 text-lg leading-relaxed text-gray-700">
                                             Os dados pessoais e clínicos armazenados no SoPeP estão protegidos de acordo
                                             com
                                             a Lei Geral de Proteção de Dados (Lei nº 13.709/2018). As informações dos
@@ -187,8 +187,8 @@
                                             assistência, sendo vedada sua divulgação a terceiros não autorizados.
                                         </p>
                                         <div
-                                            class="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-xl p-4">
-                                            <p class="text-sm text-indigo-800 font-medium">
+                                            class="p-4 border border-indigo-200 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl">
+                                            <p class="text-sm font-medium text-indigo-800">
                                                 🛡️ Seus dados estão protegidos pela LGPD (Lei nº 13.709/2018)
                                             </p>
                                         </div>
@@ -198,12 +198,12 @@
                         </div>
 
                         <!-- Section 4 -->
-                        <div class="border-b border-gray-100 hover:bg-gray-50/50 transition-all duration-300">
-                            <div class="bg-gradient-to-r from-purple-500 to-indigo-600 px-8 py-4">
+                        <div class="transition-all duration-300 border-b border-gray-100 hover:bg-gray-50/50">
+                            <div class="px-8 py-4 bg-gradient-to-r from-purple-500 to-indigo-600">
                                 <div class="flex items-center">
                                     <div
-                                        class="flex items-center justify-center w-8 h-8 bg-white bg-opacity-20 rounded-lg mr-3">
-                                        <span class="text-white font-bold">4</span>
+                                        class="flex items-center justify-center w-8 h-8 mr-3 bg-white rounded-lg bg-opacity-20">
+                                        <span class="font-bold text-white">4</span>
                                     </div>
                                     <h4 class="text-xl font-bold text-white">Propriedade Intelectual</h4>
                                 </div>
@@ -211,7 +211,7 @@
                             <div class="px-8 py-6">
                                 <div class="flex items-start">
                                     <div
-                                        class="flex items-center justify-center w-10 h-10 bg-purple-100 rounded-xl mr-4 mt-1 flex-shrink-0">
+                                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-1 mr-4 bg-purple-100 rounded-xl">
                                         <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -219,7 +219,7 @@
                                             </path>
                                         </svg>
                                     </div>
-                                    <p class="text-gray-700 leading-relaxed text-lg">
+                                    <p class="text-lg leading-relaxed text-gray-700">
                                         O sistema, sua estrutura, layout, funcionalidades, marca e todos os conteúdos
                                         ali
                                         presentes são protegidos por direitos autorais e demais normas de propriedade
@@ -233,12 +233,12 @@
                         </div>
 
                         <!-- Section 5 -->
-                        <div class="border-b border-gray-100 hover:bg-gray-50/50 transition-all duration-300">
-                            <div class="bg-gradient-to-r from-indigo-500 to-purple-500 px-8 py-4">
+                        <div class="transition-all duration-300 border-b border-gray-100 hover:bg-gray-50/50">
+                            <div class="px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-500">
                                 <div class="flex items-center">
                                     <div
-                                        class="flex items-center justify-center w-8 h-8 bg-white bg-opacity-20 rounded-lg mr-3">
-                                        <span class="text-white font-bold">5</span>
+                                        class="flex items-center justify-center w-8 h-8 mr-3 bg-white rounded-lg bg-opacity-20">
+                                        <span class="font-bold text-white">5</span>
                                     </div>
                                     <h4 class="text-xl font-bold text-white">Atualizações e Modificações</h4>
                                 </div>
@@ -246,7 +246,7 @@
                             <div class="px-8 py-6">
                                 <div class="flex items-start">
                                     <div
-                                        class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl mr-4 mt-1 flex-shrink-0">
+                                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-1 mr-4 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl">
                                         <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -254,7 +254,7 @@
                                             </path>
                                         </svg>
                                     </div>
-                                    <p class="text-gray-700 leading-relaxed text-lg">
+                                    <p class="text-lg leading-relaxed text-gray-700">
                                         A administração do SoPeP se reserva o direito de modificar, suspender ou
                                         atualizar
                                         qualquer parte deste Termo ou do sistema em si, a qualquer tempo, com ou sem
@@ -268,12 +268,12 @@
                         </div>
 
                         <!-- Section 6 -->
-                        <div class="border-b border-gray-100 hover:bg-gray-50/50 transition-all duration-300">
-                            <div class="bg-gradient-to-r from-purple-600 to-indigo-500 px-8 py-4">
+                        <div class="transition-all duration-300 border-b border-gray-100 hover:bg-gray-50/50">
+                            <div class="px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-500">
                                 <div class="flex items-center">
                                     <div
-                                        class="flex items-center justify-center w-8 h-8 bg-white bg-opacity-20 rounded-lg mr-3">
-                                        <span class="text-white font-bold">6</span>
+                                        class="flex items-center justify-center w-8 h-8 mr-3 bg-white rounded-lg bg-opacity-20">
+                                        <span class="font-bold text-white">6</span>
                                     </div>
                                     <h4 class="text-xl font-bold text-white">Limitação de Responsabilidade</h4>
                                 </div>
@@ -281,7 +281,7 @@
                             <div class="px-8 py-6">
                                 <div class="flex items-start">
                                     <div
-                                        class="flex items-center justify-center w-10 h-10 bg-purple-100 rounded-xl mr-4 mt-1 flex-shrink-0">
+                                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-1 mr-4 bg-purple-100 rounded-xl">
                                         <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -289,7 +289,7 @@
                                             </path>
                                         </svg>
                                     </div>
-                                    <p class="text-gray-700 leading-relaxed text-lg">
+                                    <p class="text-lg leading-relaxed text-gray-700">
                                         A equipe responsável pelo SoPeP não se responsabiliza por danos causados por
                                         falhas
                                         na conexão, indisponibilidade temporária do sistema, ou por informações
@@ -303,12 +303,12 @@
                         </div>
 
                         <!-- Section 7 -->
-                        <div class="hover:bg-gray-50/50 transition-all duration-300">
-                            <div class="bg-gradient-to-r from-indigo-600 to-purple-500 px-8 py-4">
+                        <div class="transition-all duration-300 hover:bg-gray-50/50">
+                            <div class="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-500">
                                 <div class="flex items-center">
                                     <div
-                                        class="flex items-center justify-center w-8 h-8 bg-white bg-opacity-20 rounded-lg mr-3">
-                                        <span class="text-white font-bold">7</span>
+                                        class="flex items-center justify-center w-8 h-8 mr-3 bg-white rounded-lg bg-opacity-20">
+                                        <span class="font-bold text-white">7</span>
                                     </div>
                                     <h4 class="text-xl font-bold text-white">Suporte e Contato</h4>
                                 </div>
@@ -316,7 +316,7 @@
                             <div class="px-8 py-6">
                                 <div class="flex items-start">
                                     <div
-                                        class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl mr-4 mt-1 flex-shrink-0">
+                                        class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-1 mr-4 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl">
                                         <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -325,16 +325,16 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                                        <p class="mb-4 text-lg leading-relaxed text-gray-700">
                                             Em caso de dúvidas, sugestões ou necessidade de suporte técnico, os usuários
                                             poderão entrar em contato conosco. A equipe de suporte se compromete a
                                             atender as solicitações
                                             dentro de prazos razoáveis.
                                         </p>
                                         <div
-                                            class="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-xl p-4">
+                                            class="p-4 border border-indigo-200 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl">
                                             <div class="flex items-center">
-                                                <svg class="w-5 h-5 text-indigo-600 mr-3" fill="none"
+                                                <svg class="w-5 h-5 mr-3 text-indigo-600" fill="none"
                                                     stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2"
@@ -342,7 +342,7 @@
                                                     </path>
                                                 </svg>
                                                 <a href="mailto:diafeet@gmail.com"
-                                                    class="text-indigo-600 font-semibold hover:text-indigo-800 transition-colors">
+                                                    class="font-semibold text-indigo-600 transition-colors hover:text-indigo-800">
                                                     diafeet@gmail.com
                                                 </a>
                                             </div>
@@ -357,28 +357,28 @@
                 <!-- Footer Info -->
                 <div class="mt-12 text-center">
                     <div
-                        class="inline-flex items-center px-6 py-3 bg-white/95 backdrop-blur-sm border border-white/20 rounded-2xl shadow-lg">
-                        <svg class="w-5 h-5 text-gray-500 mr-3" fill="none" stroke="currentColor"
+                        class="inline-flex items-center px-6 py-3 border shadow-lg bg-white/95 backdrop-blur-sm border-white/20 rounded-2xl">
+                        <svg class="w-5 h-5 mr-3 text-gray-500" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
-                        <span class="text-gray-600 font-medium">Última atualização: Abril de 2024</span>
+                        <span class="font-medium text-gray-600">Última atualização: Abril de 2024</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <footer class="relative z-10 py-6 bg-gradient-to-r from-indigo-800 to-purple-900 text-white">
+        <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
             <div class="container px-6 mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex flex-col items-center justify-between md:flex-row">
                     <div class="mb-4 md:mb-0">
                         <h4 class="text-xl font-bold">SoPeP</h4>
-                        <p class="text-indigo-200 text-sm">Sistema de Prontuário Eletrônico para Pé Diabético</p>
+                        <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônica para Pé Diabético</p>
                     </div>
                     <div class="text-center md:text-right">
                         <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.</p>
-                        <p class="text-xs text-indigo-300 mt-1">Desenvolvido para cuidar melhor dos seus pacientes</p>
+                        <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus pacientes</p>
                     </div>
                 </div>
             </div>

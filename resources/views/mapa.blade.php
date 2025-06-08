@@ -1,35 +1,35 @@
 <x-app-layout>
 
 
-    <div class="flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 relative">
+    <div class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
         <!-- Elementos decorativos de fundo -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <div
-                class="absolute top-10 left-10 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-xl opacity-30">
+                class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-30">
             </div>
             <div
-                class="absolute top-20 right-10 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-25">
+                class="absolute bg-purple-200 rounded-full opacity-25 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
             </div>
             <div
-                class="absolute bottom-10 left-20 w-64 h-64 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-20">
+                class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-20">
             </div>
         </div>
 
-        <div class="flex-grow py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="relative z-10 flex-grow px-4 py-12 sm:px-6 lg:px-8">
             <div class="max-w-6xl mx-auto">
                 <!-- Header Section -->
-                <div class="text-center mb-12">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
+                <div class="mb-12 text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 mb-4 bg-indigo-100 rounded-full">
                         <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                         </svg>
                     </div>
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    <h1 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
                         Mapa do <span
                             class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Site</span>
                     </h1>
-                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    <p class="max-w-2xl mx-auto text-xl text-gray-600">
                         Navegue facilmente por todas as funcionalidades do SoPeP e encontre rapidamente o que você
                         precisa
                     </p>
@@ -37,25 +37,25 @@
 
                 <!-- Main Content -->
                 <div
-                    class="bg-white rounded-3xl shadow-2xl overflow-hidden backdrop-blur-sm bg-white/95 border border-white/20">
+                    class="overflow-hidden bg-white border shadow-2xl rounded-3xl backdrop-blur-sm bg-white/95 border-white/20">
                     <div class="p-8 md:p-12 lg:p-16">
                         <div class="mb-12 text-center">
-                            <h2 class="text-3xl font-bold text-gray-900 mb-4">Navegue pelo Sistema</h2>
-                            <p class="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
-                                Acesse rapidamente todas as áreas do sistema de prontuário eletrônico para pé diabético.
-                                <span class="text-indigo-600 font-medium">Encontre o que precisa em segundos!</span>
+                            <h2 class="mb-4 text-3xl font-bold text-gray-900">Navegue pelo Sistema</h2>
+                            <p class="max-w-3xl mx-auto text-lg leading-relaxed text-gray-600">
+                                Acesse rapidamente todas as áreas do sistema de prescrição eletrônica para pé diabético.
+                                <span class="font-medium text-indigo-600">Encontre o que precisa em segundos!</span>
                             </p>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 
                             {{-- Seção Início --}}
                             <div class="group">
                                 <div
-                                    class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 border-2 border-transparent hover:border-indigo-200 transition-all duration-300 hover:shadow-lg">
+                                    class="p-6 transition-all duration-300 border-2 border-transparent bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl hover:border-indigo-200 hover:shadow-lg">
                                     <div class="flex items-center mb-4">
                                         <div
-                                            class="w-10 h-10 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mr-3">
+                                            class="flex items-center justify-center w-10 h-10 mr-3 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500">
                                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -63,13 +63,13 @@
                                             </svg>
                                         </div>
                                         <h4
-                                            class="text-xl font-bold text-gray-800 group-hover:text-indigo-600 transition-colors">
+                                            class="text-xl font-bold text-gray-800 transition-colors group-hover:text-indigo-600">
                                             Início</h4>
                                     </div>
                                     <ul class="space-y-3 text-gray-700">
                                         <li>
                                             <a href="{{ route('about') }}"
-                                                class="flex items-center group/link hover:text-indigo-600 hover:bg-indigo-50 p-2 rounded-lg transition-all duration-200">
+                                                class="flex items-center p-2 transition-all duration-200 rounded-lg group/link hover:text-indigo-600 hover:bg-indigo-50">
                                                 <svg class="w-4 h-4 mr-3 text-gray-400 group-hover/link:text-indigo-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -81,7 +81,7 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('contact') }}"
-                                                class="flex items-center group/link hover:text-indigo-600 hover:bg-indigo-50 p-2 rounded-lg transition-all duration-200">
+                                                class="flex items-center p-2 transition-all duration-200 rounded-lg group/link hover:text-indigo-600 hover:bg-indigo-50">
                                                 <svg class="w-4 h-4 mr-3 text-gray-400 group-hover/link:text-indigo-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -93,7 +93,7 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('termos') }}"
-                                                class="flex items-center group/link hover:text-indigo-600 hover:bg-indigo-50 p-2 rounded-lg transition-all duration-200">
+                                                class="flex items-center p-2 transition-all duration-200 rounded-lg group/link hover:text-indigo-600 hover:bg-indigo-50">
                                                 <svg class="w-4 h-4 mr-3 text-gray-400 group-hover/link:text-indigo-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -110,10 +110,10 @@
                             {{-- Seção Pacientes --}}
                             <div class="group">
                                 <div
-                                    class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border-2 border-transparent hover:border-green-200 transition-all duration-300 hover:shadow-lg">
+                                    class="p-6 transition-all duration-300 border-2 border-transparent bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl hover:border-green-200 hover:shadow-lg">
                                     <div class="flex items-center mb-4">
                                         <div
-                                            class="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center mr-3">
+                                            class="flex items-center justify-center w-10 h-10 mr-3 rounded-lg bg-gradient-to-r from-green-500 to-emerald-500">
                                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -121,13 +121,13 @@
                                             </svg>
                                         </div>
                                         <h4
-                                            class="text-xl font-bold text-gray-800 group-hover:text-green-600 transition-colors">
+                                            class="text-xl font-bold text-gray-800 transition-colors group-hover:text-green-600">
                                             Pacientes</h4>
                                     </div>
                                     <ul class="space-y-3 text-gray-700">
                                         <li>
                                             <a href="{{ route('paciente.index') }}"
-                                                class="flex items-center group/link hover:text-green-600 hover:bg-green-50 p-2 rounded-lg transition-all duration-200">
+                                                class="flex items-center p-2 transition-all duration-200 rounded-lg group/link hover:text-green-600 hover:bg-green-50">
                                                 <svg class="w-4 h-4 mr-3 text-gray-400 group-hover/link:text-green-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -139,7 +139,7 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('paciente.create') }}"
-                                                class="flex items-center group/link hover:text-green-600 hover:bg-green-50 p-2 rounded-lg transition-all duration-200">
+                                                class="flex items-center p-2 transition-all duration-200 rounded-lg group/link hover:text-green-600 hover:bg-green-50">
                                                 <svg class="w-4 h-4 mr-3 text-gray-400 group-hover/link:text-green-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -155,10 +155,10 @@
                             {{-- Seção Questionários --}}
                             <div class="group">
                                 <div
-                                    class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border-2 border-transparent hover:border-blue-200 transition-all duration-300 hover:shadow-lg">
+                                    class="p-6 transition-all duration-300 border-2 border-transparent bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl hover:border-blue-200 hover:shadow-lg">
                                     <div class="flex items-center mb-4">
                                         <div
-                                            class="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mr-3">
+                                            class="flex items-center justify-center w-10 h-10 mr-3 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500">
                                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -166,13 +166,13 @@
                                             </svg>
                                         </div>
                                         <h4
-                                            class="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
+                                            class="text-xl font-bold text-gray-800 transition-colors group-hover:text-blue-600">
                                             Questionários</h4>
                                     </div>
                                     <ul class="space-y-3 text-gray-700">
                                         <li>
                                             <a href="{{ route('questionario.index') }}"
-                                                class="flex items-center group/link hover:text-blue-600 hover:bg-blue-50 p-2 rounded-lg transition-all duration-200">
+                                                class="flex items-center p-2 transition-all duration-200 rounded-lg group/link hover:text-blue-600 hover:bg-blue-50">
                                                 <svg class="w-4 h-4 mr-3 text-gray-400 group-hover/link:text-blue-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -184,7 +184,7 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('questionario.create') }}"
-                                                class="flex items-center group/link hover:text-blue-600 hover:bg-blue-50 p-2 rounded-lg transition-all duration-200">
+                                                class="flex items-center p-2 transition-all duration-200 rounded-lg group/link hover:text-blue-600 hover:bg-blue-50">
                                                 <svg class="w-4 h-4 mr-3 text-gray-400 group-hover/link:text-blue-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -197,13 +197,13 @@
                                 </div>
                             </div>
 
-                            {{-- Seção Prontuários --}}
+                            {{-- Seção prescrições --}}
                             <div class="group">
                                 <div
-                                    class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-6 border-2 border-transparent hover:border-orange-200 transition-all duration-300 hover:shadow-lg">
+                                    class="p-6 transition-all duration-300 border-2 border-transparent bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl hover:border-orange-200 hover:shadow-lg">
                                     <div class="flex items-center mb-4">
                                         <div
-                                            class="w-10 h-10 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg flex items-center justify-center mr-3">
+                                            class="flex items-center justify-center w-10 h-10 mr-3 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500">
                                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -211,13 +211,13 @@
                                             </svg>
                                         </div>
                                         <h4
-                                            class="text-xl font-bold text-gray-800 group-hover:text-orange-600 transition-colors">
-                                            Prontuários</h4>
+                                            class="text-xl font-bold text-gray-800 transition-colors group-hover:text-orange-600">
+                                            Prescrições</h4>
                                     </div>
                                     <ul class="space-y-3 text-gray-700">
                                         <li>
                                             <a href="{{ route('prontuario.index') }}"
-                                                class="flex items-center group/link hover:text-orange-600 hover:bg-orange-50 p-2 rounded-lg transition-all duration-200">
+                                                class="flex items-center p-2 transition-all duration-200 rounded-lg group/link hover:text-orange-600 hover:bg-orange-50">
                                                 <svg class="w-4 h-4 mr-3 text-gray-400 group-hover/link:text-orange-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -226,7 +226,7 @@
                                                         stroke-width="2"
                                                         d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                                 </svg>
-                                                Visualizar Prontuários
+                                                Visualizar Prescrições
                                             </a>
                                         </li>
                                     </ul>
@@ -236,10 +236,10 @@
                             {{-- Seção Perfil --}}
                             <div class="group md:col-span-2 lg:col-span-1">
                                 <div
-                                    class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border-2 border-transparent hover:border-purple-200 transition-all duration-300 hover:shadow-lg">
+                                    class="p-6 transition-all duration-300 border-2 border-transparent bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl hover:border-purple-200 hover:shadow-lg">
                                     <div class="flex items-center mb-4">
                                         <div
-                                            class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mr-3">
+                                            class="flex items-center justify-center w-10 h-10 mr-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
                                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -247,13 +247,13 @@
                                             </svg>
                                         </div>
                                         <h4
-                                            class="text-xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors">
+                                            class="text-xl font-bold text-gray-800 transition-colors group-hover:text-purple-600">
                                             Perfil do Usuário</h4>
                                     </div>
                                     <ul class="space-y-3 text-gray-700">
                                         <li>
                                             <a href="{{ route('profile') }}"
-                                                class="flex items-center group/link hover:text-purple-600 hover:bg-purple-50 p-2 rounded-lg transition-all duration-200">
+                                                class="flex items-center p-2 transition-all duration-200 rounded-lg group/link hover:text-purple-600 hover:bg-purple-50">
                                                 <svg class="w-4 h-4 mr-3 text-gray-400 group-hover/link:text-purple-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -265,7 +265,7 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('profile') }}"
-                                                class="flex items-center group/link hover:text-purple-600 hover:bg-purple-50 p-2 rounded-lg transition-all duration-200">
+                                                class="flex items-center p-2 transition-all duration-200 rounded-lg group/link hover:text-purple-600 hover:bg-purple-50">
                                                 <svg class="w-4 h-4 mr-3 text-gray-400 group-hover/link:text-purple-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -277,7 +277,7 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('profile') }}"
-                                                class="flex items-center group/link hover:text-red-600 hover:bg-red-50 p-2 rounded-lg transition-all duration-200">
+                                                class="flex items-center p-2 transition-all duration-200 rounded-lg group/link hover:text-red-600 hover:bg-red-50">
                                                 <svg class="w-4 h-4 mr-3 text-gray-400 group-hover/link:text-red-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -296,14 +296,14 @@
                         <!-- Call to action -->
                         <div class="mt-12 text-center">
                             <div
-                                class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 border border-indigo-100">
-                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Precisa de Ajuda?</h3>
-                                <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                                class="p-8 border border-indigo-100 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl">
+                                <h3 class="mb-4 text-2xl font-bold text-gray-900">Precisa de Ajuda?</h3>
+                                <p class="max-w-2xl mx-auto mb-6 text-gray-600">
                                     Se você não encontrou o que procura ou tem alguma dúvida sobre como usar o sistema,
                                     nossa equipe está pronta para ajudar.
                                 </p>
                                 <a href="{{ route('contact') }}"
-                                    class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+                                    class="inline-flex items-center px-6 py-3 font-semibold text-white transition-all duration-200 transform shadow-lg bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl hover:shadow-xl hover:scale-105">
                                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -318,16 +318,16 @@
             </div>
         </div>
 
-        <footer class="relative z-10 py-6 bg-gradient-to-r from-indigo-800 to-purple-900 text-white">
+        <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
             <div class="container px-6 mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex flex-col items-center justify-between md:flex-row">
                     <div class="mb-4 md:mb-0">
                         <h4 class="text-xl font-bold">SoPeP</h4>
-                        <p class="text-indigo-200 text-sm">Sistema de Prontuário Eletrônico para Pé Diabético</p>
+                        <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônica para Pé Diabético</p>
                     </div>
                     <div class="text-center md:text-right">
                         <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.</p>
-                        <p class="text-xs text-indigo-300 mt-1">Desenvolvido para cuidar melhor dos seus pacientes</p>
+                        <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus pacientes</p>
                     </div>
                 </div>
             </div>
