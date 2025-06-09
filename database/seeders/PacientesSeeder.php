@@ -28,6 +28,7 @@ class PacientesSeeder extends Seeder
                 'nome' => $faker->name(), // Nome do paciente
                 'prontuario' => $faker->numerify('PRT#####'), // Prontuário gerado
                 'data_nasc' => $faker->date('Y-m-d', '2005-01-01'), // Data de nascimento aleatória
+                'sexo'=> $faker->boolean(),
                 'orientacao_sexual_id' => $faker->numberBetween(1, 4), // Valor entre 1 e 4 para orientação sexual
                 'estado_civil_id' => $faker->numberBetween(1, 5), // Valor entre 1 e 5 para estado civil
                 'etnia_id' => $faker->numberBetween(1, 5), // Valor entre 1 e 5 para etnia
