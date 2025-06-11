@@ -96,21 +96,6 @@
 
     <!-- Animações CSS customizadas -->
     <style>
-        /* Animação de pulso personalizada */
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.5;
-                transform: scale(1.05);
-            }
-        }
-
         /* Scroll customizado para o container do formulário */
         .backdrop-blur-sm .overflow-y-auto::-webkit-scrollbar {
             width: 6px;
