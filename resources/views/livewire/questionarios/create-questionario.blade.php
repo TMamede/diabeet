@@ -182,9 +182,9 @@
                             <div class="flex justify-center w-full mt-8">
                                 <button type="button" wire:click="nextStep"
                                     @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                                    class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                    class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white transition-all duration-300 ease-in-out shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
                                     <span class="z-10">Continuar</span>
-                                    <div class="absolute inset-0 bg-white opacity-5 pointer-events-none"></div>
+                                    <div class="absolute inset-0 bg-white pointer-events-none opacity-5"></div>
                                 </button>
                             </div>
                         @endif
@@ -1939,15 +1939,46 @@
                             </div>
                         </div>
 
-                        <div class="mb-4">
-                            <label for="dor" class="block font-medium text-gray-700">Dor:</label>
-                            <input type="number" wire:model="dor" id="dor"
-                                class="block w-2/5 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite a dor do paciente (1 a 10)">
-                            @error('dor')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
+                        <div class="w-full">
+    <label for="dor" class="block mb-4 text-lg font-medium text-gray-700">Intensidade da Dor:</label>
+    <div class="w-full">
+    <label for="dor" class="block mb-4 text-lg font-medium text-gray-700">Intensidade da Dor:</label>
+    <div class="grid grid-cols-11 gap-2 text-center">
+        @for ($i = 0; $i <= 10; $i++)
+            @php
+                $color = match(true) {
+                    $i <= 3 => 'bg-green-200 text-green-700',
+                    $i <= 6 => 'bg-yellow-200 text-yellow-700',
+                    $i <= 8 => 'bg-orange-200 text-orange-700',
+                    default => 'bg-red-200 text-red-700',
+                };
+
+                $emoji = match(true) {
+                    $i == 0 => '😊',
+                    $i <= 3 => '🙂',
+                    $i <= 6 => '😐',
+                    $i <= 8 => '😣',
+                    default => '😫',
+                };
+
+                $selected = (int) $dor === $i ? 'ring-4 ring-indigo-400 ring-offset-2 scale-105' : '';
+            @endphp
+
+            <button
+                type="button"
+                wire:click="$set('dor', {{ $i }})"
+                class="flex flex-col items-center p-2 rounded cursor-pointer hover:bg-gray-100 {{ $color }} {{ $selected }}">
+                <span class="text-xl">{{ $emoji }}</span>
+                <span class="text-sm font-semibold">{{ $i }}</span>
+            </button>
+        @endfor
+    </div>
+
+    @error('dor')
+        <span class="text-sm text-red-500">{{ $message }}</span>
+    @enderror
+</div>
+
                     </div>
 
                     <div class="pb-5 border-b border-gray-300">
@@ -2019,7 +2050,8 @@
                             <div class="w-1/3">
                                 <div class="w-full">
                                     <label for="avaliacao_ferida_id"
-                                        class="block font-medium text-gray-700">Avaliação da
+                                        class="block font-medium text-gray-700">Avaliação
+                                        da
                                         Ferida:</label>
                                     <select wire:model="avaliacao_ferida_id" id="avaliacao_ferida_id"
                                         class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
@@ -2085,7 +2117,8 @@
 
                     <div>
                         <label for="imagem_avaliacao_pe"
-                            class="block mt-4 text-lg font-medium text-gray-700">Avaliação do
+                            class="block mt-4 text-lg font-medium text-gray-700">Avaliação
+                            do
                             Pé (Imagem)</label>
 
                         <div
@@ -2138,16 +2171,16 @@
                         <!-- Botão Voltar (ação secundária) -->
                         <button type="button" wire:click="previousStep"
                             @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                            class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-indigo-600 border-2 border-indigo-500 bg-white rounded-xl shadow-sm transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                            class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-indigo-600 transition-all duration-300 ease-in-out bg-white border-2 border-indigo-500 shadow-sm rounded-xl hover:bg-indigo-50 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-300">
                             <span class="z-10">Voltar</span>
                         </button>
 
                         <!-- Botão Continuar (ação primária) -->
                         <button type="button" wire:click="nextStep"
                             @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                            class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                            class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white transition-all duration-300 ease-in-out shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
                             <span class="z-10">Continuar</span>
-                            <div class="absolute inset-0 bg-white opacity-5 pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-white pointer-events-none opacity-5"></div>
                         </button>
                     </div>
 
@@ -2423,16 +2456,16 @@
                 <!-- Botão Voltar (ação secundária) -->
                 <button type="button" wire:click="previousStep"
                     @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                    class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-indigo-600 border-2 border-indigo-500 bg-white rounded-xl shadow-sm transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                    class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-indigo-600 transition-all duration-300 ease-in-out bg-white border-2 border-indigo-500 shadow-sm rounded-xl hover:bg-indigo-50 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-300">
                     <span class="z-10">Voltar</span>
                 </button>
 
                 <!-- Botão Continuar (ação primária) -->
                 <button type="button" wire:click="nextStep"
                     @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                    class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                    class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white transition-all duration-300 ease-in-out shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
                     <span class="z-10">Continuar</span>
-                    <div class="absolute inset-0 bg-white opacity-5 pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-white pointer-events-none opacity-5"></div>
                 </button>
             </div>
 
@@ -2456,7 +2489,7 @@
                             ?
                             'bg-cyan-600 text-white border-cyan-600' :
                             'bg-white text-gray-700 border-gray-300 hover:bg-cyan-50'"
-                        class="px-6 py-2 text-sm font-medium border rounded-lg shadow-sm focus:outline-none transition">
+                        class="px-6 py-2 text-sm font-medium transition border rounded-lg shadow-sm focus:outline-none">
                         Sim
                     </button>
 
@@ -2465,7 +2498,7 @@
                             ?
                             'bg-red-600 text-white border-red-600' :
                             'bg-white text-gray-700 border-gray-300 hover:bg-red-50'"
-                        class="px-6 py-2 text-sm font-medium border rounded-lg shadow-sm focus:outline-none transition">
+                        class="px-6 py-2 text-sm font-medium transition border rounded-lg shadow-sm focus:outline-none">
                         Não
                     </button>
                 </div>
@@ -2491,7 +2524,7 @@
 
             {{-- Mostra a unidade selecionada --}}
             @if ($unidade)
-                <div class="p-4 mb-4 border-l-4 border-indigo-600 bg-indigo-50 rounded">
+                <div class="p-4 mb-4 border-l-4 border-indigo-600 rounded bg-indigo-50">
                     <p class="text-lg font-semibold text-indigo-800">Unidade Selecionada:</p>
                     <p class="text-gray-700"><strong>Nome:</strong> {{ $unidade->nome }}</p>
                     <p class="text-gray-700"><strong>Rua:</strong> {{ $unidade->endereco->rua }}</p>
@@ -2526,8 +2559,8 @@
                 </div>
             @endif
             <div class="my-4">
-                <label for="impressoes" class="block mb-2 text-lg font-medium text-gray-700">Impressões do
-                    enfermeiro:</label>
+                <label for="impressoes" class="block mb-2 text-lg font-medium text-gray-700">Evoluções de
+                    enfermagem:</label>
                 <textarea wire:model="impressoes" id="impressoes"
                     class="block w-full px-6 py-4 mt-1 placeholder-gray-400 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                     placeholder="Digite suas impressões sobre a realização do questionário" rows="6"></textarea>
@@ -2545,15 +2578,15 @@
             <!-- Botão Voltar (ação secundária) -->
             <button type="button" wire:click="previousStep"
                 @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-indigo-600 border-2 border-indigo-500 bg-white rounded-xl shadow-sm transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-indigo-600 transition-all duration-300 ease-in-out bg-white border-2 border-indigo-500 shadow-sm rounded-xl hover:bg-indigo-50 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-300">
                 <span class="z-10">Voltar</span>
             </button>
 
             <!-- Botão Salvar (ação primária) -->
             <button type="submit" wire:click="submitForm"
-                class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white bg-gradient-to-r from-teal-500 to-teal-700 rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-teal-300">
+                class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white transition-all duration-300 ease-in-out shadow-lg bg-gradient-to-r from-teal-500 to-teal-700 rounded-xl hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-teal-300">
                 <span class="z-10">Salvar</span>
-                <div class="absolute inset-0 bg-white opacity-5 pointer-events-none"></div>
+                <div class="absolute inset-0 bg-white pointer-events-none opacity-5"></div>
             </button>
         </div>
 

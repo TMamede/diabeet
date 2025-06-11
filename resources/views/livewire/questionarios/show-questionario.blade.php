@@ -1999,16 +1999,43 @@
                                     @enderror
                                 </div>
                             </div>
+ <div class="w-full">
+    <label for="dor" class="block mb-4 text-lg font-medium text-gray-700">Intensidade da Dor:</label>
+    <div class="grid grid-cols-11 gap-2 text-center">
+        @for ($i = 0; $i <= 10; $i++)
+            @php
+                $color = match(true) {
+                    $i <= 3 => 'bg-green-200 text-green-700',
+                    $i <= 6 => 'bg-yellow-200 text-yellow-700',
+                    $i <= 8 => 'bg-orange-200 text-orange-700',
+                    default => 'bg-red-200 text-red-700',
+                };
 
-                            <div class="mb-4">
-                                <label for="dor" class="block font-medium text-gray-700">Dor:</label>
-                                <input type="number" wire:model="dor" id="dor" disabled
-                                    class="block w-2/5 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                    placeholder="Digite a dor do paciente (1 a 10)">
-                                @error('dor')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
+                $emoji = match(true) {
+                    $i == 0 => '😊',
+                    $i <= 3 => '🙂',
+                    $i <= 6 => '😐',
+                    $i <= 8 => '😣',
+                    default => '😫',
+                };
+
+                $selected = (int) $dor === $i ? 'ring-4 ring-indigo-400 ring-offset-2 scale-105' : '';
+            @endphp
+
+            <button
+                type="button"
+                wire:click="$set('dor', {{ $i }})"
+                class="flex flex-col items-center p-2 rounded cursor-pointer hover:bg-gray-100 {{ $color }} {{ $selected }}">
+                <span class="text-xl">{{ $emoji }}</span>
+                <span class="text-sm font-semibold">{{ $i }}</span>
+            </button>
+        @endfor
+    </div>
+
+    @error('dor')
+        <span class="text-sm text-red-500">{{ $message }}</span>
+    @enderror
+</div>
                         </div>
 
                         <div>
@@ -2682,7 +2709,7 @@
                     @endif
 
                     <div class="mt-4 mb-4">
-                        <h2 class="py-5 text-3xl font-bold text-indigo-950">Impressões do Enfermeiro</h2>
+                        <h2 class="py-5 text-3xl font-bold text-indigo-950">Evolução de enfermagem</h2>
                         <textarea wire:model="impressoes" id="impressoes" disabled
                             class="block w-full px-6 py-4 mt-1 placeholder-gray-400 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                             placeholder="Digite suas impressões sobre a realização do questionário" rows="6"></textarea>

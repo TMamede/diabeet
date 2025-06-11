@@ -41,7 +41,7 @@ new class extends Component {
                         </x-nav-link>
                     @endif
                     <x-nav-link :href="route('questionario.index')" :active="request()->routeIs('questionario.index')" wire:navigate>
-                        {{ __('Questionário') }}
+                        {{ __('Avaliação de enfermagem') }}
                     </x-nav-link>
                     <x-nav-link :href="route('prontuario.index')" :active="request()->routeIs('prontuario.index')" wire:navigate>
                         {{ __('Prescrição') }}
@@ -196,7 +196,7 @@ new class extends Component {
                 </x-responsive-nav-link>
             @endif
             <x-responsive-nav-link :href="route('questionario.index')" :active="request()->routeIs('questionario.index')" wire:navigate>
-                {{ __('Questionário') }}
+                {{ __('Avaliação de enfermagem') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('prontuario.index')" :active="request()->routeIs('prontuario.index')" wire:navigate>
                 {{ __('Prescrição') }}

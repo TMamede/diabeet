@@ -4,7 +4,7 @@
         {{-- Título principal com destaque --}}
         <div class="relative flex flex-col items-center justify-center mb-12">
             <h1 class="text-5xl font-extrabold text-indigo-900 drop-shadow-md">
-                Criar Prescrição
+                Diagnósticos de enfermagem
             </h1>
             <div class="w-24 h-1 mt-4 bg-indigo-500 rounded-full"></div>
         </div>
