@@ -48,17 +48,6 @@
                                 class="block w-full py-3 pl-10 pr-4 text-sm text-gray-900 placeholder-gray-500 transition-all duration-200 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Buscar por nome ou prontuário...">
                         </div>
-
-                        <!-- Botão de adicionar prontuário -->
-                        <a href="{{ route('questionario.create') }}"
-                            class="flex items-center px-6 py-3 font-medium text-white transition-all duration-200 transform bg-indigo-600 border border-indigo-500 rounded-lg shadow-md group hover:bg-indigo-700 hover:shadow-lg hover:scale-105">
-                            <svg class="w-5 h-5 mr-2 transition-transform duration-200 group-hover:rotate-90"
-                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                            </svg>
-                            Nova Prescrição
-                        </a>
                     </div>
                 </div>
 

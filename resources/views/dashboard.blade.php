@@ -33,7 +33,7 @@
                     <!-- Subtitle melhorada -->
                     <div class="max-w-4xl mx-auto mb-12">
                         <h2 class="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
-                            Sistema de <span class="text-indigo-600">Prescrição Eletrônico</span> para Pé Diabético
+                            Sistema de <span class="text-indigo-600">Prescrição Eletrônica</span> para Pé Diabético
                         </h2>
                         <p class="max-w-2xl mx-auto text-xl leading-relaxed text-gray-600">
                             Plataforma especializada para enfermeiros realizarem avaliações completas, diagnósticos
@@ -150,7 +150,7 @@
                 <div class="flex flex-col items-center justify-between md:flex-row">
                     <div class="mb-4 md:mb-0">
                         <h4 class="text-xl font-bold">SoPeP</h4>
-                        <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônico para Pé Diabético</p>
+                        <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônica para Pé Diabético</p>
                     </div>
                     <div class="text-center md:text-right">
                         <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.</p>

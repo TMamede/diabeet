@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prontuário #{{ $prontuario->id }}</title>
+    <title>Prescrição #{{ $prontuario->id }}</title>
     <style>
         /* Paleta de Cores Minimalista */
         :root {
@@ -115,7 +115,7 @@
 
 
     <!-- Cabeçalho -->
-    <div class="header">Prontuário #{{ $prontuario->id }}</div>
+    <div class="header">Prescrição #{{ $prontuario->id }}</div>
 
     <!-- Logo do Sistema como marca d'água -->
     <img src="{{ public_path('logope.png') }}" class="watermark">
@@ -126,7 +126,7 @@
         <div class="content">
             <strong>Nome:</strong> {{ $prontuario->questionario->paciente->nome ?? 'Nome não informado' }}<br>
             <strong>Número do Prontuário:</strong> {{ $prontuario->questionario->paciente->prontuario ?? 'N/A' }}<br>
-            <strong>Data de Emissão do Prontuário:</strong> {{ $prontuario->updated_at->format('d/m/Y') }}<br>
+            <strong>Data de Emissão do Prescrição:</strong> {{ $prontuario->updated_at->format('d/m/Y') }}<br>
         </div>
     </div>
 
