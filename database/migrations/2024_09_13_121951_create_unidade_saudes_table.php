@@ -15,7 +15,6 @@ return new class extends Migration
         Schema::create('unidade_saudes', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->foreignIdFor(Endereco::class);
             $table->timestamps();
         });
     }

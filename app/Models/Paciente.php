@@ -63,4 +63,8 @@ class Paciente extends Model
     {
         return $this->hasMany(Resultado::class);
     }
+    public function unidade()
+    {
+        return $this->belongsTo(Unidade_saude::class);
+    }
 }

@@ -19,8 +19,8 @@ class Unidade_saude extends Model
         return $this->hasMany(Questionario::class);
     }
 
-    public function endereco()
+    public function pacientes()
     {
-        return $this->belongsTo(Endereco::class);
+        return $this->hasMany(Paciente::class);
     }
 }
