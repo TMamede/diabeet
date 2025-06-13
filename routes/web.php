@@ -7,6 +7,7 @@ use App\Livewire\Prontuarios\CreateProntuario;
 use App\Livewire\Questionarios\ShowQuestionario;
 use App\Http\Controllers\ProntuarioPDFController;
 use App\Livewire\Prontuarios\SearchProntuario;
+use App\Http\Controllers\ProfileController;
 
 Route::view('/', 'welcome');
 
@@ -85,5 +86,11 @@ Route::get('/prontuario/paciente/{paciente}', SearchProntuario::class)
 
 Route::get('/prontuario/{id}/pdf', [ProntuarioPDFController::class, 'gerarPDF'])
     ->name('prontuario.pdf');
+
+Route::patch('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
+Route::delete('/profile/photo', [ProfileController::class, 'deletePhoto'])->name('profile.photo.delete');
+
+
+
 
 require __DIR__ . '/auth.php';

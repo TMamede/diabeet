@@ -7,7 +7,7 @@ use App\Models\Etnia;
 use App\Models\Historico;
 use App\Models\Orientacao_sexual;
 use App\Models\Reside;
-use App\Models\Resultado;
+use App\Models\Unidade_saude;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
