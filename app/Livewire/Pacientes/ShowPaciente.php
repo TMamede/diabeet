@@ -9,6 +9,7 @@ use App\Models\Paciente;
 use App\Models\Resultado;
 use App\Models\Comorbidade;
 use App\Models\Medicamento;
+use App\Models\Unidade_saude;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 
@@ -41,6 +42,9 @@ class ShowPaciente extends Component
     public $resultados = [];
     public $texto_resultado;
 
+    //Etapa 5: Unidade de saude
+    public $unidade_saude_id = null, $unidade;
+
     //Mensagem de alterações salvas com sucesso!
     public $successMessage = '';
     public $pacienteId;
@@ -68,6 +72,8 @@ class ShowPaciente extends Component
         $this->estado_civil_id = $this->paciente->estado_civil_id;
         $this->etnia_id = $this->paciente->etnia_id;
         $this->endereco_id = $this->paciente->endereco_id;
+        $this->unidade_saude_id = $this->paciente->unidade_saude_id;
+        $this->unidade = Unidade_saude::Find($this->unidade_saude_id);
 
         $endereco = Endereco::find($this->paciente->endereco_id);
         if ($endereco) {
@@ -116,6 +122,7 @@ class ShowPaciente extends Component
             'beneficios' => \App\Models\Beneficio::all(),
             'resides' => \App\Models\Reside::all(),
             'vias' => \App\Models\Via::all(),
+            'unidadesSaude' => \App\Models\Unidade_saude::all(),
             'comorbidadesList' => $this->comorbidadesList,
             'alergiasList' => $this->alergiasList,
         ])->layout('layouts.app');
@@ -336,6 +343,7 @@ class ShowPaciente extends Component
             'beneficio_id' => $this->beneficio_id,
             'reside_id' => $this->reside_id,
             'num_pss_casa' => $this->num_pss_casa,
+            'unidade_saude_id' => $this->unidade_saude_id,
         ]);
 
         // Atualiza o histórico do paciente

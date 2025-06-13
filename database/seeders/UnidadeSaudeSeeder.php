@@ -24,7 +24,6 @@ class UnidadeSaudeSeeder extends Seeder
         foreach ($enderecos as $enderecoId) {
             $unidades[] = [
                 'nome' => 'Unidade de Saúde ' . $faker->company,
-                'endereco_id' => $enderecoId, // Relacionando com a tabela de endereços
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ];

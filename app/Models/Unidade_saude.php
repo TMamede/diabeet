@@ -14,11 +14,6 @@ class Unidade_saude extends Model
         $query->where('nome', 'like', "%{$value}%");
     }
 
-    public function questionarios()
-    {
-        return $this->hasMany(Questionario::class);
-    }
-
     public function pacientes()
     {
         return $this->hasMany(Paciente::class);

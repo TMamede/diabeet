@@ -19,20 +19,13 @@ class Questionario extends Model
         })
         ->orWhereHas('user', function ($query) use ($value) {
             $query->where('name', 'like', "%{$value}%");
-        })
-        ->orWhereHas('unidade_saude', function ($query) use ($value) {
-            $query->where('nome', 'like', "%{$value}%");
         });
+        
 }
 
     public function paciente()
     {
         return $this->belongsTo(Paciente::class);
-    }
-
-    public function unidade_saude()
-    {
-        return $this->belongsTo(Unidade_saude::class);
     }
 
     public function nss_biologica()

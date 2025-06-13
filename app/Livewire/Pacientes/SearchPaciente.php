@@ -74,6 +74,14 @@ class SearchPaciente extends Component
                             $query->orderBy($this->sortBy, $this->sortDir);
                         }
                     })
+                    ->when($this->sortBy, function ($query) {
+                        if ($this->sortBy === 'unidade_nome') {
+                            $query->join('unidade_saudes', 'questionarios.unidade_saude_id', '=', 'unidade_saudes.id')
+                                ->orderBy('unidade_saudes.nome', $this->sortDir);
+                        } else {
+                            $query->orderBy($this->sortBy, $this->sortDir);
+                        }
+                    })
                     ->orderBy($this->sortBy, $this->sortDir)
                     ->paginate($this->perPage),
             ]

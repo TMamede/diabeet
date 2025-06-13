@@ -4,7 +4,6 @@ namespace App\Livewire\Questionarios;
 
 use App\Models\Paciente;
 use App\Models\Questionario;
-use App\Models\Unidade_saude;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use App\Models\Abrigo;
@@ -94,7 +93,6 @@ class ShowQuestionario extends Component
 
     //Etapa 4 - Necessidades Espirituais e Finalização
     public $religiao, $e_religioso;
-    public $unidade_saude_id = null, $unidade;
 
     public $successMessage = '';
     public $IdQuestionario;
@@ -184,8 +182,6 @@ class ShowQuestionario extends Component
         $this->IdselectedPaciente = $this->selectedPaciente->id;
         $this->enfermeiro = $this->questionario->user;
         $this->impressoes = $this->questionario->impressoes;
-        $this->unidade_saude_id = $this->questionario->unidade_saude_id;
-        $this->unidade = Unidade_saude::Find($this->unidade_saude_id);
         $this->imagem_avaliacao_pe_url = $this->questionario->imagem_avaliacao_pe_url;
 
 
@@ -380,7 +376,6 @@ class ShowQuestionario extends Component
             'pelesPeriferida' => \App\Models\Pele_periferida::all(),
             'tiposTecido' => \App\Models\Tipo_tecido_ferida::all(),
             'bordasFerida' => \App\Models\Bordas_ferida::all(),
-            'unidadesSaude' => \App\Models\Unidade_saude::all(),
         ])->layout('layouts.app');
     }
 

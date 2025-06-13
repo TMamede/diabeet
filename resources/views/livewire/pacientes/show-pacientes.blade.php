@@ -825,11 +825,12 @@
                 </div>
             @endif
         </div>
-        <div x-data="{ step: @entangle('currentStep'), open: false }">
-            <div x-show="step === 3" x-transition>
-                @if ($currentStep == 3)
-                    <div class="step">
-                        <div class="flex flex-row bg-stone-50 lg:h-full lg:flex-row">
+    </div>
+    <div x-data="{ step: @entangle('currentStep'), open: false }">
+        <div x-show="step === 3" x-transition>
+            @if ($currentStep == 3)
+                <div class="step">
+                    <div class="flex flex-row bg-stone-50 lg:h-full lg:flex-row">
                         <!-- Barra de Navegação -->
 
                         <!-- Barra de Navegação Mobile esquerda!-->
@@ -898,7 +899,8 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
                                                     </svg>
-                                                    <span class="flex-1 text-sm text-left sm:text-base">Histórico do
+                                                    <span class="flex-1 text-sm text-left sm:text-base">Histórico
+                                                        do
                                                         Paciente</span>
                                                 </button>
                                             </li>
@@ -943,7 +945,8 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="2" d="M15 19l-7-7 7-7" />
                                                     </svg>
-                                                    <span class="flex-1 text-sm text-left sm:text-base">Voltar ao menu
+                                                    <span class="flex-1 text-sm text-left sm:text-base">Voltar ao
+                                                        menu
                                                         pacientes</span>
                                                 </button>
                                             </li>
@@ -1086,7 +1089,8 @@
                                             class="block w-full p-3 border border-gray-300 rounded-lg shadow-md focus:ring-indigo-500 focus:border-indigo-500 bg-gradient-to-r from-gray-100 to-gray-200 hover:bg-gray-200 focus:bg-white">
                                             <option value="">Selecione</option>
                                             @foreach ($vias as $via)
-                                                <option value="{{ $via->id }}">{{ $via->descricao }}</option>
+                                                <option value="{{ $via->id }}">{{ $via->descricao }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         @error('medicamentos.' . $index . '.via_id')
@@ -1120,7 +1124,7 @@
                             </button>
                         </main>
                     </div>
-            </div>
+                </div>
             @endif
         </div>
         <div x-data="{ step: @entangle('currentStep'), open: false }">
@@ -1248,7 +1252,8 @@
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 stroke-width="2" d="M15 19l-7-7 7-7" />
                                                         </svg>
-                                                        <span class="flex-1 text-sm text-left sm:text-base">Voltar ao
+                                                        <span class="flex-1 text-sm text-left sm:text-base">Voltar
+                                                            ao
                                                             menu pacientes</span>
                                                     </button>
                                                 </li>
@@ -1404,3 +1409,5 @@
                 @endif
             </div>
         </div>
+    </div>
+</div>
