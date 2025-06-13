@@ -474,6 +474,22 @@
                                     @enderror
                                 </div>
 
+                                <div class="mb-6">
+                                    <label for="medicamentos.{{ $index }}.horario_med_id"
+                                        class="block mb-2 font-medium text-gray-700">Horário da Medicação</label>
+                                    <select wire:model="medicamentos.{{ $index }}.horario_med_id"
+                                        id="medicamentos.{{ $index }}.horario_med_id"
+                                        class="block w-full p-2 border-gray-300 rounded-lg shadow-sm form-select focus:ring-indigo-500 focus:border-indigo-500">
+                                        <option value="">Selecione</option>
+                                        @foreach ($horarios_med as $horario)
+                                            <option value="{{ $horario->id }}">{{ $horario->descricao }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('medicamentos.' . $index . '.horario_med_id')
+                                        <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="mb-4">
                                     <label for="medicamentos.{{ $index }}.dose"
                                         class="block text-base font-medium text-gray-700">Dose</label>
@@ -528,6 +544,20 @@
                             <div class="w-5/6 p-5 mb-6 bg-white border border-gray-200 rounded-lg shadow-sm">
                                 <h3 class="mb-3 text-lg font-semibold">Resultado {{ $index + 1 }}</h3>
 
+
+                                <div class="mb-4">
+                                    <label for="resultados.{{ $index }}.data_exame"
+                                        class="block text-base font-medium text-gray-700">Data do Exame</label>
+
+                                    <input type="date" wire:model="resultados.{{ $index }}.data_exame"
+                                        id="resultados.{{ $index }}.data_exame"
+                                        class="block w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-gray-50 hover:bg-white">
+
+                                    @error('resultados.' . $index . '.data_exame')
+                                        <span class="text-sm text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="mb-4">
                                     <label for="resultados.{{ $index }}.texto_resultado"
                                         class="block text-base font-medium text-gray-700">Descrição</label>
@@ -553,6 +583,61 @@
                         class="px-4 py-2 mb-4 ml-24 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Adicionar Resultado
                     </button>
+
+                    <!-- Adicione os demais campos da etapa 2 aqui -->
+                    <div class="flex justify-center w-full mt-8 space-x-4">
+                        {{-- Botão Voltar (Secundário, visual leve) --}}
+                        <button type="button" wire:click="previousStep"
+                            class="relative inline-flex items-center justify-center px-8 py-3 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                            <span class="z-10">Voltar</span>
+                            <div class="absolute inset-0 bg-indigo-100 opacity-10 pointer-events-none"></div>
+                        </button>
+
+                        {{-- Botão Continuar (Primário, destaque com gradiente) --}}
+                        <button type="button" wire:click="nextStep"
+                            class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                            <span class="z-10">Continuar</span>
+                            <div class="absolute inset-0 bg-white opacity-5"></div>
+                        </button>
+                    </div>
+                </div>
+            @endif
+        </div>
+        <div x-show="step === 5" x-transition>
+            {{-- Etapa 4: Unidade de Saude --}}
+            @if ($currentStep == 5)
+                <div class="step">
+                    <h2 class="py-5 mb-10 text-4xl font-bold text-center">Unidade de Saúde</h2>
+
+                    {{-- Mostra a unidade selecionada --}}
+                    @if ($unidade)
+                        <div class="p-4 mb-4 border-l-4 border-indigo-600 rounded bg-indigo-50">
+                            <p class="text-lg font-semibold text-indigo-800">Unidade Selecionada:</p>
+                            <p class="text-gray-700"><strong>Nome:</strong> {{ $unidade->nome }}</p>
+                        </div>
+                    @endif
+
+                    {{-- Formulário de Busca --}}
+                    <form class="flex justify-center border-b border-indigo-300" role="search">
+                        <input wire:model.live.debounce.300ms="search"
+                            class="block w-full px-6 py-3 mb-4 border border-gray-300 rounded-lg shadow-sm form-control focus:ring-indigo-500 focus:border-indigo-500"
+                            type="search" placeholder="Pesquise o nome da unidade de saúde" aria-label="Search">
+                    </form>
+
+                    {{-- Resultados da busca --}}
+                    @if (sizeof($unidades) > 0)
+                        <div class="mt-4 mb-6 bg-white rounded-lg shadow-lg">
+                            @foreach ($unidades as $unidade)
+                                <div class="py-3 border-b border-gray-200 cursor-pointer hover:bg-gray-100"
+                                    wire:click="selectUnidade({{ $unidade->id }})">
+                                    <div class="flex flex-col px-6">
+                                        <span class="text-lg font-medium text-gray-900">{{ $unidade->nome }}</span>
+
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
 
                     <!-- Botões de Navegação e Salvar -->
                     <div class="flex justify-center w-full mt-8 space-x-4">

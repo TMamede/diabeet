@@ -97,11 +97,19 @@
                                         </svg>
                                     </div>
                                 </th>
-                                <th class="px-4 py-3 text-xs font-semibold tracking-wider text-left uppercase">
-                                    Cadastro
+                                <!-- Unidade de Saúde -->
+                                <th class="w-1/6 px-2 py-3 text-xs font-semibold tracking-wider text-left uppercase">
+                                    <div class="flex items-center space-x-1 transition-colors cursor-pointer hover:text-indigo-200"
+                                        wire:click="sortBy('unidade_nome')">
+                                        <span>Unidade</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                                        </svg>
+                                    </div>
                                 </th>
                                 <th class="px-4 py-3 text-xs font-semibold tracking-wider text-left uppercase">
-                                    Atualização
+                                    Cadastro
                                 </th>
                                 <th class="px-4 py-3 text-xs font-semibold tracking-wider text-center uppercase">
                                     Ações
@@ -144,11 +152,13 @@
                                                 class="text-sm font-medium text-indigo-600">{{ $paciente->user->name }}</span>
                                         </div>
                                     </td>
-                                    <td class="px-4 py-4 text-xs text-gray-600">
-                                        {{ $paciente->created_at->format('d/m/Y') }}
+                                    <!-- Unidade de Saúde -->
+                                    <td class="px-2 py-4">
+                                        <span
+                                            class="text-sm font-medium text-gray-900">{{ $paciente->unidade_saude->nome }}</span>
                                     </td>
                                     <td class="px-4 py-4 text-xs text-gray-600">
-                                        {{ $paciente->updated_at->format('d/m/Y') }}
+                                        {{ $paciente->created_at->format('d/m/Y') }}
                                     </td>
                                     <td class="px-4 py-4">
                                         <div class="flex items-center justify-center space-x-2">

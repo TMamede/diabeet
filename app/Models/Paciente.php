@@ -16,7 +16,9 @@ class Paciente extends Model
     public function scopeSearch($query, $value){
         $query->where('nome', 'like', "%{$value}%")->orWhereHas('user', function ($query) use ($value) {
           $query->where('name', 'like', "%{$value}%");
-      });
+      })->orWhereHas('unidade_saude', function ($query) use ($value) {
+            $query->where('nome', 'like', "%{$value}%");
+        });
     }
 
     public function questionarios()
@@ -63,7 +65,7 @@ class Paciente extends Model
     {
         return $this->hasMany(Resultado::class);
     }
-    public function unidade()
+    public function unidade_saude()
     {
         return $this->belongsTo(Unidade_saude::class);
     }

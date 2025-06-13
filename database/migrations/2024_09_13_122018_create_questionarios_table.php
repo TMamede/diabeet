@@ -24,7 +24,6 @@ return new class extends Migration
                   ->constrained()
                   ->onDelete('cascade'); // Excluir questionários ao apagar paciente
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Unidade_saude::class);
             $table->foreignIdFor(Nss_biologicas::class);
             $table->foreignIdFor(Nss_sociais::class);
             $table->foreignIdFor(Nss_espirituais::class)->nullable;

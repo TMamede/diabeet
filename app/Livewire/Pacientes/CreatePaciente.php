@@ -10,6 +10,7 @@ use App\Models\Historico;
 use App\Models\Medicamento;
 use App\Models\Endereco;
 use App\Models\Resultado;
+use App\Models\Unidade_saude;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -18,6 +19,7 @@ use Illuminate\Validation\Rule;
 class CreatePaciente extends Component
 {
     public $currentStep = 1;
+    public $search = "";
 
     // Etapa 1: Dados Sociodemográficos
     public $cpf, $email, $nome, $prontuario, $data_nasc;
@@ -35,17 +37,36 @@ class CreatePaciente extends Component
 
     // Etapa 3: Medicamentos 
     public $medicamentos = [];
-    public $nome_generico, $via_id, $dose;
+    public $nome_generico, $via_id, $horario_med_id, $dose;
 
     //Etapa 4: Resultados
     public $resultados = [];
     public $texto_resultado;
+    public $data_exame;
 
+    //Etapa 5: Unidade de Saude
+    public $unidade, $unidade_saude_id = null, $idUnidadeSelected = null;
+    
+    public function selectUnidade($unidadeId)
+    {
+        $this->unidade_saude_id = Unidade_saude::find($unidadeId);
+        $this->idUnidadeSelected = $unidadeId;
+        $this->search = $this->unidade_saude_id->nome;
+    }
 
     public function render()
     {
 
+        $unidades = [];
+
+        if (strlen($this->search) >= 1) {
+            $unidades = Unidade_saude::where('nome', 'like', '%' . $this->search . '%')
+                ->limit(3)
+                ->get();
+    }
+
         return view('livewire.pacientes.create-paciente', [
+            'unidades' => $unidades,
             'tipoDiabetes' => \App\Models\Tipo_diabetes::all(),
             'orientacoesSexuais' => \App\Models\Orientacao_sexual::all(),
             'estadosCivis' => \App\Models\Estado_civil::all(),
@@ -54,6 +75,8 @@ class CreatePaciente extends Component
             'beneficios' => \App\Models\Beneficio::all(),
             'resides' => \App\Models\Reside::all(),
             'vias' => \App\Models\Via::all(),
+            'horarios_med' => \App\Models\HorarioMed::all(),
+            'unidadesSaude' => \App\Models\Unidade_saude::all(),
             'comorbidadesList' => $this->comorbidadesList,
             'alergiasList' => $this->alergiasList,
         ]);
@@ -108,6 +131,7 @@ class CreatePaciente extends Component
         $this->medicamentos[] = [
             'nome_generico' => '',
             'via_id' => '',
+            'horario_med_id' => '',
             'dose' => '',
         ];
     }
@@ -116,6 +140,7 @@ class CreatePaciente extends Component
     {
         $this->resultados[] = [
             'texto_resultado' => '',
+            'data_exame' => '',
         ];
     }
 
@@ -219,11 +244,18 @@ class CreatePaciente extends Component
             'medicamentos.*.nome_generico.max' => 'O nome genérico do medicamento não pode ter mais que 255 caracteres.',
             'medicamentos.*.via_id.required' => 'A via de administração do medicamento é obrigatória.',
             'medicamentos.*.via_id.exists' => 'A via de administração selecionada é inválida.',
+            'medicamentos.*.horario_med_id.required' => 'O horario de administração do medicamento é obrigatória.',
+            'medicamentos.*.horario_med_id.exists' => 'O horario de administração selecionada é inválido.',
             'medicamentos.*.dose.required' => 'A dose do medicamento é obrigatória.',
             'medicamentos.*.dose.max' => 'A dose do medicamento não pode ter mais que 255 caracteres.',
 
             // Step 4
             'resultados.*.texto_resultado.string' => 'O resultado deve ser um texto válido.',
+            'data_exame.date' => 'Informe uma data válida.',
+
+            // Step 5
+            'idUnidadeSelected.required' => 'O campo "Unidade de Saúde" é obrigatório.',
+            'idUnidadeSelected.exists' => 'A unidade de saúde selecionada não é válida.',
         ];
     }
 
@@ -267,11 +299,17 @@ class CreatePaciente extends Component
             $this->validate([
                 'medicamentos.*.nome_generico' => 'required|string|max:255',
                 'medicamentos.*.via_id' => 'required|exists:via,id',
+                'medicamentos.*.horario_med_id' => 'required|exists:horario,id',
                 'medicamentos.*.dose' => 'required|string|max:255',
             ]);
         } elseif ($this->currentStep == 4) {
             $this->validate([
                 'resultados.*.texto_resultado' => 'string',
+                'data_exame' => 'required|date',
+            ]);
+        } elseif($this->currentStep == 5){
+            $this->validate([
+            'idUnidadeSelected' => 'required|exists:unidade_saudes,id',
             ]);
         }
     }
@@ -317,6 +355,7 @@ class CreatePaciente extends Component
             'reside_id' => $this->reside_id,
             'num_pss_casa' => $this->num_pss_casa,
             'user_id' => Auth::id(),
+            'unidade_saude_id' => $this->idUnidadeSelected,
             // 'historico_id' será definido após criar o histórico
         ]);
 
@@ -348,6 +387,7 @@ class CreatePaciente extends Component
             $medicamento = Medicamento::firstOrCreate([
                 'nome_generico' => $medicamentoData['nome_generico'],
                 'via_id' => $medicamentoData['via_id'],
+                'horario_med_id' => $medicamentoData['horario_med_id'],
                 'dose' => $medicamentoData['dose'],
             ]);
 
@@ -359,6 +399,8 @@ class CreatePaciente extends Component
         foreach ($this->resultados as $resultadoData) {
             $resultado = Resultado::create([
                 'texto_resultado' => $resultadoData['texto_resultado'],
+                'data_exame' => $resultadoData['data_exame'],
+
                 'paciente_id' => $paciente->id,  // Associar o resultado ao paciente
             ]);
         }

@@ -20,7 +20,6 @@ class CriarQuestionarioSeeder extends Seeder
             DB::table('questionarios')->insert([
                 'paciente_id' => $faker->numberBetween(1, 20),
                 'user_id' => 1,
-                'unidade_saude_id' => $faker->numberBetween(1, 10),
                 'nss_biologicas_id' => $faker->numberBetween(1, 10),
                 'nss_sociais_id' => $faker->numberBetween(1, 10),
                 'nss_espirituais_id' => $faker->numberBetween(1, 6),

@@ -45,7 +45,6 @@ use App\Models\Sinais_infeccao;
 use App\Models\Sintomas_percepcao;
 use App\Models\Sono;
 use App\Models\Tipo_locomocao;
-use App\Models\Unidade_saude;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -60,7 +59,6 @@ class CreateQuestionario extends Component
     public $search = "";
     public $selectedPaciente = null;
     public $idPacienteSelected = null;
-    public $idUnidadeSelected = null;
 
     protected $messages = [
         'imagem_avaliacao_pe.image' => 'O arquivo deve ser uma imagem.',
@@ -84,12 +82,6 @@ class CreateQuestionario extends Component
     }
 
 
-    public function selectUnidade($unidadeId)
-    {
-        $this->unidade_saude_id = Unidade_saude::find($unidadeId);
-        $this->idUnidadeSelected = $unidadeId;
-        $this->search = $this->unidade_saude_id->nome;
-    }
 
 
     public $nss_sociais, $nss_biologicas, $nss_espirituais, $questionario, $imagem_avaliacao_pe, $imagem_avaliacao_pe_url, $IdselectedPaciente;
@@ -126,7 +118,7 @@ class CreateQuestionario extends Component
 
     //Etapa 4 - Necessidades Espirituais e Finalização
     public $religiao = null, $e_religioso;
-    public $unidade_saude_id = null, $impressoes;
+    public  $impressoes;
     //Etapa 5 
     public $origem, $motivo, $diagnostico, $intervencao;
 
@@ -252,7 +244,7 @@ class CreateQuestionario extends Component
         $this->coberturasList = Cobertura_ferida::all();
         $this->sinaisInfeccaoList = Sinais_infeccao::all();
     }
-    public $IdQuestionario, $enfermeiro, $unidade;
+    public $IdQuestionario, $enfermeiro;
 
     public function loadUltimoQuestionarioDoPaciente($pacienteId)
 {
@@ -272,7 +264,6 @@ class CreateQuestionario extends Component
         'nss_biologica.cuidado_ferida.coberturas_ferida',
         'nss_biologica.integridade_cutanea.sinais_infeccao',
         'user',
-        'unidade_saude',
     ])
     ->where('paciente_id', $pacienteId)
     ->latest('created_at') // aqui garante que é o último
@@ -291,8 +282,6 @@ class CreateQuestionario extends Component
         $this->IdselectedPaciente = $this->selectedPaciente->id;
         $this->enfermeiro = $this->questionario->user;
         $this->impressoes = $this->questionario->impressoes;
-        $this->unidade_saude_id = $this->questionario->unidade_saude_id;
-        $this->unidade = Unidade_saude::Find($this->unidade_saude_id);
         $this->imagem_avaliacao_pe_url = $this->questionario->imagem_avaliacao_pe_url;
 
 
@@ -467,16 +456,10 @@ class CreateQuestionario extends Component
                 ->limit(5)
                 ->get();
         }
-        if (strlen($this->search) >= 1) {
-            $unidades = Unidade_saude::where('nome', 'like', '%' . $this->search . '%')
-                ->limit(3)
-                ->get();
-        }
 
 
         return view('livewire.questionarios.create-questionario', [
             'pacientes' => $pacientes,
-            'unidades' => $unidades,
             'recreacaosList' => $this->recreacaosList,
             'emocionalsList' => $this->emocionalsList,
             'refeicaosList' => $this->refeicaosList,
@@ -507,7 +490,6 @@ class CreateQuestionario extends Component
             'pelesPeriferida' => \App\Models\Pele_periferida::all(),
             'tiposTecido' => \App\Models\Tipo_tecido_ferida::all(),
             'bordasFerida' => \App\Models\Bordas_ferida::all(),
-            'unidadesSaude' => \App\Models\Unidade_saude::all(),
         ]);
     }
 
@@ -847,9 +829,6 @@ class CreateQuestionario extends Component
             'religiao.string' => 'O campo "Religião" deve ser um texto.',
             'religiao.max' => 'O campo "Religião" não pode exceder 255 caracteres.',
 
-            'idUnidadeSelected.required' => 'O campo "Unidade de Saúde" é obrigatório.',
-            'idUnidadeSelected.exists' => 'A unidade de saúde selecionada não é válida.',
-
             'impressoes.required' => 'O campo "Impressões" é obrigatório.',
             'impressoes.string' => 'O campo "Impressões" deve ser um texto.',
         ];
@@ -994,9 +973,6 @@ class CreateQuestionario extends Component
         } else if ($this->currentStep == 4) {
             $this->validate([
                 'religiao' => 'string|max:255',
-
-                'idUnidadeSelected' => 'required|exists:unidade_saudes,id',
-
                 'impressoes' => 'required|string',
             ]);
         }
@@ -1849,7 +1825,6 @@ class CreateQuestionario extends Component
             'nss_biologicas_id' => $nss_biologicas->id,
             'nss_sociais_id' => $nss_sociais->id,
             'nss_espirituais_id' => $nss_espirituais->id,
-            'unidade_saude_id' => $this->idUnidadeSelected,
             'impressoes' => $this->impressoes,
             'imagem_avaliacao_pe_url' => $path,
         ]);
