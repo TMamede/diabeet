@@ -1247,15 +1247,17 @@
 
                                         <!-- Botão Salvar -->
                                         <button type="submit" @if (!$unidade) disabled @endif
-                                            class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transform shadow-2xl group rounded-2xl hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-50 w-full sm:w-auto transition-all duration-300 @if ($unidade) bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 focus:ring-indigo-300 @else bg-gray-400 cursor-not-allowed @endif">
+                                            class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transform shadow-2xl group rounded-2xl hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-50 w-full sm:w-auto transition-all duration-300 @if ($unidade) bg-gradient-to-r from-teal-500 to-cyan-600 focus:ring-teal-300 @else bg-gray-400 cursor-not-allowed @endif">
                                             <span class="flex items-center">
                                                 <svg class="w-5 h-5 mr-3 group-hover:translate-x-1 transition-transform duration-200"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                        stroke-width="2"
+                                                        d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4">
+                                                    </path>
                                                 </svg>
                                                 @if ($unidade)
-                                                    Continuar para Próxima Etapa
+                                                    Salvar Paciente
                                                 @else
                                                     Selecione uma Unidade
                                                 @endif
