@@ -65,8 +65,8 @@
 
         <!-- Card do formulário -->
         <div class="flex flex-col justify-center flex-1 w-full max-w-md">
-            <div class="overflow-hidden border shadow-2xl backdrop-blur-sm bg-white/90 rounded-2xl border-white/20">
-                <div class="px-6 sm:px-8 py-6 sm:py-8 max-h-[70vh] overflow-y-auto">
+            <div class=" border shadow-2xl backdrop-blur-sm bg-white/90 rounded-2xl border-white/20">
+                <div class="px-6 sm:px-8 py-6 sm:py-8 max-h-[70vh] ">
                     {{ $slot }}
                 </div>
             </div>

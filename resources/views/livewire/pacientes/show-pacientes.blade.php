@@ -4,197 +4,7 @@
             <div class="step">
                 <div class="flex flex-row bg-stone-50 lg:h-full lg:flex-row">
 
-                    <!-- Barra de Navegação Mobile esquerda!-->
-                    <div>
-                        <div x-data="{ step: @entangle('currentStep'), mobileMenuOpen: false }">
-                            <div x-show.transition="step === 1" class=" bg-stone-50">
-
-                                <!-- Botão Hambúrguer -->
-                                <button @click="mobileMenuOpen = !mobileMenuOpen"
-                                    class="inline-flex items-center justify-center p-3 text-gray-400 transition duration-150 ease-in-out rounded-md bg-stone-50 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 lg:hidden">
-                                    <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                        <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4 6h16M4 12h16M4 18h16" />
-                                        <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                                <div x-show="mobileMenuOpen" class="fixed inset-0 z-40 lg:hidden"
-                                    @click="mobileMenuOpen = false"></div>
-                                <!-- Nav Mobile Fullscreen -->
-                                <nav x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
-                                    x-transition:enter-start="opacity-0 -translate-x-full"
-                                    x-transition:enter-end="opacity-100 translate-x-0"
-                                    x-transition:leave="transition ease-in duration-300"
-                                    x-transition:leave-start="opacity-100 translate-x-0"
-                                    x-transition:leave-end="opacity-0 -translate-x-full"
-                                    class="fixed top-0 left-0 z-50 w-3/5 h-full bg-white border-gray-200 shadow-lg lg:static lg:z-auto lg:w-64 lg:bg-transparent lg:hidden">
-
-
-                                    <!--Botão de fechar!-->
-                                    <button @click="mobileMenuOpen = false" class="absolute top-4 left-4">
-                                        <svg class="w-6 h-6 text-gray-400 transition duration-150 ease-in-out bg-white rounded-md hover:text-gray-700 focus:outline-none 0 focus:text-gray-500 lg:hidden"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                    </button>
-
-                                    <!-- Lista!-->
-
-                                    <ul class="flex flex-col h-full p-6 space-y-4">
-                                        <!-- Dados Sociodemográficos -->
-                                        <li>
-                                            <button @click="mobileMenuOpen = false" wire:click="nextStepFirst"
-                                                class="flex items-center justify-start w-full py-3 pl-1 pr-4 mt-6 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                                </svg>
-                                                <span class="flex-1 text-sm text-left sm:text-base">Dados
-                                                    Sociodemográficos</span>
-                                            </button>
-                                        </li>
-
-                                        <!-- Histórico do Paciente -->
-                                        <li>
-                                            <button @click="mobileMenuOpen = false" wire:click="nextStepSecond"
-                                                class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                                                </svg>
-                                                <span class="flex-1 text-sm text-left sm:text-base">Histórico do
-                                                    Paciente</span>
-                                            </button>
-                                        </li>
-
-                                        <!-- Medicamentos -->
-                                        <li>
-                                            <button @click="mobileMenuOpen = false" wire:click="nextStepThird"
-                                                class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                                                </svg>
-                                                <span class="flex-1 text-sm text-left sm:text-base">Medicamentos</span>
-                                            </button>
-                                        </li>
-
-                                        <!-- Resultados -->
-                                        <li>
-                                            <button @click="mobileMenuOpen = false" wire:click="nextStepFourth"
-                                                class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                    class="w-6 h-6 mr-3 text-indigo-500" fill="none"
-                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                                </svg>
-                                                <span class="flex-1 text-sm text-left sm:text-base">Resultados</span>
-                                            </button>
-                                        </li>
-
-                                        <!-- Voltar -->
-                                        <li>
-                                            <button @click="mobileMenuOpen = false" wire:click="backToSearch"
-                                                class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                <svg class="w-6 h-6 mr-3 text-gray-500"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M15 19l-7-7 7-7" />
-                                                </svg>
-                                                <span class="flex-1 text-sm text-left sm:text-base">Voltar ao menu
-                                                    pacientes</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <nav class="flex min-h-full p-6 bg-white lg:w-64 lg:block"
-                        :class="{ 'block': open, 'hidden': !open }">
-
-
-                        <ul class="mt-6 space-y-4 lg:mt-0 lg:flex lg:flex-col">
-                            <!-- Dados Sociodemográficos -->
-                            <li>
-                                <button wire:click="nextStepFirst"
-                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Dados Sociodemográficos</span>
-                                </button>
-                            </li>
-
-                            <!-- Histórico do Paciente -->
-                            <li>
-                                <button wire:click="nextStepSecond"
-                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Histórico do Paciente</span>
-                                </button>
-                            </li>
-
-                            <!-- Medicamentos -->
-                            <li>
-                                <button wire:click="nextStepThird"
-                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Medicamentos</span>
-                                </button>
-                            </li>
-
-                            <!-- Resultados -->
-                            <li>
-                                <button wire:click="nextStepFourth"
-                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-indigo-500"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Resultados</span>
-                                </button>
-                            </li>
-
-                            <!-- Voltar -->
-                            <li>
-                                <button wire:click="backToSearch"
-                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                    <svg class="w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 19l-7-7 7-7" />
-                                    </svg>
-                                    <span class="flex-1 text-left">Voltar</span>
-                                </button>
-                            </li>
-                        </ul>
-                    </nav>
+                    <x-navigation-paciente />
 
                     <!-- Conteúdo da Página -->
 
@@ -466,200 +276,7 @@
                 <div class="step">
                     <div class="flex flex-col lg:flex-row">
 
-                        <!-- Barra de Navegação Mobile esquerda!-->
-                        <div>
-                            <div x-data="{ step: @entangle('currentStep'), mobileMenuOpen: false }">
-                                <div x-show.transition="step === 2" class="bg-stone-50">
-
-                                    <!-- Botão Hambúrguer -->
-                                    <button @click="mobileMenuOpen = !mobileMenuOpen"
-                                        class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md bg-stone-50 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 lg:hidden">
-                                        <svg class="w-6 h-6" stroke="currentColor" fill="none"
-                                            viewBox="0 0 24 24">
-                                            <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M4 6h16M4 12h16M4 18h16" />
-                                            <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                    </button>
-                                    <div x-show="mobileMenuOpen" class="fixed inset-0 z-40 lg:hidden"
-                                        @click="mobileMenuOpen = false"></div>
-                                    <!-- Nav Mobile Fullscreen -->
-                                    <nav x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
-                                        x-transition:enter-start="opacity-0 -translate-x-full"
-                                        x-transition:enter-end="opacity-100 translate-x-0"
-                                        x-transition:leave="transition ease-in duration-300"
-                                        x-transition:leave-start="opacity-100 translate-x-0"
-                                        x-transition:leave-end="opacity-0 -translate-x-full"
-                                        class="fixed top-0 left-0 z-50 w-3/5 h-full bg-white border-gray-200 shadow-lg lg:static lg:z-auto lg:w-64 lg:bg-transparent lg:hidden">
-
-                                        <!--Botão de fechar!-->
-                                        <button @click="mobileMenuOpen = false" class="absolute top-4 left-4">
-                                            <svg class="w-6 h-6 text-gray-400 transition duration-150 ease-in-out bg-white rounded-md hover:text-gray-700 focus:outline-none 0 focus:text-gray-500 lg:hidden"
-                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-
-                                        <!-- Lista!-->
-
-                                        <ul class="flex flex-col h-full p-6 space-y-4">
-                                            <!-- Dados Sociodemográficos -->
-                                            <li>
-                                                <button @click="mobileMenuOpen = false" wire:click="nextStepFirst"
-                                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 mt-6 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                    <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                                    </svg>
-                                                    <span class="flex-1 text-sm text-left sm:text-base">Dados
-                                                        Sociodemográficos</span>
-                                                </button>
-                                            </li>
-
-                                            <!-- Histórico do Paciente -->
-                                            <li>
-                                                <button @click="mobileMenuOpen = false" wire:click="nextStepSecond"
-                                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                    <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                                                    </svg>
-                                                    <span class="flex-1 text-sm text-left sm:text-base">Histórico do
-                                                        Paciente</span>
-                                                </button>
-                                            </li>
-
-                                            <!-- Medicamentos -->
-                                            <li>
-                                                <button @click="mobileMenuOpen = false" wire:click="nextStepThird"
-                                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                    <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                                                    </svg>
-                                                    <span
-                                                        class="flex-1 text-sm text-left sm:text-base">Medicamentos</span>
-                                                </button>
-                                            </li>
-
-                                            <!-- Resultados -->
-                                            <li>
-                                                <button @click="mobileMenuOpen = false" wire:click="nextStepFourth"
-                                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="w-6 h-6 mr-3 text-indigo-500" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                                    </svg>
-                                                    <span
-                                                        class="flex-1 text-sm text-left sm:text-base">Resultados</span>
-                                                </button>
-                                            </li>
-
-                                            <!-- Voltar -->
-                                            <li>
-                                                <button @click="mobileMenuOpen = false" wire:click="backToSearch"
-                                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                    <svg class="w-6 h-6 mr-3 text-gray-500"
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2" d="M15 19l-7-7 7-7" />
-                                                    </svg>
-                                                    <span class="flex-1 text-sm text-left sm:text-base">Voltar ao menu
-                                                        pacientes</span>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Barra navegação lg -->
-                        <nav class="flex min-h-full p-6 bg-white lg:w-64 lg:block"
-                            :class="{ 'block': open, 'hidden': !open }">
-                            <ul class="space-y-4">
-                                <!-- Dados Sociodemográficos -->
-                                <li>
-                                    <button wire:click="nextStepFirst"
-                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                        <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                            stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                        </svg>
-                                        <span class="flex-1 text-left">Dados Sociodemográficos</span>
-                                    </button>
-                                </li>
-
-                                <!-- Histórico do Paciente -->
-                                <li>
-                                    <button wire:click="nextStepSecond"
-                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                        <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                            stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                                        </svg>
-                                        <span class="flex-1 text-left">Histórico do Paciente</span>
-                                    </button>
-                                </li>
-
-                                <!-- Medicamentos -->
-                                <li>
-                                    <button wire:click="nextStepThird"
-                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                        <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                            stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                                        </svg>
-                                        <span class="flex-1 text-left">Medicamentos</span>
-                                    </button>
-                                </li>
-
-                                <!-- Resultados -->
-                                <li>
-                                    <button wire:click="nextStepFourth"
-                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-indigo-500"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                            stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                        </svg>
-                                        <span class="flex-1 text-left">Resultados</span>
-                                    </button>
-                                </li>
-
-                                <!-- Voltar -->
-                                <li>
-                                    <button wire:click="backToSearch"
-                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                        <svg class="w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M15 19l-7-7 7-7" />
-                                        </svg>
-                                        <span class="flex-1 text-left">Voltar</span>
-                                    </button>
-                                </li>
-                            </ul>
-                        </nav>
+                        <x-navigation-paciente />
 
                         <!-- Conteúdo da Página -->
                         <main class="flex-1 p-6 bg-stone-50">
@@ -812,7 +429,7 @@
                                                     <input type="checkbox" id="alergia_{{ $alergia->id }}"
                                                         wire:model="alergias" value="{{ $alergia->id }}"
                                                         class="mr-2 text-blue-600 focus:ring-blue-500"
-                                                        {{ in_array($alergia->id, $alergias) ? 'checked' : '' }}>
+                                                        {{ in_array($alergia->id, $alergias) ? 'checked' : '' }} />
                                                     <label for="alergia_{{ $alergia->id }}"
                                                         class="text-sm text-gray-700">{{ $alergia->descricao }}</label>
                                                 </div>
@@ -821,6 +438,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </main>
                     </div>
                 </div>
             @endif
@@ -833,202 +451,7 @@
                     <div class="flex flex-row bg-stone-50 lg:h-full lg:flex-row">
                         <!-- Barra de Navegação -->
 
-                        <!-- Barra de Navegação Mobile esquerda!-->
-                        <div>
-                            <div x-data="{ step: @entangle('currentStep'), mobileMenuOpen: false }">
-                                <div x-show.transition="step === 3" class="bg-stone-50">
-
-                                    <!-- Botão Hambúrguer -->
-                                    <button @click="mobileMenuOpen = !mobileMenuOpen"
-                                        class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md bg-stone-50 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 lg:hidden">
-                                        <svg class="w-6 h-6" stroke="currentColor" fill="none"
-                                            viewBox="0 0 24 24">
-                                            <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M4 6h16M4 12h16M4 18h16" />
-                                            <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                    </button>
-                                    <div x-show="mobileMenuOpen" class="fixed inset-0 z-40 lg:hidden"
-                                        @click="mobileMenuOpen = false"></div>
-                                    <!-- Nav Mobile Fullscreen -->
-                                    <nav x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
-                                        x-transition:enter-start="opacity-0 -translate-x-full"
-                                        x-transition:enter-end="opacity-100 translate-x-0"
-                                        x-transition:leave="transition ease-in duration-300"
-                                        x-transition:leave-start="opacity-100 translate-x-0"
-                                        x-transition:leave-end="opacity-0 -translate-x-full"
-                                        class="fixed top-0 left-0 z-50 w-3/5 h-full bg-white border-gray-200 shadow-lg lg:static lg:z-auto lg:w-64 lg:bg-transparent lg:hidden">
-
-                                        <!--Botão de fechar!-->
-                                        <button @click="mobileMenuOpen = false" class="absolute top-4 left-4">
-                                            <svg class="w-6 h-6 text-gray-400 transition duration-150 ease-in-out bg-white rounded-md hover:text-gray-700 focus:outline-none 0 focus:text-gray-500 lg:hidden"
-                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-
-                                        <!-- Lista!-->
-
-                                        <ul class="flex flex-col h-full p-6 space-y-4">
-                                            <!-- Dados Sociodemográficos -->
-                                            <li>
-                                                <button @click="mobileMenuOpen = false" wire:click="nextStepFirst"
-                                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 mt-6 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                    <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                                    </svg>
-                                                    <span class="flex-1 text-sm text-left sm:text-base">Dados
-                                                        Sociodemográficos</span>
-                                                </button>
-                                            </li>
-
-                                            <!-- Histórico do Paciente -->
-                                            <li>
-                                                <button @click="mobileMenuOpen = false" wire:click="nextStepSecond"
-                                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                    <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                                                    </svg>
-                                                    <span class="flex-1 text-sm text-left sm:text-base">Histórico
-                                                        do
-                                                        Paciente</span>
-                                                </button>
-                                            </li>
-
-                                            <!-- Medicamentos -->
-                                            <li>
-                                                <button @click="mobileMenuOpen = false" wire:click="nextStepThird"
-                                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                    <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                                                    </svg>
-                                                    <span
-                                                        class="flex-1 text-sm text-left sm:text-base">Medicamentos</span>
-                                                </button>
-                                            </li>
-
-                                            <!-- Resultados -->
-                                            <li>
-                                                <button @click="mobileMenuOpen = false" wire:click="nextStepFourth"
-                                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="w-6 h-6 mr-3 text-indigo-500" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                                    </svg>
-                                                    <span
-                                                        class="flex-1 text-sm text-left sm:text-base">Resultados</span>
-                                                </button>
-                                            </li>
-
-                                            <!-- Voltar -->
-                                            <li>
-                                                <button @click="mobileMenuOpen = false" wire:click="backToSearch"
-                                                    class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                    <svg class="w-6 h-6 mr-3 text-gray-500"
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2" d="M15 19l-7-7 7-7" />
-                                                    </svg>
-                                                    <span class="flex-1 text-sm text-left sm:text-base">Voltar ao
-                                                        menu
-                                                        pacientes</span>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Barra navegação xl -->
-                        <nav class="flex min-h-full p-6 bg-white lg:w-64 lg:block"
-                            :class="{ 'block': open, 'hidden': !open }">
-                            <ul class="space-y-4">
-                                <!-- Dados Sociodemográficos -->
-                                <li>
-                                    <button wire:click="nextStepFirst"
-                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                        <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                            stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                        </svg>
-                                        <span class="flex-1 text-left">Dados Sociodemográficos</span>
-                                    </button>
-                                </li>
-
-                                <!-- Histórico do Paciente -->
-                                <li>
-                                    <button wire:click="nextStepSecond"
-                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                        <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                            stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                                        </svg>
-                                        <span class="flex-1 text-left">Histórico do Paciente</span>
-                                    </button>
-                                </li>
-
-                                <!-- Medicamentos -->
-                                <li>
-                                    <button wire:click="nextStepThird"
-                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                        <svg class="w-6 h-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                            stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                                        </svg>
-                                        <span class="flex-1 text-left">Medicamentos</span>
-                                    </button>
-                                </li>
-
-                                <!-- Resultados -->
-                                <li>
-                                    <button wire:click="nextStepFourth"
-                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-indigo-500"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                            stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                        </svg>
-                                        <span class="flex-1 text-left">Resultados</span>
-                                    </button>
-                                </li>
-
-                                <!-- Voltar -->
-                                <li>
-                                    <button wire:click="backToSearch"
-                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                        <svg class="w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M15 19l-7-7 7-7" />
-                                        </svg>
-                                        <span class="flex-1 text-left">Voltar</span>
-                                    </button>
-                                </li>
-                            </ul>
-                        </nav>
+                        <x-navigation-paciente />
                         <!-- Conteúdo da Página -->
                         <main class="flex-1 min-h-screen p-6 bg-stone-50">
                             <div class="flex flex-col w-full gap-4 sm:flex-row sm:justify-between sm:items-center">
@@ -1133,209 +556,7 @@
                     <div class="step">
                         <div class="flex flex-col lg:flex-row">
 
-                            <!-- Barra de Navegação Mobile esquerda!-->
-                            <div>
-                                <div x-data="{ step: @entangle('currentStep'), mobileMenuOpen: false }">
-                                    <div x-show.transition="step === 4" class="bg-stone-50">
-
-                                        <!-- Botão Hambúrguer -->
-                                        <button @click="mobileMenuOpen = !mobileMenuOpen"
-                                            class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md bg-stone-50 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 lg:hidden">
-                                            <svg class="w-6 h-6" stroke="currentColor" fill="none"
-                                                viewBox="0 0 24 24">
-                                                <path :class="{ 'hidden': open, 'inline-flex': !open }"
-                                                    class="inline-flex" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2"
-                                                    d="M4 6h16M4 12h16M4 18h16" />
-                                                <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden"
-                                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                        <div x-show="mobileMenuOpen" class="fixed inset-0 z-40 lg:hidden"
-                                            @click="mobileMenuOpen = false"></div>
-                                        <!-- Nav Mobile Fullscreen -->
-                                        <nav x-show="mobileMenuOpen"
-                                            x-transition:enter="transition ease-out duration-300"
-                                            x-transition:enter-start="opacity-0 -translate-x-full"
-                                            x-transition:enter-end="opacity-100 translate-x-0"
-                                            x-transition:leave="transition ease-in duration-300"
-                                            x-transition:leave-start="opacity-100 translate-x-0"
-                                            x-transition:leave-end="opacity-0 -translate-x-full"
-                                            class="fixed top-0 left-0 z-50 w-3/5 h-full bg-white border-gray-200 shadow-lg lg:static lg:z-auto lg:w-64 lg:bg-transparent lg:hidden">
-
-                                            <!--Botão de fechar!-->
-                                            <button @click="mobileMenuOpen = false" class="absolute top-4 left-4">
-                                                <svg class="w-6 h-6 text-gray-400 transition duration-150 ease-in-out bg-white rounded-md hover:text-gray-700 focus:outline-none 0 focus:text-gray-500 lg:hidden"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                            </button>
-
-                                            <!-- Lista!-->
-
-                                            <ul class="flex flex-col h-full p-6 space-y-4">
-                                                <!-- Dados Sociodemográficos -->
-                                                <li>
-                                                    <button @click="mobileMenuOpen = false" wire:click="nextStepFirst"
-                                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 mt-6 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                        <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="2"
-                                                            stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                                        </svg>
-                                                        <span class="flex-1 text-sm text-left sm:text-base">Dados
-                                                            Sociodemográficos</span>
-                                                    </button>
-                                                </li>
-
-                                                <!-- Histórico do Paciente -->
-                                                <li>
-                                                    <button @click="mobileMenuOpen = false"
-                                                        wire:click="nextStepSecond"
-                                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                        <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="2"
-                                                            stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                                                        </svg>
-                                                        <span class="flex-1 text-sm text-left sm:text-base">Histórico
-                                                            do Paciente</span>
-                                                    </button>
-                                                </li>
-
-                                                <!-- Medicamentos -->
-                                                <li>
-                                                    <button @click="mobileMenuOpen = false" wire:click="nextStepThird"
-                                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                        <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="2"
-                                                            stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                                                        </svg>
-                                                        <span
-                                                            class="flex-1 text-sm text-left sm:text-base">Medicamentos</span>
-                                                    </button>
-                                                </li>
-
-                                                <!-- Resultados -->
-                                                <li>
-                                                    <button @click="mobileMenuOpen = false"
-                                                        wire:click="nextStepFourth"
-                                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="w-6 h-6 mr-3 text-indigo-500" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="2"
-                                                            stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                                        </svg>
-                                                        <span
-                                                            class="flex-1 text-sm text-left sm:text-base">Resultados</span>
-                                                    </button>
-                                                </li>
-
-                                                <!-- Voltar -->
-                                                <li>
-                                                    <button @click="mobileMenuOpen = false" wire:click="backToSearch"
-                                                        class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                                        <svg class="w-6 h-6 mr-3 text-gray-500"
-                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M15 19l-7-7 7-7" />
-                                                        </svg>
-                                                        <span class="flex-1 text-sm text-left sm:text-base">Voltar
-                                                            ao
-                                                            menu pacientes</span>
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Barra de Navegação -->
-                            <nav class="flex min-h-full p-6 bg-white lg:w-64 lg:block"
-                                :class="{ 'block': open, 'hidden': !open }">
-                                <ul class="space-y-4">
-                                    <!-- Dados Sociodemográficos -->
-                                    <li>
-                                        <button wire:click="nextStepFirst"
-                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                            <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="2" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                            </svg>
-                                            <span class="flex-1 text-left">Dados Sociodemográficos</span>
-                                        </button>
-                                    </li>
-
-                                    <!-- Histórico do Paciente -->
-                                    <li>
-                                        <button wire:click="nextStepSecond"
-                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                            <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="2" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                                            </svg>
-                                            <span class="flex-1 text-left">Histórico do Paciente</span>
-                                        </button>
-                                    </li>
-
-                                    <!-- Medicamentos -->
-                                    <li>
-                                        <button wire:click="nextStepThird"
-                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                            <svg class="w-6 h-6 mr-3 text-indigo-500"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="2" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                                            </svg>
-                                            <span class="flex-1 text-left">Medicamentos</span>
-                                        </button>
-                                    </li>
-
-                                    <!-- Resultados -->
-                                    <li>
-                                        <button wire:click="nextStepFourth"
-                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="w-6 h-6 mr-3 text-indigo-500" fill="none"
-                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M9 7.5v9m6-9v9m-9-6h12M4.5 18.75h15a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0019.5 5.25h-15a2.25 2.25 0 00-2.25 2.25v9A2.25 2.25 0 004.5 18.75z" />
-                                            </svg>
-                                            <span class="flex-1 text-left">Resultados</span>
-                                        </button>
-                                    </li>
-
-                                    <!-- Voltar -->
-                                    <li>
-                                        <button wire:click="backToSearch"
-                                            class="flex items-center justify-start w-full py-3 pl-1 pr-4 text-gray-800 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 hover:text-indigo-700">
-                                            <svg class="w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M15 19l-7-7 7-7" />
-                                            </svg>
-                                            <span class="flex-1 text-left">Voltar</span>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <x-navigation-paciente />
 
                             <!-- Conteúdo da Página -->
                             <main class="flex-1 min-h-screen p-6 bg-stone-50">
@@ -1403,6 +624,74 @@
                                     class="px-4 py-2 mt-1 mb-4 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                     Adicionar Resultado
                                 </button>
+                            </main>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+        <div x-data="{ step: @entangle('currentStep'), open: false }">
+            <div x-show="step === 5" x-transition>
+                @if ($currentStep == 5)
+                    <div class="step">
+                        <div class="flex flex-col lg:flex-row">
+
+                            <x-navigation-paciente />
+
+                            <!-- Conteúdo da Página -->
+                            <main class="flex-1 min-h-screen p-6 bg-stone-50">
+                                <div class="flex flex-col w-full gap-4 sm:flex-row sm:justify-between sm:items-center">
+                                    <div class="flex items-center">
+                                        <h2
+                                            class="pt-2 pb-4 text-2xl font-semibold text-indigo-900 sm:text-3xl md:text-4xl lg:text-5xl">
+                                            {{ $nome }}
+                                        </h2>
+                                    </div>
+
+                                    <div class="flex flex-col items-center w-full gap-4 sm:flex-row sm:w-auto">
+                                        <div x-data="{ show: false, message: '' }" x-show="show"
+                                            x-transition:enter="transition ease-out duration-300"
+                                            x-transition:enter-start="opacity-0 transform translate-x-full"
+                                            x-transition:enter-end="opacity-100 transform translate-x-0"
+                                            x-transition:leave="transition ease-in duration-300"
+                                            x-transition:leave-start="opacity-100 transform translate-x-0"
+                                            x-transition:leave-end="opacity-0 transform translate-x-full"
+                                            @notify.window="
+                                    show = true;
+                                    message = $event.detail;
+                                    setTimeout(() => show = false, 3000)"
+                                            class="flex items-center justify-center w-full h-12 px-4 text-green-600 bg-green-200 rounded-lg sm:w-auto">
+                                            <span x-text="message" class="text-sm sm:text-base"></span>
+                                        </div>
+
+                                        <button wire:click="updatePaciente('{{ $IdPaciente }}')"
+                                            class="w-full px-4 py-2 text-sm text-white bg-teal-500 rounded-md shadow-sm sm:w-40 hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:text-base">
+                                            Salvar alterações
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="max-w-2xl space-y-6 py-5">
+                                    <h3 class="text-xl font-bold text-black">Unidade de Saúde do Paciente</h3>
+
+                                    <div>
+                                        <label for="unidade_saude_id"
+                                            class="block mb-2 text-sm font-medium text-gray-700">
+                                            Selecione a Unidade de Saúde:
+                                        </label>
+                                        <select wire:model="unidade_saude_id" id="unidade_saude_id"
+                                            class="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-white">
+                                            <option value="">Selecione...</option>
+                                            @foreach ($unidadesSaude as $unidade)
+                                                <option value="{{ $unidade->id }}">{{ $unidade->nome }}</option>
+                                            @endforeach
+                                        </select>
+
+                                        @error('unidade_saude_id')
+                                            <span class="text-sm text-red-500">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </main>
                         </div>
                     </div>

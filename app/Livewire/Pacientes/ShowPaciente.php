@@ -174,6 +174,10 @@ class ShowPaciente extends Component
             $this->validate([
                 'resultados.*.texto_resultado' => 'required|string',
             ]);
+        } elseif ($this->currentStep == 5) {
+            $this->validate([
+                'unidade_saude_id' => 'required|exists:unidade_saudes,id',
+            ]);
         }
     }
 
@@ -233,6 +237,12 @@ class ShowPaciente extends Component
     {
         $this->validateStep();
         $this->currentStep = 4;
+    }
+
+    public function nextStepFifth()
+    {
+        $this->validateStep();
+        $this->currentStep = 5;
     }
 
     public function backToSearch()

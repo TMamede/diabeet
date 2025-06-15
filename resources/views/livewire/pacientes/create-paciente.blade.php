@@ -1167,7 +1167,7 @@
                                                     Unidades Encontradas ({{ sizeof($unidades) }})
                                                 </h3>
 
-                                                <div class="space-y-3 max-h-96 overflow-y-auto">
+                                                <div class="space-y-3 ">
                                                     @foreach ($unidades as $unidade)
                                                         <div class="group relative bg-white rounded-xl border border-gray-200 p-4 cursor-pointer transition-all duration-200 hover:border-indigo-300 hover:shadow-md hover:scale-[1.02]"
                                                             wire:click="selectUnidade({{ $unidade->id }})">
