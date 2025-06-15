@@ -1,4 +1,4 @@
-@props(['label', 'id', 'options' => []])
+@props(['label', 'id', 'options' => [], 'optionValue' => 'id', 'optionLabel' => 'descricao'])
 
 <div class="group">
     <label for="{{ $id }}" class="block text-sm font-medium text-gray-700 mb-1">{{ $label }}</label>
@@ -7,7 +7,7 @@
         class="block w-full px-4 py-3 border border-gray-200 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-200 focus:ring-2 bg-white/90">
         <option value="">Selecione</option>
         @foreach ($options as $opt)
-            <option value="{{ $opt->id }}">{{ $opt->descricao }}</option>
+            <option value="{{ $opt->{$optionValue} }}">{{ $opt->{$optionLabel} }}</option>
         @endforeach
     </select>
     @error($attributes->wire('model')->value())

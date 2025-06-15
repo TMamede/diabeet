@@ -178,427 +178,1117 @@
         <div x-show="step === 2" x-transition>
             {{-- Etapa 2: Histórico do Paciente --}}
             @if ($currentStep == 2)
-                <div class="step">
-                    <h2 class="py-5 mb-10 text-4xl font-bold text-indigo-900">Histórico do Paciente</h2>
+                <div
+                    class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
 
-                    <div class="mb-6">
-                        <label for="tipo_diabetes_id" class="block mb-2 font-medium text-gray-700">Tipo de
-                            Diabetes</label>
-                        <select wire:model="tipo_diabetes_id" id="tipo_diabetes_id"
-                            class="block w-1/3 p-2 border-gray-300 rounded-lg shadow-sm form-select focus:ring-indigo-500 focus:border-indigo-500">
-                            <option value="">Selecione</option>
-                            @foreach ($tipoDiabetes as $tipo)
-                                <option value="{{ $tipo->id }}">{{ $tipo->tipo }}</option>
-                            @endforeach
-                        </select>
-                        @error('tipo_diabetes_id')
-                            <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                        @enderror
+                    <!-- Elementos de fundo otimizados -->
+                    <div class="absolute inset-0 pointer-events-none -z-10">
+                        <div class="absolute w-60 h-60 bg-indigo-200 rounded-full top-12 left-12 opacity-20"></div>
+                        <div class="absolute w-64 h-64 bg-purple-200 rounded-full top-24 right-12 opacity-15"></div>
+                        <div class="absolute w-56 h-56 bg-pink-200 rounded-full bottom-12 left-20 opacity-10"></div>
                     </div>
 
-                    <!-- Comorbidades -->
-                    <div class="mb-6">
-                        <label class="block mb-2 font-medium text-gray-700">Comorbidades</label>
-                        <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
-                            @foreach ($comorbidadesList as $comorbidade)
-                                <div class="flex items-center">
-                                    <input type="checkbox" wire:model="comorbidades" value="{{ $comorbidade->id }}"
-                                        id="comorbidade-{{ $comorbidade->id }}"
-                                        class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                                    <label for="comorbidade-{{ $comorbidade->id }}" class="ml-2 text-gray-700">
-                                        {{ $comorbidade->descricao }}
-                                    </label>
+                    <div class="relative z-10 flex-grow">
+                        <!-- Cabeçalho -->
+                        <header class="py-10 text-center">
+                            <div class="container px-6 mx-auto">
+                                <h1 class="text-5xl font-extrabold text-indigo-900">So<span
+                                        class="text-indigo-600">Pe</span>P</h1>
+                                <p class="text-lg text-gray-600 mt-3">Histórico do <span
+                                        class="text-indigo-600">Paciente</span></p>
+                                <p class="text-sm text-gray-500 mt-1 max-w-xl mx-auto">Preencha as informações clínicas
+                                    e histórico médico do paciente.</p>
+                            </div>
+                        </header>
+
+                        <!-- Formulário -->
+                        <main class="container px-6 mx-auto pb-16">
+                            <div
+                                class="max-w-6xl mx-auto bg-white/80 rounded-2xl border border-white/30 shadow p-8 md:p-12">
+
+                                <!-- Título da seção -->
+                                <div class="text-center mb-10">
+                                    <h2 class="text-3xl font-bold text-indigo-900">Histórico Clínico</h2>
+                                    <div class="w-24 h-1 mx-auto bg-indigo-600 mt-2 rounded-full"></div>
                                 </div>
-                            @endforeach
-                        </div>
-                        @error('comorbidades')
-                            <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
 
-                    <!-- Alergias -->
-                    <div class="mb-6">
-                        <label class="block mb-2 font-medium text-gray-700">Alergias</label>
-                        <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
-                            @foreach ($alergiasList as $alergia)
-                                <div class="flex items-center">
-                                    <input type="checkbox" wire:model="alergias" value="{{ $alergia->id }}"
-                                        id="alergia-{{ $alergia->id }}"
-                                        class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                                    <label for="alergia-{{ $alergia->id }}" class="ml-2 text-gray-700">
-                                        {{ $alergia->descricao }}
-                                    </label>
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                                    <!-- Coluna 1 -->
+                                    <div class="space-y-6">
+
+                                        <!-- Informações sobre Diabetes -->
+                                        <section class="bg-indigo-50/50 border border-indigo-100/40 rounded-xl p-6">
+                                            <h3 class="text-lg font-semibold text-indigo-800 mb-4">Informações sobre
+                                                Diabetes</h3>
+                                            <div class="space-y-4">
+                                                <div>
+
+                                                    <x-select label="Tipo de Diabetes" id="tipo_diabetes_id"
+                                                        wire:model.lazy="tipo_diabetes_id" :options="$tipoDiabetes"
+                                                        option-value="id" option-label="tipo" />
+                                                    @error('tipo_diabetes_id')
+                                                        <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <!-- Comorbidades -->
+                                        <section class="bg-purple-50/50 border border-purple-100/40 rounded-xl p-6">
+                                            <h3 class="text-lg font-semibold text-purple-800 mb-4">Comorbidades</h3>
+                                            <div class="space-y-3 max-h-60 overflow-y-auto pr-2">
+                                                @foreach ($comorbidadesList as $comorbidade)
+                                                    <div
+                                                        class="flex items-center p-2 rounded-lg hover:bg-purple-50 transition-colors">
+                                                        <input type="checkbox" wire:model="comorbidades"
+                                                            value="{{ $comorbidade->id }}"
+                                                            id="comorbidade-{{ $comorbidade->id }}"
+                                                            class="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500">
+                                                        <label for="comorbidade-{{ $comorbidade->id }}"
+                                                            class="ml-3 text-sm text-gray-700 cursor-pointer">
+                                                            {{ $comorbidade->descricao }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            @error('comorbidades')
+                                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </section>
+
+                                        <!-- Cirurgias -->
+                                        <section class="bg-pink-50/50 border border-pink-100/40 rounded-xl p-6">
+                                            <h3 class="text-lg font-semibold text-pink-800 mb-4">Histórico Cirúrgico
+                                            </h3>
+                                            <div class="space-y-4">
+                                                <div>
+                                                    <label for="cirurgia_motivo"
+                                                        class="block mb-2 text-sm font-medium text-gray-700">Já
+                                                        realizou alguma cirurgia? Se sim, qual?</label>
+                                                    <textarea wire:model="cirurgia_motivo" id="cirurgia_motivo" rows="3"
+                                                        class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all duration-200"
+                                                        placeholder="Descreva as cirurgias realizadas..."></textarea>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                    </div>
+
+                                    <!-- Coluna 2 -->
+                                    <div class="space-y-6">
+
+                                        <!-- Alergias -->
+                                        <section class="bg-indigo-50/50 border border-indigo-100/40 rounded-xl p-6">
+                                            <h3 class="text-lg font-semibold text-indigo-800 mb-4">Alergias</h3>
+                                            <div class="space-y-3 max-h-60 overflow-y-auto pr-2">
+                                                @foreach ($alergiasList as $alergia)
+                                                    <div
+                                                        class="flex items-center p-2 rounded-lg hover:bg-indigo-50 transition-colors">
+                                                        <input type="checkbox" wire:model="alergias"
+                                                            value="{{ $alergia->id }}"
+                                                            id="alergia-{{ $alergia->id }}"
+                                                            class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                                                        <label for="alergia-{{ $alergia->id }}"
+                                                            class="ml-3 text-sm text-gray-700 cursor-pointer">
+                                                            {{ $alergia->descricao }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            @error('alergias')
+                                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </section>
+
+                                        <!-- Amputação -->
+                                        <section class="bg-purple-50/50 border border-purple-100/40 rounded-xl p-6">
+                                            <h3 class="text-lg font-semibold text-purple-800 mb-4">Histórico de
+                                                Amputação</h3>
+                                            <div class="space-y-4">
+                                                <div>
+                                                    <label class="block mb-3 text-sm font-medium text-gray-700">Já
+                                                        realizou amputação?</label>
+                                                    <div class="flex space-x-3" x-data="{ selecionado: @entangle('realizou_amputacao') }">
+                                                        <button type="button"
+                                                            wire:click="$set('realizou_amputacao', 'sim')"
+                                                            :class="selecionado === 'sim' ?
+                                                                'bg-gradient-to-r from-red-400 to-red-500 text-white shadow-lg' :
+                                                                'bg-gray-200 text-gray-700'"
+                                                            class="flex-1 px-4 py-3 text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200">
+                                                            Sim
+                                                        </button>
+                                                        <button type="button"
+                                                            wire:click="$set('realizou_amputacao', 'nao')"
+                                                            :class="selecionado === 'nao' ?
+                                                                'bg-gradient-to-r from-green-400 to-green-500 text-white shadow-lg' :
+                                                                'bg-gray-200 text-gray-700'"
+                                                            class="flex-1 px-4 py-3 text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200">
+                                                            Não
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Campos condicionais para amputação -->
+                                                @if ($realizou_amputacao === 'sim')
+                                                    <div class="space-y-4 animate-fadeIn">
+                                                        <div>
+                                                            <label for="amputacao_onde"
+                                                                class="block mb-2 text-sm font-medium text-gray-700">Onde
+                                                                realizou a amputação?</label>
+                                                            <input type="text" wire:model.lazy="amputacao_onde"
+                                                                id="amputacao_onde"
+                                                                class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200"
+                                                                placeholder="Ex: Dedo do pé direito">
+                                                            @error('amputacao_onde')
+                                                                <span
+                                                                    class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                        <div>
+                                                            <label for="amputacao_quando"
+                                                                class="block mb-2 text-sm font-medium text-gray-700">Quando
+                                                                foi a amputação?</label>
+                                                            <input type="date" wire:model.lazy="amputacao_quando"
+                                                                id="amputacao_quando"
+                                                                class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200">
+                                                            @error('amputacao_quando')
+                                                                <span
+                                                                    class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </section>
+
+                                        <!-- Tabagismo -->
+                                        <section class="bg-pink-50/50 border border-pink-100/40 rounded-xl p-6">
+                                            <h3 class="text-lg font-semibold text-pink-800 mb-4">Tabagismo</h3>
+                                            <div class="space-y-4">
+                                                <div>
+                                                    <label class="block mb-3 text-sm font-medium text-gray-700">É
+                                                        tabagista?</label>
+                                                    <div class="flex space-x-3" x-data="{ selecionado: @entangle('tabagista') }">
+                                                        <button type="button" wire:click="$set('tabagista', 'sim')"
+                                                            :class="selecionado === 'sim' ?
+                                                                'bg-gradient-to-r from-red-400 to-red-500 text-white shadow-lg' :
+                                                                'bg-gray-200 text-gray-700'"
+                                                            class="flex-1 px-4 py-3 text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200">
+                                                            Sim
+                                                        </button>
+                                                        <button type="button" wire:click="$set('tabagista', 'nao')"
+                                                            :class="selecionado === 'nao' ?
+                                                                'bg-gradient-to-r from-green-400 to-green-500 text-white shadow-lg' :
+                                                                'bg-gray-200 text-gray-700'"
+                                                            class="flex-1 px-4 py-3 text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200">
+                                                            Não
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Campos condicionais para tabagismo -->
+                                                @if ($tabagista === 'sim')
+                                                    <div class="space-y-4 animate-fadeIn">
+                                                        <div>
+                                                            <label for="n_cigarros"
+                                                                class="block mb-2 text-sm font-medium text-gray-700">Número
+                                                                de Cigarros Diários</label>
+                                                            <input type="number" wire:model.lazy="n_cigarros"
+                                                                id="n_cigarros" min="0"
+                                                                class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all duration-200"
+                                                                placeholder="Ex: 10">
+                                                            @error('n_cigarros')
+                                                                <span
+                                                                    class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                        <div>
+                                                            <label for="inicio_tabagismo"
+                                                                class="block mb-2 text-sm font-medium text-gray-700">Início
+                                                                do Tabagismo</label>
+                                                            <input type="date" wire:model.lazy="inicio_tabagismo"
+                                                                id="inicio_tabagismo"
+                                                                class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all duration-200">
+                                                            @error('inicio_tabagismo')
+                                                                <span
+                                                                    class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </section>
+
+                                        <!-- Etilismo -->
+                                        <section class="bg-indigo-50/50 border border-indigo-100/40 rounded-xl p-6">
+                                            <h3 class="text-lg font-semibold text-indigo-800 mb-4">Etilismo</h3>
+                                            <div class="space-y-4">
+                                                <div>
+                                                    <label class="block mb-3 text-sm font-medium text-gray-700">É
+                                                        etilista?</label>
+                                                    <div class="flex space-x-3" x-data="{ selecionado: @entangle('etilista') }">
+                                                        <button type="button" wire:click="$set('etilista', 'sim')"
+                                                            :class="selecionado === 'sim' ?
+                                                                'bg-gradient-to-r from-red-400 to-red-500 text-white shadow-lg' :
+                                                                'bg-gray-200 text-gray-700'"
+                                                            class="flex-1 px-4 py-3 text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200">
+                                                            Sim
+                                                        </button>
+                                                        <button type="button" wire:click="$set('etilista', 'nao')"
+                                                            :class="selecionado === 'nao' ?
+                                                                'bg-gradient-to-r from-green-400 to-green-500 text-white shadow-lg' :
+                                                                'bg-gray-200 text-gray-700'"
+                                                            class="flex-1 px-4 py-3 text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200">
+                                                            Não
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Campos condicionais para etilismo -->
+                                                @if ($etilista === 'sim')
+                                                    <div class="space-y-4 animate-fadeIn">
+                                                        <div>
+                                                            <label for="inicio_etilismo"
+                                                                class="block mb-2 text-sm font-medium text-gray-700">Início
+                                                                do Etilismo</label>
+                                                            <input type="date" wire:model.lazy="inicio_etilismo"
+                                                                id="inicio_etilismo"
+                                                                class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200">
+                                                            @error('inicio_etilismo')
+                                                                <span
+                                                                    class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </section>
+
+                                    </div>
                                 </div>
-                            @endforeach
-                        </div>
-                        @error('alergias')
-                            <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                        @enderror
+
+                                <!-- Botões de Navegação -->
+                                <div class="flex justify-center space-x-6 mt-12">
+                                    <button type="button" wire:click="previousStep"
+                                        class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-indigo-700 bg-white border-2 border-indigo-500 rounded-2xl shadow-lg transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                        <span class="flex items-center">
+                                            <svg class="w-5 h-5 mr-3 group-hover:-translate-x-1 transition-transform duration-200"
+                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                                            </svg>
+                                            Voltar
+                                        </span>
+                                    </button>
+
+                                    <button type="button" wire:click="nextStep"
+                                        class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transform bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 shadow-2xl group rounded-2xl hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 transition-all duration-300">
+                                        <span class="flex items-center">
+                                            <svg class="w-5 h-5 mr-3 group-hover:translate-x-1 transition-transform duration-200"
+                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                            </svg>
+                                            Continuar para Próxima Etapa
+                                        </span>
+                                        <div
+                                            class="absolute inset-0 bg-white rounded-2xl opacity-0 group-hover:opacity-10 duration-300">
+                                        </div>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </main>
                     </div>
 
-                    <div class="mb-6">
-                        <label for="cirurgia_motivo" class="block mb-2 font-medium text-gray-700">Já realizou alguma
-                            cirurgia? Se sim qual?</label>
-                        <input type="text" wire:model="cirurgia_motivo" id="cirurgia_motivo"
-                            class="block w-1/2 border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500">
-                        @error('cirurgia_motivo')
-                            <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="mb-6">
-                        <label for="realizou_amputacao" class="block mb-2 font-medium text-gray-700">Já realizou
-                            amputação?</label>
-                        <div class="flex items-center space-x-4">
-                            <div x-data="{ selecionado: @entangle('realizou_amputacao') }">
-                                <button type="button" wire:click="$set('realizou_amputacao', 'sim')"
-                                    :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'"
-                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-cyan-200">
-                                    Sim
-                                </button>
-
-                                <button type="button" wire:click="$set('realizou_amputacao', 'nao')"
-                                    :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'"
-                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-red-200">
-                                    Não
-                                </button>
+                    <!-- Footer -->
+                    <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
+                        <div class="container px-6 mx-auto">
+                            <div class="flex flex-col items-center justify-between md:flex-row">
+                                <div class="mb-4 md:mb-0">
+                                    <h4 class="text-xl font-bold">SoPeP</h4>
+                                    <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônica para Pé
+                                        Diabético</p>
+                                </div>
+                                <div class="text-center md:text-right">
+                                    <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.
+                                    </p>
+                                    <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus
+                                        pacientes</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </footer>
 
-                    <!-- Exibe os campos de amputação somente se a resposta for "sim" -->
-                    @if ($realizou_amputacao === 'sim')
-                        <div class="mb-6">
-                            <label for="amputacao_onde" class="block mb-2 font-medium text-gray-700">Onde realizou a
-                                amputação?</label>
-                            <input type="text" wire:model.lazy="amputacao_onde" id="amputacao_onde"
-                                class="block w-1/3 border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500">
-                            @error('amputacao_onde')
-                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    <style>
+                        @keyframes fadeIn {
+                            from {
+                                opacity: 0;
+                                transform: translateY(-10px);
+                            }
 
-                        <div class="mb-6">
-                            <label for="amputacao_quando" class="block mb-2 font-medium text-gray-700">Quando foi a
-                                Amputação?</label>
-                            <input type="date" wire:model.lazy="amputacao_quando" id="amputacao_quando"
-                                class="block w-1/3 border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500">
-                            @error('amputacao_quando')
-                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    @endif
+                            to {
+                                opacity: 1;
+                                transform: translateY(0);
+                            }
+                        }
 
-                    <div class="mb-6">
-                        <label for="tabagista" class="block mb-2 font-medium text-gray-700">É tabagista?</label>
-                        <div class="flex items-center space-x-4">
-                            <div x-data="{ selecionado: @entangle('tabagista') }">
-                                <button type="button" wire:click="$set('tabagista', 'sim')"
-                                    :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'"
-                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-cyan-200">
-                                    Sim
-                                </button>
+                        .animate-fadeIn {
+                            animation: fadeIn 0.3s ease-out;
+                        }
+                    </style>
 
-                                <button type="button" wire:click="$set('tabagista', 'nao')"
-                                    :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'"
-                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-red-200">
-                                    Não
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Exibe os campos adicionais somente se a resposta for "sim" -->
-                    @if ($tabagista === 'sim')
-                        <div class="mb-6">
-                            <label for="n_cigarros" class="block mb-2 font-medium text-gray-700">Número de Cigarros
-                                Diários</label>
-                            <input type="number" wire:model.lazy="n_cigarros" id="n_cigarros"
-                                class="block w-1/3 border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500"
-                                min="0">
-                            @error('n_cigarros')
-                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="inicio_tabagismo" class="block mb-2 font-medium text-gray-700">Início do
-                                Tabagismo</label>
-                            <input type="date" wire:model.lazy="inicio_tabagismo" id="inicio_tabagismo"
-                                class="block w-1/3 border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500">
-                            @error('inicio_tabagismo')
-                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    @endif
-
-                    <div class="mb-6">
-                        <label for="etilista" class="block mb-2 font-medium text-gray-700">É Etilista?</label>
-                        <div class="flex items-center space-x-4">
-                            <div x-data="{ selecionado: @entangle('etilista') }">
-                                <button type="button" wire:click="$set('etilista', 'sim')"
-                                    :class="selecionado === 'sim' ? 'bg-cyan-300' : 'bg-cyan-100'"
-                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-cyan-200">
-                                    Sim
-                                </button>
-
-                                <button type="button" wire:click="$set('etilista', 'nao')"
-                                    :class="selecionado === 'nao' ? 'bg-red-300' : 'bg-red-100'"
-                                    class="px-4 py-2 text-black rounded focus:outline-none hover:bg-red-200">
-                                    Não
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Exibe os campos adicionais somente se a resposta for "sim" -->
-                    @if ($etilista === 'sim')
-                        <div class="mb-6">
-                            <label for="inicio_etilismo" class="block mb-2 font-medium text-gray-700">Início do
-                                Etilismo</label>
-                            <input type="date" wire:model.lazy="inicio_etilismo" id="inicio_etilismo"
-                                class="block w-1/3 border-gray-300 rounded-lg shadow-sm form-input focus:ring-indigo-500 focus:border-indigo-500">
-                            @error('inicio_etilismo')
-                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    @endif
-
-                    <!-- Adicione os demais campos da etapa 2 aqui -->
-                    <div class="flex justify-center w-full mt-8 space-x-4">
-                        {{-- Botão Voltar (Secundário, visual leve) --}}
-                        <button type="button" wire:click="previousStep"
-                            class="relative inline-flex items-center justify-center px-8 py-3 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                            <span class="z-10">Voltar</span>
-                            <div class="absolute inset-0 bg-indigo-100 opacity-10 pointer-events-none"></div>
-                        </button>
-
-                        {{-- Botão Continuar (Primário, destaque com gradiente) --}}
-                        <button type="button" wire:click="nextStep"
-                            class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                            <span class="z-10">Continuar</span>
-                            <div class="absolute inset-0 bg-white opacity-5"></div>
-                        </button>
-                    </div>
                 </div>
             @endif
         </div>
         <div x-show="step === 3" x-transition>
             {{-- Etapa 3: Medicamentos --}}
             @if ($currentStep == 3)
-                <div class="step">
-                    <h2 class="py-5 mb-10 text-4xl font-bold text-center">Medicamentos</h2>
+                <div
+                    class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
 
-                    @foreach ($medicamentos as $index => $medicamento)
-                        <div class= "flex justify-center">
-                            <div class="w-5/6 p-5 mb-6 bg-white border border-gray-200 rounded-lg shadow-sm">
-                                <h3 class="mb-3 text-lg font-semibold">Medicamento {{ $index + 1 }}</h3>
+                    <!-- Elementos de fundo otimizados -->
+                    <div class="absolute inset-0 pointer-events-none -z-10">
+                        <div class="absolute w-60 h-60 bg-indigo-200 rounded-full top-12 left-12 opacity-20"></div>
+                        <div class="absolute w-64 h-64 bg-purple-200 rounded-full top-24 right-12 opacity-15"></div>
+                        <div class="absolute w-56 h-56 bg-pink-200 rounded-full bottom-12 left-20 opacity-10"></div>
+                    </div>
 
-                                <div class="mb-4">
-                                    <label for="medicamentos.{{ $index }}.nome_generico"
-                                        class="block text-base font-medium text-gray-700">Nome</label>
-                                    <input type="text" wire:model="medicamentos.{{ $index }}.nome_generico"
-                                        id="medicamentos.{{ $index }}.nome_generico"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                    @error('medicamentos.' . $index . '.nome_generico')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
+                    <div class="relative z-10 flex-grow">
+                        <!-- Cabeçalho -->
+                        <header class="py-10 text-center">
+                            <div class="container px-6 mx-auto">
+                                <h1 class="text-5xl font-extrabold text-indigo-900">So<span
+                                        class="text-indigo-600">Pe</span>P</h1>
+                                <p class="text-lg text-gray-600 mt-3">Cadastro de <span
+                                        class="text-indigo-600">Medicamentos</span></p>
+                                <p class="text-sm text-gray-500 mt-1 max-w-xl mx-auto">Registre os medicamentos
+                                    utilizados pelo paciente para controle do tratamento.</p>
+                            </div>
+                        </header>
+
+                        <!-- Formulário -->
+                        <main class="container px-6 mx-auto pb-16">
+                            <div
+                                class="max-w-6xl mx-auto bg-white/80 rounded-2xl border border-white/30 shadow p-8 md:p-12">
+
+                                <!-- Título da seção -->
+                                <div class="text-center mb-10">
+                                    <h2 class="text-3xl font-bold text-indigo-900">Medicamentos do Paciente</h2>
+                                    <div class="w-24 h-1 mx-auto bg-indigo-600 mt-2 rounded-full"></div>
                                 </div>
 
-                                <div class="mb-6">
-                                    <label for="medicamentos.{{ $index }}.via_id"
-                                        class="block mb-2 font-medium text-gray-700">Via</label>
-                                    <select wire:model="medicamentos.{{ $index }}.via_id"
-                                        id="medicamentos.{{ $index }}.via_id"
-                                        class="block w-full p-2 border-gray-300 rounded-lg shadow-sm form-select focus:ring-indigo-500 focus:border-indigo-500">
-                                        <option value="">Selecione</option>
-                                        @foreach ($vias as $via)
-                                            <option value="{{ $via->id }}">{{ $via->descricao }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('medicamentos.' . $index . '.via_id')
-                                        <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
+                                <!-- Lista de Medicamentos -->
+                                <div class="space-y-8">
+                                    @foreach ($medicamentos as $index => $medicamento)
+                                        <div
+                                            class="bg-gradient-to-r from-indigo-50/60 via-purple-50/40 to-pink-50/30 border border-indigo-100/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+
+                                            <!-- Cabeçalho do medicamento -->
+                                            <div class="flex items-center justify-between mb-6">
+                                                <div class="flex items-center space-x-3">
+                                                    <div
+                                                        class="w-10 h-10 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center">
+                                                        <span
+                                                            class="text-white font-bold text-lg">{{ $index + 1 }}</span>
+                                                    </div>
+                                                    <h3 class="text-xl font-bold text-indigo-900">Medicamento
+                                                        {{ $index + 1 }}</h3>
+                                                </div>
+
+                                                <button type="button"
+                                                    wire:click="removeMedicamento({{ $index }})"
+                                                    class="inline-flex items-center px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-300">
+                                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+                                                    Remover
+                                                </button>
+                                            </div>
+
+                                            <!-- Campos do medicamento organizados em grid -->
+                                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                                                <!-- Coluna 1 - Informações básicas -->
+                                                <div class="space-y-6">
+                                                    <section
+                                                        class="bg-white/60 border border-indigo-100/40 rounded-xl p-6">
+                                                        <h4
+                                                            class="text-lg font-semibold text-indigo-800 mb-4 flex items-center">
+                                                            <svg class="w-5 h-5 mr-2" fill="none"
+                                                                stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                            </svg>
+                                                            Identificação
+                                                        </h4>
+
+                                                        <div class="space-y-4">
+                                                            <div>
+                                                                <label
+                                                                    for="medicamentos.{{ $index }}.nome_generico"
+                                                                    class="block text-sm font-semibold text-gray-700 mb-2">
+                                                                    Nome do Medicamento
+                                                                </label>
+                                                                <input type="text"
+                                                                    wire:model="medicamentos.{{ $index }}.nome_generico"
+                                                                    id="medicamentos.{{ $index }}.nome_generico"
+                                                                    placeholder="Digite o nome do medicamento"
+                                                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200 bg-white/80">
+                                                                @error('medicamentos.' . $index . '.nome_generico')
+                                                                    <span
+                                                                        class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+
+                                                            <div>
+                                                                <label for="medicamentos.{{ $index }}.dose"
+                                                                    class="block text-sm font-semibold text-gray-700 mb-2">
+                                                                    Dosagem
+                                                                </label>
+                                                                <input type="text"
+                                                                    wire:model="medicamentos.{{ $index }}.dose"
+                                                                    id="medicamentos.{{ $index }}.dose"
+                                                                    placeholder="Ex: 500mg, 10ml, 1 comprimido"
+                                                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200 bg-white/80">
+                                                                @error('medicamentos.' . $index . '.dose')
+                                                                    <span
+                                                                        class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                </div>
+
+                                                <!-- Coluna 2 - Administração -->
+                                                <div class="space-y-6">
+                                                    <section
+                                                        class="bg-white/60 border border-purple-100/40 rounded-xl p-6">
+                                                        <h4
+                                                            class="text-lg font-semibold text-purple-800 mb-4 flex items-center">
+                                                            <svg class="w-5 h-5 mr-2" fill="none"
+                                                                stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                            Administração
+                                                        </h4>
+
+                                                        <div class="space-y-4">
+                                                            <x-select label="Via de Administração"
+                                                                id="medicamentos.{{ $index }}.via_id"
+                                                                wire:model.lazy="medicamentos.{{ $index }}.via_id"
+                                                                :options="$vias" />
+                                                            @error('medicamentos.' . $index . '.via_id')
+                                                                <span
+                                                                    class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                            @enderror
+
+                                                            <x-select label="Horário da Medicação"
+                                                                id="medicamentos.{{ $index }}.horario_med_id"
+                                                                wire:model.lazy="medicamentos.{{ $index }}.horario_med_id"
+                                                                :options="$horarios_med" />
+                                                            @error('medicamentos.' . $index . '.horario_med_id')
+                                                                <span
+                                                                    class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
 
-                                <div class="mb-6">
-                                    <label for="medicamentos.{{ $index }}.horario_med_id"
-                                        class="block mb-2 font-medium text-gray-700">Horário da Medicação</label>
-                                    <select wire:model="medicamentos.{{ $index }}.horario_med_id"
-                                        id="medicamentos.{{ $index }}.horario_med_id"
-                                        class="block w-full p-2 border-gray-300 rounded-lg shadow-sm form-select focus:ring-indigo-500 focus:border-indigo-500">
-                                        <option value="">Selecione</option>
-                                        @foreach ($horarios_med as $horario)
-                                            <option value="{{ $horario->id }}">{{ $horario->descricao }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('medicamentos.' . $index . '.horario_med_id')
-                                        <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
+                                <!-- Botão Adicionar Medicamento -->
+                                @if (count($medicamentos) == 0)
+                                    <div class="text-center py-12">
+                                        <div class="mb-4">
+                                            <svg class="w-16 h-16 mx-auto text-gray-400" fill="none"
+                                                stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                            </svg>
+                                        </div>
+                                        <p class="text-gray-500 text-lg mb-6">Nenhum medicamento adicionado ainda</p>
+                                    </div>
+                                @endif
+
+                                <div class="flex justify-center mt-8">
+                                    <button type="button" wire:click="addMedicamento"
+                                        class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300">
+                                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                        </svg>
+                                        Adicionar Novo Medicamento
+                                    </button>
                                 </div>
 
-                                <div class="mb-4">
-                                    <label for="medicamentos.{{ $index }}.dose"
-                                        class="block text-base font-medium text-gray-700">Dose</label>
-                                    <input type="text" wire:model="medicamentos.{{ $index }}.dose"
-                                        id="medicamentos.{{ $index }}.dose"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                    @error('medicamentos.' . $index . '.dose')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
+                                <!-- Botões de Navegação -->
+                                <div class="flex justify-center space-x-6 mt-12">
+                                    <button type="button" wire:click="previousStep"
+                                        class="relative inline-flex items-center justify-center px-8 py-4 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md hover:bg-indigo-50 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                        <svg class="w-5 h-5 mr-3 group-hover:-translate-x-1 transition-transform duration-300"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                                        </svg>
+                                        Voltar
+                                    </button>
+
+                                    <button type="button" wire:click="nextStep"
+                                        class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 shadow-2xl rounded-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 group">
+                                        <span class="flex items-center">
+                                            Continuar para Próxima Etapa
+                                            <svg class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300"
+                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                            </svg>
+                                        </span>
+                                        <div
+                                            class="absolute inset-0 bg-white rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300">
+                                        </div>
+                                    </button>
                                 </div>
 
-                                <button type="button" wire:click="removeMedicamento({{ $index }})"
-                                    class="px-4 py-2 font-semibold text-white bg-red-500 rounded-lg shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
-                                    Remover
-                                </button>
+                            </div>
+                        </main>
+                    </div>
+
+                    <!-- Footer -->
+                    <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
+                        <div class="container px-6 mx-auto">
+                            <div class="flex flex-col items-center justify-between md:flex-row">
+                                <div class="mb-4 md:mb-0">
+                                    <h4 class="text-xl font-bold">SoPeP</h4>
+                                    <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônica para Pé
+                                        Diabético</p>
+                                </div>
+                                <div class="text-center md:text-right">
+                                    <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.
+                                    </p>
+                                    <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus
+                                        pacientes</p>
+                                </div>
                             </div>
                         </div>
-                    @endforeach
-
-                    <button type="button" wire:click="addMedicamento"
-                        class="px-4 py-2 mb-4 ml-24 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm ml-18 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        Adicionar Medicamento
-                    </button>
-
-                    <!-- Botões de Navegação e Salvar -->
-                    <div class="flex justify-center w-full mt-8 space-x-4">
-                        {{-- Botão Voltar (Secundário, visual leve) --}}
-                        <button type="button" wire:click="previousStep"
-                            class="relative inline-flex items-center justify-center px-8 py-3 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                            <span class="z-10">Voltar</span>
-                            <div class="absolute inset-0 bg-indigo-100 opacity-10 pointer-events-none"></div>
-                        </button>
-
-                        {{-- Botão Continuar (Primário, destaque com gradiente) --}}
-                        <button type="button" wire:click="nextStep"
-                            class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                            <span class="z-10">Continuar</span>
-                            <div class="absolute inset-0 bg-white opacity-5"></div>
-                        </button>
-                    </div>
+                    </footer>
                 </div>
             @endif
         </div>
         <div x-show="step === 4" x-transition>
             {{-- Etapa 4: Resultados --}}
             @if ($currentStep == 4)
-                <div class="step">
-                    <h2 class="py-5 mb-10 text-4xl font-bold text-center">Resultados de Exames</h2>
+                <div
+                    class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
 
-                    @foreach ($resultados as $index => $resultado)
-                        <div class="flex justify-center">
-                            <div class="w-5/6 p-5 mb-6 bg-white border border-gray-200 rounded-lg shadow-sm">
-                                <h3 class="mb-3 text-lg font-semibold">Resultado {{ $index + 1 }}</h3>
+                    <!-- Elementos de fundo otimizados -->
+                    <div class="absolute inset-0 pointer-events-none -z-10">
+                        <div class="absolute w-60 h-60 bg-indigo-200 rounded-full top-12 left-12 opacity-20"></div>
+                        <div class="absolute w-64 h-64 bg-purple-200 rounded-full top-24 right-12 opacity-15"></div>
+                        <div class="absolute w-56 h-56 bg-pink-200 rounded-full bottom-12 left-20 opacity-10"></div>
+                    </div>
 
+                    <div class="relative z-10 flex-grow">
+                        <!-- Cabeçalho -->
+                        <header class="py-10 text-center">
+                            <div class="container px-6 mx-auto">
+                                <h1 class="text-5xl font-extrabold text-indigo-900">So<span
+                                        class="text-indigo-600">Pe</span>P</h1>
+                                <p class="text-lg text-gray-600 mt-3">Resultados de <span
+                                        class="text-indigo-600">Exames</span></p>
+                                <p class="text-sm text-gray-500 mt-1 max-w-xl mx-auto">Registre os resultados dos
+                                    exames realizados pelo paciente para acompanhamento clínico.</p>
+                            </div>
+                        </header>
 
-                                <div class="mb-4">
-                                    <label for="resultados.{{ $index }}.data_exame"
-                                        class="block text-base font-medium text-gray-700">Data do Exame</label>
+                        <!-- Formulário -->
+                        <main class="container px-6 mx-auto pb-16">
+                            <div
+                                class="max-w-6xl mx-auto bg-white/80 rounded-2xl border border-white/30 shadow p-8 md:p-12">
 
-                                    <input type="date" wire:model="resultados.{{ $index }}.data_exame"
-                                        id="resultados.{{ $index }}.data_exame"
-                                        class="block w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-gray-50 hover:bg-white">
-
-                                    @error('resultados.' . $index . '.data_exame')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
+                                <!-- Título da seção -->
+                                <div class="text-center mb-10">
+                                    <h2 class="text-3xl font-bold text-indigo-900">Resultados de Exames</h2>
+                                    <div class="w-24 h-1 mx-auto bg-indigo-600 mt-2 rounded-full"></div>
                                 </div>
 
-                                <div class="mb-4">
-                                    <label for="resultados.{{ $index }}.texto_resultado"
-                                        class="block text-base font-medium text-gray-700">Descrição</label>
+                                <!-- Lista de Resultados -->
+                                <div class="space-y-8">
+                                    @foreach ($resultados as $index => $resultado)
+                                        <div
+                                            class="bg-gradient-to-r from-blue-50/60 via-indigo-50/40 to-purple-50/30 border border-blue-100/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
 
-                                    <textarea wire:model="resultados.{{ $index }}.texto_resultado"
-                                        id="resultados.{{ $index }}.texto_resultado" rows="4"
-                                        class="block w-full p-3 mt-1 transition duration-150 ease-in-out border border-gray-300 rounded-md shadow-sm resize-none form-textarea focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-gray-50 hover:bg-white"></textarea>
+                                            <!-- Cabeçalho do resultado -->
+                                            <div class="flex items-center justify-between mb-6">
+                                                <div class="flex items-center space-x-3">
+                                                    <div
+                                                        class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
+                                                        <svg class="w-6 h-6 text-white" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                        </svg>
+                                                    </div>
+                                                    <div>
+                                                        <h3 class="text-xl font-bold text-indigo-900">Exame
+                                                            {{ $index + 1 }}</h3>
+                                                        <p class="text-sm text-gray-600">Resultado do exame clínico</p>
+                                                    </div>
+                                                </div>
 
-                                    @error('resultados.' . $index . '.texto_resultado')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
+                                                <button type="button"
+                                                    wire:click="removeResultado({{ $index }})"
+                                                    class="inline-flex items-center px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-300">
+                                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+                                                    Remover
+                                                </button>
+                                            </div>
+
+                                            <!-- Campos do resultado organizados -->
+                                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                                                <!-- Data do Exame -->
+                                                <div class="lg:col-span-1">
+                                                    <section
+                                                        class="bg-white/70 border border-blue-100/40 rounded-xl p-6 h-full">
+                                                        <h4
+                                                            class="text-lg font-semibold text-blue-800 mb-4 flex items-center">
+                                                            <svg class="w-5 h-5 mr-2" fill="none"
+                                                                stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                            </svg>
+                                                            Data do Exame
+                                                        </h4>
+
+                                                        <div>
+                                                            <label for="resultados.{{ $index }}.data_exame"
+                                                                class="block text-sm font-semibold text-gray-700 mb-2">
+                                                                Quando foi realizado?
+                                                            </label>
+                                                            <input type="date"
+                                                                wire:model="resultados.{{ $index }}.data_exame"
+                                                                id="resultados.{{ $index }}.data_exame"
+                                                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 bg-white/90">
+                                                            @error('resultados.' . $index . '.data_exame')
+                                                                <span
+                                                                    class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </section>
+                                                </div>
+
+                                                <!-- Resultado/Descrição -->
+                                                <div class="lg:col-span-2">
+                                                    <section
+                                                        class="bg-white/70 border border-indigo-100/40 rounded-xl p-6 h-full">
+                                                        <h4
+                                                            class="text-lg font-semibold text-indigo-800 mb-4 flex items-center">
+                                                            <svg class="w-5 h-5 mr-2" fill="none"
+                                                                stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                            </svg>
+                                                            Resultado do Exame
+                                                        </h4>
+
+                                                        <div>
+                                                            <label
+                                                                for="resultados.{{ $index }}.texto_resultado"
+                                                                class="block text-sm font-semibold text-gray-700 mb-2">
+                                                                Descrição detalhada do resultado
+                                                            </label>
+                                                            <textarea wire:model="resultados.{{ $index }}.texto_resultado"
+                                                                id="resultados.{{ $index }}.texto_resultado" rows="6"
+                                                                placeholder="Descreva os resultados do exame, valores encontrados, observações médicas, etc."
+                                                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200 bg-white/90 resize-none"></textarea>
+                                                            @error('resultados.' . $index . '.texto_resultado')
+                                                                <span
+                                                                    class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+
+                                            <!-- Status visual -->
+                                            <div class="mt-4 flex items-center justify-end">
+                                                <div class="flex items-center text-sm text-gray-500">
+                                                    <svg class="w-4 h-4 mr-1 text-green-500" fill="currentColor"
+                                                        viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd"
+                                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                    Exame registrado
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
 
-                                <button type="button" wire:click="removeResultado({{ $index }})"
-                                    class="px-4 py-2 font-semibold text-white bg-red-500 rounded-lg shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
-                                    Remover
-                                </button>
+                                <!-- Estado vazio -->
+                                @if (count($resultados) == 0)
+                                    <div class="text-center py-16">
+                                        <div class="mb-6">
+                                            <svg class="w-20 h-20 mx-auto text-gray-400" fill="none"
+                                                stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-xl font-semibold text-gray-700 mb-2">Nenhum resultado
+                                            registrado</h3>
+                                        <p class="text-gray-500 text-lg mb-8">Adicione os resultados dos exames
+                                            realizados pelo paciente</p>
+                                    </div>
+                                @endif
+
+                                <!-- Botão Adicionar Resultado -->
+                                <div class="flex justify-center mt-8">
+                                    <button type="button" wire:click="addResultado"
+                                        class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                        </svg>
+                                        Adicionar Novo Resultado
+                                    </button>
+                                </div>
+
+                                <!-- Seção de Resumo (quando há resultados) -->
+                                @if (count($resultados) > 0)
+                                    <div
+                                        class="mt-12 bg-gradient-to-r from-green-50/50 to-emerald-50/50 border border-green-100/50 rounded-2xl p-6">
+                                        <div class="flex items-center mb-4">
+                                            <div
+                                                class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                                                <svg class="w-4 h-4 text-white" fill="currentColor"
+                                                    viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd"
+                                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                            <h4 class="text-lg font-semibold text-green-800">Resumo dos Exames</h4>
+                                        </div>
+                                        <p class="text-green-700">
+                                            <span class="font-semibold">{{ count($resultados) }}</span>
+                                            {{ count($resultados) == 1 ? 'resultado registrado' : 'resultados registrados' }}
+                                            para acompanhamento clínico do paciente.
+                                        </p>
+                                    </div>
+                                @endif
+
+                                <!-- Botões de Navegação -->
+                                <div class="flex justify-center space-x-6 mt-12">
+                                    <button type="button" wire:click="previousStep"
+                                        class="relative inline-flex items-center justify-center px-8 py-4 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md hover:bg-indigo-50 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                        <svg class="w-5 h-5 mr-3 group-hover:-translate-x-1 transition-transform duration-300"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                                        </svg>
+                                        Voltar
+                                    </button>
+
+                                    <button type="button" wire:click="nextStep"
+                                        class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 shadow-2xl rounded-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 group">
+                                        <span class="flex items-center">
+                                            Continuar para Próxima Etapa
+                                            <svg class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300"
+                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                            </svg>
+                                        </span>
+                                        <div
+                                            class="absolute inset-0 bg-white rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300">
+                                        </div>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </main>
+                    </div>
+
+                    <!-- Footer -->
+                    <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
+                        <div class="container px-6 mx-auto">
+                            <div class="flex flex-col items-center justify-between md:flex-row">
+                                <div class="mb-4 md:mb-0">
+                                    <h4 class="text-xl font-bold">SoPeP</h4>
+                                    <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônica para Pé
+                                        Diabético</p>
+                                </div>
+                                <div class="text-center md:text-right">
+                                    <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.
+                                    </p>
+                                    <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus
+                                        pacientes</p>
+                                </div>
                             </div>
                         </div>
-                    @endforeach
-
-                    <button type="button" wire:click="addResultado"
-                        class="px-4 py-2 mb-4 ml-24 font-semibold text-white bg-indigo-500 rounded-lg shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        Adicionar Resultado
-                    </button>
-
-                    <!-- Adicione os demais campos da etapa 2 aqui -->
-                    <div class="flex justify-center w-full mt-8 space-x-4">
-                        {{-- Botão Voltar (Secundário, visual leve) --}}
-                        <button type="button" wire:click="previousStep"
-                            class="relative inline-flex items-center justify-center px-8 py-3 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                            <span class="z-10">Voltar</span>
-                            <div class="absolute inset-0 bg-indigo-100 opacity-10 pointer-events-none"></div>
-                        </button>
-
-                        {{-- Botão Continuar (Primário, destaque com gradiente) --}}
-                        <button type="button" wire:click="nextStep"
-                            class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                            <span class="z-10">Continuar</span>
-                            <div class="absolute inset-0 bg-white opacity-5"></div>
-                        </button>
-                    </div>
+                    </footer>
                 </div>
             @endif
         </div>
         <div x-show="step === 5" x-transition>
             {{-- Etapa 4: Unidade de Saude --}}
             @if ($currentStep == 5)
-                <div class="step">
-                    <h2 class="py-5 mb-10 text-4xl font-bold text-center">Unidade de Saúde</h2>
+                <div
+                    class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
 
-                    {{-- Mostra a unidade selecionada --}}
-                    @if ($unidade)
-                        <div class="p-4 mb-4 border-l-4 border-indigo-600 rounded bg-indigo-50">
-                            <p class="text-lg font-semibold text-indigo-800">Unidade Selecionada:</p>
-                            <p class="text-gray-700"><strong>Nome:</strong> {{ $unidade->nome }}</p>
-                        </div>
-                    @endif
+                    <!-- Elementos de fundo otimizados -->
+                    <div class="absolute inset-0 pointer-events-none -z-10">
+                        <div class="absolute w-60 h-60 bg-indigo-200 rounded-full top-12 left-12 opacity-20"></div>
+                        <div class="absolute w-64 h-64 bg-purple-200 rounded-full top-24 right-12 opacity-15"></div>
+                        <div class="absolute w-56 h-56 bg-pink-200 rounded-full bottom-12 left-20 opacity-10"></div>
+                    </div>
 
-                    {{-- Formulário de Busca --}}
-                    <form class="flex justify-center border-b border-indigo-300" role="search">
-                        <input wire:model.live.debounce.300ms="search"
-                            class="block w-full px-6 py-3 mb-4 border border-gray-300 rounded-lg shadow-sm form-control focus:ring-indigo-500 focus:border-indigo-500"
-                            type="search" placeholder="Pesquise o nome da unidade de saúde" aria-label="Search">
-                    </form>
+                    <div class="relative z-10 flex-grow">
+                        <!-- Cabeçalho -->
+                        <header class="py-10 text-center">
+                            <div class="container px-6 mx-auto">
+                                <h1 class="text-5xl font-extrabold text-indigo-900">So<span
+                                        class="text-indigo-600">Pe</span>P</h1>
+                                <p class="text-lg text-gray-600 mt-3">Seleção de <span class="text-indigo-600">Unidade
+                                        de Saúde</span></p>
+                                <p class="text-sm text-gray-500 mt-1 max-w-xl mx-auto">Selecione a unidade de saúde
+                                    onde o paciente será atendido.</p>
+                            </div>
+                        </header>
 
-                    {{-- Resultados da busca --}}
-                    @if (sizeof($unidades) > 0)
-                        <div class="mt-4 mb-6 bg-white rounded-lg shadow-lg">
-                            @foreach ($unidades as $unidade)
-                                <div class="py-3 border-b border-gray-200 cursor-pointer hover:bg-gray-100"
-                                    wire:click="selectUnidade({{ $unidade->id }})">
-                                    <div class="flex flex-col px-6">
-                                        <span class="text-lg font-medium text-gray-900">{{ $unidade->nome }}</span>
+                        <!-- Conteúdo Principal -->
+                        <main class="container px-6 mx-auto pb-16">
+                            <div
+                                class="max-w-4xl mx-auto bg-white/80 rounded-2xl border border-white/30 shadow p-8 md:p-12">
 
+                                <!-- Título da seção -->
+                                <div class="text-center mb-10">
+                                    <h2 class="text-3xl font-bold text-indigo-900">Unidade de Saúde</h2>
+                                    <div class="w-24 h-1 mx-auto bg-indigo-600 mt-2 rounded-full"></div>
+                                </div>
+
+                                <div class="step">
+                                    <!-- Unidade Selecionada -->
+                                    <div wire:loading.remove>
+                                        @if ($unidade)
+                                            <section
+                                                class="bg-green-50/50 border border-green-200/60 rounded-xl p-6 mb-8">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <svg class="w-8 h-8 text-green-600" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                                                            </path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="ml-4">
+                                                        <h3 class="text-lg font-semibold text-green-800">Unidade
+                                                            Selecionada</h3>
+                                                        <p class="text-green-700 font-medium mt-1">
+                                                            {{ $unidade->nome }}</p>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        @endif
+                                    </div>
+
+                                    <!-- Formulário de Busca -->
+                                    <section class="bg-indigo-50/50 border border-indigo-100/40 rounded-xl p-6 mb-8">
+                                        <h3 class="text-lg font-semibold text-indigo-800 mb-4 flex items-center">
+                                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                            </svg>
+                                            Buscar Unidade de Saúde
+                                        </h3>
+
+                                        <div class="relative">
+                                            <input wire:model.live.debounce.300ms="search"
+                                                class="block w-full px-6 py-4 pr-12 text-gray-900 bg-white border border-gray-200 rounded-xl shadow-sm placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+                                                type="search" placeholder="Digite o nome da unidade de saúde..."
+                                                aria-label="Search">
+                                            <div class="absolute inset-y-0 right-0 flex items-center pr-4">
+                                                <svg class="w-5 h-5 text-gray-400" fill="none"
+                                                    stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <!-- Loading State -->
+                                    <div wire:loading class="flex justify-center items-center py-8">
+                                        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600">
+                                        </div>
+                                        <span class="ml-3 text-indigo-600 font-medium">Buscando unidades...</span>
+                                    </div>
+
+                                    <!-- Resultados da Busca -->
+                                    <div wire:loading.remove>
+                                        @if (sizeof($unidades) > 0)
+                                            <section
+                                                class="bg-purple-50/50 border border-purple-100/40 rounded-xl p-6 mb-8">
+                                                <h3
+                                                    class="text-lg font-semibold text-purple-800 mb-4 flex items-center">
+                                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                                        </path>
+                                                    </svg>
+                                                    Unidades Encontradas ({{ sizeof($unidades) }})
+                                                </h3>
+
+                                                <div class="space-y-3 max-h-96 overflow-y-auto">
+                                                    @foreach ($unidades as $unidade)
+                                                        <div class="group relative bg-white rounded-xl border border-gray-200 p-4 cursor-pointer transition-all duration-200 hover:border-indigo-300 hover:shadow-md hover:scale-[1.02]"
+                                                            wire:click="selectUnidade({{ $unidade->id }})">
+                                                            <div class="flex items-center justify-between">
+                                                                <div class="flex items-center space-x-3">
+                                                                    <div class="flex-shrink-0">
+                                                                        <div
+                                                                            class="w-10 h-10 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg flex items-center justify-center group-hover:from-indigo-200 group-hover:to-purple-200 transition-all duration-200">
+                                                                            <svg class="w-5 h-5 text-indigo-600"
+                                                                                fill="none" stroke="currentColor"
+                                                                                viewBox="0 0 24 24">
+                                                                                <path stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    stroke-width="2"
+                                                                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                                                                </path>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <h4
+                                                                            class="text-lg font-semibold text-gray-900 group-hover:text-indigo-700 transition-colors duration-200">
+                                                                            {{ $unidade->nome }}
+                                                                        </h4>
+                                                                        <p class="text-sm text-gray-500">Clique para
+                                                                            selecionar</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex-shrink-0">
+                                                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-600 transition-colors duration-200"
+                                                                        fill="none" stroke="currentColor"
+                                                                        viewBox="0 0 24 24">
+                                                                        <path stroke-linecap="round"
+                                                                            stroke-linejoin="round" stroke-width="2"
+                                                                            d="M9 5l7 7-7 7"></path>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </section>
+                                        @elseif($search && sizeof($unidades) == 0)
+                                            <section
+                                                class="bg-yellow-50/50 border border-yellow-200/60 rounded-xl p-6 mb-8">
+                                                <div class="flex items-center justify-center text-center">
+                                                    <div>
+                                                        <svg class="w-12 h-12 text-yellow-500 mx-auto mb-3"
+                                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                                            </path>
+                                                        </svg>
+                                                        <h3 class="text-lg font-semibold text-yellow-800 mb-2">Nenhuma
+                                                            unidade encontrada</h3>
+                                                        <p class="text-yellow-700">Tente ajustar os termos da sua
+                                                            busca.</p>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        @endif
+                                    </div>
+
+                                    <!-- Botões de Navegação -->
+                                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-12">
+                                        <!-- Botão Voltar -->
+                                        <button type="button" wire:click="previousStep"
+                                            class="relative inline-flex items-center justify-center px-8 py-3 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 w-full sm:w-auto">
+                                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 19l-7-7 7-7"></path>
+                                            </svg>
+                                            <span class="z-10">Voltar</span>
+                                        </button>
+
+                                        <!-- Botão Salvar -->
+                                        <button type="submit" @if (!$unidade) disabled @endif
+                                            class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transform shadow-2xl group rounded-2xl hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-50 w-full sm:w-auto transition-all duration-300 @if ($unidade) bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 focus:ring-indigo-300 @else bg-gray-400 cursor-not-allowed @endif">
+                                            <span class="flex items-center">
+                                                <svg class="w-5 h-5 mr-3 group-hover:translate-x-1 transition-transform duration-200"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                </svg>
+                                                @if ($unidade)
+                                                    Continuar para Próxima Etapa
+                                                @else
+                                                    Selecione uma Unidade
+                                                @endif
+                                            </span>
+                                            <div
+                                                class="absolute inset-0 bg-white rounded-2xl opacity-0 group-hover:opacity-10 duration-300">
+                                            </div>
+                                        </button>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
-                    @endif
 
-                    <!-- Botões de Navegação e Salvar -->
-                    <div class="flex justify-center w-full mt-8 space-x-4">
-                        {{-- Botão Voltar (Secundário, visual leve) --}}
-                        <button type="button" wire:click="previousStep"
-                            class="relative inline-flex items-center justify-center px-8 py-3 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                            <span class="z-10">Voltar</span>
-                            <div class="absolute inset-0 bg-indigo-100 opacity-10 pointer-events-none"></div>
-                        </button>
-                        <button type="submit"
-                            class="relative inline-flex items-center justify-center px-8 py-3 ml-4 text-lg font-semibold text-white bg-gradient-to-r from-teal-500 to-teal-700 rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-teal-300">
-                            <span class="z-10">Salvar</span>
-                            <div class="absolute inset-0 bg-white opacity-5"></div>
-                        </button>
+                            </div>
+                        </main>
                     </div>
+
+                    <!-- Footer -->
+                    <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
+                        <div class="container px-6 mx-auto">
+                            <div class="flex flex-col items-center justify-between md:flex-row">
+                                <div class="mb-4 md:mb-0">
+                                    <h4 class="text-xl font-bold">SoPeP</h4>
+                                    <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônica para Pé
+                                        Diabético</p>
+                                </div>
+                                <div class="text-center md:text-right">
+                                    <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.
+                                    </p>
+                                    <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus
+                                        pacientes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
                 </div>
             @endif
         </div>
