@@ -300,7 +300,6 @@ class QuestionarioSeeder extends Seeder
         // Inserir dados na tabela sinais_infeccaos
         DB::table('sinais_infeccaos')->insert([
             ['descricao' => 'Ausente', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Edema', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Aumento da Temperatura', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Hiperemia', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Aumento da Dor', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
