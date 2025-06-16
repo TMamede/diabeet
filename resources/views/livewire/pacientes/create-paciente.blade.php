@@ -48,18 +48,47 @@
                                             </h3>
 
                                             <div class="space-y-4">
-                                                <x-input label="CPF" id="cpf" type="text"
-                                                    wire:model.lazy="cpf" placeholder="000.000.000-00" />
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                    <x-input label="CPF" id="cpf" type="text"
+                                                        wire:model.lazy="cpf" placeholder="000.000.000-00" />
+
+                                                    <!-- Campo Sexo com x-input personalizado -->
+                                                    <div class="group">
+                                                        <label for="sexo"
+                                                            class="block text-sm font-medium text-gray-700 mb-1">Sexo</label>
+                                                        <div
+                                                            class="flex space-x-4 px-4 py-3 border border-gray-200 rounded-lg shadow-sm focus-within:border-indigo-500 focus-within:ring-indigo-200 focus-within:ring-2 bg-white/90">
+                                                            <label class="flex items-center space-x-2 cursor-pointer">
+                                                                <input type="radio" name="sexo" value="1"
+                                                                    wire:model.lazy="sexo"
+                                                                    class="w-4 h-4 text-indigo-600 bg-white border-2 border-gray-300 focus:ring-indigo-500 focus:ring-2">
+                                                                <span
+                                                                    class="text-sm text-gray-700 font-medium">Feminino</span>
+                                                            </label>
+                                                            <label class="flex items-center space-x-2 cursor-pointer">
+                                                                <input type="radio" name="sexo" value="0"
+                                                                    wire:model.lazy="sexo"
+                                                                    class="w-4 h-4 text-indigo-600 bg-white border-2 border-gray-300 focus:ring-indigo-500 focus:ring-2">
+                                                                <span
+                                                                    class="text-sm text-gray-700 font-medium">Masculino</span>
+                                                            </label>
+                                                        </div>
+                                                        @error('sexo')
+                                                            <span
+                                                                class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
                                                 <x-input label="Nome Completo" id="nome" type="text"
                                                     wire:model.lazy="nome" placeholder="Digite o nome completo" />
+                                                <x-input label="Email" id="email" type="email"
+                                                    wire:model.lazy="email" placeholder="exemplo@email.com" />
                                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                     <x-input label="Prontuário" id="prontuario" type="text"
                                                         wire:model.lazy="prontuario" placeholder="Nº do prontuário" />
                                                     <x-input label="Data de Nascimento" id="data_nasc" type="date"
                                                         wire:model.lazy="data_nasc" />
                                                 </div>
-                                                <x-input label="Email" id="email" type="email"
-                                                    wire:model.lazy="email" placeholder="exemplo@email.com" />
                                             </div>
                                         </section>
 

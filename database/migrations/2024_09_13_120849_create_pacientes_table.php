@@ -26,6 +26,7 @@ return new class extends Migration {
             $table->string('nome');
             $table->string('prontuario');
             $table->date('data_nasc');
+            $table->boolean('sexo');
             $table->foreignIdFor(Orientacao_sexual::class);
             $table->foreignIdFor(Estado_civil::class);
             $table->foreignIdFor(Etnia::class);

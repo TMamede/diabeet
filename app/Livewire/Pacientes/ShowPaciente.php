@@ -21,7 +21,7 @@ class ShowPaciente extends Component
     public $paciente;
 
     // Etapa 1: Dados Sociodemográficos
-    public $IdPaciente, $cpf, $email, $nome, $prontuario, $data_nasc;
+    public $IdPaciente, $cpf, $email, $nome, $prontuario, $data_nasc, $sexo;
     public $orientacao_sexual_id, $estado_civil_id, $etnia_id;
     public $endereco_id, $rua, $numero, $cep, $bairro, $cidade, $uf;
     public $ocupacao, $renda_familiar, $beneficio_id, $reside_id, $num_pss_casa;
@@ -36,11 +36,12 @@ class ShowPaciente extends Component
 
     // Etapa 3: Medicamentos
     public $medicamentos = [];
-    public $nome_generico, $via_id, $dose;
+    public $nome_generico, $via_id, $horario_med_id, $dose;
 
     // Etapa 4: Resultados
     public $resultados = [];
     public $texto_resultado;
+     public $data_exame;
 
     //Etapa 5: Unidade de saude
     public $unidade_saude_id = null, $unidade;
@@ -68,6 +69,7 @@ class ShowPaciente extends Component
         $this->nome = $this->paciente->nome;
         $this->prontuario = $this->paciente->prontuario;
         $this->data_nasc = $this->paciente->data_nasc;
+        $this->sexo = $this->paciente->sexo;
         $this->orientacao_sexual_id = $this->paciente->orientacao_sexual_id;
         $this->estado_civil_id = $this->paciente->estado_civil_id;
         $this->etnia_id = $this->paciente->etnia_id;
@@ -122,6 +124,7 @@ class ShowPaciente extends Component
             'beneficios' => \App\Models\Beneficio::all(),
             'resides' => \App\Models\Reside::all(),
             'vias' => \App\Models\Via::all(),
+            'horarios_med' => \App\Models\HorarioMed::all(),
             'unidadesSaude' => \App\Models\Unidade_saude::all(),
             'comorbidadesList' => $this->comorbidadesList,
             'alergiasList' => $this->alergiasList,
@@ -137,6 +140,7 @@ class ShowPaciente extends Component
                 'nome' => 'required|string|max:255',
                 'prontuario' => 'required|string|max:255',
                 'data_nasc' => 'required|date',
+                'sexo' => 'required',
                 'orientacao_sexual_id' => 'required|exists:orientacao_sexuals,id',
                 'estado_civil_id' => 'required|exists:estado_civils,id',
                 'etnia_id' => 'required|exists:etnias,id',
@@ -168,11 +172,13 @@ class ShowPaciente extends Component
             $this->validate([
                 'medicamentos.*.nome_generico' => 'required|string|max:255',
                 'medicamentos.*.via_id' => 'required|exists:vias,id',
+                'medicamentos.*.horario_med_id' => 'required|exists:horario,id',
                 'medicamentos.*.dose' => 'required|string|max:255',
             ]);
         } elseif ($this->currentStep == 4) {
             $this->validate([
                 'resultados.*.texto_resultado' => 'required|string',
+                'data_exame' => 'required|date',
             ]);
         } elseif ($this->currentStep == 5) {
             $this->validate([
@@ -260,12 +266,12 @@ class ShowPaciente extends Component
 
     public function addMedicamento()
     {
-        $this->medicamentos[] = ['nome_generico' => '', 'via_id' => '', 'dose' => ''];
+        $this->medicamentos[] = ['nome_generico' => '', 'via_id' => '', 'horario_med_id' => '','dose' => ''];
     }
 
     public function addResultado()
     {
-        $this->resultados[] = ['texto_resultado' => ''];
+        $this->resultados[] = ['texto_resultado' => '','data_exame' => ''];
     }
 
     public function removeMedicamento($index, $IdPaciente)
@@ -344,6 +350,7 @@ class ShowPaciente extends Component
             'nome' => $this->nome,
             'prontuario' => $this->prontuario,
             'data_nasc' => $this->data_nasc,
+            'sexo' => $this->sexo,
             'orientacao_sexual_id' => $this->orientacao_sexual_id,
             'estado_civil_id' => $this->estado_civil_id,
             'etnia_id' => $this->etnia_id,
@@ -379,6 +386,7 @@ class ShowPaciente extends Component
                 [
                     'nome_generico' => $medicamentoData['nome_generico'],
                     'via_id' => $medicamentoData['via_id'],
+                    'horario_med_id' => $medicamentoData['horario_med_id'],
                     'dose' => $medicamentoData['dose'],
                 ]
             );
@@ -395,6 +403,7 @@ class ShowPaciente extends Component
                     'id' => isset($resultadoData['id']) ? $resultadoData['id'] : null, // Se houver um ID, ele atualiza o resultado, caso contrário cria um novo
                 ],
                 [
+                    'data_exame' => $resultadoData['data_exame'],
                     'texto_resultado' => $resultadoData['texto_resultado'],
                     'paciente_id' => $pacienteId, // Vincula o resultado ao paciente
                 ]

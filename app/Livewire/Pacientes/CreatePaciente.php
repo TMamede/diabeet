@@ -22,7 +22,7 @@ class CreatePaciente extends Component
     public $search = "";
 
     // Etapa 1: Dados Sociodemográficos
-    public $cpf, $email, $nome, $prontuario, $data_nasc;
+    public $cpf, $email, $nome, $prontuario, $data_nasc, $sexo;
     public $orientacao_sexual_id, $estado_civil_id, $etnia_id;
     public $endereco_id, $rua, $numero, $cep, $bairro, $cidade, $uf;
     public $ocupacao, $renda_familiar, $beneficio_id, $reside_id, $num_pss_casa;
@@ -186,6 +186,8 @@ class CreatePaciente extends Component
             'data_nasc.required' => 'A data de nascimento é obrigatória.',
             'data_nasc.date' => 'Informe uma data válida.',
 
+            'sexo.required' => 'O sexo do paciente é obrigatório',
+
             'orientacao_sexual_id.required' => 'O campo orientação sexual é obrigatório.',
             'orientacao_sexual_id.exists' => 'A orientação sexual selecionada é inválida.',
 
@@ -268,6 +270,7 @@ class CreatePaciente extends Component
                 'nome' => 'required|string|max:255',
                 'prontuario' => 'required|string|max:255',
                 'data_nasc' => 'required|date',
+                'sexo' => 'required',
                 'orientacao_sexual_id' => 'required|exists:orientacao_sexuals,id',
                 'estado_civil_id' => 'required|exists:estado_civils,id',
                 'etnia_id' => 'required|exists:etnias,id',
@@ -345,6 +348,7 @@ class CreatePaciente extends Component
             'nome' => $this->nome,
             'prontuario' => $this->prontuario,
             'data_nasc' => $this->data_nasc,
+            'sexo' => $this->sexo,
             'orientacao_sexual_id' => $this->orientacao_sexual_id,
             'estado_civil_id' => $this->estado_civil_id,
             'etnia_id' => $this->etnia_id,
