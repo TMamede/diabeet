@@ -69,26 +69,26 @@ class CreateQuestionario extends Component
 
     // Etapa 1 - Mostrar Paciente
     public function selectPaciente($pacienteId)
-{
-    $this->selectedPaciente = Paciente::findOrFail($pacienteId);
+    {
+        $this->selectedPaciente = Paciente::findOrFail($pacienteId);
 
-    if ($this->selectedPaciente->sexo == 1) {
-        $this->sexo = 'Feminino';
-    } else {
-        $this->sexo = 'Masculino';
+        if ($this->selectedPaciente->sexo == 1) {
+            $this->sexo = 'Feminino';
+        } else {
+            $this->sexo = 'Masculino';
+        }
+
+        $this->idPacienteSelected = $pacienteId;
+        $this->search = "";
+
+        $ultimoQuestionario = Questionario::where('paciente_id', $pacienteId)
+            ->latest('created_at')
+            ->first();
+
+        if ($ultimoQuestionario) {
+            $this->loadUltimoQuestionarioDoPaciente($pacienteId);
+        }
     }
-
-    $this->idPacienteSelected = $pacienteId;
-    $this->search = "";
-
-    $ultimoQuestionario = Questionario::where('paciente_id', $pacienteId)
-        ->latest('created_at')
-        ->first();
-
-    if ($ultimoQuestionario) {
-        $this->loadUltimoQuestionarioDoPaciente($pacienteId);
-    }
-}
 
 
 
@@ -127,12 +127,12 @@ class CreateQuestionario extends Component
 
     //Etapa 4 - Necessidades Espirituais e Finalização
     public $religiao = null, $e_religioso;
-    public  $impressoes;
+    public $impressoes;
     //Etapa 5 
     public $origem, $motivo, $diagnostico, $intervencao;
 
     public $itbD = null, $itbE = null, $classITBE = null, $classITBD = null;
-
+    public $cor;
     public function calcularIMC()
     {
         // Lógica para verificar se altura e peso estão preenchidos
@@ -144,16 +144,22 @@ class CreateQuestionario extends Component
             // Classificação do IMC
             if ($this->imc < 18.5) {
                 $this->classificacao = 'Magro ou baixo peso (Risco normal ou elevado)';
+                $this->cor = 'text-yellow-500';
             } elseif ($this->imc >= 18.5 && $this->imc <= 24.9) {
                 $this->classificacao = 'Normal ou eutrófico (Risco normal)';
+                $this->cor = 'text-green-600';
             } elseif ($this->imc >= 25 && $this->imc <= 29.9) {
                 $this->classificacao = 'Sobrepeso ou pré-obeso (Risco pouco elevado)';
+                $this->cor = 'text-orange-500';
             } elseif ($this->imc >= 30 && $this->imc <= 34.9) {
                 $this->classificacao = 'Obesidade Grau I (Risco elevado)';
+                $this->cor = 'text-orange-600';
             } elseif ($this->imc >= 35 && $this->imc <= 39.9) {
                 $this->classificacao = 'Obesidade Grau II (Risco muito elevado)';
+                $this->cor = 'text-red-500';
             } else {
                 $this->classificacao = 'Obesidade grave Grau III (Risco muitíssimo elevado)';
+                $this->cor = 'text-red-600 font-bold';
             }
         } else {
             // Se a altura e o peso não estiverem preenchidos, gerar erros
@@ -170,14 +176,19 @@ class CreateQuestionario extends Component
             // Classificação da temperatura
             if ($this->temperatura < 36.1) {
                 $this->classificacaoTemperatura = 'Hipotermia';
+                $this->cor = 'text-yellow-500';
             } elseif ($this->temperatura >= 36.1 && $this->temperatura <= 37.5) {
                 $this->classificacaoTemperatura = 'Normal';
+                $this->cor = 'text-green-600';
             } elseif ($this->temperatura > 37.5 && $this->temperatura < 38.5) {
                 $this->classificacaoTemperatura = 'Febre Leve';
+                $this->cor = 'text-orange-500';
             } elseif ($this->temperatura >= 38.5 && $this->temperatura < 39.5) {
                 $this->classificacaoTemperatura = 'Febre Moderada';
+                $this->cor = 'text-orange-600';
             } else {
                 $this->classificacaoTemperatura = 'Febre Alta';
+                $this->cor = 'text-red-600';
             }
         } else {
             $this->addError('temperatura', 'Por favor, informe a temperatura.');
@@ -256,32 +267,32 @@ class CreateQuestionario extends Component
     public $IdQuestionario, $enfermeiro;
 
     public function loadUltimoQuestionarioDoPaciente($pacienteId)
-{
-    $this->selectedPaciente = Paciente::findOrFail($pacienteId);
-    $this->IdselectedPaciente = $this->selectedPaciente->id;
+    {
+        $this->selectedPaciente = Paciente::findOrFail($pacienteId);
+        $this->IdselectedPaciente = $this->selectedPaciente->id;
 
-    $this->questionario = Questionario::with([
-        'nss_sociais.recreacoes',
-        'nss_sociais.cuidado.emocionais',
-        'nss_biologica.nutricao.refeicoes',
-        'nss_biologica.nutricao.restricoes_alimentar',
-        'nss_biologica.sono.problemas_sono',
-        'nss_biologica.sexualidade.disturbios_sexual',
-        'nss_biologica.locomocao.tipos_locomocao',
-        'nss_biologica.senso_percepcao.sintomas_percepcao',
-        'nss_biologica.cuidado_ferida.limpezas_lesao',
-        'nss_biologica.cuidado_ferida.coberturas_ferida',
-        'nss_biologica.integridade_cutanea.sinais_infeccao',
-        'user',
-    ])
-    ->where('paciente_id', $pacienteId)
-    ->latest('created_at') // aqui garante que é o último
-    ->first();
+        $this->questionario = Questionario::with([
+            'nss_sociais.recreacoes',
+            'nss_sociais.cuidado.emocionais',
+            'nss_biologica.nutricao.refeicoes',
+            'nss_biologica.nutricao.restricoes_alimentar',
+            'nss_biologica.sono.problemas_sono',
+            'nss_biologica.sexualidade.disturbios_sexual',
+            'nss_biologica.locomocao.tipos_locomocao',
+            'nss_biologica.senso_percepcao.sintomas_percepcao',
+            'nss_biologica.cuidado_ferida.limpezas_lesao',
+            'nss_biologica.cuidado_ferida.coberturas_ferida',
+            'nss_biologica.integridade_cutanea.sinais_infeccao',
+            'user',
+        ])
+            ->where('paciente_id', $pacienteId)
+            ->latest('created_at') // aqui garante que é o último
+            ->first();
 
-    if (!$this->questionario) {
-        session()->flash('error', 'Este paciente ainda não possui questionários anteriores.');
-        return;
-    }
+        if (!$this->questionario) {
+            session()->flash('error', 'Este paciente ainda não possui questionários anteriores.');
+            return;
+        }
 
         $this->IdQuestionario = $this->questionario->id;
         $this->nss_biologicas = $this->questionario->nss_biologica;
