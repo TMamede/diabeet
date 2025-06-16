@@ -4,190 +4,365 @@
             {{-- Etapa 1: Amostra de dados do paciente --}}
             @if ($currentStep == 1)
                 <div class="step">
-                    <div class="w-full py-24">
-                        <div id="search-bar" class="w-full max-w-2xl mx-auto">
-                            <!-- Título -->
-                            <h2 class="mb-6 text-3xl font-semibold text-center text-gray-800">Pesquise o paciente</h2>
+                    <div class="relative min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+                        <!-- Elementos decorativos de fundo -->
+                        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                            <div
+                                class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-20">
+                            </div>
+                            <div
+                                class="absolute bg-purple-200 rounded-full opacity-15 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
+                            </div>
+                            <div
+                                class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-15">
+                            </div>
+                        </div>
 
-                            <!-- Formulário de Busca -->
-                            <form class="flex justify-center" role="search">
-                                <input wire:model.live.debounce.300ms="search"
-                                    class="block w-full px-6 py-3 border border-gray-300 rounded-lg shadow-sm form-control focus:ring-indigo-500 focus:border-indigo-500"
-                                    type="search" placeholder="Pesquise o paciente ou prontuário" aria-label="Search">
-                            </form>
+                        <div class="relative z-10 py-12">
+                            <!-- Header Section -->
+                            <div class="mb-12 text-center">
+                                <div class="inline-block p-6 mb-6 backdrop-blur-sm rounded-3xl">
+                                    <h1 class="mb-2 text-4xl font-extrabold text-indigo-900 md:text-5xl">
+                                        So<span class="text-indigo-600">Pe</span>P
+                                    </h1>
+                                    <div class="w-20 h-1 mx-auto bg-indigo-600 rounded-full"></div>
+                                </div>
+                                <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Dados do Paciente</h2>
+                                <p class="mt-2 text-gray-600">Visualize as informações completas antes de iniciar o
+                                    questionário</p>
+                            </div>
 
-                            <!-- Resultados de Pesquisa -->
-                            @if (sizeof($pacientes) > 0)
-                                <div class="mt-4 bg-white rounded-lg shadow-lg">
-                                    @foreach ($pacientes as $paciente)
-                                        <div class="py-3 border-b border-gray-200 cursor-pointer hover:bg-gray-100"
-                                            wire:click="selectPaciente({{ $paciente->id }})">
-                                            <div class="flex flex-col px-6">
-                                                <span
-                                                    class="text-lg font-medium text-gray-900">{{ $paciente->nome }}</span>
-                                                <small class="text-gray-500">{{ $paciente->email }}</small>
-                                                <small class="text-gray-500">{{ $paciente->prontuario }}</small>
+                            <!-- Search Section -->
+                            <div class="max-w-4xl mx-auto mb-12 px-6">
+                                <div id="search-bar"
+                                    class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20">
+                                    <h3 class="mb-6 text-2xl font-semibold text-center text-gray-800">Pesquise o
+                                        paciente</h3>
+
+                                    <form class="flex justify-center" role="search">
+                                        <div class="relative w-full max-w-2xl">
+                                            <input wire:model.live.debounce.300ms="search"
+                                                class="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-2xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white/90"
+                                                type="search" placeholder="Pesquise o paciente ou prontuário"
+                                                aria-label="Search">
+                                            <div class="absolute inset-y-0 right-0 flex items-center pr-4">
+                                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                                </svg>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    </form>
+
+                                    <!-- Resultados de Pesquisa -->
+                                    @if (sizeof($pacientes) > 0)
+                                        <div class="mt-6 bg-white rounded-2xl shadow-lg border border-gray-100">
+                                            @foreach ($pacientes as $paciente)
+                                                <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 first:rounded-t-2xl last:rounded-b-2xl last:border-b-0"
+                                                    wire:click="selectPaciente({{ $paciente->id }})">
+                                                    <div class="flex flex-col">
+                                                        <span
+                                                            class="text-lg font-semibold text-gray-900">{{ $paciente->nome }}</span>
+                                                        <span
+                                                            class="text-sm text-gray-500">{{ $paciente->email }}</span>
+                                                        <span class="text-sm text-indigo-600 font-medium">Prontuário:
+                                                            {{ $paciente->prontuario }}</span>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+
+                            @if ($selectedPaciente)
+                                <!-- Dados Sociodemográficos -->
+                                <div class="max-w-6xl mx-auto px-6 mb-8">
+                                    <div
+                                        class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-white/20 p-8">
+                                        <div class="flex items-center mb-8">
+                                            <div
+                                                class="w-12 h-12 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-2xl flex items-center justify-center mr-4">
+                                                <svg class="w-6 h-6 text-indigo-700" fill="none"
+                                                    stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-2xl font-bold text-gray-800">Dados Sociodemográficos
+                                                </h3>
+                                                <p class="text-gray-600">Informações pessoais e de contato</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                            @foreach ([
+        ['label' => 'Nome Completo', 'value' => $selectedPaciente->nome, 'icon' => 'user'],
+        ['label' => 'CPF', 'value' => $selectedPaciente->cpf, 'icon' => 'document'],
+        ['label' => 'Email', 'value' => $selectedPaciente->email, 'icon' => 'mail'],
+        ['label' => 'Prontuário', 'value' => $selectedPaciente->prontuario, 'icon' => 'clipboard'],
+        ['label' => 'Data de Nascimento', 'value' => $selectedPaciente->data_nasc, 'icon' => 'calendar'],
+        ['label' => 'Sexo', 'value' => $sexo, 'icon' => 'identification'],
+        ['label' => 'Orientação Sexual', 'value' => $selectedPaciente->orientacao_sexual->descricao, 'icon' => 'heart'],
+        ['label' => 'Estado Civil', 'value' => $selectedPaciente->estado_civil->descricao, 'icon' => 'users'],
+        ['label' => 'Etnia', 'value' => $selectedPaciente->etnia->descricao, 'icon' => 'globe'],
+        ['label' => 'Ocupação', 'value' => $selectedPaciente->ocupacao, 'icon' => 'briefcase'],
+        ['label' => 'Renda Familiar', 'value' => $selectedPaciente->renda_familiar, 'icon' => 'currency-dollar'],
+        ['label' => 'Benefício', 'value' => $selectedPaciente->beneficio->descricao, 'icon' => 'shield-check'],
+    ] as $item)
+                                                <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                                                    <label
+                                                        class="block text-sm font-medium text-gray-600 mb-2">{{ $item['label'] }}</label>
+                                                    <div class="text-gray-900 font-medium">
+                                                        {{ $item['value'] ?: 'Não informado' }}</div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+
+                                        <!-- Endereço em seção separada -->
+                                        <div class="mt-8 pt-6 border-t border-gray-200">
+                                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Endereço</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                                @foreach ([['label' => 'Rua', 'value' => $selectedPaciente->endereco->rua], ['label' => 'Número', 'value' => $selectedPaciente->endereco->numero], ['label' => 'Bairro', 'value' => $selectedPaciente->endereco->bairro], ['label' => 'Cidade', 'value' => $selectedPaciente->endereco->cidade], ['label' => 'UF', 'value' => $selectedPaciente->endereco->uf], ['label' => 'Quem reside em casa', 'value' => $selectedPaciente->reside->descricao], ['label' => 'Número de pessoas', 'value' => $selectedPaciente->num_pss_casa]] as $item)
+                                                    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                                                        <label
+                                                            class="block text-sm font-medium text-gray-600 mb-1">{{ $item['label'] }}</label>
+                                                        <div class="text-gray-900">
+                                                            {{ $item['value'] ?: 'Não informado' }}</div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Histórico do Paciente -->
+                                <div class="max-w-6xl mx-auto px-6 mb-8">
+                                    <div
+                                        class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-white/20 p-8">
+                                        <div class="flex items-center mb-8">
+                                            <div
+                                                class="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl flex items-center justify-center mr-4">
+                                                <svg class="w-6 h-6 text-purple-700" fill="none"
+                                                    stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-2xl font-bold text-gray-800">Histórico Médico</h3>
+                                                <p class="text-gray-600">Informações clínicas e histórico de saúde</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                            @foreach ([['label' => 'Tipo de Diabetes', 'value' => $selectedPaciente->historico->tipo_diabetes->tipo], ['label' => 'Motivo de Cirurgia', 'value' => $selectedPaciente->historico->cirurgia_motivo], ['label' => 'Local da Amputação', 'value' => $selectedPaciente->historico->amputacao_onde], ['label' => 'Data da Amputação', 'value' => $selectedPaciente->historico->amputacao_quando], ['label' => 'Cigarros por Dia', 'value' => $selectedPaciente->historico->n_cigarros], ['label' => 'Início do Tabagismo', 'value' => $selectedPaciente->historico->inicio_tabagismo], ['label' => 'Início do Etilismo', 'value' => $selectedPaciente->historico->inicio_etilismo]] as $item)
+                                                <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                                                    <label
+                                                        class="block text-sm font-medium text-gray-600 mb-2">{{ $item['label'] }}</label>
+                                                    <div class="text-gray-900 font-medium">
+                                                        {{ $item['value'] ?: 'Não informado' }}</div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                            <!-- Comorbidades -->
+                                            <div class="bg-red-50 rounded-xl p-6 border border-red-100">
+                                                <h4 class="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                                                    </svg>
+                                                    Comorbidades
+                                                </h4>
+                                                <div class="space-y-3">
+                                                    @forelse ($selectedPaciente->historico->comorbidades as $comorbidade)
+                                                        <div class="bg-white rounded-lg p-3 border border-red-200">
+                                                            <span
+                                                                class="text-gray-800 font-medium">{{ $comorbidade->descricao }}</span>
+                                                        </div>
+                                                    @empty
+                                                        <p class="text-gray-500 italic">Nenhuma comorbidade registrada
+                                                        </p>
+                                                    @endforelse
+                                                </div>
+                                            </div>
+
+                                            <!-- Alergias -->
+                                            <div class="bg-orange-50 rounded-xl p-6 border border-orange-100">
+                                                <h4
+                                                    class="text-lg font-semibold text-orange-800 mb-4 flex items-center">
+                                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                    Alergias
+                                                </h4>
+                                                <div class="space-y-3">
+                                                    @forelse ($selectedPaciente->historico->alergias as $alergia)
+                                                        <div class="bg-white rounded-lg p-3 border border-orange-200">
+                                                            <span
+                                                                class="text-gray-800 font-medium">{{ $alergia->descricao }}</span>
+                                                        </div>
+                                                    @empty
+                                                        <p class="text-gray-500 italic">Nenhuma alergia registrada</p>
+                                                    @endforelse
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Medicamentos -->
+                                <div class="max-w-6xl mx-auto px-6 mb-8">
+                                    <div
+                                        class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-white/20 p-8">
+                                        <div class="flex items-center mb-8">
+                                            <div
+                                                class="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center mr-4">
+                                                <svg class="w-6 h-6 text-green-700" fill="none"
+                                                    stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-2xl font-bold text-gray-800">Medicamentos em Uso</h3>
+                                                <p class="text-gray-600">Prescrições e tratamentos atuais</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            @forelse ($selectedPaciente->medicamentos as $medicamento)
+                                                <div class="bg-green-50 rounded-xl p-6 border border-green-100">
+                                                    <h4 class="text-lg font-semibold text-green-800 mb-4">
+                                                        {{ $medicamento->nome_generico }}</h4>
+                                                    <div class="space-y-2">
+                                                        <div class="flex justify-between">
+                                                            <span class="text-sm font-medium text-gray-600">Via:</span>
+                                                            <span
+                                                                class="text-sm text-gray-800">{{ $medicamento->via->descricao }}</span>
+                                                        </div>
+                                                        <div class="flex justify-between">
+                                                            <span
+                                                                class="text-sm font-medium text-gray-600">Horário:</span>
+                                                            <span
+                                                                class="text-sm text-gray-800">{{ $medicamento->horario_med->descricao }}</span>
+                                                        </div>
+                                                        <div class="flex justify-between">
+                                                            <span
+                                                                class="text-sm font-medium text-gray-600">Dose:</span>
+                                                            <span
+                                                                class="text-sm text-gray-800 font-medium">{{ $medicamento->dose }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @empty
+                                                <div class="col-span-full text-center py-8">
+                                                    <p class="text-gray-500 italic">Nenhum medicamento registrado</p>
+                                                </div>
+                                            @endforelse
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Resultados -->
+                                <div class="max-w-6xl mx-auto px-6 mb-8">
+                                    <div
+                                        class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-white/20 p-8">
+                                        <div class="flex items-center mb-8">
+                                            <div
+                                                class="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mr-4">
+                                                <svg class="w-6 h-6 text-blue-700" fill="none"
+                                                    stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-2xl font-bold text-gray-800">Resultados de Exames</h3>
+                                                <p class="text-gray-600">Histórico de exames e resultados</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            @forelse ($selectedPaciente->resultados as $resultado)
+                                                <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+                                                    <div class="flex justify-between items-start mb-3">
+                                                        <h4 class="text-lg font-semibold text-blue-800">Resultado
+                                                            #{{ $loop->iteration }}</h4>
+                                                        <span
+                                                            class="text-sm text-blue-600 bg-blue-100 px-3 py-1 rounded-full">{{ $resultado->data_exame }}</span>
+                                                    </div>
+                                                    <p class="text-gray-700 leading-relaxed">
+                                                        {{ $resultado->texto_resultado }}</p>
+                                                </div>
+                                            @empty
+                                                <div class="text-center py-8">
+                                                    <p class="text-gray-500 italic">Nenhum resultado de exame
+                                                        registrado</p>
+                                                </div>
+                                            @endforelse
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Unidade de Saúde -->
+                                <div class="max-w-6xl mx-auto px-6 mb-8">
+                                    <div
+                                        class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-white/20 p-8">
+                                        <div class="flex items-center mb-6">
+                                            <div
+                                                class="w-12 h-12 bg-gradient-to-br from-teal-100 to-teal-200 rounded-2xl flex items-center justify-center mr-4">
+                                                <svg class="w-6 h-6 text-teal-700" fill="none"
+                                                    stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-2xl font-bold text-gray-800">Unidade de Saúde</h3>
+                                                <p class="text-gray-600">Local de atendimento do paciente</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="bg-teal-50 rounded-xl p-6 border border-teal-100">
+                                            <h4 class="text-xl font-semibold text-teal-800">
+                                                {{ $selectedPaciente->unidade_saude->nome }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Botão de Continuar -->
+                                <div class="flex justify-center max-w-6xl mx-auto px-6">
+                                    <button type="button" wire:click="nextStep"
+                                        @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                                        class="px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl shadow-lg hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                        <span class="flex items-center">
+                                            Iniciar Questionário
+                                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                            </svg>
+                                        </span>
+                                    </button>
                                 </div>
                             @endif
                         </div>
-
-                        @if ($selectedPaciente)
-                            <div class="max-w-4xl p-8 mx-auto mt-10 bg-white rounded-lg shadow-lg">
-                                <h2 class="py-5 pb-4 mb-6 text-2xl font-bold text-gray-800 border-b">Dados
-                                    Sociodemográficos
-                                </h2>
-
-                                <!-- Grid para os Dados Sociodemográficos -->
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-                                    @foreach ([
-        ['label' => 'CPF', 'value' => $selectedPaciente->cpf],
-        ['label' => 'Email', 'value' => $selectedPaciente->email],
-        ['label' => 'Nome', 'value' => $selectedPaciente->nome],
-        ['label' => 'Prontuário', 'value' => $selectedPaciente->prontuario],
-        ['label' => 'Data de Nascimento', 'value' => $selectedPaciente->data_nasc],
-        ['label' => 'Orientação Sexual', 'value' => $selectedPaciente->orientacao_sexual->descricao],
-        ['label' => 'Estado Civil', 'value' => $selectedPaciente->estado_civil->descricao],
-        ['label' => 'Etnia', 'value' => $selectedPaciente->etnia->descricao],
-        ['label' => 'Rua', 'value' => $selectedPaciente->endereco->rua],
-        ['label' => 'Número', 'value' => $selectedPaciente->endereco->numero],
-        ['label' => 'Bairro', 'value' => $selectedPaciente->endereco->bairro],
-        ['label' => 'Cidade', 'value' => $selectedPaciente->endereco->cidade],
-        ['label' => 'UF', 'value' => $selectedPaciente->endereco->uf],
-        ['label' => 'Ocupação', 'value' => $selectedPaciente->ocupacao],
-        ['label' => 'Renda Familiar', 'value' => $selectedPaciente->renda_familiar],
-        ['label' => 'Benefício', 'value' => $selectedPaciente->beneficio->descricao],
-        ['label' => 'Quem reside em casa', 'value' => $selectedPaciente->reside->descricao],
-        ['label' => 'Número de pessoas morando em casa', 'value' => $selectedPaciente->num_pss_casa],
-    ] as $item)
-                                        <div class="flex flex-col">
-                                            <label
-                                                class="text-sm font-medium text-gray-600">{{ $item['label'] }}</label>
-                                            <div class="p-3 mt-1 text-gray-800 bg-gray-300 rounded-md shadow-inner">
-                                                {{ $item['value'] }}
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <div class="max-w-4xl p-8 mx-auto mt-10 bg-white rounded-lg shadow-lg">
-                                <h2 class="py-5 pb-4 mb-6 text-2xl font-bold text-gray-800 border-b">Histórico do
-                                    Paciente
-                                </h2>
-
-                                <!-- Grid para os Dados Historico -->
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-                                    @foreach ([
-        ['label' => 'Tipo de Diabetes', 'value' => $selectedPaciente->historico->tipo_diabetes->tipo],
-        ['label' => 'Motivo de Cirurgia', 'value' => $selectedPaciente->historico->cirurgia_motivo],
-        ['label' => 'Onde a Amputação', 'value' => $selectedPaciente->historico->amputacao_onde],
-        ['label' => 'Data da Amputação', 'value' => $selectedPaciente->historico->amputacao_quando],
-        [
-            'label' => 'Número de Cigarros
-                            Diários',
-            'value' => $selectedPaciente->historico->n_cigarros,
-        ],
-        [
-            'label' => 'Início do
-                            Tabagismo',
-            'value' => $selectedPaciente->historico->inicio_tabagismo,
-        ],
-        [
-            'label' => 'Início
-                            do Etilismo',
-            'value' => $selectedPaciente->historico->inicio_etilismo,
-        ],
-    ] as $item)
-                                        <div class="flex flex-col">
-                                            <label
-                                                class="text-sm font-medium text-gray-600">{{ $item['label'] }}</label>
-                                            <div class="p-3 mt-1 text-gray-800 bg-gray-300 rounded-md shadow-inner">
-                                                {{ $item['value'] }}
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-
-                                <div class="grid grid-cols-1 gap-8 pt-3 md:grid-cols-2">
-                                    <!-- Comorbidades -->
-                                    <div>
-                                        <h3 class="mb-1 text-sm font-medium text-gray-600">Comorbidades</h3>
-                                        <ul class="space-y-2 list-none ">
-                                            @forelse ($selectedPaciente->historico->comorbidades as $comorbidade)
-                                                <li class="p-2 text-gray-800 bg-gray-300 rounded">
-                                                    {{ $comorbidade->descricao }}</li>
-                                            @empty
-                                                <li class="text-gray-500">Nenhuma comorbidade registrada.</li>
-                                            @endforelse
-                                        </ul>
-                                    </div>
-
-                                    <!-- Alergias -->
-                                    <div>
-                                        <h3 class="mb-1 text-sm font-medium text-gray-600">Alergias</h3>
-                                        <ul class="space-y-2 list-none ">
-                                            @forelse ($selectedPaciente->historico->alergias as $alergia)
-                                                <li class="p-2 text-gray-800 bg-gray-300 rounded">
-                                                    {{ $alergia->descricao }}
-                                                </li>
-                                            @empty
-                                                <li class="text-gray-500">Nenhuma alergia registrada.</li>
-                                            @endforelse
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Medicamentos -->
-                            <div class="max-w-4xl p-8 mx-auto mt-10 bg-white rounded-lg shadow-lg">
-                                <h2 class="py-5 pb-4 mb-6 text-2xl font-bold text-gray-800 border-b">Medicamentos</h2>
-
-                                <!-- Grid para os Medicamentos -->
-                                <div class="space-y-4">
-                                    @forelse ($selectedPaciente->medicamentos as $medicamento)
-                                        <div
-                                            class="p-6 transition duration-150 ease-in-out bg-gray-300 border border-gray-300 rounded-lg shadow-md">
-                                            <h4 class="mb-2 text-xl font-semibold text-gray-900">
-                                                {{ $medicamento->nome_generico }}</h4>
-                                            <p class="mb-1 text-gray-700"><span class="font-medium">Via:</span>
-                                                {{ $medicamento->via->descricao }}</p>
-                                            <p class="text-gray-700"><span class="font-medium">Dose:</span>
-                                                {{ $medicamento->dose }}</p>
-                                        </div>
-                                    @empty
-                                        <p class="text-gray-500">Nenhum medicamento registrado.</p>
-                                    @endforelse
-                                </div>
-                            </div>
-                            <!-- Resultados -->
-                            <div class="max-w-4xl p-8 mx-auto mt-10 bg-white rounded-lg shadow-lg">
-                                <h2 class="py-5 pb-4 mb-6 text-2xl font-bold text-gray-800 border-b">Resultados</h2>
-
-                                <!-- Grid para os Resultados -->
-                                <div class="space-y-4">
-                                    @forelse ($selectedPaciente->resultados as $resultado)
-                                        <div
-                                            class="p-6 transition duration-150 ease-in-out bg-gray-300 border border-gray-300 rounded-lg shadow-md">
-                                            <h4 class="mb-2 text-xl font-semibold text-gray-900">Resultado
-                                                #{{ $loop->iteration }}
-                                            </h4>
-                                            <p class="text-gray-700">{{ $resultado->texto_resultado }}</p>
-                                        </div>
-                                    @empty
-                                        <p class="text-gray-500">Nenhum resultado registrado.</p>
-                                    @endforelse
-                                </div>
-                            </div>
-                            <div class="flex justify-center w-full mt-8">
-                                <button type="button" wire:click="nextStep"
-                                    @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                                    class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white transition-all duration-300 ease-in-out shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                                    <span class="z-10">Continuar</span>
-                                    <div class="absolute inset-0 bg-white pointer-events-none opacity-5"></div>
-                                </button>
-                            </div>
-                        @endif
                     </div>
                 </div>
             @endif
@@ -1373,7 +1548,8 @@
                             </div>
 
                             <div class="w-1/4">
-                                <label for="arco_desabado" class="block mb-2 font-medium text-gray-700">Arco Desabado
+                                <label for="arco_desabado" class="block mb-2 font-medium text-gray-700">Arco
+                                    Desabado
                                     (Charcot)</label>
                                 <div class="flex items-center mt-1 space-x-6">
                                     <label class="inline-flex items-center">

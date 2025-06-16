@@ -60,6 +60,8 @@ class CreateQuestionario extends Component
     public $selectedPaciente = null;
     public $idPacienteSelected = null;
 
+    public $sexo;
+
     protected $messages = [
         'imagem_avaliacao_pe.image' => 'O arquivo deve ser uma imagem.',
         'imagem_avaliacao_pe.max' => 'A imagem não pode ser maior que 1MB.',
@@ -69,17 +71,24 @@ class CreateQuestionario extends Component
     public function selectPaciente($pacienteId)
 {
     $this->selectedPaciente = Paciente::findOrFail($pacienteId);
+
+    if ($this->selectedPaciente->sexo == 1) {
+        $this->sexo = 'Feminino';
+    } else {
+        $this->sexo = 'Masculino';
+    }
+
     $this->idPacienteSelected = $pacienteId;
     $this->search = "";
 
     $ultimoQuestionario = Questionario::where('paciente_id', $pacienteId)
-        ->latest('created_at') // pega o mais recente
+        ->latest('created_at')
         ->first();
 
     if ($ultimoQuestionario) {
         $this->loadUltimoQuestionarioDoPaciente($pacienteId);
-    }// você pode criar essa função para limpar os campos
     }
+}
 
 
 

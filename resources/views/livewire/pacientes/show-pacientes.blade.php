@@ -1208,13 +1208,13 @@
 
                                                     <!-- Data do Exame -->
                                                     <div class="form-group">
-                                                        <label for="resultados.{{ $index }}.resultado_exame"
+                                                        <label for="resultados.{{ $index }}.data_exame"
                                                             class="block text-sm font-semibold text-gray-700 mb-2">Data
                                                             do Exame</label>
                                                         <div class="relative">
                                                             <input type="date"
-                                                                wire:model="resultados.{{ $index }}.resultado_exame"
-                                                                id="resultados.{{ $index }}.resultado_exame"
+                                                                wire:model="resultados.{{ $index }}.data_exame"
+                                                                id="resultados.{{ $index }}.data_exame"
                                                                 class="w-full px-4 py-3 bg-white/70 border border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:bg-white">
                                                             <div
                                                                 class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -1226,7 +1226,7 @@
                                                                 </svg>
                                                             </div>
                                                         </div>
-                                                        @error('resultados.' . $index . '.resultado_exame')
+                                                        @error('resultados.' . $index . '.data_exame')
                                                             <span
                                                                 class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
                                                         @enderror

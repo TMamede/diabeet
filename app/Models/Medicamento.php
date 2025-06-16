@@ -19,7 +19,7 @@ class Medicamento extends Model
         return $this->belongsTo(Via::class);
     }
 
-    public function horario(){
+    public function horario_med(){
         return $this->belongsTo(HorarioMed::class);
     }
 }

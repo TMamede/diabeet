@@ -172,13 +172,13 @@ class ShowPaciente extends Component
             $this->validate([
                 'medicamentos.*.nome_generico' => 'required|string|max:255',
                 'medicamentos.*.via_id' => 'required|exists:vias,id',
-                'medicamentos.*.horario_med_id' => 'required|exists:horario,id',
+                'medicamentos.*.horario_med_id' => 'required|exists:horario_meds,id',
                 'medicamentos.*.dose' => 'required|string|max:255',
             ]);
         } elseif ($this->currentStep == 4) {
             $this->validate([
                 'resultados.*.texto_resultado' => 'required|string',
-                'data_exame' => 'required|date',
+                'resultados.*.data_exame' => 'required|date',
             ]);
         } elseif ($this->currentStep == 5) {
             $this->validate([
@@ -403,8 +403,8 @@ class ShowPaciente extends Component
                     'id' => isset($resultadoData['id']) ? $resultadoData['id'] : null, // Se houver um ID, ele atualiza o resultado, caso contrário cria um novo
                 ],
                 [
-                    'data_exame' => $resultadoData['data_exame'],
                     'texto_resultado' => $resultadoData['texto_resultado'],
+                    'data_exame' => $resultadoData['data_exame'],
                     'paciente_id' => $pacienteId, // Vincula o resultado ao paciente
                 ]
             );
