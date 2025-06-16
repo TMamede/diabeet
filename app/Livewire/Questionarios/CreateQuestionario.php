@@ -150,16 +150,16 @@ class CreateQuestionario extends Component
                 $this->cor = 'text-green-600';
             } elseif ($this->imc >= 25 && $this->imc <= 29.9) {
                 $this->classificacao = 'Sobrepeso ou pré-obeso (Risco pouco elevado)';
-                $this->cor = 'text-orange-500';
+                $this->cor = 'text-orange-400';
             } elseif ($this->imc >= 30 && $this->imc <= 34.9) {
                 $this->classificacao = 'Obesidade Grau I (Risco elevado)';
                 $this->cor = 'text-orange-600';
             } elseif ($this->imc >= 35 && $this->imc <= 39.9) {
                 $this->classificacao = 'Obesidade Grau II (Risco muito elevado)';
-                $this->cor = 'text-red-500';
+                $this->cor = 'text-red-600';
             } else {
                 $this->classificacao = 'Obesidade grave Grau III (Risco muitíssimo elevado)';
-                $this->cor = 'text-red-600 font-bold';
+                $this->cor = 'text-red-800 font-bold';
             }
         } else {
             // Se a altura e o peso não estiverem preenchidos, gerar erros
@@ -182,7 +182,7 @@ class CreateQuestionario extends Component
                 $this->cor = 'text-green-600';
             } elseif ($this->temperatura > 37.5 && $this->temperatura < 38.5) {
                 $this->classificacaoTemperatura = 'Febre Leve';
-                $this->cor = 'text-orange-500';
+                $this->cor = 'text-orange-400';
             } elseif ($this->temperatura >= 38.5 && $this->temperatura < 39.5) {
                 $this->classificacaoTemperatura = 'Febre Moderada';
                 $this->cor = 'text-orange-600';
