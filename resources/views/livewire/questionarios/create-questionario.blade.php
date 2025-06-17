@@ -1435,9 +1435,9 @@
                                 @if ($itbD)
                                     <div class="flex items-center gap-3 p-3 mt-4 bg-gray-100 rounded-lg shadow-sm">
                                         <p class="text-lg font-semibold text-gray-800">ITB Direito:</p>
-                                        <span class="text-lg font-bold text-blue-600">{{ $itbD }}</span>
+                                        <span class="text-lg font-bold {{ $corITBD }}">{{ $itbD }}</span>
                                         <p class="ml-5 text-lg font-semibold text-gray-800">Classificação:</p>
-                                        <span class="text-lg font-bold text-blue-600">{{ $classITBD }}</span>
+                                        <span class="text-lg font-bold {{ $corITBD }}">{{ $classITBD }}</span>
                                     </div>
                                 @endif
 
@@ -1490,9 +1490,9 @@
                                     <div
                                         class="flex items-center gap-3 p-3 py-2 mt-4 bg-gray-100 rounded-lg shadow-sm">
                                         <p class="text-lg font-semibold text-gray-800">ITB Esquerdo:</p>
-                                        <span class="text-lg font-bold text-blue-600">{{ $itbE }}</span>
+                                        <span class="text-lg font-bold {{ $corITBE }}">{{ $itbE }}</span>
                                         <p class="ml-5 text-lg font-semibold text-gray-800">Classificação:</p>
-                                        <span class="text-lg font-bold text-blue-600">{{ $classITBE }}</span>
+                                        <span class="text-lg font-bold  {{ $corITBE }}">{{ $classITBE }}</span>
                                     </div>
                                 @endif
                             </div>
@@ -2395,11 +2395,11 @@
                         <!-- Header -->
                         <div class="max-w-6xl mx-auto mb-8">
                             <div
-                                class="p-6 backdrop-blur-sm bg-white/90 rounded-3xl shadow-lg border border-white/20">
+                                class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
-                                        <p class="text-indigo-600 font-medium">Sistema de Prescrição Eletrônica para
+                                        <p class="font-medium text-indigo-600">Sistema de Prescrição Eletrônica para
                                             Pé Diabético</p>
                                     </div>
                                     <div class="text-right">
@@ -2413,104 +2413,104 @@
                         <!-- Main Content -->
                         <div class="max-w-6xl mx-auto">
                             <div
-                                class="p-8 backdrop-blur-sm bg-white/90 rounded-3xl shadow-lg border border-white/20">
+                                class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
 
                                 <!-- Seção Aprendizagem - Educação a Saúde -->
-                                <div class="mb-10 pb-8 border-b border-gray-200">
+                                <div class="pb-8 mb-10 border-b border-gray-200">
                                     <div class="mb-8">
-                                        <h2 class="text-2xl font-bold text-indigo-900 mb-2">Aprendizagem - Educação a
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Aprendizagem - Educação a
                                             Saúde</h2>
                                         <div
-                                            class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-full">
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
                                         </div>
                                     </div>
 
                                     <!-- Frequência de monitoramento -->
                                     <div class="mb-8">
                                         <label for="monitoramento_glicemia_dia"
-                                            class="block text-lg font-semibold text-gray-800 mb-3">
+                                            class="block mb-3 text-lg font-semibold text-gray-800">
                                             Frequência por dia de automonitoramento da glicemia capilar:
                                         </label>
                                         <input type="text" wire:model="monitoramento_glicemia_dia"
                                             id="monitoramento_glicemia_dia"
-                                            class="w-full md:w-2/3 px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 md:w-2/3 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
                                             placeholder="Digite o número de vezes por dia">
                                         @error('monitoramento_glicemia_dia')
-                                            <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                            <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                         @enderror
                                     </div>
 
                                     <!-- Grid de orientações -->
-                                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
                                         <!-- Cuidado com os pés -->
-                                        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                                            <label class="block text-lg font-semibold text-gray-800 mb-4">
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
                                                 Foi orientado sobre autocuidado com os pés:
                                             </label>
                                             <div class="flex gap-6">
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="cuidado_pes" value="1"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Sim</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
                                                 </label>
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="cuidado_pes" value="0"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Não</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
                                                 </label>
                                             </div>
                                             @error('cuidado_pes')
-                                                <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                             @enderror
                                         </div>
 
                                         <!-- Uso de sapatos -->
-                                        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                                            <label class="block text-lg font-semibold text-gray-800 mb-4">
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
                                                 Foi orientado sobre uso de sapatos adequados:
                                             </label>
                                             <div class="flex gap-6">
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="uso_sapato" value="1"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Sim</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
                                                 </label>
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="uso_sapato" value="0"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Não</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
                                                 </label>
                                             </div>
                                             @error('uso_sapato')
-                                                <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                             @enderror
                                         </div>
 
                                         <!-- Alimentação -->
-                                        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                                            <label class="block text-lg font-semibold text-gray-800 mb-4">
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
                                                 Foi orientado sobre alimentação:
                                             </label>
                                             <div class="flex gap-6">
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="alimentacao" value="1"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Sim</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
                                                 </label>
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="alimentacao" value="0"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Não</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
                                                 </label>
                                             </div>
                                             @error('alimentacao')
-                                                <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                             @enderror
                                         </div>
 
                                         <!-- Regime terapêutico -->
-                                        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                                            <label class="block text-lg font-semibold text-gray-800 mb-4">
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
                                                 Compreende e executa o regime terapêutico adequadamente:
                                             </label>
                                             <div class="flex gap-6">
@@ -2518,117 +2518,117 @@
                                                     <input type="radio" wire:model="regime_terapeutico"
                                                         value="1"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Sim</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
                                                 </label>
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="regime_terapeutico"
                                                         value="0"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Não</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
                                                 </label>
                                             </div>
                                             @error('regime_terapeutico')
-                                                <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Seção Recreação/Lazer/Criatividade -->
-                                <div class="mb-10 pb-8 border-b border-gray-200">
+                                <div class="pb-8 mb-10 border-b border-gray-200">
                                     <div class="mb-8">
-                                        <h2 class="text-2xl font-bold text-indigo-900 mb-2">Recreação / Lazer /
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Recreação / Lazer /
                                             Criatividade</h2>
                                         <div
-                                            class="w-24 h-1 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full">
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-purple-500 to-purple-700">
                                         </div>
                                     </div>
 
-                                    <div class="p-6 bg-purple-50 rounded-2xl border border-purple-100">
+                                    <div class="p-6 border border-purple-100 bg-purple-50 rounded-2xl">
                                         <label
-                                            class="block text-lg font-semibold text-gray-800 mb-6">Recreações</label>
-                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                            class="block mb-6 text-lg font-semibold text-gray-800">Recreações</label>
+                                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                                             @foreach ($recreacaosList as $recreacao)
                                                 <div
-                                                    class="flex items-center p-3 bg-white rounded-xl border border-gray-100">
+                                                    class="flex items-center p-3 bg-white border border-gray-100 rounded-xl">
                                                     <input type="checkbox" wire:model="recreacaos"
                                                         value="{{ $recreacao->id }}"
                                                         id="recreacao-{{ $recreacao->id }}"
                                                         class="w-5 h-5 text-purple-600 border-2 border-gray-300 rounded focus:ring-purple-500">
                                                     <label for="recreacao-{{ $recreacao->id }}"
-                                                        class="ml-3 text-gray-700 font-medium cursor-pointer">
+                                                        class="ml-3 font-medium text-gray-700 cursor-pointer">
                                                         {{ $recreacao->descricao }}
                                                     </label>
                                                 </div>
                                             @endforeach
                                         </div>
                                         @error('recreacaos')
-                                            <span class="text-red-500 text-sm mt-4 block">{{ $message }}</span>
+                                            <span class="block mt-4 text-sm text-red-500">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
 
                                 <!-- Seção Amor/Aceitação/Atenção/Auto estima/Segurança -->
-                                <div class="mb-10 pb-8 border-b border-gray-200">
+                                <div class="pb-8 mb-10 border-b border-gray-200">
                                     <div class="mb-8">
-                                        <h2 class="text-2xl font-bold text-indigo-900 mb-2">Amor / Aceitação / Atenção
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Amor / Aceitação / Atenção
                                             / Auto estima / Segurança</h2>
-                                        <div class="w-24 h-1 bg-gradient-to-r from-pink-500 to-pink-700 rounded-full">
+                                        <div class="w-24 h-1 rounded-full bg-gradient-to-r from-pink-500 to-pink-700">
                                         </div>
                                     </div>
 
                                     <div class="space-y-8">
                                         <!-- Acompanhado -->
-                                        <div class="p-6 bg-pink-50 rounded-2xl border border-pink-100">
-                                            <label class="block text-lg font-semibold text-gray-800 mb-4">
+                                        <div class="p-6 border border-pink-100 bg-pink-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
                                                 Acompanhado no momento da consulta:
                                             </label>
                                             <div class="flex gap-6">
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="acompanhado" value="1"
                                                         class="w-5 h-5 text-pink-600 border-2 border-gray-300 focus:ring-pink-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Sim</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
                                                 </label>
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="acompanhado" value="0"
                                                         class="w-5 h-5 text-pink-600 border-2 border-gray-300 focus:ring-pink-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Não</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
                                                 </label>
                                             </div>
                                             @error('acompanhado')
-                                                <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                             @enderror
                                         </div>
 
                                         <!-- Estado Emocional -->
-                                        <div class="p-6 bg-pink-50 rounded-2xl border border-pink-100">
-                                            <label class="block text-lg font-semibold text-gray-800 mb-6">Estado
+                                        <div class="p-6 border border-pink-100 bg-pink-50 rounded-2xl">
+                                            <label class="block mb-6 text-lg font-semibold text-gray-800">Estado
                                                 Emocional</label>
-                                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                                                 @foreach ($emocionalsList as $emocional)
                                                     <div
-                                                        class="flex items-center p-3 bg-white rounded-xl border border-gray-100">
+                                                        class="flex items-center p-3 bg-white border border-gray-100 rounded-xl">
                                                         <input type="checkbox" wire:model="emocionals"
                                                             value="{{ $emocional->id }}"
                                                             id="emocional-{{ $emocional->id }}"
                                                             class="w-5 h-5 text-pink-600 border-2 border-gray-300 rounded focus:ring-pink-500">
                                                         <label for="emocional-{{ $emocional->id }}"
-                                                            class="ml-3 text-gray-700 font-medium cursor-pointer">
+                                                            class="ml-3 font-medium text-gray-700 cursor-pointer">
                                                             {{ $emocional->descricao }}
                                                         </label>
                                                     </div>
                                                 @endforeach
                                             </div>
                                             @error('emocionals')
-                                                <span class="text-red-500 text-sm mt-4 block">{{ $message }}</span>
+                                                <span class="block mt-4 text-sm text-red-500">{{ $message }}</span>
                                             @enderror
                                         </div>
 
                                         <!-- Grid de opiniões e auxiliador -->
-                                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
                                             <!-- Opiniões de si -->
-                                            <div class="p-6 bg-pink-50 rounded-2xl border border-pink-100">
-                                                <label class="block text-lg font-semibold text-gray-800 mb-4">
+                                            <div class="p-6 border border-pink-100 bg-pink-50 rounded-2xl">
+                                                <label class="block mb-4 text-lg font-semibold text-gray-800">
                                                     Opiniões de si mesmo sobre sua lesão:
                                                 </label>
                                                 <div class="flex gap-6">
@@ -2636,25 +2636,25 @@
                                                         <input type="radio" wire:model="opnioes_de_si"
                                                             value="1"
                                                             class="w-5 h-5 text-pink-600 border-2 border-gray-300 focus:ring-pink-500">
-                                                        <span class="ml-3 text-gray-700 font-medium">Positiva</span>
+                                                        <span class="ml-3 font-medium text-gray-700">Positiva</span>
                                                     </label>
                                                     <label class="flex items-center cursor-pointer">
                                                         <input type="radio" wire:model="opnioes_de_si"
                                                             value="0"
                                                             class="w-5 h-5 text-pink-600 border-2 border-gray-300 focus:ring-pink-500">
-                                                        <span class="ml-3 text-gray-700 font-medium">Negativa</span>
+                                                        <span class="ml-3 font-medium text-gray-700">Negativa</span>
                                                     </label>
                                                 </div>
                                                 @error('opnioes_de_si')
                                                     <span
-                                                        class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                                        class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                                 @enderror
                                             </div>
 
                                             <!-- Auxiliador -->
-                                            <div class="p-6 bg-pink-50 rounded-2xl border border-pink-100">
+                                            <div class="p-6 border border-pink-100 bg-pink-50 rounded-2xl">
                                                 <label for="auxiliador"
-                                                    class="block text-lg font-semibold text-gray-800 mb-4">
+                                                    class="block mb-4 text-lg font-semibold text-gray-800">
                                                     Quem mais auxilia no seu tratamento:
                                                 </label>
                                                 <input type="text" wire:model="auxiliador" id="auxiliador"
@@ -2662,7 +2662,7 @@
                                                     placeholder="Digite quem auxilia no tratamento">
                                                 @error('auxiliador')
                                                     <span
-                                                        class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                                        class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -2672,39 +2672,39 @@
                                 <!-- Seção Comunicação e Gregária -->
                                 <div class="mb-12">
                                     <div class="mb-8">
-                                        <h2 class="text-2xl font-bold text-indigo-900 mb-2">Comunicação e Gregária
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Comunicação e Gregária
                                         </h2>
                                         <div
-                                            class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full">
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500">
                                         </div>
                                     </div>
 
-                                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
                                         <!-- Apoio familiar -->
-                                        <div class="p-6 bg-indigo-50 rounded-2xl border border-indigo-100">
-                                            <label class="block text-lg font-semibold text-gray-800 mb-4">
+                                        <div class="p-6 border border-indigo-100 bg-indigo-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
                                                 Possui apoio familiar/amigos:
                                             </label>
                                             <div class="flex gap-6">
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="apoio" value="1"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Sim</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
                                                 </label>
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="apoio" value="0"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Não</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
                                                 </label>
                                             </div>
                                             @error('apoio')
-                                                <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                             @enderror
                                         </div>
 
                                         <!-- Interação social -->
-                                        <div class="p-6 bg-indigo-50 rounded-2xl border border-indigo-100">
-                                            <label class="block text-lg font-semibold text-gray-800 mb-4">
+                                        <div class="p-6 border border-indigo-100 bg-indigo-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
                                                 Interação com as pessoas:
                                             </label>
                                             <div class="flex gap-6">
@@ -2712,24 +2712,24 @@
                                                     <input type="radio" wire:model="interacao_social"
                                                         value="1"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Sim</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
                                                 </label>
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="interacao_social"
                                                         value="0"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Não</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
                                                 </label>
                                             </div>
                                             @error('interacao_social')
-                                                <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Botões de Navegação -->
-                                <div class="flex justify-between items-center pt-8 border-t border-gray-200">
+                                <div class="flex items-center justify-between pt-8 border-t border-gray-200">
                                     <button type="button" wire:click="previousStep"
                                         onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
                                         class="flex items-center px-8 py-4 text-lg font-semibold text-indigo-600 bg-white border-2 border-indigo-200 rounded-2xl hover:bg-indigo-50 hover:border-indigo-300 focus:outline-none focus:ring-4 focus:ring-indigo-100">
@@ -2743,7 +2743,7 @@
 
                                     <button type="button" wire:click="nextStep"
                                         onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                                        class="flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-indigo-200 shadow-lg">
+                                        class="flex items-center px-8 py-4 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-indigo-200">
                                         Continuar
                                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -2779,11 +2779,11 @@
                         <!-- Header -->
                         <div class="max-w-6xl mx-auto mb-8">
                             <div
-                                class="p-6 backdrop-blur-sm bg-white/90 rounded-3xl shadow-lg border border-white/20">
+                                class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
-                                        <p class="text-indigo-600 font-medium">Sistema de Prescrição Eletrônica para
+                                        <p class="font-medium text-indigo-600">Sistema de Prescrição Eletrônica para
                                             Pé Diabético</p>
                                     </div>
                                     <div class="text-right">
@@ -2798,38 +2798,38 @@
                         <!-- Main Content -->
                         <div class="max-w-6xl mx-auto">
                             <div
-                                class="p-8 backdrop-blur-sm bg-white/90 rounded-3xl shadow-lg border border-white/20">
+                                class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
 
                                 <!-- Seção Religião/Espiritualidade -->
-                                <div class="mb-10 pb-8 border-b border-gray-200">
+                                <div class="pb-8 mb-10 border-b border-gray-200">
                                     <div class="mb-8">
-                                        <h2 class="text-2xl font-bold text-indigo-900 mb-2">Religião / Espiritualidade
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Religião / Espiritualidade
                                         </h2>
                                         <div
-                                            class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-full">
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
                                         </div>
                                     </div>
 
                                     <!-- Tem religião -->
                                     <div class="mb-8">
-                                        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                                            <label class="block text-lg font-semibold text-gray-800 mb-4">
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
                                                 Tem Religião:
                                             </label>
                                             <div class="flex gap-6">
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="e_religioso" value="sim"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Sim</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
                                                 </label>
                                                 <label class="flex items-center cursor-pointer">
                                                     <input type="radio" wire:model="e_religioso" value="nao"
                                                         class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                    <span class="ml-3 text-gray-700 font-medium">Não</span>
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
                                                 </label>
                                             </div>
                                             @error('e_religioso')
-                                                <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -2837,14 +2837,14 @@
                                     <!-- Campo de religião (condicional) -->
                                     <div class="mb-8" x-show="$wire.e_religioso === 'sim'" x-cloak>
                                         <label for="religiao"
-                                            class="block text-lg font-semibold text-gray-800 mb-3">
+                                            class="block mb-3 text-lg font-semibold text-gray-800">
                                             Religião/Espiritualidade:
                                         </label>
                                         <input type="text" wire:model="religiao" id="religiao"
-                                            class="w-full md:w-2/3 px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 md:w-2/3 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
                                             placeholder="Digite sua religião/espiritualidade">
                                         @error('religiao')
-                                            <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                            <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
@@ -2852,29 +2852,29 @@
                                 <!-- Seção Evoluções de Enfermagem -->
                                 <div class="mb-12">
                                     <div class="mb-8">
-                                        <h2 class="text-2xl font-bold text-indigo-900 mb-2">Evoluções de Enfermagem
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Evoluções de Enfermagem
                                         </h2>
                                         <div
-                                            class="w-24 h-1 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full">
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-purple-500 to-purple-700">
                                         </div>
                                     </div>
 
-                                    <div class="p-6 bg-purple-50 rounded-2xl border border-purple-100">
+                                    <div class="p-6 border border-purple-100 bg-purple-50 rounded-2xl">
                                         <label for="impressoes"
-                                            class="block text-lg font-semibold text-gray-800 mb-4">
+                                            class="block mb-4 text-lg font-semibold text-gray-800">
                                             Evoluções de enfermagem:
                                         </label>
                                         <textarea wire:model="impressoes" id="impressoes"
-                                            class="w-full px-4 py-4 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none resize-none"
+                                            class="w-full px-4 py-4 text-gray-700 bg-white border-2 border-gray-200 resize-none rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none"
                                             placeholder="Digite suas impressões sobre a realização do questionário" rows="6"></textarea>
                                         @error('impressoes')
-                                            <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                            <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
 
                                 <!-- Botões de Navegação -->
-                                <div class="flex justify-between items-center pt-8 border-t border-gray-200">
+                                <div class="flex items-center justify-between pt-8 border-t border-gray-200">
                                     <button type="button" wire:click="previousStep"
                                         onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
                                         class="flex items-center px-8 py-4 text-lg font-semibold text-indigo-600 bg-white border-2 border-indigo-200 rounded-2xl hover:bg-indigo-50 hover:border-indigo-300 focus:outline-none focus:ring-4 focus:ring-indigo-100">
@@ -2887,7 +2887,7 @@
                                     </button>
 
                                     <button type="submit" wire:click="submitForm"
-                                        class="flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl hover:from-teal-600 hover:to-teal-800 focus:outline-none focus:ring-4 focus:ring-teal-200 shadow-lg">
+                                        class="flex items-center px-8 py-4 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl hover:from-teal-600 hover:to-teal-800 focus:outline-none focus:ring-4 focus:ring-teal-200">
                                         Salvar
                                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">

@@ -132,10 +132,10 @@ class CreateQuestionario extends Component
     public $origem, $motivo, $diagnostico, $intervencao;
 
     public $itbD = null, $itbE = null, $classITBE = null, $classITBD = null;
-    public $corIMC, $corTemperatura, $corGlicemia, $corCircunferencia;
+    public $corIMC, $corTemperatura, $corGlicemia, $corCircunferencia, $corITBD, $corITBE;
     public $classificaoCirc, $classificacaoGlic;
     public $estado_glicemia, $estado_circunferencia;
-    
+
     public function calcularIMC()
     {
         // Lógica para verificar se altura e peso estão preenchidos
@@ -183,10 +183,10 @@ class CreateQuestionario extends Component
                 $this->classificaoCirc = 'Risco de Morbimortalidade';
                 $this->corCircunferencia = 'text-red-600';
             } elseif ($this->circunferencia_abdominal <= 80 && $this->estado_circunferencia == 1) {
-                $this->classificaoCirc= 'Sem Risco';
+                $this->classificaoCirc = 'Sem Risco';
                 $this->corCircunferencia = 'text-green-600';
             } elseif ($this->circunferencia_abdominal > 94 && $this->estado_circunferencia == 0) {
-                $this->classificaoCirc= 'Risco de Morbimortalidade';
+                $this->classificaoCirc = 'Risco de Morbimortalidade';
                 $this->corCircunferencia = 'text-red-600';
             } else {
                 $this->classificaoCirc = 'Sem Risco';
@@ -205,15 +205,15 @@ class CreateQuestionario extends Component
 
             // Em Jejum o estado_glicemia será 1, quando a glicemia for 2 horas apos o inicio das refeiçoes sera 0
 
-             // Classificação da glicemia
+            // Classificação da glicemia
             if ($this->glicemia_capilar > 80 && $this->estado_glicemia == 1) {
                 $this->classificaoCirc = 'Glicemia Alterada';
                 $this->corCircunferencia = 'text-red-600';
             } elseif ($this->glicemia_capilar <= 80 && $this->estado_glicemia == 1) {
-                $this->classificaoCirc= 'Sem Alteração';
+                $this->classificaoCirc = 'Sem Alteração';
                 $this->corCircunferencia = 'text-green-600';
             } elseif ($this->glicemia_capilar > 94 && $this->estado_glicemia == 0) {
-                $this->classificaoCirc= 'Glicemia Alterada';
+                $this->classificaoCirc = 'Glicemia Alterada';
                 $this->corCircunferencia = 'text-red-600';
             } else {
                 $this->classificaoCirc = 'Sem Alteração';
@@ -259,12 +259,16 @@ class CreateQuestionario extends Component
             // Classificação do ITB Esquerdo
             if ($this->itbD > 1.30) {
                 $this->classITBD = "Calcificação (risco de DCV)";
+                $this->corITBD = 'text-orange-500';
             } elseif ($this->itbD >= 0.90 && $this->itbD <= 1.30) {
                 $this->classITBD = "Normal";
+                $this->corITBD = 'text-green-500';
             } elseif ($this->itbD >= 0.60 && $this->itbD < 0.90) {
                 $this->classITBD = "Anormal (Sugestivo de DAP)";
+                $this->corITBD = 'text-red-500';
             } else {
                 $this->classITBD = "Isquemia significativa";
+                $this->corITBD = 'text-red-700';
             }
         } else {
             $this->addError('psatp_direito', 'Por favor, informe a pressão sistólica do tornozelo direito.');
@@ -283,12 +287,16 @@ class CreateQuestionario extends Component
             // Classificação do ITB Esquerdo
             if ($this->itbE > 1.30) {
                 $this->classITBE = "Calcificação (risco de DCV)";
+                $this->corITBE = 'text-orange-500';
             } elseif ($this->itbE >= 0.90 && $this->itbE <= 1.30) {
                 $this->classITBE = "Normal";
+                $this->corITBE = 'text-green-500';
             } elseif ($this->itbE >= 0.60 && $this->itbE < 0.90) {
                 $this->classITBE = "Anormal (Sugestivo de DAP)";
+                $this->corITBE = 'text-red-500';
             } else {
                 $this->classITBE = "Isquemia significativa";
+                $this->corITBE = 'text-red-700';
             }
         } else {
             $this->addError('psatp_esquerdo', 'Por favor, informe a pressão sistólica do tornozelo esquerdo.');
@@ -437,6 +445,7 @@ class CreateQuestionario extends Component
         $this->calosidades = $this->questionario->nss_biologica->senso_percepcao->calosidades;
         $this->micose = $this->questionario->nss_biologica->senso_percepcao->micose;
         $this->teste_senso_percepcao_id = $this->questionario->nss_biologica->senso_percepcao->teste_senso_percepcao_id;
+        $this->selectOption($this->teste_senso_percepcao_id);
         $this->percepcao_direito = $this->questionario->nss_biologica->senso_percepcao->percepcao_direito;
         $this->percepcao_esquerdo = $this->questionario->nss_biologica->senso_percepcao->percepcao_esquerdo;
 
