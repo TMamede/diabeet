@@ -132,7 +132,10 @@ class CreateQuestionario extends Component
     public $origem, $motivo, $diagnostico, $intervencao;
 
     public $itbD = null, $itbE = null, $classITBE = null, $classITBD = null;
-    public $cor;
+    public $corIMC, $corTemperatura, $corGlicemia, $corCircunferencia;
+    public $classificaoCirc, $classificacaoGlic;
+    public $estado_glicemia, $estado_circunferencia;
+    
     public function calcularIMC()
     {
         // Lógica para verificar se altura e peso estão preenchidos
@@ -144,22 +147,22 @@ class CreateQuestionario extends Component
             // Classificação do IMC
             if ($this->imc < 18.5) {
                 $this->classificacao = 'Magro ou baixo peso (Risco normal ou elevado)';
-                $this->cor = 'text-yellow-500';
+                $this->corIMC = 'text-yellow-500';
             } elseif ($this->imc >= 18.5 && $this->imc <= 24.9) {
                 $this->classificacao = 'Normal ou eutrófico (Risco normal)';
-                $this->cor = 'text-green-600';
+                $this->corIMC = 'text-green-600';
             } elseif ($this->imc >= 25 && $this->imc <= 29.9) {
                 $this->classificacao = 'Sobrepeso ou pré-obeso (Risco pouco elevado)';
-                $this->cor = 'text-orange-400';
+                $this->corIMC = 'text-orange-400';
             } elseif ($this->imc >= 30 && $this->imc <= 34.9) {
                 $this->classificacao = 'Obesidade Grau I (Risco elevado)';
-                $this->cor = 'text-orange-600';
+                $this->corIMC = 'text-orange-600';
             } elseif ($this->imc >= 35 && $this->imc <= 39.9) {
                 $this->classificacao = 'Obesidade Grau II (Risco muito elevado)';
-                $this->cor = 'text-red-600';
+                $this->corIMC = 'text-red-600';
             } else {
                 $this->classificacao = 'Obesidade grave Grau III (Risco muitíssimo elevado)';
-                $this->cor = 'text-red-800 font-bold';
+                $this->corIMC = 'text-red-800 font-bold';
             }
         } else {
             // Se a altura e o peso não estiverem preenchidos, gerar erros
@@ -168,7 +171,59 @@ class CreateQuestionario extends Component
         }
     }
 
+    public function calcularCircunferencia()
+    {
+        // Lógica para verificar a circunferencia foi preenchida
+        if ($this->circunferencia_abdnominal !== null) {
 
+            $this->estado_circunferencia = $this->selectedPaciente->sexo;
+
+            // Classificação da circunferencia
+            if ($this->circunferencia_abdominal > 80 && $this->estado_circunferencia == 1) {
+                $this->classificaoCirc = 'Risco de Morbimortalidade';
+                $this->corCircunferencia = 'text-red-600';
+            } elseif ($this->circunferencia_abdominal <= 80 && $this->estado_circunferencia == 1) {
+                $this->classificaoCirc= 'Sem Risco';
+                $this->corCircunferencia = 'text-green-600';
+            } elseif ($this->circunferencia_abdominal > 94 && $this->estado_circunferencia == 0) {
+                $this->classificaoCirc= 'Risco de Morbimortalidade';
+                $this->corCircunferencia = 'text-red-600';
+            } else {
+                $this->classificaoCirc = 'Sem Risco';
+                $this->corCircunferencia = 'text-green-600';
+            }
+        } else {
+            // Se a circunferencia não estiver preenchida, gerar erro
+            $this->addError('circunferencia_abdnominal', 'Por favor, informe sua circunferência abdominal.');
+        }
+    }
+
+    public function calcularGlicemia()
+    {
+        // Lógica para verificar se glicemia está preenchida
+        if ($this->glicemia_capilar !== null) {
+
+            // Em Jejum o estado_glicemia será 1, quando a glicemia for 2 horas apos o inicio das refeiçoes sera 0
+
+             // Classificação da glicemia
+            if ($this->glicemia_capilar > 80 && $this->estado_glicemia == 1) {
+                $this->classificaoCirc = 'Glicemia Alterada';
+                $this->corCircunferencia = 'text-red-600';
+            } elseif ($this->glicemia_capilar <= 80 && $this->estado_glicemia == 1) {
+                $this->classificaoCirc= 'Sem Alteração';
+                $this->corCircunferencia = 'text-green-600';
+            } elseif ($this->glicemia_capilar > 94 && $this->estado_glicemia == 0) {
+                $this->classificaoCirc= 'Glicemia Alterada';
+                $this->corCircunferencia = 'text-red-600';
+            } else {
+                $this->classificaoCirc = 'Sem Alteração';
+                $this->corCircunferencia = 'text-green-600';
+            }
+        } else {
+            // Se a glicemia capilar não estiver preenchida, gerar erro
+            $this->addError('glicemia_capilar', 'Por favor, informe sua glicemia capilar.');
+        }
+    }
 
     public function calcularClassificacaoTemperatura()
     {
@@ -176,19 +231,19 @@ class CreateQuestionario extends Component
             // Classificação da temperatura
             if ($this->temperatura < 36.1) {
                 $this->classificacaoTemperatura = 'Hipotermia';
-                $this->cor = 'text-yellow-500';
+                $this->corTemperatura = 'text-yellow-500';
             } elseif ($this->temperatura >= 36.1 && $this->temperatura <= 37.5) {
                 $this->classificacaoTemperatura = 'Normal';
-                $this->cor = 'text-green-600';
+                $this->corTemperatura = 'text-green-600';
             } elseif ($this->temperatura > 37.5 && $this->temperatura < 38.5) {
                 $this->classificacaoTemperatura = 'Febre Leve';
-                $this->cor = 'text-orange-400';
+                $this->corTemperatura = 'text-orange-400';
             } elseif ($this->temperatura >= 38.5 && $this->temperatura < 39.5) {
                 $this->classificacaoTemperatura = 'Febre Moderada';
-                $this->cor = 'text-orange-600';
+                $this->corTemperatura = 'text-orange-600';
             } else {
                 $this->classificacaoTemperatura = 'Febre Alta';
-                $this->cor = 'text-red-600';
+                $this->corTemperatura = 'text-red-600';
             }
         } else {
             $this->addError('temperatura', 'Por favor, informe a temperatura.');

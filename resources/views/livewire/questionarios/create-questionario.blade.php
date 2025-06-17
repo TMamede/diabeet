@@ -920,7 +920,7 @@
 
                                 <div class="p-2 rounded">
                                     <p>Classificação: <strong
-                                            class="{{ $cor }}">{{ $classificacao }}</strong></p>
+                                            class="{{ $corIMC }}">{{ $classificacao }}</strong></p>
                                 </div>
                             </div>
                         @endif
@@ -1057,7 +1057,7 @@
                             <div class="flex items-center mt-4">
                                 <p class="font-medium text-gray-700">Classificação da Temperatura:</p>
                                 <span
-                                    class="ml-2 {{ $cor }}"><strong>{{ $classificacaoTemperatura }}</strong></span>
+                                    class="ml-2 {{ $corTemperatura }}"><strong>{{ $classificacaoTemperatura }}</strong></span>
                             </div>
                         @endif
                     </div>
@@ -2761,88 +2761,158 @@
         <div x-show="step === 4" x-transition>
             {{-- Etapa 3: Necessidades Espirituais / Impressões e Salvar --}}
             @if ($currentStep == 4)
-                <div class="p-6 rounded-lg shadow-lg step bg-gray-50">
-                    <h2 class="py-4 text-3xl font-bold text-indigo-600 border-b border-indigo-300">Necessidades
-                        PsicoEspirituais</h2>
-
-                    {{-- RELIGIÃO --}}
-                    <div class="mb-6">
-                        <label class="block mb-2 text-lg font-semibold text-gray-800">Tem Religião?</label>
-
-                        <div x-data="{ selecionado: @entangle('e_religioso') }" x-init="selecionado = @js($e_religioso)" class="flex space-x-4">
-                            <button type="button" @click="selecionado = 'sim'; $wire.set('e_religioso', 'sim')"
-                                :class="selecionado === 'sim'
-                                    ?
-                                    'bg-cyan-600 text-white border-cyan-600' :
-                                    'bg-white text-gray-700 border-gray-300 hover:bg-cyan-50'"
-                                class="px-6 py-2 text-sm font-medium transition border rounded-lg shadow-sm focus:outline-none">
-                                Sim
-                            </button>
-
-                            <button type="button" @click="selecionado = 'nao'; $wire.set('e_religioso', 'nao')"
-                                :class="selecionado === 'nao'
-                                    ?
-                                    'bg-red-600 text-white border-red-600' :
-                                    'bg-white text-gray-700 border-gray-300 hover:bg-red-50'"
-                                class="px-6 py-2 text-sm font-medium transition border rounded-lg shadow-sm focus:outline-none">
-                                Não
-                            </button>
+                <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+                    <!-- Elementos decorativos de fundo otimizados -->
+                    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+                        <div
+                            class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-20">
+                        </div>
+                        <div
+                            class="absolute bg-purple-200 rounded-full opacity-15 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
+                        </div>
+                        <div
+                            class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-15">
                         </div>
                     </div>
 
-                    {{-- Campo de religião --}}
-
-                    @if ($e_religioso === 'sim')
-                        <div class="mt-2 mb-6">
-                            <label for="religiao"
-                                class="block font-medium text-gray-700">Religião/Espiritualidade:</label>
-                            <input type="text" wire:model="religiao" id="religiao"
-                                class="block w-full px-6 py-3 mt-1 border rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50
-        {{ $religiao ? 'border-green-500 bg-green-50' : 'border-gray-300' }}"
-                                placeholder="Digite sua religião/espiritualidade">
-                            @error('religiao')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
+                    <div class="relative z-10 px-6 py-8">
+                        <!-- Header -->
+                        <div class="max-w-6xl mx-auto mb-8">
+                            <div
+                                class="p-6 backdrop-blur-sm bg-white/90 rounded-3xl shadow-lg border border-white/20">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
+                                        <p class="text-indigo-600 font-medium">Sistema de Prescrição Eletrônica para
+                                            Pé Diabético</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-sm text-gray-600">Questionário</p>
+                                        <p class="text-lg font-semibold text-gray-800">Necessidades PsicoEspirituais
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    @endif
 
-                    <div class="my-4">
-                        <label for="impressoes" class="block mb-2 text-lg font-medium text-gray-700">Evoluções de
-                            enfermagem:</label>
-                        <textarea wire:model="impressoes" id="impressoes"
-                            class="block w-full px-6 py-4 mt-1 placeholder-gray-400 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                            placeholder="Digite suas impressões sobre a realização do questionário" rows="6"></textarea>
-                        @error('impressoes')
-                            <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                        @enderror
+                        <!-- Main Content -->
+                        <div class="max-w-6xl mx-auto">
+                            <div
+                                class="p-8 backdrop-blur-sm bg-white/90 rounded-3xl shadow-lg border border-white/20">
+
+                                <!-- Seção Religião/Espiritualidade -->
+                                <div class="mb-10 pb-8 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="text-2xl font-bold text-indigo-900 mb-2">Religião / Espiritualidade
+                                        </h2>
+                                        <div
+                                            class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-full">
+                                        </div>
+                                    </div>
+
+                                    <!-- Tem religião -->
+                                    <div class="mb-8">
+                                        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
+                                            <label class="block text-lg font-semibold text-gray-800 mb-4">
+                                                Tem Religião:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="e_religioso" value="sim"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 text-gray-700 font-medium">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="e_religioso" value="nao"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 text-gray-700 font-medium">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('e_religioso')
+                                                <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Campo de religião (condicional) -->
+                                    <div class="mb-8" x-show="$wire.e_religioso === 'sim'" x-cloak>
+                                        <label for="religiao"
+                                            class="block text-lg font-semibold text-gray-800 mb-3">
+                                            Religião/Espiritualidade:
+                                        </label>
+                                        <input type="text" wire:model="religiao" id="religiao"
+                                            class="w-full md:w-2/3 px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                            placeholder="Digite sua religião/espiritualidade">
+                                        @error('religiao')
+                                            <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Seção Evoluções de Enfermagem -->
+                                <div class="mb-12">
+                                    <div class="mb-8">
+                                        <h2 class="text-2xl font-bold text-indigo-900 mb-2">Evoluções de Enfermagem
+                                        </h2>
+                                        <div
+                                            class="w-24 h-1 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full">
+                                        </div>
+                                    </div>
+
+                                    <div class="p-6 bg-purple-50 rounded-2xl border border-purple-100">
+                                        <label for="impressoes"
+                                            class="block text-lg font-semibold text-gray-800 mb-4">
+                                            Evoluções de enfermagem:
+                                        </label>
+                                        <textarea wire:model="impressoes" id="impressoes"
+                                            class="w-full px-4 py-4 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none resize-none"
+                                            placeholder="Digite suas impressões sobre a realização do questionário" rows="6"></textarea>
+                                        @error('impressoes')
+                                            <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Botões de Navegação -->
+                                <div class="flex justify-between items-center pt-8 border-t border-gray-200">
+                                    <button type="button" wire:click="previousStep"
+                                        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                                        class="flex items-center px-8 py-4 text-lg font-semibold text-indigo-600 bg-white border-2 border-indigo-200 rounded-2xl hover:bg-indigo-50 hover:border-indigo-300 focus:outline-none focus:ring-4 focus:ring-indigo-100">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                        Voltar
+                                    </button>
+
+                                    <button type="submit" wire:click="submitForm"
+                                        class="flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl hover:from-teal-600 hover:to-teal-800 focus:outline-none focus:ring-4 focus:ring-teal-200 shadow-lg">
+                                        Salvar
+                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Botões de Navegação e Salvar -->
-                <div class="flex justify-between mt-4">
-                    <!-- Botão Voltar (ação secundária) -->
-                    <button type="button" wire:click="previousStep"
-                        @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                        class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-indigo-600 transition-all duration-300 ease-in-out bg-white border-2 border-indigo-500 shadow-sm rounded-xl hover:bg-indigo-50 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-300">
-                        <span class="z-10">Voltar</span>
-                    </button>
-
-                    <!-- Botão Salvar (ação primária) -->
-                    <button type="submit" wire:click="submitForm"
-                        class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white transition-all duration-300 ease-in-out shadow-lg bg-gradient-to-r from-teal-500 to-teal-700 rounded-xl hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-teal-300">
-                        <span class="z-10">Salvar</span>
-                        <div class="absolute inset-0 bg-white pointer-events-none opacity-5"></div>
-                    </button>
-                </div>
-
+                <style>
+                    [x-cloak] {
+                        display: none !important;
+                    }
+                </style>
+            @endif
         </div>
-        @endif
-</div>
-</form>
+    </form>
 
-@if (session()->has('message'))
-    <div class="mt-4 alert alert-success">
-        {{ session('message') }}
-    </div>
-@endif
+    @if (session()->has('message'))
+        <div class="mt-4 alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
 </div>
