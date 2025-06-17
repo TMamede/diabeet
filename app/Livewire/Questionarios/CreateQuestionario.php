@@ -491,6 +491,11 @@ class CreateQuestionario extends Component
         $this->regime_terapeutico = $this->questionario->nss_sociais->aprendizagem->regime_terapeutico;
 
         $this->religiao = $this->questionario->nss_espiritual->religiao;
+        if($this->religiao == 'Nenhuma'){
+            $this->e_religioso = 'nao';
+        }else{
+            $this->e_religioso = 'sim';
+        }
 
         $this->recreacaosList = Recreacao::all();
         $this->recreacaos = $this->questionario->nss_sociais->recreacoes->pluck('id')->toArray();
@@ -1891,7 +1896,7 @@ class CreateQuestionario extends Component
             'cuidado_id' => $cuidado->id,
             'comunicacao_id' => $comunicacao->id,
         ]);
-        if ($this->religiao == null) {
+        if ($this->e_religioso == 'nao') {
             $this->religiao = 'Nenhuma';
         }
         $nss_espirituais = Nss_espirituais::firstOrcreate([
