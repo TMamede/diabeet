@@ -179,13 +179,13 @@ class CreateQuestionario extends Component
             $this->estado_circunferencia = $this->selectedPaciente->sexo;
 
             // Classificação da circunferencia
-            if ($this->circunferencia_abdominal > 80 && $this->estado_circunferencia == 1) {
+            if ($this->circunferencia_abdnominal > 80 && $this->estado_circunferencia == 1) {
                 $this->classificaoCirc = 'Risco de Morbimortalidade';
                 $this->corCircunferencia = 'text-red-600';
-            } elseif ($this->circunferencia_abdominal <= 80 && $this->estado_circunferencia == 1) {
+            } elseif ($this->circunferencia_abdnominal <= 80 && $this->estado_circunferencia == 1) {
                 $this->classificaoCirc= 'Sem Risco';
                 $this->corCircunferencia = 'text-green-600';
-            } elseif ($this->circunferencia_abdominal > 94 && $this->estado_circunferencia == 0) {
+            } elseif ($this->circunferencia_abdnominal > 94 && $this->estado_circunferencia == 0) {
                 $this->classificaoCirc= 'Risco de Morbimortalidade';
                 $this->corCircunferencia = 'text-red-600';
             } else {
@@ -198,32 +198,33 @@ class CreateQuestionario extends Component
         }
     }
 
-    public function calcularGlicemia()
-    {
-        // Lógica para verificar se glicemia está preenchida
-        if ($this->glicemia_capilar !== null) {
+   public function calcularGlicemia()
+{
+    // Lógica para verificar se glicemia está preenchida
+    if ($this->glicemia_capilar !== null) {
 
-            // Em Jejum o estado_glicemia será 1, quando a glicemia for 2 horas apos o inicio das refeiçoes sera 0
+        // Em Jejum o estado_glicemia será 1, quando a glicemia for 2 horas após o início das refeições será 0
 
-             // Classificação da glicemia
-            if ($this->glicemia_capilar > 80 && $this->estado_glicemia == 1) {
-                $this->classificaoCirc = 'Glicemia Alterada';
-                $this->corCircunferencia = 'text-red-600';
-            } elseif ($this->glicemia_capilar <= 80 && $this->estado_glicemia == 1) {
-                $this->classificaoCirc= 'Sem Alteração';
-                $this->corCircunferencia = 'text-green-600';
-            } elseif ($this->glicemia_capilar > 94 && $this->estado_glicemia == 0) {
-                $this->classificaoCirc= 'Glicemia Alterada';
-                $this->corCircunferencia = 'text-red-600';
-            } else {
-                $this->classificaoCirc = 'Sem Alteração';
-                $this->corCircunferencia = 'text-green-600';
-            }
+        // Classificação da glicemia
+        if ($this->glicemia_capilar < 180 && $this->estado_glicemia == 0) {
+            $this->classificacaoGlic = 'Sem Alteração';
+            $this->corGlicemia = 'text-green-600';
+        } elseif ($this->glicemia_capilar >= 180 && $this->estado_glicemia == 0) {
+            $this->classificacaoGlic = 'Glicemia Alterada';
+            $this->corGlicemia = 'text-red-600';
+        } elseif ($this->glicemia_capilar >= 80 && $this->glicemia_capilar <= 130 && $this->estado_glicemia == 1) {
+            // Corrigido para comparação entre 80 e 130
+            $this->classificacaoGlic = 'Sem Alteração';
+            $this->corGlicemia = 'text-green-600';
         } else {
-            // Se a glicemia capilar não estiver preenchida, gerar erro
-            $this->addError('glicemia_capilar', 'Por favor, informe sua glicemia capilar.');
+            $this->classificacaoGlic = 'Glicemia Alterada';
+            $this->corGlicemia = 'text-red-600';
         }
+    } else {
+        // Se a glicemia capilar não estiver preenchida, gerar erro
+        $this->addError('glicemia_capilar', 'Por favor, informe sua glicemia capilar.');
     }
+}
 
     public function calcularClassificacaoTemperatura()
     {

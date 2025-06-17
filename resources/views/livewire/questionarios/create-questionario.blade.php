@@ -927,32 +927,89 @@
 
 
 
-                        <div class="flex items-center mb-4 space-x-4">
+                        <!-- Circunferência Abdominal -->
+                        <div class="mb-4 flex items-center">
                             <div class="w-1/3">
                                 <label for="circunferencia_abdnominal"
-                                    class="block font-medium text-gray-700">Circunferência
-                                    abdominal</label>
+                                    class="block font-medium text-gray-700">Circunferência Abdominal (cm):</label>
                                 <input type="number" wire:model="circunferencia_abdnominal"
                                     id="circunferencia_abdnominal"
                                     class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                    placeholder="Digite a circunferência abdominal em cm">
+                                    placeholder="Digite a circunferência abdominal">
                                 @error('circunferencia_abdnominal')
                                     <span class="text-sm text-red-500">{{ $message }}</span>
                                 @enderror
                             </div>
 
-                            <div class="w-1/3">
-                                <label for="glicemia_capilar" class="block font-medium text-gray-700">Glicemia capilar
-                                    do
-                                    momento</label>
-                                <input type="number" wire:model="glicemia_capilar" id="glicemia_capilar"
-                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                    placeholder="Digite a glicemia capilar do momento em mg/dl">
-                                @error('glicemia_capilar')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
+                            <!-- Botão para calcular a classificação da circunferência abdominal -->
+                            <button type="button" wire:click="calcularCircunferencia"
+                                class="ml-4 px-4 py-2 text-white bg-indigo-800 rounded-lg shadow hover:bg-indigo-900">
+                                Mostrar Classificação
+                            </button>
                         </div>
+
+                        <!-- Exibindo a classificação da circunferência abdominal -->
+                        @if ($classificaoCirc)
+                            <div class="flex items-center mt-4">
+                                <p class="font-medium text-gray-700">Classificação da Circunferência Abdominal:</p>
+                                <span
+                                    class="ml-2 {{ $corCircunferencia }}"><strong>{{ $classificaoCirc }}</strong></span>
+                            </div>
+                        @endif
+
+                        <!-- Glicemia Capilar -->
+                        <div class="mb-4">
+                            <!-- Seleção de estado glicêmico -->
+                            <div class="w-full mb-4">
+                                <label class="block font-medium text-gray-700 mb-6">Estado da Glicemia</label>
+                                <div class="flex space-x-4">
+                                    <!-- Botão "Em Jejum" -->
+                                    <button type="button" wire:click="$set('estado_glicemia', 1)"
+                                        class="px-4 py-2 rounded-lg shadow focus:outline-none 
+            {{ $estado_glicemia === 1 ? 'bg-indigo-800 text-white' : 'bg-indigo-400 text-black' }} hover:bg-indigo-700">
+                                        Em Jejum
+                                    </button>
+
+                                    <!-- Botão "Duas horas após as refeições" -->
+                                    <button type="button" wire:click="$set('estado_glicemia', 0)"
+                                        class="px-4 py-2 rounded-lg shadow focus:outline-none 
+            {{ $estado_glicemia === 0 ? 'bg-indigo-800 text-white' : 'bg-indigo-400 text-black' }} hover:bg-indigo-700">
+                                        Duas horas após as refeições
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Mostrar Input e Botão SOMENTE depois de selecionar o estado glicêmico -->
+                            <div x-show="estado_glicemia !== null" class="flex items-center">
+                                <div class="w-1/3">
+                                    <label for="glicemia_capilar" class="block font-medium text-gray-700">Glicemia
+                                        Capilar (mg/dl):</label>
+                                    <input type="number" wire:model="glicemia_capilar" id="glicemia_capilar"
+                                        class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                                        placeholder="Digite a glicemia capilar">
+                                    @error('glicemia_capilar')
+                                        <span class="text-sm text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <!-- Botão para calcular a classificação da glicemia capilar -->
+                                <button type="button" wire:click="calcularGlicemia"
+                                    class="ml-4 px-4 py-2 text-white bg-indigo-800 rounded-lg shadow hover:bg-indigo-900 focus:outline-none">
+                                    Mostrar Classificação
+                                </button>
+                            </div>
+
+                            <!-- Exibindo a classificação da glicemia capilar -->
+                            @if ($classificacaoGlic)
+                                <div class="flex items-center mt-4">
+                                    <p class="font-medium text-gray-700">Classificação da Glicemia Capilar:</p>
+                                    <span
+                                        class="ml-2 {{ $corGlicemia }}"><strong>{{ $classificacaoGlic }}</strong></span>
+                                </div>
+                            @endif
+                        </div>
+
+
                         <div class="flex items-center mb-4 space-x-10">
                             <div>
                                 <label for="jejum" class="block mb-2 font-medium text-gray-700">Jejum:</label>
@@ -2116,50 +2173,46 @@
                             </div>
                         </div>
 
+
+
                         <div class="w-full">
                             <label for="dor" class="block mb-4 text-lg font-medium text-gray-700">Intensidade
                                 da Dor:</label>
-                            <div class="w-full">
-                                <label for="dor"
-                                    class="block mb-4 text-lg font-medium text-gray-700">Intensidade da Dor:</label>
-                                <div class="grid grid-cols-11 gap-2 text-center">
-                                    @for ($i = 0; $i <= 10; $i++)
-                                        @php
-                                            $color = match (true) {
-                                                $i <= 3 => 'bg-green-200 text-green-700',
-                                                $i <= 6 => 'bg-yellow-200 text-yellow-700',
-                                                $i <= 8 => 'bg-orange-200 text-orange-700',
-                                                default => 'bg-red-200 text-red-700',
-                                            };
+                            <div class="grid grid-cols-11 gap-2 text-center">
+                                @for ($i = 0; $i <= 10; $i++)
+                                    @php
+                                        $color = match (true) {
+                                            $i <= 3 => 'bg-green-200 text-green-700',
+                                            $i <= 6 => 'bg-yellow-200 text-yellow-700',
+                                            $i <= 8 => 'bg-orange-200 text-orange-700',
+                                            default => 'bg-red-200 text-red-700',
+                                        };
 
-                                            $emoji = match (true) {
-                                                $i == 0 => '😊',
-                                                $i <= 3 => '🙂',
-                                                $i <= 6 => '😐',
-                                                $i <= 8 => '😣',
-                                                default => '😫',
-                                            };
+                                        $emoji = match (true) {
+                                            $i == 0 => '😊',
+                                            $i <= 3 => '🙂',
+                                            $i <= 6 => '😐',
+                                            $i <= 8 => '😣',
+                                            default => '😫',
+                                        };
 
-                                            $selected =
-                                                (int) $dor === $i
-                                                    ? 'ring-4 ring-indigo-400 ring-offset-2 scale-105'
-                                                    : '';
-                                        @endphp
+                                        $selected =
+                                            (int) $dor === $i ? 'ring-4 ring-indigo-400 ring-offset-2 scale-105' : '';
+                                    @endphp
 
-                                        <button type="button" wire:click="$set('dor', {{ $i }})"
-                                            class="flex flex-col items-center p-2 rounded cursor-pointer hover:bg-gray-100 {{ $color }} {{ $selected }}">
-                                            <span class="text-xl">{{ $emoji }}</span>
-                                            <span class="text-sm font-semibold">{{ $i }}</span>
-                                        </button>
-                                    @endfor
-                                </div>
-
-                                @error('dor')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
+                                    <button type="button" wire:click="$set('dor', {{ $i }})"
+                                        class="flex flex-col items-center p-2 rounded cursor-pointer hover:bg-gray-100 {{ $color }} {{ $selected }}">
+                                        <span class="text-xl">{{ $emoji }}</span>
+                                        <span class="text-sm font-semibold">{{ $i }}</span>
+                                    </button>
+                                @endfor
                             </div>
 
+                            @error('dor')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
+
 
                         <div class="pb-5 border-b border-gray-300">
                             <h2 class="py-5 text-lg font-bold">Cuidados com a Ferida</h2>
