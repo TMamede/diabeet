@@ -189,7 +189,7 @@
                                     </td>
                                 </tr>
 
-                                <!-- Modal de confirmação melhorado -->
+                                <!-- Modal de confirmação com scroll e fundo transparente -->
                                 <x-new-modal name="confirm-paciente-deletion-{{ $paciente->id }}" :show="$errors->isNotEmpty()"
                                     focusable>
                                     <div class="p-8">

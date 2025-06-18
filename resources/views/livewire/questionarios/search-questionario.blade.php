@@ -201,7 +201,6 @@
                                     </td>
                                 </tr>
 
-                                <!-- Modal de confirmação melhorado -->
                                 <x-new-modal name="confirm-questionario-deletion-{{ $questionario->id }}"
                                     :show="$errors->isNotEmpty()" focusable>
                                     <div class="p-8">
@@ -222,7 +221,7 @@
                                                 <p class="text-sm font-medium text-red-800">⚠️ Atenção: Esta ação é
                                                     irreversível!</p>
                                                 <p class="mt-1 text-sm text-red-700">As prescrições associadas a este
-                                                    questionário também serão excluídos.</p>
+                                                    questionário também serão excluídas.</p>
                                             </div>
                                         </div>
 
