@@ -18,31 +18,49 @@ class CreateProntuario extends Component
     public function mount($id = null)
     {
         $this->questionarioId = $id;
-        $this->prontuario = Prontuario::where('questionario_id', $id)->firstOrFail();
+        $this->prontuario = Prontuario::with(['origens', 'motivos', 'diagnosticos', 'intervencoes'])->where('questionario_id', $id)->firstOrFail();
 
-       $origens = $this->prontuario->origens()
-    ->with(['motivos' => function ($query) {
-        $query->whereHas('prontuarios', function ($q) {
-            $q->where('prontuarios.id', $this->prontuario->id);
-        })->with(['diagnosticos' => function ($query) {
-            $query->with('intervencaos');
-        }]);
-    }])
-    ->get()
-    ->toArray();
+        $origensAssociadas = $this->prontuario->origens;
+        $motivosAssociados = $this->prontuario->motivos->pluck('id')->toArray();
 
-$this->origens = collect($origens)->map(function ($origem) {
-    $diagnosticosUnicos = [];
+        $this->origens = $origensAssociadas->map(function ($origem) use ($motivosAssociados) {
+            $motivosFiltrados = $origem->motivos()->whereIn('motivos.id', $motivosAssociados)->get();
 
-    foreach ($origem['motivos'] as $motivo) {
-        foreach ($motivo['diagnosticos'] as $diagnostico) {
-            $diagnosticosUnicos[$diagnostico['id']] = $diagnostico;
-        }
-    }
+            $diagnosticosUnicos = [];
 
-    $origem['diagnosticos_unicos'] = array_values($diagnosticosUnicos);
-    return $origem;
-})->toArray();
+            foreach ($motivosFiltrados as $motivo) {
+                foreach ($motivo->diagnosticos as $diagnostico) {
+                    if (!isset($diagnosticosUnicos[$diagnostico->id])) {
+                        $diagnostico->intervencaos; // força eager loading
+                        $diagnosticosUnicos[$diagnostico->id] = $diagnostico;
+                    }
+                }
+            }
+
+            return [
+                'id' => $origem->id,
+                'descricao' => $origem->descricao,
+                'motivos' => $motivosFiltrados->map(function ($motivo) {
+                    return [
+                        'id' => $motivo->id,
+                        'descricao' => $motivo->descricao,
+                        'diagnosticos' => $motivo->diagnosticos->map(function ($diag) {
+                            return [
+                                'id' => $diag->id,
+                                'descricao' => $diag->descricao,
+                                'intervencaos' => $diag->intervencaos->map(function ($int) {
+                                    return [
+                                        'id' => $int->id,
+                                        'descricao' => $int->descricao
+                                    ];
+                                })
+                            ];
+                        })
+                    ];
+                }),
+                'diagnosticos_unicos' => array_values($diagnosticosUnicos)
+            ];
+        })->toArray();
     }
 
     public function toggleOrigem($origemId)
@@ -215,6 +233,7 @@ $this->origens = collect($origens)->map(function ($origem) {
         $this->prontuario->save(); // Salva no banco
 
         session()->flash('success', 'Prontuário finalizado com sucesso!');
-        return redirect()->route('prontuario.index');
+        $pacienteId = $this->prontuario->questionario->paciente_id;
+        return redirect()->route('prontuario.paciente', ['paciente' => $pacienteId]);
     }
 }

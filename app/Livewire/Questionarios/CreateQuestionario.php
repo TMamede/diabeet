@@ -1047,7 +1047,7 @@ class CreateQuestionario extends Component
                 'origem' => 9,
                 'motivo' => 33,
             ],
-            // Glicemia capilar abaixo de 100
+            // Glicemia capilar acima de 100
             [
                 'condicao' => $questionario->nss_biologica?->regulacao_hormonal?->glicemia_capilar >= 100,
                 'origem' => 9,

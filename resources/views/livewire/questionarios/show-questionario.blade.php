@@ -3007,81 +3007,130 @@
             <div class="step">
                 <div class="flex">
                     <!-- Barra de Navegação -->
-                    <x-navigation-questionario />
+                    <div class="w-[320px]">
+                        <x-navigation-questionario />
+                    </div>
 
-                    <!-- Main Content -->
-                    <div class="max-w-6xl mx-auto">
-                        <div class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                    <div class="flex-1 min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+                        <!-- Elementos decorativos de fundo otimizados -->
+                        <div class="fixed inset-0 overflow-hidden pointer-events-none">
+                            <div
+                                class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-20">
+                            </div>
+                            <div
+                                class="absolute bg-purple-200 rounded-full opacity-15 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
+                            </div>
+                            <div
+                                class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-15">
+                            </div>
+                        </div>
 
-                            <!-- Seção Religião/Espiritualidade -->
-                            <div class="pb-8 mb-10 border-b border-gray-200">
-                                <div class="mb-8">
-                                    <h2 class="mb-2 text-2xl font-bold text-indigo-900">Religião / Espiritualidade
-                                    </h2>
-                                    <div class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
-                                    </div>
-                                </div>
-
-                                <!-- Tem religião -->
-                                <div class="mb-8">
-                                    <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
-                                        <label class="block mb-4 text-lg font-semibold text-gray-800">
-                                            Tem Religião:
-                                        </label>
-                                        <div class="flex gap-6">
-                                            <label class="flex items-center cursor-pointer">
-                                                <input type="radio" wire:model="e_religioso" value="sim"
-                                                    class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                <span class="ml-3 font-medium text-gray-700">Sim</span>
-                                            </label>
-                                            <label class="flex items-center cursor-pointer">
-                                                <input type="radio" wire:model="e_religioso" value="nao"
-                                                    class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                <span class="ml-3 font-medium text-gray-700">Não</span>
-                                            </label>
+                        <div class="relative z-10 px-6 py-8">
+                            <!-- Header -->
+                            <div class="max-w-6xl mx-auto mb-8">
+                                <div
+                                    class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
+                                            <p class="font-medium text-indigo-600">Sistema de Prescrição Eletrônica
+                                                para
+                                                Pé Diabético</p>
                                         </div>
-                                        @error('e_religioso')
-                                            <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                        @enderror
+                                        <div class="text-right">
+                                            <p class="text-sm text-gray-600">Questionário</p>
+                                            <p class="text-lg font-semibold text-gray-800">Necessidades
+                                                PsicoEspirituais
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <!-- Campo de religião (condicional) -->
-                                <div class="mb-8" x-show="$wire.e_religioso === 'sim'" x-cloak>
-                                    <label for="religiao" class="block mb-3 text-lg font-semibold text-gray-800">
-                                        Religião/Espiritualidade:
-                                    </label>
-                                    <input type="text" wire:model="religiao" id="religiao"
-                                        class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 md:w-2/3 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
-                                        placeholder="Digite sua religião/espiritualidade">
-                                    @error('religiao')
-                                        <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
                                 </div>
                             </div>
 
-                            <!-- Seção Evoluções de Enfermagem -->
-                            <div class="mb-12">
-                                <div class="mb-8">
-                                    <h2 class="mb-2 text-2xl font-bold text-indigo-900">Evoluções de Enfermagem
-                                    </h2>
-                                    <div class="w-24 h-1 rounded-full bg-gradient-to-r from-purple-500 to-purple-700">
+                            <!-- Main Content -->
+                            <div class="max-w-6xl mx-auto">
+                                <div
+                                    class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+
+                                    <!-- Seção Religião/Espiritualidade -->
+                                    <div class="pb-8 mb-10 border-b border-gray-200">
+                                        <div class="mb-8">
+                                            <h2 class="mb-2 text-2xl font-bold text-indigo-900">Religião /
+                                                Espiritualidade
+                                            </h2>
+                                            <div
+                                                class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                            </div>
+                                        </div>
+
+                                        <!-- Tem religião -->
+                                        <div class="mb-8">
+                                            <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                                <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                    Tem Religião:
+                                                </label>
+                                                <div class="flex gap-6">
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="e_religioso"
+                                                            value="sim"
+                                                            class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="e_religioso"
+                                                            value="nao"
+                                                            class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                    </label>
+                                                </div>
+                                                @error('e_religioso')
+                                                    <span
+                                                        class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <!-- Campo de religião (condicional) -->
+                                        <div class="mb-8" x-show="$wire.e_religioso === 'sim'" x-cloak>
+                                            <label for="religiao"
+                                                class="block mb-3 text-lg font-semibold text-gray-800">
+                                                Religião/Espiritualidade:
+                                            </label>
+                                            <input type="text" wire:model="religiao" id="religiao"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 md:w-2/3 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                placeholder="Digite sua religião/espiritualidade">
+                                            @error('religiao')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Seção Evoluções de Enfermagem -->
+                                    <div class="mb-12">
+                                        <div class="mb-8">
+                                            <h2 class="mb-2 text-2xl font-bold text-indigo-900">Evoluções de
+                                                Enfermagem
+                                            </h2>
+                                            <div
+                                                class="w-24 h-1 rounded-full bg-gradient-to-r from-purple-500 to-purple-700">
+                                            </div>
+                                        </div>
+
+                                        <div class="p-6 border border-purple-100 bg-purple-50 rounded-2xl">
+                                            <label for="impressoes"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Evoluções de enfermagem:
+                                            </label>
+                                            <textarea wire:model="impressoes" id="impressoes"
+                                                class="w-full px-4 py-4 text-gray-700 bg-white border-2 border-gray-200 resize-none rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none"
+                                                placeholder="Digite suas impressões sobre a realização do questionário" rows="6"></textarea>
+                                            @error('impressoes')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="p-6 border border-purple-100 bg-purple-50 rounded-2xl">
-                                    <label for="impressoes" class="block mb-4 text-lg font-semibold text-gray-800">
-                                        Evoluções de enfermagem:
-                                    </label>
-                                    <textarea wire:model="impressoes" id="impressoes"
-                                        class="w-full px-4 py-4 text-gray-700 bg-white border-2 border-gray-200 resize-none rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none"
-                                        placeholder="Digite suas impressões sobre a realização do questionário" rows="6"></textarea>
-                                    @error('impressoes')
-                                        <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
