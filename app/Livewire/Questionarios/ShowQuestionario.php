@@ -56,10 +56,10 @@ class ShowQuestionario extends Component
     public $questionario;
 
 
-    public $nss_sociais, $nss_biologicas, $nss_espirituais, $selectedPaciente, $IdselectedPaciente , $enfermeiro, $impressoes, $imagem_avaliacao_pe,$imagem_avaliacao_pe_url;
+    public $nss_sociais, $nss_biologicas, $nss_espirituais, $selectedPaciente, $IdselectedPaciente, $enfermeiro, $impressoes, $imagem_avaliacao_pe, $imagem_avaliacao_pe_url;
 
+    public $sexo;
 
-    
     public $selectedOption = null;
     //Etapa 2 - Necessidades Biológicas
     public $regulacao_neuro, $orientado, $comportamento_regulacao_neuro_id;
@@ -78,8 +78,6 @@ class ShowQuestionario extends Component
     public $regulacao_vascular, $pressao_arterial, $frequencia_cardiaca, $psatp_direito, $psap_direito, $psab_direito, $psatp_esquerdo, $psap_esquerdo, $psab_esquerdo;
     public $senso_percepcao, $sintomas_percepcaos = [], $sintomasPercepcaoList = [], $pe_neuropatico, $arco_desabado, $valgismo, $dedos_em_garra, $estado_unhas_id;
     public $corte_unhas, $fissuras, $calosidades, $micose, $teste_senso_percepcao_id = null, $percepcao_direito, $percepcao_esquerdo;
-    public $edema, $comprimentoD, $comprimentoE, $larguraD, $larguraE, $lesao_amputacaoD, $lesao_amputacaoE, $odor_exudato, $dor, $bordas_ferida_id, $pele_periferida_id, $profundidade_id, $tipo_tecido_ferida_id, $aspecto_exudato_id, $quantidade_exudato_id;
-    public $integridade_cutanea, $integridade_direito, $integridade_esquerdo, $regiao_pe_direito_id, $localizacao_lesao_direito_id, $regiao_pe_esquerdo_id, $localizacao_lesao_esquerdo_id;
     public $desbridamento_id, $avaliacao_ferida_id, $aplicacao_laserterapia, $terapia_fotodinamica;
     public $cuidado_ferida, $coberturas = [], $coberturasList = [], $limpeza_lesaos = [], $limpezaLesaosList = [], $sinais_infeccaos = [], $sinaisInfeccaoList = [];
     public $regiao_pe_id;
@@ -96,6 +94,61 @@ class ShowQuestionario extends Component
 
     public $successMessage = '';
     public $IdQuestionario;
+
+
+    public $itbD = null, $itbE = null, $classITBE = null, $classITBD = null;
+    public $corIMC, $corTemperatura, $corGlicemia, $corCircunferencia, $corITBD, $corITBE;
+    public $classificaoCirc, $classificacaoGlic;
+    public $estado_glicemia, $estado_circunferencia;
+
+
+    public $ladoSelecionado;
+
+    public $avaliarDireito = false;
+    public $avaliarEsquerdo = false;
+
+    public $sinais_infeccao_direito = [];
+    public $sinais_infeccao_esquerdo = [];
+
+    public $dados = [
+        'direito' => [
+            'comprimento' => null,
+            'largura' => null,
+            'regiao_pe_id' => null,
+            'localizacao_lesao_id' => null,
+            'lesao_amputacao' => null,
+            'bordas_ferida_id' => null,
+            'edema' => null,
+            'quantidade_exudato_id' => null,
+            'odor_exudato' => null,
+            'aspecto_exudato_id' => null,
+            'tipo_tecido_ferida_id' => null,
+            'profundidade_id' => null,
+            'pele_periferida_id' => null,
+            'dor' => null,
+            'sinais_infeccao' => [],
+        ],
+        'esquerdo' => [
+            'comprimento' => null,
+            'largura' => null,
+            'regiao_pe_id' => null,
+            'localizacao_lesao_id' => null,
+            'lesao_amputacao' => null,
+            'bordas_ferida_id' => null,
+            'edema' => null,
+            'quantidade_exudato_id' => null,
+            'odor_exudato' => null,
+            'aspecto_exudato_id' => null,
+            'tipo_tecido_ferida_id' => null,
+            'profundidade_id' => null,
+            'pele_periferida_id' => null,
+            'dor' => null,
+            'sinais_infeccao' => [],
+        ],
+    ];
+
+
+
 
     public function mount($id)
     {
@@ -119,16 +172,22 @@ class ShowQuestionario extends Component
             // Classificação do IMC
             if ($this->imc < 18.5) {
                 $this->classificacao = 'Magro ou baixo peso (Risco normal ou elevado)';
+                $this->corIMC = 'text-yellow-500';
             } elseif ($this->imc >= 18.5 && $this->imc <= 24.9) {
                 $this->classificacao = 'Normal ou eutrófico (Risco normal)';
+                $this->corIMC = 'text-green-600';
             } elseif ($this->imc >= 25 && $this->imc <= 29.9) {
                 $this->classificacao = 'Sobrepeso ou pré-obeso (Risco pouco elevado)';
+                $this->corIMC = 'text-orange-400';
             } elseif ($this->imc >= 30 && $this->imc <= 34.9) {
                 $this->classificacao = 'Obesidade Grau I (Risco elevado)';
+                $this->corIMC = 'text-orange-600';
             } elseif ($this->imc >= 35 && $this->imc <= 39.9) {
                 $this->classificacao = 'Obesidade Grau II (Risco muito elevado)';
+                $this->corIMC = 'text-red-600';
             } else {
                 $this->classificacao = 'Obesidade grave Grau III (Risco muitíssimo elevado)';
+                $this->corIMC = 'text-red-800 font-bold';
             }
         } else {
             // Se a altura e o peso não estiverem preenchidos, gerar erros
@@ -137,6 +196,60 @@ class ShowQuestionario extends Component
         }
     }
 
+    public function calcularCircunferencia()
+    {
+        // Lógica para verificar a circunferencia foi preenchida
+        if ($this->circunferencia_abdnominal !== null) {
+
+            $this->estado_circunferencia = $this->selectedPaciente->sexo;
+
+            // Classificação da circunferencia
+            if ($this->circunferencia_abdnominal > 80 && $this->estado_circunferencia == 1) {
+                $this->classificaoCirc = 'Risco de Morbimortalidade';
+                $this->corCircunferencia = 'text-red-600';
+            } elseif ($this->circunferencia_abdnominal <= 80 && $this->estado_circunferencia == 1) {
+                $this->classificaoCirc = 'Sem Risco';
+                $this->corCircunferencia = 'text-green-600';
+            } elseif ($this->circunferencia_abdnominal > 94 && $this->estado_circunferencia == 0) {
+                $this->classificaoCirc = 'Risco de Morbimortalidade';
+                $this->corCircunferencia = 'text-red-600';
+            } else {
+                $this->classificaoCirc = 'Sem Risco';
+                $this->corCircunferencia = 'text-green-600';
+            }
+        } else {
+            // Se a circunferencia não estiver preenchida, gerar erro
+            $this->addError('circunferencia_abdnominal', 'Por favor, informe sua circunferência abdominal.');
+        }
+    }
+
+    public function calcularGlicemia()
+    {
+        // Lógica para verificar se glicemia está preenchida
+        if ($this->glicemia_capilar !== null) {
+
+            // Em Jejum o estado_glicemia será 1, quando a glicemia for 2 horas após o início das refeições será 0
+
+            // Classificação da glicemia
+            if ($this->glicemia_capilar < 180 && $this->estado_glicemia == 0) {
+                $this->classificacaoGlic = 'Sem Alteração';
+                $this->corGlicemia = 'text-green-600';
+            } elseif ($this->glicemia_capilar >= 180 && $this->estado_glicemia == 0) {
+                $this->classificacaoGlic = 'Glicemia Alterada';
+                $this->corGlicemia = 'text-red-600';
+            } elseif ($this->glicemia_capilar >= 80 && $this->glicemia_capilar <= 130 && $this->estado_glicemia == 1) {
+                // Corrigido para comparação entre 80 e 130
+                $this->classificacaoGlic = 'Sem Alteração';
+                $this->corGlicemia = 'text-green-600';
+            } else {
+                $this->classificacaoGlic = 'Glicemia Alterada';
+                $this->corGlicemia = 'text-red-600';
+            }
+        } else {
+            // Se a glicemia capilar não estiver preenchida, gerar erro
+            $this->addError('glicemia_capilar', 'Por favor, informe sua glicemia capilar.');
+        }
+    }
 
     public function calcularClassificacaoTemperatura()
     {
@@ -144,17 +257,77 @@ class ShowQuestionario extends Component
             // Classificação da temperatura
             if ($this->temperatura < 36.1) {
                 $this->classificacaoTemperatura = 'Hipotermia';
+                $this->corTemperatura = 'text-yellow-500';
             } elseif ($this->temperatura >= 36.1 && $this->temperatura <= 37.5) {
                 $this->classificacaoTemperatura = 'Normal';
+                $this->corTemperatura = 'text-green-600';
             } elseif ($this->temperatura > 37.5 && $this->temperatura < 38.5) {
                 $this->classificacaoTemperatura = 'Febre Leve';
+                $this->corTemperatura = 'text-orange-400';
             } elseif ($this->temperatura >= 38.5 && $this->temperatura < 39.5) {
                 $this->classificacaoTemperatura = 'Febre Moderada';
+                $this->corTemperatura = 'text-orange-600';
             } else {
                 $this->classificacaoTemperatura = 'Febre Alta';
+                $this->corTemperatura = 'text-red-600';
             }
         } else {
             $this->addError('temperatura', 'Por favor, informe a temperatura.');
+        }
+    }
+
+    public function calcularITBDireito()
+    {
+        if ($this->psatp_direito && $this->psap_direito && $this->psab_direito) {
+            $maiorValor = max($this->psatp_direito, $this->psap_direito);
+            $this->itbD = number_format($maiorValor / $this->psab_direito, 2, '.', '');
+
+            // Classificação do ITB Esquerdo
+            if ($this->itbD > 1.30) {
+                $this->classITBD = "Calcificação (risco de DCV)";
+                $this->corITBD = 'text-orange-500';
+            } elseif ($this->itbD >= 0.90 && $this->itbD <= 1.30) {
+                $this->classITBD = "Normal";
+                $this->corITBD = 'text-green-500';
+            } elseif ($this->itbD >= 0.60 && $this->itbD < 0.90) {
+                $this->classITBD = "Anormal (Sugestivo de DAP)";
+                $this->corITBD = 'text-red-500';
+            } else {
+                $this->classITBD = "Isquemia significativa";
+                $this->corITBD = 'text-red-700';
+            }
+        } else {
+            $this->addError('psatp_direito', 'Por favor, informe a pressão sistólica do tornozelo direito.');
+            $this->addError('psap_direito', 'Por favor, informe a pressão sistólica do braço direito.');
+            $this->addError('psab_direito', 'Por favor, informe a pressão sistólica do tornozelo direito.');
+        }
+    }
+
+
+    public function calcularITBEsquerdo()
+    {
+        if ($this->psatp_esquerdo && $this->psap_esquerdo && $this->psab_esquerdo) {
+            $maiorValor = max($this->psatp_esquerdo, $this->psap_esquerdo);
+            $this->itbE = number_format($maiorValor / $this->psab_esquerdo, 2, '.', '');
+
+            // Classificação do ITB Esquerdo
+            if ($this->itbE > 1.30) {
+                $this->classITBE = "Calcificação (risco de DCV)";
+                $this->corITBE = 'text-orange-500';
+            } elseif ($this->itbE >= 0.90 && $this->itbE <= 1.30) {
+                $this->classITBE = "Normal";
+                $this->corITBE = 'text-green-500';
+            } elseif ($this->itbE >= 0.60 && $this->itbE < 0.90) {
+                $this->classITBE = "Anormal (Sugestivo de DAP)";
+                $this->corITBE = 'text-red-500';
+            } else {
+                $this->classITBE = "Isquemia significativa";
+                $this->corITBE = 'text-red-700';
+            }
+        } else {
+            $this->addError('psatp_esquerdo', 'Por favor, informe a pressão sistólica do tornozelo esquerdo.');
+            $this->addError('psap_esquerdo', 'Por favor, informe a pressão sistólica do braço esquerdo.');
+            $this->addError('psab_esquerdo', 'Por favor, informe a pressão sistólica do tornozelo esquerdo.');
         }
     }
 
@@ -171,7 +344,6 @@ class ShowQuestionario extends Component
             'nss_biologica.senso_percepcao.sintomas_percepcao', // Carregando os sintomas de percepção
             'nss_biologica.cuidado_ferida.limpezas_lesao', // Carregando as limpezas de lesão
             'nss_biologica.cuidado_ferida.coberturas_ferida', // Carregando as coberturas de ferida
-            'nss_biologica.integridade_cutanea.sinais_infeccao', // Carregando os sinais de infecção
         ])->findOrFail($questionarioId);
 
         $this->IdQuestionario = $this->questionario->id;
@@ -179,6 +351,11 @@ class ShowQuestionario extends Component
         $this->nss_espirituais = $this->questionario->nss_espiritual;
         $this->nss_sociais = $this->questionario->nss_sociais;
         $this->selectedPaciente = $this->questionario->paciente;
+        if ($this->selectedPaciente->sexo == 1) {
+            $this->sexo = 'Feminino';
+        } else {
+            $this->sexo = 'Masculino';
+        }
         $this->IdselectedPaciente = $this->selectedPaciente->id;
         $this->enfermeiro = $this->questionario->user;
         $this->impressoes = $this->questionario->impressoes;
@@ -262,30 +439,61 @@ class ShowQuestionario extends Component
         $this->calosidades = $this->questionario->nss_biologica->senso_percepcao->calosidades;
         $this->micose = $this->questionario->nss_biologica->senso_percepcao->micose;
         $this->teste_senso_percepcao_id = $this->questionario->nss_biologica->senso_percepcao->teste_senso_percepcao_id;
+        $this->selectOption($this->teste_senso_percepcao_id);
         $this->percepcao_direito = $this->questionario->nss_biologica->senso_percepcao->percepcao_direito;
         $this->percepcao_esquerdo = $this->questionario->nss_biologica->senso_percepcao->percepcao_esquerdo;
 
-        $this->comprimentoD = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->comprimento;
-        $this->larguraD = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->largura;
-        $this->regiao_pe_direito_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->regiao_pe_id;
-        $this->localizacao_lesao_direito_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->localizacao_lesao_id;
-        $this->lesao_amputacaoD = $this->questionario->nss_biologica->integridade_cutanea->integridade_direito->lesao_amputacao;
+        $this->dados = [
+            'direito' => [],
+            'esquerdo' => [],
+        ];
 
-        $this->comprimentoE = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->comprimento;
-        $this->larguraE = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->largura;
-        $this->regiao_pe_esquerdo_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->regiao_pe_id;
-        $this->localizacao_lesao_esquerdo_id = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->localizacao_lesao_id;
-        $this->lesao_amputacaoE = $this->questionario->nss_biologica->integridade_cutanea->integridade_esquerdo->lesao_amputacao;
+        $integridades = $this->questionario->nss_biologica->integridade_cutanea;
 
-        $this->bordas_ferida_id = $this->questionario->nss_biologica->integridade_cutanea->bordas_ferida_id;
-        $this->edema = $this->questionario->nss_biologica->integridade_cutanea->edema;
-        $this->quantidade_exudato_id = $this->questionario->nss_biologica->integridade_cutanea->quantidade_exudato_id;
-        $this->odor_exudato = $this->questionario->nss_biologica->integridade_cutanea->odor_exudato;
-        $this->aspecto_exudato_id = $this->questionario->nss_biologica->integridade_cutanea->aspecto_exudato_id;
-        $this->tipo_tecido_ferida_id = $this->questionario->nss_biologica->integridade_cutanea->tipo_tecido_ferida_id;
-        $this->profundidade_id = $this->questionario->nss_biologica->integridade_cutanea->profundidade_id;
-        $this->pele_periferida_id = $this->questionario->nss_biologica->integridade_cutanea->pele_periferida_id;
-        $this->dor = $this->questionario->nss_biologica->integridade_cutanea->dor;
+        // Define ladoSelecionado com base nos dados do banco
+        $ladosPreenchidos = $integridades->pluck('lado')->unique()->values();
+
+        if ($ladosPreenchidos->contains('direito') && $ladosPreenchidos->contains('esquerdo')) {
+            $this->ladoSelecionado = 'ambos';
+        } elseif ($ladosPreenchidos->contains('direito')) {
+            $this->ladoSelecionado = 'direito';
+        } elseif ($ladosPreenchidos->contains('esquerdo')) {
+            $this->ladoSelecionado = 'esquerdo';
+        }
+
+        foreach (['direito', 'esquerdo'] as $lado) {
+            $item = $integridades->firstWhere('lado', $lado);
+            if ($item) {
+                $sinais = $lado === 'direito'
+                    ? $item->sinaisInfeccaoDireito->pluck('id')->toArray()
+                    : $item->sinaisInfeccaoEsquerdo->pluck('id')->toArray();
+
+                $this->dados[$lado] = [
+                    'comprimento' => $item->comprimento,
+                    'largura' => $item->largura,
+                    'regiao_pe_id' => $item->regiao_pe_id,
+                    'localizacao_lesao_id' => $item->localizacao_lesao_id,
+                    'lesao_amputacao' => $item->lesao_amputacao,
+                    'bordas_ferida_id' => $item->borda_ferida_id,
+                    'edema' => $item->edema,
+                    'quantidade_exudato_id' => $item->quantidade_exudato_id,
+                    'odor_exudato' => $item->odor_exudato,
+                    'aspecto_exudato_id' => $item->aspecto_exudato_id,
+                    'tipo_tecido_ferida_id' => $item->tipo_tecido_ferida_id,
+                    'profundidade_id' => $item->profundidade_id,
+                    'pele_periferida_id' => $item->pele_periferida_id,
+                    'dor' => $item->dor,
+                    'sinais_infeccao' => $sinais,
+                ];
+
+                // Preenche os modelos usados nos checkboxes
+                if ($lado === 'direito') {
+                    $this->sinais_infeccao_direito = $sinais;
+                } elseif ($lado === 'esquerdo') {
+                    $this->sinais_infeccao_esquerdo = $sinais;
+                }
+            }
+        }
 
         $this->desbridamento_id = $this->questionario->nss_biologica->cuidado_ferida->desbridamento_id;
         $this->avaliacao_ferida_id = $this->questionario->nss_biologica->cuidado_ferida->avaliacao_ferida_id;
@@ -306,6 +514,11 @@ class ShowQuestionario extends Component
         $this->regime_terapeutico = $this->questionario->nss_sociais->aprendizagem->regime_terapeutico;
 
         $this->religiao = $this->questionario->nss_espiritual->religiao;
+        if ($this->religiao == 'Nenhuma') {
+            $this->e_religioso = 'nao';
+        } else {
+            $this->e_religioso = 'sim';
+        }
 
         $this->recreacaosList = Recreacao::all();
         $this->recreacaos = $this->questionario->nss_sociais->recreacoes->pluck('id')->toArray();
@@ -314,7 +527,7 @@ class ShowQuestionario extends Component
         $this->emocionals = $this->questionario->nss_sociais->cuidado->emocionais->pluck('id')->toArray();
 
         $this->refeicaosList = Refeicao::all();
-        $this->refeicaos= $this->questionario->nss_biologica->nutricao->refeicoes->pluck('id')->toArray();
+        $this->refeicaos = $this->questionario->nss_biologica->nutricao->refeicoes->pluck('id')->toArray();
 
         $this->restricaosList = Restricao_alimento::all();
         $this->restricaos = $this->questionario->nss_biologica->nutricao->restricoes_alimentar->pluck('id')->toArray();
@@ -338,7 +551,6 @@ class ShowQuestionario extends Component
         $this->coberturas = $this->questionario->nss_biologica->cuidado_ferida->coberturas_ferida->pluck('id')->toArray();
 
         $this->sinaisInfeccaoList = Sinais_infeccao::all();
-        $this->sinais_infeccaos = $this->questionario->nss_biologica->integridade_cutanea->sinais_infeccao->pluck('id')->toArray();
     }
 
 
