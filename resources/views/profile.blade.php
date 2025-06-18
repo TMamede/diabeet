@@ -244,7 +244,7 @@
                 </div>
             </div>
 </div>
-            <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
+            <footer class="relative z-10 py-6 mt-8 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
                 <div class="container px-6 mx-auto">
                     <div class="flex flex-col items-center justify-between md:flex-row">
                         <div class="mb-4 md:mb-0">
