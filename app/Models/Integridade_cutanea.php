@@ -10,9 +10,9 @@ class Integridade_cutanea extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function nss_biologicas()
-    {
-        return $this->hasMany(Nss_biologicas::class);
+    public function nss_biologica() 
+    { 
+         return $this->belongsTo(Nss_biologicas::class); 
     }
     public function borda_ferida()
     {
@@ -38,16 +38,17 @@ class Integridade_cutanea extends Model
     {
         return $this->belongsTo(Pele_periferida::class);
     }
-    public function integridade_direito()
-    {
-        return $this->belongsTo(Integridade_direito::class);
-    }
-    public function integridade_esquerdo()
-    {
-        return $this->belongsTo(Integridade_esquerdo::class);
-    }
-    public function sinais_infeccao()
-    {
-        return $this->belongsToMany(Sinais_infeccao::class,'sinais_integridade');
-    }
+    public function sinaisInfeccaoDireito()
+{
+    return $this->belongsToMany(Sinais_infeccao::class, 'sinais_integridade')
+        ->withPivot('lado')
+        ->wherePivot('lado', 'direito');
+}
+
+public function sinaisInfeccaoEsquerdo()
+{
+    return $this->belongsToMany(Sinais_infeccao::class, 'sinais_integridade')
+        ->withPivot('lado')
+        ->wherePivot('lado', 'esquerdo');
+}
 }

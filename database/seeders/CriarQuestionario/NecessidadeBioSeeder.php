@@ -33,7 +33,6 @@ class NecessidadeBioSeeder extends Seeder
                 'locomocao_id' => $faker->numberBetween(1, 10),
                 'regulacao_vascular_id' => $faker->numberBetween(1, 10),
                 'senso_percepcao_id' => $faker->numberBetween(1, 10),
-                'integridade_cutanea_id' => $faker->numberBetween(1, 10),
                 'cuidado_ferida_id' => $faker->numberBetween(1, 10),
                 'created_at' => now(),
                 'updated_at' => now(),

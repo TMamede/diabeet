@@ -92,7 +92,7 @@ class Nss_biologicas extends Model
 
     public function integridade_cutanea()
     {
-        return $this->belongsTo(Integridade_cutanea::class);
+        return $this->hasMany(Integridade_cutanea::class);
     }
 
     public function cuidado_ferida()

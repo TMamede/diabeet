@@ -23,6 +23,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Sinais_infeccao::class);
             $table->foreignIdFor(Integridade_cutanea::class);
+            $table->enum('lado', ['direito', 'esquerdo']); // <- isso que diferencia
             $table->timestamps();
         });
     }

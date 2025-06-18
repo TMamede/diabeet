@@ -5,7 +5,6 @@ use App\Models\Cuidado_ferida;
 use App\Models\Eliminacao;
 use App\Models\Exercicio_fisico;
 use App\Models\Hidratacao;
-use App\Models\Integridade_cutanea;
 use App\Models\Locomocao;
 use App\Models\Nutricao;
 use App\Models\Oxigenacao;
@@ -45,7 +44,6 @@ return new class extends Migration
             $table->foreignIdFor(Locomocao::class);
             $table->foreignIdFor(Regulacao_vascular::class);
             $table->foreignIdFor(Senso_percepcao::class);
-            $table->foreignIdFor(Integridade_cutanea::class);
             $table->foreignIdFor(Cuidado_ferida::class);
             $table->timestamps();
         });
