@@ -314,7 +314,7 @@
                                                 @foreach ($alergiasList as $alergia)
                                                     <div
                                                         class="flex items-center p-2 rounded-lg hover:bg-indigo-50 transition-colors">
-                                                        <input type="checkbox" wire:model="alergias"
+                                                        <input type="checkbox" wire:model.live="alergias"
                                                             value="{{ $alergia->id }}"
                                                             id="alergia-{{ $alergia->id }}"
                                                             class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
@@ -328,6 +328,45 @@
                                             @error('alergias')
                                                 <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
                                             @enderror
+
+                                            <!-- Campos condicionais para alergias específicas -->
+                                            <div class="space-y-4 mt-4">
+                                                <!-- Campo para Alergia Alimentar (ID 2) -->
+                                                @if (in_array(2, $alergias ?? []))
+                                                    <div class="animate-fadeIn">
+                                                        <label for="alimento_alergia"
+                                                            class="block mb-2 text-sm font-medium text-gray-700">
+                                                            <span class="text-indigo-600">Qual alimento?</span>
+                                                        </label>
+                                                        <input type="text" wire:model.lazy="alimento_alergia"
+                                                            id="alimento_alergia"
+                                                            class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200"
+                                                            placeholder="Ex: Amendoim, leite, ovos...">
+                                                        @error('alimento_alergia')
+                                                            <span
+                                                                class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                @endif
+
+                                                <!-- Campo para Alergia Medicamentosa (ID 4) -->
+                                                @if (in_array(4, $alergias ?? []))
+                                                    <div class="animate-fadeIn">
+                                                        <label for="medicamento_alergia"
+                                                            class="block mb-2 text-sm font-medium text-gray-700">
+                                                            <span class="text-indigo-600">Qual medicamento?</span>
+                                                        </label>
+                                                        <input type="text" wire:model.lazy="medicamento_alergia"
+                                                            id="medicamento_alergia"
+                                                            class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200"
+                                                            placeholder="Ex: Penicilina, dipirona, aspirina...">
+                                                        @error('medicamento_alergia')
+                                                            <span
+                                                                class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                @endif
+                                            </div>
                                         </section>
 
                                         <!-- Amputação -->
@@ -530,44 +569,6 @@
                             </div>
                         </main>
                     </div>
-
-                    <!-- Footer -->
-                    <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
-                        <div class="container px-6 mx-auto">
-                            <div class="flex flex-col items-center justify-between md:flex-row">
-                                <div class="mb-4 md:mb-0">
-                                    <h4 class="text-xl font-bold">SoPeP</h4>
-                                    <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônica para Pé
-                                        Diabético</p>
-                                </div>
-                                <div class="text-center md:text-right">
-                                    <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.
-                                    </p>
-                                    <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus
-                                        pacientes</p>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
-
-                    <style>
-                        @keyframes fadeIn {
-                            from {
-                                opacity: 0;
-                                transform: translateY(-10px);
-                            }
-
-                            to {
-                                opacity: 1;
-                                transform: translateY(0);
-                            }
-                        }
-
-                        .animate-fadeIn {
-                            animation: fadeIn 0.3s ease-out;
-                        }
-                    </style>
-
                 </div>
             @endif
         </div>

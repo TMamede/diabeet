@@ -34,6 +34,8 @@ class CreatePaciente extends Component
     public $alergias = []; // Nova variável para alergias
     public $comorbidadesList = [];
     public $alergiasList = [];
+    public $medicamento_alergia = null;
+    public $alimento_alergia = null;
 
     // Etapa 3: Medicamentos 
     public $medicamentos = [];
@@ -46,7 +48,7 @@ class CreatePaciente extends Component
 
     //Etapa 5: Unidade de Saude
     public $unidade, $unidade_saude_id = null, $idUnidadeSelected = null;
-    
+
     public function selectUnidade($unidadeId)
     {
         $this->unidade_saude_id = Unidade_saude::find($unidadeId);
@@ -63,7 +65,7 @@ class CreatePaciente extends Component
             $unidades = Unidade_saude::where('nome', 'like', '%' . $this->search . '%')
                 ->limit(3)
                 ->get();
-    }
+        }
 
         return view('livewire.pacientes.create-paciente', [
             'unidades' => $unidades,
@@ -295,6 +297,8 @@ class CreatePaciente extends Component
                 'n_cigarros' => 'nullable|integer|min:0',
                 'inicio_tabagismo' => 'nullable|date',
                 'inicio_etilismo' => 'nullable|date',
+                'medicamento_alergia' => 'nullable|string|max:255',
+                'alimento_alergia' => 'nullable|string|max:255',
                 'comorbidades' => 'nullable|array',
                 'alergias' => 'nullable|array',
             ]);
@@ -310,9 +314,9 @@ class CreatePaciente extends Component
                 'resultados.*.texto_resultado' => 'string',
                 'data_exame' => 'required|date',
             ]);
-        } elseif($this->currentStep == 5){
+        } elseif ($this->currentStep == 5) {
             $this->validate([
-            'idUnidadeSelected' => 'required|exists:unidade_saudes,id',
+                'idUnidadeSelected' => 'required|exists:unidade_saudes,id',
             ]);
         }
     }
@@ -380,6 +384,8 @@ class CreatePaciente extends Component
             'n_cigarros' => $this->n_cigarros,
             'inicio_tabagismo' => $this->inicio_tabagismo,
             'inicio_etilismo' => $this->inicio_etilismo,
+            'medicamento_alergia' => $this->medicamento_alergia,
+            'alimento_alergia' => $this->alimento_alergia,
         ]);
 
         // Atualizar o paciente com o histórico

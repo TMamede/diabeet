@@ -33,6 +33,8 @@ class ShowPaciente extends Component
     public $alergias = []; // Nova variável para alergias
     public $comorbidadesList = [];
     public $alergiasList = [];
+    public $medicamento_alergia = null;
+    public $alimento_alergia = null;
 
     // Etapa 3: Medicamentos
     public $medicamentos = [];
@@ -41,7 +43,7 @@ class ShowPaciente extends Component
     // Etapa 4: Resultados
     public $resultados = [];
     public $texto_resultado;
-     public $data_exame;
+    public $data_exame;
 
     //Etapa 5: Unidade de saude
     public $unidade_saude_id = null, $unidade;
@@ -101,6 +103,8 @@ class ShowPaciente extends Component
             $this->n_cigarros = $this->paciente->historico->n_cigarros;
             $this->inicio_tabagismo = $this->paciente->historico->inicio_tabagismo;
             $this->inicio_etilismo = $this->paciente->historico->inicio_etilismo;
+            $this->medicamento_alergia = $this->paciente->historico->medicamento_alergia;
+            $this->alimento_alergia = $this->paciente->historico->alimento_alergia;
 
             $this->comorbidadesList = Comorbidade::all();
             $this->alergiasList = Alergia::all();
@@ -165,6 +169,8 @@ class ShowPaciente extends Component
                 'n_cigarros' => 'nullable|integer|min:0',
                 'inicio_tabagismo' => 'nullable|date',
                 'inicio_etilismo' => 'nullable|date',
+                'medicamento_alergia' => 'nullable|string|max:255',
+                'alimento_alergia' => 'nullable|string|max:255',
                 'comorbidades' => 'nullable|array',
                 'alergias' => 'nullable|array',
             ]);
@@ -266,12 +272,12 @@ class ShowPaciente extends Component
 
     public function addMedicamento()
     {
-        $this->medicamentos[] = ['nome_generico' => '', 'via_id' => '', 'horario_med_id' => '','dose' => ''];
+        $this->medicamentos[] = ['nome_generico' => '', 'via_id' => '', 'horario_med_id' => '', 'dose' => ''];
     }
 
     public function addResultado()
     {
-        $this->resultados[] = ['texto_resultado' => '','data_exame' => ''];
+        $this->resultados[] = ['texto_resultado' => '', 'data_exame' => ''];
     }
 
     public function removeMedicamento($index, $IdPaciente)
@@ -373,6 +379,8 @@ class ShowPaciente extends Component
                 'n_cigarros' => $this->n_cigarros,
                 'inicio_tabagismo' => $this->inicio_tabagismo,
                 'inicio_etilismo' => $this->inicio_etilismo,
+                'medicamento_alergia' => $this->medicamento_alergia,
+                'alimento_alergia' => $this->alimento_alergia,
             ]);
         }
 
