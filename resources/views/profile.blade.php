@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+    <div class="flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
         <!-- Elementos decorativos de fundo -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <div
@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div class="relative z-10 flex-grow px-4 py-12 sm:px-6 lg:px-8">
+        <div class="z-10 flex-1 pt-12 sm:pt-12 ">
             <div class="max-w-5xl mx-auto">
                 <!-- Header Section -->
                 <div class="mb-12 text-center">
@@ -127,7 +127,7 @@
                             <livewire:profile.update-profile-information-form />
                         </div>
 
-
+                    </div>
                         <!-- Alterar Senha -->
                         <div
                             class="overflow-hidden bg-white border shadow-2xl rounded-3xl backdrop-blur-sm bg-white/95 border-white/20">
@@ -182,7 +182,7 @@
                             </div>
                         </div>
 
-                    </div>
+                    
 
                     <!-- Dicas de Segurança -->
                     <div class="mt-12">
@@ -240,10 +240,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>      
                 </div>
             </div>
-
+</div>
             <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
                 <div class="container px-6 mx-auto">
                     <div class="flex flex-col items-center justify-between md:flex-row">
@@ -259,5 +259,5 @@
                     </div>
                 </div>
             </footer>
-        </div>
+        
 </x-app-layout>
