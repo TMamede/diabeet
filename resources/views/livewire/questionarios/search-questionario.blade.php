@@ -21,12 +21,12 @@
             <div class="mb-8 text-center">
                 <div class="inline-block p-4 mb-4 backdrop-blur-sm rounded-xl">
                     <h1 class="mb-1 text-3xl font-bold text-indigo-900 md:text-4xl">
-                        Gerenciamento de <span class="text-indigo-600">Questionários</span>
+                        Gerenciamento de <span class="text-indigo-600">Avaliações de Enfermagem</span>
                     </h1>
                     <div class="w-16 h-0.5 mx-auto bg-indigo-600 rounded-full"></div>
                 </div>
                 <p class="max-w-xl mx-auto text-lg text-gray-600">
-                    Lista completa de questionários aplicados no sistema SoPeP
+                    Lista completa de avaliações aplicadas no sistema SoPeP
                 </p>
             </div>
 
@@ -57,7 +57,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                             </svg>
-                            Novo Questionário
+                            Nova Avaliação
                         </a>
                     </div>
                 </div>
@@ -215,13 +215,13 @@
                                                 </svg>
                                             </div>
                                             <h2 class="mb-2 text-2xl font-bold text-gray-900">Confirmar Exclusão</h2>
-                                            <p class="mb-4 text-gray-600">Você tem certeza de que deseja excluir este
-                                                questionário?</p>
+                                            <p class="mb-4 text-gray-600">Você tem certeza de que deseja excluir esta
+                                                avaliação de enfermagem?</p>
                                             <div class="p-4 mb-6 border border-red-200 rounded-lg bg-red-50">
                                                 <p class="text-sm font-medium text-red-800">⚠️ Atenção: Esta ação é
                                                     irreversível!</p>
-                                                <p class="mt-1 text-sm text-red-700">As prescrições associadas a este
-                                                    questionário também serão excluídas.</p>
+                                                <p class="mt-1 text-sm text-red-700">As prescrições associadas a esta
+                                                    avaliação de enfermagem também serão excluídas.</p>
                                             </div>
                                         </div>
 
@@ -232,7 +232,7 @@
                                             </button>
                                             <button wire:click="deleteQuestionario" x-on:click="$dispatch('close')"
                                                 class="px-6 py-3 font-medium text-white transition-all duration-200 rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 hover:shadow-xl">
-                                                Excluir Questionário
+                                                Excluir Avaliação
                                             </button>
                                         </div>
                                     </div>

@@ -209,8 +209,9 @@
                                             <div class="p-4 mb-6 border border-red-200 rounded-lg bg-red-50">
                                                 <p class="text-sm font-medium text-red-800">⚠️ Atenção: Esta ação é
                                                     irreversível!</p>
-                                                <p class="mt-1 text-sm text-red-700">Os questionários e prescrições
-                                                    associados também serão excluídos.</p>
+                                                <p class="mt-1 text-sm text-red-700">As avaliações de enfermagem e
+                                                    prescrições
+                                                    associadas também serão excluídas.</p>
                                             </div>
                                         </div>
 

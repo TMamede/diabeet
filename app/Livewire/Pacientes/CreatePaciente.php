@@ -47,7 +47,7 @@ class CreatePaciente extends Component
     public $data_exame;
 
     //Etapa 5: Unidade de Saude
-    public $unidade, $unidade_saude_id = null, $idUnidadeSelected = null;
+    public $unidade, $ruaU, $bairroU, $unidade_saude_id = null, $idUnidadeSelected = null;
 
     public function selectUnidade($unidadeId)
     {

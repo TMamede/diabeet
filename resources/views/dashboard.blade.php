@@ -96,7 +96,8 @@
                                 </div>
                                 <h4 class="mb-4 text-xl font-bold text-center text-indigo-900">Avaliação Completa</h4>
                                 <p class="leading-relaxed text-center text-gray-600">
-                                    Questionário especializado para diagnóstico preciso e intervenções em pé diabético
+                                    Avaliação de Enfermagem especializada para diagnóstico preciso e intervenções em pé
+                                    diabético
                                 </p>
                             </div>
 

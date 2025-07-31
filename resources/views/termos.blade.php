@@ -107,7 +107,7 @@
                                         O sistema tem por finalidade oferecer um ambiente seguro e estruturado para o
                                         registro de dados clínicos e sociais de pacientes atendidos por enfermeiros(as).
                                         Através de
-                                        questionários multidimensionais — abordando aspectos psicobiológicos,
+                                        avaliações de enfermagem multidimensionais — abordando aspectos psicobiológicos,
                                         psicossociais
                                         e psicoespirituais — o sistema coleta dados que subsidiam o plano de cuidado e a
                                         prescrição de condutas clínicas de acordo com os princípios da Sistematização da

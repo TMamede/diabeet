@@ -116,10 +116,11 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="mb-2 text-xl font-semibold text-gray-900">Questionários Estruturados
+                                        <h3 class="mb-2 text-xl font-semibold text-gray-900">Avaliações de Enfermagem
+                                            Estruturadas
                                         </h3>
                                         <p class="leading-relaxed text-gray-700">
-                                            O sistema baseia-se em questionários organizados por dimensões
+                                            O sistema baseia-se em avaliações de enfermagem organizadas por dimensões
                                             psicobiológicas,
                                             psicossociais e psicoespirituais. Com essas informações, o SoPeP realiza a
                                             análise
@@ -174,8 +175,8 @@
                                     <h3 class="mb-4 text-2xl font-bold">Continuidade do Atendimento</h3>
                                     <p class="text-lg leading-relaxed text-indigo-100">
                                         O SoPeP também facilita a continuidade do atendimento ao permitir que, ao
-                                        iniciar um novo
-                                        questionário, o sistema recupere automaticamente os dados anteriores daquele
+                                        iniciar uma nova avaliação de enfermagem, o sistema recupere automaticamente os
+                                        dados anteriores daquele
                                         paciente,
                                         poupando tempo e reduzindo a repetição de preenchimentos.
                                     </p>

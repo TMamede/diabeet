@@ -15,6 +15,8 @@ return new class extends Migration
         Schema::create('unidade_saudes', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->string('rua')->nullable();
+            $table->string('bairro')->nullable();
             $table->timestamps();
         });
     }

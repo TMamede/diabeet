@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('regulacao_hormonals', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('altura');
+            $table->integer('altura');
             $table->decimal('peso');
-            $table->tinyInteger('circunferencia_abdnominal');
-            $table->tinyInteger('glicemia_capilar');
+            $table->integer('circunferencia_abdnominal');
+            $table->integer('glicemia_capilar');
             $table->boolean('jejum');
             $table->boolean('pos_prandial');
             $table->timestamps();

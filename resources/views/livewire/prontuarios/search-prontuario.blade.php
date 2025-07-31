@@ -52,8 +52,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h2 class="text-lg font-bold text-gray-900">Questionários e Prescrições</h2>
-                                <p class="text-sm text-gray-600">Gerenciamento dos questionários aplicados</p>
+                                <h2 class="text-lg font-bold text-gray-900">Avaliação de Enfermagem e Prescrições</h2>
+                                <p class="text-sm text-gray-600">Gerenciamento das avaliações aplicadas</p>
                             </div>
                         </div>
 
