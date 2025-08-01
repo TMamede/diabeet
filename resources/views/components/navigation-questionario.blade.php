@@ -63,7 +63,7 @@
                                 d="M4.5 9.457a4.207 4.207 0 0 1 6.996-3.15l.096.085.383.383.025-.022.025.022.383-.383.096-.085a4.207 4.207 0 0 1 5.946 5.931l-.185.197L12 18.7l-3.97-3.97-1.06 1.061 5.03 5.03 7.342-7.341.216-.23.008-.009a5.707 5.707 0 0 0-7.497-8.494l-.07-.068-.068.068A5.707 5.707 0 0 0 3 9.457a5.7 5.7 0 0 0 1.428 3.79l1.123-.994A4.2 4.2 0 0 1 4.5 9.457Zm8.25 2.982-3-3-4.81 4.811H3v1.5h2.56l4.19-4.19 3 3L15.31 12h1.94v-1.5h-2.56l-1.94 1.94Z" />
                         </svg>
                     </div>
-                    <span class="font-medium">Necessidades Biológicas</span>
+                    <span class="font-medium">Necessidades PsicoBiológicas</span>
                 </button>
 
                 <!-- Necessidades Sociais -->
@@ -75,7 +75,7 @@
                                 d="M3 18a6.002 6.002 0 0 1 8.018-5.652c.343.122.671.275.982.455A5.965 5.965 0 0 1 15 12a6.002 6.002 0 0 1 6 6v3h-5.25v-1.5h3.75V18a4.5 4.5 0 0 0-6.188-4.172A5.98 5.98 0 0 1 15 18v3H3v-3Zm6-6.75A3.748 3.748 0 0 1 5.25 7.5 3.75 3.75 0 0 1 12 5.25a3.75 3.75 0 1 1 0 4.5 3.733 3.733 0 0 1-3 1.5ZM13.5 18v1.5h-9V18a4.5 4.5 0 1 1 9 0ZM11.25 7.5a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0ZM15 5.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
                         </svg>
                     </div>
-                    <span class="font-medium">Necessidades Sociais</span>
+                    <span class="font-medium">Necessidades PsicoSociais</span>
                 </button>
 
                 <!-- Informações Finais -->
@@ -152,7 +152,7 @@
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <span class="font-medium">Necessidades Biológicas</span>
+                            <span class="font-medium">Necessidades PsicoBiológicas</span>
                             <p class="text-sm text-gray-500">Saúde física e sintomas</p>
                         </div>
                     </button>
@@ -169,7 +169,7 @@
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <span class="font-medium">Necessidades Sociais</span>
+                            <span class="font-medium">Necessidades PsicoSociais</span>
                             <p class="text-sm text-gray-500">Relações e suporte</p>
                         </div>
                     </button>

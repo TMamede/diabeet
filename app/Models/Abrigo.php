@@ -9,9 +9,12 @@ class Abrigo extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = [
+        'id',
+    ];
 
-    public function nss_biologicas(){
+    public function nss_biologicas()
+    {
         return $this->hasMany(Nss_biologicas::class);
     }
     public function zona_moradia()
@@ -22,5 +25,4 @@ class Abrigo extends Model
     {
         return $this->belongsTo(Rede_esgoto::class);
     }
-
 }
