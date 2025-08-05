@@ -103,6 +103,20 @@
                         <span class="font-medium">Unidade de Saúde</span>
                     </button>
 
+                    <!-- Questionários -->
+                    <button @click="mobileMenuOpen = false" wire:click="nextStepSixth"
+                        class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-cyan-50 hover:text-cyan-700">
+                        <div class="flex items-center justify-center w-10 h-10 mr-3 bg-cyan-100 rounded-lg">
+                            <svg class="w-5 h-5 text-cyan-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M2.25 13.5a8.25 8.25 0 0 0 8.25 8.25.75.75 0 0 0 .75-.75v-6.75H18a.75.75 0 0 0 .75-.75 8.25 8.25 0 0 0-16.5 0z" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M12.75 3a.75.75 0 0 1 .75-.75 8.25 8.25 0 0 1 8.25 8.25.75.75 0 0 1-.75.75h-7.5V3z" />
+                            </svg>
+                        </div>
+                        <span class="font-medium">Questionários</span>
+                    </button>
+
                     <!-- Divisor -->
                     <div class="py-2">
                         <div class="border-t border-gray-200"></div>
@@ -112,7 +126,8 @@
                     <button @click="mobileMenuOpen = false" wire:click="backToSearch"
                         class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-gray-50">
                         <div class="flex items-center justify-center w-10 h-10 mr-3 bg-gray-100 rounded-lg">
-                            <svg class="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg class="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 19l-7-7 7-7" />
                             </svg>
@@ -219,6 +234,24 @@
                             <div class="flex-1">
                                 <span class="font-medium">Unidade de Saúde</span>
                                 <p class="text-sm text-gray-500">Informações da unidade</p>
+                            </div>
+                        </button>
+                    </li>
+
+
+                    <!-- Unidade de Saúde -->
+                    <li>
+                        <button wire:click="nextStepSixth"
+                            class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-cyan-50 hover:text-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-200">
+                            <div class="flex items-center justify-center w-12 h-12 mr-4 bg-cyan-100 rounded-lg">
+                                <svg class="w-6 h-6 text-cyan-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M7.502 6h7.128A3.375 3.375 0 0 1 18 9.375v9.375a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9.375A3.375 3.375 0 0 1 6.375 6h1.127Zm3.973-.75a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75V5.25Zm2.25 2.25a.75.75 0 0 0-1.5 0v6a.75.75 0 0 0 1.5 0v-6ZM9 9.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5A.75.75 0 0 1 9 9.75Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H9.75Z" />
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <span class="font-medium">Avaliações de Enfermagem</span>
+                                <p class="text-sm text-gray-500">Avaliações Associadas</p>
                             </div>
                         </button>
                     </li>

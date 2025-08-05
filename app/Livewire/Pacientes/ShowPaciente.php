@@ -257,6 +257,11 @@ class ShowPaciente extends Component
         $this->currentStep = 5;
     }
 
+    public function nextStepSixth()
+    {
+        return redirect()->route('questionario.paciente', ['paciente' => $this->paciente->id]);
+    }
+
     public function backToSearch()
     {
         return redirect()->route('paciente.index');

@@ -629,7 +629,7 @@
                                             class="block text-sm font-semibold text-gray-700 mb-2">
                                             Início do Etilismo
                                         </label>
-                                        <input type="date" wire:model="inicio_etilismo" id="inicio_etilismo"
+                                        <input type="year" wire:model="inicio_etilismo" id="inicio_etilismo"
                                             class="w-full px-4 py-3 bg-white/70 border border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:bg-white">
                                         @error('inicio_etilismo')
                                             <span class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
@@ -1373,7 +1373,7 @@
                 @endif
             </div>
         </div>
-        <div x-data="{ step: @entangle('currentStep'), open: false }">
+        <div x-data="{ step: @entangle('currentStep'), open: false, showDropdown: false }">
             <div x-show="step === 5" x-transition>
                 @if ($currentStep == 5)
                     <div class="step">
@@ -1472,34 +1472,126 @@
                                     </div>
 
                                     <!-- Form Content -->
-                                    <div class="max-w-2xl">
+                                    <div class="max-w-4xl">
                                         <!-- Unidade de Saúde Selection -->
                                         <div class="form-group">
-                                            <label for="unidade_saude_id"
-                                                class="block text-sm font-semibold text-gray-700 mb-2">
+                                            <label class="block text-sm font-semibold text-gray-700 mb-4">
                                                 Unidade de Saúde
                                             </label>
-                                            <div class="relative">
-                                                <select wire:model="unidade_saude_id" id="unidade_saude_id"
-                                                    class="w-full px-4 py-3 bg-white/70 border border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:bg-white appearance-none pr-12">
-                                                    <option value="">Selecione uma unidade de saúde...</option>
+
+                                            <!-- Unidade Selecionada (se houver) -->
+                                            @if ($unidade_saude_id)
+                                                @php
+                                                    $unidadeSelecionada = $unidadesSaude->firstWhere(
+                                                        'id',
+                                                        $unidade_saude_id,
+                                                    );
+                                                @endphp
+                                                @if ($unidadeSelecionada)
+                                                    <div
+                                                        class="mb-6 p-4 bg-green-50/50 border border-green-200/60 rounded-xl">
+                                                        <div class="flex items-center justify-between">
+                                                            <div class="flex items-center gap-3">
+                                                                <div class="flex-shrink-0">
+                                                                    <svg class="w-6 h-6 text-green-600" fill="none"
+                                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                                        <path stroke-linecap="round"
+                                                                            stroke-linejoin="round" stroke-width="2"
+                                                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                                                                        </path>
+                                                                    </svg>
+                                                                </div>
+                                                                <div>
+                                                                    <h3 class="text-lg font-semibold text-green-800">
+                                                                        {{ $unidadeSelecionada->nome }}
+                                                                    </h3>
+                                                                    <p class="text-green-600 text-sm mt-1">
+                                                                        {{ $unidadeSelecionada->rua }},
+                                                                        {{ $unidadeSelecionada->bairro }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" @click="showDropdown = true"
+                                                                class="px-4 py-2 text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-300 transition-colors">
+                                                                <span class="flex items-center">
+                                                                    <svg class="w-4 h-4 mr-2" fill="none"
+                                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                                        <path stroke-linecap="round"
+                                                                            stroke-linejoin="round" stroke-width="2"
+                                                                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                                                    </svg>
+                                                                    Alterar
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endif
+
+                                            <!-- Dropdown de Seleção -->
+                                            <div x-show="!@js($unidade_saude_id) || showDropdown" x-transition>
+                                                <div class="space-y-3">
                                                     @foreach ($unidadesSaude as $unidade)
-                                                        <option value="{{ $unidade->id }}">{{ $unidade->nome }}
-                                                        </option>
+                                                        <div class="group relative bg-white/70 rounded-xl border border-gray-200 p-4 cursor-pointer transition-all duration-200 hover:border-indigo-300 hover:shadow-md hover:scale-[1.02] hover:bg-white"
+                                                            wire:click="$set('unidade_saude_id', {{ $unidade->id }}); showDropdown = false"
+                                                            @click="showDropdown = false">
+                                                            <div class="flex items-center justify-between">
+                                                                <div class="flex items-center space-x-3">
+                                                                    <div class="flex-shrink-0">
+                                                                        <div
+                                                                            class="w-10 h-10 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg flex items-center justify-center group-hover:from-indigo-200 group-hover:to-purple-200 transition-all duration-200">
+                                                                            <svg class="w-5 h-5 text-indigo-600"
+                                                                                fill="none" stroke="currentColor"
+                                                                                viewBox="0 0 24 24">
+                                                                                <path stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    stroke-width="2"
+                                                                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                                                                </path>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <h4
+                                                                            class="text-lg font-semibold text-gray-900 group-hover:text-indigo-700 transition-colors duration-200">
+                                                                            {{ $unidade->nome }}
+                                                                        </h4>
+                                                                        <p class="text-sm text-gray-600 mt-1">
+                                                                            {{ $unidade->rua }},
+                                                                            {{ $unidade->bairro }}
+                                                                        </p>
+                                                                        <p class="text-xs text-gray-500 mt-1">Clique
+                                                                            para
+                                                                            selecionar</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex-shrink-0">
+                                                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-600 transition-colors duration-200"
+                                                                        fill="none" stroke="currentColor"
+                                                                        viewBox="0 0 24 24">
+                                                                        <path stroke-linecap="round"
+                                                                            stroke-linejoin="round" stroke-width="2"
+                                                                            d="M9 5l7 7-7 7"></path>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     @endforeach
-                                                </select>
-                                                <!-- Custom dropdown arrow -->
-                                                <div
-                                                    class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                                    <svg class="w-5 h-5 text-gray-400" fill="none"
-                                                        stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2" d="M19 9l-7 7-7-7" />
-                                                    </svg>
                                                 </div>
+
+                                                <!-- Botão Cancelar (quando está alterando) -->
+                                                @if ($unidade_saude_id)
+                                                    <div class="mt-4 text-center">
+                                                        <button type="button" @click="showDropdown = false"
+                                                            class="px-4 py-2 text-gray-600 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 transition-colors">
+                                                            Cancelar Alteração
+                                                        </button>
+                                                    </div>
+                                                @endif
                                             </div>
+
                                             @error('unidade_saude_id')
-                                                <span class="text-sm text-red-500 mt-1 flex items-center">
+                                                <span class="text-sm text-red-500 mt-2 flex items-center">
                                                     <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor"
                                                         viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"

@@ -1083,7 +1083,7 @@
             @endif
         </div>
         <div x-show="step === 5" x-transition>
-            {{-- Etapa 4: Unidade de Saude --}}
+            {{-- Etapa 5: Unidade de Saude --}}
             @if ($currentStep == 5)
                 <div
                     class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
@@ -1140,6 +1140,9 @@
                                                             Selecionada</h3>
                                                         <p class="text-green-700 font-medium mt-1">
                                                             {{ $unidade->nome }}</p>
+                                                        <p class="text-green-600 text-sm mt-1">
+                                                            {{ $unidade->rua }}, {{ $unidade->bairro }}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </section>
@@ -1222,7 +1225,12 @@
                                                                             class="text-lg font-semibold text-gray-900 group-hover:text-indigo-700 transition-colors duration-200">
                                                                             {{ $unidade->nome }}
                                                                         </h4>
-                                                                        <p class="text-sm text-gray-500">Clique para
+                                                                        <p class="text-sm text-gray-600 mt-1">
+                                                                            {{ $unidade->rua }},
+                                                                            {{ $unidade->bairro }}
+                                                                        </p>
+                                                                        <p class="text-xs text-gray-500 mt-1">Clique
+                                                                            para
                                                                             selecionar</p>
                                                                     </div>
                                                                 </div>

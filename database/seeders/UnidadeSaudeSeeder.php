@@ -16,14 +16,16 @@ class UnidadeSaudeSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create('pt_BR'); // Faker configurado para português do Brasil
-        
+
         // Obtém IDs de 20 endereços para associar às unidades de saúde
         $enderecos = Endereco::inRandomOrder()->limit(20)->pluck('id');
-        
+
         $unidades = [];
         foreach ($enderecos as $enderecoId) {
             $unidades[] = [
                 'nome' => 'Unidade de Saúde ' . $faker->company,
+                'rua' => $faker->streetAddress,
+                'bairro' => $faker->citySuffix,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ];
