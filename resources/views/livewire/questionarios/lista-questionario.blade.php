@@ -21,7 +21,7 @@
             <div class="mb-8 text-center">
                 <div class="inline-block p-4 mb-4 backdrop-blur-sm rounded-xl">
                     <h1 class="mb-1 text-3xl font-bold text-indigo-900 md:text-4xl">
-                        Questionários do <span class="text-indigo-600">Paciente</span>
+                        Avaliações de Enfermagem do <span class="text-indigo-600">Paciente</span>
                     </h1>
                     <div class="w-16 h-0.5 mx-auto bg-indigo-600 rounded-full"></div>
                 </div>
@@ -66,7 +66,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                 </svg>
-                                Novo Questionário
+                                Nova Avaliação de Enfermagem
                             </button>
 
                             <!-- Botão para voltar -->

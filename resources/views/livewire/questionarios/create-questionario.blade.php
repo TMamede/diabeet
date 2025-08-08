@@ -368,2803 +368,3539 @@
             @endif
         </div>
         <div x-show="step === 2" x-transition>
-            {{-- Etapa 2: Necessidades Biológicas --}}
+            {{-- Etapa 2: Necessidades Psicobiológicas --}}
             @if ($currentStep == 2)
-                <div class="p-6 rounded-lg shadow-lg step bg-gray-50">
-                    <h2 class="py-4 text-3xl font-bold text-indigo-600 border-b border-indigo-300">
-                        Necessidades PsicoBiológicas
-                    </h2>
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Regulação Neurológica</h2>
-
-                        <div class="flex mb-4 space-x-4">
-                            <div class="w-1/3">
-                                <label for="orientado" class="block mb-2 font-medium text-gray-700">Orientado no
-                                    tempo/espaço:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="orientado" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="orientado" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('orientado')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="w-1/3">
-                                <label for="comportamento_regulacao_neuro_id"
-                                    class="block font-medium text-gray-700">Comportamento</label>
-                                <select wire:model="comportamento_regulacao_neuro_id"
-                                    id="comportamento_regulacao_neuro_id"
-                                    class="block w-1/2 p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                                    <option value="">Selecione</option>
-                                    @foreach ($comportamentosNeuro as $comportamento)
-                                        <option value="{{ $comportamento->id }}">{{ $comportamento->descricao }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('comportamento_regulacao_neuro_id')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Percepção dos Órgãos do Sentido</h2>
-                        <div class="flex space-x-4">
-                            <!-- Primeiro div -->
-                            <div class="w-1/3">
-                                <div class="mb-4">
-                                    <label for="olho_direito" class="block mb-2 font-medium text-gray-700">Acuidade
-                                        visual diminuída no olho direito</label>
-                                    <div class="flex items-center mt-1 space-x-6">
-                                        <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="olho_direito" value="1"
-                                                class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                            <span class="ml-2 text-gray-700">Sim</span>
-                                        </label>
-                                        <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="olho_direito" value="0"
-                                                class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                            <span class="ml-2 text-gray-700">Não</span>
-                                        </label>
-                                    </div>
-                                    @error('olho_direito')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-4">
-                                    <label for="olho_esquerdo" class="block mb-2 font-medium text-gray-700">Acuidade
-                                        visual diminuída no olho esquerdo</label>
-                                    <div class="flex items-center mt-1 space-x-6">
-                                        <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="olho_esquerdo" value="1"
-                                                class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                            <span class="ml-2 text-gray-700">Sim</span>
-                                        </label>
-                                        <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="olho_esquerdo" value="0"
-                                                class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                            <span class="ml-2 text-gray-700">Não</span>
-                                        </label>
-                                    </div>
-                                    @error('olho_esquerdo')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-4">
-                                    <label for="ouvido" class="block mb-2 font-medium text-gray-700">Acuidade
-                                        auditiva diminuída</label>
-                                    <div class="flex items-center mt-1 space-x-6">
-                                        <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="ouvido" value="1"
-                                                class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                            <span class="ml-2 text-gray-700">Sim</span>
-                                        </label>
-                                        <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="ouvido" value="0"
-                                                class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                            <span class="ml-2 text-gray-700">Não</span>
-                                        </label>
-                                    </div>
-                                    @error('ouvido')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <!-- Segundo div -->
-                            <div class="w-1/2">
-                                <div class="mb-4">
-                                    <label for="analise_tato_id" class="block font-medium text-gray-700">Tato</label>
-                                    <select wire:model="analise_tato_id" id="analise_tato_id"
-                                        class="block w-1/2 p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                                        <option value="">Selecione</option>
-                                        @foreach ($analiseTatos as $tato)
-                                            <option value="{{ $tato->id }}">{{ $tato->descricao }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('analise_tato_id')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="mt-10 mb-4">
-                                    <label for="risco_queda" class="block mb-2 font-medium text-gray-700">Risco de
-                                        queda</label>
-                                    <div class="flex items-center mt-1 space-x-6">
-                                        <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="risco_queda" value="1"
-                                                class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                            <span class="ml-2 text-gray-700">Sim</span>
-                                        </label>
-                                        <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="risco_queda" value="0"
-                                                class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                            <span class="ml-2 text-gray-700">Não</span>
-                                        </label>
-                                    </div>
-                                    @error('risco_queda')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Hidratação</h2>
-                        <div class="flex mb-4 space-x-4">
-                            <!-- Primeiro div: Pele -->
-                            <div class="w-1/3">
-                                <label for="tipo_pele_id" class="block font-medium text-gray-700">Pele</label>
-                                <select wire:model="tipo_pele_id" id="tipo_pele_id"
-                                    class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                                    <option value="">Selecione</option>
-                                    @foreach ($tipoPeles as $pele)
-                                        <option value="{{ $pele->id }}">{{ $pele->descricao }}</option>
-                                    @endforeach
-                                </select>
-                                @error('tipo_pele_id')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Segundo div: Volume de líquido diário -->
-                            <div class="w-1/3">
-                                <label for="liquido_diario" class="block font-medium text-gray-700">Volume de líquido
-                                    diário ingerido</label>
-                                <input type="number" wire:model="liquido_diario" id="liquido_diario"
-                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                    placeholder="Digite em litros o valor de líquido diário">
-                                @error('liquido_diario')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Nutrição</h2>
-
-                        <div class="flex mb-6 space-x-4">
-                            <!-- Refeições Diárias -->
-                            <div class="w-1/3">
-                                <label class="block mb-2 font-medium text-gray-700">Refeições Diárias</label>
-                                <div class="space-y-2">
-                                    @foreach ($refeicaosList as $refeicao)
-                                        <div class="flex items-center">
-                                            <input type="checkbox" wire:model="refeicaos"
-                                                value="{{ $refeicao->id }}" id="refeicao-{{ $refeicao->id }}"
-                                                class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                                            <label for="refeicao-{{ $refeicao->id }}" class="ml-2 text-gray-700">
-                                                {{ $refeicao->descricao }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                                @error('refeicaos')
-                                    <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Restrições Alimentares -->
-                            <div class="w-1/2">
-                                <label class="block mb-2 font-medium text-gray-700">Restrições Alimentares</label>
-                                <div class="space-y-2">
-                                    @foreach ($restricaosList as $restricao)
-                                        <div class="flex items-center">
-                                            <input type="checkbox" wire:model="restricaos"
-                                                value="{{ $restricao->id }}" id="restricao-{{ $restricao->id }}"
-                                                class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                                            <label for="restricao-{{ $restricao->id }}" class="ml-2 text-gray-700">
-                                                {{ $restricao->descricao }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                                @error('restricaos')
-                                    <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="alimento_consumo_id" class="block font-medium text-gray-700">Maior consmo
-                                de:</label>
-                            <select wire:model="alimento_consumo_id" id="alimento_consumo_id"
-                                class="block w-1/3 p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                                <option value="">Selecione</option>
-                                @foreach ($alimentoConsumos as $alimento)
-                                    <option value="{{ $alimento->id }}">{{ $alimento->descricao }}</option>
-                                @endforeach
-                            </select>
-                            @error('alimento_consumo_id')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Sono e Repouso</h2>
-                        <div class="flex mb-6 space-x-4">
-                            <!-- Primeiro Div: Horas de Sono, Acorda à Noite e Qualidade do Sono -->
-                            <div class="w-1/3">
-                                <div class="mb-4">
-                                    <label for="horas_sono" class="block font-medium text-gray-700">Horas de
-                                        Sono</label>
-                                    <input type="number" wire:model="horas_sono" id="horas_sono"
-                                        class="block w-4/5 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                        placeholder="Digite o número de horas de sono">
-                                    @error('horas_sono')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-4">
-                                    <label for="acorda_noite" class="block mb-2 font-medium text-gray-700">Acorda a
-                                        noite</label>
-                                    <div class="flex items-center mt-1 space-x-6">
-                                        <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="acorda_noite" value="1"
-                                                class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                            <span class="ml-2 text-gray-700">Sim</span>
-                                        </label>
-                                        <label class="inline-flex items-center">
-                                            <input type="radio" wire:model="acorda_noite" value="0"
-                                                class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                            <span class="ml-2 text-gray-700">Não</span>
-                                        </label>
-                                    </div>
-                                    @error('acorda_noite')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-4">
-                                    <label for="qualidade_sono_id" class="block font-medium text-gray-700">Qualidade
-                                        do
-                                        Sono:</label>
-                                    <select wire:model="qualidade_sono_id" id="qualidade_sono_id"
-                                        class="block w-1/3 p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                                        <option value="">Selecione</option>
-                                        @foreach ($qualidadeSonos as $qualidade)
-                                            <option value="{{ $qualidade->id }}">{{ $qualidade->descricao }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('qualidade_sono_id')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <!-- Segundo Div: Problemas Relacionados ao Sono -->
-                            <div class="w-1/2">
-                                <div class="mb-6">
-                                    <label class="block mb-2 font-medium text-gray-700">Problemas Relacionados ao
-                                        Sono</label>
-                                    <div class="space-y-2">
-                                        @foreach ($problemaSonoList as $problema)
-                                            <div class="flex items-center">
-                                                <input type="checkbox" wire:model="problema_sonos"
-                                                    value="{{ $problema->id }}" id="problema-{{ $problema->id }}"
-                                                    class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                                                <label for="problema-{{ $problema->id }}" class="ml-2 text-gray-700">
-                                                    {{ $problema->descricao }}
-                                                </label>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                    @error('problema_sonos')
-                                        <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="medicamentos_sono" class="block font-medium text-gray-700">Utilização de
-                                medicamentos para dormir - Classe medicamentosa</label>
-                            <input type="text" wire:model="medicamentos_sono" id="medicamentos_sono"
-                                class="block w-1/2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite, se usar, a classe do medicamento usado para dormir">
-                            @error('medicamentos_sono')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                    </div>
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Exercícios Físicos</h2>
-                        <div class="mb-4">
-                            <label for="realiza" class="block mb-2 font-medium text-gray-700">Realiza Exercícios
-                                Físicos</label>
-                            <div class="flex items-center mt-1 space-x-6">
-                                <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="realiza" value="1"
-                                        class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                    <span class="ml-2 text-gray-700">Sim</span>
-                                </label>
-                                <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="realiza" value="0"
-                                        class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                    <span class="ml-2 text-gray-700">Não</span>
-                                </label>
-                            </div>
-                            @error('realiza')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="frequencia_exercicio_id" class="block font-medium text-gray-700">Frequência de
-                                exercício físico:</label>
-                            <select wire:model="frequencia_exercicio_id" id="frequencia_exercicio_id"
-                                class="block w-1/3 p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                                <option value="">Selecione</option>
-                                @foreach ($frequenciasExercicio as $frequencia)
-                                    <option value="{{ $frequencia->id }}">{{ $frequencia->descricao }}</option>
-                                @endforeach
-                            </select>
-                            @error('frequencia_exercicio_id')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="duracao" class="block font-medium text-gray-700">Duração do exercício
-                                físico</label>
-                            <input type="number" wire:model="duracao" id="duracao"
-                                class="block w-1/2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite o número da média, em minutos, da duração do exercício">
-                            @error('duracao')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                    </div>
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Abrigo</h2>
-
-                        <div class="flex mb-4 space-x-4">
-                            <!-- Zona de Moradia -->
-                            <div class="w-1/4">
-                                <label for="zona_moradia_id" class="block font-medium text-gray-700">Zona de
-                                    Moradia:</label>
-                                <select wire:model="zona_moradia_id" id="zona_moradia_id"
-                                    class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                                    <option value="">Selecione</option>
-                                    @foreach ($zonasMoradia as $zona)
-                                        <option value="{{ $zona->id }}">{{ $zona->descricao }}</option>
-                                    @endforeach
-                                </select>
-                                @error('zona_moradia_id')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Rede de Esgoto -->
-                            <div class="w-1/4">
-                                <label for="rede_esgoto_id" class="block font-medium text-gray-700">Rede de
-                                    Esgoto:</label>
-                                <select wire:model="rede_esgoto_id" id="rede_esgoto_id"
-                                    class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                                    <option value="">Selecione</option>
-                                    @foreach ($redesEsgoto as $rede)
-                                        <option value="{{ $rede->id }}">{{ $rede->descricao }}</option>
-                                    @endforeach
-                                </select>
-                                @error('rede_esgoto_id')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="flex mb-4 space-x-4">
-                            <!-- Luz Pública -->
-                            <div class="w-1/4 mb-4">
-                                <label for="luz_publica" class="block mb-2 font-medium text-gray-700">Luz
-                                    Pública:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="luz_publica" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="luz_publica" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('luz_publica')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Coleta de Lixo -->
-                            <div class="w-1/4 mb-4">
-                                <label for="coleta_lixo" class="block mb-2 font-medium text-gray-700">Coleta de
-                                    lixo:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="coleta_lixo" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="coleta_lixo" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('coleta_lixo')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        <div class="flex mb-4 space-x-4">
-                            <!-- Água Tratada -->
-                            <div class="w-1/4 mb-4">
-                                <label for="agua_tratada" class="block mb-2 font-medium text-gray-700">Água
-                                    tratada:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="agua_tratada" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="agua_tratada" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('agua_tratada')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Animais Domésticos -->
-                            <div class="w-1/4 mb-4">
-                                <label for="animais_domesticos" class="block mb-2 font-medium text-gray-700">Presença
-                                    de animais domésticos:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="animais_domesticos" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="animais_domesticos" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('animais_domesticos')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Regulação Hormonal</h2>
-
-                        <div class="flex items-center mb-4 space-x-4">
-                            <div>
-                                <label for="altura" class="block font-medium text-gray-700">Altura (cm):</label>
-                                <input type="number" wire:model.defer="altura" id="altura"
-                                    placeholder="Digite a altura em cm"
-                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                            </div>
-
-                            <div>
-                                <label for="peso" class="block font-medium text-gray-700">Peso (kg):</label>
-                                <input type="number" wire:model.defer="peso" id="peso"
-                                    placeholder="Digite o peso em kg"
-                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                            </div>
-
-                            <!-- Botão para calcular o IMC -->
-                            <div class="flex items-center mt-6">
-                                <button type="button" wire:click="calcularIMC"
-                                    class="px-4 py-2 text-white bg-indigo-800 rounded-lg shadow hover:bg-indigo-900">
-                                    Calcular IMC
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Exibindo o resultado do IMC e a classificação -->
-                        @if ($imc)
-                            <div class="flex items-center mt-4 mb-4 space-x-4">
-                                <div class="flex items-center">
-                                    <p class="mr-2 font-medium text-gray-700">Seu IMC é:</p>
-                                    <input type="text" readonly value="{{ number_format($imc, 2) }}"
-                                        class="w-24 bg-gray-100 border border-gray-300 rounded-lg shadow-sm" />
-                                </div>
-
-                                <div class="p-2 rounded">
-                                    <p>Classificação: <strong
-                                            class="{{ $corIMC }}">{{ $classificacao }}</strong></p>
-                                </div>
-                            </div>
-                        @endif
-
-
-
-                        <!-- Circunferência Abdominal -->
-                        <div class="mb-4 flex items-center">
-                            <div class="w-1/3">
-                                <label for="circunferencia_abdnominal"
-                                    class="block font-medium text-gray-700">Circunferência Abdominal (cm):</label>
-                                <input type="number" wire:model="circunferencia_abdnominal"
-                                    id="circunferencia_abdnominal"
-                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                    placeholder="Digite a circunferência abdominal">
-                                @error('circunferencia_abdnominal')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Botão para calcular a classificação da circunferência abdominal -->
-                            <button type="button" wire:click="calcularCircunferencia"
-                                class="ml-4 px-4 py-2 text-white bg-indigo-800 rounded-lg shadow hover:bg-indigo-900">
-                                Mostrar Classificação
-                            </button>
-                        </div>
-
-                        <!-- Exibindo a classificação da circunferência abdominal -->
-                        @if ($classificaoCirc)
-                            <div class="flex items-center mt-4">
-                                <p class="font-medium text-gray-700">Classificação da Circunferência Abdominal:</p>
-                                <span
-                                    class="ml-2 {{ $corCircunferencia }}"><strong>{{ $classificaoCirc }}</strong></span>
-                            </div>
-                        @endif
-
-                        <!-- Glicemia Capilar -->
-                        <div class="mb-4">
-                            <!-- Seleção de estado glicêmico -->
-                            <div class="w-full mb-4">
-                                <label class="block font-medium text-gray-700 mb-6">Estado da Glicemia</label>
-                                <div class="flex space-x-4">
-                                    <!-- Botão "Em Jejum" -->
-                                    <button type="button" wire:click="$set('estado_glicemia', 1)"
-                                        class="px-4 py-2 rounded-lg shadow focus:outline-none 
-            {{ $estado_glicemia === 1 ? 'bg-indigo-800 text-white' : 'bg-indigo-400 text-black' }} hover:bg-indigo-700">
-                                        Em Jejum
-                                    </button>
-
-                                    <!-- Botão "Duas horas após as refeições" -->
-                                    <button type="button" wire:click="$set('estado_glicemia', 0)"
-                                        class="px-4 py-2 rounded-lg shadow focus:outline-none 
-            {{ $estado_glicemia === 0 ? 'bg-indigo-800 text-white' : 'bg-indigo-400 text-black' }} hover:bg-indigo-700">
-                                        Duas horas após as refeições
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Mostrar Input e Botão SOMENTE depois de selecionar o estado glicêmico -->
-                            <div x-show="estado_glicemia !== null" class="flex items-center">
-                                <div class="w-1/3">
-                                    <label for="glicemia_capilar" class="block font-medium text-gray-700">Glicemia
-                                        Capilar (mg/dl):</label>
-                                    <input type="number" wire:model="glicemia_capilar" id="glicemia_capilar"
-                                        class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                        placeholder="Digite a glicemia capilar">
-                                    @error('glicemia_capilar')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <!-- Botão para calcular a classificação da glicemia capilar -->
-                                <button type="button" wire:click="calcularGlicemia"
-                                    class="ml-4 px-4 py-2 text-white bg-indigo-800 rounded-lg shadow hover:bg-indigo-900 focus:outline-none">
-                                    Mostrar Classificação
-                                </button>
-                            </div>
-
-                            <!-- Exibindo a classificação da glicemia capilar -->
-                            @if ($classificacaoGlic)
-                                <div class="flex items-center mt-4">
-                                    <p class="font-medium text-gray-700">Classificação da Glicemia Capilar:</p>
-                                    <span
-                                        class="ml-2 {{ $corGlicemia }}"><strong>{{ $classificacaoGlic }}</strong></span>
-                                </div>
-                            @endif
-                        </div>
-
-
-                        <div class="flex items-center mb-4 space-x-10">
-                            <div>
-                                <label for="jejum" class="block mb-2 font-medium text-gray-700">Jejum:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="jejum" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="jejum" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('jejum')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <label for="pos_prandial"
-                                    class="block mb-2 font-medium text-gray-700">Pós-Prandial:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="pos_prandial" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="pos_prandial" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('pos_prandial')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Oxigenação</h2>
-                        <div class="mb-4">
-                            <label for="temp_enchimento_capilar" class="block font-medium text-gray-700">Tempo de
-                                enchimento capilar:</label>
-                            <input type="number" wire:model="temp_enchimento_capilar" id="temp_enchimento_capilar"
-                                class="block w-2/5 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite o tempo de enchimento capilar em segundos">
-                            @error('temp_enchimento_capilar')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="frequencia_respiratoria" class="block font-medium text-gray-700">Frequência
-                                respiratória:</label>
-                            <input type="number" wire:model="frequencia_respiratoria" id="frequencia_respiratoria"
-                                class="block w-2/5 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite a freqûencia respiratória em irpm">
-                            @error('frequencia_respiratoria')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="satO2" class="block font-medium text-gray-700">SatO2</label>
-                            <input type="number" wire:model="satO2" id="satO2"
-                                class="block w-2/5 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite a porcentagem de saturação do oxigênio">
-                            @error('satO2')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Regulação Térmica</h2>
-
-                        <div class="mb-4">
-                            <label for="temperatura" class="block font-medium text-gray-700">Temperatura:</label>
-                            <input type="number" wire:model="temperatura" id="temperatura"
-                                class="block w-1/4 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite a temperatura em °C">
-                            @error('temperatura')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <!-- Botão para calcular a classificação da temperatura -->
-                        <div class="flex items-center mt-6">
-                            <button type="button" wire:click="calcularClassificacaoTemperatura"
-                                class="px-4 py-2 text-white bg-indigo-800 rounded-lg shadow hover:bg-indigo-900">
-                                Mostrar Classificação
-                            </button>
-                        </div>
-
-                        <!-- Exibindo a classificação da temperatura -->
-                        @if ($classificacaoTemperatura)
-                            <div class="flex items-center mt-4">
-                                <p class="font-medium text-gray-700">Classificação da Temperatura:</p>
-                                <span
-                                    class="ml-2 {{ $corTemperatura }}"><strong>{{ $classificacaoTemperatura }}</strong></span>
-                            </div>
-                        @endif
-                    </div>
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Eliminações</h2>
-                        <div class="flex mb-4 space-x-4">
-                            <!-- Primeiro div: Dor ao urinar -->
-                            <div class="w-1/3">
-                                <label for="dor_urinar" class="block mb-2 font-medium text-gray-700">Dor ao
-                                    urinar:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="dor_urinar" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="dor_urinar" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('dor_urinar')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Segundo div: Incontinência - urina -->
-                            <div class="w-1/3">
-                                <label for="incontinencia_urina"
-                                    class="block mb-2 font-medium text-gray-700">Incontinência
-                                    -
-                                    urina:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="incontinencia_urina" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="incontinencia_urina" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('incontinencia_urina')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="flex mb-4 space-x-4">
-                            <!-- Primeiro div: Dor - eliminação gastrointestinal -->
-                            <div class="w-1/3">
-                                <label for="dor_eliminacoes" class="block mb-2 font-medium text-gray-700">Dor -
-                                    eliminação
-                                    gastrointestinal:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="dor_eliminacoes" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="dor_eliminacoes" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('dor_eliminacoes')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Segundo div: Incontinência - eliminação gastrointestinal -->
-                            <div class="w-1/3">
-                                <label for="incontinencia_eliminacao"
-                                    class="block mb-2 font-medium text-gray-700">Incontinência
-                                    - eliminação
-                                    gastrointestinal:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="incontinencia_eliminacao" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="incontinencia_eliminacao" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('incontinencia_eliminacao')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="flex mb-4 space-x-4">
-                            <!-- Primeiro div: Constipação -->
-                            <div class="w-1/3">
-                                <label for="constipacao"
-                                    class="block mb-2 font-medium text-gray-700">Constipação:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="constipacao" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="constipacao" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('constipacao')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Segundo div: Diarreia -->
-                            <div class="w-1/3">
-                                <label for="diarreia" class="block mb-2 font-medium text-gray-700">Diarreia:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="diarreia" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="diarreia" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('diarreia')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="flex mb-4 space-x-4">
-                            <!-- Primeiro div: Uso de Laxante -->
-                            <div class="w-1/3">
-                                <label for="uso_laxante" class="block mb-2 font-medium text-gray-700">Uso de
-                                    Laxante:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="uso_laxante" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="uso_laxante" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('uso_laxante')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Segundo div: Uso de Fraldas -->
-                            <div class="w-1/3">
-                                <label for="uso_fraldas" class="block mb-2 font-medium text-gray-700">Uso de
-                                    Fraldas:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="uso_fraldas" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="uso_fraldas" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('uso_fraldas')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="equipamento_externo" class="block font-medium text-gray-700">Uso de
-                                equipamento coletor ou dispositivo externo:</label>
-                            <input type="text" wire:model="equipamento_externo" id="equipamento_externo"
-                                class="block w-1/2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                placeholder="Digite se usa equipamento coletor ou dispositivo externo, se sim qual">
-                            @error('equipamento_externo')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Sexualidade</h2>
-                        <div class="mb-4">
-                            <label for="vida_sex_ativa" class="block mb-2 font-medium text-gray-700">Vida Sexual
-                                Ativa:</label>
-                            <div class="flex items-center mt-1 space-x-6">
-                                <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="vida_sex_ativa" value="1"
-                                        class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                    <span class="ml-2 text-gray-700">Sim</span>
-                                </label>
-                                <label class="inline-flex items-center">
-                                    <input type="radio" wire:model="vida_sex_ativa" value="0"
-                                        class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                    <span class="ml-2 text-gray-700">Não</span>
-                                </label>
-                            </div>
-                            @error('vida_sex_ativa')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-6">
-                            <label class="block mb-2 font-medium text-gray-700">Distúrbios Sexuais</label>
-                            <div class="space-y-2">
-                                @foreach ($disturbiosSexualList as $disturbio)
-                                    <div class="flex items-center">
-                                        <input type="checkbox" wire:model="disturbio_sexuals"
-                                            value="{{ $disturbio->id }}" id="disturbio-{{ $disturbio->id }}"
-                                            class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                                        <label for="disturbio-{{ $disturbio->id }}" class="ml-2 text-gray-700">
-                                            {{ $disturbio->descricao }}
-                                        </label>
-                                    </div>
-                                @endforeach
-                            </div>
-                            @error('disturbio_sexuals')
-                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Locomoção, Mecânica Corporal e Motilidade </h2>
-
-                        <div class="mb-6">
-                            <label class="block mb-2 font-medium text-gray-700">Locomoção</label>
-                            <div class="grid grid-cols-2 gap-4">
-                                @foreach ($tiposLocomocaoList as $tipoLoc)
-                                    <div class="flex items-center">
-                                        <input type="checkbox" wire:model="tipo_locomocaos"
-                                            value="{{ $tipoLoc->id }}" id="tipoLoc-{{ $tipoLoc->id }}"
-                                            class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                                        <label for="tipoLoc-{{ $tipoLoc->id }}" class="ml-2 text-gray-700">
-                                            {{ $tipoLoc->descricao }}
-                                        </label>
-                                    </div>
-                                @endforeach
-                            </div>
-                            @error('tipo_locomocaos')
-                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="flex items-center mb-4 space-x-6">
-                            <!-- Primeiro div: Sapato adequado -->
-                            <div class="w-1/3">
-                                <label for="sapato_adequado" class="block mb-2 font-medium text-gray-700">Sapato
-                                    adequado:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="sapato_adequado" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="sapato_adequado" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('sapato_adequado')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Segundo div: Sandália de cicatrização/offloading -->
-                            <div class="w-1/3">
-                                <label for="sandalia_cicatrizacao"
-                                    class="block mb-2 font-medium text-gray-700">Sandália
-                                    de cicatrização/offloading:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="sandalia_cicatrizacao" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="sandalia_cicatrizacao" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('sandalia_cicatrizacao')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Regulação Vascular</h2>
-                        <div class="flex mb-4 space-x-4">
-                            <div class="w-1/3">
-                                <label for="pressao_arterial" class="block font-medium text-gray-700">Pressão
-                                    arterial:</label>
-                                <input type="text" wire:model="pressao_arterial" id="pressao_arterial"
-                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                    placeholder="Digite a pressão arterial em mmHg">
-                                @error('pressao_arterial')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="w-1/3">
-                                <label for="frequencia_cardiaca" class="block font-medium text-gray-700">Frequência
-                                    Cardíaca:</label>
-                                <input type="text" wire:model="frequencia_cardiaca" id="frequencia_cardiaca"
-                                    class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                    placeholder="Digite a frequência cardíaca em bpm">
-                                @error('frequencia_cardiaca')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div>
-                            <h2 class="py-5 ml-2 text-xl font-semibold ">Calcule o Índice Tornozelo Braço</h2>
-
-                            <div class="flex flex-wrap mt-2 mb-4 space-x-6">
-                                <div class="w-1/4">
-                                    <label for="psatp_direito" class="block font-medium text-gray-700">Pressão
-                                        Sistólica
-                                        Arteria Tibial Posterior Direito</label>
-                                    <input type="text" wire:model="psatp_direito" id="psatp_direito"
-                                        class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                        placeholder="Digite o psatp direito">
-                                    @error('psatp_direito')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="w-1/4">
-                                    <label for="psap_direito" class="block font-medium text-gray-700">Pressão
-                                        Sistólica
-                                        Arteria Pediosa Direito</label>
-                                    <input type="text" wire:model="psap_direito" id="psap_direito"
-                                        class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                        placeholder="Digite o psap direito">
-                                    @error('psap_direito')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="w-1/4">
-                                    <label for="psab_direito" class="block font-medium text-gray-700">Pressão
-                                        Sistólica
-                                        Artéria Braquial Direito</label>
-                                    <input type="text" wire:model="psab_direito" id="psab_direito"
-                                        class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                        placeholder="Digite o psab direito">
-                                    @error('psab_direito')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <!-- Botão para calcular o ITBD -->
-                                <div class="flex items-center mt-12">
-                                    <button type="button" wire:click="calcularITBDireito"
-                                        class="px-4 py-2 text-white bg-indigo-800 rounded-lg shadow hover:bg-indigo-900">
-                                        ITB Direito
-                                    </button>
-                                </div>
-                                @if ($itbD)
-                                    <div class="flex items-center gap-3 p-3 mt-4 bg-gray-100 rounded-lg shadow-sm">
-                                        <p class="text-lg font-semibold text-gray-800">ITB Direito:</p>
-                                        <span
-                                            class="text-lg font-bold {{ $corITBD }}">{{ $itbD }}</span>
-                                        <p class="ml-5 text-lg font-semibold text-gray-800">Classificação:</p>
-                                        <span
-                                            class="text-lg font-bold {{ $corITBD }}">{{ $classITBD }}</span>
-                                    </div>
-                                @endif
-
-                            </div>
-
-                            <div class="flex flex-wrap mb-4 space-x-6">
-                                <div class="w-1/4">
-                                    <label for="psatp_esquerdo" class="block font-medium text-gray-700">Pressão
-                                        Sistólica
-                                        Arteria Tibial Posterior Esquerdo</label>
-                                    <input type="text" wire:model="psatp_esquerdo" id="psatp_esquerdo"
-                                        class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                        placeholder="Digite o psatp esquerdo">
-                                    @error('psatp_esquerdo')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="w-1/4">
-                                    <label for="psap_esquerdo" class="block font-medium text-gray-700">Pressão
-                                        Sistólica
-                                        Arteria Pediosa Esquerdo</label>
-                                    <input type="text" wire:model="psap_esquerdo" id="psap_esquerdo"
-                                        class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                        placeholder="Digite o psap esquerdo">
-                                    @error('psap_esquerdo')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="w-1/4">
-                                    <label for="psab_esquerdo" class="block font-medium text-gray-700">Pressão
-                                        Sistólica
-                                        Artéria Braquial Esquerdo</label>
-                                    <input type="text" wire:model="psab_esquerdo" id="psab_esquerdo"
-                                        class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                        placeholder="Digite o psab esquerdo">
-                                    @error('psab_esquerdo')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <!-- Botão para calcular o ITBE -->
-                                <div class="flex items-center mt-12">
-                                    <button type="button" wire:click="calcularITBEsquerdo"
-                                        class="px-4 py-2 text-white bg-indigo-800 rounded-lg shadow hover:bg-indigo-900">
-                                        ITB Esquerdo
-                                    </button>
-                                </div>
-
-                                @if ($itbE)
-                                    <div
-                                        class="flex items-center gap-3 p-3 py-2 mt-4 bg-gray-100 rounded-lg shadow-sm">
-                                        <p class="text-lg font-semibold text-gray-800">ITB Esquerdo:</p>
-                                        <span
-                                            class="text-lg font-bold {{ $corITBE }}">{{ $itbE }}</span>
-                                        <p class="ml-5 text-lg font-semibold text-gray-800">Classificação:</p>
-                                        <span
-                                            class="text-lg font-bold  {{ $corITBE }}">{{ $classITBE }}</span>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Sensopercepção</h2>
-
-                        <div class="mb-6">
-                            <label class="block mb-2 font-medium text-gray-700">Sintomas</label>
-                            <div class="grid grid-cols-2 gap-4">
-                                @foreach ($sintomasPercepcaoList as $sintomas)
-                                    <div class="flex items-center">
-                                        <input type="checkbox" wire:model="sintomas_percepcaos"
-                                            value="{{ $sintomas->id }}" id="sintomas-{{ $sintomas->id }}"
-                                            class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                                        <label for="sintomas-{{ $sintomas->id }}" class="ml-2 text-gray-700">
-                                            {{ $sintomas->descricao }}
-                                        </label>
-                                    </div>
-                                @endforeach
-                            </div>
-                            @error('sintomas_percepcaos')
-                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="relative w-full h-48">
-                            <!-- Ajuste a altura conforme necessário -->
-                            <img src="{{ asset('trace.svg') }}" alt="Trace"
-                                class="absolute inset-0 object-contain w-full h-full">
-                        </div>
-                        <div class="flex mt-4 mb-8 ml-32 space-x-4">
-                            <div class="w-1/4">
-                                <label for="pe_neuropatico" class="block mb-2 font-medium text-gray-700">Pé
-                                    Neuropático
-                                    (Cavus)</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="pe_neuropatico" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="pe_neuropatico" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('pe_neuropatico')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="w-1/4">
-                                <label for="arco_desabado" class="block mb-2 font-medium text-gray-700">Arco
-                                    Desabado
-                                    (Charcot)</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="arco_desabado" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="arco_desabado" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('arco_desabado')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="w-1/5">
-                                <label for="valgismo" class="block mb-2 font-medium text-gray-700">Valgismo</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="valgismo" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="valgismo" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('valgismo')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Quarto div: Adicionando novo item -->
-                            <div class="w-1/6">
-                                <label for="dedos_em_garra" class="block mb-2 font-medium text-gray-700">Dedos em
-                                    Guerra</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="dedos_em_garra" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="dedos_em_garra" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('dedos_em_garra')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="flex mb-4 space-x-6">
-                            <div>
-                                <label for="corte_unhas" class="block mb-2 font-medium text-gray-700">Corte de Unhas
-                                    Correto:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="corte_unhas" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="corte_unhas" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('corte_unhas')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <label for="micose" class="block mb-2 font-medium text-gray-700">Micose
-                                    Interdigital:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="micose" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="micose" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('micose')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="flex mb-4 space-x-6">
-                            <div class="mr-11">
-                                <label for="fissuras" class="block mb-2 font-medium text-gray-700">Fissuras:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="fissuras" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="fissuras" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('fissuras')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <label for="calosidades"
-                                    class="block mb-2 font-medium text-gray-700">Calosidades:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="calosidades" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="calosidades" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600 ">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('calosidades')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <label for="estado_unhas_id" class="block font-medium text-gray-700">Estado das
-                                Unhas:</label>
-                            <select wire:model="estado_unhas_id" id="estado_unhas_id"
-                                class="block w-1/3 p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                                <option value="">Selecione</option>
-                                @foreach ($estadoUnhas as $unhas)
-                                    <option value="{{ $unhas->id }}">{{ $unhas->descricao }}</option>
-                                @endforeach
-                            </select>
-                            @error('estado_unhas_id')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-
-
-                        <div>
-                            <h2 class="py-5 text-lg font-bold">Teste de Sensopercepção</h2>
-                            <div x-data="{ selectedOption: @entangle('selectedOption') }">
-                                <!-- Opções de seleção -->
-                                <div class="flex mb-4 space-x-4">
-                                    <div>
-                                        <button type="button" @click="selectedOption = 1"
-                                            wire:click="selectOption(1)"
-                                            :class="selectedOption === 1 ? 'border-2 border-indigo-900' : ''"
-                                            class="px-4 py-2 text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 ">
-                                            Percepção da sensibilidade protetora
-                                        </button>
-                                    </div>
-                                    <div>
-                                        <button type="button" @click="selectedOption = 2"
-                                            wire:click="selectOption(2)"
-                                            :class="selectedOption === 2 ? 'border-2 border-indigo-900' : ''"
-                                            class="px-4 py-2 text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600">
-                                            Sensibilidade vibratória
-                                        </button>
-                                    </div>
-                                    <div>
-                                        <button type="button" @click="selectedOption = 3"
-                                            wire:click="selectOption(3)"
-                                            :class="selectedOption === 3 ? 'border-2 border-indigo-900' : ''"
-                                            class="px-4 py-2 text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600">
-                                            Ipswich Touch Test
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <!-- Exibir imagem com os booleanos -->
-                                <div x-show="selectedOption" class="mt-4">
-
-                                    <!-- Campos booleanos (iguais para todas as opções) -->
-                                    <div class="space-y-4">
-                                        <div>
-                                            <label for="percepcao_direito"
-                                                class="block mb-2 font-medium text-gray-700">Pé
-                                                Direito</label>
-                                            <div class="flex items-center space-x-6">
-                                                <label class="inline-flex items-center">
-                                                    <input type="radio" wire:model="percepcao_direito"
-                                                        value="1"
-                                                        class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                                    <span class="ml-2 text-gray-700">Percepção presente (responder
-                                                        corretamente em duas das três aplicações).</span>
-                                                </label>
-                                                <label class="inline-flex items-center">
-                                                    <input type="radio" wire:model="percepcao_direito"
-                                                        value="0"
-                                                        class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                                    <span class="ml-2 text-gray-700">Percepção ausente (responder
-                                                        corretamente
-                                                        em duas das três aplicações). </span>
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <label for="percepcao_esquerdo"
-                                                class="block mb-2 font-medium text-gray-700">Pé
-                                                Esquerdo</label>
-                                            <div class="flex items-center space-x-6">
-                                                <label class="inline-flex items-center">
-                                                    <input type="radio" wire:model="percepcao_esquerdo"
-                                                        value="1"
-                                                        class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                                    <span class="ml-2 text-gray-700">Percepção presente (responder
-                                                        corretamente em duas das três aplicações). </span>
-                                                </label>
-                                                <label class="inline-flex items-center">
-                                                    <input type="radio" wire:model="percepcao_esquerdo"
-                                                        value="0"
-                                                        class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                                    <span class="ml-2 text-gray-700">Percepção ausente (responder
-                                                        corretamente
-                                                        em duas das três aplicações).</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Integridade Cutânea</h2>
-
-                        <!-- Seleção de lado -->
-                        <div class="mb-6">
-                            <label class="block mb-2 font-semibold text-gray-700">Qual lado deseja preencher?</label>
-                            <div class="flex gap-4">
-                                <button type="button" wire:click="$set('ladoSelecionado', 'direito')"
-                                    class="px-4 py-2 font-semibold rounded-lg shadow-md transition-all duration-150
-                   {{ $ladoSelecionado === 'direito'
-                       ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-                       : 'bg-white border border-indigo-300 text-indigo-700 hover:bg-indigo-50' }}">
-                                    Somente Direito
-                                </button>
-
-                                <button type="button" wire:click="$set('ladoSelecionado', 'esquerdo')"
-                                    class="px-4 py-2 font-semibold rounded-lg shadow-md transition-all duration-150
-                   {{ $ladoSelecionado === 'esquerdo'
-                       ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-                       : 'bg-white border border-indigo-300 text-indigo-700 hover:bg-indigo-50' }}">
-                                    Somente Esquerdo
-                                </button>
-
-                                <button type="button" wire:click="$set('ladoSelecionado', 'ambos')"
-                                    class="px-4 py-2 font-semibold rounded-lg shadow-md transition-all duration-150
-                   {{ $ladoSelecionado === 'ambos'
-                       ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-                       : 'bg-white border border-indigo-300 text-indigo-700 hover:bg-indigo-50' }}">
-                                    Ambos
-                                </button>
-                            </div>
-                        </div>
-
-
-
-                        <div wire:key="lado-{{ $ladoSelecionado }}">
-                            {{-- Lesão em Pé Direito --}}
-                            @if ($ladoSelecionado === 'direito' || $ladoSelecionado === 'ambos')
-
-                                <div class="mt-6 mb-4">
-                                    <label class="block mb-2 font-semibold text-gray-700">Sinais de Infecção - Pé
-                                        Direito</label>
-                                    <div class="grid grid-cols-2 gap-4">
-                                        @foreach ($sinaisInfeccaoList as $sinais)
-                                            <div class="flex items-center">
-                                                <input type="checkbox" wire:model="sinais_infeccao_direito"
-                                                    value="{{ $sinais->id }}"
-                                                    id="sinais-direito-{{ $sinais->id }}"
-                                                    class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                                                <label for="sinais-direito-{{ $sinais->id }}"
-                                                    class="ml-2 text-gray-700">
-                                                    {{ $sinais->descricao }}
-                                                </label>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="mt-10">
-                                    <h2 class="py-5 text-lg font-semibold">Lesão em Pé Direito</h2>
-
-                                    <div class="flex mb-4 space-x-4">
-                                        <div class="w-1/4">
-                                            <label class="block font-medium text-gray-700">Comprimento (cm):</label>
-                                            <input type="number" wire:model="dados.direito.comprimento"
-                                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm">
-                                        </div>
-
-                                        <div class="w-1/4">
-                                            <label class="block font-medium text-gray-700">Largura (cm):</label>
-                                            <input type="number" wire:model="dados.direito.largura"
-                                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm">
-                                        </div>
-                                    </div>
-
-                                    <div class="flex mb-4 space-x-4">
-                                        <div class="w-1/4">
-                                            <label class="block font-medium text-gray-700">Localização
-                                                Anatômica:</label>
-                                            <select wire:model="dados.direito.localizacao_lesao_id"
-                                                class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm">
-                                                <option value="">Selecione</option>
-                                                @foreach ($localizacaoLesao as $localizacao)
-                                                    <option value="{{ $localizacao->id }}">
-                                                        {{ $localizacao->descricao }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="w-1/4">
-                                            <label class="block font-medium text-gray-700">Região:</label>
-                                            <select wire:model="dados.direito.regiao_pe_id"
-                                                class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm">
-                                                <option value="">Selecione</option>
-                                                @foreach ($regiaoPe as $regiao)
-                                                    <option value="{{ $regiao->id }}">{{ $regiao->descricao }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-4">
-                                        <label class="block mb-2 font-medium text-gray-700">Lesão Decorrente de
-                                            Amputação:</label>
-                                        <div class="flex space-x-6">
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="dados.direito.lesao_amputacao"
-                                                    value="1" class="form-radio text-indigo-600">
-                                                <span class="ml-2 text-gray-700">Sim</span>
-                                            </label>
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="dados.direito.lesao_amputacao"
-                                                    value="0" class="form-radio text-indigo-600">
-                                                <span class="ml-2 text-gray-700">Não</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex mt-6 mb-4 space-x-4">
-                                    <div class="w-1/3">
-                                        <label for="bordas_ferida_direito_id"
-                                            class="block font-medium text-gray-700">Bordas da Ferida</label>
-                                        <select wire:model="dados.direito.bordas_ferida_id"
-                                            id="bordas_ferida_direito_id" class="input-select">
-                                            <option value="">Selecione</option>
-                                            @foreach ($bordasFerida as $borda)
-                                                <option value="{{ $borda->id }}">{{ $borda->descricao }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="w-1/3">
-                                        <label for="tipo_tecido_ferida_direito_id"
-                                            class="block font-medium text-gray-700">Tipo de Tecido no Leito</label>
-                                        <select wire:model="dados.direito.tipo_tecido_ferida_id"
-                                            id="tipo_tecido_ferida_direito_id" class="input-select">
-                                            <option value="">Selecione</option>
-                                            @foreach ($tiposTecido as $tipo)
-                                                <option value="{{ $tipo->id }}">{{ $tipo->descricao }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="flex mb-4 space-x-4">
-                                    <div class="w-1/3">
-                                        <label for="profundidade_direito_id"
-                                            class="block font-medium text-gray-700">Profundidade</label>
-                                        <select wire:model="dados.direito.profundidade_id"
-                                            id="profundidade_direito_id" class="input-select">
-                                            <option value="">Selecione</option>
-                                            @foreach ($profundidades as $profundidade)
-                                                <option value="{{ $profundidade->id }}">
-                                                    {{ $profundidade->descricao }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="w-1/3">
-                                        <label for="pele_periferida_direito_id"
-                                            class="block font-medium text-gray-700">Pele Periferida</label>
-                                        <select wire:model="dados.direito.pele_periferida_id"
-                                            id="pele_periferida_direito_id" class="input-select">
-                                            <option value="">Selecione</option>
-                                            @foreach ($pelesPeriferida as $pele)
-                                                <option value="{{ $pele->id }}">{{ $pele->descricao }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="flex mb-4 space-x-4">
-                                    <div class="w-1/3">
-                                        <label for="quantidade_exudato_direito_id"
-                                            class="block font-medium text-gray-700">Quantidade de Exsudato</label>
-                                        <select wire:model="dados.direito.quantidade_exudato_id"
-                                            id="quantidade_exudato_direito_id" class="input-select">
-                                            <option value="">Selecione</option>
-                                            @foreach ($quantidadesExudato as $quantidade)
-                                                <option value="{{ $quantidade->id }}">{{ $quantidade->descricao }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="w-1/3">
-                                        <label for="aspecto_exudato_direito_id"
-                                            class="block font-medium text-gray-700">Aspecto do Exsudato</label>
-                                        <select wire:model="dados.direito.aspecto_exudato_id"
-                                            id="aspecto_exudato_direito_id" class="input-select">
-                                            <option value="">Selecione</option>
-                                            @foreach ($aspectosExudato as $aspecto)
-                                                <option value="{{ $aspecto->id }}">{{ $aspecto->descricao }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="flex mb-4 space-x-4">
-                                    <!-- Odor do Exsudato -->
-                                    <div class="w-1/3">
-                                        <label for="odor_exudato_direito"
-                                            class="block mb-2 font-medium text-gray-700">Odor do exsudato:</label>
-                                        <div class="flex items-center mt-1 space-x-6">
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="dados.direito.odor_exudato"
-                                                    value="1"
-                                                    class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                                <span class="ml-2 text-gray-700">Sim</span>
-                                            </label>
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="dados.direito.odor_exudato"
-                                                    value="0"
-                                                    class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                                <span class="ml-2 text-gray-700">Não</span>
-                                            </label>
-                                        </div>
-                                        @error('dados.direito.odor_exudato')
-                                            <span class="text-sm text-red-500">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-
-                                    <!-- Edema -->
-                                    <div class="w-1/3">
-                                        <label for="edema_direito"
-                                            class="block mb-2 font-medium text-gray-700">Edema:</label>
-                                        <div class="flex items-center mt-1 space-x-6">
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="dados.direito.edema"
-                                                    value="1"
-                                                    class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                                <span class="ml-2 text-gray-700">Sim</span>
-                                            </label>
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="dados.direito.edema"
-                                                    value="0"
-                                                    class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                                <span class="ml-2 text-gray-700">Não</span>
-                                            </label>
-                                        </div>
-                                        @error('dados.direito.edema')
-                                            <span class="text-sm text-red-500">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <!-- Intensidade da Dor -->
-                                <div class="w-full">
-                                    <label for="dor_direito"
-                                        class="block mb-4 text-lg font-medium text-gray-700">Intensidade da Dor (Pé
-                                        Direito):</label>
-                                    <div class="grid grid-cols-11 gap-2 text-center">
-                                        @for ($i = 0; $i <= 10; $i++)
-                                            @php
-                                                $color = match (true) {
-                                                    $i <= 3 => 'bg-green-200 text-green-700',
-                                                    $i <= 6 => 'bg-yellow-200 text-yellow-700',
-                                                    $i <= 8 => 'bg-orange-200 text-orange-700',
-                                                    default => 'bg-red-200 text-red-700',
-                                                };
-
-                                                $emoji = match (true) {
-                                                    $i == 0 => '😊',
-                                                    $i <= 3 => '🙂',
-                                                    $i <= 6 => '😐',
-                                                    $i <= 8 => '😣',
-                                                    default => '😫',
-                                                };
-
-                                                $selected =
-                                                    (int) ($dados['direito']['dor'] ?? -1) === $i
-                                                        ? 'ring-4 ring-indigo-400 ring-offset-2 scale-105'
-                                                        : '';
-                                            @endphp
-
-                                            <button type="button"
-                                                wire:click="$set('dados.direito.dor', {{ $i }})"
-                                                class="flex flex-col items-center p-2 rounded cursor-pointer hover:bg-gray-100 {{ $color }} {{ $selected }}">
-                                                <span class="text-xl">{{ $emoji }}</span>
-                                                <span class="text-sm font-semibold">{{ $i }}</span>
-                                            </button>
-                                        @endfor
-                                    </div>
-                                    @error('dados.direito.dor')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-
-                            @endif
-                        </div>
-
-                        <div wire:key="lado-{{ $ladoSelecionado }}">
-                            {{-- Lesão em Pé Esquerdo --}}
-                            @if ($ladoSelecionado === 'esquerdo' || $ladoSelecionado === 'ambos')
-                                <!-- SINAIS DE INFECÇÃO - ESQUERDO -->
-                                <div class="mt-6 mb-8">
-                                    <label class="block mb-2 font-semibold text-gray-700">Sinais de Infecção - Pé
-                                        Esquerdo</label>
-                                    <div class="grid grid-cols-2 gap-4">
-                                        @foreach ($sinaisInfeccaoList as $sinais)
-                                            <div class="flex items-center">
-                                                <input type="checkbox" wire:model="sinais_infeccao_esquerdo"
-                                                    value="{{ $sinais->id }}"
-                                                    id="sinais-esquerdo-{{ $sinais->id }}"
-                                                    class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                                                <label for="sinais-esquerdo-{{ $sinais->id }}"
-                                                    class="ml-2 text-gray-700">
-                                                    {{ $sinais->descricao }}
-                                                </label>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="mt-10">
-                                    <h2 class="py-5 text-lg font-semibold">Lesão em Pé Esquerdo</h2>
-
-                                    <div class="flex mb-4 space-x-4">
-                                        <div class="w-1/4">
-                                            <label class="block font-medium text-gray-700">Comprimento (cm):</label>
-                                            <input type="number" wire:model="dados.esquerdo.comprimento"
-                                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm">
-                                        </div>
-
-                                        <div class="w-1/4">
-                                            <label class="block font-medium text-gray-700">Largura (cm):</label>
-                                            <input type="number" wire:model="dados.esquerdo.largura"
-                                                class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm">
-                                        </div>
-                                    </div>
-
-                                    <div class="flex mb-4 space-x-4">
-                                        <div class="w-1/4">
-                                            <label class="block font-medium text-gray-700">Localização
-                                                Anatômica:</label>
-                                            <select wire:model="dados.esquerdo.localizacao_lesao_id"
-                                                class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm">
-                                                <option value="">Selecione</option>
-                                                @foreach ($localizacaoLesao as $localizacao)
-                                                    <option value="{{ $localizacao->id }}">
-                                                        {{ $localizacao->descricao }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="w-1/4">
-                                            <label class="block font-medium text-gray-700">Região:</label>
-                                            <select wire:model="dados.esquerdo.regiao_pe_id"
-                                                class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm">
-                                                <option value="">Selecione</option>
-                                                @foreach ($regiaoPe as $regiao)
-                                                    <option value="{{ $regiao->id }}">{{ $regiao->descricao }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-4">
-                                        <label class="block mb-2 font-medium text-gray-700">Lesão Decorrente de
-                                            Amputação:</label>
-                                        <div class="flex space-x-6">
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="dados.esquerdo.lesao_amputacao"
-                                                    value="1" class="form-radio text-indigo-600">
-                                                <span class="ml-2 text-gray-700">Sim</span>
-                                            </label>
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="dados.esquerdo.lesao_amputacao"
-                                                    value="0" class="form-radio text-indigo-600">
-                                                <span class="ml-2 text-gray-700">Não</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex mt-6 mb-4 space-x-4">
-                                    <!-- Bordas da Ferida -->
-                                    <div class="w-1/3">
-                                        <label for="bordas_ferida_esquerdo_id"
-                                            class="block font-medium text-gray-700">Bordas da Ferida</label>
-                                        <select wire:model="dados.esquerdo.bordas_ferida_id"
-                                            id="bordas_ferida_esquerdo_id" class="input-select">
-                                            <option value="">Selecione</option>
-                                            @foreach ($bordasFerida as $borda)
-                                                <option value="{{ $borda->id }}">{{ $borda->descricao }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('dados.esquerdo.bordas_ferida_id')
-                                            <span class="text-sm text-red-500">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-
-                                    <!-- Tipo de Tecido -->
-                                    <div class="w-1/3">
-                                        <label for="tipo_tecido_ferida_esquerdo_id"
-                                            class="block font-medium text-gray-700">Tipo de Tecido no Leito</label>
-                                        <select wire:model="dados.esquerdo.tipo_tecido_ferida_id"
-                                            id="tipo_tecido_ferida_esquerdo_id" class="input-select">
-                                            <option value="">Selecione</option>
-                                            @foreach ($tiposTecido as $tipo)
-                                                <option value="{{ $tipo->id }}">{{ $tipo->descricao }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('dados.esquerdo.tipo_tecido_ferida_id')
-                                            <span class="text-sm text-red-500">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="flex mb-4 space-x-4">
-                                    <!-- Profundidade -->
-                                    <div class="w-1/3">
-                                        <label for="profundidade_esquerdo_id"
-                                            class="block font-medium text-gray-700">Profundidade</label>
-                                        <select wire:model="dados.esquerdo.profundidade_id"
-                                            id="profundidade_esquerdo_id" class="input-select">
-                                            <option value="">Selecione</option>
-                                            @foreach ($profundidades as $profundidade)
-                                                <option value="{{ $profundidade->id }}">
-                                                    {{ $profundidade->descricao }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('dados.esquerdo.profundidade_id')
-                                            <span class="text-sm text-red-500">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-
-                                    <!-- Pele Periferida -->
-                                    <div class="w-1/3">
-                                        <label for="pele_periferida_esquerdo_id"
-                                            class="block font-medium text-gray-700">Pele Periferida</label>
-                                        <select wire:model="dados.esquerdo.pele_periferida_id"
-                                            id="pele_periferida_esquerdo_id" class="input-select">
-                                            <option value="">Selecione</option>
-                                            @foreach ($pelesPeriferida as $pele)
-                                                <option value="{{ $pele->id }}">{{ $pele->descricao }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('dados.esquerdo.pele_periferida_id')
-                                            <span class="text-sm text-red-500">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="flex mb-4 space-x-4">
-                                    <!-- Quantidade de Exsudato -->
-                                    <div class="w-1/3">
-                                        <label for="quantidade_exudato_esquerdo_id"
-                                            class="block font-medium text-gray-700">Quantidade de Exsudato</label>
-                                        <select wire:model="dados.esquerdo.quantidade_exudato_id"
-                                            id="quantidade_exudato_esquerdo_id" class="input-select">
-                                            <option value="">Selecione</option>
-                                            @foreach ($quantidadesExudato as $quantidade)
-                                                <option value="{{ $quantidade->id }}">{{ $quantidade->descricao }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('dados.esquerdo.quantidade_exudato_id')
-                                            <span class="text-sm text-red-500">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-
-                                    <!-- Aspecto do Exsudato -->
-                                    <div class="w-1/3">
-                                        <label for="aspecto_exudato_esquerdo_id"
-                                            class="block font-medium text-gray-700">Aspecto do Exsudato</label>
-                                        <select wire:model="dados.esquerdo.aspecto_exudato_id"
-                                            id="aspecto_exudato_esquerdo_id" class="input-select">
-                                            <option value="">Selecione</option>
-                                            @foreach ($aspectosExudato as $aspecto)
-                                                <option value="{{ $aspecto->id }}">{{ $aspecto->descricao }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('dados.esquerdo.aspecto_exudato_id')
-                                            <span class="text-sm text-red-500">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="flex mb-4 space-x-4">
-                                    <!-- Odor do Exsudato -->
-                                    <div class="w-1/3">
-                                        <label for="odor_exudato_esquerdo"
-                                            class="block mb-2 font-medium text-gray-700">Odor do exsudato:</label>
-                                        <div class="flex items-center mt-1 space-x-6">
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="dados.esquerdo.odor_exudato"
-                                                    value="1"
-                                                    class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                                <span class="ml-2 text-gray-700">Sim</span>
-                                            </label>
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="dados.esquerdo.odor_exudato"
-                                                    value="0"
-                                                    class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                                <span class="ml-2 text-gray-700">Não</span>
-                                            </label>
-                                        </div>
-                                        @error('dados.esquerdo.odor_exudato')
-                                            <span class="text-sm text-red-500">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-
-                                    <!-- Edema -->
-                                    <div class="w-1/3">
-                                        <label for="edema_esquerdo"
-                                            class="block mb-2 font-medium text-gray-700">Edema:</label>
-                                        <div class="flex items-center mt-1 space-x-6">
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="dados.esquerdo.edema"
-                                                    value="1"
-                                                    class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                                <span class="ml-2 text-gray-700">Sim</span>
-                                            </label>
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" wire:model="dados.esquerdo.edema"
-                                                    value="0"
-                                                    class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                                <span class="ml-2 text-gray-700">Não</span>
-                                            </label>
-                                        </div>
-                                        @error('dados.esquerdo.edema')
-                                            <span class="text-sm text-red-500">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <!-- Intensidade da Dor -->
-                                <div class="w-full">
-                                    <label for="dor_esquerdo"
-                                        class="block mb-4 text-lg font-medium text-gray-700">Intensidade da Dor (Pé
-                                        Esquerdo):</label>
-                                    <div class="grid grid-cols-11 gap-2 text-center">
-                                        @for ($i = 0; $i <= 10; $i++)
-                                            @php
-                                                $color = match (true) {
-                                                    $i <= 3 => 'bg-green-200 text-green-700',
-                                                    $i <= 6 => 'bg-yellow-200 text-yellow-700',
-                                                    $i <= 8 => 'bg-orange-200 text-orange-700',
-                                                    default => 'bg-red-200 text-red-700',
-                                                };
-
-                                                $emoji = match (true) {
-                                                    $i == 0 => '😊',
-                                                    $i <= 3 => '🙂',
-                                                    $i <= 6 => '😐',
-                                                    $i <= 8 => '😣',
-                                                    default => '😫',
-                                                };
-
-                                                $selected =
-                                                    (int) ($dados['esquerdo']['dor'] ?? -1) === $i
-                                                        ? 'ring-4 ring-indigo-400 ring-offset-2 scale-105'
-                                                        : '';
-                                            @endphp
-
-                                            <button type="button"
-                                                wire:click="$set('dados.esquerdo.dor', {{ $i }})"
-                                                class="flex flex-col items-center p-2 rounded cursor-pointer hover:bg-gray-100 {{ $color }} {{ $selected }}">
-                                                <span class="text-xl">{{ $emoji }}</span>
-                                                <span class="text-sm font-semibold">{{ $i }}</span>
-                                            </button>
-                                        @endfor
-                                    </div>
-                                    @error('dados.esquerdo.dor')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            @endif
-                        </div>
-                    </div>
-
-
-                    <div class="pb-5 border-b border-gray-300">
-                        <h2 class="py-5 text-lg font-bold">Cuidados com a Ferida</h2>
-                        <div class="flex mb-6 space-x-4">
-                            <!-- Refeições Diárias -->
-                            <div class="w-1/4">
-                                <label class="block mb-2 font-medium text-gray-700">Limpeza da Lesão:</label>
-                                <div class="space-y-2">
-                                    @foreach ($limpezaLesaosList as $limpeza)
-                                        <div class="flex items-center">
-                                            <input type="checkbox" wire:model="limpeza_lesaos"
-                                                value="{{ $limpeza->id }}" id="limpeza-{{ $limpeza->id }}"
-                                                class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                                            <label for="limpeza-{{ $limpeza->id }}" class="ml-2 text-gray-700">
-                                                {{ $limpeza->descricao }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                                @error('limpeza_lesaos')
-                                    <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Restrições Alimentares -->
-                            <div class="w-1/2">
-                                <label class="block mb-2 font-medium text-gray-700">Coberturas/
-                                    Correlatos:</label>
-                                <div class="grid grid-cols-2 gap-4">
-                                    @foreach ($coberturasList as $cobertura)
-                                        <div class="flex items-center">
-                                            <input type="checkbox" wire:model="coberturas"
-                                                value="{{ $cobertura->id }}" id="cobertura-{{ $cobertura->id }}"
-                                                class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                                            <label for="cobertura-{{ $cobertura->id }}"
-                                                class="ml-2 text-gray-700">
-                                                {{ $cobertura->descricao }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                                @error('coberturas')
-                                    <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="flex mb-4 space-x-4">
-                            <!-- Zona de Moradia -->
-                            <div class="w-1/3">
-                                <div class="w-full">
-                                    <label for="desbridamento_id" class="block font-medium text-gray-700">Tipos
-                                        de
-                                        Desbridamento:</label>
-                                    <select wire:model="desbridamento_id" id="desbridamento_id"
-                                        class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                                        <option value="">Selecione</option>
-                                        @foreach ($desbridamentos as $desbridamento)
-                                            <option value="{{ $desbridamento->id }}">
-                                                {{ $desbridamento->descricao }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('desbridamento_id')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <!-- Rede de Esgoto -->
-                            <div class="w-1/3">
-                                <div class="w-full">
-                                    <label for="avaliacao_ferida_id"
-                                        class="block font-medium text-gray-700">Avaliação
-                                        da
-                                        Ferida:</label>
-                                    <select wire:model="avaliacao_ferida_id" id="avaliacao_ferida_id"
-                                        class="block w-full p-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                                        <option value="">Selecione</option>
-                                        @foreach ($avaliacaoFeridas as $avaliacao)
-                                            <option value="{{ $avaliacao->id }}">
-                                                {{ $avaliacao->descricao }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    @error('avaliacao_ferida_id')
-                                        <span class="text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="flex mb-4 space-x-4">
-                            <!-- Primeiro div: Sapato adequado -->
-                            <div class="w-1/3">
-                                <label for="aplicacao_laserterapia"
-                                    class="block mb-2 font-medium text-gray-700">Aplicação
-                                    de Laserterapia:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="aplicacao_laserterapia" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="aplicacao_laserterapia" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('aplicacao_laserterapia')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Segundo div: Sandália de cicatrização/offloading -->
-                            <div class="w-1/3">
-                                <label for="terapia_fotodinamica"
-                                    class="block mb-2 font-medium text-gray-700">Terapia
-                                    fotodinâmica:</label>
-                                <div class="flex items-center mt-1 space-x-6">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="terapia_fotodinamica" value="1"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Sim</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" wire:model="terapia_fotodinamica" value="0"
-                                            class="text-indigo-600 form-radio focus:ring-indigo-500 focus:ring-opacity-50 focus:bg-indigo-600">
-                                        <span class="ml-2 text-gray-700">Não</span>
-                                    </label>
-                                </div>
-                                @error('terapia_fotodinamica')
-                                    <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="imagem_avaliacao_pe"
-                            class="block mt-4 text-lg font-medium text-gray-700">Avaliação
-                            do
-                            Pé (Imagem)</label>
-
+                <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+                    <!-- Elementos decorativos de fundo otimizados -->
+                    <div class="fixed inset-0 overflow-hidden pointer-events-none">
                         <div
-                            class="flex items-center justify-between p-4 mt-5 transition duration-300 ease-in-out border-2 border-gray-300 rounded-lg hover:border-indigo-500 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-300">
-                            <label for="imagem_avaliacao_pe" class="flex items-center space-x-2 cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                                </svg>
-                                <span class="ml-6 text-base font-semibold text-indigo-500">Escolher
-                                    arquivo</span>
-                            </label>
-
-                            <input type="file" id="imagem_avaliacao_pe" wire:model="imagem_avaliacao_pe"
-                                class="hidden">
+                            class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-20">
                         </div>
-
-                        <!-- Exibindo Mensagens de Erro -->
-                        @error('imagem_avaliacao_pe')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-
-                        @if ($imagem_avaliacao_pe)
-                            <div class="mt-6">
-                                <p class="mb-4 text-xs text-gray-600">Pré-visualização da Imagem</p>
-                                <div
-                                    class="w-full max-w-4xl p-6 mx-auto border border-indigo-100 rounded-lg shadow-lg bg-gray-50">
-                                    <img src="{{ $imagem_avaliacao_pe->temporaryUrl() }}"
-                                        alt="Pré-visualização da imagem"
-                                        class="object-contain w-full rounded-lg h-96">
-                                </div>
-                            </div>
-                        @elseif ($imagem_avaliacao_pe_url)
-                            <div class="mt-6">
-                                <p class="mb-4 text-xs text-gray-600">Imagem Atual</p>
-                                <div
-                                    class="w-full max-w-4xl p-6 mx-auto border border-indigo-100 rounded-lg shadow-lg bg-gray-50">
-                                    <img src="{{ Storage::url($imagem_avaliacao_pe_url) }}" alt="Imagem atual"
-                                        class="object-contain w-full rounded-lg h-96">
-                                </div>
-                            </div>
-                        @endif
-                    </div>
-
-
-
-
-                    <!-- Botões de Navegação -->
-                    <div class="flex justify-between mt-24">
-                        <!-- Botão Voltar (ação secundária) -->
-                        <button type="button" wire:click="previousStep"
-                            @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                            class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-indigo-600 transition-all duration-300 ease-in-out bg-white border-2 border-indigo-500 shadow-sm rounded-xl hover:bg-indigo-50 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-300">
-                            <span class="z-10">Voltar</span>
-                        </button>
-
-                        <!-- Botão Continuar (ação primária) -->
-                        <button type="button" wire:click="nextStep"
-                            @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                            class="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold text-white transition-all duration-300 ease-in-out shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                            <span class="z-10">Continuar</span>
-                            <div class="absolute inset-0 bg-white pointer-events-none opacity-5"></div>
-                        </button>
-                    </div>
-
-                </div>
-        </div>
-        @endif
-</div>
-<div x-show="step === 3" x-transition>
-    {{-- Etapa 3: Necessidades Sociais --}}
-    @if ($currentStep == 3)
-        <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
-            <!-- Elementos decorativos de fundo otimizados -->
-            <div class="fixed inset-0 overflow-hidden pointer-events-none">
-                <div
-                    class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-20">
-                </div>
-                <div
-                    class="absolute bg-purple-200 rounded-full opacity-15 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
-                </div>
-                <div
-                    class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-15">
-                </div>
-            </div>
-
-            <div class="relative z-10 px-6 py-8">
-                <!-- Header -->
-                <div class="max-w-6xl mx-auto mb-8">
-                    <div class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
-                                <p class="font-medium text-indigo-600">Sistema de Prescrição Eletrônica para
-                                    Pé Diabético</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-sm text-gray-600">Questionário</p>
-                                <p class="text-lg font-semibold text-gray-800">Necessidades Psicossociais</p>
-                            </div>
+                        <div
+                            class="absolute bg-purple-200 rounded-full opacity-15 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
+                        </div>
+                        <div
+                            class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-15">
                         </div>
                     </div>
-                </div>
 
-                <!-- Main Content -->
-                <div class="max-w-6xl mx-auto">
-                    <div class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
-
-                        <!-- Seção Aprendizagem - Educação a Saúde -->
-                        <div class="pb-8 mb-10 border-b border-gray-200">
-                            <div class="mb-8">
-                                <h2 class="mb-2 text-2xl font-bold text-indigo-900">Aprendizagem - Educação a
-                                    Saúde</h2>
-                                <div class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
-                                </div>
-                            </div>
-
-                            <!-- Frequência de monitoramento -->
-                            <div class="mb-8">
-                                <label for="monitoramento_glicemia_dia"
-                                    class="block mb-3 text-lg font-semibold text-gray-800">
-                                    Frequência por dia de automonitoramento da glicemia capilar:
-                                </label>
-                                <input type="text" wire:model="monitoramento_glicemia_dia"
-                                    id="monitoramento_glicemia_dia"
-                                    class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 md:w-2/3 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
-                                    placeholder="Digite o número de vezes por dia">
-                                @error('monitoramento_glicemia_dia')
-                                    <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <!-- Grid de orientações -->
-                            <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                                <!-- Cuidado com os pés -->
-                                <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
-                                    <label class="block mb-4 text-lg font-semibold text-gray-800">
-                                        Foi orientado sobre autocuidado com os pés:
-                                    </label>
-                                    <div class="flex gap-6">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="cuidado_pes" value="1"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Sim</span>
-                                        </label>
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="cuidado_pes" value="0"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Não</span>
-                                        </label>
+                    <div class="relative z-10 px-6 py-8">
+                        <!-- Header -->
+                        <div class="max-w-6xl mx-auto mb-8">
+                            <div class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
+                                        <p class="font-medium text-indigo-600">Sistema de Prescrição Eletrônica para Pé
+                                            Diabético</p>
                                     </div>
-                                    @error('cuidado_pes')
-                                        <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <!-- Uso de sapatos -->
-                                <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
-                                    <label class="block mb-4 text-lg font-semibold text-gray-800">
-                                        Foi orientado sobre uso de sapatos adequados:
-                                    </label>
-                                    <div class="flex gap-6">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="uso_sapato" value="1"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Sim</span>
-                                        </label>
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="uso_sapato" value="0"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Não</span>
-                                        </label>
+                                    <div class="text-right">
+                                        <p class="text-sm text-gray-600">Questionário</p>
+                                        <p class="text-lg font-semibold text-gray-800">Necessidades Psicobiológicas</p>
                                     </div>
-                                    @error('uso_sapato')
-                                        <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <!-- Alimentação -->
-                                <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
-                                    <label class="block mb-4 text-lg font-semibold text-gray-800">
-                                        Foi orientado sobre alimentação:
-                                    </label>
-                                    <div class="flex gap-6">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="alimentacao" value="1"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Sim</span>
-                                        </label>
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="alimentacao" value="0"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Não</span>
-                                        </label>
-                                    </div>
-                                    @error('alimentacao')
-                                        <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <!-- Regime terapêutico -->
-                                <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
-                                    <label class="block mb-4 text-lg font-semibold text-gray-800">
-                                        Compreende e executa o regime terapêutico adequadamente:
-                                    </label>
-                                    <div class="flex gap-6">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="regime_terapeutico" value="1"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Sim</span>
-                                        </label>
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="regime_terapeutico" value="0"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Não</span>
-                                        </label>
-                                    </div>
-                                    @error('regime_terapeutico')
-                                        <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Seção Recreação/Lazer/Criatividade -->
-                        <div class="pb-8 mb-10 border-b border-gray-200">
-                            <div class="mb-8">
-                                <h2 class="mb-2 text-2xl font-bold text-indigo-900">Recreação / Lazer /
-                                    Criatividade</h2>
-                                <div class="w-24 h-1 rounded-full bg-gradient-to-r from-purple-500 to-purple-700">
-                                </div>
-                            </div>
+                        <!-- Main Content -->
+                        <div class="max-w-6xl mx-auto">
+                            <div class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
 
-                            <div class="p-6 border border-purple-100 bg-purple-50 rounded-2xl">
-                                <label class="block mb-6 text-lg font-semibold text-gray-800">Recreações</label>
-                                <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                                    @foreach ($recreacaosList as $recreacao)
-                                        <div class="flex items-center p-3 bg-white border border-gray-100 rounded-xl">
-                                            <input type="checkbox" wire:model="recreacaos"
-                                                value="{{ $recreacao->id }}" id="recreacao-{{ $recreacao->id }}"
-                                                class="w-5 h-5 text-purple-600 border-2 border-gray-300 rounded focus:ring-purple-500">
-                                            <label for="recreacao-{{ $recreacao->id }}"
-                                                class="ml-3 font-medium text-gray-700 cursor-pointer">
-                                                {{ $recreacao->descricao }}
-                                            </label>
+                                <!-- Seção Regulação Neurológica -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Regulação Neurológica</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
                                         </div>
-                                    @endforeach
-                                </div>
-                                @error('recreacaos')
-                                    <span class="block mt-4 text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <!-- Seção Amor/Aceitação/Atenção/Auto estima/Segurança -->
-                        <div class="pb-8 mb-10 border-b border-gray-200">
-                            <div class="mb-8">
-                                <h2 class="mb-2 text-2xl font-bold text-indigo-900">Amor / Aceitação / Atenção
-                                    / Auto estima / Segurança</h2>
-                                <div class="w-24 h-1 rounded-full bg-gradient-to-r from-pink-500 to-pink-700">
-                                </div>
-                            </div>
-
-                            <div class="space-y-8">
-                                <!-- Acompanhado -->
-                                <div class="p-6 border border-pink-100 bg-pink-50 rounded-2xl">
-                                    <label class="block mb-4 text-lg font-semibold text-gray-800">
-                                        Acompanhado no momento da consulta:
-                                    </label>
-                                    <div class="flex gap-6">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="acompanhado" value="1"
-                                                class="w-5 h-5 text-pink-600 border-2 border-gray-300 focus:ring-pink-500">
-                                            <span class="ml-3 font-medium text-gray-700">Sim</span>
-                                        </label>
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="acompanhado" value="0"
-                                                class="w-5 h-5 text-pink-600 border-2 border-gray-300 focus:ring-pink-500">
-                                            <span class="ml-3 font-medium text-gray-700">Não</span>
-                                        </label>
                                     </div>
-                                    @error('acompanhado')
-                                        <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
 
-                                <!-- Estado Emocional -->
-                                <div class="p-6 border border-pink-100 bg-pink-50 rounded-2xl">
-                                    <label class="block mb-6 text-lg font-semibold text-gray-800">Estado
-                                        Emocional</label>
-                                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                                        @foreach ($emocionalsList as $emocional)
-                                            <div
-                                                class="flex items-center p-3 bg-white border border-gray-100 rounded-xl">
-                                                <input type="checkbox" wire:model="emocionals"
-                                                    value="{{ $emocional->id }}"
-                                                    id="emocional-{{ $emocional->id }}"
-                                                    class="w-5 h-5 text-pink-600 border-2 border-gray-300 rounded focus:ring-pink-500">
-                                                <label for="emocional-{{ $emocional->id }}"
-                                                    class="ml-3 font-medium text-gray-700 cursor-pointer">
-                                                    {{ $emocional->descricao }}
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                                        <!-- Orientação tempo/espaço -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Orientado no tempo/espaço:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="orientado" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="orientado" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
                                                 </label>
                                             </div>
-                                        @endforeach
+                                            @error('orientado')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Comportamento -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="comportamento_regulacao_neuro_id"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Comportamento:
+                                            </label>
+                                            <select wire:model="comportamento_regulacao_neuro_id"
+                                                id="comportamento_regulacao_neuro_id"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                <option value="">Selecione</option>
+                                                @foreach ($comportamentosNeuro as $comportamento)
+                                                    <option value="{{ $comportamento->id }}">
+                                                        {{ $comportamento->descricao }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('comportamento_regulacao_neuro_id')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
-                                    @error('emocionals')
-                                        <span class="block mt-4 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
                                 </div>
 
-                                <!-- Grid de opiniões e auxiliador -->
-                                <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                                    <!-- Opiniões de si -->
-                                    <div class="p-6 border border-pink-100 bg-pink-50 rounded-2xl">
-                                        <label class="block mb-4 text-lg font-semibold text-gray-800">
-                                            Opiniões de si mesmo sobre sua lesão:
-                                        </label>
-                                        <div class="flex gap-6">
-                                            <label class="flex items-center cursor-pointer">
-                                                <input type="radio" wire:model="opnioes_de_si" value="1"
-                                                    class="w-5 h-5 text-pink-600 border-2 border-gray-300 focus:ring-pink-500">
-                                                <span class="ml-3 font-medium text-gray-700">Positiva</span>
+                                <!-- Seção Percepção dos Órgãos do Sentido -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Percepção dos Órgãos do
+                                            Sentido</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid de avaliações visuais e auditivas -->
+                                    <div class="grid grid-cols-1 gap-8 mb-8 lg:grid-cols-3">
+                                        <!-- Olho direito -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Acuidade visual diminuída no olho direito:
                                             </label>
-                                            <label class="flex items-center cursor-pointer">
-                                                <input type="radio" wire:model="opnioes_de_si" value="0"
-                                                    class="w-5 h-5 text-pink-600 border-2 border-gray-300 focus:ring-pink-500">
-                                                <span class="ml-3 font-medium text-gray-700">Negativa</span>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="olho_direito" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="olho_direito" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('olho_direito')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Olho esquerdo -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Acuidade visual diminuída no olho esquerdo:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="olho_esquerdo" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="olho_esquerdo" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('olho_esquerdo')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Audição -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Acuidade auditiva diminuída:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="ouvido" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="ouvido" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('ouvido')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid para tato e risco de queda -->
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                                        <!-- Tato -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="analise_tato_id"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Tato:
+                                            </label>
+                                            <select wire:model="analise_tato_id" id="analise_tato_id"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                <option value="">Selecione</option>
+                                                @foreach ($analiseTatos as $tato)
+                                                    <option value="{{ $tato->id }}">{{ $tato->descricao }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('analise_tato_id')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Risco de queda -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Risco de queda:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="risco_queda" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="risco_queda" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('risco_queda')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Seção Hidratação -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Hidratação</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                                        <!-- Tipo de Pele -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="tipo_pele_id"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Pele:
+                                            </label>
+                                            <select wire:model="tipo_pele_id" id="tipo_pele_id"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                <option value="">Selecione</option>
+                                                @foreach ($tipoPeles as $pele)
+                                                    <option value="{{ $pele->id }}">{{ $pele->descricao }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('tipo_pele_id')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Volume de líquido diário -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="liquido_diario"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Volume de líquido diário ingerido:
+                                            </label>
+                                            <input type="number" wire:model="liquido_diario" id="liquido_diario"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                placeholder="Digite em litros o valor de líquido diário">
+                                            @error('liquido_diario')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seção Nutrição -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Nutrição</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid para refeições e restrições -->
+                                    <div class="grid grid-cols-1 gap-8 mb-8 lg:grid-cols-2">
+                                        <!-- Refeições Diárias -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Refeições Diárias:
+                                            </label>
+                                            <div class="space-y-3">
+                                                @foreach ($refeicaosList as $refeicao)
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="checkbox" wire:model="refeicaos"
+                                                            value="{{ $refeicao->id }}"
+                                                            id="refeicao-{{ $refeicao->id }}"
+                                                            class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-3 font-medium text-gray-700">{{ $refeicao->descricao }}</span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                            @error('refeicaos')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Restrições Alimentares -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Restrições Alimentares:
+                                            </label>
+                                            <div class="space-y-3">
+                                                @foreach ($restricaosList as $restricao)
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="checkbox" wire:model="restricaos"
+                                                            value="{{ $restricao->id }}"
+                                                            id="restricao-{{ $restricao->id }}"
+                                                            class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-3 font-medium text-gray-700">{{ $restricao->descricao }}</span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                            @error('restricaos')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Maior consumo -->
+                                    <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <label for="alimento_consumo_id"
+                                            class="block mb-4 text-lg font-semibold text-gray-800">
+                                            Maior consumo de:
+                                        </label>
+                                        <select wire:model="alimento_consumo_id" id="alimento_consumo_id"
+                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 md:w-1/2 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                            <option value="">Selecione</option>
+                                            @foreach ($alimentoConsumos as $alimento)
+                                                <option value="{{ $alimento->id }}">{{ $alimento->descricao }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('alimento_consumo_id')
+                                            <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-- Seção Sono e Repouso -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Sono e Repouso</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid para informações básicas do sono -->
+                                    <div class="grid grid-cols-1 gap-8 mb-8 lg:grid-cols-2">
+                                        <!-- Informações básicas do sono -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <div class="mb-6">
+                                                <label for="horas_sono"
+                                                    class="block mb-4 text-lg font-semibold text-gray-800">
+                                                    Horas de Sono:
+                                                </label>
+                                                <input type="number" wire:model="horas_sono" id="horas_sono"
+                                                    class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                    placeholder="Digite o número de horas de sono">
+                                                @error('horas_sono')
+                                                    <span
+                                                        class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="mb-6">
+                                                <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                    Acorda à noite:
+                                                </label>
+                                                <div class="flex gap-6">
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="acorda_noite"
+                                                            value="1"
+                                                            class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="acorda_noite"
+                                                            value="0"
+                                                            class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                    </label>
+                                                </div>
+                                                @error('acorda_noite')
+                                                    <span
+                                                        class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <div>
+                                                <label for="qualidade_sono_id"
+                                                    class="block mb-4 text-lg font-semibold text-gray-800">
+                                                    Qualidade do Sono:
+                                                </label>
+                                                <select wire:model="qualidade_sono_id" id="qualidade_sono_id"
+                                                    class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                    <option value="">Selecione</option>
+                                                    @foreach ($qualidadeSonos as $qualidade)
+                                                        <option value="{{ $qualidade->id }}">
+                                                            {{ $qualidade->descricao }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('qualidade_sono_id')
+                                                    <span
+                                                        class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <!-- Problemas relacionados ao sono -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Problemas Relacionados ao Sono:
+                                            </label>
+                                            <div class="space-y-3">
+                                                @foreach ($problemaSonoList as $problema)
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="checkbox" wire:model="problema_sonos"
+                                                            value="{{ $problema->id }}"
+                                                            id="problema-{{ $problema->id }}"
+                                                            class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-3 font-medium text-gray-700">{{ $problema->descricao }}</span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                            @error('problema_sonos')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Medicamentos para dormir -->
+                                    <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <label for="medicamentos_sono"
+                                            class="block mb-4 text-lg font-semibold text-gray-800">
+                                            Utilização de medicamentos para dormir - Classe medicamentosa:
+                                        </label>
+                                        <input type="text" wire:model="medicamentos_sono" id="medicamentos_sono"
+                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 md:w-2/3 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                            placeholder="Digite, se usar, a classe do medicamento usado para dormir">
+                                        @error('medicamentos_sono')
+                                            <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Seção Exercícios Físicos -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Exercícios Físicos</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                                        <!-- Realiza exercícios -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Realiza Exercícios Físicos:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="realiza" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="realiza" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('realiza')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Frequência -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="frequencia_exercicio_id"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Frequência de exercício físico:
+                                            </label>
+                                            <select wire:model="frequencia_exercicio_id" id="frequencia_exercicio_id"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                <option value="">Selecione</option>
+                                                @foreach ($frequenciasExercicio as $frequencia)
+                                                    <option value="{{ $frequencia->id }}">
+                                                        {{ $frequencia->descricao }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('frequencia_exercicio_id')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Duração -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="duracao"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Duração do exercício físico:
+                                            </label>
+                                            <input type="number" wire:model="duracao" id="duracao"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                placeholder="Duração média em minutos">
+                                            @error('duracao')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seção Abrigo -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Abrigo</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid para informações básicas da moradia -->
+                                    <div class="grid grid-cols-1 gap-8 mb-8 lg:grid-cols-2">
+                                        <!-- Zona de Moradia -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="zona_moradia_id"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Zona de Moradia:
+                                            </label>
+                                            <select wire:model="zona_moradia_id" id="zona_moradia_id"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                <option value="">Selecione</option>
+                                                @foreach ($zonasMoradia as $zona)
+                                                    <option value="{{ $zona->id }}">{{ $zona->descricao }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('zona_moradia_id')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Rede de Esgoto -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="rede_esgoto_id"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Rede de Esgoto:
+                                            </label>
+                                            <select wire:model="rede_esgoto_id" id="rede_esgoto_id"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                <option value="">Selecione</option>
+                                                @foreach ($redesEsgoto as $rede)
+                                                    <option value="{{ $rede->id }}">{{ $rede->descricao }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('rede_esgoto_id')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid para serviços públicos -->
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                                        <!-- Luz Pública -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Luz Pública:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="luz_publica" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="luz_publica" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('luz_publica')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Coleta de Lixo -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Coleta de lixo:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="coleta_lixo" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="coleta_lixo" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('coleta_lixo')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Água Tratada -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Água tratada:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="agua_tratada" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="agua_tratada" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('agua_tratada')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Animais Domésticos -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Presença de animais domésticos:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="animais_domesticos"
+                                                        value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="animais_domesticos"
+                                                        value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('animais_domesticos')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seção Regulação Hormonal -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Regulação Hormonal</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <!-- Cálculo do IMC -->
+                                    <div class="p-6 mb-8 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <h3 class="mb-6 text-xl font-semibold text-gray-800">Cálculo do IMC</h3>
+
+                                        <div class="grid grid-cols-1 gap-6 mb-6 md:grid-cols-3">
+                                            <!-- Altura -->
+                                            <div>
+                                                <label for="altura"
+                                                    class="block mb-3 text-lg font-semibold text-gray-800">
+                                                    Altura (cm):
+                                                </label>
+                                                <input type="number" wire:model.defer="altura" id="altura"
+                                                    class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                    placeholder="Digite a altura em cm">
+                                            </div>
+
+                                            <!-- Peso -->
+                                            <div>
+                                                <label for="peso"
+                                                    class="block mb-3 text-lg font-semibold text-gray-800">
+                                                    Peso (kg):
+                                                </label>
+                                                <input type="number" wire:model.defer="peso" id="peso"
+                                                    class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                    placeholder="Digite o peso em kg">
+                                            </div>
+
+                                            <!-- Botão Calcular -->
+                                            <div class="flex items-end">
+                                                <button type="button" wire:click="calcularIMC"
+                                                    class="w-full px-6 py-3 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                                    Calcular IMC
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Resultado do IMC -->
+                                        @if ($imc)
+                                            <div class="p-4 border border-indigo-200 bg-indigo-50 rounded-xl">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center space-x-4">
+                                                        <span class="text-lg font-semibold text-gray-800">Seu IMC
+                                                            é:</span>
+                                                        <span
+                                                            class="px-3 py-1 text-lg font-bold text-indigo-800 bg-white rounded-lg">
+                                                            {{ number_format($imc, 2) }}
+                                                        </span>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <span class="text-lg text-gray-700">Classificação: </span>
+                                                        <span
+                                                            class="text-lg font-bold {{ $corIMC }}">{{ $classificacao }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+
+                                    <!-- Circunferência Abdominal -->
+                                    <div class="p-6 mb-8 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <h3 class="mb-6 text-xl font-semibold text-gray-800">Circunferência Abdominal
+                                        </h3>
+
+                                        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                                            <div>
+                                                <label for="circunferencia_abdnominal"
+                                                    class="block mb-3 text-lg font-semibold text-gray-800">
+                                                    Circunferência Abdominal (cm):
+                                                </label>
+                                                <input type="number" wire:model="circunferencia_abdnominal"
+                                                    id="circunferencia_abdnominal"
+                                                    class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                    placeholder="Digite a circunferência abdominal">
+                                                @error('circunferencia_abdnominal')
+                                                    <span
+                                                        class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="flex items-end">
+                                                <button type="button" wire:click="calcularCircunferencia"
+                                                    class="w-full px-6 py-3 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                                    Mostrar Classificação
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Resultado da Circunferência -->
+                                        @if ($classificaoCirc)
+                                            <div class="p-4 mt-6 border border-indigo-200 bg-indigo-50 rounded-xl">
+                                                <span class="text-lg font-semibold text-gray-800">Classificação da
+                                                    Circunferência Abdominal: </span>
+                                                <span
+                                                    class="text-lg font-bold {{ $corCircunferencia }}">{{ $classificaoCirc }}</span>
+                                            </div>
+                                        @endif
+                                    </div>
+
+                                    <!-- Glicemia Capilar -->
+                                    <div class="p-6 mb-8 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <h3 class="mb-6 text-xl font-semibold text-gray-800">Glicemia Capilar</h3>
+
+                                        <!-- Seleção do Estado Glicêmico -->
+                                        <div class="mb-6">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">Estado da
+                                                Glicemia:</label>
+                                            <div class="flex gap-4">
+                                                <button type="button" wire:click="$set('estado_glicemia', 1)"
+                                                    class="px-6 py-3 text-lg font-semibold rounded-xl focus:outline-none focus:ring-4 focus:ring-indigo-200 {{ $estado_glicemia === 1 ? 'bg-indigo-600 text-white shadow-lg' : 'bg-gray-200 text-gray-700 hover:bg-gray-300' }}">
+                                                    Em Jejum
+                                                </button>
+                                                <button type="button" wire:click="$set('estado_glicemia', 0)"
+                                                    class="px-6 py-3 text-lg font-semibold rounded-xl focus:outline-none focus:ring-4 focus:ring-indigo-200 {{ $estado_glicemia === 0 ? 'bg-indigo-600 text-white shadow-lg' : 'bg-gray-200 text-gray-700 hover:bg-gray-300' }}">
+                                                    Duas horas após as refeições
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Input da Glicemia -->
+                                        @if ($estado_glicemia !== null)
+                                            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                                                <div>
+                                                    <label for="glicemia_capilar"
+                                                        class="block mb-3 text-lg font-semibold text-gray-800">
+                                                        Glicemia Capilar (mg/dl):
+                                                    </label>
+                                                    <input type="number" wire:model="glicemia_capilar"
+                                                        id="glicemia_capilar"
+                                                        class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                        placeholder="Digite a glicemia capilar">
+                                                    @error('glicemia_capilar')
+                                                        <span
+                                                            class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="flex items-end">
+                                                    <button type="button" wire:click="calcularGlicemia"
+                                                        class="w-full px-6 py-3 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                                        Mostrar Classificação
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Resultado da Glicemia -->
+                                            @if ($classificacaoGlic)
+                                                <div class="p-4 mt-6 border border-indigo-200 bg-indigo-50 rounded-xl">
+                                                    <span class="text-lg font-semibold text-gray-800">Classificação da
+                                                        Glicemia Capilar: </span>
+                                                    <span
+                                                        class="text-lg font-bold {{ $corGlicemia }}">{{ $classificacaoGlic }}</span>
+                                                </div>
+                                            @endif
+                                        @endif
+                                    </div>
+
+                                    <!-- Jejum e Pós-Prandial -->
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                                        <!-- Jejum -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Jejum:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="jejum" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="jejum" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('jejum')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Pós-Prandial -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Pós-Prandial:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="pos_prandial" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="pos_prandial" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('pos_prandial')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seção Oxigenação -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Oxigenação</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                                        <!-- Tempo de enchimento capilar -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="temp_enchimento_capilar"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Tempo de enchimento capilar:
+                                            </label>
+                                            <input type="number" wire:model="temp_enchimento_capilar"
+                                                id="temp_enchimento_capilar"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                placeholder="Digite o tempo em segundos">
+                                            @error('temp_enchimento_capilar')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Frequência respiratória -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="frequencia_respiratoria"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Frequência respiratória (irpm):
+                                            </label>
+                                            <input type="number" wire:model="frequencia_respiratoria"
+                                                id="frequencia_respiratoria"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                placeholder="Digite a frequência em irpm">
+                                            @error('frequencia_respiratoria')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- SatO2 -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="satO2"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                SatO2 (%):
+                                            </label>
+                                            <input type="number" wire:model="satO2" id="satO2"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                placeholder="Digite a porcentagem de saturação">
+                                            @error('satO2')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seção Regulação Térmica -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Regulação Térmica</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                                            <div>
+                                                <label for="temperatura"
+                                                    class="block mb-4 text-lg font-semibold text-gray-800">
+                                                    Temperatura (°C):
+                                                </label>
+                                                <input type="number" wire:model="temperatura" id="temperatura"
+                                                    class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                    placeholder="Digite a temperatura em °C">
+                                                @error('temperatura')
+                                                    <span
+                                                        class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="flex items-end">
+                                                <button type="button" wire:click="calcularClassificacaoTemperatura"
+                                                    class="w-full px-6 py-3 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                                    Mostrar Classificação
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Resultado da Classificação de Temperatura -->
+                                        @if ($classificacaoTemperatura)
+                                            <div class="p-4 mt-6 border border-indigo-200 bg-indigo-50 rounded-xl">
+                                                <span class="text-lg font-semibold text-gray-800">Classificação da
+                                                    Temperatura: </span>
+                                                <span
+                                                    class="text-lg font-bold {{ $corTemperatura }}">{{ $classificacaoTemperatura }}</span>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Seção Eliminações -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Eliminações</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid para problemas urinários -->
+                                    <div class="grid grid-cols-1 gap-8 mb-8 lg:grid-cols-2">
+                                        <!-- Dor ao urinar -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Dor ao urinar:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="dor_urinar" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="dor_urinar" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('dor_urinar')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Incontinência urinária -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Incontinência urinária:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="incontinencia_urina"
+                                                        value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="incontinencia_urina"
+                                                        value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('incontinencia_urina')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid para problemas gastrointestinais -->
+                                    <div class="grid grid-cols-1 gap-8 mb-8 lg:grid-cols-2">
+                                        <!-- Dor eliminação gastrointestinal -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Dor - eliminação gastrointestinal:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="dor_eliminacoes" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="dor_eliminacoes" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('dor_eliminacoes')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Incontinência eliminação gastrointestinal -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Incontinência - eliminação gastrointestinal:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="incontinencia_eliminacao"
+                                                        value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="incontinencia_eliminacao"
+                                                        value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('incontinencia_eliminacao')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid para problemas intestinais -->
+                                    <div class="grid grid-cols-1 gap-8 mb-8 lg:grid-cols-2">
+                                        <!-- Constipação -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Constipação:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="constipacao" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="constipacao" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('constipacao')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Diarreia -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Diarreia:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="diarreia" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="diarreia" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('diarreia')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid para tratamentos -->
+                                    <div class="grid grid-cols-1 gap-8 mb-8 lg:grid-cols-2">
+                                        <!-- Uso de Laxante -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Uso de Laxante:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="uso_laxante" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="uso_laxante" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('uso_laxante')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Uso de Fraldas -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Uso de Fraldas:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="uso_fraldas" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="uso_fraldas" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('uso_fraldas')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Equipamento coletor -->
+                                    <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <label for="equipamento_externo"
+                                            class="block mb-4 text-lg font-semibold text-gray-800">
+                                            Uso de equipamento coletor ou dispositivo externo:
+                                        </label>
+                                        <input type="text" wire:model="equipamento_externo"
+                                            id="equipamento_externo"
+                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                            placeholder="Digite se usa equipamento coletor ou dispositivo externo, se sim qual">
+                                        @error('equipamento_externo')
+                                            <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Seção Sexualidade -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Sexualidade</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                                        <!-- Vida Sexual Ativa -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Vida Sexual Ativa:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="vida_sex_ativa" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="vida_sex_ativa" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('vida_sex_ativa')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Distúrbios Sexuais -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Distúrbios Sexuais:
+                                            </label>
+                                            <div class="space-y-3">
+                                                @foreach ($disturbiosSexualList as $disturbio)
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="checkbox" wire:model="disturbio_sexuals"
+                                                            value="{{ $disturbio->id }}"
+                                                            id="disturbio-{{ $disturbio->id }}"
+                                                            class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-3 font-medium text-gray-700">{{ $disturbio->descricao }}</span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                            @error('disturbio_sexuals')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seção Locomoção, Mecânica Corporal e Motilidade -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Locomoção, Mecânica
+                                            Corporal e Motilidade</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <!-- Tipos de Locomoção -->
+                                    <div class="p-6 mb-8 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                            Locomoção:
+                                        </label>
+                                        <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+                                            @foreach ($tiposLocomocaoList as $tipoLoc)
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="checkbox" wire:model="tipo_locomocaos"
+                                                        value="{{ $tipoLoc->id }}"
+                                                        id="tipoLoc-{{ $tipoLoc->id }}"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                                    <span
+                                                        class="ml-3 font-medium text-gray-700">{{ $tipoLoc->descricao }}</span>
+                                                </label>
+                                            @endforeach
+                                        </div>
+                                        @error('tipo_locomocaos')
+                                            <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <!-- Grid para calçados -->
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                                        <!-- Sapato adequado -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Sapato adequado:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="sapato_adequado" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="sapato_adequado" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('sapato_adequado')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Sandália de cicatrização -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Sandália de cicatrização/offloading:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="sandalia_cicatrizacao"
+                                                        value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="sandalia_cicatrizacao"
+                                                        value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('sandalia_cicatrizacao')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seção Regulação Vascular -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Regulação Vascular</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <!-- Sinais Vitais -->
+                                    <div class="grid grid-cols-1 gap-8 mb-8 lg:grid-cols-2">
+                                        <!-- Pressão Arterial -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="pressao_arterial"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Pressão arterial:
+                                            </label>
+                                            <input type="text" wire:model="pressao_arterial" id="pressao_arterial"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                placeholder="Digite a pressão arterial em mmHg">
+                                            @error('pressao_arterial')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Frequência Cardíaca -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="frequencia_cardiaca"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Frequência Cardíaca:
+                                            </label>
+                                            <input type="text" wire:model="frequencia_cardiaca"
+                                                id="frequencia_cardiaca"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                placeholder="Digite a frequência cardíaca em bpm">
+                                            @error('frequencia_cardiaca')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Seção ITB -->
+                                    <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <div class="mb-6">
+                                            <h3 class="mb-2 text-xl font-bold text-indigo-800">Calcule o Índice
+                                                Tornozelo Braço</h3>
+                                            <div
+                                                class="w-20 h-0.5 rounded-full bg-gradient-to-r from-indigo-400 to-indigo-600">
+                                            </div>
+                                        </div>
+
+                                        <!-- ITB Direito -->
+                                        <div class="p-6 mb-8 bg-white border border-gray-200 rounded-xl">
+                                            <h4 class="mb-4 text-lg font-semibold text-gray-800">Membro Inferior
+                                                Direito</h4>
+
+                                            <div class="grid grid-cols-1 gap-6 mb-6 md:grid-cols-3 lg:grid-cols-4">
+                                                <!-- PSATP Direito -->
+                                                <div>
+                                                    <label for="psatp_direito"
+                                                        class="block mb-2 text-sm font-medium text-gray-700">
+                                                        Pressão Sistólica Artéria Tibial Posterior Direito
+                                                    </label>
+                                                    <input type="text" wire:model="psatp_direito"
+                                                        id="psatp_direito"
+                                                        class="w-full px-3 py-2 text-gray-700 bg-white border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                        placeholder="PSATP direito">
+                                                    @error('psatp_direito')
+                                                        <span
+                                                            class="block mt-1 text-xs text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <!-- PSAP Direito -->
+                                                <div>
+                                                    <label for="psap_direito"
+                                                        class="block mb-2 text-sm font-medium text-gray-700">
+                                                        Pressão Sistólica Artéria Pediosa Direito
+                                                    </label>
+                                                    <input type="text" wire:model="psap_direito" id="psap_direito"
+                                                        class="w-full px-3 py-2 text-gray-700 bg-white border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                        placeholder="PSAP direito">
+                                                    @error('psap_direito')
+                                                        <span
+                                                            class="block mt-1 text-xs text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <!-- PSAB Direito -->
+                                                <div>
+                                                    <label for="psab_direito"
+                                                        class="block mb-2 text-sm font-medium text-gray-700">
+                                                        Pressão Sistólica Artéria Braquial Direito
+                                                    </label>
+                                                    <input type="text" wire:model="psab_direito" id="psab_direito"
+                                                        class="w-full px-3 py-2 text-gray-700 bg-white border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                        placeholder="PSAB direito">
+                                                    @error('psab_direito')
+                                                        <span
+                                                            class="block mt-1 text-xs text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <!-- Botão Calcular ITB Direito -->
+                                                <div class="flex items-end">
+                                                    <button type="button" wire:click="calcularITBDireito"
+                                                        class="w-full px-4 py-2 font-medium text-white shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                                        Calcular ITB Direito
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Resultado ITB Direito -->
+                                            @if ($itbD)
+                                                <div
+                                                    class="p-4 bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200 rounded-lg">
+                                                    <div class="flex flex-wrap items-center gap-4">
+                                                        <div class="flex items-center gap-2">
+                                                            <span class="text-sm font-medium text-gray-600">ITB
+                                                                Direito:</span>
+                                                            <span
+                                                                class="text-lg font-bold {{ $corITBD }}">{{ $itbD }}</span>
+                                                        </div>
+                                                        <div class="flex items-center gap-2">
+                                                            <span
+                                                                class="text-sm font-medium text-gray-600">Classificação:</span>
+                                                            <span
+                                                                class="text-lg font-bold {{ $corITBD }}">{{ $classITBD }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+
+                                        <!-- ITB Esquerdo -->
+                                        <div class="p-6 bg-white border border-gray-200 rounded-xl">
+                                            <h4 class="mb-4 text-lg font-semibold text-gray-800">Membro Inferior
+                                                Esquerdo</h4>
+
+                                            <div class="grid grid-cols-1 gap-6 mb-6 md:grid-cols-3 lg:grid-cols-4">
+                                                <!-- PSATP Esquerdo -->
+                                                <div>
+                                                    <label for="psatp_esquerdo"
+                                                        class="block mb-2 text-sm font-medium text-gray-700">
+                                                        Pressão Sistólica Artéria Tibial Posterior Esquerdo
+                                                    </label>
+                                                    <input type="text" wire:model="psatp_esquerdo"
+                                                        id="psatp_esquerdo"
+                                                        class="w-full px-3 py-2 text-gray-700 bg-white border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                        placeholder="PSATP esquerdo">
+                                                    @error('psatp_esquerdo')
+                                                        <span
+                                                            class="block mt-1 text-xs text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <!-- PSAP Esquerdo -->
+                                                <div>
+                                                    <label for="psap_esquerdo"
+                                                        class="block mb-2 text-sm font-medium text-gray-700">
+                                                        Pressão Sistólica Artéria Pediosa Esquerdo
+                                                    </label>
+                                                    <input type="text" wire:model="psap_esquerdo"
+                                                        id="psap_esquerdo"
+                                                        class="w-full px-3 py-2 text-gray-700 bg-white border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                        placeholder="PSAP esquerdo">
+                                                    @error('psap_esquerdo')
+                                                        <span
+                                                            class="block mt-1 text-xs text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <!-- PSAB Esquerdo -->
+                                                <div>
+                                                    <label for="psab_esquerdo"
+                                                        class="block mb-2 text-sm font-medium text-gray-700">
+                                                        Pressão Sistólica Artéria Braquial Esquerdo
+                                                    </label>
+                                                    <input type="text" wire:model="psab_esquerdo"
+                                                        id="psab_esquerdo"
+                                                        class="w-full px-3 py-2 text-gray-700 bg-white border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                        placeholder="PSAB esquerdo">
+                                                    @error('psab_esquerdo')
+                                                        <span
+                                                            class="block mt-1 text-xs text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <!-- Botão Calcular ITB Esquerdo -->
+                                                <div class="flex items-end">
+                                                    <button type="button" wire:click="calcularITBEsquerdo"
+                                                        class="w-full px-4 py-2 font-medium text-white shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                                        Calcular ITB Esquerdo
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Resultado ITB Esquerdo -->
+                                            @if ($itbE)
+                                                <div
+                                                    class="p-4 bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200 rounded-lg">
+                                                    <div class="flex flex-wrap items-center gap-4">
+                                                        <div class="flex items-center gap-2">
+                                                            <span class="text-sm font-medium text-gray-600">ITB
+                                                                Esquerdo:</span>
+                                                            <span
+                                                                class="text-lg font-bold {{ $corITBE }}">{{ $itbE }}</span>
+                                                        </div>
+                                                        <div class="flex items-center gap-2">
+                                                            <span
+                                                                class="text-sm font-medium text-gray-600">Classificação:</span>
+                                                            <span
+                                                                class="text-lg font-bold {{ $corITBE }}">{{ $classITBE }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seção Sensopercepção -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Sensopercepção</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <!-- Sintomas -->
+                                    <div class="p-6 mb-8 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                            Sintomas:
+                                        </label>
+                                        <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+                                            @foreach ($sintomasPercepcaoList as $sintomas)
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="checkbox" wire:model="sintomas_percepcaos"
+                                                        value="{{ $sintomas->id }}"
+                                                        id="sintomas-{{ $sintomas->id }}"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                                    <span
+                                                        class="ml-3 font-medium text-gray-700">{{ $sintomas->descricao }}</span>
+                                                </label>
+                                            @endforeach
+                                        </div>
+                                        @error('sintomas_percepcaos')
+                                            <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <!-- Imagem de Referência do Pé -->
+                                    <div class="p-6 mb-8 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <div class="mb-4">
+                                            <h3 class="text-lg font-semibold text-gray-800">Referência Visual</h3>
+                                        </div>
+                                        <div class="flex justify-center">
+                                            <div class="relative w-full max-w-md h-48">
+                                                <img src="{{ asset('trace.svg') }}" alt="Referência do Pé"
+                                                    class="object-contain w-full h-full">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Avaliação Estrutural do Pé -->
+                                    <div class="p-6 mb-8 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <div class="mb-6">
+                                            <h3 class="text-lg font-semibold text-gray-800">Avaliação Estrutural do Pé
+                                            </h3>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+                                            <!-- Pé Neuropático -->
+                                            <div class="p-4 bg-white border border-gray-200 rounded-xl">
+                                                <label class="block mb-3 text-sm font-semibold text-gray-800">
+                                                    Pé Neuropático (Cavus):
+                                                </label>
+                                                <div class="space-y-2">
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="pe_neuropatico"
+                                                            value="1"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Sim</span>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="pe_neuropatico"
+                                                            value="0"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Não</span>
+                                                    </label>
+                                                </div>
+                                                @error('pe_neuropatico')
+                                                    <span
+                                                        class="block mt-2 text-xs text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <!-- Arco Desabado -->
+                                            <div class="p-4 bg-white border border-gray-200 rounded-xl">
+                                                <label class="block mb-3 text-sm font-semibold text-gray-800">
+                                                    Arco Desabado (Charcot):
+                                                </label>
+                                                <div class="space-y-2">
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="arco_desabado"
+                                                            value="1"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Sim</span>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="arco_desabado"
+                                                            value="0"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Não</span>
+                                                    </label>
+                                                </div>
+                                                @error('arco_desabado')
+                                                    <span
+                                                        class="block mt-2 text-xs text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <!-- Valgismo -->
+                                            <div class="p-4 bg-white border border-gray-200 rounded-xl">
+                                                <label class="block mb-3 text-sm font-semibold text-gray-800">
+                                                    Valgismo:
+                                                </label>
+                                                <div class="space-y-2">
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="valgismo" value="1"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Sim</span>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="valgismo" value="0"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Não</span>
+                                                    </label>
+                                                </div>
+                                                @error('valgismo')
+                                                    <span
+                                                        class="block mt-2 text-xs text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <!-- Dedos em Garra -->
+                                            <div class="p-4 bg-white border border-gray-200 rounded-xl">
+                                                <label class="block mb-3 text-sm font-semibold text-gray-800">
+                                                    Dedos em Garra:
+                                                </label>
+                                                <div class="space-y-2">
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="dedos_em_garra"
+                                                            value="1"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Sim</span>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="dedos_em_garra"
+                                                            value="0"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Não</span>
+                                                    </label>
+                                                </div>
+                                                @error('dedos_em_garra')
+                                                    <span
+                                                        class="block mt-2 text-xs text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cuidados e Condições dos Pés -->
+                                    <div class="p-6 mb-8 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <div class="mb-6">
+                                            <h3 class="text-lg font-semibold text-gray-800">Cuidados e Condições dos
+                                                Pés</h3>
+                                        </div>
+
+                                        <!-- Grid para condições gerais -->
+                                        <div class="grid grid-cols-1 gap-6 mb-6 md:grid-cols-2 lg:grid-cols-4">
+                                            <!-- Corte de Unhas -->
+                                            <div class="p-4 bg-white border border-gray-200 rounded-xl">
+                                                <label class="block mb-3 text-sm font-semibold text-gray-800">
+                                                    Corte de Unhas Correto:
+                                                </label>
+                                                <div class="space-y-2">
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="corte_unhas"
+                                                            value="1"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Sim</span>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="corte_unhas"
+                                                            value="0"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Não</span>
+                                                    </label>
+                                                </div>
+                                                @error('corte_unhas')
+                                                    <span
+                                                        class="block mt-2 text-xs text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <!-- Micose Interdigital -->
+                                            <div class="p-4 bg-white border border-gray-200 rounded-xl">
+                                                <label class="block mb-3 text-sm font-semibold text-gray-800">
+                                                    Micose Interdigital:
+                                                </label>
+                                                <div class="space-y-2">
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="micose" value="1"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Sim</span>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="micose" value="0"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Não</span>
+                                                    </label>
+                                                </div>
+                                                @error('micose')
+                                                    <span
+                                                        class="block mt-2 text-xs text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <!-- Fissuras -->
+                                            <div class="p-4 bg-white border border-gray-200 rounded-xl">
+                                                <label class="block mb-3 text-sm font-semibold text-gray-800">
+                                                    Fissuras:
+                                                </label>
+                                                <div class="space-y-2">
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="fissuras" value="1"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Sim</span>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="fissuras" value="0"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Não</span>
+                                                    </label>
+                                                </div>
+                                                @error('fissuras')
+                                                    <span
+                                                        class="block mt-2 text-xs text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <!-- Calosidades -->
+                                            <div class="p-4 bg-white border border-gray-200 rounded-xl">
+                                                <label class="block mb-3 text-sm font-semibold text-gray-800">
+                                                    Calosidades:
+                                                </label>
+                                                <div class="space-y-2">
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="calosidades"
+                                                            value="1"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Sim</span>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="calosidades"
+                                                            value="0"
+                                                            class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-2 text-sm font-medium text-gray-700">Não</span>
+                                                    </label>
+                                                </div>
+                                                @error('calosidades')
+                                                    <span
+                                                        class="block mt-2 text-xs text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <!-- Estado das Unhas -->
+                                        <div class="p-4 bg-white border border-gray-200 rounded-xl">
+                                            <label for="estado_unhas_id"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Estado das Unhas:
+                                            </label>
+                                            <select wire:model="estado_unhas_id" id="estado_unhas_id"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 md:w-1/2 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                <option value="">Selecione</option>
+                                                @foreach ($estadoUnhas as $unhas)
+                                                    <option value="{{ $unhas->id }}">{{ $unhas->descricao }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('estado_unhas_id')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Teste de Sensopercepção -->
+                                    <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <div class="mb-6">
+                                            <h3 class="mb-2 text-xl font-bold text-indigo-800">Teste de Sensopercepção
+                                            </h3>
+                                            <div
+                                                class="w-20 h-0.5 rounded-full bg-gradient-to-r from-indigo-400 to-indigo-600">
+                                            </div>
+                                        </div>
+
+                                        <div x-data="{ selectedOption: @entangle('selectedOption') }">
+                                            <!-- Seletor de Tipo de Teste -->
+                                            <div class="mb-8">
+                                                <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+                                                    <!-- Percepção da sensibilidade protetora -->
+                                                    <button type="button" @click="selectedOption = 1"
+                                                        wire:click="selectOption(1)"
+                                                        :class="selectedOption === 1 ? 'ring-4 ring-indigo-300 bg-indigo-700' :
+                                                            'bg-indigo-600 hover:bg-indigo-700'"
+                                                        class="p-4 text-white transition-all duration-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                                        <div class="text-sm font-semibold">Percepção da</div>
+                                                        <div class="text-sm font-semibold">Sensibilidade Protetora
+                                                        </div>
+                                                    </button>
+
+                                                    <!-- Sensibilidade vibratória -->
+                                                    <button type="button" @click="selectedOption = 2"
+                                                        wire:click="selectOption(2)"
+                                                        :class="selectedOption === 2 ? 'ring-4 ring-indigo-300 bg-indigo-700' :
+                                                            'bg-indigo-600 hover:bg-indigo-700'"
+                                                        class="p-4 text-white transition-all duration-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                                        <div class="text-sm font-semibold">Sensibilidade</div>
+                                                        <div class="text-sm font-semibold">Vibratória</div>
+                                                    </button>
+
+                                                    <!-- Ipswich Touch Test -->
+                                                    <button type="button" @click="selectedOption = 3"
+                                                        wire:click="selectOption(3)"
+                                                        :class="selectedOption === 3 ? 'ring-4 ring-indigo-300 bg-indigo-700' :
+                                                            'bg-indigo-600 hover:bg-indigo-700'"
+                                                        class="p-4 text-white transition-all duration-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                                        <div class="text-sm font-semibold">Ipswich</div>
+                                                        <div class="text-sm font-semibold">Touch Test</div>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Avaliação por Membro -->
+                                            <div x-show="selectedOption" x-transition class="space-y-6">
+                                                <!-- Pé Direito -->
+                                                <div class="p-6 bg-white border border-gray-200 rounded-xl">
+                                                    <h4 class="mb-4 text-lg font-semibold text-gray-800">Pé Direito
+                                                    </h4>
+                                                    <div class="space-y-3">
+                                                        <label class="flex items-start cursor-pointer">
+                                                            <input type="radio" wire:model="percepcao_direito"
+                                                                value="1"
+                                                                class="w-5 h-5 mt-1 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                            <span class="ml-3 font-medium text-gray-700">
+                                                                <span class="text-green-700 font-semibold">Percepção
+                                                                    presente</span>
+                                                                (responder corretamente em duas das três aplicações)
+                                                            </span>
+                                                        </label>
+                                                        <label class="flex items-start cursor-pointer">
+                                                            <input type="radio" wire:model="percepcao_direito"
+                                                                value="0"
+                                                                class="w-5 h-5 mt-1 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                            <span class="ml-3 font-medium text-gray-700">
+                                                                <span class="text-red-700 font-semibold">Percepção
+                                                                    ausente</span>
+                                                                (falhar em responder corretamente em duas das três
+                                                                aplicações)
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    @error('percepcao_direito')
+                                                        <span
+                                                            class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <!-- Pé Esquerdo -->
+                                                <div class="p-6 bg-white border border-gray-200 rounded-xl">
+                                                    <h4 class="mb-4 text-lg font-semibold text-gray-800">Pé Esquerdo
+                                                    </h4>
+                                                    <div class="space-y-3">
+                                                        <label class="flex items-start cursor-pointer">
+                                                            <input type="radio" wire:model="percepcao_esquerdo"
+                                                                value="1"
+                                                                class="w-5 h-5 mt-1 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                            <span class="ml-3 font-medium text-gray-700">
+                                                                <span class="text-green-700 font-semibold">Percepção
+                                                                    presente</span>
+                                                                (responder corretamente em duas das três aplicações)
+                                                            </span>
+                                                        </label>
+                                                        <label class="flex items-start cursor-pointer">
+                                                            <input type="radio" wire:model="percepcao_esquerdo"
+                                                                value="0"
+                                                                class="w-5 h-5 mt-1 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                            <span class="ml-3 font-medium text-gray-700">
+                                                                <span class="text-red-700 font-semibold">Percepção
+                                                                    ausente</span>
+                                                                (falhar em responder corretamente em duas das três
+                                                                aplicações)
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    @error('percepcao_esquerdo')
+                                                        <span
+                                                            class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seção Integridade Cutânea -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Integridade Cutânea</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <!-- Seleção de lado -->
+                                    <div class="p-6 mb-8 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                            Qual lado deseja preencher?
+                                        </label>
+                                        <div class="flex gap-4">
+                                            <button type="button" wire:click="$set('ladoSelecionado', 'direito')"
+                                                class="px-6 py-3 font-semibold transition-all duration-200 rounded-xl shadow-md
+                {{ $ladoSelecionado === 'direito'
+                    ? 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-lg'
+                    : 'bg-white border-2 border-indigo-300 text-indigo-700 hover:bg-indigo-50' }}">
+                                                Somente Direito
+                                            </button>
+
+                                            <button type="button" wire:click="$set('ladoSelecionado', 'esquerdo')"
+                                                class="px-6 py-3 font-semibold transition-all duration-200 rounded-xl shadow-md
+                {{ $ladoSelecionado === 'esquerdo'
+                    ? 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-lg'
+                    : 'bg-white border-2 border-indigo-300 text-indigo-700 hover:bg-indigo-50' }}">
+                                                Somente Esquerdo
+                                            </button>
+
+                                            <button type="button" wire:click="$set('ladoSelecionado', 'ambos')"
+                                                class="px-6 py-3 font-semibold transition-all duration-200 rounded-xl shadow-md
+                {{ $ladoSelecionado === 'ambos'
+                    ? 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-lg'
+                    : 'bg-white border-2 border-indigo-300 text-indigo-700 hover:bg-indigo-50' }}">
+                                                Ambos
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div wire:key="lado-{{ $ladoSelecionado }}">
+                                        {{-- Lesão em Pé Direito --}}
+                                        @if ($ladoSelecionado === 'direito' || $ladoSelecionado === 'ambos')
+                                            <!-- Sinais de Infecção - Pé Direito -->
+                                            <div class="p-6 mb-8 border border-gray-100 bg-gray-50 rounded-2xl">
+                                                <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                    Sinais de Infecção - Pé Direito
+                                                </label>
+                                                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                                                    @foreach ($sinaisInfeccaoList as $sinais)
+                                                        <label class="flex items-center cursor-pointer">
+                                                            <input type="checkbox"
+                                                                wire:model="sinais_infeccao_direito"
+                                                                value="{{ $sinais->id }}"
+                                                                id="sinais-direito-{{ $sinais->id }}"
+                                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                                            <span
+                                                                class="ml-3 font-medium text-gray-700">{{ $sinais->descricao }}</span>
+                                                        </label>
+                                                    @endforeach
+                                                </div>
+                                                @error('sinais_infeccao_direito')
+                                                    <span
+                                                        class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <!-- Lesão em Pé Direito -->
+                                            <div class="p-6 mb-8 border border-gray-100 bg-gray-50 rounded-2xl">
+                                                <h3 class="mb-6 text-xl font-semibold text-indigo-900">Lesão em Pé
+                                                    Direito</h3>
+
+                                                <!-- Dimensões -->
+                                                <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2">
+                                                    <div>
+                                                        <label
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">Comprimento
+                                                            (cm):</label>
+                                                        <input type="number" wire:model="dados.direito.comprimento"
+                                                            step="0.1"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                            placeholder="Ex: 2.5">
+                                                        @error('dados.direito.comprimento')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <label
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">Largura
+                                                            (cm):</label>
+                                                        <input type="number" wire:model="dados.direito.largura"
+                                                            step="0.1"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                            placeholder="Ex: 1.8">
+                                                        @error('dados.direito.largura')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Localização e Região -->
+                                                <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2">
+                                                    <div>
+                                                        <label for="localizacao_direito"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Localização Anatômica:
+                                                        </label>
+                                                        <select wire:model="dados.direito.localizacao_lesao_id"
+                                                            id="localizacao_direito"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($localizacaoLesao as $localizacao)
+                                                                <option value="{{ $localizacao->id }}">
+                                                                    {{ $localizacao->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.direito.localizacao_lesao_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <label for="regiao_direito"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Região:
+                                                        </label>
+                                                        <select wire:model="dados.direito.regiao_pe_id"
+                                                            id="regiao_direito"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($regiaoPe as $regiao)
+                                                                <option value="{{ $regiao->id }}">
+                                                                    {{ $regiao->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.direito.regiao_pe_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Lesão Decorrente de Amputação -->
+                                                <div class="mb-8">
+                                                    <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                        Lesão Decorrente de Amputação:
+                                                    </label>
+                                                    <div class="flex gap-6">
+                                                        <label class="flex items-center cursor-pointer">
+                                                            <input type="radio"
+                                                                wire:model="dados.direito.lesao_amputacao"
+                                                                value="1"
+                                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                            <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                        </label>
+                                                        <label class="flex items-center cursor-pointer">
+                                                            <input type="radio"
+                                                                wire:model="dados.direito.lesao_amputacao"
+                                                                value="0"
+                                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                            <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                        </label>
+                                                    </div>
+                                                    @error('dados.direito.lesao_amputacao')
+                                                        <span
+                                                            class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <!-- Bordas da Ferida e Tipo de Tecido -->
+                                                <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2">
+                                                    <div>
+                                                        <label for="bordas_ferida_direito_id"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Bordas da Ferida:
+                                                        </label>
+                                                        <select wire:model="dados.direito.bordas_ferida_id"
+                                                            id="bordas_ferida_direito_id"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($bordasFerida as $borda)
+                                                                <option value="{{ $borda->id }}">
+                                                                    {{ $borda->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.direito.bordas_ferida_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <label for="tipo_tecido_ferida_direito_id"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Tipo de Tecido no Leito:
+                                                        </label>
+                                                        <select wire:model="dados.direito.tipo_tecido_ferida_id"
+                                                            id="tipo_tecido_ferida_direito_id"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($tiposTecido as $tipo)
+                                                                <option value="{{ $tipo->id }}">
+                                                                    {{ $tipo->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.direito.tipo_tecido_ferida_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Profundidade e Pele Periferida -->
+                                                <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2">
+                                                    <div>
+                                                        <label for="profundidade_direito_id"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Profundidade:
+                                                        </label>
+                                                        <select wire:model="dados.direito.profundidade_id"
+                                                            id="profundidade_direito_id"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($profundidades as $profundidade)
+                                                                <option value="{{ $profundidade->id }}">
+                                                                    {{ $profundidade->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.direito.profundidade_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <label for="pele_periferida_direito_id"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Pele Periferida:
+                                                        </label>
+                                                        <select wire:model="dados.direito.pele_periferida_id"
+                                                            id="pele_periferida_direito_id"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($pelesPeriferida as $pele)
+                                                                <option value="{{ $pele->id }}">
+                                                                    {{ $pele->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.direito.pele_periferida_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Quantidade e Aspecto do Exsudato -->
+                                                <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2">
+                                                    <div>
+                                                        <label for="quantidade_exudato_direito_id"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Quantidade de Exsudato:
+                                                        </label>
+                                                        <select wire:model="dados.direito.quantidade_exudato_id"
+                                                            id="quantidade_exudato_direito_id"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($quantidadesExudato as $quantidade)
+                                                                <option value="{{ $quantidade->id }}">
+                                                                    {{ $quantidade->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.direito.quantidade_exudato_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <label for="aspecto_exudato_direito_id"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Aspecto do Exsudato:
+                                                        </label>
+                                                        <select wire:model="dados.direito.aspecto_exudato_id"
+                                                            id="aspecto_exudato_direito_id"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($aspectosExudato as $aspecto)
+                                                                <option value="{{ $aspecto->id }}">
+                                                                    {{ $aspecto->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.direito.aspecto_exudato_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Odor do Exsudato e Edema -->
+                                                <div class="grid grid-cols-1 gap-8 mb-8 md:grid-cols-2">
+                                                    <div>
+                                                        <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                            Odor do Exsudato:
+                                                        </label>
+                                                        <div class="flex gap-6">
+                                                            <label class="flex items-center cursor-pointer">
+                                                                <input type="radio"
+                                                                    wire:model="dados.direito.odor_exudato"
+                                                                    value="1"
+                                                                    class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                                <span
+                                                                    class="ml-3 font-medium text-gray-700">Sim</span>
+                                                            </label>
+                                                            <label class="flex items-center cursor-pointer">
+                                                                <input type="radio"
+                                                                    wire:model="dados.direito.odor_exudato"
+                                                                    value="0"
+                                                                    class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                                <span
+                                                                    class="ml-3 font-medium text-gray-700">Não</span>
+                                                            </label>
+                                                        </div>
+                                                        @error('dados.direito.odor_exudato')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                            Edema:
+                                                        </label>
+                                                        <div class="flex gap-6">
+                                                            <label class="flex items-center cursor-pointer">
+                                                                <input type="radio"
+                                                                    wire:model="dados.direito.edema" value="1"
+                                                                    class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                                <span
+                                                                    class="ml-3 font-medium text-gray-700">Sim</span>
+                                                            </label>
+                                                            <label class="flex items-center cursor-pointer">
+                                                                <input type="radio"
+                                                                    wire:model="dados.direito.edema" value="0"
+                                                                    class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                                <span
+                                                                    class="ml-3 font-medium text-gray-700">Não</span>
+                                                            </label>
+                                                        </div>
+                                                        @error('dados.direito.edema')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Intensidade da Dor -->
+                                                <div class="mb-8">
+                                                    <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                        Intensidade da Dor (Pé Direito):
+                                                    </label>
+                                                    <div
+                                                        class="grid grid-cols-11 gap-2 p-4 border border-gray-200 rounded-xl bg-white">
+                                                        @for ($i = 0; $i <= 10; $i++)
+                                                            @php
+                                                                $color = match (true) {
+                                                                    $i <= 3
+                                                                        => 'bg-green-100 text-green-700 border-green-300',
+                                                                    $i <= 6
+                                                                        => 'bg-yellow-100 text-yellow-700 border-yellow-300',
+                                                                    $i <= 8
+                                                                        => 'bg-orange-100 text-orange-700 border-orange-300',
+                                                                    default
+                                                                        => 'bg-red-100 text-red-700 border-red-300',
+                                                                };
+
+                                                                $emoji = match (true) {
+                                                                    $i == 0 => '😊',
+                                                                    $i <= 3 => '🙂',
+                                                                    $i <= 6 => '😐',
+                                                                    $i <= 8 => '😣',
+                                                                    default => '😫',
+                                                                };
+
+                                                                $selected =
+                                                                    (int) ($dados['direito']['dor'] ?? -1) === $i
+                                                                        ? 'ring-4 ring-indigo-400 ring-offset-2 scale-105 shadow-lg'
+                                                                        : 'border-2';
+                                                            @endphp
+
+                                                            <button type="button"
+                                                                wire:click="$set('dados.direito.dor', {{ $i }})"
+                                                                class="flex flex-col items-center p-3 transition-all duration-200 cursor-pointer rounded-xl hover:shadow-md {{ $color }} {{ $selected }}">
+                                                                <span
+                                                                    class="text-2xl mb-1">{{ $emoji }}</span>
+                                                                <span
+                                                                    class="text-sm font-bold">{{ $i }}</span>
+                                                            </button>
+                                                        @endfor
+                                                    </div>
+                                                    <div class="flex justify-between mt-2 text-xs text-gray-500">
+                                                        <span>Sem dor</span>
+                                                        <span>Dor insuportável</span>
+                                                    </div>
+                                                    @error('dados.direito.dor')
+                                                        <span
+                                                            class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        {{-- Lesão em Pé Esquerdo --}}
+                                        @if ($ladoSelecionado === 'esquerdo' || $ladoSelecionado === 'ambos')
+                                            <!-- Sinais de Infecção - Pé Esquerdo -->
+                                            <div class="p-6 mb-8 border border-gray-100 bg-gray-50 rounded-2xl">
+                                                <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                    Sinais de Infecção - Pé Esquerdo
+                                                </label>
+                                                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                                                    @foreach ($sinaisInfeccaoList as $sinais)
+                                                        <label class="flex items-center cursor-pointer">
+                                                            <input type="checkbox"
+                                                                wire:model="sinais_infeccao_esquerdo"
+                                                                value="{{ $sinais->id }}"
+                                                                id="sinais-esquerdo-{{ $sinais->id }}"
+                                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                                            <span
+                                                                class="ml-3 font-medium text-gray-700">{{ $sinais->descricao }}</span>
+                                                        </label>
+                                                    @endforeach
+                                                </div>
+                                                @error('sinais_infeccao_esquerdo')
+                                                    <span
+                                                        class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <!-- Lesão em Pé Esquerdo -->
+                                            <div class="p-6 mb-8 border border-gray-100 bg-gray-50 rounded-2xl">
+                                                <h3 class="mb-6 text-xl font-semibold text-indigo-900">Lesão em Pé
+                                                    Esquerdo</h3>
+
+                                                <!-- Dimensões -->
+                                                <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2">
+                                                    <div>
+                                                        <label
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">Comprimento
+                                                            (cm):</label>
+                                                        <input type="number"
+                                                            wire:model="dados.esquerdo.comprimento" step="0.1"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                            placeholder="Ex: 2.5">
+                                                        @error('dados.esquerdo.comprimento')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <label
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">Largura
+                                                            (cm):</label>
+                                                        <input type="number" wire:model="dados.esquerdo.largura"
+                                                            step="0.1"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                            placeholder="Ex: 1.8">
+                                                        @error('dados.esquerdo.largura')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Localização e Região -->
+                                                <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2">
+                                                    <div>
+                                                        <label for="localizacao_esquerdo"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Localização Anatômica:
+                                                        </label>
+                                                        <select wire:model="dados.esquerdo.localizacao_lesao_id"
+                                                            id="localizacao_esquerdo"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($localizacaoLesao as $localizacao)
+                                                                <option value="{{ $localizacao->id }}">
+                                                                    {{ $localizacao->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.esquerdo.localizacao_lesao_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <label for="regiao_esquerdo"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Região:
+                                                        </label>
+                                                        <select wire:model="dados.esquerdo.regiao_pe_id"
+                                                            id="regiao_esquerdo"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($regiaoPe as $regiao)
+                                                                <option value="{{ $regiao->id }}">
+                                                                    {{ $regiao->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.esquerdo.regiao_pe_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Lesão Decorrente de Amputação -->
+                                                <div class="mb-8">
+                                                    <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                        Lesão Decorrente de Amputação:
+                                                    </label>
+                                                    <div class="flex gap-6">
+                                                        <label class="flex items-center cursor-pointer">
+                                                            <input type="radio"
+                                                                wire:model="dados.esquerdo.lesao_amputacao"
+                                                                value="1"
+                                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                            <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                        </label>
+                                                        <label class="flex items-center cursor-pointer">
+                                                            <input type="radio"
+                                                                wire:model="dados.esquerdo.lesao_amputacao"
+                                                                value="0"
+                                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                            <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                        </label>
+                                                    </div>
+                                                    @error('dados.esquerdo.lesao_amputacao')
+                                                        <span
+                                                            class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <!-- Bordas da Ferida e Tipo de Tecido -->
+                                                <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2">
+                                                    <div>
+                                                        <label for="bordas_ferida_esquerdo_id"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Bordas da Ferida:
+                                                        </label>
+                                                        <select wire:model="dados.esquerdo.bordas_ferida_id"
+                                                            id="bordas_ferida_esquerdo_id"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($bordasFerida as $borda)
+                                                                <option value="{{ $borda->id }}">
+                                                                    {{ $borda->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.esquerdo.bordas_ferida_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <label for="tipo_tecido_ferida_esquerdo_id"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Tipo de Tecido no Leito:
+                                                        </label>
+                                                        <select wire:model="dados.esquerdo.tipo_tecido_ferida_id"
+                                                            id="tipo_tecido_ferida_esquerdo_id"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($tiposTecido as $tipo)
+                                                                <option value="{{ $tipo->id }}">
+                                                                    {{ $tipo->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.esquerdo.tipo_tecido_ferida_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Profundidade e Pele Periferida -->
+                                                <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2">
+                                                    <div>
+                                                        <label for="profundidade_esquerdo_id"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Profundidade:
+                                                        </label>
+                                                        <select wire:model="dados.esquerdo.profundidade_id"
+                                                            id="profundidade_esquerdo_id"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($profundidades as $profundidade)
+                                                                <option value="{{ $profundidade->id }}">
+                                                                    {{ $profundidade->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.esquerdo.profundidade_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <label for="pele_periferida_esquerdo_id"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Pele Periferida:
+                                                        </label>
+                                                        <select wire:model="dados.esquerdo.pele_periferida_id"
+                                                            id="pele_periferida_esquerdo_id"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($pelesPeriferida as $pele)
+                                                                <option value="{{ $pele->id }}">
+                                                                    {{ $pele->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.esquerdo.pele_periferida_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Quantidade e Aspecto do Exsudato -->
+                                                <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2">
+                                                    <div>
+                                                        <label for="quantidade_exudato_esquerdo_id"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Quantidade de Exsudato:
+                                                        </label>
+                                                        <select wire:model="dados.esquerdo.quantidade_exudato_id"
+                                                            id="quantidade_exudato_esquerdo_id"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($quantidadesExudato as $quantidade)
+                                                                <option value="{{ $quantidade->id }}">
+                                                                    {{ $quantidade->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.esquerdo.quantidade_exudato_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <label for="aspecto_exudato_esquerdo_id"
+                                                            class="block mb-2 text-lg font-semibold text-gray-800">
+                                                            Aspecto do Exsudato:
+                                                        </label>
+                                                        <select wire:model="dados.esquerdo.aspecto_exudato_id"
+                                                            id="aspecto_exudato_esquerdo_id"
+                                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                            <option value="">Selecione</option>
+                                                            @foreach ($aspectosExudato as $aspecto)
+                                                                <option value="{{ $aspecto->id }}">
+                                                                    {{ $aspecto->descricao }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('dados.esquerdo.aspecto_exudato_id')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Odor do Exsudato e Edema -->
+                                                <div class="grid grid-cols-1 gap-8 mb-8 md:grid-cols-2">
+                                                    <div>
+                                                        <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                            Odor do Exsudato:
+                                                        </label>
+                                                        <div class="flex gap-6">
+                                                            <label class="flex items-center cursor-pointer">
+                                                                <input type="radio"
+                                                                    wire:model="dados.esquerdo.odor_exudato"
+                                                                    value="1"
+                                                                    class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                                <span
+                                                                    class="ml-3 font-medium text-gray-700">Sim</span>
+                                                            </label>
+                                                            <label class="flex items-center cursor-pointer">
+                                                                <input type="radio"
+                                                                    wire:model="dados.esquerdo.odor_exudato"
+                                                                    value="0"
+                                                                    class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                                <span
+                                                                    class="ml-3 font-medium text-gray-700">Não</span>
+                                                            </label>
+                                                        </div>
+                                                        @error('dados.esquerdo.odor_exudato')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                            Edema:
+                                                        </label>
+                                                        <div class="flex gap-6">
+                                                            <label class="flex items-center cursor-pointer">
+                                                                <input type="radio"
+                                                                    wire:model="dados.esquerdo.edema" value="1"
+                                                                    class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                                <span
+                                                                    class="ml-3 font-medium text-gray-700">Sim</span>
+                                                            </label>
+                                                            <label class="flex items-center cursor-pointer">
+                                                                <input type="radio"
+                                                                    wire:model="dados.esquerdo.edema" value="0"
+                                                                    class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                                <span
+                                                                    class="ml-3 font-medium text-gray-700">Não</span>
+                                                            </label>
+                                                        </div>
+                                                        @error('dados.esquerdo.edema')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Intensidade da Dor -->
+                                                <div class="mb-8">
+                                                    <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                        Intensidade da Dor (Pé Esquerdo):
+                                                    </label>
+                                                    <div
+                                                        class="grid grid-cols-11 gap-2 p-4 border border-gray-200 rounded-xl bg-white">
+                                                        @for ($i = 0; $i <= 10; $i++)
+                                                            @php
+                                                                $color = match (true) {
+                                                                    $i <= 3
+                                                                        => 'bg-green-100 text-green-700 border-green-300',
+                                                                    $i <= 6
+                                                                        => 'bg-yellow-100 text-yellow-700 border-yellow-300',
+                                                                    $i <= 8
+                                                                        => 'bg-orange-100 text-orange-700 border-orange-300',
+                                                                    default
+                                                                        => 'bg-red-100 text-red-700 border-red-300',
+                                                                };
+
+                                                                $emoji = match (true) {
+                                                                    $i == 0 => '😊',
+                                                                    $i <= 3 => '🙂',
+                                                                    $i <= 6 => '😐',
+                                                                    $i <= 8 => '😣',
+                                                                    default => '😫',
+                                                                };
+
+                                                                $selected =
+                                                                    (int) ($dados['esquerdo']['dor'] ?? -1) === $i
+                                                                        ? 'ring-4 ring-indigo-400 ring-offset-2 scale-105 shadow-lg'
+                                                                        : 'border-2';
+                                                            @endphp
+
+                                                            <button type="button"
+                                                                wire:click="$set('dados.esquerdo.dor', {{ $i }})"
+                                                                class="flex flex-col items-center p-3 transition-all duration-200 cursor-pointer rounded-xl hover:shadow-md {{ $color }} {{ $selected }}">
+                                                                <span
+                                                                    class="text-2xl mb-1">{{ $emoji }}</span>
+                                                                <span
+                                                                    class="text-sm font-bold">{{ $i }}</span>
+                                                            </button>
+                                                        @endfor
+                                                    </div>
+                                                    <div class="flex justify-between mt-2 text-xs text-gray-500">
+                                                        <span>Sem dor</span>
+                                                        <span>Dor insuportável</span>
+                                                    </div>
+                                                    @error('dados.esquerdo.dor')
+                                                        <span
+                                                            class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Seção Cuidados com a Ferida -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Cuidados com a Ferida</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid para Limpeza da Lesão e Coberturas -->
+                                    <div class="grid grid-cols-1 gap-8 mb-8 lg:grid-cols-2">
+                                        <!-- Limpeza da Lesão -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Limpeza da Lesão:
+                                            </label>
+                                            <div class="space-y-3">
+                                                @foreach ($limpezaLesaosList as $limpeza)
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="checkbox" wire:model="limpeza_lesaos"
+                                                            value="{{ $limpeza->id }}"
+                                                            id="limpeza-{{ $limpeza->id }}"
+                                                            class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-3 font-medium text-gray-700">{{ $limpeza->descricao }}</span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                            @error('limpeza_lesaos')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Coberturas/Correlatos -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Coberturas/Correlatos:
+                                            </label>
+                                            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                                                @foreach ($coberturasList as $cobertura)
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="checkbox" wire:model="coberturas"
+                                                            value="{{ $cobertura->id }}"
+                                                            id="cobertura-{{ $cobertura->id }}"
+                                                            class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                                        <span
+                                                            class="ml-3 font-medium text-gray-700">{{ $cobertura->descricao }}</span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                            @error('coberturas')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid para Desbridamento e Avaliação da Ferida -->
+                                    <div class="grid grid-cols-1 gap-8 mb-8 lg:grid-cols-2">
+                                        <!-- Tipos de Desbridamento -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="desbridamento_id"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Tipos de Desbridamento:
+                                            </label>
+                                            <select wire:model="desbridamento_id" id="desbridamento_id"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                <option value="">Selecione</option>
+                                                @foreach ($desbridamentos as $desbridamento)
+                                                    <option value="{{ $desbridamento->id }}">
+                                                        {{ $desbridamento->descricao }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('desbridamento_id')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Avaliação da Ferida -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label for="avaliacao_ferida_id"
+                                                class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Avaliação da Ferida:
+                                            </label>
+                                            <select wire:model="avaliacao_ferida_id" id="avaliacao_ferida_id"
+                                                class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+                                                <option value="">Selecione</option>
+                                                @foreach ($avaliacaoFeridas as $avaliacao)
+                                                    <option value="{{ $avaliacao->id }}">
+                                                        {{ $avaliacao->descricao }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('avaliacao_ferida_id')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid para Laserterapia e Terapia Fotodinâmica -->
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                                        <!-- Aplicação de Laserterapia -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Aplicação de Laserterapia:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="aplicacao_laserterapia"
+                                                        value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="aplicacao_laserterapia"
+                                                        value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('aplicacao_laserterapia')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Terapia Fotodinâmica -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Terapia Fotodinâmica:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="terapia_fotodinamica"
+                                                        value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="terapia_fotodinamica"
+                                                        value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('terapia_fotodinamica')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seção Avaliação do Pé -->
+                                <div class="mb-10">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Avaliação do Pé</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                        <label for="imagem_avaliacao_pe"
+                                            class="block mb-4 text-lg font-semibold text-gray-800">
+                                            Upload de Imagem da Avaliação do Pé:
+                                        </label>
+
+                                        <div class="relative">
+                                            <input type="file" id="imagem_avaliacao_pe"
+                                                wire:model="imagem_avaliacao_pe" class="hidden">
+                                            <label for="imagem_avaliacao_pe"
+                                                class="flex items-center justify-center w-full px-6 py-8 border-2 border-gray-300 border-dashed cursor-pointer rounded-xl hover:border-indigo-400 hover:bg-indigo-50 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-200">
+                                                <div class="text-center">
+                                                    <svg class="w-12 h-12 mx-auto text-gray-400"
+                                                        stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                                                        <path
+                                                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                    <p class="mt-4 text-lg font-semibold text-indigo-600">Clique para
+                                                        fazer upload</p>
+                                                    <p class="mt-1 text-sm text-gray-500">PNG, JPG até 1MB</p>
+                                                </div>
                                             </label>
                                         </div>
-                                        @error('opnioes_de_si')
+
+                                        @error('imagem_avaliacao_pe')
+                                            <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                        @enderror
+
+                                        <!-- Preview da imagem -->
+                                        @if ($imagem_avaliacao_pe)
+                                            <div class="mt-6">
+                                                <p class="mb-3 text-sm font-medium text-gray-700">Pré-visualização:
+                                                </p>
+                                                <div class="p-4 border border-gray-200 rounded-xl bg-white">
+                                                    <img src="{{ $imagem_avaliacao_pe->temporaryUrl() }}"
+                                                        alt="Pré-visualização da imagem"
+                                                        class="object-contain w-full max-w-md mx-auto rounded-lg h-64">
+                                                </div>
+                                            </div>
+                                        @elseif ($imagem_avaliacao_pe_url)
+                                            <div class="mt-6">
+                                                <p class="mb-3 text-sm font-medium text-gray-700">Imagem atual:</p>
+                                                <div class="p-4 border border-gray-200 rounded-xl bg-white">
+                                                    <img src="{{ Storage::url($imagem_avaliacao_pe_url) }}"
+                                                        alt="Imagem atual"
+                                                        class="object-contain w-full max-w-md mx-auto rounded-lg h-64">
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Botões de Navegação -->
+                                <div class="flex items-center justify-between pt-8">
+                                    <!-- Botão Voltar -->
+                                    <button type="button" wire:click="previousStep"
+                                        @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                                        class="flex items-center px-8 py-4 text-lg font-semibold text-indigo-600 bg-white border-2 border-indigo-500 rounded-xl hover:bg-indigo-50 focus:outline-none focus:ring-4 focus:ring-indigo-200">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 19l-7-7 7-7"></path>
+                                        </svg>
+                                        Voltar
+                                    </button>
+
+                                    <!-- Botão Continuar -->
+                                    <button type="button" wire:click="nextStep"
+                                        @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                                        class="flex items-center px-8 py-4 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-xl hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                        Continuar
+                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+        <div x-show="step === 3" x-transition>
+            {{-- Etapa 3: Necessidades Sociais --}}
+            @if ($currentStep == 3)
+                <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+                    <!-- Elementos decorativos de fundo otimizados -->
+                    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+                        <div
+                            class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-20">
+                        </div>
+                        <div
+                            class="absolute bg-purple-200 rounded-full opacity-15 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
+                        </div>
+                        <div
+                            class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-15">
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 px-6 py-8">
+                        <!-- Header -->
+                        <div class="max-w-6xl mx-auto mb-8">
+                            <div
+                                class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
+                                        <p class="font-medium text-indigo-600">Sistema de Prescrição Eletrônica para
+                                            Pé Diabético</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-sm text-gray-600">Questionário</p>
+                                        <p class="text-lg font-semibold text-gray-800">Necessidades Psicossociais</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Main Content -->
+                        <div class="max-w-6xl mx-auto">
+                            <div
+                                class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+
+                                <!-- Seção Aprendizagem - Educação a Saúde -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Aprendizagem - Educação a
+                                            Saúde</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <!-- Frequência de monitoramento -->
+                                    <div class="mb-8">
+                                        <label for="monitoramento_glicemia_dia"
+                                            class="block mb-3 text-lg font-semibold text-gray-800">
+                                            Frequência por dia de automonitoramento da glicemia capilar:
+                                        </label>
+                                        <input type="text" wire:model="monitoramento_glicemia_dia"
+                                            id="monitoramento_glicemia_dia"
+                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 md:w-2/3 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                            placeholder="Digite o número de vezes por dia">
+                                        @error('monitoramento_glicemia_dia')
                                             <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                         @enderror
                                     </div>
 
-                                    <!-- Auxiliador -->
-                                    <div class="p-6 border border-pink-100 bg-pink-50 rounded-2xl">
-                                        <label for="auxiliador"
+                                    <!-- Grid de orientações -->
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                                        <!-- Cuidado com os pés -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Foi orientado sobre autocuidado com os pés:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="cuidado_pes" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="cuidado_pes" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('cuidado_pes')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Uso de sapatos -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Foi orientado sobre uso de sapatos adequados:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="uso_sapato" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="uso_sapato" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('uso_sapato')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Alimentação -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Foi orientado sobre alimentação:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="alimentacao" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="alimentacao" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('alimentacao')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Regime terapêutico -->
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Compreende e executa o regime terapêutico adequadamente:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="regime_terapeutico"
+                                                        value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="regime_terapeutico"
+                                                        value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('regime_terapeutico')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seção Recreação/Lazer/Criatividade -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Recreação / Lazer /
+                                            Criatividade</h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-purple-500 to-purple-700">
+                                        </div>
+                                    </div>
+
+                                    <div class="p-6 border border-purple-100 bg-purple-50 rounded-2xl">
+                                        <label
+                                            class="block mb-6 text-lg font-semibold text-gray-800">Recreações</label>
+                                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                                            @foreach ($recreacaosList as $recreacao)
+                                                <div
+                                                    class="flex items-center p-3 bg-white border border-gray-100 rounded-xl">
+                                                    <input type="checkbox" wire:model="recreacaos"
+                                                        value="{{ $recreacao->id }}"
+                                                        id="recreacao-{{ $recreacao->id }}"
+                                                        class="w-5 h-5 text-purple-600 border-2 border-gray-300 rounded focus:ring-purple-500">
+                                                    <label for="recreacao-{{ $recreacao->id }}"
+                                                        class="ml-3 font-medium text-gray-700 cursor-pointer">
+                                                        {{ $recreacao->descricao }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        @error('recreacaos')
+                                            <span class="block mt-4 text-sm text-red-500">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Seção Amor/Aceitação/Atenção/Auto estima/Segurança -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Amor / Aceitação / Atenção
+                                            / Auto estima / Segurança</h2>
+                                        <div class="w-24 h-1 rounded-full bg-gradient-to-r from-pink-500 to-pink-700">
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-8">
+                                        <!-- Acompanhado -->
+                                        <div class="p-6 border border-pink-100 bg-pink-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Acompanhado no momento da consulta:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="acompanhado" value="1"
+                                                        class="w-5 h-5 text-pink-600 border-2 border-gray-300 focus:ring-pink-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="acompanhado" value="0"
+                                                        class="w-5 h-5 text-pink-600 border-2 border-gray-300 focus:ring-pink-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('acompanhado')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Estado Emocional -->
+                                        <div class="p-6 border border-pink-100 bg-pink-50 rounded-2xl">
+                                            <label class="block mb-6 text-lg font-semibold text-gray-800">Estado
+                                                Emocional</label>
+                                            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                                                @foreach ($emocionalsList as $emocional)
+                                                    <div
+                                                        class="flex items-center p-3 bg-white border border-gray-100 rounded-xl">
+                                                        <input type="checkbox" wire:model="emocionals"
+                                                            value="{{ $emocional->id }}"
+                                                            id="emocional-{{ $emocional->id }}"
+                                                            class="w-5 h-5 text-pink-600 border-2 border-gray-300 rounded focus:ring-pink-500">
+                                                        <label for="emocional-{{ $emocional->id }}"
+                                                            class="ml-3 font-medium text-gray-700 cursor-pointer">
+                                                            {{ $emocional->descricao }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            @error('emocionals')
+                                                <span class="block mt-4 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Grid de opiniões e auxiliador -->
+                                        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                                            <!-- Opiniões de si -->
+                                            <div class="p-6 border border-pink-100 bg-pink-50 rounded-2xl">
+                                                <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                    Opiniões de si mesmo sobre sua lesão:
+                                                </label>
+                                                <div class="flex gap-6">
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="opnioes_de_si"
+                                                            value="1"
+                                                            class="w-5 h-5 text-pink-600 border-2 border-gray-300 focus:ring-pink-500">
+                                                        <span class="ml-3 font-medium text-gray-700">Positiva</span>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model="opnioes_de_si"
+                                                            value="0"
+                                                            class="w-5 h-5 text-pink-600 border-2 border-gray-300 focus:ring-pink-500">
+                                                        <span class="ml-3 font-medium text-gray-700">Negativa</span>
+                                                    </label>
+                                                </div>
+                                                @error('opnioes_de_si')
+                                                    <span
+                                                        class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <!-- Auxiliador -->
+                                            <div class="p-6 border border-pink-100 bg-pink-50 rounded-2xl">
+                                                <label for="auxiliador"
+                                                    class="block mb-4 text-lg font-semibold text-gray-800">
+                                                    Quem mais auxilia no seu tratamento:
+                                                </label>
+                                                <input type="text" wire:model="auxiliador" id="auxiliador"
+                                                    class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-pink-500 focus:ring-2 focus:ring-pink-200 focus:outline-none"
+                                                    placeholder="Digite quem auxilia no tratamento">
+                                                @error('auxiliador')
+                                                    <span
+                                                        class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seção Comunicação e Gregária -->
+                                <div class="mb-12">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Comunicação e Gregária
+                                        </h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500">
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                                        <!-- Apoio familiar -->
+                                        <div class="p-6 border border-indigo-100 bg-indigo-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Possui apoio familiar/amigos:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="apoio" value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="apoio" value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('apoio')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Interação social -->
+                                        <div class="p-6 border border-indigo-100 bg-indigo-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Interação com as pessoas:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="interacao_social"
+                                                        value="1"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="interacao_social"
+                                                        value="0"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('interacao_social')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Botões de Navegação -->
+                                <div class="flex items-center justify-between pt-8 border-t border-gray-200">
+                                    <button type="button" wire:click="previousStep"
+                                        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                                        class="flex items-center px-8 py-4 text-lg font-semibold text-indigo-600 bg-white border-2 border-indigo-200 rounded-2xl hover:bg-indigo-50 hover:border-indigo-300 focus:outline-none focus:ring-4 focus:ring-indigo-100">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                        Voltar
+                                    </button>
+
+                                    <button type="button" wire:click="nextStep"
+                                        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                                        class="flex items-center px-8 py-4 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-indigo-200">
+                                        Continuar
+                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+        <div x-show="step === 4" x-transition>
+            {{-- Etapa 3: Necessidades Espirituais / Impressões e Salvar --}}
+            @if ($currentStep == 4)
+                <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+                    <!-- Elementos decorativos de fundo otimizados -->
+                    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+                        <div
+                            class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-20">
+                        </div>
+                        <div
+                            class="absolute bg-purple-200 rounded-full opacity-15 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
+                        </div>
+                        <div
+                            class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-15">
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 px-6 py-8">
+                        <!-- Header -->
+                        <div class="max-w-6xl mx-auto mb-8">
+                            <div
+                                class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
+                                        <p class="font-medium text-indigo-600">Sistema de Prescrição Eletrônica para
+                                            Pé Diabético</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-sm text-gray-600">Questionário</p>
+                                        <p class="text-lg font-semibold text-gray-800">Necessidades PsicoEspirituais
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Main Content -->
+                        <div class="max-w-6xl mx-auto">
+                            <div
+                                class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+
+                                <!-- Seção Religião/Espiritualidade -->
+                                <div class="pb-8 mb-10 border-b border-gray-200">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Religião / Espiritualidade
+                                        </h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
+                                        </div>
+                                    </div>
+
+                                    <!-- Tem religião -->
+                                    <div class="mb-8">
+                                        <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
+                                            <label class="block mb-4 text-lg font-semibold text-gray-800">
+                                                Tem Religião:
+                                            </label>
+                                            <div class="flex gap-6">
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="e_religioso" value="sim"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                </label>
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" wire:model="e_religioso" value="nao"
+                                                        class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                    <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                </label>
+                                            </div>
+                                            @error('e_religioso')
+                                                <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Campo de religião (condicional) -->
+                                    <div class="mb-8" x-show="$wire.e_religioso === 'sim'" x-cloak>
+                                        <label for="religiao"
+                                            class="block mb-3 text-lg font-semibold text-gray-800">
+                                            Religião/Espiritualidade:
+                                        </label>
+                                        <input type="text" wire:model="religiao" id="religiao"
+                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 md:w-2/3 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                            placeholder="Digite sua religião/espiritualidade">
+                                        @error('religiao')
+                                            <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Seção Evoluções de Enfermagem -->
+                                <div class="mb-12">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Evoluções de Enfermagem
+                                        </h2>
+                                        <div
+                                            class="w-24 h-1 rounded-full bg-gradient-to-r from-purple-500 to-purple-700">
+                                        </div>
+                                    </div>
+
+                                    <div class="p-6 border border-purple-100 bg-purple-50 rounded-2xl">
+                                        <label for="impressoes"
                                             class="block mb-4 text-lg font-semibold text-gray-800">
-                                            Quem mais auxilia no seu tratamento:
+                                            Evoluções de enfermagem:
                                         </label>
-                                        <input type="text" wire:model="auxiliador" id="auxiliador"
-                                            class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-xl focus:border-pink-500 focus:ring-2 focus:ring-pink-200 focus:outline-none"
-                                            placeholder="Digite quem auxilia no tratamento">
-                                        @error('auxiliador')
+                                        <textarea wire:model="impressoes" id="impressoes"
+                                            class="w-full px-4 py-4 text-gray-700 bg-white border-2 border-gray-200 resize-none rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none"
+                                            placeholder="Digite suas impressões sobre a realização do questionário" rows="6"></textarea>
+                                        @error('impressoes')
                                             <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- Seção Comunicação e Gregária -->
-                        <div class="mb-12">
-                            <div class="mb-8">
-                                <h2 class="mb-2 text-2xl font-bold text-indigo-900">Comunicação e Gregária
-                                </h2>
-                                <div class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500">
+                                <!-- Botões de Navegação -->
+                                <div class="flex items-center justify-between pt-8 border-t border-gray-200">
+                                    <button type="button" wire:click="previousStep"
+                                        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                                        class="flex items-center px-8 py-4 text-lg font-semibold text-indigo-600 bg-white border-2 border-indigo-200 rounded-2xl hover:bg-indigo-50 hover:border-indigo-300 focus:outline-none focus:ring-4 focus:ring-indigo-100">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                        Voltar
+                                    </button>
+
+                                    <button type="submit" wire:click="submitForm"
+                                        class="flex items-center px-8 py-4 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl hover:from-teal-600 hover:to-teal-800 focus:outline-none focus:ring-4 focus:ring-teal-200">
+                                        Salvar
+                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </button>
                                 </div>
                             </div>
-
-                            <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                                <!-- Apoio familiar -->
-                                <div class="p-6 border border-indigo-100 bg-indigo-50 rounded-2xl">
-                                    <label class="block mb-4 text-lg font-semibold text-gray-800">
-                                        Possui apoio familiar/amigos:
-                                    </label>
-                                    <div class="flex gap-6">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="apoio" value="1"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Sim</span>
-                                        </label>
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="apoio" value="0"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Não</span>
-                                        </label>
-                                    </div>
-                                    @error('apoio')
-                                        <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <!-- Interação social -->
-                                <div class="p-6 border border-indigo-100 bg-indigo-50 rounded-2xl">
-                                    <label class="block mb-4 text-lg font-semibold text-gray-800">
-                                        Interação com as pessoas:
-                                    </label>
-                                    <div class="flex gap-6">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="interacao_social" value="1"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Sim</span>
-                                        </label>
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="interacao_social" value="0"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Não</span>
-                                        </label>
-                                    </div>
-                                    @error('interacao_social')
-                                        <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Botões de Navegação -->
-                        <div class="flex items-center justify-between pt-8 border-t border-gray-200">
-                            <button type="button" wire:click="previousStep"
-                                onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                                class="flex items-center px-8 py-4 text-lg font-semibold text-indigo-600 bg-white border-2 border-indigo-200 rounded-2xl hover:bg-indigo-50 hover:border-indigo-300 focus:outline-none focus:ring-4 focus:ring-indigo-100">
-                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 19l-7-7 7-7" />
-                                </svg>
-                                Voltar
-                            </button>
-
-                            <button type="button" wire:click="nextStep"
-                                onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                                class="flex items-center px-8 py-4 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-indigo-200">
-                                Continuar
-                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <style>
+                    [x-cloak] {
+                        display: none !important;
+                    }
+                </style>
+            @endif
+        </div>
+    </form>
+
+    @if (session()->has('message'))
+        <div class="mt-4 alert alert-success">
+            {{ session('message') }}
         </div>
     @endif
-</div>
-<div x-show="step === 4" x-transition>
-    {{-- Etapa 3: Necessidades Espirituais / Impressões e Salvar --}}
-    @if ($currentStep == 4)
-        <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
-            <!-- Elementos decorativos de fundo otimizados -->
-            <div class="fixed inset-0 overflow-hidden pointer-events-none">
-                <div
-                    class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-20">
-                </div>
-                <div
-                    class="absolute bg-purple-200 rounded-full opacity-15 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
-                </div>
-                <div
-                    class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-15">
-                </div>
-            </div>
-
-            <div class="relative z-10 px-6 py-8">
-                <!-- Header -->
-                <div class="max-w-6xl mx-auto mb-8">
-                    <div class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
-                                <p class="font-medium text-indigo-600">Sistema de Prescrição Eletrônica para
-                                    Pé Diabético</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-sm text-gray-600">Questionário</p>
-                                <p class="text-lg font-semibold text-gray-800">Necessidades PsicoEspirituais
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Main Content -->
-                <div class="max-w-6xl mx-auto">
-                    <div class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
-
-                        <!-- Seção Religião/Espiritualidade -->
-                        <div class="pb-8 mb-10 border-b border-gray-200">
-                            <div class="mb-8">
-                                <h2 class="mb-2 text-2xl font-bold text-indigo-900">Religião / Espiritualidade
-                                </h2>
-                                <div class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
-                                </div>
-                            </div>
-
-                            <!-- Tem religião -->
-                            <div class="mb-8">
-                                <div class="p-6 border border-gray-100 bg-gray-50 rounded-2xl">
-                                    <label class="block mb-4 text-lg font-semibold text-gray-800">
-                                        Tem Religião:
-                                    </label>
-                                    <div class="flex gap-6">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="e_religioso" value="sim"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Sim</span>
-                                        </label>
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" wire:model="e_religioso" value="nao"
-                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                            <span class="ml-3 font-medium text-gray-700">Não</span>
-                                        </label>
-                                    </div>
-                                    @error('e_religioso')
-                                        <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <!-- Campo de religião (condicional) -->
-                            <div class="mb-8" x-show="$wire.e_religioso === 'sim'" x-cloak>
-                                <label for="religiao" class="block mb-3 text-lg font-semibold text-gray-800">
-                                    Religião/Espiritualidade:
-                                </label>
-                                <input type="text" wire:model="religiao" id="religiao"
-                                    class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 md:w-2/3 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
-                                    placeholder="Digite sua religião/espiritualidade">
-                                @error('religiao')
-                                    <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <!-- Seção Evoluções de Enfermagem -->
-                        <div class="mb-12">
-                            <div class="mb-8">
-                                <h2 class="mb-2 text-2xl font-bold text-indigo-900">Evoluções de Enfermagem
-                                </h2>
-                                <div class="w-24 h-1 rounded-full bg-gradient-to-r from-purple-500 to-purple-700">
-                                </div>
-                            </div>
-
-                            <div class="p-6 border border-purple-100 bg-purple-50 rounded-2xl">
-                                <label for="impressoes" class="block mb-4 text-lg font-semibold text-gray-800">
-                                    Evoluções de enfermagem:
-                                </label>
-                                <textarea wire:model="impressoes" id="impressoes"
-                                    class="w-full px-4 py-4 text-gray-700 bg-white border-2 border-gray-200 resize-none rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none"
-                                    placeholder="Digite suas impressões sobre a realização do questionário" rows="6"></textarea>
-                                @error('impressoes')
-                                    <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <!-- Botões de Navegação -->
-                        <div class="flex items-center justify-between pt-8 border-t border-gray-200">
-                            <button type="button" wire:click="previousStep"
-                                onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                                class="flex items-center px-8 py-4 text-lg font-semibold text-indigo-600 bg-white border-2 border-indigo-200 rounded-2xl hover:bg-indigo-50 hover:border-indigo-300 focus:outline-none focus:ring-4 focus:ring-indigo-100">
-                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 19l-7-7 7-7" />
-                                </svg>
-                                Voltar
-                            </button>
-
-                            <button type="submit" wire:click="submitForm"
-                                class="flex items-center px-8 py-4 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl hover:from-teal-600 hover:to-teal-800 focus:outline-none focus:ring-4 focus:ring-teal-200">
-                                Salvar
-                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <style>
-            [x-cloak] {
-                display: none !important;
-            }
-        </style>
-    @endif
-</div>
-</form>
-
-@if (session()->has('message'))
-    <div class="mt-4 alert alert-success">
-        {{ session('message') }}
-    </div>
-@endif
 </div>
