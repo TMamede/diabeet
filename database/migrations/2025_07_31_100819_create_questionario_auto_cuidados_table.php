@@ -6,6 +6,7 @@ use App\Models\AtividadeFisica;
 use App\Models\Cuidado_pes;
 use App\Models\Medicacao;
 use App\Models\Monitor;
+use App\Models\Questionario;
 use App\Models\Tabagismo;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->foreignIdFor(Cuidado_pes::class);
             $table->foreignIdFor(Medicacao::class);
             $table->foreignIdFor(Tabagismo::class);
+            $table->foreignIdFor(Questionario::class);
             $table->timestamps();
         });
     }

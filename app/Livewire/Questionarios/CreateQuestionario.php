@@ -1634,20 +1634,9 @@ class CreateQuestionario extends Component
 
         $this->ColetarProntuario($questionario);
 
-        // Dispara o evento para o prontuário
-        $this->dispatch('questionario-for-prontuario', questionarioId: $questionario->id);
 
-        // Mensagem de sucesso
         session()->flash('message', 'Questionário criado com sucesso!');
-
-        // Verifique se o $questionario->id existe antes de redirecionar
-        if ($questionario->id) {
-            return redirect()->route('prontuario.create', ['id' => $questionario->id]);
-        }
-
-        // Caso contrário, faça algum tratamento de erro (opcional)
-        session()->flash('error', 'Erro ao criar o questionário.');
-        return redirect()->route('questionario.index');
+        return redirect()->route('questionario.qualidade', ['questionarioId' => $questionario->id]);
     }
 
 

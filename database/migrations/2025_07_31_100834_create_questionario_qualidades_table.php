@@ -1,7 +1,8 @@
 <?php
 
 use App\Models\Impacto;
-use App\Models\Preo_Diabete;
+use App\Models\PreoDiabete;
+use App\Models\Questionario;
 use App\Models\Satisfacao;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,8 +19,9 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Satisfacao::class);
             $table->foreignIdFor(Impacto::class);
-            $table->foreignIdFor(Preo_Diabete::class);
+            $table->foreignIdFor(PreoDiabete::class);
             $table->tinyInteger('ter_filhos');
+            $table->foreignIdFor(Questionario::class);
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('preo__diabetes', function (Blueprint $table) {
+        Schema::create('preo_diabetes', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('diabete');
             $table->tinyInteger('complicacoes');
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('preo__diabetes');
+        Schema::dropIfExists('preo_diabetes');
     }
 };
