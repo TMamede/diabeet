@@ -64,6 +64,6 @@ class DatabaseSeeder extends Seeder
         $this->call(IntervencaoSeeder::class);
         $this->call(MotivoDiagnosticoSeeder::class);
         $this->call(DiagnosticoIntervencaoSeeder::class);
-
+        $this->call(QuestionarioQualidadeSeeder::class);
     }
 }

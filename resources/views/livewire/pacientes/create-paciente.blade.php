@@ -520,7 +520,7 @@
                                                             <label for="inicio_etilismo"
                                                                 class="block mb-2 text-sm font-medium text-gray-700">Início
                                                                 do Etilismo</label>
-                                                            <input type="year" wire:model.lazy="inicio_etilismo"
+                                                            <input type="date" wire:model.lazy="inicio_etilismo"
                                                                 id="inicio_etilismo"
                                                                 class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200">
                                                             @error('inicio_etilismo')

@@ -9,18 +9,20 @@ class Diagnostico extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function prontuarios()
     {
-        return $this->belongsToMany(Prontuario::class,'prontuario_diagnostico');
+        return $this->belongsToMany(Prontuario::class, 'prontuario_diagnostico');
     }
 
     public function intervencaos()
     {
         return $this->belongsToMany(Intervencao::class, 'diagnostico_intervencao');
     }
-    
+
     public function motivos()
     {
-        return $this->belongsToMany(Motivo::class,'motivo_diagnostico');
+        return $this->belongsToMany(Motivo::class, 'motivo_diagnostico');
     }
 }

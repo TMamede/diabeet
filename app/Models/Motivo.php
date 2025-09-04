@@ -9,9 +9,11 @@ class Motivo extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function prontuarios()
     {
-        return $this->belongsToMany(Prontuario::class,'prontuario_motivo');
+        return $this->belongsToMany(Prontuario::class, 'prontuario_motivo');
     }
 
     public function origem()
@@ -21,6 +23,6 @@ class Motivo extends Model
 
     public function diagnosticos()
     {
-        return $this->belongsToMany(Diagnostico::class,'motivo_diagnostico');
+        return $this->belongsToMany(Diagnostico::class, 'motivo_diagnostico');
     }
 }

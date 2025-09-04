@@ -98,10 +98,10 @@ Route::get('/questionario/paciente/{paciente}', ListaQuestionario::class)
     ->name('questionario.paciente');
 
 
-Route::get('/questionario/create/{questionarioId}/qualidade', CreateQuestionarioQualidade::class)
+Route::get('/questionario/{id}/create/qualidade', CreateQuestionarioQualidade::class)
     ->name('questionario.qualidade');
 
-Route::get('/questionario/create/{questionarioId}/autocuidado', CreateQuestionarioAutocuidado::class)
+Route::get('/questionario/{id}/create/autocuidado', CreateQuestionarioAutocuidado::class)
     ->name('questionario.autocuidado');
 
 

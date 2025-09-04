@@ -1402,7 +1402,7 @@ class CreateQuestionario extends Component
 
     public function submitForm()
     {
-        //$this->validateStep();
+        $this->validateStep();
 
         $regulacao_neuro = Regulacao_neuro::firstOrCreate([
             'orientado' => $this->orientado,
@@ -1610,7 +1610,7 @@ class CreateQuestionario extends Component
             ? $this->imagem_avaliacao_pe->store('avaliacao_pe', 'public')
             : $this->imagem_avaliacao_pe_url;
 
-        $questionario = Questionario::create([
+        $this->questionario = Questionario::create([
             'paciente_id' => $this->idPacienteSelected,
             'user_id' => Auth::id(),
             'nss_biologicas_id' => $nss_biologicas->id,
@@ -1619,6 +1619,7 @@ class CreateQuestionario extends Component
             'impressoes' => $this->impressoes,
             'imagem_avaliacao_pe_url' => $path,
         ]);
+
 
         // Associações com tabelas pivot
         $this->sincronizarAssociacoes(
@@ -1631,12 +1632,10 @@ class CreateQuestionario extends Component
             $cuidado_ferida,
             $cuidado
         );
-
-        $this->ColetarProntuario($questionario);
-
+        $this->ColetarProntuario($this->questionario);
 
         session()->flash('message', 'Questionário criado com sucesso!');
-        return redirect()->route('questionario.qualidade', ['questionarioId' => $questionario->id]);
+        return redirect()->route('questionario.qualidade', ['id' => $this->questionario->id]);
     }
 
 

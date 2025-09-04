@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Data_fumo extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

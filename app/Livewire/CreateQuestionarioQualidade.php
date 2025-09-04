@@ -19,9 +19,9 @@ class CreateQuestionarioQualidade extends Component
     public $questionario, $questionarioQualidade;
 
 
-    public function mount(int $questionarioId)
+    public function mount(int $id)
     {
-        $this->questionario = Questionario::findOrFail($questionarioId);
+        $this->questionario = Questionario::findOrFail($id);
     }
 
     public function render()
@@ -84,11 +84,12 @@ class CreateQuestionarioQualidade extends Component
             'satisfacao_id' => $satisfacao->id,
             'impacto_id' => $impacto->id,
             'preo_diabete_id' => $preo_diabete->id,
+            'ter_filhos' => $this->ter_filhos,
             'questionario_id' => $this->questionario->id,
         ]);
 
 
         session()->flash('message', 'Questionário criado com sucesso!');
-        return redirect()->route('questionario.autocuidado', ['questionarioId' => $this->questionario->id]);
+        return redirect()->route('questionario.autocuidado', ['id' => $this->questionario->id]);
     }
 }

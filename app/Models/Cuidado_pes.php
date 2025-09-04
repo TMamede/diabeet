@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Cuidado_pes extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

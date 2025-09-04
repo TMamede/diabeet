@@ -1,5 +1,5 @@
 <div x-data="{ step: @entangle('currentStep') }">
-    <form>
+    <form wire:submit.prevent="submitForm">
         <div x-show="step === 1" x-transition>
             {{-- Etapa 1: Amostra de dados do paciente --}}
             @if ($currentStep == 1)
@@ -3874,7 +3874,7 @@
                                         Voltar
                                     </button>
 
-                                    <button type="submit" wire:click="submitForm"
+                                    <button type="submit"
                                         class="flex items-center px-8 py-4 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl hover:from-teal-600 hover:to-teal-800 focus:outline-none focus:ring-4 focus:ring-teal-200">
                                         Salvar
                                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"

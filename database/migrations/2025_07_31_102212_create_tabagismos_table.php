@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Data_fumo;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->tinyInteger('fumou');
             $table->tinyInteger('num_cigarros');
-            $table->tinyInteger('quando_fumou');
+            $table->foreignIdFor(Data_fumo::class);
             $table->timestamps();
         });
     }

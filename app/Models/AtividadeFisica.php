@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class AtividadeFisica extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }
