@@ -619,6 +619,12 @@ class ShowQuestionario extends Component
         $this->currentStep = 5;
     }
 
+    public function nextStepSixth()
+    {
+        // $this->validateStep();
+        $this->currentStep = 6;
+    }
+
     public function backToSearch()
     {
         return redirect()->route('questionario.index');

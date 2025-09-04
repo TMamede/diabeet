@@ -78,16 +78,40 @@
                     <span class="font-medium">Necessidades PsicoSociais</span>
                 </button>
 
-                <!-- Informações Finais -->
+                <!-- Necessidades PsicoEspirituais -->
                 <button @click="mobileMenuOpen = false" wire:click="nextStepFourth"
                     class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-emerald-50 hover:text-emerald-700">
                     <div class="flex items-center justify-center w-10 h-10 mr-3 bg-emerald-100 rounded-lg">
                         <svg class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M6.75 8.25V4.5h3V6h-1.5v2.25a3.75 3.75 0 1 0 7.5 0V6h-1.5V4.5h3v3.75a5.251 5.251 0 0 1-4.5 5.197V16.5a2.25 2.25 0 0 0 4.421.592 2.25 2.25 0 1 1 1.524.048 3.751 3.751 0 0 1-7.445-.64v-3.053a5.251 5.251 0 0 1-4.5-5.197Zm12 6.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                            <path
+                                d="M12 2L13.09 6.26L18 5L16.74 9.74L21 12L16.74 14.26L18 19L13.09 17.74L12 22L10.91 17.74L6 19L7.26 14.26L3 12L7.26 9.74L6 5L10.91 6.26L12 2Z" />
                         </svg>
                     </div>
-                    <span class="font-medium">Informações Finais</span>
+                    <span class="font-medium">Necessidades PsicoEspirituais</span>
+                </button>
+
+                <!-- Questionário Qualidade de Vida -->
+                <button @click="mobileMenuOpen = false" wire:click="nextStepFifth"
+                    class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-orange-50 hover:text-orange-700">
+                    <div class="flex items-center justify-center w-10 h-10 mr-3 bg-orange-100 rounded-lg">
+                        <svg class="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1L13.5 2.5L16.17 5.17C15.24 5.06 14.24 5 13.5 5C12.76 5 11.76 5.06 10.83 5.17L13.5 2.5L12 1L6 7V9C6.66 9 7.27 9.09 7.93 9.18L8 21H10V16H14V21H16L16.07 9.18C16.73 9.09 17.34 9 18 9H21ZM12 12C11.45 12 11 11.55 11 11C11 10.45 11.45 10 12 10C12.55 10 13 10.45 13 11C13 11.55 12.55 12 12 12Z" />
+                        </svg>
+                    </div>
+                    <span class="font-medium">Qualidade de Vida</span>
+                </button>
+
+                <!-- Questionário Autocuidado -->
+                <button @click="mobileMenuOpen = false" wire:click="nextStepSixth"
+                    class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-teal-50 hover:text-teal-700">
+                    <div class="flex items-center justify-center w-10 h-10 mr-3 bg-teal-100 rounded-lg">
+                        <svg class="w-5 h-5 text-teal-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M14.12,10H19V8.2H15.38L13.38,4.87C13.08,4.37 12.54,4.03 11.92,4.03C11.74,4.03 11.58,4.06 11.42,4.11L6,5.8C5.47,5.96 5.09,6.43 5.09,7.03C5.09,7.74 5.66,8.31 6.37,8.31C6.59,8.31 6.8,8.26 6.97,8.17L10.95,7.07L12.39,9.54C12.69,10.04 13.23,10.38 13.85,10.38C13.94,10.38 14.04,10.37 14.12,10.35V10M19,10V9H14.89L14.89,10H19M21,6H20V4H19V6H17V4H16V6H15V4H14V6H13V4H12V6H11V4H10V6H9V4H8V6H7V4H6V6H5V4H4V6H3V4H2V6H1V8H2V20H22V6H21Z" />
+                        </svg>
+                    </div>
+                    <span class="font-medium">Autocuidado</span>
                 </button>
 
                 <!-- Divisor -->
@@ -100,7 +124,8 @@
                     class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-gray-50">
                     <div class="flex items-center justify-center w-10 h-10 mr-3 bg-gray-100 rounded-lg">
                         <svg class="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 19l-7-7 7-7" />
                         </svg>
                     </div>
                     <span class="font-medium">Voltar</span>
@@ -175,19 +200,56 @@
                     </button>
                 </li>
 
-                <!-- Informações Finais -->
+                <!-- Necessidades PsicoEspirituais -->
                 <li>
                     <button wire:click="nextStepFourth"
-                        class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200">
-                        <div class="flex items-center justify-center w-12 h-12 mr-4 bg-emerald-100 rounded-lg">
-                            <svg class="w-6 h-6 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M6.75 8.25V4.5h3V6h-1.5v2.25a3.75 3.75 0 1 0 7.5 0V6h-1.5V4.5h3v3.75a5.251 5.251 0 0 1-4.5 5.197V16.5a2.25 2.25 0 0 0 4.421.592 2.25 2.25 0 1 1 1.524.048 3.751 3.751 0 0 1-7.445-.64v-3.053a5.251 5.251 0 0 1-4.5-5.197Zm12 6.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                        class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-amber-50 hover:text-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-200">
+                        <div class="flex items-center justify-center w-12 h-12 mr-4 bg-amber-100 rounded-lg">
+                            <svg class="w-6 h-6 text-amber-600" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <span class="font-medium">Informações Finais</span>
+                            <span class="font-medium">Necessidades PsicoEspirituais</span>
                             <p class="text-sm text-gray-500">Dados complementares</p>
+                        </div>
+                    </button>
+                </li>
+
+                <!-- Questionário Qualidade de Vida -->
+                <li>
+                    <button wire:click="nextStepFifth"
+                        class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-orange-50 hover:text-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-200">
+                        <div class="flex items-center justify-center w-12 h-12 mr-4 bg-orange-100 rounded-lg">
+                            <svg class="w-6 h-6 text-orange-600" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <span class="font-medium">Qualidade de Vida</span>
+                            <p class="text-sm text-gray-500">Dados avaliação qualidade</p>
+                        </div>
+                    </button>
+                </li>
+
+                <!-- Questionário Autocuidado -->
+                <li>
+                    <button wire:click="nextStepSixth"
+                        class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200">
+                        <div class="flex items-center justify-center w-12 h-12 mr-4 bg-emerald-100 rounded-lg">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <span class="font-medium">Autocuidado</span>
+                            <p class="text-sm text-gray-500">Dados avaliação autocuidado</p>
                         </div>
                     </button>
                 </li>
