@@ -1635,7 +1635,7 @@ class CreateQuestionario extends Component
         $this->ColetarProntuario($this->questionario);
 
         session()->flash('message', 'Questionário criado com sucesso!');
-        return redirect()->route('questionario.qualidade', ['id' => $this->questionario->id]);
+        return redirect()->route('questionario.create-qualidade', ['id' => $this->questionario->id]);
     }
 
 
