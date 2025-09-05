@@ -100,6 +100,11 @@ class ShowQuestionarioAutocuidado extends Component
         $this->quando_fumou  = $this->tabagismo->data_fumo_id  ?? null;
     }
 
+    public function backToShow()
+    {
+        return redirect()->route('questionario.show', ['id' => $this->questionario->id]);
+    }
+
     public function render()
     {
         return view('livewire.questionarios.show-questionario-autocuidado', [

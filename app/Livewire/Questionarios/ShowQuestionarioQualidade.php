@@ -62,6 +62,11 @@ class ShowQuestionarioQualidade extends Component
         $this->complicacoes = $this->preo_diabete->complicacoes ?? null;
     }
 
+    public function backToShow()
+    {
+        return redirect()->route('questionario.show', ['id' => $this->questionario->id]);
+    }
+
     public function render()
     {
         return view('livewire.questionarios.show-questionario-qualidade')->layout('layouts.app');
