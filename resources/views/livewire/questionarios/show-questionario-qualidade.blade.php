@@ -366,36 +366,36 @@
                         <div class="grid grid-cols-5 gap-4">
                             <label
                                 class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="desmaiar" value="1" class="sr-only">
+                                <input type="radio" wire:model="diabete" value="1" class="sr-only">
                                 <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
                                 <span class="text-sm leading-tight text-center text-gray-600">Nunca</span>
                             </label>
                             <label
                                 class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="desmaiar" value="2" class="sr-only">
+                                <input type="radio" wire:model="diabete" value="2" class="sr-only">
                                 <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
                                 <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Nunca</span>
                             </label>
                             <label
                                 class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="desmaiar" value="3" class="sr-only">
+                                <input type="radio" wire:model="diabete" value="3" class="sr-only">
                                 <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
                                 <span class="text-sm leading-tight text-center text-gray-600">Às vezes</span>
                             </label>
                             <label
                                 class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="desmaiar" value="4" class="sr-only">
+                                <input type="radio" wire:model="diabete" value="4" class="sr-only">
                                 <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
                                 <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Sempre</span>
                             </label>
                             <label
                                 class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="desmaiar" value="5" class="sr-only">
+                                <input type="radio" wire:model="diabete" value="5" class="sr-only">
                                 <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
                                 <span class="text-sm leading-tight text-center text-gray-600">Sempre</span>
                             </label>
                         </div>
-                        @error('desmaiar')
+                        @error('diabete')
                             <p class="flex items-center mt-3 text-sm text-red-600">
                                 <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
