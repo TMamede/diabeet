@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Questionarios;
 
 use App\Models\Impacto;
 use App\Models\PreoDiabete;
@@ -90,6 +90,6 @@ class CreateQuestionarioQualidade extends Component
 
 
         session()->flash('message', 'Questionário criado com sucesso!');
-        return redirect()->route('questionario.autocuidado', ['id' => $this->questionario->id]);
+        return redirect()->route('questionario.create-autocuidado', ['id' => $this->questionario->id]);
     }
 }

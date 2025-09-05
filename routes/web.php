@@ -8,9 +8,11 @@ use App\Livewire\Questionarios\ShowQuestionario;
 use App\Http\Controllers\ProntuarioPDFController;
 use App\Livewire\Prontuarios\SearchProntuario;
 use App\Http\Controllers\ProfileController;
-use App\Livewire\CreateQuestionarioAutocuidado;
-use App\Livewire\CreateQuestionarioQualidade;
+use App\Livewire\Questionarios\CreateQuestionarioAutocuidado;
+use App\Livewire\Questionarios\CreateQuestionarioQualidade;
 use App\Livewire\Questionarios\ListaQuestionario;
+use App\Livewire\Questionarios\ShowQuestionarioAutocuidado;
+use App\Livewire\Questionarios\ShowQuestionarioQualidade;
 
 Route::view('/', 'welcome');
 
@@ -99,10 +101,16 @@ Route::get('/questionario/paciente/{paciente}', ListaQuestionario::class)
 
 
 Route::get('/questionario/{id}/create/qualidade', CreateQuestionarioQualidade::class)
-    ->name('questionario.qualidade');
+    ->name('questionario.create-qualidade');
 
 Route::get('/questionario/{id}/create/autocuidado', CreateQuestionarioAutocuidado::class)
-    ->name('questionario.autocuidado');
+    ->name('questionario.create-autocuidado');
+
+Route::get('/questionario/{id}/qualidade', ShowQuestionarioQualidade::class)
+    ->name('questionario.show-qualidade');
+
+Route::get('/questionario/{id}/autocuidado', ShowQuestionarioAutocuidado::class)
+    ->name('questionario.show-autocuidado');
 
 
 

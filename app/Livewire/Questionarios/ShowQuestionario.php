@@ -616,13 +616,13 @@ class ShowQuestionario extends Component
     public function nextStepFifth()
     {
         // $this->validateStep();
-        $this->currentStep = 5;
+        return redirect()->route('questionario.show-qualidade', ['id' => $this->questionario->id]);
     }
 
     public function nextStepSixth()
     {
         // $this->validateStep();
-        $this->currentStep = 6;
+        return redirect()->route('questionario.show-autocuidado', ['id' => $this->questionario->id]);
     }
 
     public function backToSearch()

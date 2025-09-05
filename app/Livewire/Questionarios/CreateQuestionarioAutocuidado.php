@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Questionarios;
 
 use App\Models\AlimenatacaoE;
 use App\Models\AlimenatacaoG;
