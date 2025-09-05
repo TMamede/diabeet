@@ -663,26 +663,4 @@
             </div>
         </div>
     </div>
-
-    <style>
-        /* Custom radio button styles */
-        input[type="radio"]:checked+span .opacity-0 {
-            opacity: 1;
-        }
-
-        /* Animation for background elements */
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.3;
-            }
-
-            50% {
-                transform: scale(1.1);
-                opacity: 0.2;
-            }
-        }
-    </style>
 </div>

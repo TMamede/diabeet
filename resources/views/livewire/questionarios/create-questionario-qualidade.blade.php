@@ -26,7 +26,7 @@
                 </div>
                 <h1 class="mb-4 text-4xl font-bold text-gray-800">Questionário de Qualidade de Vida</h1>
                 <p class="mb-2 text-xl text-gray-600">Avaliação de bem-estar relacionado ao Diabetes</p>
-                
+
             </div>
         </div>
 
@@ -55,7 +55,8 @@
                                 class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
                                 <input type="radio" wire:model="flexibilidade" value="2" class="sr-only">
                                 <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Bastante<br>Satisfeito</span>
+                                <span
+                                    class="text-sm leading-tight text-center text-gray-600">Bastante<br>Satisfeito</span>
                             </label>
                             <label
                                 class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
@@ -104,7 +105,8 @@
                                 class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
                                 <input type="radio" wire:model="vida_sexual" value="2" class="sr-only">
                                 <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Bastante<br>Satisfeito</span>
+                                <span
+                                    class="text-sm leading-tight text-center text-gray-600">Bastante<br>Satisfeito</span>
                             </label>
                             <label
                                 class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
@@ -460,7 +462,8 @@
             <div class="flex justify-center pt-8">
                 <button type="button" wire:click="SalvarQualidade"
                     class="relative px-12 py-4 overflow-hidden font-bold text-white transition-all duration-300 ease-out shadow-2xl group bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-2xl hover:shadow-blue-500/30 hover:scale-105 active:scale-95">
-                    <span class="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-0 bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 group-hover:opacity-100"></span>
+                    <span
+                        class="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-0 bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 group-hover:opacity-100"></span>
                     <span class="relative flex items-center text-lg">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -472,6 +475,5 @@
             </div>
         </div>
 
-        
     </div>
 </div>

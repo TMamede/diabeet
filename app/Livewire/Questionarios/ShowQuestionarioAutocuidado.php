@@ -102,6 +102,8 @@ class ShowQuestionarioAutocuidado extends Component
 
     public function render()
     {
-        return view('livewire.questionarios.show-questionario-autocuidado')->layout('layouts.app');
+        return view('livewire.questionarios.show-questionario-autocuidado', [
+            'dataFumos' => \App\Models\Data_fumo::all(), // Carrega os dados do fumou
+        ])->layout('layouts.app');
     }
 }
