@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('historicos', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Tipo_diabetes::class);
+            $table->tinyInteger('tempo_diagnostico');
             $table->string('cirurgia_motivo')->nullable();
             $table->string('amputacao_onde')->nullable();
             $table->date('amputacao_quando')->nullable();

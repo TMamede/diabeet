@@ -28,7 +28,7 @@ class CreatePaciente extends Component
     public $ocupacao, $renda_familiar, $beneficio_id, $reside_id, $num_pss_casa;
 
     // Etapa 2: Histórico do Paciente
-    public $tipo_diabetes_id, $cirurgia_motivo, $realizou_amputacao = null, $amputacao_onde = null, $amputacao_quando = null;
+    public $tipo_diabetes_id, $tempo_diagnostico, $cirurgia_motivo, $realizou_amputacao = null, $amputacao_onde = null, $amputacao_quando = null;
     public $tabagista, $n_cigarros = null, $inicio_tabagismo = null, $etilista, $inicio_etilismo = null;
     public $comorbidades = []; // Nova variável para comorbidades
     public $alergias = []; // Nova variável para alergias
@@ -293,6 +293,7 @@ class CreatePaciente extends Component
         } elseif ($this->currentStep == 2) {
             $this->validate([
                 'tipo_diabetes_id' => 'required|exists:tipo_diabetes,id',
+                'tempo_diagnostico' => 'required|integer',
                 'cirurgia_motivo' => 'nullable|string|max:255',
                 'amputacao_onde' => 'nullable|string|max:255',
                 'amputacao_quando' => 'nullable|date',
@@ -380,6 +381,7 @@ class CreatePaciente extends Component
         // Criar o histórico
         $historico = Historico::create([
             'tipo_diabetes_id' => $this->tipo_diabetes_id,
+            'tempo_diagnostico' => $this->tempo_diagnostico,
             'cirurgia_motivo' => $this->cirurgia_motivo,
             'amputacao_onde' => $this->amputacao_onde,
             'amputacao_quando' => $this->amputacao_quando,

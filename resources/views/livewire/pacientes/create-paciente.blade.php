@@ -263,6 +263,19 @@
                                             </div>
                                         </section>
 
+                                        <div>
+                                            <label for="tempo_diagnostico"
+                                                class="block mb-2 text-sm font-medium text-gray-700">Tempo de
+                                                diagnóstico em anos:</label>
+                                            <input type="number" wire:model.lazy="tempo_diagnostico"
+                                                id="tempo_diagnostico" min="0"
+                                                class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all duration-200"
+                                                placeholder="Ex: 10">
+                                            @error('tempo_diagnostico')
+                                                <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
                                         <!-- Comorbidades -->
                                         <section class="bg-purple-50/50 border border-purple-100/40 rounded-xl p-6">
                                             <h3 class="text-lg font-semibold text-purple-800 mb-4">Comorbidades</h3>

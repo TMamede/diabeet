@@ -558,6 +558,31 @@
                                         @enderror
                                     </div>
 
+                                    <!-- tempo_diagnostico -->
+                                    <div class="form-group">
+                                        <label for="tempo_diagnostico"
+                                            class="block text-sm font-semibold text-gray-700 mb-2">
+                                            Tempo de diagnóstico em anos
+                                        </label>
+                                        <div class="relative">
+                                            <input type="number" wire:model="tempo_diagnostico"
+                                                id="tempo_diagnostico" min="0"
+                                                class="w-full px-4 py-3 bg-white/70 border border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:bg-white"
+                                                placeholder="Tempo em anos">
+                                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                                <svg class="w-5 h-5 text-gray-400" fill="none"
+                                                    stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        @error('tempo_diagnostico')
+                                            <span class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
                                     <!-- Amputação - Local -->
                                     <div class="form-group">
                                         <label for="amputacao_onde"

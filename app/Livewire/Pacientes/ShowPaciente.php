@@ -27,7 +27,7 @@ class ShowPaciente extends Component
     public $ocupacao, $renda_familiar, $beneficio_id, $reside_id, $num_pss_casa;
 
     // Etapa 2: Histórico do Paciente
-    public $tipo_diabetes_id, $cirurgia_motivo, $amputacao_onde, $amputacao_quando;
+    public $tipo_diabetes_id, $tempo_diagnostico, $cirurgia_motivo, $amputacao_onde, $amputacao_quando;
     public $n_cigarros, $inicio_tabagismo, $inicio_etilismo;
     public $comorbidades = []; // Nova variável para comorbidades
     public $alergias = []; // Nova variável para alergias
@@ -97,6 +97,7 @@ class ShowPaciente extends Component
 
         if ($this->paciente->historico) {
             $this->tipo_diabetes_id = $this->paciente->historico->tipo_diabetes_id;
+            $this->tempo_diagnostico = $this->paciente->historico->tempo_diagnostico;
             $this->cirurgia_motivo = $this->paciente->historico->cirurgia_motivo;
             $this->amputacao_onde = $this->paciente->historico->amputacao_onde;
             $this->amputacao_quando = $this->paciente->historico->amputacao_quando;
@@ -163,6 +164,7 @@ class ShowPaciente extends Component
         } elseif ($this->currentStep == 2) {
             $this->validate([
                 'tipo_diabetes_id' => 'required|exists:tipo_diabetes,id',
+                'tempo_diagnostico' => 'required|integer',
                 'cirurgia_motivo' => 'nullable|string|max:255',
                 'amputacao_onde' => 'nullable|string|max:255',
                 'amputacao_quando' => 'nullable|date',
@@ -378,6 +380,7 @@ class ShowPaciente extends Component
         if ($paciente->historico) {
             $paciente->historico->update([
                 'tipo_diabetes_id' => $this->tipo_diabetes_id,
+                'tempo_diagnostico' => $this->tempo_diagnostico,
                 'cirurgia_motivo' => $this->cirurgia_motivo,
                 'amputacao_onde' => $this->amputacao_onde,
                 'amputacao_quando' => $this->amputacao_quando,
