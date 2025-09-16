@@ -21,12 +21,13 @@ class HistoricoSeeder extends Seeder
         for ($i = 0; $i < 20; $i++) {
             $historicos[] = [
                 'tipo_diabetes_id' => $faker->randomElement([1, 2]), // Define tipo de diabetes como 1 ou 2
+                'tempo_diagnostico' => $faker->year(),
                 'cirurgia_motivo' => $faker->sentence(), // Pode ser nulo ou uma descrição
                 'amputacao_onde' => $faker->word(), // Pode ser nulo ou um local
                 'amputacao_quando' => $faker->date(), // Pode ser nulo ou uma data
                 'n_cigarros' => $faker->numberBetween(0, 20), // Pode ser nulo ou número de cigarros
                 'inicio_tabagismo' => $faker->date(), // Pode ser nulo ou uma data
-                'inicio_etilismo' => $faker->date(), // Pode ser nulo ou uma data
+                'inicio_etilismo' => $faker->year(), // Pode ser nulo ou uma data
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ];
