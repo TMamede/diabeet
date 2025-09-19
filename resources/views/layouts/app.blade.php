@@ -48,6 +48,20 @@
         
     </div>
     
+    <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
+            <div class="container px-6 mx-auto">
+                <div class="flex flex-col items-center justify-between md:flex-row">
+                    <div class="mb-4 md:mb-0">
+                        <h4 class="text-xl font-bold">SoPeP</h4>
+                        <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônico para Pé Diabético</p>
+                    </div>
+                    <div class="text-center md:text-right">
+                        <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.</p>
+                        <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus pacientes</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
 </body>
 
 </html>

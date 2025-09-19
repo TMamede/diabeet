@@ -25,6 +25,7 @@ class SearchPaciente extends Component
     public $paciente = " ";
 
     public $pacienteIdToDelete = null;
+    
     public function deletePaciente()
     {
         // Verifica se o usuário autenticado é um gerenciador (ou tem permissão para excluir)

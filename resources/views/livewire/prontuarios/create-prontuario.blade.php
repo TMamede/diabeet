@@ -10,7 +10,7 @@
         <div class="max-w-6xl mx-auto">
             <!-- Header Section -->
             <div class="mb-12 text-center">
-                <div class="inline-block p-6 mb-6 bg-white/70 rounded-2xl shadow-md">
+                <div class="inline-block p-6 mb-6 shadow-md bg-white/70 rounded-2xl">
                     <h1 class="mb-4 text-4xl font-bold text-indigo-900 md:text-5xl">
                         Diagnósticos de <span class="text-indigo-600">Enfermagem</span>
                     </h1>
@@ -23,7 +23,7 @@
 
             <!-- Mensagens de sucesso/erro -->
             @if (session()->has('success'))
-                <div class="p-4 mb-6 text-green-800 bg-green-100 border border-green-300 rounded-xl shadow-sm">
+                <div class="p-4 mb-6 text-green-800 bg-green-100 border border-green-300 shadow-sm rounded-xl">
                     <div class="flex items-center">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -35,7 +35,7 @@
             @endif
 
             @if (session()->has('error'))
-                <div class="p-4 mb-6 text-red-800 bg-red-100 border border-red-300 rounded-xl shadow-sm">
+                <div class="p-4 mb-6 text-red-800 bg-red-100 border border-red-300 shadow-sm rounded-xl">
                     <div class="flex items-center">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -48,10 +48,10 @@
 
             <!-- Lista de Necessidades Humanas Básicas -->
             @foreach ($origens as $origem)
-                <div class="p-8 mb-8 bg-white/80 border border-white/20 rounded-xl shadow-md hover:shadow-lg">
+                <div class="p-8 mb-8 border shadow-md bg-white/80 border-white/20 rounded-xl hover:shadow-lg">
                     <!-- Header da Necessidade -->
                     <div
-                        class="flex items-center justify-between mb-6 p-6 bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl">
+                        class="flex items-center justify-between p-6 mb-6 bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl">
                         <div class="flex items-center space-x-4">
                             <div class="flex items-center justify-center w-12 h-12 bg-indigo-600 rounded-xl">
                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
@@ -62,7 +62,7 @@
                             </div>
                             <div>
                                 <h2 class="text-2xl font-bold text-gray-800">Necessidade Humana Básica</h2>
-                                <p class="text-lg text-indigo-700 font-semibold">{{ $origem['descricao'] }}</p>
+                                <p class="text-lg font-semibold text-indigo-700">{{ $origem['descricao'] }}</p>
                             </div>
                         </div>
                         <label class="relative inline-flex items-center cursor-pointer">
@@ -79,9 +79,9 @@
                         <div x-data="{ open: false }" class="mb-6">
                             <!-- Botão do Diagnóstico -->
                             <button @click="open = !open"
-                                class="flex items-center justify-between w-full px-6 py-4 text-lg font-semibold text-indigo-800 bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-xl hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                                class="flex items-center justify-between w-full px-6 py-4 text-lg font-semibold text-indigo-800 border border-indigo-200 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-300">
                                 <span class="flex items-center">
-                                    <div class="w-3 h-3 bg-indigo-500 rounded-full mr-4"></div>
+                                    <div class="w-3 h-3 mr-4 bg-indigo-500 rounded-full"></div>
                                     {{ $diagnostico['descricao'] }}
                                 </span>
                                 <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-indigo-600" fill="none"
@@ -93,10 +93,10 @@
 
                             <!-- Conteúdo expandido -->
                             <div x-show="open" x-collapse
-                                class="mt-4 p-6 border border-gray-200 bg-gray-50 rounded-xl">
+                                class="p-6 mt-4 border border-gray-200 bg-gray-50 rounded-xl">
                                 <!-- Checkbox do Diagnóstico -->
                                 <div
-                                    class="flex items-center justify-between mb-6 p-4 bg-white rounded-lg border border-gray-100">
+                                    class="flex items-center justify-between p-4 mb-6 bg-white border border-gray-100 rounded-lg">
                                     <p class="text-lg font-bold text-gray-700">{{ $diagnostico['descricao'] }}</p>
                                     <label class="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" wire:click="toggleDiagnostico({{ $diagnostico['id'] }})"
@@ -109,7 +109,7 @@
 
                                 <!-- Intervenções -->
                                 <div class="mb-6">
-                                    <h4 class="mb-4 text-lg font-bold text-purple-700 flex items-center">
+                                    <h4 class="flex items-center mb-4 text-lg font-bold text-purple-700">
                                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -123,7 +123,7 @@
                                             <div
                                                 class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-purple-300">
                                                 <div class="flex items-center">
-                                                    <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                                                    <div class="w-2 h-2 mr-3 bg-purple-500 rounded-full"></div>
                                                     <p class="text-gray-700">{{ $intervencao['descricao'] }}</p>
                                                 </div>
                                                 <label class="relative inline-flex items-center cursor-pointer">
@@ -141,8 +141,8 @@
                                 </div>
 
                                 <!-- Indicadores Clínicos -->
-                                <div class="p-6 bg-pink-50 rounded-xl border border-pink-200">
-                                    <h4 class="mb-4 text-lg font-bold text-pink-700 flex items-center">
+                                <div class="p-6 border border-pink-200 bg-pink-50 rounded-xl">
+                                    <h4 class="flex items-center mb-4 text-lg font-bold text-pink-700">
                                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -150,14 +150,14 @@
                                         </svg>
                                         Indicadores Clínicos Identificados
                                     </h4>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
                                         @foreach ($origem['motivos'] as $motivoCheck)
                                             @if (collect($motivoCheck['diagnosticos'])->pluck('id')->contains($diagnostico['id']))
                                                 <div
-                                                    class="flex items-center p-3 bg-white rounded-lg border border-pink-100">
-                                                    <div class="w-2 h-2 bg-pink-500 rounded-full mr-3"></div>
+                                                    class="flex items-center p-3 bg-white border border-pink-100 rounded-lg">
+                                                    <div class="w-2 h-2 mr-3 bg-pink-500 rounded-full"></div>
                                                     <span
-                                                        class="text-gray-700 text-sm">{{ $motivoCheck['descricao'] }}</span>
+                                                        class="text-sm text-gray-700">{{ $motivoCheck['descricao'] }}</span>
                                                 </div>
                                             @endif
                                         @endforeach
@@ -172,7 +172,7 @@
             <!-- Botão de Finalizar -->
             <div class="flex justify-center mt-12">
                 <button wire:click="finalizarProntuario"
-                    class="px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                    class="px-12 py-4 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
                     <span class="flex items-center justify-center">
                         <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -184,19 +184,5 @@
             </div>
         </div>
     </div>
-    <!-- Footer mantido igual -->
-    <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
-        <div class="container px-6 mx-auto">
-            <div class="flex flex-col items-center justify-between md:flex-row">
-                <div class="mb-4 md:mb-0">
-                    <h4 class="text-xl font-bold">SoPeP</h4>
-                    <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônica para Pé Diabético</p>
-                </div>
-                <div class="text-center md:text-right">
-                    <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.</p>
-                    <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus pacientes</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+   
 </div>

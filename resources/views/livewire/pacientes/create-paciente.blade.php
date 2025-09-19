@@ -8,7 +8,7 @@
 
                     <!-- Elementos de fundo otimizados -->
                     <div class="absolute inset-0 pointer-events-none -z-10">
-                        <div class="absolute w-60 h-60 bg-indigo-200 rounded-full top-12 left-12 opacity-20"></div>
+                        <div class="absolute bg-indigo-200 rounded-full w-60 h-60 top-12 left-12 opacity-20"></div>
                         <div class="absolute w-64 h-64 bg-purple-200 rounded-full top-24 right-12 opacity-15"></div>
                         <div class="absolute w-56 h-56 bg-pink-200 rounded-full bottom-12 left-20 opacity-10"></div>
                     </div>
@@ -19,63 +19,63 @@
                             <div class="container px-6 mx-auto">
                                 <h1 class="text-5xl font-extrabold text-indigo-900">So<span
                                         class="text-indigo-600">Pe</span>P</h1>
-                                <p class="text-lg text-gray-600 mt-3">Cadastro de <span
+                                <p class="mt-3 text-lg text-gray-600">Cadastro de <span
                                         class="text-indigo-600">Paciente</span></p>
-                                <p class="text-sm text-gray-500 mt-1 max-w-xl mx-auto">Preencha os dados
+                                <p class="max-w-xl mx-auto mt-1 text-sm text-gray-500">Preencha os dados
                                     sociodemográficos do paciente para iniciar o acompanhamento.</p>
                             </div>
                         </header>
 
                         <!-- Formulário -->
-                        <main class="container px-6 mx-auto pb-16">
+                        <main class="container px-6 pb-16 mx-auto">
                             <div
-                                class="max-w-6xl mx-auto bg-white/80 rounded-2xl border border-white/30 shadow p-8 md:p-12">
+                                class="max-w-6xl p-8 mx-auto border shadow bg-white/80 rounded-2xl border-white/30 md:p-12">
 
                                 <!-- Título da seção -->
-                                <div class="text-center mb-10">
+                                <div class="mb-10 text-center">
                                     <h2 class="text-3xl font-bold text-indigo-900">Dados Sociodemográficos</h2>
-                                    <div class="w-24 h-1 mx-auto bg-indigo-600 mt-2 rounded-full"></div>
+                                    <div class="w-24 h-1 mx-auto mt-2 bg-indigo-600 rounded-full"></div>
                                 </div>
 
-                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
 
                                     <!-- Coluna 1 -->
                                     <div class="space-y-6">
 
                                         <!-- Informações Pessoais -->
-                                        <section class="bg-indigo-50/50 border border-indigo-100/40 rounded-xl p-6">
-                                            <h3 class="text-lg font-semibold text-indigo-800 mb-4">Informações Pessoais
+                                        <section class="p-6 border bg-indigo-50/50 border-indigo-100/40 rounded-xl">
+                                            <h3 class="mb-4 text-lg font-semibold text-indigo-800">Informações Pessoais
                                             </h3>
 
                                             <div class="space-y-4">
-                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                                                     <x-input label="CPF" id="cpf" type="text"
                                                         wire:model.lazy="cpf" placeholder="000.000.000-00" />
 
                                                     <!-- Campo Sexo com x-input personalizado -->
                                                     <div class="group">
                                                         <label for="sexo"
-                                                            class="block text-sm font-medium text-gray-700 mb-1">Sexo</label>
+                                                            class="block mb-1 text-sm font-medium text-gray-700">Sexo</label>
                                                         <div
-                                                            class="flex space-x-4 px-4 py-3 border border-gray-200 rounded-lg shadow-sm focus-within:border-indigo-500 focus-within:ring-indigo-200 focus-within:ring-2 bg-white/90">
+                                                            class="flex px-4 py-3 space-x-4 border border-gray-200 rounded-lg shadow-sm focus-within:border-indigo-500 focus-within:ring-indigo-200 focus-within:ring-2 bg-white/90">
                                                             <label class="flex items-center space-x-2 cursor-pointer">
                                                                 <input type="radio" name="sexo" value="1"
                                                                     wire:model.lazy="sexo"
                                                                     class="w-4 h-4 text-indigo-600 bg-white border-2 border-gray-300 focus:ring-indigo-500 focus:ring-2">
                                                                 <span
-                                                                    class="text-sm text-gray-700 font-medium">Feminino</span>
+                                                                    class="text-sm font-medium text-gray-700">Feminino</span>
                                                             </label>
                                                             <label class="flex items-center space-x-2 cursor-pointer">
                                                                 <input type="radio" name="sexo" value="0"
                                                                     wire:model.lazy="sexo"
                                                                     class="w-4 h-4 text-indigo-600 bg-white border-2 border-gray-300 focus:ring-indigo-500 focus:ring-2">
                                                                 <span
-                                                                    class="text-sm text-gray-700 font-medium">Masculino</span>
+                                                                    class="text-sm font-medium text-gray-700">Masculino</span>
                                                             </label>
                                                         </div>
                                                         @error('sexo')
                                                             <span
-                                                                class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                                class="block mt-1 text-sm text-red-500">{{ $message }}</span>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -83,7 +83,7 @@
                                                     wire:model.lazy="nome" placeholder="Digite o nome completo" />
                                                 <x-input label="Email" id="email" type="email"
                                                     wire:model.lazy="email" placeholder="exemplo@email.com" />
-                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                                                     <x-input label="Prontuário" id="prontuario" type="text"
                                                         wire:model.lazy="prontuario" placeholder="Nº do prontuário" />
                                                     <x-input label="Data de Nascimento" id="data_nasc" type="date"
@@ -93,11 +93,11 @@
                                         </section>
 
                                         <!-- Informações Demográficas -->
-                                        <section class="bg-purple-50/50 border border-purple-100/40 rounded-xl p-6">
-                                            <h3 class="text-lg font-semibold text-purple-800 mb-4">Informações
+                                        <section class="p-6 border bg-purple-50/50 border-purple-100/40 rounded-xl">
+                                            <h3 class="mb-4 text-lg font-semibold text-purple-800">Informações
                                                 Demográficas</h3>
                                             <div class="space-y-4">
-                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                                                     <x-select label="Orientação Sexual" id="orientacao_sexual_id"
                                                         wire:model.lazy="orientacao_sexual_id" :options="$orientacoesSexuais" />
                                                     <x-select label="Estado Civil" id="estado_civil_id"
@@ -114,10 +114,10 @@
                                     <div class="space-y-6">
 
                                         <!-- Endereço -->
-                                        <section class="bg-pink-50/50 border border-pink-100/40 rounded-xl p-6">
-                                            <h3 class="text-lg font-semibold text-pink-800 mb-4">Endereço</h3>
+                                        <section class="p-6 border bg-pink-50/50 border-pink-100/40 rounded-xl">
+                                            <h3 class="mb-4 text-lg font-semibold text-pink-800">Endereço</h3>
                                             <div class="space-y-4">
-                                                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                                <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
                                                     <x-input label="CEP" id="cep" type="text"
                                                         wire:model.lazy="cep" wire:keydown.enter="buscarEndereco" />
                                                     <x-input label="UF" id="uf" type="text"
@@ -125,7 +125,7 @@
                                                     <x-input label="Cidade" id="cidade" type="text"
                                                         wire:model.lazy="cidade" />
                                                 </div>
-                                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                                <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                                                     <x-input label="Rua" id="rua" type="text"
                                                         wire:model.lazy="rua" class="md:col-span-2" />
                                                     <x-input label="Número" id="numero" type="text"
@@ -137,19 +137,19 @@
                                         </section>
 
                                         <!-- Socioeconômico -->
-                                        <section class="bg-indigo-50/50 border border-indigo-100/40 rounded-xl p-6">
-                                            <h3 class="text-lg font-semibold text-indigo-800 mb-4">Informações
+                                        <section class="p-6 border bg-indigo-50/50 border-indigo-100/40 rounded-xl">
+                                            <h3 class="mb-4 text-lg font-semibold text-indigo-800">Informações
                                                 Socioeconômicas</h3>
                                             <div class="space-y-4">
                                                 <x-input label="Ocupação" id="ocupacao" type="text"
                                                     wire:model.lazy="ocupacao" />
-                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                                                     <x-input label="Renda Familiar" id="renda_familiar"
                                                         type="text" wire:model.lazy="renda_familiar" />
                                                     <x-input label="Pessoas em Casa" id="num_pss_casa" type="number"
                                                         wire:model.lazy="num_pss_casa" />
                                                 </div>
-                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                                                     <x-select label="Benefício" id="beneficio_id"
                                                         wire:model.lazy="beneficio_id" :options="$beneficios" />
                                                     <x-select label="Tipo de Residência" id="reside_id"
@@ -164,9 +164,9 @@
                                 <!-- Botão de Continuar -->
                                 <div class="flex justify-center mt-12">
                                     <button type="button" wire:click="nextStep"
-                                        class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transform bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 shadow-2xl group rounded-2xl hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50">
+                                        class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transform shadow-2xl bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 group rounded-2xl hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50">
                                         <span class="flex items-center">
-                                            <svg class="w-5 h-5 mr-3  group-hover:translate-x-1" fill="none"
+                                            <svg class="w-5 h-5 mr-3 group-hover:translate-x-1" fill="none"
                                                 stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -174,7 +174,7 @@
                                             Continuar para Próxima Etapa
                                         </span>
                                         <div
-                                            class="absolute inset-0 bg-white rounded-2xl opacity-0 group-hover:opacity-10 duration-300">
+                                            class="absolute inset-0 duration-300 bg-white opacity-0 rounded-2xl group-hover:opacity-10">
                                         </div>
                                     </button>
                                 </div>
@@ -183,24 +183,8 @@
                         </main>
                     </div>
 
-                    <!-- Footer -->
-                    <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
-                        <div class="container px-6 mx-auto">
-                            <div class="flex flex-col items-center justify-between md:flex-row">
-                                <div class="mb-4 md:mb-0">
-                                    <h4 class="text-xl font-bold">SoPeP</h4>
-                                    <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônica para Pé
-                                        Diabético</p>
-                                </div>
-                                <div class="text-center md:text-right">
-                                    <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.
-                                    </p>
-                                    <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus
-                                        pacientes</p>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
+
+
                 </div>
             @endif
         </div>
@@ -212,7 +196,7 @@
 
                     <!-- Elementos de fundo otimizados -->
                     <div class="absolute inset-0 pointer-events-none -z-10">
-                        <div class="absolute w-60 h-60 bg-indigo-200 rounded-full top-12 left-12 opacity-20"></div>
+                        <div class="absolute bg-indigo-200 rounded-full w-60 h-60 top-12 left-12 opacity-20"></div>
                         <div class="absolute w-64 h-64 bg-purple-200 rounded-full top-24 right-12 opacity-15"></div>
                         <div class="absolute w-56 h-56 bg-pink-200 rounded-full bottom-12 left-20 opacity-10"></div>
                     </div>
@@ -223,32 +207,32 @@
                             <div class="container px-6 mx-auto">
                                 <h1 class="text-5xl font-extrabold text-indigo-900">So<span
                                         class="text-indigo-600">Pe</span>P</h1>
-                                <p class="text-lg text-gray-600 mt-3">Histórico do <span
+                                <p class="mt-3 text-lg text-gray-600">Histórico do <span
                                         class="text-indigo-600">Paciente</span></p>
-                                <p class="text-sm text-gray-500 mt-1 max-w-xl mx-auto">Preencha as informações clínicas
+                                <p class="max-w-xl mx-auto mt-1 text-sm text-gray-500">Preencha as informações clínicas
                                     e histórico médico do paciente.</p>
                             </div>
                         </header>
 
                         <!-- Formulário -->
-                        <main class="container px-6 mx-auto pb-16">
+                        <main class="container px-6 pb-16 mx-auto">
                             <div
-                                class="max-w-6xl mx-auto bg-white/80 rounded-2xl border border-white/30 shadow p-8 md:p-12">
+                                class="max-w-6xl p-8 mx-auto border shadow bg-white/80 rounded-2xl border-white/30 md:p-12">
 
                                 <!-- Título da seção -->
-                                <div class="text-center mb-10">
+                                <div class="mb-10 text-center">
                                     <h2 class="text-3xl font-bold text-indigo-900">Histórico Clínico</h2>
-                                    <div class="w-24 h-1 mx-auto bg-indigo-600 mt-2 rounded-full"></div>
+                                    <div class="w-24 h-1 mx-auto mt-2 bg-indigo-600 rounded-full"></div>
                                 </div>
 
-                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
 
                                     <!-- Coluna 1 -->
                                     <div class="space-y-6">
 
                                         <!-- Informações sobre Diabetes -->
-                                        <section class="bg-indigo-50/50 border border-indigo-100/40 rounded-xl p-6">
-                                            <h3 class="text-lg font-semibold text-indigo-800 mb-4">Informações sobre
+                                        <section class="p-6 border bg-indigo-50/50 border-indigo-100/40 rounded-xl">
+                                            <h3 class="mb-4 text-lg font-semibold text-indigo-800">Informações sobre
                                                 Diabetes</h3>
                                             <div class="space-y-4">
                                                 <div>
@@ -269,7 +253,7 @@
                                                 diagnóstico em anos:</label>
                                             <input type="number" wire:model.lazy="tempo_diagnostico"
                                                 id="tempo_diagnostico" min="0"
-                                                class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all duration-200"
+                                                class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
                                                 placeholder="Ex: 10">
                                             @error('tempo_diagnostico')
                                                 <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
@@ -277,12 +261,12 @@
                                         </div>
 
                                         <!-- Comorbidades -->
-                                        <section class="bg-purple-50/50 border border-purple-100/40 rounded-xl p-6">
-                                            <h3 class="text-lg font-semibold text-purple-800 mb-4">Comorbidades</h3>
-                                            <div class="space-y-3 max-h-60 overflow-y-auto pr-2">
+                                        <section class="p-6 border bg-purple-50/50 border-purple-100/40 rounded-xl">
+                                            <h3 class="mb-4 text-lg font-semibold text-purple-800">Comorbidades</h3>
+                                            <div class="pr-2 space-y-3 overflow-y-auto max-h-60">
                                                 @foreach ($comorbidadesList as $comorbidade)
                                                     <div
-                                                        class="flex items-center p-2 rounded-lg hover:bg-purple-50 transition-colors">
+                                                        class="flex items-center p-2 transition-colors rounded-lg hover:bg-purple-50">
                                                         <input type="checkbox" wire:model="comorbidades"
                                                             value="{{ $comorbidade->id }}"
                                                             id="comorbidade-{{ $comorbidade->id }}"
@@ -300,8 +284,8 @@
                                         </section>
 
                                         <!-- Cirurgias -->
-                                        <section class="bg-pink-50/50 border border-pink-100/40 rounded-xl p-6">
-                                            <h3 class="text-lg font-semibold text-pink-800 mb-4">Histórico Cirúrgico
+                                        <section class="p-6 border bg-pink-50/50 border-pink-100/40 rounded-xl">
+                                            <h3 class="mb-4 text-lg font-semibold text-pink-800">Histórico Cirúrgico
                                             </h3>
                                             <div class="space-y-4">
                                                 <div>
@@ -309,7 +293,7 @@
                                                         class="block mb-2 text-sm font-medium text-gray-700">Já
                                                         realizou alguma cirurgia? Se sim, qual?</label>
                                                     <textarea wire:model="cirurgia_motivo" id="cirurgia_motivo" rows="3"
-                                                        class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all duration-200"
+                                                        class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
                                                         placeholder="Descreva as cirurgias realizadas..."></textarea>
                                                 </div>
                                             </div>
@@ -321,12 +305,12 @@
                                     <div class="space-y-6">
 
                                         <!-- Alergias -->
-                                        <section class="bg-indigo-50/50 border border-indigo-100/40 rounded-xl p-6">
-                                            <h3 class="text-lg font-semibold text-indigo-800 mb-4">Alergias</h3>
-                                            <div class="space-y-3 max-h-60 overflow-y-auto pr-2">
+                                        <section class="p-6 border bg-indigo-50/50 border-indigo-100/40 rounded-xl">
+                                            <h3 class="mb-4 text-lg font-semibold text-indigo-800">Alergias</h3>
+                                            <div class="pr-2 space-y-3 overflow-y-auto max-h-60">
                                                 @foreach ($alergiasList as $alergia)
                                                     <div
-                                                        class="flex items-center p-2 rounded-lg hover:bg-indigo-50 transition-colors">
+                                                        class="flex items-center p-2 transition-colors rounded-lg hover:bg-indigo-50">
                                                         <input type="checkbox" wire:model.live="alergias"
                                                             value="{{ $alergia->id }}"
                                                             id="alergia-{{ $alergia->id }}"
@@ -343,7 +327,7 @@
                                             @enderror
 
                                             <!-- Campos condicionais para alergias específicas -->
-                                            <div class="space-y-4 mt-4">
+                                            <div class="mt-4 space-y-4">
                                                 <!-- Campo para Alergia Alimentar (ID 2) -->
                                                 @if (in_array(2, $alergias ?? []))
                                                     <div class="animate-fadeIn">
@@ -353,7 +337,7 @@
                                                         </label>
                                                         <input type="text" wire:model.lazy="alimento_alergia"
                                                             id="alimento_alergia"
-                                                            class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200"
+                                                            class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                                             placeholder="Ex: Amendoim, leite, ovos...">
                                                         @error('alimento_alergia')
                                                             <span
@@ -371,7 +355,7 @@
                                                         </label>
                                                         <input type="text" wire:model.lazy="medicamento_alergia"
                                                             id="medicamento_alergia"
-                                                            class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200"
+                                                            class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                                             placeholder="Ex: Penicilina, dipirona, aspirina...">
                                                         @error('medicamento_alergia')
                                                             <span
@@ -383,8 +367,8 @@
                                         </section>
 
                                         <!-- Amputação -->
-                                        <section class="bg-purple-50/50 border border-purple-100/40 rounded-xl p-6">
-                                            <h3 class="text-lg font-semibold text-purple-800 mb-4">Histórico de
+                                        <section class="p-6 border bg-purple-50/50 border-purple-100/40 rounded-xl">
+                                            <h3 class="mb-4 text-lg font-semibold text-purple-800">Histórico de
                                                 Amputação</h3>
                                             <div class="space-y-4">
                                                 <div>
@@ -396,7 +380,7 @@
                                                             :class="selecionado === 'sim' ?
                                                                 'bg-gradient-to-r from-red-400 to-red-500 text-white shadow-lg' :
                                                                 'bg-gray-200 text-gray-700'"
-                                                            class="flex-1 px-4 py-3 text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200">
+                                                            class="flex-1 px-4 py-3 text-sm font-medium transition-all duration-200 rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300">
                                                             Sim
                                                         </button>
                                                         <button type="button"
@@ -404,7 +388,7 @@
                                                             :class="selecionado === 'nao' ?
                                                                 'bg-gradient-to-r from-green-400 to-green-500 text-white shadow-lg' :
                                                                 'bg-gray-200 text-gray-700'"
-                                                            class="flex-1 px-4 py-3 text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200">
+                                                            class="flex-1 px-4 py-3 text-sm font-medium transition-all duration-200 rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300">
                                                             Não
                                                         </button>
                                                     </div>
@@ -419,7 +403,7 @@
                                                                 realizou a amputação?</label>
                                                             <input type="text" wire:model.lazy="amputacao_onde"
                                                                 id="amputacao_onde"
-                                                                class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200"
+                                                                class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                                                                 placeholder="Ex: Dedo do pé direito">
                                                             @error('amputacao_onde')
                                                                 <span
@@ -432,7 +416,7 @@
                                                                 foi a amputação?</label>
                                                             <input type="date" wire:model.lazy="amputacao_quando"
                                                                 id="amputacao_quando"
-                                                                class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200">
+                                                                class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
                                                             @error('amputacao_quando')
                                                                 <span
                                                                     class="mt-1 text-sm text-red-500">{{ $message }}</span>
@@ -444,8 +428,8 @@
                                         </section>
 
                                         <!-- Tabagismo -->
-                                        <section class="bg-pink-50/50 border border-pink-100/40 rounded-xl p-6">
-                                            <h3 class="text-lg font-semibold text-pink-800 mb-4">Tabagismo</h3>
+                                        <section class="p-6 border bg-pink-50/50 border-pink-100/40 rounded-xl">
+                                            <h3 class="mb-4 text-lg font-semibold text-pink-800">Tabagismo</h3>
                                             <div class="space-y-4">
                                                 <div>
                                                     <label class="block mb-3 text-sm font-medium text-gray-700">É
@@ -455,14 +439,14 @@
                                                             :class="selecionado === 'sim' ?
                                                                 'bg-gradient-to-r from-red-400 to-red-500 text-white shadow-lg' :
                                                                 'bg-gray-200 text-gray-700'"
-                                                            class="flex-1 px-4 py-3 text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200">
+                                                            class="flex-1 px-4 py-3 text-sm font-medium transition-all duration-200 rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300">
                                                             Sim
                                                         </button>
                                                         <button type="button" wire:click="$set('tabagista', 'nao')"
                                                             :class="selecionado === 'nao' ?
                                                                 'bg-gradient-to-r from-green-400 to-green-500 text-white shadow-lg' :
                                                                 'bg-gray-200 text-gray-700'"
-                                                            class="flex-1 px-4 py-3 text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200">
+                                                            class="flex-1 px-4 py-3 text-sm font-medium transition-all duration-200 rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300">
                                                             Não
                                                         </button>
                                                     </div>
@@ -477,7 +461,7 @@
                                                                 de Cigarros Diários</label>
                                                             <input type="number" wire:model.lazy="n_cigarros"
                                                                 id="n_cigarros" min="0"
-                                                                class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all duration-200"
+                                                                class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
                                                                 placeholder="Ex: 10">
                                                             @error('n_cigarros')
                                                                 <span
@@ -490,7 +474,7 @@
                                                                 do Tabagismo</label>
                                                             <input type="date" wire:model.lazy="inicio_tabagismo"
                                                                 id="inicio_tabagismo"
-                                                                class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all duration-200">
+                                                                class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-pink-500 focus:border-pink-500">
                                                             @error('inicio_tabagismo')
                                                                 <span
                                                                     class="mt-1 text-sm text-red-500">{{ $message }}</span>
@@ -502,8 +486,8 @@
                                         </section>
 
                                         <!-- Etilismo -->
-                                        <section class="bg-indigo-50/50 border border-indigo-100/40 rounded-xl p-6">
-                                            <h3 class="text-lg font-semibold text-indigo-800 mb-4">Etilismo</h3>
+                                        <section class="p-6 border bg-indigo-50/50 border-indigo-100/40 rounded-xl">
+                                            <h3 class="mb-4 text-lg font-semibold text-indigo-800">Etilismo</h3>
                                             <div class="space-y-4">
                                                 <div>
                                                     <label class="block mb-3 text-sm font-medium text-gray-700">É
@@ -513,14 +497,14 @@
                                                             :class="selecionado === 'sim' ?
                                                                 'bg-gradient-to-r from-red-400 to-red-500 text-white shadow-lg' :
                                                                 'bg-gray-200 text-gray-700'"
-                                                            class="flex-1 px-4 py-3 text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200">
+                                                            class="flex-1 px-4 py-3 text-sm font-medium transition-all duration-200 rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300">
                                                             Sim
                                                         </button>
                                                         <button type="button" wire:click="$set('etilista', 'nao')"
                                                             :class="selecionado === 'nao' ?
                                                                 'bg-gradient-to-r from-green-400 to-green-500 text-white shadow-lg' :
                                                                 'bg-gray-200 text-gray-700'"
-                                                            class="flex-1 px-4 py-3 text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200">
+                                                            class="flex-1 px-4 py-3 text-sm font-medium transition-all duration-200 rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300">
                                                             Não
                                                         </button>
                                                     </div>
@@ -535,7 +519,7 @@
                                                                 do Etilismo</label>
                                                             <input type="date" wire:model.lazy="inicio_etilismo"
                                                                 id="inicio_etilismo"
-                                                                class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200">
+                                                                class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                                             @error('inicio_etilismo')
                                                                 <span
                                                                     class="mt-1 text-sm text-red-500">{{ $message }}</span>
@@ -550,11 +534,11 @@
                                 </div>
 
                                 <!-- Botões de Navegação -->
-                                <div class="flex justify-center space-x-6 mt-12">
+                                <div class="flex justify-center mt-12 space-x-6">
                                     <button type="button" wire:click="previousStep"
-                                        class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-indigo-700 bg-white border-2 border-indigo-500 rounded-2xl shadow-lg transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                        class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-indigo-700 transition-all duration-300 ease-in-out bg-white border-2 border-indigo-500 shadow-lg rounded-2xl hover:bg-indigo-50 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
                                         <span class="flex items-center">
-                                            <svg class="w-5 h-5 mr-3 group-hover:-translate-x-1 transition-transform duration-200"
+                                            <svg class="w-5 h-5 mr-3 transition-transform duration-200 group-hover:-translate-x-1"
                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M11 17l-5-5m0 0l5-5m-5 5h12" />
@@ -564,9 +548,9 @@
                                     </button>
 
                                     <button type="button" wire:click="nextStep"
-                                        class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transform bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 shadow-2xl group rounded-2xl hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 transition-all duration-300">
+                                        class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transition-all duration-300 transform shadow-2xl bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 group rounded-2xl hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50">
                                         <span class="flex items-center">
-                                            <svg class="w-5 h-5 mr-3 group-hover:translate-x-1 transition-transform duration-200"
+                                            <svg class="w-5 h-5 mr-3 transition-transform duration-200 group-hover:translate-x-1"
                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -574,7 +558,7 @@
                                             Continuar para Próxima Etapa
                                         </span>
                                         <div
-                                            class="absolute inset-0 bg-white rounded-2xl opacity-0 group-hover:opacity-10 duration-300">
+                                            class="absolute inset-0 duration-300 bg-white opacity-0 rounded-2xl group-hover:opacity-10">
                                         </div>
                                     </button>
                                 </div>
@@ -593,7 +577,7 @@
 
                     <!-- Elementos de fundo otimizados -->
                     <div class="absolute inset-0 pointer-events-none -z-10">
-                        <div class="absolute w-60 h-60 bg-indigo-200 rounded-full top-12 left-12 opacity-20"></div>
+                        <div class="absolute bg-indigo-200 rounded-full w-60 h-60 top-12 left-12 opacity-20"></div>
                         <div class="absolute w-64 h-64 bg-purple-200 rounded-full top-24 right-12 opacity-15"></div>
                         <div class="absolute w-56 h-56 bg-pink-200 rounded-full bottom-12 left-20 opacity-10"></div>
                     </div>
@@ -604,37 +588,37 @@
                             <div class="container px-6 mx-auto">
                                 <h1 class="text-5xl font-extrabold text-indigo-900">So<span
                                         class="text-indigo-600">Pe</span>P</h1>
-                                <p class="text-lg text-gray-600 mt-3">Cadastro de <span
+                                <p class="mt-3 text-lg text-gray-600">Cadastro de <span
                                         class="text-indigo-600">Medicamentos</span></p>
-                                <p class="text-sm text-gray-500 mt-1 max-w-xl mx-auto">Registre os medicamentos
+                                <p class="max-w-xl mx-auto mt-1 text-sm text-gray-500">Registre os medicamentos
                                     utilizados pelo paciente para controle do tratamento.</p>
                             </div>
                         </header>
 
                         <!-- Formulário -->
-                        <main class="container px-6 mx-auto pb-16">
+                        <main class="container px-6 pb-16 mx-auto">
                             <div
-                                class="max-w-6xl mx-auto bg-white/80 rounded-2xl border border-white/30 shadow p-8 md:p-12">
+                                class="max-w-6xl p-8 mx-auto border shadow bg-white/80 rounded-2xl border-white/30 md:p-12">
 
                                 <!-- Título da seção -->
-                                <div class="text-center mb-10">
+                                <div class="mb-10 text-center">
                                     <h2 class="text-3xl font-bold text-indigo-900">Medicamentos do Paciente</h2>
-                                    <div class="w-24 h-1 mx-auto bg-indigo-600 mt-2 rounded-full"></div>
+                                    <div class="w-24 h-1 mx-auto mt-2 bg-indigo-600 rounded-full"></div>
                                 </div>
 
                                 <!-- Lista de Medicamentos -->
                                 <div class="space-y-8">
                                     @foreach ($medicamentos as $index => $medicamento)
                                         <div
-                                            class="bg-gradient-to-r from-indigo-50/60 via-purple-50/40 to-pink-50/30 border border-indigo-100/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+                                            class="p-8 transition-all duration-300 border bg-gradient-to-r from-indigo-50/60 via-purple-50/40 to-pink-50/30 border-indigo-100/50 rounded-2xl hover:shadow-lg">
 
                                             <!-- Cabeçalho do medicamento -->
                                             <div class="flex items-center justify-between mb-6">
                                                 <div class="flex items-center space-x-3">
                                                     <div
-                                                        class="w-10 h-10 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center">
+                                                        class="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600">
                                                         <span
-                                                            class="text-white font-bold text-lg">{{ $index + 1 }}</span>
+                                                            class="text-lg font-bold text-white">{{ $index + 1 }}</span>
                                                     </div>
                                                     <h3 class="text-xl font-bold text-indigo-900">Medicamento
                                                         {{ $index + 1 }}</h3>
@@ -642,7 +626,7 @@
 
                                                 <button type="button"
                                                     wire:click="removeMedicamento({{ $index }})"
-                                                    class="inline-flex items-center px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-300">
+                                                    class="inline-flex items-center px-4 py-2 font-semibold text-white transition-all duration-200 bg-red-500 hover:bg-red-600 rounded-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-300">
                                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
                                                         viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -654,14 +638,14 @@
                                             </div>
 
                                             <!-- Campos do medicamento organizados em grid -->
-                                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
 
                                                 <!-- Coluna 1 - Informações básicas -->
                                                 <div class="space-y-6">
                                                     <section
-                                                        class="bg-white/60 border border-indigo-100/40 rounded-xl p-6">
+                                                        class="p-6 border bg-white/60 border-indigo-100/40 rounded-xl">
                                                         <h4
-                                                            class="text-lg font-semibold text-indigo-800 mb-4 flex items-center">
+                                                            class="flex items-center mb-4 text-lg font-semibold text-indigo-800">
                                                             <svg class="w-5 h-5 mr-2" fill="none"
                                                                 stroke="currentColor" viewBox="0 0 24 24">
                                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -675,33 +659,33 @@
                                                             <div>
                                                                 <label
                                                                     for="medicamentos.{{ $index }}.nome_generico"
-                                                                    class="block text-sm font-semibold text-gray-700 mb-2">
+                                                                    class="block mb-2 text-sm font-semibold text-gray-700">
                                                                     Nome do Medicamento
                                                                 </label>
                                                                 <input type="text"
                                                                     wire:model="medicamentos.{{ $index }}.nome_generico"
                                                                     id="medicamentos.{{ $index }}.nome_generico"
                                                                     placeholder="Digite o nome do medicamento"
-                                                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200 bg-white/80">
+                                                                    class="w-full px-4 py-3 transition-colors duration-200 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white/80">
                                                                 @error('medicamentos.' . $index . '.nome_generico')
                                                                     <span
-                                                                        class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                                        class="block mt-1 text-sm text-red-500">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
 
                                                             <div>
                                                                 <label for="medicamentos.{{ $index }}.dose"
-                                                                    class="block text-sm font-semibold text-gray-700 mb-2">
+                                                                    class="block mb-2 text-sm font-semibold text-gray-700">
                                                                     Dosagem
                                                                 </label>
                                                                 <input type="text"
                                                                     wire:model="medicamentos.{{ $index }}.dose"
                                                                     id="medicamentos.{{ $index }}.dose"
                                                                     placeholder="Ex: 500mg, 10ml, 1 comprimido"
-                                                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200 bg-white/80">
+                                                                    class="w-full px-4 py-3 transition-colors duration-200 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white/80">
                                                                 @error('medicamentos.' . $index . '.dose')
                                                                     <span
-                                                                        class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                                        class="block mt-1 text-sm text-red-500">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
                                                         </div>
@@ -711,9 +695,9 @@
                                                 <!-- Coluna 2 - Administração -->
                                                 <div class="space-y-6">
                                                     <section
-                                                        class="bg-white/60 border border-purple-100/40 rounded-xl p-6">
+                                                        class="p-6 border bg-white/60 border-purple-100/40 rounded-xl">
                                                         <h4
-                                                            class="text-lg font-semibold text-purple-800 mb-4 flex items-center">
+                                                            class="flex items-center mb-4 text-lg font-semibold text-purple-800">
                                                             <svg class="w-5 h-5 mr-2" fill="none"
                                                                 stroke="currentColor" viewBox="0 0 24 24">
                                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -730,7 +714,7 @@
                                                                 :options="$vias" />
                                                             @error('medicamentos.' . $index . '.via_id')
                                                                 <span
-                                                                    class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                                    class="block mt-1 text-sm text-red-500">{{ $message }}</span>
                                                             @enderror
 
                                                             <x-select label="Horário da Medicação"
@@ -739,7 +723,7 @@
                                                                 :options="$horarios_med" />
                                                             @error('medicamentos.' . $index . '.horario_med_id')
                                                                 <span
-                                                                    class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                                    class="block mt-1 text-sm text-red-500">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </section>
@@ -751,7 +735,7 @@
 
                                 <!-- Botão Adicionar Medicamento -->
                                 @if (count($medicamentos) == 0)
-                                    <div class="text-center py-12">
+                                    <div class="py-12 text-center">
                                         <div class="mb-4">
                                             <svg class="w-16 h-16 mx-auto text-gray-400" fill="none"
                                                 stroke="currentColor" viewBox="0 0 24 24">
@@ -759,13 +743,13 @@
                                                     d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                             </svg>
                                         </div>
-                                        <p class="text-gray-500 text-lg mb-6">Nenhum medicamento adicionado ainda</p>
+                                        <p class="mb-6 text-lg text-gray-500">Nenhum medicamento adicionado ainda</p>
                                     </div>
                                 @endif
 
                                 <div class="flex justify-center mt-8">
                                     <button type="button" wire:click="addMedicamento"
-                                        class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300">
+                                        class="inline-flex items-center px-8 py-4 font-semibold text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300">
                                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -776,10 +760,10 @@
                                 </div>
 
                                 <!-- Botões de Navegação -->
-                                <div class="flex justify-center space-x-6 mt-12">
+                                <div class="flex justify-center mt-12 space-x-6">
                                     <button type="button" wire:click="previousStep"
-                                        class="relative inline-flex items-center justify-center px-8 py-4 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md hover:bg-indigo-50 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                                        <svg class="w-5 h-5 mr-3 group-hover:-translate-x-1 transition-transform duration-300"
+                                        class="relative inline-flex items-center justify-center px-8 py-4 font-semibold text-indigo-700 transition-all duration-300 bg-white border-2 border-indigo-500 shadow-md rounded-xl hover:bg-indigo-50 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                        <svg class="w-5 h-5 mr-3 transition-transform duration-300 group-hover:-translate-x-1"
                                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M11 17l-5-5m0 0l5-5m-5 5h12" />
@@ -788,17 +772,17 @@
                                     </button>
 
                                     <button type="button" wire:click="nextStep"
-                                        class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 shadow-2xl rounded-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 group">
+                                        class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transition-all duration-300 shadow-2xl bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 rounded-2xl hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 group">
                                         <span class="flex items-center">
                                             Continuar para Próxima Etapa
-                                            <svg class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300"
+                                            <svg class="w-5 h-5 ml-3 transition-transform duration-300 group-hover:translate-x-1"
                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                             </svg>
                                         </span>
                                         <div
-                                            class="absolute inset-0 bg-white rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300">
+                                            class="absolute inset-0 transition-opacity duration-300 bg-white opacity-0 rounded-2xl group-hover:opacity-10">
                                         </div>
                                     </button>
                                 </div>
@@ -807,24 +791,7 @@
                         </main>
                     </div>
 
-                    <!-- Footer -->
-                    <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
-                        <div class="container px-6 mx-auto">
-                            <div class="flex flex-col items-center justify-between md:flex-row">
-                                <div class="mb-4 md:mb-0">
-                                    <h4 class="text-xl font-bold">SoPeP</h4>
-                                    <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônica para Pé
-                                        Diabético</p>
-                                </div>
-                                <div class="text-center md:text-right">
-                                    <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.
-                                    </p>
-                                    <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus
-                                        pacientes</p>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
+                    
                 </div>
             @endif
         </div>
@@ -836,7 +803,7 @@
 
                     <!-- Elementos de fundo otimizados -->
                     <div class="absolute inset-0 pointer-events-none -z-10">
-                        <div class="absolute w-60 h-60 bg-indigo-200 rounded-full top-12 left-12 opacity-20"></div>
+                        <div class="absolute bg-indigo-200 rounded-full w-60 h-60 top-12 left-12 opacity-20"></div>
                         <div class="absolute w-64 h-64 bg-purple-200 rounded-full top-24 right-12 opacity-15"></div>
                         <div class="absolute w-56 h-56 bg-pink-200 rounded-full bottom-12 left-20 opacity-10"></div>
                     </div>
@@ -847,35 +814,35 @@
                             <div class="container px-6 mx-auto">
                                 <h1 class="text-5xl font-extrabold text-indigo-900">So<span
                                         class="text-indigo-600">Pe</span>P</h1>
-                                <p class="text-lg text-gray-600 mt-3">Resultados de <span
+                                <p class="mt-3 text-lg text-gray-600">Resultados de <span
                                         class="text-indigo-600">Exames</span></p>
-                                <p class="text-sm text-gray-500 mt-1 max-w-xl mx-auto">Registre os resultados dos
+                                <p class="max-w-xl mx-auto mt-1 text-sm text-gray-500">Registre os resultados dos
                                     exames realizados pelo paciente para acompanhamento clínico.</p>
                             </div>
                         </header>
 
                         <!-- Formulário -->
-                        <main class="container px-6 mx-auto pb-16">
+                        <main class="container px-6 pb-16 mx-auto">
                             <div
-                                class="max-w-6xl mx-auto bg-white/80 rounded-2xl border border-white/30 shadow p-8 md:p-12">
+                                class="max-w-6xl p-8 mx-auto border shadow bg-white/80 rounded-2xl border-white/30 md:p-12">
 
                                 <!-- Título da seção -->
-                                <div class="text-center mb-10">
+                                <div class="mb-10 text-center">
                                     <h2 class="text-3xl font-bold text-indigo-900">Resultados de Exames</h2>
-                                    <div class="w-24 h-1 mx-auto bg-indigo-600 mt-2 rounded-full"></div>
+                                    <div class="w-24 h-1 mx-auto mt-2 bg-indigo-600 rounded-full"></div>
                                 </div>
 
                                 <!-- Lista de Resultados -->
                                 <div class="space-y-8">
                                     @foreach ($resultados as $index => $resultado)
                                         <div
-                                            class="bg-gradient-to-r from-blue-50/60 via-indigo-50/40 to-purple-50/30 border border-blue-100/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+                                            class="p-8 transition-all duration-300 border bg-gradient-to-r from-blue-50/60 via-indigo-50/40 to-purple-50/30 border-blue-100/50 rounded-2xl hover:shadow-lg">
 
                                             <!-- Cabeçalho do resultado -->
                                             <div class="flex items-center justify-between mb-6">
                                                 <div class="flex items-center space-x-3">
                                                     <div
-                                                        class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
+                                                        class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600">
                                                         <svg class="w-6 h-6 text-white" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -892,7 +859,7 @@
 
                                                 <button type="button"
                                                     wire:click="removeResultado({{ $index }})"
-                                                    class="inline-flex items-center px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-300">
+                                                    class="inline-flex items-center px-4 py-2 font-semibold text-white transition-all duration-200 bg-red-500 hover:bg-red-600 rounded-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-300">
                                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
                                                         viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -904,14 +871,14 @@
                                             </div>
 
                                             <!-- Campos do resultado organizados -->
-                                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                                            <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
 
                                                 <!-- Data do Exame -->
                                                 <div class="lg:col-span-1">
                                                     <section
-                                                        class="bg-white/70 border border-blue-100/40 rounded-xl p-6 h-full">
+                                                        class="h-full p-6 border bg-white/70 border-blue-100/40 rounded-xl">
                                                         <h4
-                                                            class="text-lg font-semibold text-blue-800 mb-4 flex items-center">
+                                                            class="flex items-center mb-4 text-lg font-semibold text-blue-800">
                                                             <svg class="w-5 h-5 mr-2" fill="none"
                                                                 stroke="currentColor" viewBox="0 0 24 24">
                                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -923,16 +890,16 @@
 
                                                         <div>
                                                             <label for="resultados.{{ $index }}.data_exame"
-                                                                class="block text-sm font-semibold text-gray-700 mb-2">
+                                                                class="block mb-2 text-sm font-semibold text-gray-700">
                                                                 Quando foi realizado?
                                                             </label>
                                                             <input type="date"
                                                                 wire:model="resultados.{{ $index }}.data_exame"
                                                                 id="resultados.{{ $index }}.data_exame"
-                                                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 bg-white/90">
+                                                                class="w-full px-4 py-3 transition-colors duration-200 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white/90">
                                                             @error('resultados.' . $index . '.data_exame')
                                                                 <span
-                                                                    class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                                    class="block mt-1 text-sm text-red-500">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </section>
@@ -941,9 +908,9 @@
                                                 <!-- Resultado/Descrição -->
                                                 <div class="lg:col-span-2">
                                                     <section
-                                                        class="bg-white/70 border border-indigo-100/40 rounded-xl p-6 h-full">
+                                                        class="h-full p-6 border bg-white/70 border-indigo-100/40 rounded-xl">
                                                         <h4
-                                                            class="text-lg font-semibold text-indigo-800 mb-4 flex items-center">
+                                                            class="flex items-center mb-4 text-lg font-semibold text-indigo-800">
                                                             <svg class="w-5 h-5 mr-2" fill="none"
                                                                 stroke="currentColor" viewBox="0 0 24 24">
                                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -956,16 +923,16 @@
                                                         <div>
                                                             <label
                                                                 for="resultados.{{ $index }}.texto_resultado"
-                                                                class="block text-sm font-semibold text-gray-700 mb-2">
+                                                                class="block mb-2 text-sm font-semibold text-gray-700">
                                                                 Descrição detalhada do resultado
                                                             </label>
                                                             <textarea wire:model="resultados.{{ $index }}.texto_resultado"
                                                                 id="resultados.{{ $index }}.texto_resultado" rows="6"
                                                                 placeholder="Descreva os resultados do exame, valores encontrados, observações médicas, etc."
-                                                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200 bg-white/90 resize-none"></textarea>
+                                                                class="w-full px-4 py-3 transition-colors duration-200 border border-gray-200 rounded-lg resize-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white/90"></textarea>
                                                             @error('resultados.' . $index . '.texto_resultado')
                                                                 <span
-                                                                    class="text-sm text-red-500 mt-1 block">{{ $message }}</span>
+                                                                    class="block mt-1 text-sm text-red-500">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </section>
@@ -973,7 +940,7 @@
                                             </div>
 
                                             <!-- Status visual -->
-                                            <div class="mt-4 flex items-center justify-end">
+                                            <div class="flex items-center justify-end mt-4">
                                                 <div class="flex items-center text-sm text-gray-500">
                                                     <svg class="w-4 h-4 mr-1 text-green-500" fill="currentColor"
                                                         viewBox="0 0 20 20">
@@ -990,7 +957,7 @@
 
                                 <!-- Estado vazio -->
                                 @if (count($resultados) == 0)
-                                    <div class="text-center py-16">
+                                    <div class="py-16 text-center">
                                         <div class="mb-6">
                                             <svg class="w-20 h-20 mx-auto text-gray-400" fill="none"
                                                 stroke="currentColor" viewBox="0 0 24 24">
@@ -998,9 +965,9 @@
                                                     d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                             </svg>
                                         </div>
-                                        <h3 class="text-xl font-semibold text-gray-700 mb-2">Nenhum resultado
+                                        <h3 class="mb-2 text-xl font-semibold text-gray-700">Nenhum resultado
                                             registrado</h3>
-                                        <p class="text-gray-500 text-lg mb-8">Adicione os resultados dos exames
+                                        <p class="mb-8 text-lg text-gray-500">Adicione os resultados dos exames
                                             realizados pelo paciente</p>
                                     </div>
                                 @endif
@@ -1008,7 +975,7 @@
                                 <!-- Botão Adicionar Resultado -->
                                 <div class="flex justify-center mt-8">
                                     <button type="button" wire:click="addResultado"
-                                        class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                                        class="inline-flex items-center px-8 py-4 font-semibold text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300">
                                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1021,10 +988,10 @@
                                 <!-- Seção de Resumo (quando há resultados) -->
                                 @if (count($resultados) > 0)
                                     <div
-                                        class="mt-12 bg-gradient-to-r from-green-50/50 to-emerald-50/50 border border-green-100/50 rounded-2xl p-6">
+                                        class="p-6 mt-12 border bg-gradient-to-r from-green-50/50 to-emerald-50/50 border-green-100/50 rounded-2xl">
                                         <div class="flex items-center mb-4">
                                             <div
-                                                class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                                                class="flex items-center justify-center w-8 h-8 mr-3 bg-green-500 rounded-full">
                                                 <svg class="w-4 h-4 text-white" fill="currentColor"
                                                     viewBox="0 0 20 20">
                                                     <path fill-rule="evenodd"
@@ -1043,10 +1010,10 @@
                                 @endif
 
                                 <!-- Botões de Navegação -->
-                                <div class="flex justify-center space-x-6 mt-12">
+                                <div class="flex justify-center mt-12 space-x-6">
                                     <button type="button" wire:click="previousStep"
-                                        class="relative inline-flex items-center justify-center px-8 py-4 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md hover:bg-indigo-50 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300">
-                                        <svg class="w-5 h-5 mr-3 group-hover:-translate-x-1 transition-transform duration-300"
+                                        class="relative inline-flex items-center justify-center px-8 py-4 font-semibold text-indigo-700 transition-all duration-300 bg-white border-2 border-indigo-500 shadow-md rounded-xl hover:bg-indigo-50 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                        <svg class="w-5 h-5 mr-3 transition-transform duration-300 group-hover:-translate-x-1"
                                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M11 17l-5-5m0 0l5-5m-5 5h12" />
@@ -1055,17 +1022,17 @@
                                     </button>
 
                                     <button type="button" wire:click="nextStep"
-                                        class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 shadow-2xl rounded-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 group">
+                                        class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transition-all duration-300 shadow-2xl bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 rounded-2xl hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 group">
                                         <span class="flex items-center">
                                             Continuar para Próxima Etapa
-                                            <svg class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300"
+                                            <svg class="w-5 h-5 ml-3 transition-transform duration-300 group-hover:translate-x-1"
                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                             </svg>
                                         </span>
                                         <div
-                                            class="absolute inset-0 bg-white rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300">
+                                            class="absolute inset-0 transition-opacity duration-300 bg-white opacity-0 rounded-2xl group-hover:opacity-10">
                                         </div>
                                     </button>
                                 </div>
@@ -1074,24 +1041,7 @@
                         </main>
                     </div>
 
-                    <!-- Footer -->
-                    <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
-                        <div class="container px-6 mx-auto">
-                            <div class="flex flex-col items-center justify-between md:flex-row">
-                                <div class="mb-4 md:mb-0">
-                                    <h4 class="text-xl font-bold">SoPeP</h4>
-                                    <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônica para Pé
-                                        Diabético</p>
-                                </div>
-                                <div class="text-center md:text-right">
-                                    <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.
-                                    </p>
-                                    <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus
-                                        pacientes</p>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
+                   
                 </div>
             @endif
         </div>
@@ -1103,7 +1053,7 @@
 
                     <!-- Elementos de fundo otimizados -->
                     <div class="absolute inset-0 pointer-events-none -z-10">
-                        <div class="absolute w-60 h-60 bg-indigo-200 rounded-full top-12 left-12 opacity-20"></div>
+                        <div class="absolute bg-indigo-200 rounded-full w-60 h-60 top-12 left-12 opacity-20"></div>
                         <div class="absolute w-64 h-64 bg-purple-200 rounded-full top-24 right-12 opacity-15"></div>
                         <div class="absolute w-56 h-56 bg-pink-200 rounded-full bottom-12 left-20 opacity-10"></div>
                     </div>
@@ -1114,22 +1064,22 @@
                             <div class="container px-6 mx-auto">
                                 <h1 class="text-5xl font-extrabold text-indigo-900">So<span
                                         class="text-indigo-600">Pe</span>P</h1>
-                                <p class="text-lg text-gray-600 mt-3">Seleção de <span class="text-indigo-600">Unidade
+                                <p class="mt-3 text-lg text-gray-600">Seleção de <span class="text-indigo-600">Unidade
                                         de Saúde</span></p>
-                                <p class="text-sm text-gray-500 mt-1 max-w-xl mx-auto">Selecione a unidade de saúde
+                                <p class="max-w-xl mx-auto mt-1 text-sm text-gray-500">Selecione a unidade de saúde
                                     onde o paciente será atendido.</p>
                             </div>
                         </header>
 
                         <!-- Conteúdo Principal -->
-                        <main class="container px-6 mx-auto pb-16">
+                        <main class="container px-6 pb-16 mx-auto">
                             <div
-                                class="max-w-4xl mx-auto bg-white/80 rounded-2xl border border-white/30 shadow p-8 md:p-12">
+                                class="max-w-4xl p-8 mx-auto border shadow bg-white/80 rounded-2xl border-white/30 md:p-12">
 
                                 <!-- Título da seção -->
-                                <div class="text-center mb-10">
+                                <div class="mb-10 text-center">
                                     <h2 class="text-3xl font-bold text-indigo-900">Unidade de Saúde</h2>
-                                    <div class="w-24 h-1 mx-auto bg-indigo-600 mt-2 rounded-full"></div>
+                                    <div class="w-24 h-1 mx-auto mt-2 bg-indigo-600 rounded-full"></div>
                                 </div>
 
                                 <div class="step">
@@ -1137,7 +1087,7 @@
                                     <div wire:loading.remove>
                                         @if ($unidade)
                                             <section
-                                                class="bg-green-50/50 border border-green-200/60 rounded-xl p-6 mb-8">
+                                                class="p-6 mb-8 border bg-green-50/50 border-green-200/60 rounded-xl">
                                                 <div class="flex items-center">
                                                     <div class="flex-shrink-0">
                                                         <svg class="w-8 h-8 text-green-600" fill="none"
@@ -1151,9 +1101,9 @@
                                                     <div class="ml-4">
                                                         <h3 class="text-lg font-semibold text-green-800">Unidade
                                                             Selecionada</h3>
-                                                        <p class="text-green-700 font-medium mt-1">
+                                                        <p class="mt-1 font-medium text-green-700">
                                                             {{ $unidade->nome }}</p>
-                                                        <p class="text-green-600 text-sm mt-1">
+                                                        <p class="mt-1 text-sm text-green-600">
                                                             {{ $unidade->rua }}, {{ $unidade->bairro }}
                                                         </p>
                                                     </div>
@@ -1163,8 +1113,8 @@
                                     </div>
 
                                     <!-- Formulário de Busca -->
-                                    <section class="bg-indigo-50/50 border border-indigo-100/40 rounded-xl p-6 mb-8">
-                                        <h3 class="text-lg font-semibold text-indigo-800 mb-4 flex items-center">
+                                    <section class="p-6 mb-8 border bg-indigo-50/50 border-indigo-100/40 rounded-xl">
+                                        <h3 class="flex items-center mb-4 text-lg font-semibold text-indigo-800">
                                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1175,7 +1125,7 @@
 
                                         <div class="relative">
                                             <input wire:model.live.debounce.300ms="search"
-                                                class="block w-full px-6 py-4 pr-12 text-gray-900 bg-white border border-gray-200 rounded-xl shadow-sm placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+                                                class="block w-full px-6 py-4 pr-12 text-gray-900 placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 shadow-sm rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                                                 type="search" placeholder="Digite o nome da unidade de saúde..."
                                                 aria-label="Search">
                                             <div class="absolute inset-y-0 right-0 flex items-center pr-4">
@@ -1190,19 +1140,19 @@
                                     </section>
 
                                     <!-- Loading State -->
-                                    <div wire:loading class="flex justify-center items-center py-8">
-                                        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600">
+                                    <div wire:loading class="flex items-center justify-center py-8">
+                                        <div class="w-8 h-8 border-b-2 border-indigo-600 rounded-full animate-spin">
                                         </div>
-                                        <span class="ml-3 text-indigo-600 font-medium">Buscando unidades...</span>
+                                        <span class="ml-3 font-medium text-indigo-600">Buscando unidades...</span>
                                     </div>
 
                                     <!-- Resultados da Busca -->
                                     <div wire:loading.remove>
                                         @if (sizeof($unidades) > 0)
                                             <section
-                                                class="bg-purple-50/50 border border-purple-100/40 rounded-xl p-6 mb-8">
+                                                class="p-6 mb-8 border bg-purple-50/50 border-purple-100/40 rounded-xl">
                                                 <h3
-                                                    class="text-lg font-semibold text-purple-800 mb-4 flex items-center">
+                                                    class="flex items-center mb-4 text-lg font-semibold text-purple-800">
                                                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
                                                         viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -1221,7 +1171,7 @@
                                                                 <div class="flex items-center space-x-3">
                                                                     <div class="flex-shrink-0">
                                                                         <div
-                                                                            class="w-10 h-10 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg flex items-center justify-center group-hover:from-indigo-200 group-hover:to-purple-200 transition-all duration-200">
+                                                                            class="flex items-center justify-center w-10 h-10 transition-all duration-200 rounded-lg bg-gradient-to-br from-indigo-100 to-purple-100 group-hover:from-indigo-200 group-hover:to-purple-200">
                                                                             <svg class="w-5 h-5 text-indigo-600"
                                                                                 fill="none" stroke="currentColor"
                                                                                 viewBox="0 0 24 24">
@@ -1235,20 +1185,20 @@
                                                                     </div>
                                                                     <div>
                                                                         <h4
-                                                                            class="text-lg font-semibold text-gray-900 group-hover:text-indigo-700 transition-colors duration-200">
+                                                                            class="text-lg font-semibold text-gray-900 transition-colors duration-200 group-hover:text-indigo-700">
                                                                             {{ $unidade->nome }}
                                                                         </h4>
-                                                                        <p class="text-sm text-gray-600 mt-1">
+                                                                        <p class="mt-1 text-sm text-gray-600">
                                                                             {{ $unidade->rua }},
                                                                             {{ $unidade->bairro }}
                                                                         </p>
-                                                                        <p class="text-xs text-gray-500 mt-1">Clique
+                                                                        <p class="mt-1 text-xs text-gray-500">Clique
                                                                             para
                                                                             selecionar</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="flex-shrink-0">
-                                                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-600 transition-colors duration-200"
+                                                                    <svg class="w-5 h-5 text-gray-400 transition-colors duration-200 group-hover:text-indigo-600"
                                                                         fill="none" stroke="currentColor"
                                                                         viewBox="0 0 24 24">
                                                                         <path stroke-linecap="round"
@@ -1263,17 +1213,17 @@
                                             </section>
                                         @elseif($search && sizeof($unidades) == 0)
                                             <section
-                                                class="bg-yellow-50/50 border border-yellow-200/60 rounded-xl p-6 mb-8">
+                                                class="p-6 mb-8 border bg-yellow-50/50 border-yellow-200/60 rounded-xl">
                                                 <div class="flex items-center justify-center text-center">
                                                     <div>
-                                                        <svg class="w-12 h-12 text-yellow-500 mx-auto mb-3"
+                                                        <svg class="w-12 h-12 mx-auto mb-3 text-yellow-500"
                                                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 stroke-width="2"
                                                                 d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
                                                             </path>
                                                         </svg>
-                                                        <h3 class="text-lg font-semibold text-yellow-800 mb-2">Nenhuma
+                                                        <h3 class="mb-2 text-lg font-semibold text-yellow-800">Nenhuma
                                                             unidade encontrada</h3>
                                                         <p class="text-yellow-700">Tente ajustar os termos da sua
                                                             busca.</p>
@@ -1284,10 +1234,10 @@
                                     </div>
 
                                     <!-- Botões de Navegação -->
-                                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-12">
+                                    <div class="flex flex-col items-center justify-center gap-4 mt-12 sm:flex-row">
                                         <!-- Botão Voltar -->
                                         <button type="button" wire:click="previousStep"
-                                            class="relative inline-flex items-center justify-center px-8 py-3 text-indigo-700 bg-white border-2 border-indigo-500 rounded-xl font-semibold shadow-md transition-all duration-300 ease-in-out hover:bg-indigo-50 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 w-full sm:w-auto">
+                                            class="relative inline-flex items-center justify-center w-full px-8 py-3 font-semibold text-indigo-700 transition-all duration-300 ease-in-out bg-white border-2 border-indigo-500 shadow-md rounded-xl hover:bg-indigo-50 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50 sm:w-auto">
                                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1300,7 +1250,7 @@
                                         <button type="submit" @if (!$unidade) disabled @endif
                                             class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transform shadow-2xl group rounded-2xl hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-50 w-full sm:w-auto transition-all duration-300 @if ($unidade) bg-gradient-to-r from-teal-500 to-cyan-600 focus:ring-teal-300 @else bg-gray-400 cursor-not-allowed @endif">
                                             <span class="flex items-center">
-                                                <svg class="w-5 h-5 mr-3 group-hover:translate-x-1 transition-transform duration-200"
+                                                <svg class="w-5 h-5 mr-3 transition-transform duration-200 group-hover:translate-x-1"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2"
@@ -1314,7 +1264,7 @@
                                                 @endif
                                             </span>
                                             <div
-                                                class="absolute inset-0 bg-white rounded-2xl opacity-0 group-hover:opacity-10 duration-300">
+                                                class="absolute inset-0 duration-300 bg-white opacity-0 rounded-2xl group-hover:opacity-10">
                                             </div>
                                         </button>
                                     </div>
@@ -1324,24 +1274,7 @@
                         </main>
                     </div>
 
-                    <!-- Footer -->
-                    <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
-                        <div class="container px-6 mx-auto">
-                            <div class="flex flex-col items-center justify-between md:flex-row">
-                                <div class="mb-4 md:mb-0">
-                                    <h4 class="text-xl font-bold">SoPeP</h4>
-                                    <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônica para Pé
-                                        Diabético</p>
-                                </div>
-                                <div class="text-center md:text-right">
-                                    <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.
-                                    </p>
-                                    <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus
-                                        pacientes</p>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
+                 
                 </div>
             @endif
         </div>

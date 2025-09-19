@@ -6,17 +6,9 @@
                 <div class="step">
                     <div class="relative min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
                         <!-- Elementos decorativos de fundo -->
-                        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-                            <div
-                                class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-20">
-                            </div>
-                            <div
-                                class="absolute bg-purple-200 rounded-full opacity-15 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
-                            </div>
-                            <div
-                                class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-15">
-                            </div>
-                        </div>
+                        <div class="absolute inset-0 pointer-events-none">
+  <div class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]"></div>
+</div>
 
                         <div class="relative z-10 py-12">
                             <!-- Header Section -->
@@ -372,17 +364,9 @@
             @if ($currentStep == 2)
                 <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
                     <!-- Elementos decorativos de fundo otimizados -->
-                    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-                        <div
-                            class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-20">
-                        </div>
-                        <div
-                            class="absolute bg-purple-200 rounded-full opacity-15 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
-                        </div>
-                        <div
-                            class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-15">
-                        </div>
-                    </div>
+                    <div class="absolute inset-0 pointer-events-none">
+  <div class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]"></div>
+</div>
 
                     <div class="relative z-10 px-6 py-8">
                         <!-- Header -->
@@ -1798,7 +1782,7 @@
                                                 <!-- Botão Calcular ITB Direito -->
                                                 <div class="flex items-end">
                                                     <button type="button" wire:click="calcularITBDireito"
-                                                        class="w-full px-4 py-2 font-medium text-white shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                                        class="w-full px-4 py-2 font-medium text-white rounded-lg shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
                                                         Calcular ITB Direito
                                                     </button>
                                                 </div>
@@ -1807,7 +1791,7 @@
                                             <!-- Resultado ITB Direito -->
                                             @if ($itbD)
                                                 <div
-                                                    class="p-4 bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200 rounded-lg">
+                                                    class="p-4 border border-gray-200 rounded-lg bg-gradient-to-r from-gray-50 to-gray-100">
                                                     <div class="flex flex-wrap items-center gap-4">
                                                         <div class="flex items-center gap-2">
                                                             <span class="text-sm font-medium text-gray-600">ITB
@@ -1883,7 +1867,7 @@
                                                 <!-- Botão Calcular ITB Esquerdo -->
                                                 <div class="flex items-end">
                                                     <button type="button" wire:click="calcularITBEsquerdo"
-                                                        class="w-full px-4 py-2 font-medium text-white shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                                        class="w-full px-4 py-2 font-medium text-white rounded-lg shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
                                                         Calcular ITB Esquerdo
                                                     </button>
                                                 </div>
@@ -1892,7 +1876,7 @@
                                             <!-- Resultado ITB Esquerdo -->
                                             @if ($itbE)
                                                 <div
-                                                    class="p-4 bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200 rounded-lg">
+                                                    class="p-4 border border-gray-200 rounded-lg bg-gradient-to-r from-gray-50 to-gray-100">
                                                     <div class="flex flex-wrap items-center gap-4">
                                                         <div class="flex items-center gap-2">
                                                             <span class="text-sm font-medium text-gray-600">ITB
@@ -1950,7 +1934,7 @@
                                             <h3 class="text-lg font-semibold text-gray-800">Referência Visual</h3>
                                         </div>
                                         <div class="flex justify-center">
-                                            <div class="relative w-full max-w-md h-48">
+                                            <div class="relative w-full h-48 max-w-md">
                                                 <img src="{{ asset('trace.svg') }}" alt="Referência do Pé"
                                                     class="object-contain w-full h-full">
                                             </div>
@@ -2266,7 +2250,7 @@
                                                                 value="1"
                                                                 class="w-5 h-5 mt-1 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
                                                             <span class="ml-3 font-medium text-gray-700">
-                                                                <span class="text-green-700 font-semibold">Percepção
+                                                                <span class="font-semibold text-green-700">Percepção
                                                                     presente</span>
                                                                 (responder corretamente em duas das três aplicações)
                                                             </span>
@@ -2276,7 +2260,7 @@
                                                                 value="0"
                                                                 class="w-5 h-5 mt-1 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
                                                             <span class="ml-3 font-medium text-gray-700">
-                                                                <span class="text-red-700 font-semibold">Percepção
+                                                                <span class="font-semibold text-red-700">Percepção
                                                                     ausente</span>
                                                                 (falhar em responder corretamente em duas das três
                                                                 aplicações)
@@ -2299,7 +2283,7 @@
                                                                 value="1"
                                                                 class="w-5 h-5 mt-1 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
                                                             <span class="ml-3 font-medium text-gray-700">
-                                                                <span class="text-green-700 font-semibold">Percepção
+                                                                <span class="font-semibold text-green-700">Percepção
                                                                     presente</span>
                                                                 (responder corretamente em duas das três aplicações)
                                                             </span>
@@ -2309,7 +2293,7 @@
                                                                 value="0"
                                                                 class="w-5 h-5 mt-1 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
                                                             <span class="ml-3 font-medium text-gray-700">
-                                                                <span class="text-red-700 font-semibold">Percepção
+                                                                <span class="font-semibold text-red-700">Percepção
                                                                     ausente</span>
                                                                 (falhar em responder corretamente em duas das três
                                                                 aplicações)
@@ -2692,7 +2676,7 @@
                                                         Intensidade da Dor (Pé Direito):
                                                     </label>
                                                     <div
-                                                        class="grid grid-cols-11 gap-2 p-4 border border-gray-200 rounded-xl bg-white">
+                                                        class="grid grid-cols-11 gap-2 p-4 bg-white border border-gray-200 rounded-xl">
                                                         @for ($i = 0; $i <= 10; $i++)
                                                             @php
                                                                 $color = match (true) {
@@ -2724,7 +2708,7 @@
                                                                 wire:click="$set('dados.direito.dor', {{ $i }})"
                                                                 class="flex flex-col items-center p-3 transition-all duration-200 cursor-pointer rounded-xl hover:shadow-md {{ $color }} {{ $selected }}">
                                                                 <span
-                                                                    class="text-2xl mb-1">{{ $emoji }}</span>
+                                                                    class="mb-1 text-2xl">{{ $emoji }}</span>
                                                                 <span
                                                                     class="text-sm font-bold">{{ $i }}</span>
                                                             </button>
@@ -3066,7 +3050,7 @@
                                                         Intensidade da Dor (Pé Esquerdo):
                                                     </label>
                                                     <div
-                                                        class="grid grid-cols-11 gap-2 p-4 border border-gray-200 rounded-xl bg-white">
+                                                        class="grid grid-cols-11 gap-2 p-4 bg-white border border-gray-200 rounded-xl">
                                                         @for ($i = 0; $i <= 10; $i++)
                                                             @php
                                                                 $color = match (true) {
@@ -3098,7 +3082,7 @@
                                                                 wire:click="$set('dados.esquerdo.dor', {{ $i }})"
                                                                 class="flex flex-col items-center p-3 transition-all duration-200 cursor-pointer rounded-xl hover:shadow-md {{ $color }} {{ $selected }}">
                                                                 <span
-                                                                    class="text-2xl mb-1">{{ $emoji }}</span>
+                                                                    class="mb-1 text-2xl">{{ $emoji }}</span>
                                                                 <span
                                                                     class="text-sm font-bold">{{ $i }}</span>
                                                             </button>
@@ -3311,19 +3295,19 @@
                                             <div class="mt-6">
                                                 <p class="mb-3 text-sm font-medium text-gray-700">Pré-visualização:
                                                 </p>
-                                                <div class="p-4 border border-gray-200 rounded-xl bg-white">
+                                                <div class="p-4 bg-white border border-gray-200 rounded-xl">
                                                     <img src="{{ $imagem_avaliacao_pe->temporaryUrl() }}"
                                                         alt="Pré-visualização da imagem"
-                                                        class="object-contain w-full max-w-md mx-auto rounded-lg h-64">
+                                                        class="object-contain w-full h-64 max-w-md mx-auto rounded-lg">
                                                 </div>
                                             </div>
                                         @elseif ($imagem_avaliacao_pe_url)
                                             <div class="mt-6">
                                                 <p class="mb-3 text-sm font-medium text-gray-700">Imagem atual:</p>
-                                                <div class="p-4 border border-gray-200 rounded-xl bg-white">
+                                                <div class="p-4 bg-white border border-gray-200 rounded-xl">
                                                     <img src="{{ Storage::url($imagem_avaliacao_pe_url) }}"
                                                         alt="Imagem atual"
-                                                        class="object-contain w-full max-w-md mx-auto rounded-lg h-64">
+                                                        class="object-contain w-full h-64 max-w-md mx-auto rounded-lg">
                                                 </div>
                                             </div>
                                         @endif
@@ -3367,17 +3351,9 @@
             @if ($currentStep == 3)
                 <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
                     <!-- Elementos decorativos de fundo otimizados -->
-                    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-                        <div
-                            class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-20">
-                        </div>
-                        <div
-                            class="absolute bg-purple-200 rounded-full opacity-15 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
-                        </div>
-                        <div
-                            class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-15">
-                        </div>
-                    </div>
+                    <div class="absolute inset-0 pointer-events-none">
+  <div class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]"></div>
+</div>
 
                     <div class="relative z-10 px-6 py-8">
                         <!-- Header -->
@@ -3751,17 +3727,9 @@
             @if ($currentStep == 4)
                 <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
                     <!-- Elementos decorativos de fundo otimizados -->
-                    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-                        <div
-                            class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-20">
-                        </div>
-                        <div
-                            class="absolute bg-purple-200 rounded-full opacity-15 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
-                        </div>
-                        <div
-                            class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-15">
-                        </div>
-                    </div>
+                    <div class="absolute inset-0 pointer-events-none">
+  <div class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]"></div>
+</div>
 
                     <div class="relative z-10 px-6 py-8">
                         <!-- Header -->
