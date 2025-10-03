@@ -18,20 +18,11 @@
 
 <body class="relative min-h-screen overflow-hidden font-sans bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
 
-    <!-- Elementos decorativos de fundo - consistentes com a home -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- Elementos decorativos de fundo -->
+    <div class="absolute inset-0 pointer-events-none">
         <div
-            class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-30 animate-pulse">
+            class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]">
         </div>
-        <div class="absolute bg-purple-200 rounded-full opacity-25 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl animate-pulse"
-            style="animation-delay: 2s;"></div>
-        <div class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-20 animate-pulse"
-            style="animation-delay: 4s;"></div>
-        <div
-            class="absolute transform -translate-x-1/2 -translate-y-1/2 bg-indigo-100 rounded-full top-1/2 left-1/2 w-96 h-96 mix-blend-multiply filter blur-2xl opacity-10">
-        </div>
-
-
     </div>
 
     <!-- Navegação -->
