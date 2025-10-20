@@ -4,11 +4,20 @@ import forms from '@tailwindcss/forms';
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-    ],
+        './resources/**/*.js',
+        './resources/**/*.vue',
+        './storage/framework/views/*.php',
 
+        // blades do Laravel (paginação etc.)
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+
+        // se você usa componentes Livewire em PHP
+        './app/Http/Livewire/**/*.php',
+
+        // (opcional) se usa pacotes com blades
+        './vendor/livewire/livewire/src/**/*.blade.php',
+    ],
     theme: {
         extend: {
             fontFamily: {
@@ -16,6 +25,5 @@ export default {
             },
         },
     },
-
     plugins: [forms],
 };
