@@ -12,7 +12,7 @@
                 </div>
 
                 <!-- Links desktop -->
-                <div class="hidden space-x-10 sm:-my-px sm:ms-12 sm:flex">
+                <div class="hidden space-x-10 lg:-my-px lg:ms-12 lg:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Início') }}
                     </x-nav-link>
@@ -45,7 +45,7 @@
             <!-- DIREITA: dropdown usuário (desktop) + hambúrguer (mobile) -->
             <div class="flex items-center gap-3">
                 <!-- Dropdown de usuário (desktop) -->
-                <div class="hidden sm:flex sm:items-center sm:ms-8">
+                <div class="hidden lg:flex lg:items-center lg:ms-8">
                     <x-dropdown align="right">
                         <x-slot name="trigger">
                             <button
