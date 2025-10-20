@@ -58,7 +58,7 @@
 
             <!-- Botões de Ação -->
             <div class="flex flex-col gap-4 mb-8 sm:flex-row sm:justify-center">
-                <a href="{{ route('register') }}" class="relative inline-flex items-center group">
+                <a href="{{ route('register') }}" class="relative items-center group">
                     <button
                         class="relative px-10 py-4 overflow-hidden text-xl font-bold text-white transition-all duration-300 transform rounded-full shadow-2xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50">
                         <!-- Efeito de brilho animado -->
