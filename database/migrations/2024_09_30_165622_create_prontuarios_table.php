@@ -76,10 +76,10 @@ return new class extends Migration
        */
       public function down(): void
       {
-            Schema::dropIfExists('prontuarios');
             Schema::dropIfExists('prontuario_origem');
             Schema::dropIfExists('prontuario_motivo');
             Schema::dropIfExists('prontuario_diagnostico');
             Schema::dropIfExists('prontuario_intervencao');
+            Schema::dropIfExists('prontuarios');
       }
 };

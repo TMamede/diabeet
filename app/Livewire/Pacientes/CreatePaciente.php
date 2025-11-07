@@ -241,7 +241,7 @@ class CreatePaciente extends Component
             'n_cigarros.integer' => 'O número de cigarros deve ser um número inteiro.',
             'n_cigarros.min' => 'O número de cigarros deve ser pelo menos 0.',
             'inicio_tabagismo.date' => 'Informe uma data válida para o início do tabagismo.',
-            'inicio_etilismo.date' => 'Informe uma data válida para o início do etilismo.',
+            'inicio_etilismo.date' => 'Informe um ano válido para o início do etilismo.',
             'comorbidades.array' => 'As comorbidades devem ser uma lista.',
             'alergias.array' => 'As alergias devem ser uma lista.',
 
@@ -299,7 +299,7 @@ class CreatePaciente extends Component
                 'amputacao_quando' => 'nullable|date',
                 'n_cigarros' => 'nullable|integer|min:0',
                 'inicio_tabagismo' => 'nullable|date',
-                'inicio_etilismo' => 'nullable|date',
+                'inicio_etilismo' => 'nullable|integer',
                 'medicamento_alergia' => 'nullable|string|max:255',
                 'alimento_alergia' => 'nullable|string|max:255',
                 'comorbidades' => 'nullable|array',

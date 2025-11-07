@@ -55,13 +55,12 @@ class ShowPaciente extends Component
     {
         $this->loadPacienteData($id);
     }
- public function messages()
+    public function messages()
     {
         return [
             // Step 1
             'cpf.required' => 'O CPF é obrigatório.',
             'cpf.digits' => 'O CPF deve ter exatamente 11 dígitos.',
-            'cpf.unique' => 'Este CPF já está cadastrado.',
 
             'email.required' => 'O campo email é obrigatório.',
             'email.email' => 'Informe um endereço de email válido.',
@@ -231,7 +230,7 @@ class ShowPaciente extends Component
     {
         if ($this->currentStep == 1) {
             $this->validate([
-                'cpf' => ['required', 'digits:11'],
+                'cpf' => ['required', 'string', 'digits:11'],
                 'email' => ['required', 'email'],
                 'nome' => 'required|string|max:255',
                 'prontuario' => 'required|string|max:255',
@@ -261,7 +260,7 @@ class ShowPaciente extends Component
                 'amputacao_quando' => 'nullable|date',
                 'n_cigarros' => 'nullable|integer|min:0',
                 'inicio_tabagismo' => 'nullable|date',
-                'inicio_etilismo' => 'nullable|date',
+                'inicio_etilismo' => 'nullable|integer',
                 'medicamento_alergia' => 'nullable|string|max:255',
                 'alimento_alergia' => 'nullable|string|max:255',
                 'comorbidades' => 'nullable|array',

@@ -517,7 +517,7 @@
                                                             <label for="inicio_etilismo"
                                                                 class="block mb-2 text-sm font-medium text-gray-700">Início
                                                                 do Etilismo</label>
-                                                            <input type="date" wire:model.lazy="inicio_etilismo"
+                                                            <input type="number" wire:model.lazy="inicio_etilismo"
                                                                 id="inicio_etilismo"
                                                                 class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                                             @error('inicio_etilismo')
@@ -791,7 +791,7 @@
                         </main>
                     </div>
 
-                    
+
                 </div>
             @endif
         </div>
@@ -1041,7 +1041,7 @@
                         </main>
                     </div>
 
-                   
+
                 </div>
             @endif
         </div>
@@ -1274,7 +1274,7 @@
                         </main>
                     </div>
 
-                 
+
                 </div>
             @endif
         </div>

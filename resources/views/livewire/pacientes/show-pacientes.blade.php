@@ -101,7 +101,7 @@
                                     <div class="relative">
                                         <input type="text" wire:model="cpf" id="cpf"
                                             class="w-full px-4 py-3 border border-gray-200 bg-white/70 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:bg-white"
-                                            placeholder="000.000.000-00">
+                                            placeholder="Somente os números do CPF">
                                         <div class="absolute inset-y-0 right-0 flex items-center pr-3">
                                             <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
@@ -654,7 +654,7 @@
                                             class="block mb-2 text-sm font-semibold text-gray-700">
                                             Início do Etilismo
                                         </label>
-                                        <input type="year" wire:model="inicio_etilismo" id="inicio_etilismo"
+                                        <input type="number" wire:model="inicio_etilismo" id="inicio_etilismo"
                                             class="w-full px-4 py-3 border border-gray-200 bg-white/70 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:bg-white">
                                         @error('inicio_etilismo')
                                             <span class="block mt-1 text-sm text-red-500">{{ $message }}</span>

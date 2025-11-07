@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('amputacao_quando')->nullable();
             $table->tinyInteger('n_cigarros')->nullable();
             $table->date('inicio_tabagismo')->nullable();
-            $table->year('inicio_etilismo')->nullable();
+            $table->integer('inicio_etilismo')->nullable();
             $table->string('medicamento_alergia')->nullable();
             $table->string('alimento_alergia')->nullable();
             $table->timestamps();
