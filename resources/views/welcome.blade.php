@@ -98,7 +98,7 @@
     <footer class="absolute bottom-0 z-10 w-full py-6 text-center">
         <div class="py-4 backdrop-blur-sm bg-white/10 rounded-t-3xl">
             <p class="text-sm text-gray-600">© {{ date('Y') }} SoPeP. Todos os direitos reservados.</p>
-            <p class="mt-1 text-xs text-gray-500">Sistema desenvolvido por Tamires para cuidar melhor dos pacientes</p>
+            <p class="mt-1 text-xs text-gray-500">Sistema desenvolvido para cuidar melhor dos pacientes</p>
         </div>
     </footer>
 

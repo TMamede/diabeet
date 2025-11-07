@@ -136,10 +136,13 @@
                                         class="px-6 py-3 font-medium text-gray-800 transition-colors duration-200 bg-gray-200 rounded-lg hover:bg-gray-300">
                                         Cancelar
                                     </button>
-                                    <button wire:click="deletePaciente" x-on:click="$dispatch('close')"
-                                        class="px-6 py-3 font-medium text-white transition-all duration-200 rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 hover:shadow-xl">
-                                        Excluir Paciente
-                                    </button>
+                                    @if (Auth::check() && Auth::user()->user_type === 'gerenciador')
+                                                <button x-data
+                                                    x-on:click.prevent="$dispatch('open-modal', 'confirm-paciente-deletion-{{ $paciente->id }}'); @this.set('pacienteIdToDelete', {{ $paciente->id }})"
+                                                    class="px-6 py-3 font-medium text-white transition-all duration-200 rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 hover:shadow-xl">
+                                                    Excluir
+                                                </button>
+                                            @endif
                                 </div>
                             </div>
                         </x-new-modal>

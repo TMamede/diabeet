@@ -1,20 +1,11 @@
 <x-app-layout>
-    <div class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+    <div class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-20 to-purple-50">
         <!-- Elementos decorativos de fundo -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div
-                class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-30 ">
-            </div>
-            <div
-                class="absolute bg-purple-200 rounded-full opacity-25 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl ">
-            </div>
-            <div
-                class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-20">
-            </div>
-            <div
-                class="absolute transform -translate-x-1/2 -translate-y-1/2 bg-indigo-100 rounded-full top-1/2 left-1/2 w-96 h-96 mix-blend-multiply filter blur-2xl opacity-10">
-            </div>
+        <div class="absolute inset-0 pointer-events-none">
+        <div
+            class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]">
         </div>
+    </div>
 
         <div class="relative z-10 flex-grow">
             <!-- Hero Section -->
@@ -125,15 +116,15 @@
                                 class="p-8 transition-all duration-300 transform border shadow-lg group bg-white/80 backdrop-blur-sm rounded-3xl hover:shadow-2xl hover:-translate-y-3 border-white/20 md:col-span-2 lg:col-span-1">
                                 <div class="mb-6">
                                     <div
-                                        class="flex items-center justify-center w-16 h-16 mx-auto transition-all duration-300 bg-gradient-to-br from-pink-100 to-pink-200 rounded-2xl group-hover:from-pink-200 group-hover:to-pink-300 group-hover:scale-110">
+                                        class="flex items-center justify-center w-16 h-16 mx-auto transition-all duration-300 bg-gradient-to-br from-blue-100 to-indigo-200 rounded-2xl group-hover:from-indigo-200 group-hover:to-indigo-300 group-hover:scale-110">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-pink-700">
+                                            stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-indigo-700">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.25-4.875c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 17.25 18.75h-9A2.25 2.25 0 0 1 6 16.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.124-.08M15 12.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                         </svg>
                                     </div>
                                 </div>
-                                <h4 class="mb-4 text-xl font-bold text-center text-pink-900">Diagnósticos Inteligentes
+                                <h4 class="mb-4 text-xl font-bold text-center text-indigo-900">Diagnósticos Inteligentes
                                 </h4>
                                 <p class="leading-relaxed text-center text-gray-600">
                                     Sugestões de diagnósticos e intervenções baseadas nas respostas coletadas

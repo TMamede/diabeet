@@ -58,7 +58,7 @@
 
         <!-- Card do formulário -->
         <div class="flex flex-col justify-center flex-1 w-full max-w-md">
-            <div class="border shadow-2xl  backdrop-blur-sm bg-white/90 rounded-2xl border-white/20">
+            <div class="border shadow-2xl backdrop-blur-sm bg-white/90 rounded-2xl border-white/20">
                 <div class="px-6 sm:px-8 py-6 sm:py-8 max-h-[70vh] ">
                     {{ $slot }}
                 </div>
@@ -83,7 +83,7 @@
     <footer class="absolute bottom-0 z-10 w-full py-4 text-center">
         <div class="py-3 backdrop-blur-sm bg-white/5 rounded-t-2xl">
             <p class="text-xs text-gray-600">© {{ date('Y') }} SoPeP. Todos os direitos reservados.</p>
-            <p class="mt-1 text-xs text-gray-500">Sistema desenvolvido por Tamires para cuidar melhor dos pacientes</p>
+            <p class="mt-1 text-xs text-gray-500">Sistema desenvolvido para cuidar melhor dos pacientes</p>
         </div>
     </footer>
 

@@ -12,7 +12,7 @@
                 </div>
 
                 <!-- Links desktop -->
-                <div class="hidden space-x-10 lg:-my-px lg:ms-12 lg:flex">
+                <div class="hidden space-x-16 lg:-my-px lg:ms-12 lg:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Início') }}
                     </x-nav-link>
@@ -36,9 +36,7 @@
                     <x-nav-link :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
                         {{ __('Sobre Nós') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('termos')" :active="request()->routeIs('termos')" wire:navigate>
-                        {{ __('Termos de Uso') }}
-                    </x-nav-link>
+                    
                 </div>
             </div>
 

@@ -56,7 +56,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-dvh bg-indigo-50 page-padding">
+    <div class="min-h-dvh bg-indigo-50">
         <livewire:layout.navigation />
 
         @if (isset($header))
@@ -72,15 +72,19 @@
         </main>
     </div>
 
-    <footer class="relative z-10 py-6 text-white bg-gradient-to-r from-indigo-800 to-purple-900">
+    <footer class="relative z-10 py-6 text-white bg-indigo-800">
         <div class="container px-6 mx-auto">
             <div class="flex flex-col items-center justify-between md:flex-row">
                 <div class="mb-4 md:mb-0">
                     <h4 class="text-xl font-bold">SoPeP</h4>
-                    <p class="text-sm text-indigo-200">Sistema de Prescrição Eletrônico para Pé Diabético</p>
+                    <p class="mb-5 text-sm text-indigo-200">Sistema de Prescrição Eletrônico para Pé Diabético</p>
+                    <p> <a href="{{ route('termos') }}" class="text-sm text-white-200">Termos de Uso</a>
+                    </p>
+                    <p> <a href="{{ route('about') }}" class="text-sm text-white-200">Sobre nós</a>
+                    </p>
                 </div>
                 <div class="text-center md:text-right">
-                    <p class="text-sm text-indigo-200">&copy; 2024 SoPeP. Todos os direitos reservados.</p>
+                    <p class="text-sm text-indigo-200">&copy; {{ date('Y') }} SoPeP. Todos os direitos reservados.</p>
                     <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus pacientes</p>
                 </div>
             </div>
