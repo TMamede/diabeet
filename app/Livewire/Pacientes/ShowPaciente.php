@@ -502,19 +502,29 @@ class ShowPaciente extends Component
         }
 
         // Atualiza ou cria os resultados
+        // Atualiza ou cria os resultados
         foreach ($this->resultados as $resultadoData) {
-            // Atualiza ou cria o resultado associado ao paciente
-            $resultado = Resultado::updateOrCreate(
-                [
-                    'id' => isset($resultadoData['id']) ? $resultadoData['id'] : null, // Se houver um ID, ele atualiza o resultado, caso contrário cria um novo
-                ],
-                [
-                    'texto_resultado' => $resultadoData['texto_resultado'],
-                    'data_exame' => $resultadoData['data_exame'],
-                    'paciente_id' => $pacienteId, // Vincula o resultado ao paciente
-                ]
-            );
+
+            $dados = [
+                'texto_resultado' => $resultadoData['texto_resultado'],
+                'data_exame'      => $resultadoData['data_exame'],
+                'paciente_id'     => $pacienteId,
+            ];
+
+            if (!empty($resultadoData['id'])) {
+                // Atualiza o existente
+                Resultado::updateOrCreate(
+                    ['id' => $resultadoData['id']], // match só com id quando vier
+                    $dados
+                );
+            } else {
+                // Cria um novo (NÃO passe 'id' no match)
+                // se você tem relação em Paciente: resultados()
+                $paciente->resultados()->create($dados);
+                // ou: Resultado::create($dados);
+            }
         }
+
         //Mensagem de alterações salvas com sucesso
         $this->dispatch('notify', 'Alterações salvas com sucesso!');;
     }
