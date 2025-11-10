@@ -1296,15 +1296,7 @@
                                                                 wire:model="resultados.{{ $index }}.data_exame"
                                                                 id="resultados.{{ $index }}.data_exame"
                                                                 class="w-full px-4 py-3 border border-gray-200 bg-white/70 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:bg-white">
-                                                            <div
-                                                                class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                                                <svg class="w-5 h-5 text-gray-400" fill="none"
-                                                                    stroke="currentColor" viewBox="0 0 24 24">
-                                                                    <path stroke-linecap="round"
-                                                                        stroke-linejoin="round" stroke-width="2"
-                                                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                                                </svg>
-                                                            </div>
+
                                                         </div>
                                                         @error('resultados.' . $index . '.data_exame')
                                                             <span
