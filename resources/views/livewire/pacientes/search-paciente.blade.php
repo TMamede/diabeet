@@ -10,7 +10,7 @@
         <div class="px-2 mx-auto sm:px-6 max-w-7xl">
             <!-- Header -->
             <div class="mb-6 text-center sm:mb-8">
-                <h1 class="mb-2 text-3xl font-extrabold leading-tight text-indigo-900 sm:text-4xl">
+                <h1 class="mb-2 text-3xl font-bold leading-tight text-indigo-900 sm:text-4xl">
                     Gerenciamento de <span class="text-indigo-600">Pacientes</span>
                 </h1>
                 <p class="text-sm text-gray-600 sm:text-base">
