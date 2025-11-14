@@ -358,32 +358,7 @@ class DiagnosticoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
 
-            //Diagnóstico emocional
-            [
-                'descricao' => 'Problema emocional', 
-                'created_at' => Carbon::now(), 
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'descricao' => 'Medo', 
-                'created_at' => Carbon::now(), 
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'descricao' => ' Ansiedade', 
-                'created_at' => Carbon::now(), 
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'descricao' => 'Sofrimento', 
-                'created_at' => Carbon::now(), 
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'descricao' => 'Risco de suicídio', 
-                'created_at' => Carbon::now(), 
-                'updated_at' => Carbon::now()
-            ],
+            //Diagnóstico emocional 
             [
                 'descricao' => 'Autoimagem, negativa', 
                 'created_at' => Carbon::now(), 
