@@ -182,38 +182,73 @@ class CreateQuestionario extends Component
 
     public function calcularIMC()
     {
-        // Lógica para verificar se altura e peso estão preenchidos
-        if ($this->altura && $this->peso) {
-            $alturaMetros = $this->altura / 100;
-            $this->imc = $this->peso / ($alturaMetros * $alturaMetros);
+        // Limpa erros anteriores desses campos
+        $this->resetErrorBag(['altura', 'peso']);
 
+        // Normaliza para ponto decimal
+        $alturaStr = str_replace(',', '.', (string) $this->altura);
+        $pesoStr   = str_replace(',', '.', (string) $this->peso);
 
-            // Classificação do IMC
-            if ($this->imc < 18.5) {
-                $this->classificacao = 'Magro ou baixo peso (Risco normal ou elevado)';
-                $this->corIMC = 'text-yellow-500';
-            } elseif ($this->imc >= 18.5 && $this->imc <= 24.9) {
-                $this->classificacao = 'Normal ou eutrófico (Risco normal)';
-                $this->corIMC = 'text-green-600';
-            } elseif ($this->imc >= 25 && $this->imc <= 29.9) {
-                $this->classificacao = 'Sobrepeso ou pré-obeso (Risco pouco elevado)';
-                $this->corIMC = 'text-orange-400';
-            } elseif ($this->imc >= 30 && $this->imc <= 34.9) {
-                $this->classificacao = 'Obesidade Grau I (Risco elevado)';
-                $this->corIMC = 'text-orange-600';
-            } elseif ($this->imc >= 35 && $this->imc <= 39.9) {
-                $this->classificacao = 'Obesidade Grau II (Risco muito elevado)';
-                $this->corIMC = 'text-red-600';
-            } else {
-                $this->classificacao = 'Obesidade grave Grau III (Risco muitíssimo elevado)';
-                $this->corIMC = 'text-red-800 font-bold';
-            }
-        } else {
-            // Se a altura e o peso não estiverem preenchidos, gerar erros
+        $alturaNum = floatval($alturaStr);
+        $pesoNum   = floatval($pesoStr);
+
+        // Valida preenchimento
+        if ($alturaNum <= 0) {
             $this->addError('altura', 'Por favor, informe sua altura.');
+        }
+        if ($pesoNum <= 0) {
             $this->addError('peso', 'Por favor, informe seu peso.');
         }
+        if ($this->getErrorBag()->isNotEmpty()) {
+            return;
+        }
+
+        // Converte altura: se for < 3, assuma metros; senão, cm -> m
+        $alturaMetros = $alturaNum < 3 ? $alturaNum : ($alturaNum / 100);
+
+        // Valida ranges razoáveis
+        if ($alturaMetros < 0.5 || $alturaMetros > 3.0) {
+            $this->addError('altura', 'Altura fora do intervalo esperado.');
+            return;
+        }
+        if ($pesoNum < 10 || $pesoNum > 500) {
+            $this->addError('peso', 'Peso fora do intervalo esperado.');
+            return;
+        }
+
+        // Evita divisão por zero
+        $den = $alturaMetros * $alturaMetros;
+        if ($den <= 0) {
+            $this->addError('altura', 'Altura inválida.');
+            return;
+        }
+
+        // Calcula e arredonda
+        $this->imc = round($pesoNum / $den, 2);
+
+        // Classificação e cor
+        $imc = $this->imc;
+        if ($imc < 18.5) {
+            $this->classificacao = 'Magro ou baixo peso (Risco normal ou elevado)';
+            $this->corIMC = 'text-yellow-500';
+        } elseif ($imc < 25) { // 18.5–24.99
+            $this->classificacao = 'Normal ou eutrófico (Risco normal)';
+            $this->corIMC = 'text-green-600';
+        } elseif ($imc < 30) { // 25–29.99
+            $this->classificacao = 'Sobrepeso ou pré-obeso (Risco pouco elevado)';
+            $this->corIMC = 'text-orange-400';
+        } elseif ($imc < 35) { // 30–34.99
+            $this->classificacao = 'Obesidade Grau I (Risco elevado)';
+            $this->corIMC = 'text-orange-600';
+        } elseif ($imc < 40) { // 35–39.99
+            $this->classificacao = 'Obesidade Grau II (Risco muito elevado)';
+            $this->corIMC = 'text-red-600';
+        } else { // >= 40
+            $this->classificacao = 'Obesidade grave Grau III (Risco muitíssimo elevado)';
+            $this->corIMC = 'text-red-800 font-bold';
+        }
     }
+
 
     public function calcularCircunferencia()
     {

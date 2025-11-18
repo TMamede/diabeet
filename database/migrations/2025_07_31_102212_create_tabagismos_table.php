@@ -15,8 +15,8 @@ return new class extends Migration
         Schema::create('tabagismos', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('fumou');
-            $table->tinyInteger('num_cigarros');
-            $table->foreignIdFor(Data_fumo::class);
+            $table->tinyInteger('num_cigarros')->nullable();
+            $table->foreignIdFor(Data_fumo::class)->nullable();
             $table->timestamps();
         });
     }
