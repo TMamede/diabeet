@@ -38,10 +38,10 @@
     <div class="relative z-10 flex flex-col items-center min-h-screen px-6 py-8 sm:py-12">
 
         <!-- Logo e título -->
-        <div class="flex-shrink-0 mb-6 text-center sm:mb-8">
+        <div class="flex-shrink-0 mb-6 text-center sm:mb-4">
             <a href="/" wire:navigate class="group">
                 <div
-                    class="inline-block p-4 mb-3 transition-all duration-300 transform sm:p-6 backdrop-blur-sm bg-white/10 rounded-2xl sm:mb-4 group-hover:scale-105">
+                    class="inline-block p-2 mb-2 transition-all duration-300 transform sm:p-6 backdrop-blur-sm bg-white/10 rounded-2xl sm:mb- group-hover:scale-105">
                     <x-application-logo
                         class="w-12 h-12 mx-auto transition-transform duration-300 sm:w-16 sm:h-16 drop-shadow-lg group-hover:scale-110" />
                 </div>
@@ -64,28 +64,16 @@
                 </div>
             </div>
         </div>
-
-        <!-- Link para voltar -->
-        <div class="flex-shrink-0 mt-4 text-center sm:mt-6">
-            <a href="/" wire:navigate
-                class="inline-flex items-center text-sm text-indigo-600 transition-colors duration-200 group hover:text-indigo-700">
-                <svg class="w-4 h-4 mr-1 transition-transform duration-200 group-hover:-translate-x-1" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                Voltar ao início
-            </a>
-        </div>
-    </div>
-
-    <!-- Rodapé -->
-    <footer class="absolute bottom-0 z-10 w-full py-4 text-center">
-        <div class="py-3 backdrop-blur-sm bg-white/5 rounded-t-2xl">
+        <footer class="w-full py-4 text-center ">
+        <div class="py-3 bg-white/5 rounded-t-2xl">
             <p class="text-xs text-gray-600">© {{ date('Y') }} SoPeP. Todos os direitos reservados.</p>
             <p class="mt-1 text-xs text-gray-500">Sistema desenvolvido para cuidar melhor dos pacientes</p>
         </div>
     </footer>
+    </div>
+
+    <!-- Rodapé -->
+    
 
     <!-- Animações CSS customizadas -->
     <style>
