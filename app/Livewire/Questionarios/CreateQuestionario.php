@@ -723,7 +723,7 @@ class CreateQuestionario extends Component
                 'acorda_noite' => 'required|boolean',
                 'qualidade_sono_id' => 'required|exists:qualidade_sonos,id',
                 'problema_sonos' => 'nullable|array',
-                'medicamentos_sono' => 'required|string|max:255',
+                'medicamentos_sono' => 'required|string|max:255|no_badwords',
 
                 'realiza' => 'required|boolean',
                 'frequencia_exercicio_id' => 'required|exists:frequencia_exercicios,id',
@@ -757,7 +757,7 @@ class CreateQuestionario extends Component
                 'incontinencia_eliminacao' => 'required|boolean',
                 'constipacao' => 'required|boolean',
                 'diarreia' => 'required|boolean',
-                'equipamento_externo' => 'required|string|max:255',
+                'equipamento_externo' => 'required|max:255|no_badwords',
 
                 'vida_sex_ativa' => 'required|boolean',
                 'disturbio_sexuals' => 'nullable|array',
@@ -831,7 +831,7 @@ class CreateQuestionario extends Component
 
                 'acompanhado' => 'required|boolean',
                 'opnioes_de_si' => 'required|boolean',
-                'auxiliador' => 'required|string|max:255',
+                'auxiliador' => 'required|string|max:255|no_badwords',
                 'emocionals' => 'nullable|array',
 
                 'apoio' => 'required|boolean',
@@ -839,8 +839,8 @@ class CreateQuestionario extends Component
             ]);
         } else if ($this->currentStep == 4) {
             $this->validate([
-                'religiao' => 'string|max:255',
-                'impressoes' => 'required|string',
+                'religiao' => 'string|max:255|no_badwords',
+                'impressoes' => 'required|string|no_badwords',
             ]);
         }
     }

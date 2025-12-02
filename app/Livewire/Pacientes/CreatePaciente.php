@@ -271,7 +271,7 @@ class CreatePaciente extends Component
             $this->validate([
                 'cpf' => ['required', 'digits:11', Rule::unique('pacientes', 'cpf')],
                 'email' => ['required', 'email'],
-                'nome' => 'required|string|max:255',
+                'nome' => 'required|string|max:255|no_badwords',
                 'prontuario' => 'required|string|max:255',
                 'data_nasc' => 'required|date',
                 'sexo' => 'required',
@@ -280,11 +280,11 @@ class CreatePaciente extends Component
                 'etnia_id' => 'required|exists:etnias,id',
                 'cep' => 'required|digits:8',
                 'rua' => 'required|string|max:255',
-                'numero' => 'required|string|max:255',
-                'bairro' => 'required|string|max:255',
-                'cidade' => 'required|string|max:255',
-                'uf' => 'required|string|max:2',
-                'ocupacao' => 'required|string|max:255',
+                'numero' => 'required|string|max:255|no_badwords',
+                'bairro' => 'required|string|max:255|no_badwords',
+                'cidade' => 'required|string|max:255|no_badwords',
+                'uf' => 'required|string|max:2|no_badwords',
+                'ocupacao' => 'required|string|max:255|no_badwords',
                 'renda_familiar' => 'required|numeric',
                 'beneficio_id' => 'required|exists:beneficios,id',
                 'reside_id' => 'required|exists:resides,id',
@@ -294,28 +294,28 @@ class CreatePaciente extends Component
             $this->validate([
                 'tipo_diabetes_id' => 'required|exists:tipo_diabetes,id',
                 'tempo_diagnostico' => 'required|integer',
-                'cirurgia_motivo' => 'nullable|string|max:255',
-                'amputacao_onde' => 'nullable|string|max:255',
+                'cirurgia_motivo' => 'nullable|string|max:255|no_badwords',
+                'amputacao_onde' => 'nullable|string|max:255|no_badwords',
                 'amputacao_quando' => 'nullable|date',
                 'n_cigarros' => 'nullable|integer|min:0',
                 'inicio_tabagismo' => 'nullable|date',
                 'inicio_etilismo' => 'nullable|integer',
-                'medicamento_alergia' => 'nullable|string|max:255',
-                'alimento_alergia' => 'nullable|string|max:255',
+                'medicamento_alergia' => 'nullable|string|max:255|no_badwords',
+                'alimento_alergia' => 'nullable|string|max:255|no_badwords',
                 'comorbidades' => 'nullable|array',
                 'alergias' => 'nullable|array',
             ]);
         } elseif ($this->currentStep == 3) {
             $this->validate([
-                'medicamentos.*.nome_generico' => 'required|string|max:255',
-                'medicamentos.*.via_id' => 'required|exists:via,id',
+                'medicamentos.*.nome_generico' => 'required|string|max:255|no_badwords',
+                'medicamentos.*.via_id' => 'required|exists:via,id|no_badwords',
                 'medicamentos.*.horario_med_id' => 'required|exists:horario,id',
-                'medicamentos.*.dose' => 'required|string|max:255',
+                'medicamentos.*.dose' => 'required|string|max:255|no_badwords',
             ]);
         } elseif ($this->currentStep == 4) {
             $this->validate([
                 'resultados.*.texto_resultado' => 'string',
-                'data_exame' => 'required|date',
+                'data_exame' => 'required|date|no_badwords',
             ]);
         } elseif ($this->currentStep == 5) {
             $this->validate([
