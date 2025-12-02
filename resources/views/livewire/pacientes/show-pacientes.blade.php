@@ -6,15 +6,9 @@
                     class="relative flex flex-row min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
 
                     <!-- Elementos decorativos de fundo -->
-                    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div class="absolute inset-0 pointer-events-none">
                         <div
-                            class="absolute bg-indigo-200 rounded-full top-10 left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-20">
-                        </div>
-                        <div
-                            class="absolute bg-purple-200 rounded-full opacity-15 top-20 right-10 w-80 h-80 mix-blend-multiply filter blur-xl">
-                        </div>
-                        <div
-                            class="absolute w-64 h-64 bg-pink-200 rounded-full bottom-10 left-20 mix-blend-multiply filter blur-xl opacity-15">
+                            class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]">
                         </div>
                     </div>
 
@@ -24,7 +18,7 @@
                     <!-- Conteúdo da Página -->
                     <main class="relative z-10 flex-1 px-6 py-8 lg:px-8">
                         <!-- Header Card -->
-                        <div class="p-6 mb-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                        <div class="p-6 mb-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                             <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                                 <!-- Título -->
                                 <div class="flex items-center gap-4">
@@ -74,7 +68,7 @@
                         </div>
 
                         <!-- Form Card -->
-                        <div class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                        <div class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                             <!-- Section Title -->
                             <div class="pb-4 mb-8 border-b border-indigo-100">
                                 <h2 class="flex items-center gap-3 text-2xl font-bold text-indigo-900">
@@ -434,7 +428,7 @@
                         <main class="relative z-10 flex-1 px-6 py-8 lg:px-8">
                             <!-- Header Card -->
                             <div
-                                class="p-6 mb-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                class="p-6 mb-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                 <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                                     <!-- Título -->
                                     <div class="flex items-center gap-4">
@@ -485,7 +479,7 @@
 
                             <!-- Histórico Médico Card -->
                             <div
-                                class="p-8 mb-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                class="p-8 mb-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                 <!-- Section Title -->
                                 <div class="pb-4 mb-8 border-b border-purple-100">
                                     <h2 class="flex items-center gap-3 text-2xl font-bold text-indigo-900">
@@ -719,7 +713,7 @@
                             </div>
 
                             <!-- Comorbidades e Alergias Card -->
-                            <div class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                            <div class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                 <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
 
                                     <!-- Comorbidades -->
@@ -849,7 +843,7 @@
 
                             <!-- Header Card -->
                             <div
-                                class="p-6 mb-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                class="p-6 mb-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                 <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                                     <!-- Título -->
                                     <div class="flex items-center gap-4">
@@ -899,7 +893,7 @@
                             </div>
 
                             <!-- Medicamentos Section -->
-                            <div class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                            <div class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
 
                                 <!-- Section Title -->
                                 <div class="pb-4 mb-8 border-b border-indigo-100">
@@ -1155,7 +1149,7 @@
 
                                 <!-- Header Card -->
                                 <div
-                                    class="p-6 mb-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                    class="p-6 mb-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                     <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                                         <!-- Título -->
                                         <div class="flex items-center gap-4">
@@ -1207,7 +1201,7 @@
 
                                 <!-- Resultados Section -->
                                 <div
-                                    class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                    class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
 
                                     <!-- Section Title -->
                                     <div class="pb-4 mb-8 border-b border-indigo-100">
@@ -1417,7 +1411,7 @@
                             <main class="relative z-10 flex-1 px-6 py-8 lg:px-8">
                                 <!-- Header Card -->
                                 <div
-                                    class="p-6 mb-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                    class="p-6 mb-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                     <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                                         <!-- Título -->
                                         <div class="flex items-center gap-4">
@@ -1469,7 +1463,7 @@
 
                                 <!-- Form Card -->
                                 <div
-                                    class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                    class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                     <!-- Section Title -->
                                     <div class="pb-4 mb-8 border-b border-indigo-100">
                                         <h2 class="flex items-center gap-3 text-2xl font-bold text-indigo-900">
