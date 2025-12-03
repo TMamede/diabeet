@@ -5,8 +5,8 @@
             class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]">
         </div>
     </div>
-    <section class="relative z-10 p-8 mt-10">
-        <div class="px-6 mx-auto max-w-7xl">
+    <section class="relative z-10 p-6 mt-6 sm:p-8 sm:mt-10">
+        <div class="px-2 mx-auto sm:px-6 max-w-7xl">
             <!-- Header da página -->
             <div class="mb-8 text-center">
                 <div class="inline-block p-4 mb-4 backdrop-blur-sm rounded-xl">
@@ -21,7 +21,7 @@
             </div>
 
             <!-- Container principal com glass morphism -->
-             <div class="overflow-hidden border shadow bg-white/90 rounded-xl border-white/30">
+            <div class="overflow-hidden border shadow bg-white/90 rounded-xl border-white/30">
                 <!-- Barra de busca melhorada -->
                 <div class="p-6 border-b border-gray-200 bg-gradient-to-r from-indigo-50 to-purple-50">
                     <div class="flex flex-col items-center justify-between gap-4 lg:flex-row">
@@ -49,9 +49,73 @@
                         </a>
                     </div>
                 </div>
+                {{-- Mobile --}}
+                <!-- LISTA MOBILE (PRONTUÁRIOS) -->
+                <div class="block p-5 space-y-4 md:hidden">
+                    @foreach ($pacientes as $paciente)
+                        <div wire:key="card-{{ $paciente->id }}"
+                            class="relative p-5 bg-white border border-gray-100 shadow-sm rounded-2xl">
 
-                <!-- Tabela responsiva -->
-                <div class="overflow-x-auto">
+                            <!-- ações (olho) -->
+                            <div class="absolute z-10 flex items-center gap-2 top-3 right-3 shrink-0">
+                                <a href="{{ route('prontuario.paciente', ['paciente' => $paciente->id]) }}"
+                                    class="inline-flex items-center justify-center w-10 h-10 text-indigo-700 transition rounded-full bg-indigo-50 hover:bg-indigo-100">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <!-- avatar + nome -->
+                            <div class="flex flex-col items-center justify-center gap-3 pr-5">
+                                <div
+                                    class="flex items-center justify-center font-semibold text-white bg-indigo-600 rounded-full w-14 h-14">
+                                    {{ substr($paciente->nome, 0, 1) }}
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-base font-semibold leading-none text-gray-900 truncate">
+                                        {{ $paciente->nome }}
+                                    </p>
+                                    <span
+                                        class="inline-flex items-center mt-2 px-2.5 py-0.5 text-xs font-medium rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">
+                                        Prontuário: {{ $paciente->prontuario }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- infos -->
+                            <div class="mt-8 space-y-2.5 text-[15px] ">
+                                <div class="flex flex-row gap-2 text-gray-700">
+                                    <span class="block text-[12px] uppercase font-medium text-gray-900">Prescrições
+                                        Associadas:</span>
+                                    <span class="text-indigo-900 ">
+                                        {{ $paciente->questionarios_count }}
+                                    </span>
+                                </div>
+
+                                <div class="pt-2">
+                                    <a href="{{ route('prontuario.paciente', ['paciente' => $paciente->id]) }}"
+                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-white transition bg-indigo-600 border border-indigo-500 rounded-lg hover:bg-indigo-700">
+                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                        Visualizar Prescrições
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Tabela desktop -->
+                <div class="hidden overflow-x-auto md:block">
                     <table class="w-full">
                         <thead class="text-white bg-indigo-800">
                             <tr>

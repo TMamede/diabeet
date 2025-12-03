@@ -161,7 +161,7 @@
                         </x-new-modal>
                     @endforeach
                 </div>
-                <!-- Tabela responsiva -->
+                <!-- Tabela desktop -->
                 <div class="hidden overflow-x-auto md:block">
                     <table class="w-full">
                         <thead class="text-white bg-indigo-800">
