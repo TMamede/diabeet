@@ -38,7 +38,7 @@ class MotivoSeeder extends Seeder
             // Origem: Nutrição
             ['descricao' => 'Consumo de Alimentos Processados', 'origem_id' => 5, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Consumo de Alimentos Ultraprocessados', 'origem_id' => 5, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            
+
 
             // Origem: Sono e Repouso
             ['descricao' => 'Acorda a Noite', 'origem_id' => 6, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -68,7 +68,7 @@ class MotivoSeeder extends Seeder
             ['descricao' => 'Valor Alto de IMC', 'origem_id' => 9, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Valor Baixo de Glicemia Capilar do Momento', 'origem_id' => 9, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Valor Alto de Glicemia Capilar do Momento', 'origem_id' => 9, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            
+
             // Origem: Oxigenação
             ['descricao' => 'Tempo de Enchimento Capilar Menor que 2 segundos', 'origem_id' => 10, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
 
@@ -101,7 +101,7 @@ class MotivoSeeder extends Seeder
             ['descricao' => 'Apresenta Unhas Com Onicocriptoses', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Apresenta Unhas Com Onicogrifoses', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Apresenta Unhas Com Bromidose', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Realiza Corte de Unhas Correto', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Realiza Corte de Unhas Incorreto', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Apresenta Gangrena', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Apresenta Rubor Dependente', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Apresenta Palidez Com a Perna Elevada', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -116,7 +116,7 @@ class MotivoSeeder extends Seeder
             ['descricao' => 'Apresenta Arco Desabado', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Apresenta Valgismo', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Apresenta Dedos Em Garra', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Possui Percepção Ausente Em Ambos Pés', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()], 
+            ['descricao' => 'Possui Percepção Ausente Em Ambos Pés', 'origem_id' => 15, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
 
             // Origem: Integridade cutâneo-mucosa
             ['descricao' => 'Bordas da Ferida Macerada', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -132,17 +132,17 @@ class MotivoSeeder extends Seeder
             ['descricao' => 'Necrose Seca (Escara) no Tecido no Leito da Ferida', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Necrose Úmida (Esfacelo) no Tecido no Leito da Ferida', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Apresenta Sinal de Infecção', 'origem_id' => 16, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            
+
             //Origem: Cuidado com a ferida
             ['descricao' => 'Análise do Cuidado Com a Ferida', 'origem_id' => 17, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            
+
             // Origem: Aprendizagem (Educação a Saúde)
             ['descricao' => 'Não Adesão ao Regime Terapêutico', 'origem_id' => 18, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Não Realiza Automonitoramento da Glicemia Capilar', 'origem_id' => 18, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Realiza Automonitoramento da Glicemia Capilar', 'origem_id' => 18, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
 
             // Origem: Recreação/Lazer/Criatividade
-            ['descricao' => 'Marcou Nenhuma ou Só Uma', 'origem_id' => 19, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Marcou Nenhuma ou Só Uma Recreação', 'origem_id' => 19, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
 
             //Origem: Amor/Aceitação/Atenção/Gregária/Autoestima/Segurança
             ['descricao' => 'Não Foi Acompanhado(a) no Momento da Consulta', 'origem_id' => 20, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
@@ -162,10 +162,10 @@ class MotivoSeeder extends Seeder
 
             // Origem: Religião
             ['descricao' => 'Paciente Não Religioso', 'origem_id' => 22, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-        
+
             //Origem: Nutrição pt.2
             ['descricao' => 'Possui Restrições Alimentares', 'origem_id' => 5, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-        
+
             //Origem: Pressão arterial
             ['descricao' => 'Pressão Arterial Alterada', 'origem_id' => 14, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
