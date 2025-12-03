@@ -3850,6 +3850,7 @@
 
                             <!-- Main Content -->
                             <div class="max-w-6xl mx-auto">
+                                 <fieldset disabled>
                                 <div
                                     class="p-8 border shadow-lg bg-white/90 rounded-3xl border-white/20">
 
@@ -3931,6 +3932,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </fieldset disabled>
                             </div>
                         </div>
                     </div>

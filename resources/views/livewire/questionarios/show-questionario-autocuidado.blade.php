@@ -48,6 +48,7 @@
 </div>
         <!-- Main Content -->
         <div class="max-w-4xl mx-auto space-y-8">
+            <fieldset disabled>
 
             <!-- Seção Alimentação Geral -->
             <div class="overflow-hidden border shadow-xl bg-white/80 backdrop-blur-sm rounded-2xl border-white/20">
@@ -660,6 +661,7 @@
                     </div>
                 </div>
             </div>
+            </fieldset>
         </div>
     </div>
 </div>

@@ -48,7 +48,7 @@
 </div>
         <!-- Main Content -->
         <div class="max-w-4xl mx-auto space-y-8">
-
+             <fieldset disabled>
             <!-- Seção Satisfação -->
             <div class="overflow-hidden border shadow-xl bg-white/80 backdrop-blur-sm rounded-2xl border-white/20">
                 <div class="px-8 py-6 bg-gradient-to-r from-emerald-500 to-teal-600">
@@ -473,6 +473,7 @@
                     </div>
                 </div>
             </div>
+            </fieldset>
         </div>
 
     </div>
