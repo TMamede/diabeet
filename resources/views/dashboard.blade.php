@@ -2,10 +2,10 @@
     <div class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-20 to-purple-50">
         <!-- Elementos decorativos de fundo -->
         <div class="absolute inset-0 pointer-events-none">
-        <div
-            class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]">
+            <div
+                class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]">
+            </div>
         </div>
-    </div>
 
         <div class="relative z-10 flex-grow">
             <!-- Hero Section -->
@@ -24,7 +24,7 @@
                     <!-- Subtitle melhorada -->
                     <div class="max-w-4xl mx-auto mb-12">
                         <h2 class="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
-                            Sistema de <span class="text-indigo-600">Prescrição Eletrônica</span> para Pé Diabético
+                            Software de <span class="text-indigo-600">Prescrição Eletrônica</span> para Pé Diabético
                         </h2>
                         <p class="max-w-2xl mx-auto text-xl leading-relaxed text-gray-600">
                             Plataforma especializada para enfermeiros realizarem avaliações completas, diagnósticos
@@ -136,6 +136,6 @@
             </main>
         </div>
 
-        
+
     </div>
 </x-app-layout>
