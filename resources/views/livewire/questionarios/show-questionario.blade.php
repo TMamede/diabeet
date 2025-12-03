@@ -1,5 +1,5 @@
 <div x-data="{ step: @entangle('currentStep') }">
-    <div x-show="step === 1" x-transition>
+    <div x-show="step === 1" x-transition >
         @if ($currentStep == 1)
             <div class="step">
                 <div class="flex">
@@ -27,7 +27,7 @@
                         <div class="relative z-10 py-12">
                             <!-- Header Section -->
                             <div class="mb-12 text-center">
-                                <div class="inline-block p-6 mb-6 backdrop-blur-sm rounded-3xl">
+                                <div class="inline-block p-6 mb-6 rounded-3xl">
                                     <h1 class="mb-2 text-4xl font-extrabold text-indigo-900 md:text-5xl">
                                         So<span class="text-indigo-600">Pe</span>P
                                     </h1>
@@ -39,10 +39,11 @@
                             </div>
 
                             @if ($selectedPaciente)
+                            <fieldset disabled>
                                 <!-- Dados Sociodemográficos -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
                                     <div
-                                        class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                        class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-2xl">
@@ -104,7 +105,7 @@
                                 <!-- Histórico do Paciente -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
                                     <div
-                                        class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                        class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl">
@@ -187,7 +188,7 @@
                                 <!-- Medicamentos -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
                                     <div
-                                        class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                        class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl">
@@ -241,7 +242,7 @@
                                 <!-- Resultados -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
                                     <div
-                                        class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                        class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl">
@@ -283,7 +284,7 @@
                                 <!-- Unidade de Saúde -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
                                     <div
-                                        class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                        class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                         <div class="flex items-center mb-6">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-teal-100 to-teal-200 rounded-2xl">
@@ -312,6 +313,7 @@
                 </div>
             </div>
         @endif
+        </fieldset disabled>
     </div>
     <div x-show="step === 2" x-transition>
         @if ($currentStep == 2)
@@ -341,7 +343,7 @@
                             <!-- Header -->
                             <div class="max-w-6xl mx-auto mb-8">
                                 <div
-                                    class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                    class="p-6 border shadow-lg bg-white/90 rounded-3xl border-white/20">
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
@@ -350,7 +352,7 @@
                                                 Diabético</p>
                                         </div>
                                         <div class="text-right">
-                                            <p class="text-sm text-gray-600">Questionário</p>
+                                            <p class="text-sm text-gray-600">Avaliação de enfermagem</p>
                                             <p class="text-lg font-semibold text-gray-800">Necessidades Psicobiológicas
                                             </p>
                                         </div>
@@ -360,8 +362,9 @@
 
                             <!-- Main Content -->
                             <div class="max-w-6xl mx-auto">
+                                <fieldset disabled>
                                 <div
-                                    class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                    class="p-8 border shadow-lg bg-white/90 rounded-3xl border-white/20">
 
                                     <!-- Seção Regulação Neurológica -->
                                     <div class="pb-8 mb-10 border-b border-gray-200">
@@ -1819,7 +1822,7 @@
                                                     <!-- Botão Calcular ITB Direito -->
                                                     <div class="flex items-end">
                                                         <button type="button" wire:click="calcularITBDireito"
-                                                            class="w-full px-4 py-2 font-medium text-white shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                                            class="w-full px-4 py-2 font-medium text-white rounded-lg shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
                                                             Calcular ITB Direito
                                                         </button>
                                                     </div>
@@ -1828,7 +1831,7 @@
                                                 <!-- Resultado ITB Direito -->
                                                 @if ($itbD)
                                                     <div
-                                                        class="p-4 bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200 rounded-lg">
+                                                        class="p-4 border border-gray-200 rounded-lg bg-gradient-to-r from-gray-50 to-gray-100">
                                                         <div class="flex flex-wrap items-center gap-4">
                                                             <div class="flex items-center gap-2">
                                                                 <span class="text-sm font-medium text-gray-600">ITB
@@ -1904,7 +1907,7 @@
                                                     <!-- Botão Calcular ITB Esquerdo -->
                                                     <div class="flex items-end">
                                                         <button type="button" wire:click="calcularITBEsquerdo"
-                                                            class="w-full px-4 py-2 font-medium text-white shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                                            class="w-full px-4 py-2 font-medium text-white rounded-lg shadow-lg bg-gradient-to-r from-indigo-500 to-indigo-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
                                                             Calcular ITB Esquerdo
                                                         </button>
                                                     </div>
@@ -1913,7 +1916,7 @@
                                                 <!-- Resultado ITB Esquerdo -->
                                                 @if ($itbE)
                                                     <div
-                                                        class="p-4 bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200 rounded-lg">
+                                                        class="p-4 border border-gray-200 rounded-lg bg-gradient-to-r from-gray-50 to-gray-100">
                                                         <div class="flex flex-wrap items-center gap-4">
                                                             <div class="flex items-center gap-2">
                                                                 <span class="text-sm font-medium text-gray-600">ITB
@@ -1971,7 +1974,7 @@
                                                 <h3 class="text-lg font-semibold text-gray-800">Referência Visual</h3>
                                             </div>
                                             <div class="flex justify-center">
-                                                <div class="relative w-full max-w-md h-48">
+                                                <div class="relative w-full h-48 max-w-md">
                                                     <img src="{{ asset('trace.svg') }}" alt="Referência do Pé"
                                                         class="object-contain w-full h-full">
                                                 </div>
@@ -2303,7 +2306,7 @@
                                                                     class="w-5 h-5 mt-1 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
                                                                 <span class="ml-3 font-medium text-gray-700">
                                                                     <span
-                                                                        class="text-green-700 font-semibold">Percepção
+                                                                        class="font-semibold text-green-700">Percepção
                                                                         presente</span>
                                                                     (responder corretamente em duas das três aplicações)
                                                                 </span>
@@ -2313,7 +2316,7 @@
                                                                     value="0"
                                                                     class="w-5 h-5 mt-1 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
                                                                 <span class="ml-3 font-medium text-gray-700">
-                                                                    <span class="text-red-700 font-semibold">Percepção
+                                                                    <span class="font-semibold text-red-700">Percepção
                                                                         ausente</span>
                                                                     (falhar em responder corretamente em duas das três
                                                                     aplicações)
@@ -2338,7 +2341,7 @@
                                                                     class="w-5 h-5 mt-1 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
                                                                 <span class="ml-3 font-medium text-gray-700">
                                                                     <span
-                                                                        class="text-green-700 font-semibold">Percepção
+                                                                        class="font-semibold text-green-700">Percepção
                                                                         presente</span>
                                                                     (responder corretamente em duas das três aplicações)
                                                                 </span>
@@ -2348,7 +2351,7 @@
                                                                     wire:model="percepcao_esquerdo" value="0"
                                                                     class="w-5 h-5 mt-1 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
                                                                 <span class="ml-3 font-medium text-gray-700">
-                                                                    <span class="text-red-700 font-semibold">Percepção
+                                                                    <span class="font-semibold text-red-700">Percepção
                                                                         ausente</span>
                                                                     (falhar em responder corretamente em duas das três
                                                                     aplicações)
@@ -2741,7 +2744,7 @@
                                                             Intensidade da Dor (Pé Direito):
                                                         </label>
                                                         <div
-                                                            class="grid grid-cols-11 gap-2 p-4 border border-gray-200 rounded-xl bg-white">
+                                                            class="grid grid-cols-11 gap-2 p-4 bg-white border border-gray-200 rounded-xl">
                                                             @for ($i = 0; $i <= 10; $i++)
                                                                 @php
                                                                     $color = match (true) {
@@ -2773,7 +2776,7 @@
                                                                     wire:click="$set('dados.direito.dor', {{ $i }})"
                                                                     class="flex flex-col items-center p-3 transition-all duration-200 cursor-pointer rounded-xl hover:shadow-md {{ $color }} {{ $selected }}">
                                                                     <span
-                                                                        class="text-2xl mb-1">{{ $emoji }}</span>
+                                                                        class="mb-1 text-2xl">{{ $emoji }}</span>
                                                                     <span
                                                                         class="text-sm font-bold">{{ $i }}</span>
                                                                 </button>
@@ -3122,7 +3125,7 @@
                                                             Intensidade da Dor (Pé Esquerdo):
                                                         </label>
                                                         <div
-                                                            class="grid grid-cols-11 gap-2 p-4 border border-gray-200 rounded-xl bg-white">
+                                                            class="grid grid-cols-11 gap-2 p-4 bg-white border border-gray-200 rounded-xl">
                                                             @for ($i = 0; $i <= 10; $i++)
                                                                 @php
                                                                     $color = match (true) {
@@ -3154,7 +3157,7 @@
                                                                     wire:click="$set('dados.esquerdo.dor', {{ $i }})"
                                                                     class="flex flex-col items-center p-3 transition-all duration-200 cursor-pointer rounded-xl hover:shadow-md {{ $color }} {{ $selected }}">
                                                                     <span
-                                                                        class="text-2xl mb-1">{{ $emoji }}</span>
+                                                                        class="mb-1 text-2xl">{{ $emoji }}</span>
                                                                     <span
                                                                         class="text-sm font-bold">{{ $i }}</span>
                                                                 </button>
@@ -3377,32 +3380,35 @@
                                                     <p class="mb-3 text-sm font-medium text-gray-700">
                                                         Pré-visualização:
                                                     </p>
-                                                    <div class="p-4 border border-gray-200 rounded-xl bg-white">
+                                                    <div class="p-4 bg-white border border-gray-200 rounded-xl">
                                                         <img src="{{ $imagem_avaliacao_pe->temporaryUrl() }}"
                                                             alt="Pré-visualização da imagem"
-                                                            class="object-contain w-full max-w-md mx-auto rounded-lg h-64">
+                                                            class="object-contain w-full h-64 max-w-md mx-auto rounded-lg">
                                                     </div>
                                                 </div>
                                             @elseif ($imagem_avaliacao_pe_url)
                                                 <div class="mt-6">
                                                     <p class="mb-3 text-sm font-medium text-gray-700">Imagem atual:
                                                     </p>
-                                                    <div class="p-4 border border-gray-200 rounded-xl bg-white">
+                                                    <div class="p-4 bg-white border border-gray-200 rounded-xl">
                                                         <img src="{{ Storage::url($imagem_avaliacao_pe_url) }}"
                                                             alt="Imagem atual"
-                                                            class="object-contain w-full max-w-md mx-auto rounded-lg h-64">
+                                                            class="object-contain w-full h-64 max-w-md mx-auto rounded-lg">
                                                     </div>
                                                 </div>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
+                                </fieldset disabled>
                             </div>
                         </div>
                     </div>
                 </div>
+            
             </div>
         @endif
+        
     </div>
     <div x-show="step === 3" x-transition>
         @if ($currentStep == 3)
@@ -3432,7 +3438,7 @@
                             <!-- Header -->
                             <div class="max-w-6xl mx-auto mb-8">
                                 <div
-                                    class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                    class="p-6 border shadow-lg bg-white/90 rounded-3xl border-white/20">
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
@@ -3441,7 +3447,7 @@
                                                 Pé Diabético</p>
                                         </div>
                                         <div class="text-right">
-                                            <p class="text-sm text-gray-600">Questionário</p>
+                                            <p class="text-sm text-gray-600">Avaliação de enfermagem</p>
                                             <p class="text-lg font-semibold text-gray-800">Necessidades Psicossociais
                                             </p>
                                         </div>
@@ -3451,8 +3457,9 @@
 
                             <!-- Main Content -->
                             <div class="max-w-6xl mx-auto">
+                                <fieldset disabled>
                                 <div
-                                    class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                    class="p-8 border shadow-lg bg-white/90 rounded-3xl border-white/20">
 
                                     <!-- Seção Aprendizagem - Educação a Saúde -->
                                     <div class="pb-8 mb-10 border-b border-gray-200">
@@ -3788,6 +3795,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                </fieldset disabled>
                             </div>
                         </div>
                     </div>
@@ -3822,7 +3830,7 @@
                             <!-- Header -->
                             <div class="max-w-6xl mx-auto mb-8">
                                 <div
-                                    class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                    class="p-6 border shadow-lg bg-white/90 rounded-3xl border-white/20">
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
@@ -3831,7 +3839,7 @@
                                                 Pé Diabético</p>
                                         </div>
                                         <div class="text-right">
-                                            <p class="text-sm text-gray-600">Questionário</p>
+                                            <p class="text-sm text-gray-600">Avaliação de enfermagem</p>
                                             <p class="text-lg font-semibold text-gray-800">Necessidades
                                                 PsicoEspirituais
                                             </p>
@@ -3843,7 +3851,7 @@
                             <!-- Main Content -->
                             <div class="max-w-6xl mx-auto">
                                 <div
-                                    class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                    class="p-8 border shadow-lg bg-white/90 rounded-3xl border-white/20">
 
                                     <!-- Seção Religião/Espiritualidade -->
                                     <div class="pb-8 mb-10 border-b border-gray-200">

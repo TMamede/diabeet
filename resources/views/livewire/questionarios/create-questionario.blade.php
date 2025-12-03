@@ -20,8 +20,8 @@
                                     <div class="w-20 h-1 mx-auto bg-indigo-600 rounded-full"></div>
                                 </div>
                                 <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Dados do Paciente</h2>
-                                <p class="mt-2 text-gray-600">Visualize as informações completas antes de iniciar o
-                                    questionário</p>
+                                <p class="mt-2 text-gray-600">Visualize as informações completas antes de iniciar a
+                                    avaliação de enfermagem</p>
                             </div>
 
                             <!-- Search Section -->
@@ -344,7 +344,7 @@
                                         @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
                                         class="px-12 py-4 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-indigo-300">
                                         <span class="flex items-center">
-                                            Iniciar Questionário
+                                            Iniciar Avaliação de enfermagem
                                             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -379,7 +379,7 @@
                                             Diabético</p>
                                     </div>
                                     <div class="text-right">
-                                        <p class="text-sm text-gray-600">Questionário</p>
+                                        <p class="text-sm text-gray-600">Avaliação de enfermagem</p>
                                         <p class="text-lg font-semibold text-gray-800">Necessidades Psicobiológicas</p>
                                     </div>
                                 </div>
@@ -3367,7 +3367,7 @@
                                             Pé Diabético</p>
                                     </div>
                                     <div class="text-right">
-                                        <p class="text-sm text-gray-600">Questionário</p>
+                                        <p class="text-sm text-gray-600">avaliação de enfermagem</p>
                                         <p class="text-lg font-semibold text-gray-800">Necessidades Psicossociais</p>
                                     </div>
                                 </div>
@@ -3743,7 +3743,7 @@
                                             Pé Diabético</p>
                                     </div>
                                     <div class="text-right">
-                                        <p class="text-sm text-gray-600">Questionário</p>
+                                        <p class="text-sm text-gray-600">avaliação de enfermagem</p>
                                         <p class="text-lg font-semibold text-gray-800">Necessidades PsicoEspirituais
                                         </p>
                                     </div>
@@ -3822,7 +3822,7 @@
                                         </label>
                                         <textarea wire:model="impressoes" id="impressoes"
                                             class="w-full px-4 py-4 text-gray-700 bg-white border-2 border-gray-200 resize-none rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none"
-                                            placeholder="Digite suas impressões sobre a realização do questionário" rows="6"></textarea>
+                                            placeholder="Digite suas impressões sobre a realização do avaliação de enfermagem" rows="6"></textarea>
                                         @error('impressoes')
                                             <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                         @enderror

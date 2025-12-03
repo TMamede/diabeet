@@ -175,10 +175,10 @@
                     </div>
 
                     <!-- Dicas de Segurança -->
-                    <div >
-                        <div class="mt-12 mb-12">
+                    <div>
+                        <div class="mt-12 mb-12 shadow-2xl rounded-3xl border-white/10">
                             <div
-                                class="p-8 border border-blue-100 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl">
+                                class="p-8 bg-white rounded-2xl">
                                 <div class="flex items-start space-x-4">
                                     <div class="flex-shrink-0">
                                         <div class="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-xl">

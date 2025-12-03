@@ -7,7 +7,7 @@
         <!-- Botão Hamburguer -->
         <div class="relative z-10 p-4 lg:hidden">
             <button @click="mobileMenuOpen = !mobileMenuOpen"
-                class="flex items-center justify-center p-3 text-indigo-600 bg-white border border-indigo-100 rounded-xl shadow-md hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+                class="flex items-center justify-center p-3 text-indigo-600 bg-white border border-indigo-100 shadow-md rounded-xl hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-200">
                 <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                     <path :class="{ 'hidden': mobileMenuOpen, 'block': !mobileMenuOpen }" stroke-linecap="round"
                         stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -26,11 +26,11 @@
             x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
             x-transition:leave="transform transition ease-in duration-150" x-transition:leave-start="translate-x-0"
             x-transition:leave-end="-translate-x-full"
-            class="fixed top-0 left-0 z-50 w-80 h-full bg-white border-r border-gray-200 shadow-xl lg:hidden">
+            class="fixed top-0 left-0 z-50 h-full bg-white border-r border-gray-200 shadow-xl w-80 lg:hidden">
 
             <!-- Header do menu -->
             <div class="flex items-center justify-between p-4 border-b border-gray-100">
-                <h3 class="text-lg font-semibold text-gray-800">Questionário</h3>
+                <h3 class="text-lg font-semibold text-gray-800">Avaliação de enfermagem</h3>
                 <button @click="mobileMenuOpen = false"
                     class="p-2 text-gray-400 rounded-lg hover:text-gray-600 hover:bg-gray-100">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -81,7 +81,7 @@
                 <!-- Necessidades PsicoEspirituais -->
                 <button @click="mobileMenuOpen = false" wire:click="nextStepFourth"
                     class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-emerald-50 hover:text-emerald-700">
-                    <div class="flex items-center justify-center w-10 h-10 mr-3 bg-emerald-100 rounded-lg">
+                    <div class="flex items-center justify-center w-10 h-10 mr-3 rounded-lg bg-emerald-100">
                         <svg class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M12 2L13.09 6.26L18 5L16.74 9.74L21 12L16.74 14.26L18 19L13.09 17.74L12 22L10.91 17.74L6 19L7.26 14.26L3 12L7.26 9.74L6 5L10.91 6.26L12 2Z" />
@@ -140,11 +140,11 @@
     <!-- Background simplificado -->
     <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-purple-50"></div>
 
-    <nav class="relative z-10 hidden lg:flex lg:w-80 min-h-screen p-6 bg-white border-r border-gray-200 shadow-sm">
+    <nav class="relative z-10 hidden min-h-screen p-6 bg-white border-r border-gray-200 shadow-sm lg:flex lg:w-80">
         <div class="w-full">
             <!-- Header -->
             <div class="mb-6">
-                <h2 class="text-xl font-bold text-gray-800">Questionário</h2>
+                <h2 class="text-xl font-bold text-gray-800">Avaliação de enfermagem</h2>
                 <p class="text-sm text-gray-600">Navegue pelas seções</p>
             </div>
 
@@ -204,7 +204,7 @@
                 <li>
                     <button wire:click="nextStepFourth"
                         class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-amber-50 hover:text-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-200">
-                        <div class="flex items-center justify-center w-12 h-12 mr-4 bg-amber-100 rounded-lg">
+                        <div class="flex items-center justify-center w-12 h-12 mr-4 rounded-lg bg-amber-100">
                             <svg class="w-6 h-6 text-amber-600" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -240,7 +240,7 @@
                 <li>
                     <button wire:click="nextStepSixth"
                         class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200">
-                        <div class="flex items-center justify-center w-12 h-12 mr-4 bg-emerald-100 rounded-lg">
+                        <div class="flex items-center justify-center w-12 h-12 mr-4 rounded-lg bg-emerald-100">
                             <svg class="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
