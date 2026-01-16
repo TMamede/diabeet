@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Cache;
 class ShowPaciente extends Component
 {
 
-    public $currentStep = 1;
+    public int $currentStep = 1;
 
     public $paciente;
 
@@ -51,8 +51,11 @@ class ShowPaciente extends Component
     //Mensagem de alterações salvas com sucesso!
     public $successMessage = '';
     public $pacienteId;
+
+    
     public function mount($id)
     {
+        $this->currentStep = 1;
         $this->loadPacienteData($id);
     }
     public function messages()
@@ -326,27 +329,32 @@ class ShowPaciente extends Component
     {
         $this->validateStep();
         $this->currentStep = 1;
+        
     }
     public function nextStepSecond()
     {
         $this->validateStep();
         $this->currentStep = 2;
+        
     }
     public function nextStepThird()
     {
         $this->validateStep();
         $this->currentStep = 3;
+        
     }
     public function nextStepFourth()
     {
         $this->validateStep();
         $this->currentStep = 4;
+        
     }
 
     public function nextStepFifth()
     {
         $this->validateStep();
         $this->currentStep = 5;
+        
     }
 
     public function nextStepSixth()
@@ -507,8 +515,8 @@ class ShowPaciente extends Component
 
             $dados = [
                 'texto_resultado' => $resultadoData['texto_resultado'],
-                'data_exame'      => $resultadoData['data_exame'],
-                'paciente_id'     => $pacienteId,
+                'data_exame' => $resultadoData['data_exame'],
+                'paciente_id' => $pacienteId,
             ];
 
             if (!empty($resultadoData['id'])) {
@@ -526,6 +534,8 @@ class ShowPaciente extends Component
         }
 
         //Mensagem de alterações salvas com sucesso
-        $this->dispatch('notify', 'Alterações salvas com sucesso!');;
+        $this->dispatch('notify', 'Alterações salvas com sucesso!');
+        ;
     }
+
 }

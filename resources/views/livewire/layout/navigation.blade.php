@@ -3,9 +3,9 @@
     <div class="px-4 mx-auto max-w-8xl sm:px-6 lg:px-12">
         <div class="flex items-center justify-between h-20 ">
             <!-- ESQUERDA: logo + links desktop -->
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3 ">
                 <!-- Logo -->
-                <div class="flex items-center shrink-0">
+                <div class="flex items-center shrink-0 ">
                     <a href="{{ route('dashboard') }}" wire:navigate>
                         <x-application-logo class="block w-auto text-gray-800 fill-current h-14" />
                     </a>

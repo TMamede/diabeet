@@ -9,12 +9,15 @@
     <section class="relative z-10 p-6 mt-6 sm:p-8 sm:mt-10">
         <div class="px-2 mx-auto sm:px-6 max-w-7xl">
             <!-- Header -->
-            <div class="mb-6 text-center sm:mb-8">
-                <h1 class="mb-2 text-3xl font-bold leading-tight text-indigo-900 sm:text-4xl">
+            <div class="mb-8 text-center">
+                <div class="inline-block p-4 mb-4 backdrop-blur-sm rounded-xl">
+                <h1 class="mb-1 text-3xl font-bold text-indigo-900 md:text-4xl">
                     Gerenciamento de <span class="text-indigo-600">Pacientes</span>
                 </h1>
-                <p class="text-sm text-gray-600 sm:text-base">
-                    {{ $pacientes->total() }} pacientes cadastrados
+                <div class="w-16 h-0.5 mx-auto bg-indigo-600 rounded-full"></div>
+                </div>
+                <p class="max-w-xl mx-auto text-lg text-gray-600">
+                    Lista completa de pacientes cadastrados no sistema SoPeP
                 </p>
             </div>
 
