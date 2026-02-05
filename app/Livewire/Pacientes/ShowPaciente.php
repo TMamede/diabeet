@@ -359,6 +359,7 @@ class ShowPaciente extends Component
 
     public function nextStepSixth()
     {
+        
         return redirect()->route('questionario.paciente', ['paciente' => $this->paciente->id]);
     }
 
@@ -366,6 +367,19 @@ class ShowPaciente extends Component
     {
         return redirect()->route('paciente.index');
     }
+    public function changeStep($step)
+{
+    $this->validateStep();
+
+    if ((int) $step === 6) {
+        return redirect()->route(
+            'questionario.paciente',
+            ['paciente' => $this->paciente->id]
+        );
+    }
+
+    $this->currentStep = (int) $step;
+}
 
     public function resetEndereco()
     {

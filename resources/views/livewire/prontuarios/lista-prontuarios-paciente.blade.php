@@ -1,5 +1,3 @@
-lsta pontuaio
-
 <div class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
     <!-- Elementos decorativos de fundo -->
     <div class="absolute inset-0 pointer-events-none">
@@ -72,20 +70,25 @@ lsta pontuaio
                             </div>
 
                             <!-- avatar + nome -->
-                            <div class="flex items-center gap-3 pr-20">
+                            <div class="flex items-center gap-3 pr-10">
                                 <div
                                     class="flex items-center justify-center font-semibold text-white bg-indigo-600 rounded-full w-14 h-14">
                                     {{ substr($paciente->nome, 0, 1) }}
                                 </div>
                                 <div class="flex-1 min-w-0">
-                                    <p class="text-base font-semibold leading-none text-gray-900 truncate">
-                                        {{ $paciente->nome }}
-                                    </p>
-                                    <span
-                                        class="inline-flex items-center mt-2 px-2.5 py-0.5 text-xs font-medium rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">
-                                        Prontuário: {{ $paciente->prontuario }}
-                                    </span>
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <p class="text-base font-semibold text-gray-900">
+                                            {{ $paciente->nome }}
+                                        </p>
+
+                                        <span
+                                            class="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-md
+                   bg-indigo-50 text-indigo-700 border border-indigo-100 whitespace-nowrap">
+                                            Prontuário: {{ $paciente->prontuario }}
+                                        </span>
+                                    </div>
                                 </div>
+
                             </div>
 
                             <!-- infos -->
@@ -98,7 +101,7 @@ lsta pontuaio
                                     </span>
                                 </div>
 
-                               
+
                             </div>
                         </div>
                     @endforeach
@@ -193,7 +196,6 @@ lsta pontuaio
                             </select>
                         </div>
 
-                        <!-- Informações de paginação - removido para manter dinâmico -->
 
                         <!-- Paginação -->
                         <div class="flex items-center">

@@ -5,7 +5,7 @@
             <label class="block mb-3 text-md font-semibold text-indigo-700 pl-1">
                 Navegue entre as seções
             </label>
-            <select wire:change="$set('currentStep', $event.target.value)"
+            <select wire:change="changeStep($event.target.value)"
                 class= "w-full  bg-white text-indigo-900 text-md px-4 py-3 border border-gray-200 bg-white/70 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:bg-white">
                 
                 <option value="1">Dados Sociodemográficos</option>
@@ -39,7 +39,7 @@
                         <x-navigation-paciente />
 
                         <!-- Conteúdo da Página -->
-                        <main class="relative z-10 flex-1 px-6 lg:py-8 lg:px-8">
+                        <main class="relative z-10 flex-1 px-6 lg:py-8 lg:px-8 mb-8">
                             <!-- Header Card -->
                             <div class="p-6 mb-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                 <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
@@ -438,7 +438,7 @@
             @endif
 
         </div>
-        {{-- <div x-data="{ step: @entangle('currentStep'), open: false }"> --}}
+   <div x-data="{ step: @entangle('currentStep'), open: false }"> 
         <div>
             <div x-show="step === 2" x-transition>
                 @if ($currentStep == 2)
@@ -940,8 +940,8 @@
                             <div class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
 
                                 <!-- Section Title -->
-                                <div class="pb-4 mb-8 border-b border-indigo-100">
-                                    <div class="flex items-center justify-between">
+                                <div class="flex flex-col lg:flex-row pb-4 mb-8 border-b border-indigo-100 lg:items-center lg:justify-between">
+                                    <div class="flex lg:justify-around flex-col gap-10 sm:flex-row">
                                         <div>
                                             <h2 class="flex items-center gap-3 text-2xl font-bold text-indigo-900">
                                                 <div
@@ -961,7 +961,7 @@
 
                                         <!-- Add Medicamento Button -->
                                         <button type="button" wire:click="addMedicamento"
-                                            class="px-6 py-3 font-semibold text-white shadow-lg bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-4 focus:ring-green-300">
+                                            class="px-6 py-3 mt-4 font-semibold text-white shadow-lg bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-4 focus:ring-green-300">
                                             <span class="flex items-center">
                                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24">
@@ -1247,7 +1247,7 @@
 
                                     <!-- Section Title -->
                                     <div class="pb-4 mb-8 border-b border-indigo-100">
-                                        <div class="flex items-center justify-between">
+                                        <div class="flex flex-col lg:flex-row items-center justify-between">
                                             <div>
                                                 <h2 class="flex items-center gap-3 text-2xl font-bold text-indigo-900">
                                                     <div
@@ -1267,7 +1267,7 @@
 
                                             <!-- Add Resultado Button -->
                                             <button type="button" wire:click="addResultado"
-                                                class="px-6 py-3 font-semibold text-white shadow-lg bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-4 focus:ring-green-300">
+                                                class="px-6 py-3 mt-4 font-semibold text-white shadow-lg bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-4 focus:ring-green-300">
                                                 <span class="flex items-center">
                                                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
                                                         viewBox="0 0 24 24">
