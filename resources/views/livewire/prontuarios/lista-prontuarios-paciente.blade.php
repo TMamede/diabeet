@@ -5,7 +5,7 @@
             class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]">
         </div>
     </div>
-    <section class="relative z-10 p-6 mt-6 sm:p-8 sm:mt-10">
+    <section class="relative z-10 p-6 mt-2 sm:p-8 lg:mt-10">
         <div class="px-2 mx-auto sm:px-6 max-w-7xl">
             <!-- Header da página -->
             <div class="mb-8 text-center">
@@ -59,7 +59,7 @@
                             <!-- ações (olho) -->
                             <div class="absolute z-10 flex items-center gap-2 top-3 right-3 shrink-0">
                                 <a href="{{ route('prontuario.paciente', ['paciente' => $paciente->id]) }}"
-                                    class="inline-flex items-center justify-center w-10 h-10 text-indigo-700 transition rounded-full bg-indigo-50 hover:bg-indigo-100">
+                                    class="inline-flex items-center justify-center w-8 h-8 text-gray-500 transition border border-gray-200 rounded-full hover:text-indigo-600 hover:border-indigo-200">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -70,20 +70,25 @@
                             </div>
 
                             <!-- avatar + nome -->
-                            <div class="flex flex-col items-center justify-center gap-3 pr-5">
+                            <div class="flex items-center gap-3 pr-10">
                                 <div
                                     class="flex items-center justify-center font-semibold text-white bg-indigo-600 rounded-full w-14 h-14">
                                     {{ substr($paciente->nome, 0, 1) }}
                                 </div>
                                 <div class="flex-1 min-w-0">
-                                    <p class="text-base font-semibold leading-none text-gray-900 truncate">
-                                        {{ $paciente->nome }}
-                                    </p>
-                                    <span
-                                        class="inline-flex items-center mt-2 px-2.5 py-0.5 text-xs font-medium rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">
-                                        Prontuário: {{ $paciente->prontuario }}
-                                    </span>
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <p class="text-base font-semibold text-gray-900">
+                                            {{ $paciente->nome }}
+                                        </p>
+
+                                        <span
+                                            class="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-md
+                   bg-indigo-50 text-indigo-700 border border-indigo-100 whitespace-nowrap">
+                                            Prontuário: {{ $paciente->prontuario }}
+                                        </span>
+                                    </div>
                                 </div>
+
                             </div>
 
                             <!-- infos -->
@@ -96,19 +101,7 @@
                                     </span>
                                 </div>
 
-                                <div class="pt-2">
-                                    <a href="{{ route('prontuario.paciente', ['paciente' => $paciente->id]) }}"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-white transition bg-indigo-600 border border-indigo-500 rounded-lg hover:bg-indigo-700">
-                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                        </svg>
-                                        Visualizar Prescrições
-                                    </a>
-                                </div>
+
                             </div>
                         </div>
                     @endforeach
@@ -203,7 +196,6 @@
                             </select>
                         </div>
 
-                        <!-- Informações de paginação - removido para manter dinâmico -->
 
                         <!-- Paginação -->
                         <div class="flex items-center">

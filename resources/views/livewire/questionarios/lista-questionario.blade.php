@@ -1,26 +1,26 @@
 <div class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
     <!-- Elementos decorativos de fundo -->
-   <div class="absolute inset-0 pointer-events-none">
-  <div class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]"></div>
-</div>
-    <section class="relative z-10 p-8 mt-10">
-        <div class="px-6 mx-auto max-w-7xl">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]"></div>
+    </div>
+    
+    <section class="relative z-10 p-4 sm:p-8 mt-4 sm:mt-10">
+        <div class="px-3 sm:px-6 mx-auto max-w-7xl">
             <!-- Header da página -->
-            <div class="mb-8 text-center">
-                <div class="inline-block p-4 mb-4 backdrop-blur-sm rounded-xl">
-                    <h1 class="mb-1 text-3xl font-bold text-indigo-900 md:text-4xl">
+            <div class="mb-6 sm:mb-8 text-center">
+                <div class="inline-block p-3 sm:p-4 mb-3 sm:mb-4 backdrop-blur-sm rounded-xl">
+                    <h1 class="mb-1 text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-900">
                         Avaliações de Enfermagem do <span class="text-indigo-600">Paciente</span>
                     </h1>
                     <div class="w-16 h-0.5 mx-auto bg-indigo-600 rounded-full"></div>
                 </div>
                 <div class="flex items-center justify-center mb-4 space-x-3">
-                    <div
-                        class="flex items-center justify-center w-12 h-12 text-lg font-bold text-white bg-indigo-600 rounded-full">
+                    <div class="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg font-bold text-white bg-indigo-600 rounded-full">
                         {{ substr($paciente->nome, 0, 1) }}
                     </div>
                     <div class="text-left">
-                        <p class="text-xl font-semibold text-gray-800">{{ $paciente->nome }}</p>
-                        <p class="text-sm text-gray-600">Prontuário: {{ $paciente->prontuario }}</p>
+                        <p class="text-lg sm:text-xl font-semibold text-gray-800">{{ $paciente->nome }}</p>
+                        <p class="text-xs sm:text-sm text-gray-600">Prontuário: {{ $paciente->prontuario }}</p>
                     </div>
                 </div>
             </div>
@@ -29,44 +29,39 @@
             <div class="overflow-hidden border shadow-lg bg-white/90 backdrop-blur-sm rounded-xl border-white/30">
 
                 <!-- Header do container -->
-                <div class="p-6 border-b border-gray-200 bg-gradient-to-r from-indigo-50 to-purple-50">
-                    <div class="flex flex-col items-center justify-between gap-4 lg:flex-row">
-                        <div class="flex items-center space-x-3">
-                            <div class="flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-lg">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                <div class="p-4 sm:p-6 border-b border-gray-200 bg-gradient-to-r from-indigo-50 to-purple-50">
+                    <div class="flex flex-col items-center justify-between gap-3 sm:gap-4 lg:flex-row">
+                        <div class="flex items-center space-x-3 w-full lg:w-auto">
+                            <div class="flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-lg flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                 </svg>
                             </div>
-                            <div>
-                                <h2 class="text-lg font-bold text-gray-900">Questionários de Avaliação</h2>
-                                <p class="text-sm text-gray-600">Gerenciamento dos questionários aplicados</p>
+                            <div class="min-w-0 flex-1">
+                                <h2 class="text-base sm:text-lg font-bold text-gray-900">Questionários de Avaliação</h2>
+                                <p class="text-xs sm:text-sm text-gray-600 truncate">Gerenciamento dos questionários aplicados</p>
                             </div>
                         </div>
 
-                        <div class="flex items-center space-x-3">
-                            <!-- Botão para criar novo questionário -->
-                            <button wire:click="CreateQuestionario"
-                                class="flex items-center px-4 py-2 font-medium text-white transition-all duration-200 transform bg-green-600 rounded-lg shadow-md group hover:bg-green-700 hover:shadow-lg hover:scale-105">
-                                <svg class="w-4 h-4 mr-2 transition-transform duration-300 group-hover:rotate-180"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                </svg>
-                                Nova Avaliação de Enfermagem
-                            </button>
-
+                        <div class="flex items-center space-x-2 sm:space-x-3 w-full lg:w-auto">
                             <!-- Botão para voltar -->
                             <a href="{{ route('paciente.show', ['id' => $paciente->id]) }}"
-                                class="flex items-center px-4 py-2 font-medium text-white transition-all duration-200 transform bg-gray-600 rounded-lg shadow-md group hover:bg-gray-700 hover:shadow-lg hover:scale-105">
-                                <svg class="w-4 h-4 mr-2 transition-transform duration-200 group-hover:-translate-x-1"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                                class="flex items-center justify-center px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-white transition-all duration-200 transform bg-gray-600 rounded-lg shadow-md group hover:bg-gray-700 hover:shadow-lg hover:scale-105 flex-1 sm:flex-initial">
+                                <svg class="w-4 h-4 mr-1 sm:mr-2 transition-transform duration-200 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                                 </svg>
-                                Voltar
+                                <span class="hidden sm:inline">Voltar</span>
+                                <span class="sm:hidden">Voltar</span>
                             </a>
+                            <!-- Botão para criar novo questionário -->
+                            <button wire:click="CreateQuestionario"
+                                class="flex items-center justify-center px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-white transition-all duration-200 transform bg-green-600 rounded-lg shadow-md group hover:bg-green-700 hover:shadow-lg hover:scale-105 flex-1 sm:flex-initial">
+                                <svg class="w-4 h-4 mr-1 sm:mr-2 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                                <span class="hidden md:inline">Nova Avaliação de Enfermagem</span>
+                                <span class="md:hidden">Nova Avaliação</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -76,23 +71,24 @@
                     <table class="w-full">
                         <thead class="text-white bg-indigo-800">
                             <tr>
-                                <th class="px-4 py-3 text-xs font-semibold tracking-wider text-left uppercase">
+                                <th class="px-3 sm:px-4 py-2 sm:py-3 text-xs font-semibold tracking-wider text-left uppercase">
                                     <button wire:click="setSortBy('id')" class="group">
-                                        <span>ID QUESTIONÁRIO</span>
+                                        <span class="hidden sm:inline">ID QUESTIONÁRIO</span>
+                                        <span class="sm:hidden">ID</span>
                                     </button>
                                 </th>
-                                <th class="px-4 py-3 text-xs font-semibold tracking-wider text-left uppercase">
+                                <th class="px-3 sm:px-4 py-2 sm:py-3 text-xs font-semibold tracking-wider text-left uppercase">
                                     Enfermeiro
                                 </th>
-                                <th class="px-4 py-3 text-xs font-semibold tracking-wider text-left uppercase">
+                                <th class="px-3 sm:px-4 py-2 sm:py-3 text-xs font-semibold tracking-wider text-left uppercase hidden md:table-cell">
                                     <button wire:click="setSortBy('created_at')" class="group">
                                         <span>DATA DE CRIAÇÃO</span>
                                     </button>
                                 </th>
-                                <th class="px-4 py-3 text-xs font-semibold tracking-wider text-left uppercase">
+                                <th class="px-3 sm:px-4 py-2 sm:py-3 text-xs font-semibold tracking-wider text-left uppercase hidden lg:table-cell">
                                     Última Atualização
                                 </th>
-                                <th class="px-4 py-3 text-xs font-semibold tracking-wider text-center uppercase">
+                                <th class="px-3 sm:px-4 py-2 sm:py-3 text-xs font-semibold tracking-wider text-center uppercase">
                                     Ações
                                 </th>
                             </tr>
@@ -103,37 +99,37 @@
                                     class="transition-colors duration-150 border-b border-gray-100 hover:bg-gray-50">
 
                                     <!-- ID Questionário -->
-                                    <td class="px-4 py-4">
+                                    <td class="px-3 sm:px-4 py-3 sm:py-4">
                                         <div class="flex items-center">
-                                            <div
-                                                class="flex items-center justify-center w-10 h-10 mr-3 text-sm font-bold text-white rounded-full bg-gradient-to-r from-indigo-500 to-purple-500">
+                                            <div class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 mr-2 sm:mr-3 text-xs sm:text-sm font-bold text-white rounded-full bg-purple-700 flex-shrink-0">
                                                 {{ $questionario->id }}
                                             </div>
-                                            <div>
-                                                <div class="text-sm font-semibold text-gray-900">Questionário
-                                                    #{{ $questionario->id }}</div>
+                                            <div class="min-w-0 hidden sm:block">
+                                                <div class="text-sm font-semibold text-gray-900">Questionário #{{ $questionario->id }}</div>
                                                 <div class="text-xs text-gray-500">ID do registro</div>
                                             </div>
                                         </div>
                                     </td>
 
                                     <!-- Enfermeiro -->
-                                    <td class="px-4 py-4">
+                                    <td class="px-3 sm:px-4 py-3 sm:py-4">
                                         <div class="flex items-center">
-                                            <div
-                                                class="flex items-center justify-center w-8 h-8 mr-2 text-xs font-medium text-white bg-green-600 rounded-full">
+                                            <div class="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 mr-2 text-xs font-medium text-white bg-green-600 rounded-full flex-shrink-0">
                                                 {{ substr($questionario->user->name ?? 'N/A', 0, 1) }}
                                             </div>
-                                            <div>
-                                                <span
-                                                    class="text-sm font-medium text-indigo-600">{{ $questionario->user->name ?? 'Não informado' }}</span>
-                                                <div class="text-xs text-gray-500">Enfermeiro responsável</div>
+                                            <div class="min-w-0">
+                                                <span class="text-xs sm:text-sm font-medium text-indigo-600 block truncate">{{ $questionario->user->name ?? 'Não informado' }}</span>
+                                                <div class="text-xs text-gray-500 hidden sm:block">Enfermeiro responsável</div>
+                                                <!-- Data em mobile -->
+                                                <div class="text-xs text-gray-500 md:hidden mt-1">
+                                                    {{ \Carbon\Carbon::parse($questionario->created_at)->format('d/m/Y H:i') }}
+                                                </div>
                                             </div>
                                         </div>
                                     </td>
 
                                     <!-- Data de Criação -->
-                                    <td class="px-4 py-4">
+                                    <td class="px-3 sm:px-4 py-3 sm:py-4 hidden md:table-cell">
                                         <div class="text-sm font-semibold text-gray-900">
                                             {{ \Carbon\Carbon::parse($questionario->created_at)->format('d/m/Y') }}
                                         </div>
@@ -143,7 +139,7 @@
                                     </td>
 
                                     <!-- Última Atualização -->
-                                    <td class="px-4 py-4">
+                                    <td class="px-3 sm:px-4 py-3 sm:py-4 hidden lg:table-cell">
                                         <div class="text-sm font-semibold text-gray-900">
                                             {{ \Carbon\Carbon::parse($questionario->updated_at)->format('d/m/Y') }}
                                         </div>
@@ -153,20 +149,16 @@
                                     </td>
 
                                     <!-- Ações -->
-                                    <td class="px-4 py-4">
+                                    <td class="px-3 sm:px-4 py-3 sm:py-4">
                                         <div class="flex items-center justify-center space-x-2">
                                             <!-- Botão Visualizar -->
                                             <button wire:click="ShowQuestionario('{{ $questionario->id }}')"
-                                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-white transition-all duration-200 transform rounded-lg shadow-md group bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 hover:shadow-lg hover:scale-105">
-                                                <svg class="w-4 h-4 mr-2 transition-transform duration-200 group-hover:scale-110"
-                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                class="inline-flex items-center justify-center px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-white transition-all duration-200 transform rounded-lg shadow-md group bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 hover:shadow-lg hover:scale-105">
+                                                <svg class="w-4 h-4 sm:mr-2 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                                 </svg>
-                                                Visualizar
+                                                <span class="hidden sm:inline">Visualizar</span>
                                             </button>
                                         </div>
                                     </td>
@@ -175,29 +167,22 @@
                                 <tr>
                                     <td colspan="5" class="px-4 py-8 text-center">
                                         <div class="flex flex-col items-center justify-center space-y-3">
-                                            <div
-                                                class="flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full">
-                                                <svg class="w-8 h-8 text-gray-400" fill="none"
-                                                    stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                            <div class="flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full">
+                                                <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                                 </svg>
                                             </div>
-                                            <div>
-                                                <p class="text-lg font-medium text-gray-500">Nenhum questionário
-                                                    encontrado</p>
-                                                <p class="text-sm text-gray-400">Este paciente ainda não possui
-                                                    questionários cadastrados.</p>
+                                            <div class="px-4">
+                                                <p class="text-base sm:text-lg font-medium text-gray-500">Nenhum questionário encontrado</p>
+                                                <p class="text-sm text-gray-400">Este paciente ainda não possui questionários cadastrados.</p>
                                             </div>
                                             <button wire:click="CreateQuestionario"
-                                                class="flex items-center px-4 py-2 mt-2 font-medium text-white transition-all duration-200 transform bg-indigo-600 rounded-lg shadow-md group hover:bg-indigo-700 hover:shadow-lg hover:scale-105">
-                                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                                class="flex items-center px-4 py-2 mt-2 text-sm sm:text-base font-medium text-white transition-all duration-200 transform bg-indigo-600 rounded-lg shadow-md group hover:bg-indigo-700 hover:shadow-lg hover:scale-105">
+                                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                                 </svg>
-                                                Criar Primeiro Questionário
+                                                <span class="hidden sm:inline">Criar Primeiro Questionário</span>
+                                                <span class="sm:hidden">Criar Questionário</span>
                                             </button>
                                         </div>
                                     </td>
@@ -209,19 +194,19 @@
 
                 <!-- Footer da tabela com paginação melhorada -->
                 @if ($questionarios->count() > 0)
-                    <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
-                        <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+                    <div class="px-3 sm:px-6 py-3 sm:py-4 border-t border-gray-200 bg-gray-50">
+                        <div class="flex flex-col items-center justify-between gap-3 sm:gap-4">
                             <!-- Informações e seletor de itens por página -->
-                            <div class="flex items-center space-x-4">
-                                <div class="text-sm text-gray-700">
+                            <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
+                                <div class="text-xs sm:text-sm text-gray-700 text-center sm:text-left">
                                     Mostrando <span class="font-medium">{{ $questionarios->firstItem() ?? 0 }}</span>
                                     a <span class="font-medium">{{ $questionarios->lastItem() ?? 0 }}</span>
                                     de <span class="font-medium">{{ $questionarios->total() }}</span> questionários
                                 </div>
                                 <div class="flex items-center space-x-2">
-                                    <label class="text-sm font-medium text-gray-700">Por página:</label>
+                                    <label class="text-xs sm:text-sm font-medium text-gray-700">Por página:</label>
                                     <select wire:model.live="perPage"
-                                        class="px-3 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                                        class="px-2 sm:px-3 py-1 text-xs sm:text-sm text-gray-900 bg-white border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
                                         <option value="5">5</option>
                                         <option value="10">10</option>
                                         <option value="15">15</option>
@@ -232,7 +217,7 @@
                             </div>
 
                             <!-- Paginação -->
-                            <div class="flex items-center">
+                            <div class="flex items-center w-full sm:w-auto justify-center">
                                 {{ $questionarios->links() }}
                             </div>
                         </div>
@@ -241,37 +226,33 @@
             </div>
 
             <!-- Card de estatísticas -->
-            <div class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
-                <div class="p-6 border shadow-lg bg-white/90 backdrop-blur-sm rounded-xl border-white/30">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-6 sm:mt-8">
+                <div class="p-4 sm:p-6 border shadow-lg bg-white/90 backdrop-blur-sm rounded-xl border-white/30">
                     <div class="flex items-center">
-                        <div class="flex items-center justify-center w-12 h-12 mr-4 bg-indigo-600 rounded-lg">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        <div class="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 mr-3 sm:mr-4 bg-indigo-600 rounded-lg flex-shrink-0">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                             </svg>
                         </div>
                         <div>
-                            <div class="text-2xl font-bold text-gray-900">{{ $questionarios->total() }}</div>
-                            <div class="text-sm text-gray-500">Total de Questionários</div>
+                            <div class="text-xl sm:text-2xl font-bold text-gray-900">{{ $questionarios->total() }}</div>
+                            <div class="text-xs sm:text-sm text-gray-500">Total de Questionários</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="p-6 border shadow-lg bg-white/90 backdrop-blur-sm rounded-xl border-white/30">
+                <div class="p-4 sm:p-6 border shadow-lg bg-white/90 backdrop-blur-sm rounded-xl border-white/30">
                     <div class="flex items-center">
-                        <div class="flex items-center justify-center w-12 h-12 mr-4 bg-purple-600 rounded-lg">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        <div class="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 mr-3 sm:mr-4 bg-purple-600 rounded-lg flex-shrink-0">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
                         </div>
                         <div>
-                            <div class="text-2xl font-bold text-gray-900">
+                            <div class="text-xl sm:text-2xl font-bold text-gray-900">
                                 {{ $questionarios->unique('user_id')->count() }}
                             </div>
-                            <div class="text-sm text-gray-500">Enfermeiros Envolvidos</div>
+                            <div class="text-xs sm:text-sm text-gray-500">Enfermeiros Envolvidos</div>
                         </div>
                     </div>
                 </div>

@@ -59,7 +59,7 @@
                             <!-- botão de ação (kebab) / excluir -->
                             <div class="absolute flex items-center gap-2 top-3 right-3">
                                 <a href="{{ route('questionario.show', ['id' => $questionario->id]) }}"
-                                    class="inline-flex items-center justify-center text-indigo-700 transition rounded-full w-9 h-9 bg-indigo-50 hover:bg-indigo-100">
+                                    class="inline-flex items-center justify-center w-8 h-8 text-gray-500 transition border border-gray-200 rounded-full hover:text-indigo-600 hover:border-indigo-200">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -369,3 +369,4 @@
         </div>
     </section>
 </div>
+                    
