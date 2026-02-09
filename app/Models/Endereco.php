@@ -15,4 +15,9 @@ class Endereco extends Model
     {
         return $this->hasMany(Paciente::class);
     }
+
+    public function unidade()
+    {
+        return $this->hasOne(Unidade_saude::class);
+    }
 }

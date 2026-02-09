@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Endereco;
+use App\Models\eSF;
+use App\Models\Unidade_saude;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,10 +16,16 @@ return new class extends Migration
     {
         Schema::create('unidade_saudes', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('rua')->nullable();
-            $table->string('bairro')->nullable();
+            $table->string('ubs');
+            $table->foreignIdFor(Endereco::class);
+            $table->string('telefone')->nullable();
             $table->timestamps();
+        });
+
+        Schema::create('unidade_esf', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Unidade_saude::class);
+            $table->foreignIdFor(eSF::class);
         });
     }
 
