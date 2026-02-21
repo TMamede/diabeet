@@ -40,7 +40,7 @@ class ListaProntuariosPaciente extends Component
             ->has('questionarios')
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
-                    $q->where('nome', 'like', '%' . $this->search . '%')
+                    $q->where('nome', 'ilike', '%' . $this->search . '%')
                         ->orWhere('prontuario', 'like', '%' . $this->search . '%');
                 });
             })

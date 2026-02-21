@@ -187,10 +187,10 @@ class CreateQuestionario extends Component
 
         // Normaliza para ponto decimal
         $alturaStr = str_replace(',', '.', (string) $this->altura);
-        $pesoStr   = str_replace(',', '.', (string) $this->peso);
+        $pesoStr = str_replace(',', '.', (string) $this->peso);
 
         $alturaNum = floatval($alturaStr);
-        $pesoNum   = floatval($pesoStr);
+        $pesoNum = floatval($pesoStr);
 
         // Valida preenchimento
         if ($alturaNum <= 0) {
@@ -646,8 +646,10 @@ class CreateQuestionario extends Component
 
 
         if (strlen($this->search) >= 1) {
-            $pacientes = Paciente::where('nome', 'like', '%' . $this->search . '%')
-                ->orWhere('prontuario', 'like', '%' . $this->search . '%')
+            $pacientes = Paciente::where('nome', 'ilike', '%' . $this->search . '%')
+                ->orWhere('prontuario', 'ilike', '%' . $this->search . '%')
+                ->orderByRaw(" CASE WHEN nome ILIKE ? THEN 0 WHEN nome ILIKE ? THEN 1 ELSE 2 END ", [$this->search . '%',  "% {$this->search}%"])
+                ->orderBy('nome')
                 ->limit(5)
                 ->get();
         }

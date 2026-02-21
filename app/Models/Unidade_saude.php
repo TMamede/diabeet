@@ -12,7 +12,7 @@ class Unidade_saude extends Model
 
     public function scopeSearch($query, $value)
     {
-        $query->where('nome', 'like', "%{$value}%");
+        $query->where('nome', 'ilike', "%{$value}%");
     }
 
     public function pacientes()

@@ -7,13 +7,15 @@
                     <div class="relative min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
                         <!-- Elementos decorativos de fundo -->
                         <div class="absolute inset-0 pointer-events-none">
-  <div class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]"></div>
-</div>
+                            <div
+                                class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]">
+                            </div>
+                        </div>
 
                         <div class="relative z-10 py-12">
                             <!-- Header Section -->
                             <div class="mb-12 text-center">
-                                <div class="inline-block p-6 mb-6 backdrop-blur-sm rounded-3xl">
+                                <div class="inline-block p-6 mb-6 rounded-3xl">
                                     <h1 class="mb-2 text-4xl font-extrabold text-indigo-900 md:text-5xl">
                                         So<span class="text-indigo-600">Pe</span>P
                                     </h1>
@@ -27,7 +29,7 @@
                             <!-- Search Section -->
                             <div class="max-w-4xl px-6 mx-auto mb-12">
                                 <div id="search-bar"
-                                    class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                    class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
                                     <h3 class="mb-6 text-2xl font-semibold text-center text-gray-800">Pesquise o
                                         paciente</h3>
 
@@ -73,7 +75,7 @@
                                 <!-- Dados Sociodemográficos -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
                                     <div
-                                        class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                        class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-2xl">
@@ -135,7 +137,7 @@
                                 <!-- Histórico do Paciente -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
                                     <div
-                                        class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                        class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl">
@@ -218,7 +220,7 @@
                                 <!-- Medicamentos -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
                                     <div
-                                        class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                        class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl">
@@ -272,7 +274,7 @@
                                 <!-- Resultados -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
                                     <div
-                                        class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                        class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl">
@@ -314,7 +316,7 @@
                                 <!-- Unidade de Saúde -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
                                     <div
-                                        class="p-8 border shadow-lg bg-white/80 backdrop-blur-sm rounded-3xl border-white/20">
+                                        class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
                                         <div class="flex items-center mb-6">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-teal-100 to-teal-200 rounded-2xl">
@@ -365,13 +367,15 @@
                 <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
                     <!-- Elementos decorativos de fundo otimizados -->
                     <div class="absolute inset-0 pointer-events-none">
-  <div class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]"></div>
-</div>
+                        <div
+                            class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]">
+                        </div>
+                    </div>
 
                     <div class="relative z-10 px-6 py-8">
                         <!-- Header -->
                         <div class="max-w-6xl mx-auto mb-8">
-                            <div class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                            <div class="p-6 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
@@ -388,7 +392,7 @@
 
                         <!-- Main Content -->
                         <div class="max-w-6xl mx-auto">
-                            <div class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                            <div class="p-8 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
 
                                 <!-- Seção Regulação Neurológica -->
                                 <div class="pb-8 mb-10 border-b border-gray-200">
@@ -3352,14 +3356,16 @@
                 <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
                     <!-- Elementos decorativos de fundo otimizados -->
                     <div class="absolute inset-0 pointer-events-none">
-  <div class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]"></div>
-</div>
+                        <div
+                            class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]">
+                        </div>
+                    </div>
 
                     <div class="relative z-10 px-6 py-8">
                         <!-- Header -->
                         <div class="max-w-6xl mx-auto mb-8">
                             <div
-                                class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                class="p-6 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
@@ -3377,7 +3383,7 @@
                         <!-- Main Content -->
                         <div class="max-w-6xl mx-auto">
                             <div
-                                class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                class="p-8 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
 
                                 <!-- Seção Aprendizagem - Educação a Saúde -->
                                 <div class="pb-8 mb-10 border-b border-gray-200">
@@ -3728,14 +3734,16 @@
                 <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
                     <!-- Elementos decorativos de fundo otimizados -->
                     <div class="absolute inset-0 pointer-events-none">
-  <div class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]"></div>
-</div>
+                        <div
+                            class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]">
+                        </div>
+                    </div>
 
                     <div class="relative z-10 px-6 py-8">
                         <!-- Header -->
                         <div class="max-w-6xl mx-auto mb-8">
                             <div
-                                class="p-6 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                class="p-6 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
@@ -3754,7 +3762,7 @@
                         <!-- Main Content -->
                         <div class="max-w-6xl mx-auto">
                             <div
-                                class="p-8 border shadow-lg backdrop-blur-sm bg-white/90 rounded-3xl border-white/20">
+                                class="p-8 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
 
                                 <!-- Seção Religião/Espiritualidade -->
                                 <div class="pb-8 mb-10 border-b border-gray-200">

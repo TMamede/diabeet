@@ -142,9 +142,9 @@
                             </div>
                         </div>
                         <div class="mb-16">
-                            <div class="px-6 pb-16 pt-6 border border-indigo-200/40 rounded-3xl bg-indigo-800 mb-10">
+                            <div class="md:px-6 px:2 pb-16 pt-6 border border-indigo-200/40 rounded-3xl bg-indigo-800 mb-10">
 
-                                <div class="flex flex-col items-center gap-14 md:flex-col text-2xl ">
+                                <div class="flex flex-col items-center md:gap-14 gap-8 md:flex-col text-2xl ">
                                     <div >
                                         <h3 class="text-3xl font-bold text-white">
                                             Apoio 
@@ -154,11 +154,11 @@
                                             class="w-70 h-1 mt-3 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full">
                                         </div>
                                     </div>
-                                    <div class="flex items-center justify-around gap-10">
+                                    <div class="flex items-start justify-around gap-10 flex-col md:flex-row">
                                         <img src="lica.png"
-                                            class="h-12 opacity-100 hover:opacity-70 transition duration-300">
+                                            class="h-8 md:h-12 opacity-100 hover:opacity-70 transition duration-300">
                                         <img src="unimontes.png"
-                                            class="h-12 opacity-100 hover:opacity-70 transition duration-300">
+                                            class="h-8 md:h1-2 opacity-100 hover:opacity-70 transition duration-300">
                                     </div>
 
                                 </div>

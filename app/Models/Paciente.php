@@ -14,8 +14,8 @@ class Paciente extends Model
     ];
 
     public function scopeSearch($query, $value){
-        $query->where('nome', 'like', "%{$value}%")->orWhereHas('user', function ($query) use ($value) {
-          $query->where('name', 'like', "%{$value}%");
+        $query->where('nome', 'ilike', "%{$value}%")->orWhereHas('user', function ($query) use ($value) {
+          $query->where('name', 'ilike', "%{$value}%");
       })->orWhereHas('unidade_saude', function ($query) use ($value) {
             $query->where('nome', 'like', "%{$value}%");
         });
