@@ -77,7 +77,7 @@
             <div class="flex flex-col items-center justify-between md:flex-row">
                 <div class="mb-4 md:mb-0">
                     <h4 class="text-xl font-bold">SoPeP</h4>
-                    <p class="mb-5 text-sm text-indigo-200">Sistema de Prescrição Eletrônico para Pé Diabético</p>
+                    <p class="mb-5 text-sm text-indigo-200">Sistema de Prescrição Eletrônico para Pé Diabético</p>      
                     <p> <a href="{{ route('termos') }}" class="text-sm text-white-200">Termos de Uso</a>
                     </p>
                     <p> <a href="{{ route('about') }}" class="text-sm text-white-200">Sobre nós</a>
