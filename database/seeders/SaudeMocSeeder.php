@@ -494,6 +494,26 @@ class SaudeMocSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        // Unidade: EQUIPE CONSULTÓRIO NA RUA
+        $idEndConsultorioRua = DB::table('enderecos')->insertGetId([
+            'rua' => 'MERCADO MUNICIPAL',
+            'numero' => 'S/N',
+            'cep' => '12345-678',
+            'bairro' => 'CENTRO',
+            'cidade' => 'MONTES CLAROS',
+            'uf' => 'MG',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('unidade_saudes')->insert([
+            'ubs' => 'EQUIPE CONSULTÓRIO NA RUA',
+            'endereco_id' => $idEndConsultorioRua,
+            'telefone' => '2211-4548',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
         // Unidade: ESMERALDA
         $idEndEsmeralda = DB::table('enderecos')->insertGetId([
             'rua' => 'RUA GIRASSOL',
@@ -1434,9 +1454,29 @@ class SaudeMocSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        // Unidade: TURMALINA
+        $idEndTurmalina = DB::table('enderecos')->insertGetId([
+            'rua' => 'RUA CORAÇÃO DE JESUS',
+            'numero' => '523',
+            'cep' => '12345-678',
+            'bairro' => 'CENTRO',
+            'cidade' => 'MONTES CLAROS',
+            'uf' => 'MG',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('unidade_saudes')->insert([
+            'ubs' => 'TURMALINA',
+            'endereco_id' => $idEndTurmalina,
+            'telefone' => '2211-4512',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
         // Unidade: MERCADO MUNICIPAL
         $idEndMercadoMunicipal = DB::table('enderecos')->insertGetId([
-            'rua' => 'MARECHAL DEODORO',
+            'rua' => 'RUA MARECHAL DEODORO',
             'numero' => '63',
             'cep' => '12345-678',
             'bairro' => 'CENTRO',
@@ -1516,7 +1556,7 @@ class SaudeMocSeeder extends Seeder
 
         // Unidade: VILA ANÁLIA II
         $idEndVilaAnalia2 = DB::table('enderecos')->insertGetId([
-            'rua' => 'TRAVESSA UM',
+            'rua' => 'RUA TRAVESSA UM',
             'numero' => '70',
             'cep' => '12345-678',
             'bairro' => 'VILA ANÁLIA',
@@ -1636,7 +1676,7 @@ class SaudeMocSeeder extends Seeder
 
         // Unidade: VIOLETA
         $idEndVioleta = DB::table('enderecos')->insertGetId([
-            'rua' => 'JANETE CLAIR',
+            'rua' => 'RUA JANETE CLAIR',
             'numero' => '170',
             'cep' => '12345-678',
             'bairro' => 'VILA REGINA',

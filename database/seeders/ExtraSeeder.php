@@ -19,7 +19,9 @@ class ExtraSeeder extends Seeder
         $this->call(CadastroPacienteSeeder::class);
         $this->call(HistoricoSeeder::class);
         $this->call(EnderecoSeeder::class);
-        $this->call(UnidadeSaudeSeeder::class);
+        $this->call(SaudeMocSeeder::class);
+        $this->call(EsfSeeder::class);
+        $this->call(UnidadeEsfSeeder::class);
         $this->call(PacientesSeeder::class);
         $this->call(CriarQuestionarioSeeder::class);
     }
