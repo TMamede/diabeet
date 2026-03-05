@@ -40,8 +40,8 @@
                     </div>
                 </div>
 
-                <!-- Tabela responsiva -->
-                <div class="overflow-x-auto">
+                <!-- ===================== TABELA (apenas desktop) ===================== -->
+                <div class="hidden md:block overflow-x-auto">
                     <table class="w-full">
                         <thead class="text-white bg-indigo-800">
                             <tr>
@@ -133,48 +133,63 @@
                                         </div>
                                     </td>
                                 </tr>
-
-                                <!-- Modal de confirmação melhorado -->
-                                <x-new-modal name="confirm-enfermeiro-deletion-{{ $enfermeiro->id }}" :show="$errors->isNotEmpty()"
-                                    focusable>
-                                    <div class="p-8">
-                                        <div class="mb-6 text-center">
-                                            <div
-                                                class="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full">
-                                                <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
-                                                </svg>
-                                            </div>
-                                            <h2 class="mb-2 text-2xl font-bold text-gray-900">Confirmar Exclusão</h2>
-                                            <p class="mb-4 text-gray-600">Você tem certeza de que deseja excluir este
-                                                enfermeiro?</p>
-                                            <div class="p-4 mb-6 border border-red-200 rounded-lg bg-red-50">
-                                                <p class="text-sm font-medium text-red-800">⚠️ Atenção: Esta ação é
-                                                    irreversível!</p>
-                                                <p class="mt-1 text-sm text-red-700">Os pacientes, avaliações de
-                                                    enfermagem e
-                                                    prescrições associadas também serão excluídos.</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="flex flex-col justify-center gap-4 sm:flex-row">
-                                            <button x-on:click="$dispatch('close')"
-                                                class="px-6 py-3 font-medium text-gray-800 transition-colors duration-200 bg-gray-200 rounded-lg hover:bg-gray-300">
-                                                Cancelar
-                                            </button>
-                                            <button wire:click="deleteEnfermeiro" x-on:click="$dispatch('close')"
-                                                class="px-6 py-3 font-medium text-white transition-all duration-200 rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 hover:shadow-xl">
-                                                Excluir Enfermeiro
-                                            </button>
-                                        </div>
-                                    </div>
-                                </x-new-modal>
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+
+                <!-- ===================== CARDS (apenas mobile) ===================== -->
+                <div class="md:hidden divide-y divide-gray-100">
+                    @foreach ($enfermeiros as $enfermeiro)
+                        <div wire:key="card-{{ $enfermeiro->id }}" class="p-4 hover:bg-gray-50 transition-colors duration-150">
+                            <!-- Topo do card: avatar + nome + COREN -->
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="flex items-center justify-center w-11 h-11 text-base font-semibold text-white bg-green-600 rounded-full shrink-0">
+                                        {{ substr($enfermeiro->name, 0, 1) }}
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-gray-900 leading-tight">{{ $enfermeiro->name }}</p>
+                                        <p class="text-xs text-gray-500">Enfermeiro(a)</p>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-1 text-xs font-medium text-green-800 bg-green-100 rounded-full shrink-0">
+                                    {{ $enfermeiro->coren }}
+                                </span>
+                            </div>
+
+                            <!-- Infos: e-mail + data -->
+                            <div class="space-y-1.5 mb-3">
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-3.5 h-3.5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                    <span class="text-xs font-medium text-indigo-600 truncate">{{ $enfermeiro->email }}</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-3.5 h-3.5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span class="text-xs text-gray-500">Cadastrado em {{ \Carbon\Carbon::parse($enfermeiro->created_at)->format('d/m/Y') }}</span>
+                                </div>
+                            </div>
+
+                            <!-- Botão excluir -->
+                            <div class="flex justify-end">
+                                <button x-data=""
+                                    x-on:click.prevent="$dispatch('open-modal', 'confirm-enfermeiro-deletion-{{ $enfermeiro->id }}'); @this.set('enfermeiroIdToDelete', {{ $enfermeiro->id }})"
+                                    class="inline-flex items-center px-3 py-1.5 bg-red-600 text-white text-xs font-medium rounded hover:bg-red-700 transition-colors duration-150">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                    Excluir
+                                </button>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
 
                 <!-- Footer da tabela com paginação melhorada -->
@@ -200,5 +215,40 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modais teleportados para o body, evitando clipping de overflow -->
+        @foreach ($enfermeiros as $enfermeiro)
+            <template x-teleport="body">
+                <x-new-modal name="confirm-enfermeiro-deletion-{{ $enfermeiro->id }}" :show="$errors->isNotEmpty()" focusable>
+                    <div class="p-5 sm:p-8">
+                        <div class="mb-5 sm:mb-6 text-center">
+                            <div class="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-red-100 rounded-full">
+                                <svg class="w-6 h-6 sm:w-8 sm:h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
+                                </svg>
+                            </div>
+                            <h2 class="mb-2 text-xl sm:text-2xl font-bold text-gray-900">Confirmar Exclusão</h2>
+                            <p class="mb-4 text-sm sm:text-base text-gray-600">Você tem certeza de que deseja excluir este enfermeiro?</p>
+                            <div class="p-3 sm:p-4 mb-5 sm:mb-6 border border-red-200 rounded-lg bg-red-50 text-left">
+                                <p class="text-sm font-medium text-red-800">⚠️ Atenção: Esta ação é irreversível!</p>
+                                <p class="mt-1 text-xs sm:text-sm text-red-700">Os pacientes, avaliações de enfermagem e prescrições associadas também serão excluídos.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
+                            <button x-on:click="$dispatch('close')"
+                                class="w-full sm:w-auto px-6 py-3 font-medium text-gray-800 transition-colors duration-200 bg-gray-200 rounded-lg hover:bg-gray-300">
+                                Cancelar
+                            </button>
+                            <button wire:click="deleteEnfermeiro" x-on:click="$dispatch('close')"
+                                class="w-full sm:w-auto px-6 py-3 font-medium text-white transition-all duration-200 rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 hover:shadow-xl">
+                                Excluir Enfermeiro
+                            </button>
+                        </div>
+                    </div>
+                </x-new-modal>
+            </template>
+        @endforeach
     </section>
 </div>
