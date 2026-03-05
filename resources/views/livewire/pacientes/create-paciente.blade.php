@@ -215,28 +215,28 @@
                         </header>
 
                         <!-- Formulário -->
-                        <main class="container px-6 pb-16 mx-auto">
+                        <main class="container px-4 pb-16 mx-auto sm:px-6">
                             <div
-                                class="max-w-6xl p-8 mx-auto border shadow bg-white/80 rounded-2xl border-white/30 md:p-12">
+                                class="max-w-6xl p-5 mx-auto border shadow bg-white/80 rounded-2xl border-white/30 sm:p-8 md:p-12">
 
                                 <!-- Título da seção -->
-                                <div class="mb-10 text-center">
-                                    <h2 class="text-3xl font-bold text-indigo-900">Histórico Clínico</h2>
+                                <div class="mb-8 text-center sm:mb-10">
+                                    <h2 class="text-2xl font-bold text-indigo-900 sm:text-3xl">Histórico Clínico</h2>
                                     <div class="w-24 h-1 mx-auto mt-2 bg-indigo-600 rounded-full"></div>
                                 </div>
 
-                                <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                                <div class="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2">
 
                                     <!-- Coluna 1 -->
-                                    <div class="space-y-6">
+                                    <div class="space-y-5 sm:space-y-6">
 
                                         <!-- Informações sobre Diabetes -->
-                                        <section class="p-6 border bg-indigo-50/50 border-indigo-100/40 rounded-xl">
+                                        <section
+                                            class="p-4 border sm:p-6 bg-indigo-50/50 border-indigo-100/40 rounded-xl">
                                             <h3 class="mb-4 text-lg font-semibold text-indigo-800">Informações sobre
                                                 Diabetes</h3>
                                             <div class="space-y-4">
                                                 <div>
-
                                                     <x-select label="Tipo de Diabetes" id="tipo_diabetes_id"
                                                         wire:model.lazy="tipo_diabetes_id" :options="$tipoDiabetes"
                                                         option-value="id" option-label="tipo" />
@@ -261,8 +261,10 @@
                                         </div>
 
                                         <!-- Comorbidades -->
-                                        <section class="p-6 border bg-purple-50/50 border-purple-100/40 rounded-xl">
+                                        <section
+                                            class="p-4 border sm:p-6 bg-purple-50/50 border-purple-100/40 rounded-xl">
                                             <h3 class="mb-4 text-lg font-semibold text-purple-800">Comorbidades</h3>
+                                            <p class="mb-4 text-gray-400 lg:hidden">Role a lista para baixo para visualizar mais itens.</p>
                                             <div class="pr-2 space-y-3 overflow-y-auto max-h-60">
                                                 @foreach ($comorbidadesList as $comorbidade)
                                                     <div
@@ -284,7 +286,7 @@
                                         </section>
 
                                         <!-- Cirurgias -->
-                                        <section class="p-6 border bg-pink-50/50 border-pink-100/40 rounded-xl">
+                                        <section class="p-4 border sm:p-6 bg-pink-50/50 border-pink-100/40 rounded-xl">
                                             <h3 class="mb-4 text-lg font-semibold text-pink-800">Histórico Cirúrgico
                                             </h3>
                                             <div class="space-y-4">
@@ -302,10 +304,11 @@
                                     </div>
 
                                     <!-- Coluna 2 -->
-                                    <div class="space-y-6">
+                                    <div class="space-y-5 sm:space-y-6">
 
                                         <!-- Alergias -->
-                                        <section class="p-6 border bg-indigo-50/50 border-indigo-100/40 rounded-xl">
+                                        <section
+                                            class="p-4 border sm:p-6 bg-indigo-50/50 border-indigo-100/40 rounded-xl">
                                             <h3 class="mb-4 text-lg font-semibold text-indigo-800">Alergias</h3>
                                             <div class="pr-2 space-y-3 overflow-y-auto max-h-60">
                                                 @foreach ($alergiasList as $alergia)
@@ -367,7 +370,8 @@
                                         </section>
 
                                         <!-- Amputação -->
-                                        <section class="p-6 border bg-purple-50/50 border-purple-100/40 rounded-xl">
+                                        <section
+                                            class="p-4 border sm:p-6 bg-purple-50/50 border-purple-100/40 rounded-xl">
                                             <h3 class="mb-4 text-lg font-semibold text-purple-800">Histórico de
                                                 Amputação</h3>
                                             <div class="space-y-4">
@@ -428,7 +432,7 @@
                                         </section>
 
                                         <!-- Tabagismo -->
-                                        <section class="p-6 border bg-pink-50/50 border-pink-100/40 rounded-xl">
+                                        <section class="p-4 border sm:p-6 bg-pink-50/50 border-pink-100/40 rounded-xl">
                                             <h3 class="mb-4 text-lg font-semibold text-pink-800">Tabagismo</h3>
                                             <div class="space-y-4">
                                                 <div>
@@ -486,7 +490,8 @@
                                         </section>
 
                                         <!-- Etilismo -->
-                                        <section class="p-6 border bg-indigo-50/50 border-indigo-100/40 rounded-xl">
+                                        <section
+                                            class="p-4 border sm:p-6 bg-indigo-50/50 border-indigo-100/40 rounded-xl">
                                             <h3 class="mb-4 text-lg font-semibold text-indigo-800">Etilismo</h3>
                                             <div class="space-y-4">
                                                 <div>
@@ -534,9 +539,10 @@
                                 </div>
 
                                 <!-- Botões de Navegação -->
-                                <div class="flex justify-center mt-12 space-x-6">
+                                <div
+                                    class="flex flex-col-reverse items-stretch gap-3 mt-10 sm:flex-row sm:justify-center sm:items-center sm:gap-6 sm:mt-12">
                                     <button type="button" wire:click="previousStep"
-                                        class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-indigo-700 transition-all duration-300 ease-in-out bg-white border-2 border-indigo-500 shadow-lg rounded-2xl hover:bg-indigo-50 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                                        class="relative inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-indigo-700 transition-all duration-300 ease-in-out bg-white border-2 border-indigo-500 shadow-lg sm:text-lg rounded-2xl hover:bg-indigo-50 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300">
                                         <span class="flex items-center">
                                             <svg class="w-5 h-5 mr-3 transition-transform duration-200 group-hover:-translate-x-1"
                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -548,7 +554,7 @@
                                     </button>
 
                                     <button type="button" wire:click="nextStep"
-                                        class="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transition-all duration-300 transform shadow-2xl bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 group rounded-2xl hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50">
+                                        class="relative inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white transition-all duration-300 transform shadow-2xl sm:px-12 sm:text-lg bg-gradient-to-r from-indigo-600 via-purple-500 to-purple-600 group rounded-2xl hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50">
                                         <span class="flex items-center">
                                             <svg class="w-5 h-5 mr-3 transition-transform duration-200 group-hover:translate-x-1"
                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
