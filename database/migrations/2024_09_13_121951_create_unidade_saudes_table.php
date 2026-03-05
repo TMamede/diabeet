@@ -26,6 +26,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Unidade_saude::class);
             $table->foreignIdFor(eSF::class);
+            $table->timestamps();
         });
     }
 
@@ -35,5 +36,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('unidade_saudes');
+        Schema::dropIfExists('unidade_esf');
     }
 };
