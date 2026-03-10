@@ -264,7 +264,8 @@
                                         <section
                                             class="p-4 border sm:p-6 bg-purple-50/50 border-purple-100/40 rounded-xl">
                                             <h3 class="mb-4 text-lg font-semibold text-purple-800">Comorbidades</h3>
-                                            <p class="mb-4 text-gray-400 lg:hidden">Role a lista para baixo para visualizar mais itens.</p>
+                                            <p class="mb-4 text-gray-400 lg:hidden">Role a lista para baixo para
+                                                visualizar mais itens.</p>
                                             <div class="pr-2 space-y-3 overflow-y-auto max-h-60">
                                                 @foreach ($comorbidadesList as $comorbidade)
                                                     <div
@@ -1108,9 +1109,12 @@
                                                         <h3 class="text-lg font-semibold text-green-800">Unidade
                                                             Selecionada</h3>
                                                         <p class="mt-1 font-medium text-green-700">
-                                                            {{ $unidade->nome }}</p>
+                                                            {{ $unidade->ubs }}</p>
                                                         <p class="mt-1 text-sm text-green-600">
-                                                            {{ $unidade->rua }}, {{ $unidade->bairro }}
+                                                            {{ $unidade->telefone }}<br>
+                                                            {{ $unidade->endereco->rua }} -
+                                                            {{ $unidade->endereco->numero }} <br>
+                                                            {{ $unidade->endereco->bairro }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -1192,11 +1196,15 @@
                                                                     <div>
                                                                         <h4
                                                                             class="text-lg font-semibold text-gray-900 transition-colors duration-200 group-hover:text-indigo-700">
-                                                                            {{ $unidade->nome }}
+                                                                            {{ $unidade->ubs }}
                                                                         </h4>
                                                                         <p class="mt-1 text-sm text-gray-600">
-                                                                            {{ $unidade->rua }},
-                                                                            {{ $unidade->bairro }}
+                                                                            {{ $unidade->telefone }}<br>
+                                                                            {{ $unidade->endereco->rua }} -
+                                                                            {{ $unidade->endereco->numero }}<br>
+                                                                            {{ $unidade->endereco->bairro }}<br>
+                                                                            {{ $unidade->endereco->cidade }} -
+                                                                            {{ $unidade->endereco->uf }}
                                                                         </p>
                                                                         <p class="mt-1 text-xs text-gray-500">Clique
                                                                             para
