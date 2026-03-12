@@ -47,15 +47,20 @@ class CreatePaciente extends Component
     public $data_exame;
 
     //Etapa 5: Unidade de Saude
-    public $unidade, $ruaU, $bairroU, $idUnidadeSelected = null;
+    public $unidade, $ruaU, $bairroU, $numeroU, $cidadeU, $ufU,  $telefoneU, $idUnidadeSelected = null;
+
 
     public function selectUnidade($unidadeId)
     {
         $this->unidade = Unidade_saude::find($unidadeId);
         $this->idUnidadeSelected = $unidadeId;
-        $this->ruaU = $this->unidade->rua;
-        $this->bairroU = $this->unidade->bairro;
-        $this->search = $this->unidade->nome;
+        $this->ruaU = $this->unidade->endereco->rua;
+        $this->bairroU = $this->unidade->endereco->bairro;
+        $this->numeroU = $this->unidade->endereco->numero;
+        $this->cidadeU = $this->unidade->endereco->cidade;
+        $this->ufU = $this->unidade->endereco->uf;
+        $this->telefoneU = $this->unidade->telefone;
+        $this->search = $this->unidade->ubs;
     }
 
     public function render()
@@ -64,7 +69,7 @@ class CreatePaciente extends Component
         $unidades = [];
 
         if (strlen($this->search) >= 1) {
-            $unidades = Unidade_saude::where('nome', 'like', '%' . $this->search . '%')
+            $unidades = Unidade_saude::where('ubs', 'like', '%' . $this->search . '%')
                 ->limit(3)
                 ->get();
         }
