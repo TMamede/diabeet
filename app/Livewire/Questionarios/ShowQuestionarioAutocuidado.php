@@ -104,7 +104,39 @@ class ShowQuestionarioAutocuidado extends Component
     {
         return redirect()->route('questionario.show', ['id' => $this->questionario->id]);
     }
+    public function getScoreProperty()
+    {
+        $respostas = [
+            $this->dieta,
+            $this->orientacao,
+            $this->frutas,
+            $this->gorduras,
+            $this->doces,
+            $this->realizou,
+            $this->especifico,
+            $this->avaliou,
+            $this->recomendado,
+            $this->pes,
+            $this->sapatos,
+            $this->dedos,
+            $this->medicamentos,
+            $this->injecoes,
+            $this->comprimidos,
+            // Tabagismo não entra no score
+        ];
 
+        // remove vazios
+        $respostas = array_filter($respostas, fn($v) => $v !== null && $v !== '');
+
+        if (count($respostas) === 0) {
+            return null;
+        }
+
+        // converte para inteiro e calcula média
+        $respostas = array_map('intval', $respostas);
+        $media = array_sum($respostas) / count($respostas);
+        return round($media, 2);
+    }
     public function render()
     {
         return view('livewire.questionarios.show-questionario-autocuidado', [

@@ -42,26 +42,48 @@ class ShowQuestionarioQualidade extends Component
         }
 
         // Guarda os objetos (se a view usa algo como $satisfacao->flexibilidade)
-        $this->satisfacao   = $this->questionarioQualidade->satisfacao;
-        $this->impacto      = $this->questionarioQualidade->impacto;
+        $this->satisfacao = $this->questionarioQualidade->satisfacao;
+        $this->impacto = $this->questionarioQualidade->impacto;
         $this->preo_diabete = $this->questionarioQualidade->preoDiabete;
-        $this->ter_filhos   = $this->questionarioQualidade->ter_filhos;
+        $this->ter_filhos = $this->questionarioQualidade->ter_filhos;
 
         // Preenche campos primitivos (wire:model)
         // Satisfação
         $this->flexibilidade = $this->satisfacao->flexibilidade ?? null;
-        $this->vida_sexual   = $this->satisfacao->vida_sexual   ?? null;
+        $this->vida_sexual = $this->satisfacao->vida_sexual ?? null;
 
         // Impacto
         $this->exercicio = $this->impacto->exercicio ?? null;
-        $this->incomodo  = $this->impacto->incomodo  ?? null;
-        $this->comer     = $this->impacto->comer     ?? null;
+        $this->incomodo = $this->impacto->incomodo ?? null;
+        $this->comer = $this->impacto->comer ?? null;
 
         // Preocupação com diabetes
-        $this->diabete      = $this->preo_diabete->diabete      ?? null;
+        $this->diabete = $this->preo_diabete->diabete ?? null;
         $this->complicacoes = $this->preo_diabete->complicacoes ?? null;
     }
+    public function getScoreProperty()
+    {
+        $respostas = [
+            $this->flexibilidade,
+            $this->vida_sexual,
+            $this->exercicio,
+            $this->incomodo,
+            $this->comer,
+            $this->diabete,
+            $this->complicacoes,
+            $this->ter_filhos,
+        ];
 
+        // remove vazios
+        $respostas = array_filter($respostas, fn($v) => $v !== null && $v !== '');
+
+        if (count($respostas) === 0) {
+            return null;
+        }
+
+        $respostas = array_map('intval', $respostas);
+        return round(array_sum($respostas) / count($respostas), 2);
+    }
     public function backToShow()
     {
         return redirect()->route('questionario.show', ['id' => $this->questionario->id]);

@@ -30,449 +30,470 @@
             </div>
         </div>
         <div class="max-w-4xl mx-auto">
-<div class="flex justify-start mb-6 mt-14">
-            <button type="button" wire:click="backToShow"
-                class="relative py-4 pl-2 pr-4 text-lg font-semibold text-white transition-all duration-300 transform shadow-lg group bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-2xl hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300">
-                <span class="relative z-10 flex items-center">
-                    <svg class="w-5 text-white h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 19l-7-7 7-7" />
+            <div class="flex justify-start mb-6 mt-14">
+                <button type="button" wire:click="backToShow"
+                    class="relative py-4 pl-2 pr-4 text-lg font-semibold text-white transition-all duration-300 transform shadow-lg group bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-2xl hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                    <span class="relative z-10 flex items-center">
+                        <svg class="w-5 text-white h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                         </svg>
-                    Voltar
-                </span>
-                <div
-                    class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-r from-blue-700 to-indigo-800 rounded-2xl group-hover:opacity-100">
-                </div>
-            </button>
+                        Voltar
+                    </span>
+                    <div
+                        class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-r from-blue-700 to-indigo-800 rounded-2xl group-hover:opacity-100">
+                    </div>
+                </button>
+            </div>
         </div>
-</div>
         <!-- Main Content -->
         <div class="max-w-4xl mx-auto space-y-8">
-             <fieldset disabled>
-            <!-- Seção Satisfação -->
-            <div class="overflow-hidden border shadow-xl bg-white/80 backdrop-blur-sm rounded-2xl border-white/20">
-                <div class="px-8 py-6 bg-gradient-to-r from-emerald-500 to-teal-600">
-                    <h2 class="text-2xl font-bold text-white">Satisfação</h2>
+            <fieldset disabled>
+                <div class="mb-6 text-center">
+                    <p class="text-lg text-gray-700">
+                        Score médio do questionário de qualidade:
+                        <span class="font-bold text-blue-600">
+                            {{ $this->score ?? '...' }}
+                        </span>
+                    </p>
                 </div>
-                <div class="p-8 space-y-8">
-                    <!-- Pergunta 1 -->
-                    <div>
-                        <label class="block mb-6 text-lg font-semibold text-gray-800">
-                            Você está satisfeito(a) com a flexibilidade que você tem na sua dieta?
-                        </label>
-                        <div class="grid grid-cols-5 gap-4">
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
-                                <input type="radio" wire:model="flexibilidade" value="1" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Muito<br>Satisfeito</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
-                                <input type="radio" wire:model="flexibilidade" value="2" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
-                                <span
-                                    class="text-sm leading-tight text-center text-gray-600">Bastante<br>Satisfeito</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
-                                <input type="radio" wire:model="flexibilidade" value="3" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Médio<br>Satisfeito</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
-                                <input type="radio" wire:model="flexibilidade" value="4" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Pouco<br>Satisfeito</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
-                                <input type="radio" wire:model="flexibilidade" value="5" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Nada<br>Satisfeito</span>
-                            </label>
-                        </div>
-                        @error('flexibilidade')
-                            <p class="flex items-center mt-3 text-sm text-red-600">
-                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                {{ $message }}
-                            </p>
-                        @enderror
+                <!-- Seção Satisfação -->
+                <div class="overflow-hidden border shadow-xl bg-white/80 backdrop-blur-sm rounded-2xl border-white/20">
+                    <div class="px-8 py-6 bg-gradient-to-r from-emerald-500 to-teal-600">
+                        <h2 class="text-2xl font-bold text-white">Satisfação</h2>
                     </div>
+                    <div class="p-8 space-y-8">
+                        <!-- Pergunta 1 -->
+                        <div>
+                            <label class="block mb-6 text-lg font-semibold text-gray-800">
+                                Você está satisfeito(a) com a flexibilidade que você tem na sua dieta?
+                            </label>
+                            <div class="grid grid-cols-5 gap-4">
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
+                                    <input type="radio" wire:model="flexibilidade" value="1" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Muito<br>Satisfeito</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
+                                    <input type="radio" wire:model="flexibilidade" value="2" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Bastante<br>Satisfeito</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
+                                    <input type="radio" wire:model="flexibilidade" value="3" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Médio<br>Satisfeito</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
+                                    <input type="radio" wire:model="flexibilidade" value="4" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Pouco<br>Satisfeito</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
+                                    <input type="radio" wire:model="flexibilidade" value="5" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Nada<br>Satisfeito</span>
+                                </label>
+                            </div>
+                            @error('flexibilidade')
+                                <p class="flex items-center mt-3 text-sm text-red-600">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                        </div>
 
-                    <!-- Pergunta 2 -->
-                    <div class="pt-6 border-t border-gray-200">
-                        <label class="block mb-6 text-lg font-semibold text-gray-800">
-                            Você está satisfeito(a) com sua vida sexual?
-                        </label>
-                        <div class="grid grid-cols-5 gap-4">
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
-                                <input type="radio" wire:model="vida_sexual" value="1" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Muito<br>Satisfeito</span>
+                        <!-- Pergunta 2 -->
+                        <div class="pt-6 border-t border-gray-200">
+                            <label class="block mb-6 text-lg font-semibold text-gray-800">
+                                Você está satisfeito(a) com sua vida sexual?
                             </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
-                                <input type="radio" wire:model="vida_sexual" value="2" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
-                                <span
-                                    class="text-sm leading-tight text-center text-gray-600">Bastante<br>Satisfeito</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
-                                <input type="radio" wire:model="vida_sexual" value="3" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Médio<br>Satisfeito</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
-                                <input type="radio" wire:model="vida_sexual" value="4" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Pouco<br>Satisfeito</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
-                                <input type="radio" wire:model="vida_sexual" value="5" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Nada<br>Satisfeito</span>
-                            </label>
+                            <div class="grid grid-cols-5 gap-4">
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
+                                    <input type="radio" wire:model="vida_sexual" value="1" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Muito<br>Satisfeito</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
+                                    <input type="radio" wire:model="vida_sexual" value="2" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Bastante<br>Satisfeito</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
+                                    <input type="radio" wire:model="vida_sexual" value="3" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Médio<br>Satisfeito</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
+                                    <input type="radio" wire:model="vida_sexual" value="4" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Pouco<br>Satisfeito</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-emerald-300 hover:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
+                                    <input type="radio" wire:model="vida_sexual" value="5" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Nada<br>Satisfeito</span>
+                                </label>
+                            </div>
+                            @error('vida_sexual')
+                                <p class="flex items-center mt-3 text-sm text-red-600">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
-                        @error('vida_sexual')
-                            <p class="flex items-center mt-3 text-sm text-red-600">
-                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                {{ $message }}
-                            </p>
-                        @enderror
                     </div>
                 </div>
-            </div>
 
-            <!-- Seção Impacto -->
-            <div class="overflow-hidden border shadow-xl bg-white/80 backdrop-blur-sm rounded-2xl border-white/20">
-                <div class="px-8 py-6 bg-gradient-to-r from-orange-500 to-red-500">
-                    <h2 class="text-2xl font-bold text-white">Impacto</h2>
-                </div>
-                <div class="p-8 space-y-8">
-                    <!-- Pergunta 1 -->
-                    <div>
-                        <label class="block mb-6 text-lg font-semibold text-gray-800">
-                            Com que frequência sua diabetes interfere em seus exercícios físicos?
-                        </label>
-                        <div class="grid grid-cols-5 gap-4">
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="exercicio" value="1" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Nunca</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="exercicio" value="2" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Nunca</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="exercicio" value="3" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Às vezes</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="exercicio" value="4" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Sempre</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="exercicio" value="5" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Sempre</span>
-                            </label>
-                        </div>
-                        @error('exercicio')
-                            <p class="flex items-center mt-3 text-sm text-red-600">
-                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                {{ $message }}
-                            </p>
-                        @enderror
+                <!-- Seção Impacto -->
+                <div class="overflow-hidden border shadow-xl bg-white/80 backdrop-blur-sm rounded-2xl border-white/20">
+                    <div class="px-8 py-6 bg-gradient-to-r from-orange-500 to-red-500">
+                        <h2 class="text-2xl font-bold text-white">Impacto</h2>
                     </div>
+                    <div class="p-8 space-y-8">
+                        <!-- Pergunta 1 -->
+                        <div>
+                            <label class="block mb-6 text-lg font-semibold text-gray-800">
+                                Com que frequência sua diabetes interfere em seus exercícios físicos?
+                            </label>
+                            <div class="grid grid-cols-5 gap-4">
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="exercicio" value="1" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Nunca</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="exercicio" value="2" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Nunca</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="exercicio" value="3" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Às vezes</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="exercicio" value="4" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Quase<br>Sempre</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="exercicio" value="5" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Sempre</span>
+                                </label>
+                            </div>
+                            @error('exercicio')
+                                <p class="flex items-center mt-3 text-sm text-red-600">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                        </div>
 
-                    <!-- Pergunta 2 -->
-                    <div class="pt-6 border-t border-gray-200">
-                        <label class="block mb-6 text-lg font-semibold text-gray-800">
-                            Com que frequência você se sente incomodado por ter diabetes?
-                        </label>
-                        <div class="grid grid-cols-5 gap-4">
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="incomodo" value="1" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Nunca</span>
+                        <!-- Pergunta 2 -->
+                        <div class="pt-6 border-t border-gray-200">
+                            <label class="block mb-6 text-lg font-semibold text-gray-800">
+                                Com que frequência você se sente incomodado por ter diabetes?
                             </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="incomodo" value="2" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Nunca</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="incomodo" value="3" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Às vezes</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="incomodo" value="4" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Sempre</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="incomodo" value="5" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Sempre</span>
-                            </label>
+                            <div class="grid grid-cols-5 gap-4">
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="incomodo" value="1" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Nunca</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="incomodo" value="2" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Nunca</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="incomodo" value="3" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Às vezes</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="incomodo" value="4" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Quase<br>Sempre</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="incomodo" value="5" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Sempre</span>
+                                </label>
+                            </div>
+                            @error('incomodo')
+                                <p class="flex items-center mt-3 text-sm text-red-600">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
-                        @error('incomodo')
-                            <p class="flex items-center mt-3 text-sm text-red-600">
-                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                {{ $message }}
-                            </p>
-                        @enderror
-                    </div>
 
-                    <!-- Pergunta 3 -->
-                    <div class="pt-6 border-t border-gray-200">
-                        <label class="block mb-6 text-lg font-semibold text-gray-800">
-                            Com que frequência você come algo que não deveria ao invés de dizer que tem diabetes?
-                        </label>
-                        <div class="grid grid-cols-5 gap-4">
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="comer" value="1" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Nunca</span>
+                        <!-- Pergunta 3 -->
+                        <div class="pt-6 border-t border-gray-200">
+                            <label class="block mb-6 text-lg font-semibold text-gray-800">
+                                Com que frequência você come algo que não deveria ao invés de dizer que tem diabetes?
                             </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="comer" value="2" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Nunca</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="comer" value="3" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Às vezes</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="comer" value="4" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Sempre</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
-                                <input type="radio" wire:model="comer" value="5" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Sempre</span>
-                            </label>
+                            <div class="grid grid-cols-5 gap-4">
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="comer" value="1" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Nunca</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="comer" value="2" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Nunca</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="comer" value="3" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Às vezes</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="comer" value="4" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Quase<br>Sempre</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-orange-300 hover:bg-orange-50 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-100">
+                                    <input type="radio" wire:model="comer" value="5" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Sempre</span>
+                                </label>
+                            </div>
+                            @error('comer')
+                                <p class="flex items-center mt-3 text-sm text-red-600">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
-                        @error('comer')
-                            <p class="flex items-center mt-3 text-sm text-red-600">
-                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                {{ $message }}
-                            </p>
-                        @enderror
                     </div>
                 </div>
-            </div>
 
-            <!-- Seção Preocupações Social/Vocacional -->
-            <div class="overflow-hidden border shadow-xl bg-white/80 backdrop-blur-sm rounded-2xl border-white/20">
-                <div class="px-8 py-6 bg-gradient-to-r from-purple-500 to-pink-500">
-                    <h2 class="text-2xl font-bold text-white">Preocupações: Social / Vocacional</h2>
-                </div>
-                <div class="p-8">
-                    <div>
-                        <label class="block mb-6 text-lg font-semibold text-gray-800">
-                            Com que frequência você se preocupa se irá ter filhos?
-                        </label>
-                        <div class="grid grid-cols-5 gap-4">
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-purple-300 hover:bg-purple-50 has-[:checked]:border-purple-500 has-[:checked]:bg-purple-100">
-                                <input type="radio" wire:model="ter_filhos" value="1" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Nunca</span>
+                <!-- Seção Preocupações Social/Vocacional -->
+                <div class="overflow-hidden border shadow-xl bg-white/80 backdrop-blur-sm rounded-2xl border-white/20">
+                    <div class="px-8 py-6 bg-gradient-to-r from-purple-500 to-pink-500">
+                        <h2 class="text-2xl font-bold text-white">Preocupações: Social / Vocacional</h2>
+                    </div>
+                    <div class="p-8">
+                        <div>
+                            <label class="block mb-6 text-lg font-semibold text-gray-800">
+                                Com que frequência você se preocupa se irá ter filhos?
                             </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-purple-300 hover:bg-purple-50 has-[:checked]:border-purple-500 has-[:checked]:bg-purple-100">
-                                <input type="radio" wire:model="ter_filhos" value="2" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Nunca</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-purple-300 hover:bg-purple-50 has-[:checked]:border-purple-500 has-[:checked]:bg-purple-100">
-                                <input type="radio" wire:model="ter_filhos" value="3" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Às vezes</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-purple-300 hover:bg-purple-50 has-[:checked]:border-purple-500 has-[:checked]:bg-purple-100">
-                                <input type="radio" wire:model="ter_filhos" value="4" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Sempre</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-purple-300 hover:bg-purple-50 has-[:checked]:border-purple-500 has-[:checked]:bg-purple-100">
-                                <input type="radio" wire:model="ter_filhos" value="5" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Sempre</span>
-                            </label>
+                            <div class="grid grid-cols-5 gap-4">
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-purple-300 hover:bg-purple-50 has-[:checked]:border-purple-500 has-[:checked]:bg-purple-100">
+                                    <input type="radio" wire:model="ter_filhos" value="1" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Nunca</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-purple-300 hover:bg-purple-50 has-[:checked]:border-purple-500 has-[:checked]:bg-purple-100">
+                                    <input type="radio" wire:model="ter_filhos" value="2" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Nunca</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-purple-300 hover:bg-purple-50 has-[:checked]:border-purple-500 has-[:checked]:bg-purple-100">
+                                    <input type="radio" wire:model="ter_filhos" value="3" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Às vezes</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-purple-300 hover:bg-purple-50 has-[:checked]:border-purple-500 has-[:checked]:bg-purple-100">
+                                    <input type="radio" wire:model="ter_filhos" value="4" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Quase<br>Sempre</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-purple-300 hover:bg-purple-50 has-[:checked]:border-purple-500 has-[:checked]:bg-purple-100">
+                                    <input type="radio" wire:model="ter_filhos" value="5" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Sempre</span>
+                                </label>
+                            </div>
+                            @error('ter_filhos')
+                                <p class="flex items-center mt-3 text-sm text-red-600">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
-                        @error('ter_filhos')
-                            <p class="flex items-center mt-3 text-sm text-red-600">
-                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                {{ $message }}
-                            </p>
-                        @enderror
                     </div>
                 </div>
-            </div>
 
-            <!-- Seção Preocupações Relacionadas à Diabetes -->
-            <div class="overflow-hidden border shadow-xl bg-white/80 backdrop-blur-sm rounded-2xl border-white/20">
-                <div class="px-8 py-6 bg-gradient-to-r from-blue-500 to-indigo-600">
-                    <h2 class="text-2xl font-bold text-white">Preocupações Relacionadas à Diabetes</h2>
-                </div>
-                <div class="p-8 space-y-8">
-                    <!-- Pergunta 1 -->
-                    <div>
-                        <label class="block mb-6 text-lg font-semibold text-gray-800">
-                            Com que frequência você se preocupa se virá a desmaiar?
-                        </label>
-                        <div class="grid grid-cols-5 gap-4">
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="diabete" value="1" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Nunca</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="diabete" value="2" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Nunca</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="diabete" value="3" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Às vezes</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="diabete" value="4" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Sempre</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="diabete" value="5" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Sempre</span>
-                            </label>
-                        </div>
-                        @error('diabete')
-                            <p class="flex items-center mt-3 text-sm text-red-600">
-                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                {{ $message }}
-                            </p>
-                        @enderror
+                <!-- Seção Preocupações Relacionadas à Diabetes -->
+                <div class="overflow-hidden border shadow-xl bg-white/80 backdrop-blur-sm rounded-2xl border-white/20">
+                    <div class="px-8 py-6 bg-gradient-to-r from-blue-500 to-indigo-600">
+                        <h2 class="text-2xl font-bold text-white">Preocupações Relacionadas à Diabetes</h2>
                     </div>
+                    <div class="p-8 space-y-8">
+                        <!-- Pergunta 1 -->
+                        <div>
+                            <label class="block mb-6 text-lg font-semibold text-gray-800">
+                                Com que frequência você se preocupa se virá a desmaiar?
+                            </label>
+                            <div class="grid grid-cols-5 gap-4">
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
+                                    <input type="radio" wire:model="diabete" value="1" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Nunca</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
+                                    <input type="radio" wire:model="diabete" value="2" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Nunca</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
+                                    <input type="radio" wire:model="diabete" value="3" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Às vezes</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
+                                    <input type="radio" wire:model="diabete" value="4" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Quase<br>Sempre</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
+                                    <input type="radio" wire:model="diabete" value="5" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Sempre</span>
+                                </label>
+                            </div>
+                            @error('diabete')
+                                <p class="flex items-center mt-3 text-sm text-red-600">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                        </div>
 
-                    <!-- Pergunta 2 -->
-                    <div class="pt-6 border-t border-gray-200">
-                        <label class="block mb-6 text-lg font-semibold text-gray-800">
-                            Com que frequência você se preocupa se terá complicações devidas a sua diabetes?
-                        </label>
-                        <div class="grid grid-cols-5 gap-4">
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="complicacoes" value="1" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Nunca</span>
+                        <!-- Pergunta 2 -->
+                        <div class="pt-6 border-t border-gray-200">
+                            <label class="block mb-6 text-lg font-semibold text-gray-800">
+                                Com que frequência você se preocupa se terá complicações devidas a sua diabetes?
                             </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="complicacoes" value="2" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Nunca</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="complicacoes" value="3" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Às vezes</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="complicacoes" value="4" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Sempre</span>
-                            </label>
-                            <label
-                                class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="radio" wire:model="complicacoes" value="5" class="sr-only">
-                                <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
-                                <span class="text-sm leading-tight text-center text-gray-600">Sempre</span>
-                            </label>
+                            <div class="grid grid-cols-5 gap-4">
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
+                                    <input type="radio" wire:model="complicacoes" value="1" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">1</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Nunca</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
+                                    <input type="radio" wire:model="complicacoes" value="2" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">2</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Quase<br>Nunca</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
+                                    <input type="radio" wire:model="complicacoes" value="3" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">3</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Às vezes</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
+                                    <input type="radio" wire:model="complicacoes" value="4" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">4</span>
+                                    <span
+                                        class="text-sm leading-tight text-center text-gray-600">Quase<br>Sempre</span>
+                                </label>
+                                <label
+                                    class="flex flex-col items-center p-4 bg-gray-50 rounded-xl border-2 border-transparent cursor-pointer transition-all hover:border-blue-300 hover:bg-blue-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
+                                    <input type="radio" wire:model="complicacoes" value="5" class="sr-only">
+                                    <span class="mb-2 text-2xl font-bold text-gray-700">5</span>
+                                    <span class="text-sm leading-tight text-center text-gray-600">Sempre</span>
+                                </label>
+                            </div>
+                            @error('complicacoes')
+                                <p class="flex items-center mt-3 text-sm text-red-600">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
-                        @error('complicacoes')
-                            <p class="flex items-center mt-3 text-sm text-red-600">
-                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                {{ $message }}
-                            </p>
-                        @enderror
                     </div>
                 </div>
-            </div>
             </fieldset>
         </div>
 
