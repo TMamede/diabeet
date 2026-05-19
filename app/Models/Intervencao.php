@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Intervencao extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
     public function prontuarios()
     {
-        return $this->belongsToMany(Prontuario::class,'prontuario_intervencao');
+        return $this->belongsToMany(Prontuario::class, 'prontuario_intervencao');
     }
 
     public function diagnosticos()

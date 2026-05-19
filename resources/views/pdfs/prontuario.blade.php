@@ -132,39 +132,81 @@
 
 
     <!-- Exibindo todas as Origens e seus detalhes -->
-    @foreach ($prontuario->origens as $origem)
+    @foreach ($estrutura as $grupo)
         <div class="section">
-            <div class="section-title">Necessidade Humana Básica: {{ $origem->descricao }}</div>
 
-            @if (isset($motivosPorOrigem[$origem->id]))
-                @foreach ($motivosPorOrigem[$origem->id] as $motivo)
-                    <div class="content">
-                        <strong>Indicador Clínico:</strong> {{ $motivo->descricao }}
+            <div class="section-title">
+                Necessidade Humana Básica: {{ $grupo['origem']->descricao }}
+            </div>
 
-                        @if (isset($diagnosticosPorMotivo[$motivo->id]))
-                            <ul>
-                                @foreach ($diagnosticosPorMotivo[$motivo->id] as $diagnostico)
-                                    <li class="list-item">
-                                        <strong>Diagnóstico:</strong> {{ $diagnostico->descricao }}
+            @foreach ($grupo['motivos'] as $motivoData)
+                <div class="content">
+                    <strong>Indicador Clínico:</strong>
+                    {{ $motivoData['motivo']->descricao }}
 
-                                        @if (isset($intervencoesPorDiagnostico[$diagnostico->id]))
-                                            <ul>
-                                                @foreach ($intervencoesPorDiagnostico[$diagnostico->id] as $intervencao)
-                                                    <li class="list-item">Intervenção: {{ $intervencao->descricao }}
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </div>
-                @endforeach
-            @endif
+                    <ul>
+
+                        @foreach ($motivoData['diagnosticos'] as $diagData)
+                            <li class="list-item">
+
+                                <strong>Diagnóstico:</strong>
+                                {{ $diagData['diagnostico']->descricao }}
+
+                                <ul>
+
+                                    @foreach ($diagData['intervencoes'] as $intervencao)
+                                        <li class="list-item">
+                                            Intervenção: {{ $intervencao->descricao }}
+                                        </li>
+                                    @endforeach
+
+                                </ul>
+
+                            </li>
+                        @endforeach
+
+                    </ul>
+
+                </div>
+            @endforeach
+
         </div>
     @endforeach
 
+    @if ($diagnosticosExtras->count())
+
+        <div class="section">
+
+            <div class="section-title">
+                Diagnósticos Adicionados Manualmente
+            </div>
+
+            <ul>
+
+                @foreach ($diagnosticosExtras as $extra)
+                    <li class="list-item">
+
+                        <strong>Diagnóstico:</strong>
+                        {{ $extra['diagnostico']->descricao }}
+
+                        <ul>
+
+                            @foreach ($extra['intervencoes'] as $intervencao)
+                                <li class="list-item">
+                                    Intervenção: {{ $intervencao->descricao }}
+                                </li>
+                            @endforeach
+
+                        </ul>
+
+                    </li>
+                @endforeach
+
+            </ul>
+
+        </div>
+
+    @endif
 
 </body>
 

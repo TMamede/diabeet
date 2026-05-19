@@ -3,237 +3,416 @@
 namespace App\Livewire\Prontuarios;
 
 use App\Models\Prontuario;
+use App\Models\Diagnostico;
+use App\Models\Intervencao;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class CreateProntuario extends Component
 {
     public $questionarioId;
     public $prontuario;
+
     public $origens = [];
     public $origensSelecionadas = [];
     public $motivosSelecionados = [];
     public $diagnosticosSelecionados = [];
     public $intervencoesSelecionadas = [];
 
+    public $mapIntervencaoDiagnostico = [];
+    public $mapDiagnosticoOrigem = [];
+    public $mapDiagnosticoIntervencoes = [];
+    public $mapOrigemDiagnosticos = [];
+
+    // novos campos
+    public $diagnosticosExtras = [];
+    public $intervencoesExtras = [];
+
     public function mount($id = null)
     {
         $this->questionarioId = $id;
-        $this->prontuario = Prontuario::with(['origens', 'motivos', 'diagnosticos', 'intervencoes'])->where('questionario_id', $id)->firstOrFail();
+
+        $this->prontuario = Prontuario::with([
+            'origens',
+            'motivos',
+            'diagnosticos',
+            'intervencoes'
+        ])->where('questionario_id', $id)->firstOrFail();
 
         $origensAssociadas = $this->prontuario->origens;
         $motivosAssociados = $this->prontuario->motivos->pluck('id')->toArray();
 
         $this->origens = $origensAssociadas->map(function ($origem) use ($motivosAssociados) {
-            $motivosFiltrados = $origem->motivos()->whereIn('motivos.id', $motivosAssociados)->get();
+
+            $motivosFiltrados = $origem->motivos()
+                ->whereIn('motivos.id', $motivosAssociados)
+                ->get();
 
             $diagnosticosUnicos = [];
 
             foreach ($motivosFiltrados as $motivo) {
+
                 foreach ($motivo->diagnosticos as $diagnostico) {
+
                     if (!isset($diagnosticosUnicos[$diagnostico->id])) {
-                        $diagnostico->intervencaos; // força eager loading
+
+                        $diagnostico->intervencaos;
+
                         $diagnosticosUnicos[$diagnostico->id] = $diagnostico;
                     }
                 }
             }
 
             return [
+
                 'id' => $origem->id,
+
                 'descricao' => $origem->descricao,
+
                 'motivos' => $motivosFiltrados->map(function ($motivo) {
+
                     return [
+
                         'id' => $motivo->id,
+
                         'descricao' => $motivo->descricao,
+
                         'diagnosticos' => $motivo->diagnosticos->map(function ($diag) {
+
                             return [
+
                                 'id' => $diag->id,
+
                                 'descricao' => $diag->descricao,
+
                                 'intervencaos' => $diag->intervencaos->map(function ($int) {
+
                                     return [
+
                                         'id' => $int->id,
+
                                         'descricao' => $int->descricao
+
                                     ];
                                 })
+
                             ];
                         })
+
                     ];
                 }),
+
                 'diagnosticos_unicos' => array_values($diagnosticosUnicos)
+
             ];
         })->toArray();
+
+        foreach ($this->origens as $origem) {
+
+            foreach ($origem['diagnosticos_unicos'] as $diagnostico) {
+
+                $this->mapDiagnosticoOrigem[$diagnostico->id] = $origem['id'];
+
+                $this->mapOrigemDiagnosticos[$origem['id']][] = $diagnostico->id;
+
+                foreach ($diagnostico->intervencaos as $intervencao) {
+
+                    $this->mapIntervencaoDiagnostico[$intervencao->id] = $diagnostico->id;
+
+                    $this->mapDiagnosticoIntervencoes[$diagnostico->id][] = $intervencao->id;
+                }
+            }
+        }
     }
+
 
     public function toggleOrigem($origemId)
     {
         if (in_array($origemId, $this->origensSelecionadas)) {
+
             $this->origensSelecionadas = array_diff($this->origensSelecionadas, [$origemId]);
-            $this->motivosSelecionados = array_filter($this->motivosSelecionados, function ($motivoId) use ($origemId) {
-                return !$this->isMotivoFromOrigem($origemId, $motivoId);
-            });
-            $this->diagnosticosSelecionados = array_filter($this->diagnosticosSelecionados, function ($diagnosticoId) use ($origemId) {
-                return !$this->isDiagnosticoFromOrigem($origemId, $diagnosticoId);
-            });
         } else {
+
             $this->origensSelecionadas[] = $origemId;
         }
     }
 
-    public function toggleIntervencao($intervencaoId)
+    public function verificarOrigem($origemId)
     {
-        $diagnosticoId = $this->getDiagnosticoFromIntervencao($intervencaoId);
+        if (!isset($this->mapOrigemDiagnosticos[$origemId])) return;
 
-        if (in_array($intervencaoId, $this->intervencoesSelecionadas)) {
-            $this->intervencoesSelecionadas = array_diff($this->intervencoesSelecionadas, [$intervencaoId]);
-        } else {
-            $this->intervencoesSelecionadas[] = $intervencaoId;
+        $temDiagnostico = false;
 
-            if ($diagnosticoId && !in_array($diagnosticoId, $this->diagnosticosSelecionados)) {
-                $this->toggleDiagnostico($diagnosticoId);
+        foreach ($this->mapOrigemDiagnosticos[$origemId] as $diagId) {
+
+            if (in_array($diagId, $this->diagnosticosSelecionados)) {
+
+                $temDiagnostico = true;
+                break;
             }
         }
+
+        if (!$temDiagnostico) {
+
+            $this->origensSelecionadas = array_diff(
+                $this->origensSelecionadas,
+                [$origemId]
+            );
+        }
     }
+
 
     public function toggleDiagnostico($diagnosticoId)
     {
-        $motivoId = $this->getMotivoFromDiagnostico($diagnosticoId);
-        $origemId = $this->getOrigemFromMotivo($motivoId);
+        $origemId = $this->mapDiagnosticoOrigem[$diagnosticoId] ?? null;
 
+        if (!$origemId) return;
+
+        // DESMARCAR
         if (in_array($diagnosticoId, $this->diagnosticosSelecionados)) {
-            $this->diagnosticosSelecionados = array_diff($this->diagnosticosSelecionados, [$diagnosticoId]);
-        } else {
+
+            $this->diagnosticosSelecionados = array_diff(
+                $this->diagnosticosSelecionados,
+                [$diagnosticoId]
+            );
+
+            if (isset($this->mapDiagnosticoIntervencoes[$diagnosticoId])) {
+
+                foreach ($this->mapDiagnosticoIntervencoes[$diagnosticoId] as $intId) {
+
+                    $this->intervencoesSelecionadas = array_diff(
+                        $this->intervencoesSelecionadas,
+                        [$intId]
+                    );
+                }
+            }
+
+            $this->verificarOrigem($origemId);
+
+            return;
+        }
+
+        // MARCAR
+        $this->diagnosticosSelecionados[] = $diagnosticoId;
+
+        if (!in_array($origemId, $this->origensSelecionadas)) {
+
+            $this->origensSelecionadas[] = $origemId;
+        }
+    }
+
+
+    public function toggleIntervencao($intervencaoId)
+    {
+        $diagnosticoId = $this->mapIntervencaoDiagnostico[$intervencaoId] ?? null;
+
+        if (!$diagnosticoId) return;
+
+        $origemId = $this->mapDiagnosticoOrigem[$diagnosticoId];
+
+        // DESMARCAR
+        if (in_array($intervencaoId, $this->intervencoesSelecionadas)) {
+
+            $this->intervencoesSelecionadas = array_diff(
+                $this->intervencoesSelecionadas,
+                [$intervencaoId]
+            );
+
+            // verificar se ainda tem intervenção ativa
+            $temOutra = false;
+
+            foreach ($this->mapDiagnosticoIntervencoes[$diagnosticoId] as $intId) {
+
+                if (in_array($intId, $this->intervencoesSelecionadas)) {
+
+                    $temOutra = true;
+                    break;
+                }
+            }
+
+            if (!$temOutra) {
+
+                $this->diagnosticosSelecionados = array_diff(
+                    $this->diagnosticosSelecionados,
+                    [$diagnosticoId]
+                );
+
+                $this->verificarOrigem($origemId);
+            }
+
+            return;
+        }
+
+        // MARCAR
+        $this->intervencoesSelecionadas[] = $intervencaoId;
+
+        if (!in_array($diagnosticoId, $this->diagnosticosSelecionados)) {
+
             $this->diagnosticosSelecionados[] = $diagnosticoId;
+        }
 
-            if ($motivoId && !in_array($motivoId, $this->motivosSelecionados)) {
-                $this->toggleMotivo($motivoId);
-            }
+        if (!in_array($origemId, $this->origensSelecionadas)) {
+
+            $this->origensSelecionadas[] = $origemId;
         }
     }
 
-    public function toggleMotivo($motivoId)
+
+    /*
+    |--------------------------------------------------------------------------
+    | DIAGNOSTICOS MANUAIS
+    |--------------------------------------------------------------------------
+    */
+
+
+    public function adicionarDiagnosticoExtra()
     {
-        $origemId = $this->getOrigemFromMotivo($motivoId);
 
-        if (in_array($motivoId, $this->motivosSelecionados)) {
-            $this->motivosSelecionados = array_diff($this->motivosSelecionados, [$motivoId]);
-        } else {
-            $this->motivosSelecionados[] = $motivoId;
+        $this->diagnosticosExtras[] = [
 
-            if ($origemId && !in_array($origemId, $this->origensSelecionadas)) {
-                $this->origensSelecionadas[] = $origemId;
-            }
-        }
+            'descricao' => '',
+
+            'intervencoes' => []
+
+        ];
     }
 
-    private function getDiagnosticoFromIntervencao($intervencaoId)
+
+    public function adicionarIntervencaoExtra($index)
     {
-        foreach ($this->origens as $origem) {
-            foreach ($origem['motivos'] as $motivo) {
-                foreach ($motivo['diagnosticos'] as $diagnostico) {
-                    if (collect($diagnostico['intervencaos'])->pluck('id')->contains($intervencaoId)) {
-                        return $diagnostico['id'];
+
+        $this->diagnosticosExtras[$index]['intervencoes'][] = [
+
+            'descricao' => ''
+
+        ];
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | FINALIZAR PRONTUARIO
+    |--------------------------------------------------------------------------
+    */
+
+
+    public function finalizarProntuario()
+    {
+        if (
+            empty($this->origensSelecionadas) ||
+            empty($this->diagnosticosSelecionados)
+        ) {
+
+            session()->flash(
+                'error',
+                'É necessário selecionar pelo menos uma origem e um diagnóstico.'
+            );
+
+            return;
+        }
+
+        DB::beginTransaction();
+
+        try {
+
+            /*
+        |--------------------------------------------------------------------------
+        | SALVAR DIAGNÓSTICOS EXTRAS
+        |--------------------------------------------------------------------------
+        */
+
+            foreach ($this->diagnosticosExtras as $extra) {
+
+                if (empty($extra['descricao'])) {
+                    continue;
+                }
+
+                // Criar diagnóstico
+                $diagnostico = Diagnostico::create([
+                    'descricao' => $extra['descricao']
+                ]);
+
+                // adicionar diagnóstico na seleção
+                $this->diagnosticosSelecionados[] = $diagnostico->id;
+
+                $intervencoesIds = [];
+
+                if (!empty($extra['intervencoes'])) {
+
+                    foreach ($extra['intervencoes'] as $intervencaoExtra) {
+
+                        if (empty($intervencaoExtra['descricao'])) {
+                            continue;
+                        }
+
+                        // Criar intervenção
+                        $intervencao = Intervencao::create([
+                            'descricao' => $intervencaoExtra['descricao']
+                        ]);
+
+                        $intervencoesIds[] = $intervencao->id;
+
+                        // adicionar na seleção
+                        $this->intervencoesSelecionadas[] = $intervencao->id;
                     }
                 }
-            }
-        }
-        return null;
-    }
 
-    private function getOrigemFromMotivo($motivoId)
-    {
-        foreach ($this->origens as $origem) {
-            if (collect($origem['motivos'])->pluck('id')->contains($motivoId)) {
-                return $origem['id'];
-            }
-        }
-        return null;
-    }
+                // Associar diagnóstico às intervenções (N:N)
+                if (!empty($intervencoesIds)) {
 
-    private function getMotivoFromDiagnostico($diagnosticoId)
-    {
-        foreach ($this->origens as $origem) {
-            foreach ($origem['motivos'] as $motivo) {
-                if (collect($motivo['diagnosticos'])->pluck('id')->contains($diagnosticoId)) {
-                    return $motivo['id'];
+                    $diagnostico->intervencaos()->sync($intervencoesIds);
                 }
             }
-        }
-        return null;
-    }
 
-    private function isMotivoFromOrigem($origemId, $motivoId)
-    {
-        foreach ($this->origens as $origem) {
-            if ($origem['id'] === $origemId) {
-                return collect($origem['motivos'])->pluck('id')->contains($motivoId);
+
+            /*
+        |--------------------------------------------------------------------------
+        | LÓGICA ORIGINAL (MANTIDA)
+        |--------------------------------------------------------------------------
+        */
+
+            $this->prontuario->origens()->sync($this->origensSelecionadas);
+
+            if (!empty($this->motivosSelecionados)) {
+                $this->prontuario->motivos()->sync($this->motivosSelecionados);
             }
-        }
-        return false;
-    }
 
-    private function isDiagnosticoFromOrigem($origemId, $diagnosticoId)
-    {
-        foreach ($this->origens as $origem) {
-            if ($origem['id'] === $origemId) {
-                foreach ($origem['motivos'] as $motivo) {
-                    if (collect($motivo['diagnosticos'])->pluck('id')->contains($diagnosticoId)) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
+            $this->prontuario->diagnosticos()->sync($this->diagnosticosSelecionados);
 
-    private function isDiagnosticoFromMotivo($motivoId, $diagnosticoId)
-    {
-        foreach ($this->origens as $origem) {
-            foreach ($origem['motivos'] as $motivo) {
-                if ($motivo['id'] === $motivoId) {
-                    return collect($motivo['diagnosticos'])->pluck('id')->contains($diagnosticoId);
-                }
-            }
-        }
-        return false;
-    }
+            $this->prontuario->intervencoes()->sync($this->intervencoesSelecionadas);
 
-    private function isIntervencaoFromDiagnostico($diagnosticoId, $intervencaoId)
-    {
-        foreach ($this->origens as $origem) {
-            foreach ($origem['motivos'] as $motivo) {
-                foreach ($motivo['diagnosticos'] as $diagnostico) {
-                    if ($diagnostico['id'] === $diagnosticoId) {
-                        return collect($diagnostico['intervencaos'])->pluck('id')->contains($intervencaoId);
-                    }
-                }
-            }
-        }
-        return false;
-    }
+            $this->prontuario->gerado = true;
 
+            $this->prontuario->save();
+
+            DB::commit();
+
+            session()->flash('success', 'Prontuário finalizado com sucesso!');
+
+            $pacienteId = $this->prontuario->questionario->paciente_id;
+
+            return redirect()->route('prontuario.paciente', [
+                'paciente' => $pacienteId
+            ]);
+        } catch (\Exception $e) {
+
+            DB::rollBack();
+
+            session()->flash(
+                'error',
+                'Erro ao finalizar o prontuário.'
+            );
+
+            throw $e;
+        }
+    }
 
 
     public function render()
     {
-        return view('livewire.prontuarios.create-prontuario')->layout('layouts.app');
-    }
 
-    public function finalizarProntuario()
-    {
-        if (empty($this->origensSelecionadas) || empty($this->motivosSelecionados) || empty($this->diagnosticosSelecionados)) {
-            session()->flash('error', 'É necessário selecionar pelo menos uma origem, motivo e diagnóstico.');
-            return;
-        }
+        return view('livewire.prontuarios.create-prontuario')
 
-        $this->prontuario->origens()->sync($this->origensSelecionadas);
-        $this->prontuario->motivos()->sync($this->motivosSelecionados);
-        $this->prontuario->diagnosticos()->sync($this->diagnosticosSelecionados);
-        $this->prontuario->intervencoes()->sync($this->intervencoesSelecionadas);
-
-        $this->prontuario->gerado = true; // Atualiza o atributo gerado
-        $this->prontuario->save(); // Salva no banco
-
-        session()->flash('success', 'Prontuário finalizado com sucesso!');
-        $pacienteId = $this->prontuario->questionario->paciente_id;
-        return redirect()->route('prontuario.paciente', ['paciente' => $pacienteId]);
+            ->layout('layouts.app');
     }
 }

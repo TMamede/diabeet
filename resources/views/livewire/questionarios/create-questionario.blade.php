@@ -34,7 +34,7 @@
                                         paciente</h3>
 
                                     <form class="flex justify-center" role="search">
-                                        <div class="relative w-full max-w-2xl">
+                                        <div class="relative w-full max-w-3xl">
                                             <input wire:model.live.debounce.300ms="search"
                                                 class="w-full px-6 py-4 text-lg border-2 border-gray-200 shadow-sm rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white/90"
                                                 type="search" placeholder="Pesquise o paciente ou prontuário"
@@ -74,8 +74,7 @@
                             @if ($selectedPaciente)
                                 <!-- Dados Sociodemográficos -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
-                                    <div
-                                        class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
+                                    <div class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-2xl">
@@ -136,8 +135,7 @@
 
                                 <!-- Histórico do Paciente -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
-                                    <div
-                                        class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
+                                    <div class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl">
@@ -219,8 +217,7 @@
 
                                 <!-- Medicamentos -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
-                                    <div
-                                        class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
+                                    <div class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl">
@@ -273,8 +270,7 @@
 
                                 <!-- Resultados -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
-                                    <div
-                                        class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
+                                    <div class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl">
@@ -315,8 +311,7 @@
 
                                 <!-- Unidade de Saúde -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
-                                    <div
-                                        class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
+                                    <div class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
                                         <div class="flex items-center mb-6">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-teal-100 to-teal-200 rounded-2xl">
@@ -335,7 +330,16 @@
 
                                         <div class="p-6 border border-teal-100 bg-teal-50 rounded-xl">
                                             <h4 class="text-xl font-semibold text-teal-800">
-                                                {{ $selectedPaciente->unidade_saude->nome }}</h4>
+                                                {{ $selectedPaciente->unidade_saude->ubs }}</h4>
+                                            <p class="mt-1 text-sm text-gray-600">
+                                                {{ $selectedPaciente->unidade_saude->telefone }}<br>
+                                                {{ $selectedPaciente->unidade_saude->endereco->rua }} -
+                                                {{ $selectedPaciente->unidade_saude->endereco->numero }}<br>
+                                                {{ $selectedPaciente->unidade_saude->endereco->bairro }}<br>
+                                                {{ $selectedPaciente->unidade_saude->endereco->cidade }} -
+                                                {{ $selectedPaciente->unidade_saude->endereco->uf }}
+                                            </p>
+
                                         </div>
                                     </div>
                                 </div>
@@ -3364,8 +3368,7 @@
                     <div class="relative z-10 px-6 py-8">
                         <!-- Header -->
                         <div class="max-w-6xl mx-auto mb-8">
-                            <div
-                                class="p-6 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
+                            <div class="p-6 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
@@ -3382,8 +3385,7 @@
 
                         <!-- Main Content -->
                         <div class="max-w-6xl mx-auto">
-                            <div
-                                class="p-8 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
+                            <div class="p-8 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
 
                                 <!-- Seção Aprendizagem - Educação a Saúde -->
                                 <div class="pb-8 mb-10 border-b border-gray-200">
@@ -3742,8 +3744,7 @@
                     <div class="relative z-10 px-6 py-8">
                         <!-- Header -->
                         <div class="max-w-6xl mx-auto mb-8">
-                            <div
-                                class="p-6 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
+                            <div class="p-6 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
@@ -3761,8 +3762,7 @@
 
                         <!-- Main Content -->
                         <div class="max-w-6xl mx-auto">
-                            <div
-                                class="p-8 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
+                            <div class="p-8 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
 
                                 <!-- Seção Religião/Espiritualidade -->
                                 <div class="pb-8 mb-10 border-b border-gray-200">

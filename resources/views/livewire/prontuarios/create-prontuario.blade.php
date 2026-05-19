@@ -169,6 +169,120 @@
                 </div>
             @endforeach
 
+            <!-- Diagnósticos Manuais -->
+            <div class="p-8 mt-12 border shadow-md bg-white/80 border-white/20 rounded-xl hover:shadow-lg">
+
+                <!-- Header da Seção -->
+                <div
+                    class="flex items-center justify-between p-6 mb-6 bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center justify-center w-12 h-12 bg-indigo-600 rounded-xl">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-800">Diagnósticos Adicionais</h2>
+                            <p class="text-sm font-medium text-indigo-600">Adicionados manualmente pelo enfermeiro</p>
+                        </div>
+                    </div>
+                    <button wire:click="adicionarDiagnosticoExtra"
+                        class="flex items-center px-5 py-2.5 text-sm font-semibold text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300 shadow-sm transition-colors duration-200">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 4v16m8-8H4" />
+                        </svg>
+                        Novo Diagnóstico
+                    </button>
+                </div>
+
+                @foreach ($diagnosticosExtras as $index => $diagnostico)
+                    <div class="mb-6">
+                        <div class="p-6 border border-gray-200 bg-gray-50 rounded-xl">
+
+                            <!-- Campo Diagnóstico -->
+                            <div
+                                class="flex items-center justify-between p-4 mb-6 bg-white border border-gray-100 rounded-lg">
+                                <div class="flex items-center flex-1">
+                                    <div class="w-3 h-3 mr-4 bg-indigo-500 rounded-full flex-shrink-0"></div>
+                                    <input type="text"
+                                        wire:model="diagnosticosExtras.{{ $index }}.descricao"
+                                        placeholder="Digite o diagnóstico de enfermagem"
+                                        class="rounded-lg w-full p-2 text-lg font-semibold text-gray-700 bg-transparent border-b-2 border-gray-200 focus:border-indigo-400 focus:outline-none placeholder-gray-400 transition-colors duration-200">
+                                </div>
+                            </div>
+
+                            <!-- Intervenções -->
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="flex items-center text-lg font-bold text-purple-700">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        Intervenções de Enfermagem
+                                    </h4>
+                                    <button wire:click="adicionarIntervencaoExtra({{ $index }})"
+                                        class="flex items-center px-3 py-1.5 text-sm font-semibold text-white bg-purple-600 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-300 shadow-sm transition-colors duration-200">
+                                        <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 4v16m8-8H4" />
+                                        </svg>
+                                        Nova Intervenção
+                                    </button>
+                                </div>
+
+                                @if (!empty($diagnostico['intervencoes']))
+                                    <div class="space-y-3">
+                                        @foreach ($diagnostico['intervencoes'] as $i => $intervencao)
+                                            <div
+                                                class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-purple-300 transition-colors duration-200">
+                                                <div class="flex items-center flex-1">
+                                                    <div class="w-2 h-2 mr-3 bg-purple-500 rounded-full flex-shrink-0">
+                                                    </div>
+                                                    <input type="text"
+                                                        wire:model="diagnosticosExtras.{{ $index }}.intervencoes.{{ $i }}.descricao"
+                                                        placeholder="Digite a intervenção de enfermagem"
+                                                        class="w-full p-1.5 text-gray-700 bg-transparent rounded-lg border-b-2 border-gray-200 focus:border-purple-400 focus:outline-none placeholder-gray-400 transition-colors duration-200">
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @else
+                                    <div
+                                        class="flex items-center justify-center p-6 border-2 border-dashed border-purple-200 rounded-lg bg-white">
+                                        <p class="text-sm text-gray-400">Nenhuma intervenção adicionada. Clique em
+                                            "Nova Intervenção" para começar.</p>
+                                    </div>
+                                @endif
+                            </div>
+
+                        </div>
+                    </div>
+                @endforeach
+
+                @if (empty($diagnosticosExtras))
+                    <div
+                        class="flex flex-col items-center justify-center p-10 border-2 border-dashed border-indigo-200 rounded-xl bg-indigo-50/50">
+                        <div class="flex items-center justify-center w-14 h-14 mb-4 bg-indigo-100 rounded-xl">
+                            <svg class="w-7 h-7 text-indigo-400" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                        <p class="text-base font-medium text-gray-500">Nenhum diagnóstico adicional</p>
+                        <p class="mt-1 text-sm text-gray-400">Clique em "Novo Diagnóstico" para adicionar um
+                            diagnóstico manualmente</p>
+                    </div>
+                @endif
+
+            </div>
+
             <!-- Botão de Finalizar -->
             <div class="flex justify-center mt-12">
                 <button wire:click="finalizarProntuario"
@@ -184,5 +298,5 @@
             </div>
         </div>
     </div>
-   
+
 </div>
