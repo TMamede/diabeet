@@ -27,7 +27,7 @@
                     </p>
                 </div>
 
-                <div class="overflow-hidden bg-white border shadow-2xl rounded-3xl  bg-white/95 border-white/20">
+                <div class="overflow-hidden bg-white border shadow-2xl rounded-3xl bg-white/95 border-white/20">
                     <div class="p-8 md:p-12 lg:p-16">
                         <!-- Título principal -->
                         <div class="mb-12 text-center">
@@ -142,26 +142,65 @@
                             </div>
                         </div>
                         <div class="mb-16">
-                            <div class="md:px-6 px:2 pb-16 pt-6 border border-indigo-200/40 rounded-3xl bg-indigo-800 mb-10">
+                            <div class="mb-16">
+                                <section
+                                    class="relative px-6 py-10 overflow-hidden border border-indigo-100 shadow-xl group bg-gradient-to-br from-blue-100 to-purple-100 rounded-3xl md:px-10 md:py-12">
 
-                                <div class="flex flex-col items-center md:gap-14 gap-8 md:flex-col text-2xl ">
-                                    <div >
-                                        <h3 class="text-3xl font-bold text-white">
-                                            Apoio 
-                                            Institucional
-                                        </h3>
-                                        <div
-                                            class="w-70 h-1 mt-3 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full">
+                                    <div class="relative z-10">
+
+                                        <!-- Cabeçalho -->
+                                        <div class="max-w-3xl mx-auto mb-10 text-center">
+
+                                            <h3 class="mt-4 text-3xl font-bold text-gray-800 md:text-4xl">
+                                                Apoio Institucional
+                                            </h3>
+
+                                            <p class="mt-3 text-base leading-relaxed text-slate-600 md:text-lg">
+                                                Instituições e grupos que colaboram com o desenvolvimento científico,
+                                                acadêmico e tecnológico do Sipedia.
+                                            </p>
+
+                                            <div
+                                                class="w-24 h-1 mx-auto mt-5 rounded-full bg-gradient-to-r from-green-400 to-indigo-300">
+                                            </div>
+                                        </div>
+
+                                        <!-- Logos -->
+                                        <div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+
+                                            <!-- PPGEnf -->
+                                            <div
+                                                class="flex items-center justify-center h-32 p-5 transition-all duration-300 bg-white border shadow-sm group rounded-2xl border-white/70 hover:-translate-y-1 hover:shadow-xl">
+                                                <img src="{{ asset('logos/ppgenf deitado.jpeg') }}"
+                                                    alt="PPGEnf - Programa de Pós-Graduação em Enfermagem"
+                                                    class="object-contain w-auto transition duration-300 max-h-20 group-hover:scale-105">
+                                            </div>
+
+                                            <!-- FAPEMIG -->
+                                            <div
+                                                class="flex items-center justify-center h-32 transition-all duration-300 bg-white border shadow-sm group rounded-2xl border-white/70 hover:-translate-y-1 hover:shadow-xl">
+                                                <img src="{{ asset('logos/fapemig.png') }}" alt="FAPEMIG"
+                                                    class="object-contain w-auto transition duration-300 max-h-16 group-hover:scale-105">
+                                            </div>
+
+                                            <!-- NEPESCE -->
+                                            <div
+                                                class="flex items-center justify-center h-32 p-5 transition-all duration-300 bg-white border shadow-sm group rounded-2xl border-white/70 hover:-translate-y-1 hover:shadow-xl">
+                                                <img src="{{ asset('logos/nepesce.png') }}" alt="NEPESCE"
+                                                    class="object-contain w-auto transition duration-300 max-h-20 group-hover:scale-105">
+                                            </div>
+
+                                            <!-- Unimontes -->
+                                            <div
+                                                class="flex items-center justify-center h-32 p-5 transition-all duration-300 bg-white border shadow-sm group rounded-2xl border-white/70 hover:-translate-y-1 hover:shadow-xl">
+                                                <img src="{{ asset('logos/unimontes.png') }}"
+                                                    alt="Universidade Estadual de Montes Claros"
+                                                    class="object-contain w-auto transition duration-300 max-h-16 group-hover:scale-105">
+                                            </div>
+
                                         </div>
                                     </div>
-                                    <div class="flex items-start justify-around gap-10 flex-col md:flex-row">
-                                        <img src="lica.png"
-                                            class="h-8 md:h-12 opacity-100 hover:opacity-70 transition duration-300">
-                                        <img src="unimontes.png"
-                                            class="h-8 md:h1-2 opacity-100 hover:opacity-70 transition duration-300">
-                                    </div>
-
-                                </div>
+                                </section>
                             </div>
                             <!-- Seção de continuidade do atendimento -->
                             <div
@@ -169,7 +208,7 @@
                                 <div class="flex flex-col items-start md:flex-row">
                                     <div class="flex-shrink-0 mb-6 md:mb-0 md:mr-8">
                                         <div
-                                            class="flex items-center justify-center w-10   h-10 bg-indigo-300 rounded-full bg-opacity-20">
+                                            class="flex items-center justify-center w-10 h-10 bg-indigo-300 rounded-full bg-opacity-20">
                                             <svg class="w-6 h-6 font-semibold text-indigo-800" fill="none"
                                                 stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -180,7 +219,7 @@
                                     </div>
                                     <div>
                                         <h3 class="mb-4 text-2xl font-semibold">Continuidade do Atendimento</h3>
-                                        <p class="text-md leading-relaxed text-gray-500">
+                                        <p class="leading-relaxed text-gray-500 text-md">
                                             O SoPeP também facilita a continuidade do atendimento ao permitir que, ao
                                             iniciar uma nova avaliação de enfermagem, o sistema recupere automaticamente
                                             os
