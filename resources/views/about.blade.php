@@ -19,11 +19,10 @@
                     </div>
                     <h1 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
                         Sobre o <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">SoPeP</span>
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">SIPEDIA</span>
                     </h1>
                     <p class="max-w-3xl mx-auto text-xl text-gray-600">
-                        Sistema de Prescrição Eletrônico especializado no cuidado de enfermagem para pacientes com pé
-                        diabético.
+                        Sistema Integrado ao Processo de Enfermagem - Pé Diabético.
                     </p>
                 </div>
 
@@ -31,7 +30,7 @@
                     <div class="p-8 md:p-12 lg:p-16">
                         <!-- Título principal -->
                         <div class="mb-12 text-center">
-                            <h2 class="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">Bem-vindo ao SoPeP</h2>
+                            <h2 class="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">Bem-vindo ao SIPEDIA</h2>
                             <p class="max-w-4xl mx-auto text-lg leading-relaxed text-gray-600">
                                 Sistema de Prescrição para Enfermagem no Pé Diabético - Uma solução digital inovadora
                                 para otimizar o cuidado especializado
@@ -55,7 +54,7 @@
                                     <div>
                                         <h3 class="mb-2 text-xl font-semibold text-gray-900">Apoio Especializado</h3>
                                         <p class="leading-relaxed text-gray-700">
-                                            O SoPeP é um sistema digital pensado para apoiar o trabalho dos
+                                            O SIPEDIA é um sistema digital pensado para apoiar o trabalho dos
                                             profissionais de enfermagem no cuidado especializado com pacientes que
                                             convivem com o pé diabético. Sua proposta é otimizar a coleta de dados, o
                                             acompanhamento contínuo e a tomada de decisões clínicas com base em
@@ -109,7 +108,7 @@
                                         <p class="leading-relaxed text-gray-700">
                                             O sistema baseia-se em avaliações de enfermagem organizadas por dimensões
                                             psicobiológicas, psicossociais e psicoespirituais. Com essas informações, o
-                                            SoPeP realiza a análise automatizada dos dados e sugere diagnósticos e
+                                            SIPEDIA realiza a análise automatizada dos dados e sugere diagnósticos e
                                             intervenções de enfermagem compatíveis com as respostas coletadas.
                                         </p>
                                     </div>
@@ -220,7 +219,7 @@
                                     <div>
                                         <h3 class="mb-4 text-2xl font-semibold">Continuidade do Atendimento</h3>
                                         <p class="leading-relaxed text-gray-500 text-md">
-                                            O SoPeP também facilita a continuidade do atendimento ao permitir que, ao
+                                            O SIPEDIA também facilita a continuidade do atendimento ao permitir que, ao
                                             iniciar uma nova avaliação de enfermagem, o sistema recupere automaticamente
                                             os
                                             dados anteriores daquele paciente, poupando tempo e reduzindo a repetição de

@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Redefinição de senha — SoPeP</title>
+    <title>Redefinição de senha — SIPEDIA</title>
     <style>
         /* Preheader escondido */
         .preheader {
@@ -45,7 +45,7 @@
 
     <!-- Preheader (texto que aparece na lista de e-mails) -->
     <div class="preheader">
-        Link para redefinir sua senha do SoPeP. Expira em {{ $expireMinutes }} minutos.
+        Link para redefinir sua senha do SIPEDIA. Expira em {{ $expireMinutes }} minutos.
     </div>
 
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f5f7fb;">
@@ -61,12 +61,12 @@
                             <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td align="left">
-                                        <img src="{{ asset('bluepe.svg') }}" alt="SoPeP" width="120"
+                                        <img src="{{ asset('bluepe.svg') }}" alt="SIPEDIA" width="120"
                                             style="display:block; max-width:120px; height:auto;" />
                                     </td>
                                     <td align="right"
                                         style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color:#E0E7FF; font-size:12px;">
-                                        Sistema de Prescrição para Pé Diabético
+                                        Sistema Integrado ao Processo de Enfermagem - Pé Diabético
                                     </td>
                                 </tr>
                             </table>
@@ -99,7 +99,7 @@
                             <p
                                 style="margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; font-size:15px; line-height:1.6; color:#334155;">
                                 Recebemos uma solicitação para redefinir a sua senha de acesso ao
-                                <strong>SoPeP</strong>.
+                                <strong>SIPEDIA</strong>.
                                 Para continuar, clique no botão abaixo. Por segurança, este link expira em
                                 <strong>{{ $expireMinutes }} minutos</strong>.
                             </p>
@@ -157,8 +157,8 @@
                         <td style="padding:16px 28px 28px 28px;" align="left">
                             <p
                                 style="margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; font-size:12px; line-height:1.6; color:#64748b;">
-                                © {{ date('Y') }} <strong>SoPeP</strong> — Sistema para acompanhamento e prescrição
-                                em pé diabético.
+                                © {{ date('Y') }} <strong>SIPEDIA</strong> — Sistema Integrado ao Processo de
+                                Enfermagem - Pé Diabético.
                                 <br>
                                 Este e-mail foi enviado automaticamente. Não responda.
                             </p>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>SoPeP - Sistema de Prescrição Eletrônica para Pé Diabético</title>
+    <title>SIPEDIA - Sistema Integrado ao Processo de Enfermagem - Pé Diabético</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -47,12 +47,13 @@
                 </div>
             </a>
 
-            <!-- Título SoPeP -->
+            <!-- Título SIPEDIA -->
             <h1 class="mb-2 text-3xl font-extrabold text-indigo-900 sm:text-4xl md:text-5xl">
-                So<span class="text-indigo-600">Pe</span>P
+                SI<span class="text-indigo-600">PEDIA</span>
             </h1>
             <div class="w-16 h-1 mx-auto mb-2 bg-indigo-600 rounded-full sm:w-20"></div>
-            <p class="text-xs font-medium sm:text-sm text-indigo-700/80">Sistema de Prescrição Eletrônica para Pé
+            <p class="text-xs font-medium sm:text-sm text-indigo-700/80">Sistema Integrado ao Processo de Enfermagem -
+                Pé
                 Diabético</p>
         </div>
 
@@ -65,15 +66,15 @@
             </div>
         </div>
         <footer class="w-full py-4 text-center ">
-        <div class="py-3 bg-white/5 rounded-t-2xl">
-            <p class="text-xs text-gray-600">© {{ date('Y') }} SoPeP. Todos os direitos reservados.</p>
-            <p class="mt-1 text-xs text-gray-500">Sistema desenvolvido para cuidar melhor dos pacientes</p>
-        </div>
-    </footer>
+            <div class="py-3 bg-white/5 rounded-t-2xl">
+                <p class="text-xs text-gray-600">© {{ date('Y') }} SIPEDIA. Todos os direitos reservados.</p>
+                <p class="mt-1 text-xs text-gray-500">Sistema desenvolvido para cuidar melhor dos pacientes</p>
+            </div>
+        </footer>
     </div>
 
     <!-- Rodapé -->
-    
+
 
     <!-- Animações CSS customizadas -->
     <style>

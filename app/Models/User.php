@@ -120,7 +120,7 @@ class User extends Authenticatable
             HTML;
         }
 
-        $text = "Para redefinir sua senha do SoPeP, acesse: {$url}";
+        $text = "Para redefinir sua senha do SIPEDIA, acesse: {$url}";
 
         try {
             /** @var MailpitHttp $client */
@@ -132,7 +132,7 @@ class User extends Authenticatable
                 "Subject" => "Redefinição de senha",
                 "Text"    => $text,
                 "HTML"    => $html,
-                "Tags"    => ["password-reset", "sopep"],
+                "Tags"    => ["password-reset", "sipedia"],
             ]);
 
             if ($resp['status'] < 200 || $resp['status'] >= 300) {

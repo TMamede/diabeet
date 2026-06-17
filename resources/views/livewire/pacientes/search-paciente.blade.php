@@ -11,13 +11,13 @@
             <!-- Header -->
             <div class="mb-8 text-center">
                 <div class="inline-block p-4 mb-4 backdrop-blur-sm rounded-xl">
-                <h1 class="mb-1 text-3xl font-bold text-indigo-900 md:text-4xl">
-                    Gerenciamento de <span class="text-indigo-600">Pacientes</span>
-                </h1>
-                <div class="w-16 h-0.5 mx-auto bg-indigo-600 rounded-full"></div>
+                    <h1 class="mb-1 text-3xl font-bold text-indigo-900 md:text-4xl">
+                        Gerenciamento de <span class="text-indigo-600">Pacientes</span>
+                    </h1>
+                    <div class="w-16 h-0.5 mx-auto bg-indigo-600 rounded-full"></div>
                 </div>
                 <p class="max-w-xl mx-auto text-lg text-gray-600">
-                    Lista completa de pacientes cadastrados no sistema SoPeP
+                    Lista completa de pacientes cadastrados no sistema SIPEDIA.
                 </p>
             </div>
 
@@ -140,12 +140,12 @@
                                         Cancelar
                                     </button>
                                     @if (Auth::check() && Auth::user()->user_type === 'gerenciador')
-                                                <button x-data
-                                                    x-on:click.prevent="$dispatch('open-modal', 'confirm-paciente-deletion-{{ $paciente->id }}'); @this.set('pacienteIdToDelete', {{ $paciente->id }})"
-                                                    class="px-6 py-3 font-medium text-white transition-all duration-200 rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 hover:shadow-xl">
-                                                    Excluir
-                                                </button>
-                                            @endif
+                                        <button x-data
+                                            x-on:click.prevent="$dispatch('open-modal', 'confirm-paciente-deletion-{{ $paciente->id }}'); @this.set('pacienteIdToDelete', {{ $paciente->id }})"
+                                            class="px-6 py-3 font-medium text-white transition-all duration-200 rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 hover:shadow-xl">
+                                            Excluir
+                                        </button>
+                                    @endif
                                 </div>
                             </div>
                         </x-new-modal>

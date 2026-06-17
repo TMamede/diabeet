@@ -16,7 +16,7 @@
                     <div class="w-16 h-0.5 mx-auto bg-indigo-600 rounded-full"></div>
                 </div>
                 <p class="max-w-xl mx-auto text-lg text-gray-600">
-                    Lista completa de prescrições criadas no sistema SoPeP
+                    Lista completa de prescrições criadas no sistema SIPEDIA.
                 </p>
             </div>
 

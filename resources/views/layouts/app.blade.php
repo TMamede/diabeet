@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>SoPeP</title>
+    <title>SIPEDIA</title>
 
     <link rel="icon" href="{{ asset('bluepe.svg') }}" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -76,15 +76,17 @@
         <div class="container px-6 mx-auto">
             <div class="flex flex-col items-center justify-between md:flex-row">
                 <div class="mb-4 md:mb-0">
-                    <h4 class="text-xl font-bold">SoPeP</h4>
-                    <p class="mb-5 text-sm text-indigo-200">Sistema de Prescrição Eletrônico para Pé Diabético</p>      
+                    <h4 class="text-xl font-bold">SIPEDIA</h4>
+                    <p class="mb-5 text-sm text-indigo-200">Sistema Integrado ao Processo de Enfermagem - Pé Diabético
+                    </p>
                     <p> <a href="{{ route('termos') }}" class="text-sm text-white-200">Termos de Uso</a>
                     </p>
                     <p> <a href="{{ route('about') }}" class="text-sm text-white-200">Sobre nós</a>
                     </p>
                 </div>
                 <div class="text-center md:text-right">
-                    <p class="text-sm text-indigo-200">&copy; {{ date('Y') }} SoPeP. Todos os direitos reservados.</p>
+                    <p class="text-sm text-indigo-200">&copy; {{ date('Y') }} SIPEDIA. Todos os direitos reservados.
+                    </p>
                     <p class="mt-1 text-xs text-indigo-300">Desenvolvido para cuidar melhor dos seus pacientes</p>
                 </div>
             </div>

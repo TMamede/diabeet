@@ -382,9 +382,8 @@
                             <div class="p-6 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
                                 <div class="flex items-center justify-between">
                                     <div>
-                                        <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
-                                        <p class="font-medium text-indigo-600">Sistema de Prescrição Eletrônica para Pé
-                                            Diabético</p>
+                                        <h1 class="text-3xl font-bold text-indigo-900">SIPEDIA</h1>
+                                        <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Pé Diabético</p>
                                     </div>
                                     <div class="text-right">
                                         <p class="text-sm text-gray-600">Avaliação de enfermagem</p>
@@ -3371,9 +3370,8 @@
                             <div class="p-6 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
                                 <div class="flex items-center justify-between">
                                     <div>
-                                        <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
-                                        <p class="font-medium text-indigo-600">Sistema de Prescrição Eletrônica para
-                                            Pé Diabético</p>
+                                        <h1 class="text-3xl font-bold text-indigo-900">SIPEDIA</h1>
+                                        <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Pé Diabético</p>
                                     </div>
                                     <div class="text-right">
                                         <p class="text-sm text-gray-600">avaliação de enfermagem</p>
@@ -3747,9 +3745,8 @@
                             <div class="p-6 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
                                 <div class="flex items-center justify-between">
                                     <div>
-                                        <h1 class="text-3xl font-bold text-indigo-900">SoPeP</h1>
-                                        <p class="font-medium text-indigo-600">Sistema de Prescrição Eletrônica para
-                                            Pé Diabético</p>
+                                        <h1 class="text-3xl font-bold text-indigo-900">SIPEDIA</h1>
+                                        <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Pé Diabético</p>
                                     </div>
                                     <div class="text-right">
                                         <p class="text-sm text-gray-600">avaliação de enfermagem</p>

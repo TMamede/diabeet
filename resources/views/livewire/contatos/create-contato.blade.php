@@ -31,7 +31,7 @@
                         <div class="mb-8">
                             <h2 class="mb-4 text-3xl font-bold text-gray-900">Envie sua Mensagem</h2>
                             <p class="text-lg leading-relaxed text-gray-600">
-                                Tem alguma dúvida, sugestão ou deseja saber mais sobre o SoPeP?
+                                Tem alguma dúvida, sugestão ou deseja saber mais sobre o SIPEDIA?
                                 <span class="font-medium text-indigo-600">Envie-nos uma mensagem!</span>
                             </p>
                         </div>

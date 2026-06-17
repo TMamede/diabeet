@@ -27,6 +27,8 @@ use Database\Seeders\CriarQuestionario\NssSocio\ComunicacaoSeeder;
 use Database\Seeders\CriarQuestionario\NssSocio\CuidadoSeeder;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -35,6 +37,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+        User::create([
+            'name'      => 'gestor',
+            'email'     => 'gestor@master.com',
+            'coren'     => '12345677',
+            'user_type' => 'gerenciador',
+            'password'  => 'patinho',
+        ]);
+
         $this->call(AbrigoSeeder::class);
         $this->call(CuidadoFeridaSeeder::class);
         $this->call(EliminacaoSeeder::class);

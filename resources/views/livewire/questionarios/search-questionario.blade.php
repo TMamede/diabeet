@@ -17,7 +17,7 @@
                     <div class="w-16 h-0.5 mx-auto bg-indigo-600 rounded-full"></div>
                 </div>
                 <p class="max-w-xl mx-auto text-lg text-gray-600">
-                    Lista completa de avaliações aplicadas no sistema SoPeP
+                    Lista completa de avaliações aplicadas no sistema SIPEDIA.
                 </p>
             </div>
 
@@ -89,7 +89,7 @@
                                     <p class="text-sm font-semibold leading-none text-gray-900 truncate">
                                         {{ $questionario->paciente->nome }}
                                     </p>
-                        
+
                                 </div>
                             </div>
 
@@ -369,4 +369,3 @@
         </div>
     </section>
 </div>
-                    

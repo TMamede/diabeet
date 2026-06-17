@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="relative flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
-        
+
         <!-- Elementos decorativos de fundo -->
         <div class="absolute inset-0 pointer-events-none">
             <div
@@ -29,7 +29,8 @@
                     </h1>
 
                     <p class="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
-                        Plataforma desenvolvida para auxiliar profissionais da enfermagem no cuidado especializado de pacientes com pé diabético.
+                        Plataforma desenvolvida para auxiliar profissionais da enfermagem no cuidado especializado de
+                        pacientes com pé diabético.
                     </p>
                 </div>
 
@@ -42,7 +43,8 @@
                         </p>
 
                         <p class="text-gray-700 leading-relaxed">
-                            Bem-vindo ao aplicativo SOPEP, desenvolvido pelo LICA (Laboratório de Inteligência Computacional Aplicada).
+                            Bem-vindo ao aplicativo SIPEDIA, desenvolvido pelo LICA (Laboratório de Inteligência
+                            Computacional Aplicada).
                             Estes Termos e Condições de Uso regem seu acesso e utilização da plataforma.
                             Ao acessar ou utilizar o aplicativo, você concorda integralmente com estes Termos.
                             Caso não concorde com qualquer disposição, não utilize o aplicativo.
@@ -52,36 +54,44 @@
                     <div>
                         <h2 class="text-xl font-bold text-gray-800 mb-3">1. Aceitação dos Termos</h2>
                         <p class="text-gray-700 leading-relaxed">
-                            Ao criar uma conta ou utilizar o aplicativo, você declara que leu, compreendeu e concorda com estes Termos e com a Política de Privacidade.
-                            Caso utilize o aplicativo em nome de uma entidade, declara possuir autoridade para vinculá-la a estes Termos.
+                            Ao criar uma conta ou utilizar o aplicativo, você declara que leu, compreendeu e concorda
+                            com estes Termos e com a Política de Privacidade.
+                            Caso utilize o aplicativo em nome de uma entidade, declara possuir autoridade para
+                            vinculá-la a estes Termos.
                         </p>
                     </div>
 
                     <div>
                         <h2 class="text-xl font-bold text-gray-800 mb-3">2. Elegibilidade</h2>
                         <p class="text-gray-700 leading-relaxed">
-                            O uso do aplicativo é permitido apenas para maiores de 18 anos, com capacidade legal para celebrar contrato vinculativo.
+                            O uso do aplicativo é permitido apenas para maiores de 18 anos, com capacidade legal para
+                            celebrar contrato vinculativo.
                         </p>
                     </div>
 
                     <div>
                         <h2 class="text-xl font-bold text-gray-800 mb-3">3. Conta do Usuário</h2>
                         <p class="text-gray-700 leading-relaxed mb-3">
-                            O usuário compromete-se a fornecer informações verdadeiras, atualizadas e completas no momento do cadastro.
+                            O usuário compromete-se a fornecer informações verdadeiras, atualizadas e completas no
+                            momento do cadastro.
                         </p>
                         <p class="text-gray-700 leading-relaxed mb-3">
-                            É responsabilidade do usuário manter a confidencialidade de sua senha e proteger suas credenciais de acesso.
+                            É responsabilidade do usuário manter a confidencialidade de sua senha e proteger suas
+                            credenciais de acesso.
                         </p>
                         <p class="text-gray-700 leading-relaxed">
-                            O usuário é responsável por todas as atividades realizadas em sua conta e deve comunicar imediatamente qualquer uso não autorizado.
+                            O usuário é responsável por todas as atividades realizadas em sua conta e deve comunicar
+                            imediatamente qualquer uso não autorizado.
                         </p>
                     </div>
 
                     <div>
                         <h2 class="text-xl font-bold text-gray-800 mb-3">4. Dados Coletados e QR Code</h2>
                         <p class="text-gray-700 leading-relaxed">
-                            O aplicativo coleta dados pessoais obrigatórios (nome, CPF, e-mail, telefone), conforme descrito na Política de Privacidade.
-                            A geração de QR Code permite o compartilhamento de informações selecionadas pelo próprio usuário,
+                            O aplicativo coleta dados pessoais obrigatórios (nome, CPF, e-mail, telefone), conforme
+                            descrito na Política de Privacidade.
+                            A geração de QR Code permite o compartilhamento de informações selecionadas pelo próprio
+                            usuário,
                             sendo este o único responsável pelos dados que optar por divulgar.
                         </p>
                     </div>
@@ -91,7 +101,8 @@
                         <p class="text-gray-700 leading-relaxed">
                             O aplicativo deve ser utilizado exclusivamente para fins lícitos e profissionais.
                             É proibido violar leis, tentar acesso não autorizado, disseminar códigos maliciosos,
-                            utilizar mecanismos automatizados para extração de dados ou interferir no funcionamento da plataforma.
+                            utilizar mecanismos automatizados para extração de dados ou interferir no funcionamento da
+                            plataforma.
                         </p>
                     </div>
 
@@ -100,7 +111,8 @@
                         <p class="text-gray-700 leading-relaxed">
                             Todo o conteúdo da plataforma, incluindo textos, imagens, software e design,
                             é protegido por leis de propriedade intelectual.
-                            É permitido apenas o uso pessoal e não comercial, sendo vedada reprodução ou distribuição sem autorização.
+                            É permitido apenas o uso pessoal e não comercial, sendo vedada reprodução ou distribuição
+                            sem autorização.
                         </p>
                     </div>
 
@@ -115,7 +127,7 @@
                     <div>
                         <h2 class="text-xl font-bold text-gray-800 mb-3">8. Limitação de Responsabilidade</h2>
                         <p class="text-gray-700 leading-relaxed">
-                            O SOPEP não se responsabiliza por danos diretos ou indiretos decorrentes do uso
+                            O SIPEDIA não se responsabiliza por danos diretos ou indiretos decorrentes do uso
                             ou da incapacidade de uso da plataforma, incluindo perda de dados ou prejuízos financeiros.
                         </p>
                     </div>
@@ -142,7 +154,7 @@
                             Em caso de dúvidas, entre em contato:
                         </p>
                         <p class="text-gray-700 mt-2">
-                            E-mail: gestaosopep@gmail.com <br>
+                            E-mail: sipedia@unimontes.br <br>
                         </p>
                     </div>
 

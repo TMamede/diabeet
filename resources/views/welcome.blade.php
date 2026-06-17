@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SoPeP - Sistema de Prescrição Eletrônica para Pé Diabético</title>
+    <title>SIPEDIA - Sistema Integrado ao Processo de Enfermagem - Pé Diabético</title>
 
     <!-- Fonts -->
     <link rel="icon" href="{{ asset('bluepe.svg') }}" type="image/svg+xml">
@@ -58,24 +58,7 @@
 
             <!-- Botões de Ação -->
             <div class="flex flex-col gap-4 mb-8 sm:flex-row sm:justify-center">
-                <a href="{{ route('register') }}" class="relative items-center group">
-                    <button
-                        class="relative px-10 py-4 overflow-hidden text-xl font-bold text-white transition-all duration-300 transform rounded-full shadow-2xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-3xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50">
-                        <!-- Efeito de brilho animado -->
-                        <div
-                            class="absolute inset-0 transition-transform duration-1000 transform -translate-x-full -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-full">
-                        </div>
 
-                        <span class="relative flex items-center">
-                            <svg class="w-5 h-5 mr-2 transition-transform group-hover:rotate-12" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
-                            Registrar
-                        </span>
-                    </button>
-                </a>
 
                 <a href="{{ route('login') }}" class="group">
                     <button
@@ -97,7 +80,7 @@
     <!-- Rodapé -->
     <footer class="absolute bottom-0 z-10 w-full py-6 text-center">
         <div class="py-4 backdrop-blur-sm bg-white/10 rounded-t-3xl">
-            <p class="text-sm text-gray-600">© {{ date('Y') }} SoPeP. Todos os direitos reservados.</p>
+            <p class="text-sm text-gray-600">© {{ date('Y') }} SIPEDIA. Todos os direitos reservados.</p>
             <p class="mt-1 text-xs text-gray-500">Sistema desenvolvido para cuidar melhor dos pacientes</p>
         </div>
     </footer>
