@@ -15,7 +15,7 @@
                     <div class="mb-12">
                         <div class="inline-block p-8 mb-8 backdrop-blur-sm rounded-3xl">
                             <h1 class="mb-4 text-6xl font-extrabold text-indigo-900 md:text-8xl">
-                                So<span class="text-indigo-600">Pe</span>P
+                                SI<span class="text-indigo-600">PEDIA</span>
                             </h1>
                             <div class="w-32 h-1 mx-auto bg-indigo-600 rounded-full"></div>
                         </div>
@@ -24,7 +24,7 @@
                     <!-- Subtitle melhorada -->
                     <div class="max-w-4xl mx-auto mb-12">
                         <h2 class="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
-                            Software de <span class="text-indigo-600">Prescrição Eletrônica</span> para Pé Diabético
+                            Sistema Integrado ao <span class="text-indigo-600">Processo de Enfermagem</span>
                         </h2>
                         <p class="max-w-2xl mx-auto text-xl leading-relaxed text-gray-600">
                             Plataforma especializada para enfermeiros realizarem avaliações completas, diagnósticos

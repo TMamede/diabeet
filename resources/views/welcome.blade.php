@@ -50,7 +50,7 @@
 
                     <!-- Título estilizado -->
                     <h1 class="mb-4 text-6xl font-extrabold text-indigo-900 md:text-8xl">
-                        So<span class="text-indigo-600">Pe</span>P
+                        SI<span class="text-indigo-600">PEDIA</span>
                     </h1>
                     <div class="w-32 h-1 mx-auto bg-indigo-600 rounded-full"></div>
                 </div>
