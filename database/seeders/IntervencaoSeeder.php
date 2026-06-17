@@ -14,1138 +14,1138 @@ class IntervencaoSeeder extends Seeder
      */
     public function run(): void
     {
-        
-        
+
+
         DB::table('intervencaos')->insert([
             //Identificação sociodemográfica
             [
-                'descricao' => 'Identificar condição econômica.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Identificar condição econômica.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encaminhar ao assistente social para orientação acerca da aquisição de benefícios governamentais.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encaminhar ao assistente social para orientação acerca da aquisição de benefícios governamentais.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Estruturar junto à equipe plano terapêutico possível de ser executado de acordo com a renda do cliente.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Estruturar junto à equipe plano terapêutico possível de ser executado de acordo com a renda do cliente.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Obter dados sobre apoio social.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre apoio social.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Obter dados sobre necessidade de cuidado de saúde e social.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre necessidade de cuidado de saúde e social.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Estimular participação em oficinas manuais na Unidade de Saúde ou em espaços comunitários para geração de renda.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Estimular participação em oficinas manuais na Unidade de Saúde ou em espaços comunitários para geração de renda.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Historia Pregressa 1.1 (Etilista)
             [
-                'descricao' => 'Investigar com o cliente o padrão do uso do álcool.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar com o cliente o padrão do uso do álcool.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Criar estratégias junto ao cliente para redução progressiva do álcool.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Criar estratégias junto ao cliente para redução progressiva do álcool.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Estimular o abandono do álcool.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Estimular o abandono do álcool.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Esclarecer o cliente que o álcool é um fator de risco ao aparecimento de úlceras.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Esclarecer o cliente que o álcool é um fator de risco ao aparecimento de úlceras.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Informar ao cliente sobre os riscos de complicações decorrentes do uso abusivo do álcool.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Informar ao cliente sobre os riscos de complicações decorrentes do uso abusivo do álcool.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Informar que o uso do álcool associado as antidiabéticos orais pode ocasionar hipoglicemia grave.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Informar que o uso do álcool associado as antidiabéticos orais pode ocasionar hipoglicemia grave.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Historia Pregressa 1.2 (Etilista)
             [
-                'descricao' => 'Obter dados sobre qualidade de vida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre qualidade de vida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Estimular hábitos saudáveis e melhoria nas condições de vida que promovam qualidade de vida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Estimular hábitos saudáveis e melhoria nas condições de vida que promovam qualidade de vida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Reforçar hábitos saudáveis.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Reforçar hábitos saudáveis.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Historia pregressa 1.1 (Tabagista)
             [
-                'descricao' => 'Investigar com o cliente o padrão do uso do tabaco.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar com o cliente o padrão do uso do tabaco.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Criar estratégias junto ao cliente para redução progressiva do tabaco.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Criar estratégias junto ao cliente para redução progressiva do tabaco.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encorajar o cliente acerca do abandono do tabaco.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encorajar o cliente acerca do abandono do tabaco.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente que o tabaco predispõe ao aparecimento de úlceras.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente que o tabaco predispõe ao aparecimento de úlceras.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Informar ao cliente que o uso do tabaco dificulta a ação da insulina.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Informar ao cliente que o uso do tabaco dificulta a ação da insulina.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Informar ao cliente sobre os riscos de complicações de diabetes decorrentes do uso abusivo de tabaco (doenças cardiovasculares).', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Informar ao cliente sobre os riscos de complicações de diabetes decorrentes do uso abusivo de tabaco (doenças cardiovasculares).',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Historia Pregressa 1.2 (Tabagista)
             [
-                'descricao' => 'Obter dados sobre qualidade de vida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre qualidade de vida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Estimular hábitos saudáveis e melhoria nas condições de vida que promovam qualidade de vida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Estimular hábitos saudáveis e melhoria nas condições de vida que promovam qualidade de vida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Reforçar hábitos saudáveis.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Reforçar hábitos saudáveis.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Regulação Neurologica
             [
-                'descricao' => 'Obter dados sobre cognição.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre cognição.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Contribuir com a auto cognição junto à equipe multidisciplinar.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Contribuir com a auto cognição junto à equipe multidisciplinar.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar à família sobre cognição prejudicada.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar à família sobre cognição prejudicada.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Adequar orientações de acordo com a compreensão cultural.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Adequar orientações de acordo com a compreensão cultural.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Ensinar o familiar o planejamento de atividades lúdicas que promovam a memória.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Ensinar o familiar o planejamento de atividades lúdicas que promovam a memória.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o familiar a monitorar o nível de consciência.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o familiar a monitorar o nível de consciência.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o familiar a estimular a memória repetindo o último pensamento que o cliente expressou.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o familiar a estimular a memória repetindo o último pensamento que o cliente expressou.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o familiar a manter o cliente orientado no tempo e espaço (proporcionando relógio, calendário, espelho, etc.).', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o familiar a manter o cliente orientado no tempo e espaço (proporcionando relógio, calendário, espelho, etc.).',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Incentivar familiares na participação do tratamento.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Incentivar familiares na participação do tratamento.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Percepção Orgãos Sentidos (Olhos)
             [
-                'descricao' => 'Realizar Teste de Snellen.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Realizar Teste de Snellen.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encaminhar o cliente para exame oftalmológico se Teste de Snellen alterado.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encaminhar o cliente para exame oftalmológico se Teste de Snellen alterado.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar capacidade do cliente de realizar auto aplicação de insulina.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar capacidade do cliente de realizar auto aplicação de insulina.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Monitorar glicemia e hemoglobina glicada.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Monitorar glicemia e hemoglobina glicada.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente a realizar periodicamente exame de fundo do olho para monitorar complicações como retinopatia diabética.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente a realizar periodicamente exame de fundo do olho para monitorar complicações como retinopatia diabética.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente quanto à importância de manter níveis glicêmicos dentro dos parâmetros normais e minimização das complicações decorrentes do diabetes.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente quanto à importância de manter níveis glicêmicos dentro dos parâmetros normais e minimização das complicações decorrentes do diabetes.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente a comunicar as alterações na acuidade visual.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente a comunicar as alterações na acuidade visual.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Permitir que o cliente expresse seus sentimentos a respeito da perda da visão e seu impacto sobre o estilo de vida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Permitir que o cliente expresse seus sentimentos a respeito da perda da visão e seu impacto sobre o estilo de vida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente em caso de visão prejudicada que peça ajuda para o corte das unhas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente em caso de visão prejudicada que peça ajuda para o corte das unhas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Ensinar o familiar ou cuidador a preparar a insulina.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Ensinar o familiar ou cuidador a preparar a insulina.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Percepção Orgãos Sentidos (Risco de Queda)
             [
-                'descricao' => 'Realizar visita domiciliar com a equipe para identificar fatores de risco para queda.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Realizar visita domiciliar com a equipe para identificar fatores de risco para queda.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Obter dados de conhecimento sobre prevenção de quedas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados de conhecimento sobre prevenção de quedas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar sobre prevenção de quedas no domicílio e ambiente externo.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar sobre prevenção de quedas no domicílio e ambiente externo.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar familiares sobre prevenção de quedas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar familiares sobre prevenção de quedas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Percepção Orgãos Sentidos (Percepção Tátil)
             [
-                'descricao' => 'Avaliar a sensibilidade tátil, térmica e dolorosa em membros inferiores.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar a sensibilidade tátil, térmica e dolorosa em membros inferiores.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Examinar a integridade da pele.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Examinar a integridade da pele.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Examinar os pés e pernas a cada retorno: inspeção e palpação da pele, das unhas, do subcutâneo e da estrutura, palpação dos pulsos arteriais e avaliação da sensibilidade protetora plantar.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Examinar os pés e pernas a cada retorno: inspeção e palpação da pele, das unhas, do subcutâneo e da estrutura, palpação dos pulsos arteriais e avaliação da sensibilidade protetora plantar.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o paciente a comunicar as alterações de sensibilidade e o surgimento de qualquer tipo de lesão.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o paciente a comunicar as alterações de sensibilidade e o surgimento de qualquer tipo de lesão.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o paciente a manter unhas cortadas e não coçar a pele.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o paciente a manter unhas cortadas e não coçar a pele.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o paciente a não usar produtos abrasivos na pele.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o paciente a não usar produtos abrasivos na pele.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o paciente com alterações nos pés sobre ajustes quanto ao tipo de sapato, tipo de atividade física e uso de dispositivos auxiliares para deambulação (muleta, andador, cadeira de rodas).', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o paciente com alterações nos pés sobre ajustes quanto ao tipo de sapato, tipo de atividade física e uso de dispositivos auxiliares para deambulação (muleta, andador, cadeira de rodas).',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar a ocorrência de trauma.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar a ocorrência de trauma.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar a sensibilidade tátil, térmica e dolorosa em membros inferiores.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar a sensibilidade tátil, térmica e dolorosa em membros inferiores.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Percepção Orgãos Sentidos (Ouvido)
             [
-                'descricao' => 'Avaliar capacidade de comunicação do cliente.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar capacidade de comunicação do cliente.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Analisar dificuldades do cliente em relatar sintomas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Analisar dificuldades do cliente em relatar sintomas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar o grau de compreensão do cliente.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar o grau de compreensão do cliente.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Manter visita domiciliar periódica junto à equipe para identificação de riscos.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Manter visita domiciliar periódica junto à equipe para identificação de riscos.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Nutrição Maior Consumo 1.1
             [
-                'descricao' => 'Realizar Inter consulta com nutricionista do Núcleo de Apoio à Saúde da Família (NASF).', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Realizar Inter consulta com nutricionista do Núcleo de Apoio à Saúde da Família (NASF).',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente quanto à importância de uma alimentação adequada no processo de reparação tecidual.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente quanto à importância de uma alimentação adequada no processo de reparação tecidual.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Ensinar o cliente o impacto dos alimentos no diabetes.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Ensinar o cliente o impacto dos alimentos no diabetes.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente a adotar dieta hipossódica, hipoglicêmica e hipoproteica.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente a adotar dieta hipossódica, hipoglicêmica e hipoproteica.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar quanto à importância de estabelecer um planejamento diário das refeições fazendo um fracionamento alimentar.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar quanto à importância de estabelecer um planejamento diário das refeições fazendo um fracionamento alimentar.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Realizar visita domiciliar (VD) para identificar dificuldades e promover adequação alimentar junto à família.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Realizar visita domiciliar (VD) para identificar dificuldades e promover adequação alimentar junto à família.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Nutrição Maior Consumo 1.2
             [
-                'descricao' => 'Obter dados sobre qualidade de vida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre qualidade de vida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Estimular hábitos saudáveis e melhoria nas condições de vida que promovam qualidade de vida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Estimular hábitos saudáveis e melhoria nas condições de vida que promovam qualidade de vida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Reforçar hábitos saudáveis.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Reforçar hábitos saudáveis.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Nutrição Restrição Alimentar
             [
-                'descricao' => 'Avaliar a adesão ao regime dietético.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar a adesão ao regime dietético.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Realizar interconsulta com nutricionista do NASF para adequação da dieta.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Realizar interconsulta com nutricionista do NASF para adequação da dieta.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Investigar a ingestão e a aceitação alimentar.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar a ingestão e a aceitação alimentar.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Investigar com cliente possíveis resistências dietéticas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar com cliente possíveis resistências dietéticas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Esclarecer a importância de adesão e manutenção da dieta prescrita pelo nutricionista.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Esclarecer a importância de adesão e manutenção da dieta prescrita pelo nutricionista.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Sono e Repouso
             [
-                'descricao' => 'Identificar com cliente possíveis fatores que possam provocar insônia.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Identificar com cliente possíveis fatores que possam provocar insônia.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar a controlar fatores ambientais que influenciam na resposta ao desconforto.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar a controlar fatores ambientais que influenciam na resposta ao desconforto.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar quanto a necessidade do repouso para não estimular contrações musculares e articulares excessivas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar quanto a necessidade do repouso para não estimular contrações musculares e articulares excessivas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Desencorajar a ingestão de líquidos após às 19h.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Desencorajar a ingestão de líquidos após às 19h.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Discutir com o cliente e a família as medidas de conforto, as técnicas de monitoramento do sono e as mudanças no estilo de vida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Discutir com o cliente e a família as medidas de conforto, as técnicas de monitoramento do sono e as mudanças no estilo de vida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar a adoção do hábito de banho morno antes de dormir para promover relaxamento.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar a adoção do hábito de banho morno antes de dormir para promover relaxamento.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar a organizar atividades da vida diária de modo a permitir períodos de repouso à noite sem interrupções.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar a organizar atividades da vida diária de modo a permitir períodos de repouso à noite sem interrupções.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar a administração de analgésico conforme prescrição médica em caso de dor.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar a administração de analgésico conforme prescrição médica em caso de dor.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Exercicios Fisicos 1.1
             [
-                'descricao' => 'Avaliar os efeitos da prática de exercícios como melhora do perfil glicêmico, redução do peso, e melhora da sensibilidade.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar os efeitos da prática de exercícios como melhora do perfil glicêmico, redução do peso, e melhora da sensibilidade.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar a adesão ao regime de exercícios físicos.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar a adesão ao regime de exercícios físicos.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Esclarecer a importância da prática de atividade física.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Esclarecer a importância da prática de atividade física.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Estimular adoção da atividade física de acordo com a aptidão do cliente, e a adequação da dose de insulina.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Estimular adoção da atividade física de acordo com a aptidão do cliente, e a adequação da dose de insulina.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encorajar o cliente a manter adesão ao programa de atividade física com utilização de sapatos adequados.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encorajar o cliente a manter adesão ao programa de atividade física com utilização de sapatos adequados.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Estimular a prática da atividade física regularmente, ouvindo e manejando possíveis dificuldades.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Estimular a prática da atividade física regularmente, ouvindo e manejando possíveis dificuldades.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Exercicios Fisicos 1.2
             [
-                'descricao' => 'Obter dados sobre qualidade de vida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre qualidade de vida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Estimular hábitos saudáveis e melhoria nas condições de vida que promovam qualidade de vida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Estimular hábitos saudáveis e melhoria nas condições de vida que promovam qualidade de vida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Reforçar hábitos saudáveis.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Reforçar hábitos saudáveis.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Abrigo
             [
-                'descricao' => 'Solicitar visita domiciliar pelo ACS para avaliar condições de moradia.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Solicitar visita domiciliar pelo ACS para avaliar condições de moradia.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Obter dados sobre condição da habitação.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre condição da habitação.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar a higienização adequada da habitação a fim de prevenir infecções.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar a higienização adequada da habitação a fim de prevenir infecções.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar ao cliente a manter ambiente seguro modificando mobílias e facilitando a movimentação a fim de evitar lesões e quedas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar ao cliente a manter ambiente seguro modificando mobílias e facilitando a movimentação a fim de evitar lesões e quedas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar ao cliente/cuidador a manter iluminação adequada no ambiente para o desempenho das atividades da vida diária.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar ao cliente/cuidador a manter iluminação adequada no ambiente para o desempenho das atividades da vida diária.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Apoiar o cliente na resolução de suas dúvidas em relação a adaptação de sua habitação.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Apoiar o cliente na resolução de suas dúvidas em relação a adaptação de sua habitação.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Regulação Hormonal IMC 1.1
             [
-                'descricao' => 'Monitorar peso (IC).', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Monitorar peso (IC).',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Realizar interconsulta com nutricionista do NASF.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Realizar interconsulta com nutricionista do NASF.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Obter dados sobre comportamento de ingestão de alimentos e líquidos.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre comportamento de ingestão de alimentos e líquidos.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Estabelecer com o cliente um plano alimentar adequado ao seu estilo de vida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Estabelecer com o cliente um plano alimentar adequado ao seu estilo de vida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encorajar a ingestão de alimentos conforme necessidades nutricionais e preferências alimentares, respeitando prescrição do nutricionista.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encorajar a ingestão de alimentos conforme necessidades nutricionais e preferências alimentares, respeitando prescrição do nutricionista.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Esclarecer ao cliente as consequências negativas da ingestão excessiva de alimentos.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Esclarecer ao cliente as consequências negativas da ingestão excessiva de alimentos.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente a controlar o peso.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente a controlar o peso.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Discutir com o cliente sobre a importância da adesão à alimentação saudável.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Discutir com o cliente sobre a importância da adesão à alimentação saudável.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Ensinar o cliente a seleção dos alimentos fora de casa.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Ensinar o cliente a seleção dos alimentos fora de casa.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar as causas da ingestão nutricional prejudicada.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar as causas da ingestão nutricional prejudicada.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar a necessidade de mudança de hábitos alimentares.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar a necessidade de mudança de hábitos alimentares.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente sobre a importância de manutenção do peso adequado.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente sobre a importância de manutenção do peso adequado.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Esclarecer possíveis complicações em caso de sobrepeso.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Esclarecer possíveis complicações em caso de sobrepeso.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar possível transtorno de ansiedade.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar possível transtorno de ansiedade.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Regulação Hormonal IMC 1.2
             [
-                'descricao' => 'Obter dados sobre qualidade de vida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre qualidade de vida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Estimular hábitos saudáveis e melhoria nas condições de vida que promovam qualidade de vida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Estimular hábitos saudáveis e melhoria nas condições de vida que promovam qualidade de vida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Reforçar hábitos saudáveis.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Reforçar hábitos saudáveis.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Regulação Hormonal Glicemia <70
             [
-                'descricao' => 'Realizar o teste glicêmico nas consultas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Realizar o teste glicêmico nas consultas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Solicitar exame de hemoglobina glicada periodicamente.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Solicitar exame de hemoglobina glicada periodicamente.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encaminhar ao médico em caso de manutenção da hiperglicemia.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encaminhar ao médico em caso de manutenção da hiperglicemia.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Investigar com cliente possíveis causas de hiperglicemia.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar com cliente possíveis causas de hiperglicemia.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Incentivar a manutenção dos níveis glicêmicos dentro dos padrões normais.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Incentivar a manutenção dos níveis glicêmicos dentro dos padrões normais.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encorajar o auto monitoramento dos níveis de glicose no sangue.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encorajar o auto monitoramento dos níveis de glicose no sangue.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar quanto à importância do controle glicêmico para o reparo tecidual.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar quanto à importância do controle glicêmico para o reparo tecidual.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar a administrar injeção usando técnica asséptica.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar a administrar insulina usando técnica asséptica.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar que o mau controle glicêmico é fator de risco para úlceras nos pés.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar que o mau controle glicêmico é fator de risco para úlceras nos pés.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Regulação Hormonal Glicemia >100
             [
-                'descricao' => 'Realizar o teste glicêmico nas consultas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Realizar o teste glicêmico nas consultas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar conhecimento do cliente sobre o esquema terapêutico dos fármacos em uso e o tempo de ação de cada medicação.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar conhecimento do cliente sobre o esquema terapêutico dos fármacos em uso e o tempo de ação de cada medicação.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Incentivar o cliente a manter o controle glicêmico dentro dos padrões normais.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Incentivar o cliente a manter o controle glicêmico dentro dos padrões normais.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encorajar o auto monitoramento dos níveis de glicose no sangue.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encorajar o auto monitoramento dos níveis de glicose no sangue.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Ensinar o cliente como proceder em caso de valores baixos de glicose sanguínea.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Ensinar o cliente como proceder em caso de valores baixos de glicose sanguínea.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Esclarecer sobre sintomas de hipoglicemia e investigar sintomas individuais.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Esclarecer sobre sintomas de hipoglicemia e investigar sintomas individuais.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente a procurar a unidade de saúde em caso de histórico de hipoglicemia recorrente para identificação das causas e ajuste do regime terapêutico.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente a procurar a unidade de saúde em caso de histórico de hipoglicemia recorrente para identificação das causas e ajuste do regime terapêutico.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente a verificar glicemia capilar antes de desempenhar tarefas diárias importantes, se insulinodependente.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente a verificar glicemia capilar antes de desempenhar tarefas diárias importantes, se insulinodependente.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Alertar os clientes quanto à importância de monitoramento da glicemia antes, durante e após a atividade física.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Alertar os clientes quanto à importância de monitoramento da glicemia antes, durante e após a atividade física.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Oxigenação
             [
-                'descricao' => 'Orientar repouso.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar repouso.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Monitorar saturação de oxigênio sanguíneo usando oxímetro de pulso.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Monitorar saturação de oxigênio sanguíneo usando oxímetro de pulso.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Monitorar tolerância à atividade.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Monitorar tolerância à atividade.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Obter dados sobre a condição respiratória do paciente.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre a condição respiratória do paciente.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encaminhar para atendimento médico.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encaminhar para atendimento médico.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Regulação Térmica 1.1
             [
-                'descricao' => 'Acolher imediatamente o cliente em caso de hipertermia.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Acolher imediatamente o cliente em caso de hipertermia.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encaminhar ao médico para prescrição medicamentosa.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encaminhar ao médico para prescrição medicamentosa.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Investigar possíveis causas de hipertermia.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar possíveis causas de hipertermia.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Ensinar a utilização da medicação prescrita para a febre.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Ensinar a utilização da medicação prescrita para a febre.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Regulação Térmica 1.2
             [
-                'descricao' => 'Solicitar ao técnico de enfermagem aferição da temperatura corporal em todas as consultas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Solicitar ao técnico de enfermagem aferição da temperatura corporal em todas as consultas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar a manter a ferida limpa e seca para impedir proliferação de microrganismos.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar a manter a ferida limpa e seca para impedir proliferação de microrganismos.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Ensinar o cliente a aferir temperatura corporal.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Ensinar o cliente a aferir temperatura corporal.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente a procurar unidade de saúde em caso de hipertermia.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente a procurar unidade de saúde em caso de hipertermia.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Reforçar orientações de autocuidado para reduzir risco de contaminação da ferida.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Reforçar orientações de autocuidado para reduzir risco de contaminação da ferida.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Sexualidade
             [
-                'descricao' => 'Obter dados sobre comportamento sexual.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre comportamento sexual.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encaminhar ao médico para avaliação e conduta.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encaminhar ao médico para avaliação e conduta.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Aconselhar sobre comportamento sexual.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Aconselhar sobre comportamento sexual.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar a necessidade de manutenção da glicemia estável.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar a necessidade de manutenção da glicemia estável.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Locomoção 1.1
             [
-                'descricao' => 'Monitorar pontos de pressão.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Monitorar pontos de pressão.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encaminhar à terapia ocupacional para confecção de calçado terapêutico.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encaminhar à terapia ocupacional para confecção de calçado terapêutico.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encaminhar à fisioterapia.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encaminhar à fisioterapia.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Investigar deformidades nos pés como dedos em garra, forma anormal do pé, pé de charcot, mobilidade articular do pé alterada.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar deformidades nos pés como dedos em garra, forma anormal do pé, pé de charcot, mobilidade articular do pé alterada.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Realizar encaminhamento para ortopedista para avaliação da necessidade do uso de órteses.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Realizar encaminhamento para ortopedista para avaliação da necessidade do uso de órteses.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Investigar atrofia muscular.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar atrofia muscular.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Monitorar retorno do paciente da atenção especializada.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Monitorar retorno do paciente da atenção especializada.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Investigar dificuldade de locomoção.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar dificuldade de locomoção.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Investigar capacidade para realização das atividades da vida diária.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar capacidade para realização das atividades da vida diária.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Obter dados sobre fraqueza muscular.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre fraqueza muscular.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Monitorar capacidade de realização de autocuidado por limitação física.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Monitorar capacidade de realização de autocuidado por limitação física.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Obter dados sobre força e fadiga.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre força e fadiga.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar que a deformidade nos pés é fator de risco para úlcera nos pés.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar que a deformidade nos pés é fator de risco para úlcera nos pés.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Promover orientação para facilitar atividades da vida diária.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Promover orientação para facilitar atividades da vida diária.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Reforçar técnica de exercício muscular ou articular.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Reforçar técnica de exercício muscular ou articular.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Estimular atividade física monitorada e adaptada com educador físico na Academia Carioca da Saúde.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Estimular atividade física monitorada e adaptada com educador físico.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Esclarecer em caso de alterações nos pés sobre os ajustes quanto ao tipo de sapato, tipo de atividade física, uso de dispositivos auxiliares para deambulação (muletas, andadores, cadeiras de roda).', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Esclarecer em caso de alterações nos pés sobre os ajustes quanto ao tipo de sapato, tipo de atividade física, uso de dispositivos auxiliares para deambulação (muletas, andadores, cadeiras de roda).',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Locomoção 1.2
             [
-                'descricao' => 'Avaliar alteração da marcha.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar alteração da marcha.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Pesquisar atrofia das pernas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Pesquisar atrofia das pernas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Investigar atrofias de músculos interósseos do metatarso.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar atrofias de músculos interósseos do metatarso.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Verificar reflexo de aquileu se abolido, diminuído, normal ou exaltado.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Verificar reflexo de aquileu se abolido, diminuído, normal ou exaltado.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Indagar acerca de fraqueza muscular.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Indagar acerca de fraqueza muscular.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar junto ao cliente a necessidade de uso de dispositivo para auxílio na marcha.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar junto ao cliente a necessidade de uso de dispositivo para auxílio na marcha.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar a usar um espelho para verificar a planta dos pés se não puder levantá-los.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar a usar um espelho para verificar a planta dos pés se não puder levantá-los.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Locomoção 1.3
             [
-                'descricao' => 'Investigar deformidades que prejudiquem o equilíbrio.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar deformidades que prejudiquem o equilíbrio.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Obter dados sobre o equilíbrio.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre o equilíbrio.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Ensinar cliente uso apropriado de muletas, andadores, bengalas, próteses.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Ensinar cliente uso apropriado de muletas, andadores, bengalas, próteses.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Locomoção 1.4
             [
-                'descricao' => 'Investigar deformidades que prejudiquem o equilíbrio.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar deformidades que prejudiquem o equilíbrio.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Obter dados sobre o equilíbrio.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Obter dados sobre o equilíbrio.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Ensinar cliente uso apropriado de muletas, andadores, bengalas, próteses.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Ensinar cliente uso apropriado de muletas, andadores, bengalas, próteses.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Regulação Vascular PA
             [
-                'descricao' => 'Monitorar a pressão arterial frequentemente.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Monitorar a pressão arterial frequentemente.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Atentar para queixas de tontura e cervicalgia.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Atentar para queixas de tontura e cervicalgia.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Acolher por demanda espontânea em caso de pressão alterada.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Acolher por demanda espontânea em caso de pressão alterada.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Realizar consultas periódicas em casos moderados a graves.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Realizar consultas periódicas em casos moderados a graves.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Solicitar busca ativa pelo agente comunitário em caso de falta à consulta.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Solicitar busca ativa pelo agente comunitário em caso de falta à consulta.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Ensinar o familiar a aferir a pressão arterial.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Ensinar o familiar a aferir a pressão arterial.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar a monitorar a pressão arterial frequentemente com padrão adequado de aferição (horário, posição de verificação e condições).', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar a monitorar a pressão arterial frequentemente com padrão adequado de aferição (horário, posição de verificação e condições).',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar a adotar medidas de prevenção do aumento da pressão arterial.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar a adotar medidas de prevenção do aumento da pressão arterial.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente quanto ao uso contínuo de medicamentos anti-hipertensivos.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente quanto ao uso contínuo de medicamentos anti-hipertensivos.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente sobre a comunicação imediata em caso de desconforto torácico.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente sobre a comunicação imediata em caso de desconforto torácico.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Regulação Vascular Pressão 1.1
             [
-                'descricao' => 'Avaliar a perfusão tissular periférica.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar a perfusão tissular periférica e atentar para os sinais de isquemia.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar a presença de pulsos.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar a presença de pulsos.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Inspecionar as pernas quanto à integridade, hidratação e coloração.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Inspecionar as pernas quanto à integridade, hidratação e coloração.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Examinar os pés e pernas a cada retorno: inspeção e palpação da pele, das unhas, do subcutâneo e da estrutura, palpação dos pulsos arteriais e avaliação da sensibilidade protetora plantar.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Examinar os pés e pernas a cada retorno: inspeção e palpação da pele, das unhas, do subcutâneo e da estrutura, palpação dos pulsos arteriais e avaliação da sensibilidade protetora plantar.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encaminhar para atendimento médico.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encaminhar para atendimento médico.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Regulação Vascular Pressão 1.2
             [
-                'descricao' => 'Realizar avaliação clínica a cada retorno à consulta palpando pulsos arteriais tibiais posteriores e pedioso.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Realizar avaliação clínica a cada retorno à consulta palpando pulsos arteriais tibiais posteriores e pedioso.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Encaminhar ao médico da equipe de saúde para avaliação.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Encaminhar ao médico da equipe de saúde para avaliação.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Propor ao médico da equipe encaminhamento ao angiologista ou cirurgião vascular.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Propor ao médico da equipe encaminhamento ao angiologista ou cirurgião vascular.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar sinais e sintomas de isquemia e encaminhar para avaliação especializada.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar sinais e sintomas de isquemia e encaminhar para avaliação especializada.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Explicar a importância da adesão ao tratamento farmacológico e não farmacológico para manutenção da circulação sanguínea eficaz.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Explicar a importância da adesão ao tratamento farmacológico e não farmacológico para manutenção da circulação sanguínea eficaz.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Regulação Vascular Pressão 1.3
             [
-                'descricao' => 'Monitorar pulsos tibiais posteriores e pedioso sistematicamente.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Monitorar pulsos tibiais posteriores e pedioso sistematicamente.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Ensinar o cliente e familiares sinais e sintomas de isquemia severa.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Ensinar o cliente e familiares sinais e sintomas de isquemia severa.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar a procurar unidade de saúde de emergência em casos graves.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar a procurar unidade de saúde de emergência em casos graves.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar sobre risco de perda do membro afetado.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar sobre risco de perda do membro afetado.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar a importância de manutenção dos níveis glicêmicos com adoção de hábitos saudáveis.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar a importância de manutenção dos níveis glicêmicos com adoção de hábitos saudáveis.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
-            ],                                    
+            ],
             //Sensopercepção Unhas
             [
-                'descricao' => 'Prescrever regime de cuidados com as unhas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Prescrever regime de cuidados com as unhas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar o corte das unhas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar o corte das unhas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar presença de unhas encravadas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar presença de unhas encravadas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar a necessidade de correção das unhas encravadas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Avaliar a necessidade de correção das unhas encravadas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente a realizar o corte reto das unhas e não muito rente, preferencialmente após o banho com tesoura de ponta arredondada.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente a realizar o corte reto das unhas e não muito rente, preferencialmente após o banho com tesoura de ponta arredondada.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar o cliente a não coçar a pele.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar o cliente a não coçar a pele.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar para que o cliente não tente corrigir sozinho as unhas encravadas.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Orientar para que o cliente não tente corrigir sozinho as unhas encravadas.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Sensopercepção Gangrena
             [
-                'descricao' => 'Investigar causas para coloração da pele alterada como doença arterial periférica.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Investigar causas para coloração da pele alterada como doença arterial periférica.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Ensinar o cliente e familiares em grupos, consultas ou VD’s a monitorar pele com sinais de cianose, vermelhidão e reluzência.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Ensinar o cliente e familiares em grupos, consultas ou VD’s a monitorar pele com sinais de cianose, vermelhidão e reluzência.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //Sensopercepção Perda de pelos nos pés
             [
-                'descricao' => 'Observar distribuição de pelos.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Observar distribuição de pelos.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Correlacionar ausência de pelos com outros sintomas que sinalizem redução da perfusão sanguínea.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Correlacionar ausência de pelos com outros sintomas que sinalizem redução da perfusão sanguínea.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Monitorar queda ou ausência de pelos.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Monitorar queda ou ausência de pelos.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Explicar causas de redução da pilificação.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Explicar causas de redução da pilificação.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Estimular adesão ao tratamento para melhoria da perfusão sanguínea.', 
-                'created_at' => Carbon::now(), 
+                'descricao' => 'Estimular adesão ao tratamento para melhoria da perfusão sanguínea.',
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             //SensoPercepção Calosidades
@@ -1453,10 +1453,10 @@ class IntervencaoSeeder extends Seeder
                 'descricao' => 'Ensinar cliente uso apropriado de muletas, andadores, bengalas, próteses.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
-            ],            
+            ],
             //Integridade Cutanea Bordas
             [
-                'descricao' => 'Evitar umidificação excessiva da pele, atentando à utilização de soluções e coberturas somente na área da lesão.',
+                'descricao' => 'Evitar umidificação excessiva da pele, atentando à utilização de soluções e coberturas na área da lesão.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -1558,7 +1558,7 @@ class IntervencaoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Prescrever a utilização de coberturas com prata para úlceras com sinais de infecção.',
+                'descricao' => 'Prescrever a utilização de coberturas com ação antimicrobiana para úlceras com sinais de infecção.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -1645,7 +1645,7 @@ class IntervencaoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar sobre fatores nocivos ao vaso sanguíneo.',
+                'descricao' => 'Prescrever cobertura com ação hemostática e não aderente.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -1656,22 +1656,22 @@ class IntervencaoSeeder extends Seeder
             ],
             //Integridade Cutanea Quantidade de Exudato 1.4
             [
-                'descricao' => 'Avaliar ferida para tomada de decisão em relação ao curativo.',
+                'descricao' => 'Avaliar tecidos presentes na ferida para tomada de decisão em relação ao tratamento.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Avaliar necessidade de desbridamento da ferida.',
+                'descricao' => 'Avaliar a necessidade de desbridamento da ferida.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Fazer desbridamento.',
+                'descricao' => 'Fazer desbridamento instrumental.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Remover corpo estranho do leito da ferida.',
+                'descricao' => 'Realizar a higiene da ferida com jato de soro fisiológico.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -1681,7 +1681,7 @@ class IntervencaoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Manter a ferida úmida.',
+                'descricao' => 'Manter a ferida coberta com curativo adequado.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -1691,7 +1691,7 @@ class IntervencaoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Monitorar a aparência de bordas.',
+                'descricao' => 'Manter pele adjacente limpa, seca e hidratada.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -1701,12 +1701,12 @@ class IntervencaoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Remover sujidades de ferida com jato de solução fisiológica.',
+                'descricao' => 'Mensurar dimensões da ferida e se possível registro fotográfico da mesma.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Molhar o curativo com solução fisiológica ou água antes de remover.',
+                'descricao' => 'Molhar o curativo com solução fisiológica.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -1749,7 +1749,7 @@ class IntervencaoSeeder extends Seeder
                 'descricao' => 'Orientar o paciente para o curativo domiciliar.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
-            ],                                                                        
+            ],
             //Integridade Cutanea Quantidade de Exudato 1.5
             [
                 'descricao' => 'Instruir sobre cuidados com a pele.',
@@ -1767,7 +1767,7 @@ class IntervencaoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Orientar sobre o uso de hidratantes.',
+                'descricao' => 'Orientar sobre o uso diário de hidratantes.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -1869,7 +1869,7 @@ class IntervencaoSeeder extends Seeder
             ],
             //Integridade Cutanea Quantidade de Exudato 1.7
             [
-                'descricao' => 'Avaliar cicatrização da ferida.',
+                'descricao' => 'Avaliar cicatrização da ferida e definir a periodicidade de sua avaliação.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -1920,7 +1920,7 @@ class IntervencaoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Investigar cianose.',
+                'descricao' => 'Investigar isquemia.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -1981,7 +1981,7 @@ class IntervencaoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Descrever as características da úlcera (tamanho, profundidade, estágio I-IV, localização, granulação, tecido desvitalizado, epitelização, tipo de exsudato e quantidade).',
+                'descricao' => 'Descrever as características da úlcera (tamanho, profundidade, estágio I-IV, localização, tipo de tecido, epitelização, tipo de exudato e quantidade).',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -2016,7 +2016,7 @@ class IntervencaoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Realizar desbridamento diário em caso de crosta ou calosidades avaliando a necessidade de encaminhamento ao cirurgião.',
+                'descricao' => 'Realizar desbridamento em caso de crosta ou calosidades avaliando a necessidade de encaminhamento ao serviço de referência.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -2061,12 +2061,12 @@ class IntervencaoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Esclarecer ao cliente para comunicar à equipe em caso de dor na úlcera.',
+                'descricao' => 'Esclarecer ao cliente para comunicar à equipe em caso de piora da dor na úlcera.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Reforçar com o cliente para comunicar imediatamente à equipe de saúde em caso de mudança no odor dos pés ou da lesão, ou na ocorrência de edema e ou sensação de mal-estar como febre, sintomas de resfriado ou de diabetes mal controlado.',
+                'descricao' => 'Reforçar com o cliente para comunicar imediatamente à equipe de saúde em caso de mudança no odor dos pés ou da lesão, ou na ocorrência de piora no edema e ou sensação de mal-estar como febre, sintomas de resfriado ou de diabetes mal controlado.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -2143,7 +2143,7 @@ class IntervencaoSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],
             [
-                'descricao' => 'Ensinar os itens da técnica de punção, amostra de sangue, e descarte de material.',
+                'descricao' => 'Ensinar o paciente/cuidador técnicas de administração da insulina, local de aplicação, rodizio e cuidados com armazenamento e descarte correto de material perfurocortante.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -2308,7 +2308,7 @@ class IntervencaoSeeder extends Seeder
                 'descricao' => 'Reforçar para o cliente as informações sobre comportamentos de autocuidado e sua implicação direta na sua qualidade de vida.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
-            ],            
+            ],
             //Aprendizagem 1.4 
             [
                 'descricao' => 'Ensinar aspectos relacionados ao glicosímetro, como características específicas do medidor escolhido, limpeza do aparelho, calibração, ajuste de data e hora, estocagem das tiras reagentes, validade do frasco aberto.',
@@ -2359,7 +2359,7 @@ class IntervencaoSeeder extends Seeder
                 'descricao' => 'Orientar quanto à aplicação de insulina prescrita, cuidados com armazenamento e rodízio no local na aplicação.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
-            ],            
+            ],
             //Aprendizagem 1.5                         
             [
                 'descricao' => 'Avaliar resposta à medicação.',
@@ -2460,7 +2460,7 @@ class IntervencaoSeeder extends Seeder
             ],
             //Amor e Aceitação (Acompanhado)
             [
-                'descricao' => 'Discutir com a família e paciente sobre a corresponsabilidade no tratamento sobre as reações adversas durante o tratamento.',
+                'descricao' => 'Discutir com a família e paciente sobre a corresponsabilidade no tratamento.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -2597,7 +2597,7 @@ class IntervencaoSeeder extends Seeder
                 'descricao' => 'Estimular adesão ao tratamento para melhoria da condição de saúde e aumento da qualidade de vida.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
-            ],            
+            ],
             //Amor e Aceitação (Emocional) 1.5                                    
             [
                 'descricao' => 'Identificar comportamentos de risco.',
@@ -2768,7 +2768,196 @@ class IntervencaoSeeder extends Seeder
                 'descricao' => 'Realizar referência a serviço religioso.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
-            ],                                    
+            ],
+            //Locomoção adição
+            [
+                'descricao' => 'Implementar rotina de ações de assistência para o autocuidado com a pele.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Implementar rotina de prevenção de quedas.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            //Pressao arterial 1.1
+            [
+                'descricao' => 'Realizar Indice Tornozelo braço(ITB).',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            //Pressao arterial 1.2
+            [
+                'descricao' => 'Realizar Indice Tornozelo braço(ITB).',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
+            //Claudicação
+            [
+                'descricao' => 'Avaliar alteração da marcha.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Pesquisar atrofia das pernas.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Investigar atrofias de músculos interósseos do metatarso.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
+            [
+                'descricao' => 'Verificar reflexo de aquileu se abolido, diminuído, normal ou exaltado.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Indagar acerca de fraqueza muscular.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Avaliar junto ao cliente a necessidade de uso de dispositivo para auxílio na marcha.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Orientar a usar um espelho para verificar a planta dos pés se não puder levantá-los.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Proceder a avaliação vascular.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Palpar pulsos( Pedioso e tibial).',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
+            [
+                'descricao' => 'Realizar Indice Tornozelo braço (ITB).',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
+            //coloração da pele, alterada
+            [
+                'descricao' => 'Proceder a avaliação vascular: Palpar pulsos (Pedioso e tibial).',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
+            [
+                'descricao' => 'Realizar Indice Tornozelo braço (ITB).',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            //Calosidades adição
+            [
+                'descricao' => 'Pesquisar neuropatia, proceder testes disponíveis (teste com o monofilamento 10g, diapasão 128 hz, sensibilidade térmica, teste com pálido ou Ipswich Toch Test).',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            //Fissuras adição
+            [
+                'descricao' => 'Investigar possível associação com infecção fúngica e encaminhar para tratamento médico se necessário.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            //Borda Macerada adição
+            [
+                'descricao' => 'Prescrever produtos barreira específicos para essa área.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Orientar a frequência adequada de troca de cobertura conforme necessidade.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Orientar a proteger a ferida durante o banho.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            //Edema adição
+            [
+                'descricao' => 'Encaminhar ao especialista para verificar a possibilidade de uso de terapias compressivas para controle do edema.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            //Integridade Cutanea Quantidade de Exudato 1.1 adiçao
+            [
+                'descricao' => 'Monitorar sinais vitais, principalmente temperatura.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            //Integridade Cutanea Quantidade de Exudato 1.4 adiçao
+            [
+                'descricao' => 'Optar por cobertura atiaderenteque estimule a epitelização e permita um tempo maior para o período de troca.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            //Integridade Cutanea Dor adiçao
+            [
+                'descricao' => 'Investigar a possível relação da dor com neuropatia.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            //Cuidados com a Ferida 1.1 adição
+            [
+                'descricao' => 'Orientar o paciente a proteger a ferida durante o banho.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
+            //Não adesão ao regime terapêutico adição 
+            [
+                'descricao' => 'Estimular a ingestão adequada de líquidos e nutrientes, reforçando a importância para saúde/cicatrização.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
+            //Aprendizagem 1.1 adição
+            [
+                'descricao' => 'Solicitar e analisar exames bioquímicos.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            //Fadiga 
+            [
+                'descricao' => 'Avaliar as condições do cliente para realizar as atividades físicas propostas.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Avaliar as condições do cliente para realizar as atividades da vida diária.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Elaborar junto ao cliente um plano de atividades físicas dentro do nível de tolerância.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Identificar com cliente os fatores que contribuem e desencadeiam a fadiga.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'descricao' => 'Encorajar o cliente a realizar exercícios conforme sua tolerância.',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
         ]);
     }
 }
