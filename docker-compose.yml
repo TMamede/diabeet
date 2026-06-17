@@ -4,11 +4,11 @@ services:
     container_name: diabeet_db
     restart: unless-stopped
     environment:
-      POSTGRES_DB: diabeet
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: "123"
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
