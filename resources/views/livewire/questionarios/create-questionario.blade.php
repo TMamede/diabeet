@@ -17,7 +17,7 @@
                             <div class="mb-12 text-center">
                                 <div class="inline-block p-6 mb-6 rounded-3xl">
                                     <h1 class="mb-2 text-4xl font-extrabold text-indigo-900 md:text-5xl">
-                                        So<span class="text-indigo-600">Pe</span>P
+                                        SI<span class="text-indigo-600">PEDIA</span>
                                     </h1>
                                     <div class="w-20 h-1 mx-auto bg-indigo-600 rounded-full"></div>
                                 </div>
@@ -386,7 +386,7 @@
                                         <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Pé Diabético</p>
                                     </div>
                                     <div class="text-right">
-                                        <p class="text-sm text-gray-600">Avaliação de enfermagem</p>
+                                        <p class="text-sm text-gray-600">Avaliação de Enfermagem</p>
                                         <p class="text-lg font-semibold text-gray-800">Necessidades Psicobiológicas</p>
                                     </div>
                                 </div>
@@ -3374,7 +3374,7 @@
                                         <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Pé Diabético</p>
                                     </div>
                                     <div class="text-right">
-                                        <p class="text-sm text-gray-600">avaliação de enfermagem</p>
+                                        <p class="text-sm text-gray-600">Avaliação de Enfermagem</p>
                                         <p class="text-lg font-semibold text-gray-800">Necessidades Psicossociais</p>
                                     </div>
                                 </div>
@@ -3749,7 +3749,7 @@
                                         <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Pé Diabético</p>
                                     </div>
                                     <div class="text-right">
-                                        <p class="text-sm text-gray-600">avaliação de enfermagem</p>
+                                        <p class="text-sm text-gray-600">Avaliação de Enfermagem</p>
                                         <p class="text-lg font-semibold text-gray-800">Necessidades PsicoEspirituais
                                         </p>
                                     </div>

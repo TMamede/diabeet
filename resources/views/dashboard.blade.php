@@ -22,13 +22,15 @@
                     </div>
 
                     <!-- Subtitle melhorada -->
-                    <div class="max-w-4xl mx-auto mb-12">
-                        <h2 class="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
-                            Sistema Integrado ao <span class="text-indigo-600">Processo de Enfermagem</span>
+                    <div class="max-w-6xl mx-auto mb-12">
+                        <h2 class="mb-6 text-2xl font-bold text-gray-900 md:text-4xl">
+                            Sistema Integrado ao <span class="text-indigo-600">Processo de Enfermagem - Pé
+                                Diabético</span>
                         </h2>
                         <p class="max-w-2xl mx-auto text-xl leading-relaxed text-gray-600">
-                            Plataforma especializada para enfermeiros realizarem avaliações completas, diagnósticos
-                            precisos e acompanhamento contínuo de pacientes com pé diabético
+                            Plataforma digital desenvolvida para subsidiar a aplicação do Processo de Enfermagem à
+                            pessoa com pé diabético, utilizando como referencial teórico a Teoria das Necessidades
+                            Humanas Básicas e a CIPE® (Classificação Internacional para a Prática de Enfermagem).
                         </p>
                     </div>
 
