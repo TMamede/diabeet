@@ -1,66 +1,305 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SIPEDIA
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema web desenvolvido em **Laravel 11**, utilizando **PHP 8.2**, **Livewire 3**, **PostgreSQL** e **Vite**.
 
-## About Laravel
+O banco de dados é executado através de um container Docker, enquanto a aplicação Laravel é executada localmente.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Tecnologias Utilizadas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Laravel 11
+- PHP 8.2
+- Livewire 3
+- PostgreSQL 16
+- Tailwind CSS
+- Vite
+- DomPDF
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Requisitos
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Antes de iniciar, certifique-se de possuir instalado:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- PHP 8.2 ou superior
+- Composer 2.x
+- Node.js 20+
+- NPM
+- Docker Desktop
+- Docker Compose
+- Git
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# Clonando o projeto
 
-### Premium Partners
+```bash
+git clone https://github.com/TMamede/diabeet.git
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+cd diabeet
+```
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Instalação
 
-## Code of Conduct
+## 1. Copiar o arquivo de ambiente
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+cp .env.example .env
+```
 
-## Security Vulnerabilities
+O arquivo `.env.example` já está configurado para utilizar o banco PostgreSQL.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```env
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=diabeet
+DB_USERNAME=postgres
+DB_PASSWORD=
+```
 
-## License
+Caso deseje alterar o usuário, senha ou nome do banco, basta editar essas variáveis.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 2. Subir o banco de dados
+
+O projeto possui um `docker-compose.yml` responsável apenas pelo PostgreSQL.
+
+Execute:
+
+```bash
+docker compose up -d
+```
+
+Será criado automaticamente um container chamado:
+
+```
+diabeet_db
+```
+
+Para verificar se está em execução:
+
+```bash
+docker ps
+```
+
+---
+
+## 3. Instalar as dependências
+
+Instale as dependências do Laravel:
+
+```bash
+composer install
+```
+
+Instale as dependências do frontend:
+
+```bash
+npm install
+```
+
+---
+
+## 4. Gerar a chave da aplicação
+
+```bash
+php artisan key:generate
+```
+
+---
+
+## 5. Executar as migrations
+
+```bash
+php artisan migrate --seed
+```
+
+Este comando irá:
+
+- Criar todas as tabelas;
+- Inserir os registros iniciais necessários para funcionamento do sistema.
+
+---
+
+## 6. Criar o link do Storage
+
+```bash
+php artisan storage:link
+```
+
+Este comando cria o link simbólico entre:
+
+```
+storage/app/public
+```
+
+e
+
+```
+public/storage
+```
+
+Sem este comando, arquivos enviados pelos usuários não serão exibidos corretamente.
+
+---
+
+## 7. Compilar os arquivos do frontend
+
+Para desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Para produção:
+
+```bash
+npm run build
+```
+
+---
+
+## 8. Otimizar a aplicação
+
+```bash
+php artisan optimize
+```
+
+---
+
+# Executando o sistema
+
+Inicie o servidor Laravel:
+
+```bash
+php artisan serve
+```
+
+A aplicação estará disponível em:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+# Docker
+
+O projeto utiliza Docker **apenas para o banco PostgreSQL**.
+
+Arquivo `docker-compose.yml`:
+
+```yaml
+services:
+  postgres:
+    image: postgres:16
+    container_name: diabeet_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+```
+
+Comandos úteis:
+
+Subir o banco:
+
+```bash
+docker compose up -d
+```
+
+Parar o banco:
+
+```bash
+docker compose down
+```
+
+Visualizar logs:
+
+```bash
+docker logs diabeet_db
+```
+
+---
+
+# Atualizando o projeto
+
+Sempre que houver uma atualização:
+
+```bash
+git pull
+
+composer install
+
+npm install
+
+php artisan migrate
+
+npm run build
+
+php artisan optimize
+```
+
+---
+
+# Limpeza de Cache
+
+Caso seja necessário limpar todos os caches:
+
+```bash
+php artisan optimize:clear
+```
+
+---
+
+# Estrutura Tecnológica
+
+- Laravel 11
+- PHP 8.2
+- PostgreSQL 16
+- Livewire 3
+- Tailwind CSS
+- Vite
+- DomPDF
+
+---
+
+# Observações
+
+- O Laravel é executado localmente.
+- Apenas o banco PostgreSQL utiliza Docker.
+- O frontend é compilado utilizando Vite.
+- Os arquivos enviados pelos usuários são armazenados em `storage/app/public`.
+- Os PDFs são gerados dinamicamente através do DomPDF e enviados diretamente para download.
+- Após alterações no frontend, execute `npm run dev` (desenvolvimento) ou `npm run build` (produção).
+
+---
+
+# Checklist de Instalação
+
+- [ ] Clonar o projeto
+- [ ] Copiar `.env.example` para `.env`
+- [ ] Executar `docker compose up -d`
+- [ ] Executar `composer install`
+- [ ] Executar `npm install`
+- [ ] Executar `php artisan key:generate`
+- [ ] Executar `php artisan migrate --seed`
+- [ ] Executar `php artisan storage:link`
+- [ ] Executar `npm run build` (ou `npm run dev`)
+- [ ] Executar `php artisan optimize`
+- [ ] Executar `php artisan serve`
+
+Após esses passos, o **SIPEDIA** estará pronto para utilização.
