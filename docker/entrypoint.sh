@@ -41,11 +41,11 @@ echo "==> Database is ready!"
 echo "==> Running migrations..."
 php artisan migrate --force
 
-# Seed database if no users exist
-USER_COUNT=$(php artisan tinker --execute="echo \App\Models\User::count();" 2>/dev/null || echo "0")
-if [ "$USER_COUNT" = "0" ] || [ -z "$USER_COUNT" ]; then
-    echo "==> No users found. Seeding database..."
-    php artisan db:seed --force
+# Seed database if no data exists
+SEED_COUNT=$(php artisan tinker --execute="echo \App\Models\Diagnostico::count();" 2>/dev/null || echo "0")
+if [ "$SEED_COUNT" = "0" ] || [ -z "$SEED_COUNT" ]; then
+    echo "==> Initial data not found. Running DatabaseSeeder..."
+    php artisan db:seed --class=DatabaseSeeder --force
 fi
 
 # Cache configurations for production
