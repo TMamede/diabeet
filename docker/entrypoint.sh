@@ -41,11 +41,11 @@ echo "==> Database is ready!"
 echo "==> Running migrations..."
 php artisan migrate --force
 
-# Seed database if no data exists
+# Seed database with production reference data if not already populated
 SEED_COUNT=$(php artisan tinker --execute="echo \App\Models\Diagnostico::count();" 2>/dev/null || echo "0")
 if [ "$SEED_COUNT" = "0" ] || [ -z "$SEED_COUNT" ]; then
-    echo "==> Initial data not found. Running DatabaseSeeder..."
-    php artisan db:seed --class=DatabaseSeeder --force
+    echo "==> Initial data not found. Running ProductionSeeder..."
+    php artisan db:seed --class=ProductionSeeder --force
 fi
 
 # Cache configurations for production
@@ -64,3 +64,4 @@ echo "==> Entrypoint complete. Starting application..."
 
 # Execute the main container command (php-fpm)
 exec "$@"
+
