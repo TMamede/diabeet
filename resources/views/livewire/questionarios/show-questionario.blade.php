@@ -2,7 +2,7 @@
     <div class="mb-12 text-center lg:hidden px-4">
         <div class="inline-block p-6 mb-6 rounded-3xl">
             <h1 class="mb-2 text-4xl font-extrabold text-indigo-900 md:text-5xl">
-                So<span class="text-indigo-600">Pe</span>P
+                SI<span class="text-indigo-600">PEDIA</span>
             </h1>
             <div class="w-20 h-1 mx-auto bg-indigo-600 rounded-full"></div>
         </div>
@@ -50,7 +50,7 @@
                             <div class="mb-12 text-center hidden lg:block">
                                 <div class="inline-block p-6 mb-6 rounded-3xl">
                                     <h1 class="mb-2 text-4xl font-extrabold text-indigo-900 md:text-5xl">
-                                        So<span class="text-indigo-600">Pe</span>P
+                                        SI<span class="text-indigo-600">PEDIA</span>
                                     </h1>
                                     <div class="w-20 h-1 mx-auto bg-indigo-600 rounded-full"></div>
                                 </div>
@@ -365,7 +365,8 @@
                                         class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
                                         <div>
                                             <h1 class="text-2xl font-bold sm:text-3xl text-indigo-900">SIPEDIA</h1>
-                                            <p class="text-sm font-medium sm:text-base text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Pé Diabético</p>
+                                            <p class="text-sm font-medium sm:text-base text-indigo-600">Sistema
+                                                Integrado ao Processo de Enfermagem - Pé Diabético</p>
                                         </div>
                                         <div class="text-left sm:text-right">
                                             <p class="text-sm text-gray-600">Avaliação de enfermagem</p>
@@ -3622,10 +3623,10 @@
                     <div class="flex-1 min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
                         <!-- Elementos decorativos de fundo otimizados -->
                         <div class="absolute inset-0 pointer-events-none">
-                    <div
-                class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]">
-                    </div>
-            </div>
+                            <div
+                                class="w-full h-full bg-[radial-gradient(40%_40%_at_10%_10%,#c7d2fe33,transparent),radial-gradient(45%_45%_at_90%_15%,#e9d5ff33,transparent),radial-gradient(40%_40%_at_20%_90%,#fecdd733,transparent)]">
+                            </div>
+                        </div>
 
                         <div class="relative z-10 px-6 py-8">
                             <!-- Header -->
@@ -3634,7 +3635,8 @@
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <h1 class="text-3xl font-bold text-indigo-900">SIPEDIA</h1>
-                                            <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Pé Diabético</p>
+                                            <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de
+                                                Enfermagem - Pé Diabético</p>
                                         </div>
                                         <div class="text-right">
                                             <p class="text-sm text-gray-600">Avaliação de enfermagem</p>
@@ -4029,7 +4031,8 @@
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <h1 class="text-3xl font-bold text-indigo-900">SIPEDIA</h1>
-                                            <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Pé Diabético</p>
+                                            <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de
+                                                Enfermagem - Pé Diabético</p>
                                         </div>
                                         <div class="text-right">
                                             <p class="text-sm text-gray-600">Avaliação de enfermagem</p>
