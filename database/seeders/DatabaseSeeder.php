@@ -38,36 +38,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        User::create([
-            'name'      => 'gestor',
-            'email'     => 'gestor@master.com',
-            'coren'     => '12345677',
-            'user_type' => 'gerenciador',
-            'password'  => 'patinho',
-        ]);
-
-        $this->call(AbrigoSeeder::class);
-        $this->call(CuidadoFeridaSeeder::class);
-        $this->call(EliminacaoSeeder::class);
-        $this->call(ExercicioFisicoSeeder::class);
-        $this->call(HidratacaoSeeder::class);
-        $this->call(IntegridadeCutaneaSeeder::class);
-        $this->call(LocomocaoSeeder::class);
-        $this->call(NutricaoSeeder::class);
-        $this->call(OxigenacaoSeeder::class);
-        $this->call(PercepcaoSentidoSeeder::class);
-        $this->call(RegulacaoHormonalSeeder::class);
-        $this->call(RegulacaoNeuroSeeder::class);
-        $this->call(RegulacaoTermicaSeeder::class);
-        $this->call(RegulacaoVascularSeeder::class);
-        $this->call(SensoPercepcaoSeeder::class);
-        $this->call(SexualidadeSeeder::class);
-        $this->call(SonoSeeder::class);
-        $this->call(AprendizagemSeeder::class);
-        $this->call(ComunicacaoSeeder::class);
-        $this->call(CuidadoSeeder::class);
-        $this->call(NecessidadeBioSeeder::class);
-        $this->call(NecessidadeSocioSeeder::class);
         $this->call(ExtraSeeder::class);
         $this->call(OrigemSeeder::class);
         $this->call(MotivoSeeder::class);

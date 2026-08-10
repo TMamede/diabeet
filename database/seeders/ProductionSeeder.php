@@ -23,12 +23,6 @@ class ProductionSeeder extends Seeder
             ]
         );
 
-        $this->call(OrigemSeeder::class);
-        $this->call(MotivoSeeder::class);
-        $this->call(DiagnosticoSeeder::class);
-        $this->call(IntervencaoSeeder::class);
-        $this->call(MotivoDiagnosticoSeeder::class);
-        $this->call(DiagnosticoIntervencaoSeeder::class);
+        $this->call(DatabaseSeeder::class);
     }
 }
-
