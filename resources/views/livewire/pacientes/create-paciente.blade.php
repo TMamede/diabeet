@@ -17,8 +17,9 @@
                         <!-- Cabeçalho -->
                         <header class="py-10 text-center">
                             <div class="container px-6 mx-auto">
-                                <h1 class="text-5xl font-extrabold text-indigo-900">So<span
-                                        class="text-indigo-600">Pe</span>P</h1>
+                                <h1 class="text-5xl font-extrabold text-indigo-900">SI<span
+                                        class="text-indigo-600">PEDIA</span>
+                                </h1>
                                 <p class="mt-3 text-lg text-gray-600">Cadastro de <span
                                         class="text-indigo-600">Paciente</span></p>
                                 <p class="max-w-xl mx-auto mt-1 text-sm text-gray-500">Preencha os dados
@@ -205,8 +206,9 @@
                         <!-- Cabeçalho -->
                         <header class="py-10 text-center">
                             <div class="container px-6 mx-auto">
-                                <h1 class="text-5xl font-extrabold text-indigo-900">So<span
-                                        class="text-indigo-600">Pe</span>P</h1>
+                                <h1 class="text-5xl font-extrabold text-indigo-900">SI<span
+                                        class="text-indigo-600">PEDIA</span>
+                                </h1>
                                 <p class="mt-3 text-lg text-gray-600">Histórico do <span
                                         class="text-indigo-600">Paciente</span></p>
                                 <p class="max-w-xl mx-auto mt-1 text-sm text-gray-500">Preencha as informações clínicas
@@ -593,8 +595,9 @@
                         <!-- Cabeçalho -->
                         <header class="py-10 text-center">
                             <div class="container px-6 mx-auto">
-                                <h1 class="text-5xl font-extrabold text-indigo-900">So<span
-                                        class="text-indigo-600">Pe</span>P</h1>
+                                <h1 class="text-5xl font-extrabold text-indigo-900">SI<span
+                                        class="text-indigo-600">PEDIA</span>
+                                </h1>
                                 <p class="mt-3 text-lg text-gray-600">Cadastro de <span
                                         class="text-indigo-600">Medicamentos</span></p>
                                 <p class="max-w-xl mx-auto mt-1 text-sm text-gray-500">Registre os medicamentos
@@ -819,8 +822,9 @@
                         <!-- Cabeçalho -->
                         <header class="py-10 text-center">
                             <div class="container px-6 mx-auto">
-                                <h1 class="text-5xl font-extrabold text-indigo-900">So<span
-                                        class="text-indigo-600">Pe</span>P</h1>
+                                <h1 class="text-5xl font-extrabold text-indigo-900">SI<span
+                                        class="text-indigo-600">PEDIA</span>
+                                </h1>
                                 <p class="mt-3 text-lg text-gray-600">Resultados de <span
                                         class="text-indigo-600">Exames</span></p>
                                 <p class="max-w-xl mx-auto mt-1 text-sm text-gray-500">Registre os resultados dos
@@ -1069,8 +1073,9 @@
                         <!-- Cabeçalho -->
                         <header class="py-10 text-center">
                             <div class="container px-6 mx-auto">
-                                <h1 class="text-5xl font-extrabold text-indigo-900">So<span
-                                        class="text-indigo-600">Pe</span>P</h1>
+                                <h1 class="text-5xl font-extrabold text-indigo-900">SI<span
+                                        class="text-indigo-600">PEDIA</span>
+                                </h1>
                                 <p class="mt-3 text-lg text-gray-600">Seleção de <span class="text-indigo-600">Unidade
                                         de Saúde</span></p>
                                 <p class="max-w-xl mx-auto mt-1 text-sm text-gray-500">Selecione a unidade de saúde
