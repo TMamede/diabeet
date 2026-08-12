@@ -47,7 +47,7 @@ class CreatePaciente extends Component
     public $data_exame;
 
     //Etapa 5: Unidade de Saude
-    public $unidade, $ruaU, $bairroU, $numeroU, $cidadeU, $ufU,  $telefoneU, $idUnidadeSelected = null;
+    public $unidade, $ruaU, $bairroU, $numeroU, $cidadeU, $ufU, $telefoneU, $idUnidadeSelected = null;
 
 
     public function selectUnidade($unidadeId)
@@ -68,8 +68,38 @@ class CreatePaciente extends Component
 
         $unidades = [];
 
-        if (strlen($this->search) >= 1) {
-            $unidades = Unidade_saude::where('ubs', 'like', '%' . $this->search . '%')
+        if (strlen(trim($this->search)) >= 1) {
+            $search = trim($this->search);
+
+            $unidades = Unidade_saude::query()
+                ->where(function ($query) use ($search) {
+
+                    $query->whereRaw(
+                        'unaccent(ubs) ILIKE unaccent(?)',
+                        [$search . '%']
+                    );
+                    $query->orWhereRaw(
+                        'unaccent(ubs) ILIKE unaccent(?)',
+                        ['% ' . $search . '%']
+                    );
+                    if (strlen($search) >= 4) {
+                        $query->orWhereRaw(
+                            'similarity(unaccent(ubs), unaccent(?)) > 0.3',
+                            [$search]
+                        );
+                    }
+                })
+                ->orderByRaw(
+                    'CASE
+                WHEN unaccent(ubs) ILIKE unaccent(?) THEN 1
+                WHEN unaccent(ubs) ILIKE unaccent(?) THEN 2
+                ELSE 3
+             END',
+                    [
+                        $search . '%',
+                        '% ' . $search . '%'
+                    ]
+                )
                 ->limit(3)
                 ->get();
         }
