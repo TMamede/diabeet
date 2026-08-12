@@ -10,12 +10,12 @@ class ProfileController extends Controller
 {
     public function updatePhoto(Request $request)
     {
+        
         $request->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,JPEG,JPG,PNG,gif|max:5120',
         ]);
 
         if ($request->hasFile('photo')) {
-            // Deleta a anterior se houver
             if (Auth::user()->profile_photo) {
                 Storage::disk('public')->delete(Auth::user()->profile_photo);
             }
@@ -28,7 +28,7 @@ class ProfileController extends Controller
 
             return back()->with('success', 'Foto atualizada com sucesso!');
         }
-
+   
         return back()->with('error', 'Erro ao enviar a foto.');
     }
 
