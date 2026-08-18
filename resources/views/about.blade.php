@@ -22,7 +22,7 @@
                             class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">SIPEDIA</span>
                     </h1>
                     <p class="max-w-3xl mx-auto text-xl text-gray-600">
-                        Sistema Integrado ao Processo de Enfermagem - Pé Diabético.
+                        Sistema Integrado ao Processo de Enfermagem - Doença do pé relacionada ao diabetes.
                     </p>
                 </div>
 
@@ -32,8 +32,8 @@
                         <div class="mb-12 text-center">
                             <h2 class="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">Bem-vindo ao SIPEDIA</h2>
                             <p class="max-w-4xl mx-auto text-lg leading-relaxed text-gray-600">
-                                Sistema de Prescrição para Enfermagem no Pé Diabético - Uma solução digital inovadora
-                                para otimizar o cuidado especializado
+                                Sistema Integrado ao Processo de Enfermagem – Doença do Pé Relacionada ao Diabetes 
+                                Tecnologia digital desenvolvida para apoiar a consulta de enfermagem, qualificar o cuidado e fortalecer a tomada de decisão clínica baseada em evidências.
                             </p>
                         </div>
 
@@ -52,13 +52,9 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="mb-2 text-xl font-semibold text-gray-900">Apoio Especializado</h3>
+                                        <h3 class="mb-2 text-xl font-semibold text-gray-900">Consulta Estruturada </h3>
                                         <p class="leading-relaxed text-gray-700">
-                                            O SIPEDIA é um sistema digital pensado para apoiar o trabalho dos
-                                            profissionais de enfermagem no cuidado especializado com pacientes que
-                                            convivem com o pé diabético. Sua proposta é otimizar a coleta de dados, o
-                                            acompanhamento contínuo e a tomada de decisões clínicas com base em
-                                            evidências.
+                                            Conduza consultas de enfermagem de forma organizada, reunindo avaliação clínica, estratificação de risco e registro sistematizado em um único fluxo de trabalho. 
                                         </p>
                                     </div>
                                 </div>
@@ -78,12 +74,9 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="mb-2 text-xl font-semibold text-gray-900">Gestão Completa</h3>
+                                        <h3 class="mb-2 text-xl font-semibold text-gray-900">Avaliação Clínica </h3>
                                         <p class="leading-relaxed text-gray-700">
-                                            Enfermeiros têm acesso a funcionalidades completas para cadastrar pacientes,
-                                            registrar informações clínicas e sociodemográficas, e monitorar a evolução
-                                            da condição de saúde ao longo do tempo. É possível também revisar históricos
-                                            de medicação, diagnósticos prévios e encaminhamentos.
+                                            Transforme os dados da consulta em informações úteis para apoiar o raciocínio clínico, o Processo de Enfermagem e o planejamento do cuidado.
                                         </p>
                                     </div>
                                 </div>
@@ -103,13 +96,9 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="mb-2 text-xl font-semibold text-gray-900">Avaliações de Enfermagem
-                                            Estruturadas</h3>
+                                        <h3 class="mb-2 text-xl font-semibold text-gray-900">Gestão do Cuidado</h3>
                                         <p class="leading-relaxed text-gray-700">
-                                            O sistema baseia-se em avaliações de enfermagem organizadas por dimensões
-                                            psicobiológicas, psicossociais e psicoespirituais. Com essas informações, o
-                                            SIPEDIA realiza a análise automatizada dos dados e sugere diagnósticos e
-                                            intervenções de enfermagem compatíveis com as respostas coletadas.
+                                           Centralize as informações clínicas e assistenciais em um único ambiente digital. O SIPEDIA permite cadastrar pessoas, registrar avaliações de enfermagem, acompanhar a evolução clínica e consultar o histórico de diagnósticos, intervenções, medicamentos e encaminhamentos, apoiando a organização do cuidado.  
                                         </p>
                                     </div>
                                 </div>
@@ -129,12 +118,9 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="mb-2 text-xl font-semibold text-gray-900">Prescrição Digital</h3>
+                                        <h3 class="mb-2 text-xl font-semibold text-gray-900">Plano de Cuidados</h3>
                                         <p class="leading-relaxed text-gray-700">
-                                            Ao final do processo, um prescrição digital é gerado automaticamente,
-                                            compilando as origens de risco, motivos associados, diagnósticos e
-                                            intervenções sugeridas. Esse prescrição pode ser revisado, complementado e
-                                            salvo em formato PDF para fins de documentação e continuidade do cuidado.
+                                            Gere automaticamente um relatório estruturado contendo diagnósticos, intervenções, orientações e registros da consulta, facilitando a documentação, a continuidade do cuidado e as prescrições de enfermagem. 
                                         </p>
                                     </div>
                                 </div>
@@ -219,11 +205,7 @@
                                     <div>
                                         <h3 class="mb-4 text-2xl font-semibold">Continuidade do Atendimento</h3>
                                         <p class="leading-relaxed text-gray-500 text-md">
-                                            O SIPEDIA também facilita a continuidade do atendimento ao permitir que, ao
-                                            iniciar uma nova avaliação de enfermagem, o sistema recupere automaticamente
-                                            os
-                                            dados anteriores daquele paciente, poupando tempo e reduzindo a repetição de
-                                            preenchimentos.
+                                           O SIPEDIA também facilita a continuidade do atendimento ao permitir que, ao iniciar uma nova avaliação de enfermagem, o sistema recupere automaticamente os dados anteriores daquele paciente, poupando tempo e reduzindo a repetição de preenchimentos, proporcionando um acompanhamento longitudinal. 
                                         </p>
                                     </div>
                                 </div>
@@ -271,8 +253,8 @@
                                             </path>
                                         </svg>
                                     </div>
-                                    <h4 class="mb-2 text-xl font-bold text-gray-900">Cuidado</h4>
-                                    <p class="text-gray-600">Foco no bem-estar integral do paciente com pé diabético
+                                    <h4 class="mb-2 text-xl font-bold text-gray-900">Cuidado Integral</h4>
+                                    <p class="text-gray-600">Foco no cuidado sistematizado, centrado na pessoa e fundamentado em evidências. 
                                     </p>
                                 </div>
                             </div>

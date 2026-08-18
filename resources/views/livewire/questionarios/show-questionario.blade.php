@@ -366,7 +366,7 @@
                                         <div>
                                             <h1 class="text-2xl font-bold sm:text-3xl text-indigo-900">SIPEDIA</h1>
                                             <p class="text-sm font-medium sm:text-base text-indigo-600">Sistema
-                                                Integrado ao Processo de Enfermagem - Pé Diabético</p>
+                                                Integrado ao Processo de Enfermagem - Doença do Pé Relacionada ao Diabetes</p>
                                         </div>
                                         <div class="text-left sm:text-right">
                                             <p class="text-sm text-gray-600">Avaliação de enfermagem</p>
@@ -3636,7 +3636,7 @@
                                         <div>
                                             <h1 class="text-3xl font-bold text-indigo-900">SIPEDIA</h1>
                                             <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de
-                                                Enfermagem - Pé Diabético</p>
+                                                Enfermagem - Doença do Pé Relacionada ao Diabetes</p>
                                         </div>
                                         <div class="text-right">
                                             <p class="text-sm text-gray-600">Avaliação de enfermagem</p>
@@ -4032,7 +4032,7 @@
                                         <div>
                                             <h1 class="text-3xl font-bold text-indigo-900">SIPEDIA</h1>
                                             <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de
-                                                Enfermagem - Pé Diabético</p>
+                                                Enfermagem - Doença do Pé relacionada ao Diabetes</p>
                                         </div>
                                         <div class="text-right">
                                             <p class="text-sm text-gray-600">Avaliação de enfermagem</p>

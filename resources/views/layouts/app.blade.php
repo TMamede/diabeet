@@ -77,7 +77,7 @@
             <div class="flex flex-col items-center justify-between md:flex-row">
                 <div class="mb-4 md:mb-0">
                     <h4 class="text-xl font-bold">SIPEDIA</h4>
-                    <p class="mb-5 text-sm text-indigo-200">Sistema Integrado ao Processo de Enfermagem - Pé Diabético
+                    <p class="mb-5 text-sm text-indigo-200">Sistema Integrado ao Processo de Enfermagem - Doença do Pé Relacionada ao Diabetes
                     </p>
                     <p> <a href="{{ route('termos') }}" class="text-sm text-white-200">Termos de Uso</a>
                     </p>

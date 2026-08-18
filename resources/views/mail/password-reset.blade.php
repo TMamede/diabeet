@@ -66,7 +66,7 @@
                                     </td>
                                     <td align="right"
                                         style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color:#E0E7FF; font-size:12px;">
-                                        Sistema Integrado ao Processo de Enfermagem - Pé Diabético
+                                        Sistema Integrado ao Processo de Enfermagem - Doença do Pé Relacionada ao Diabetes
                                     </td>
                                 </tr>
                             </table>
@@ -158,7 +158,7 @@
                             <p
                                 style="margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; font-size:12px; line-height:1.6; color:#64748b;">
                                 © {{ date('Y') }} <strong>SIPEDIA</strong> — Sistema Integrado ao Processo de
-                                Enfermagem - Pé Diabético.
+                                Enfermagem - Doença do Pé Relacionada ao Diabetes.
                                 <br>
                                 Este e-mail foi enviado automaticamente. Não responda.
                             </p>

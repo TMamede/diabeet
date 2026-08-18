@@ -29,7 +29,7 @@
                         <div class="mb-10 text-center">
                             <h2 class="mb-3 text-2xl font-bold text-gray-900 md:text-3xl">Navegue pelo Sistema</h2>
                             <p class="max-w-3xl mx-auto text-base leading-relaxed text-gray-600 md:text-lg">
-                                Acesse rapidamente todas as áreas do sistema de prescrição eletrônica para pé diabético.
+                                Acesse rapidamente todas as áreas do sistema de prescrição eletrônica para pessoa com doença do pé relacionada ao diabetes.
                                 <span class="font-medium text-indigo-600">Encontre o que precisa em segundos!</span>
                             </p>
                         </div>

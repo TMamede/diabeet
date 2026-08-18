@@ -30,7 +30,7 @@
 
                     <p class="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600">
                         Plataforma desenvolvida para auxiliar profissionais da enfermagem no cuidado especializado de
-                        pacientes com pé diabético.
+                        pacientes com doença do pé relacionada ao diabetes.
                     </p>
                 </div>
 
