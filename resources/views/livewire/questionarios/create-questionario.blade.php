@@ -383,7 +383,7 @@
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <h1 class="text-3xl font-bold text-indigo-900">SIPEDIA</h1>
-                                        <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Pé Diabético</p>
+                                        <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Doença do Pé Relacionada ao Diabetes</p>
                                     </div>
                                     <div class="text-right">
                                         <p class="text-sm text-gray-600">Avaliação de Enfermagem</p>
@@ -3371,7 +3371,7 @@
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <h1 class="text-3xl font-bold text-indigo-900">SIPEDIA</h1>
-                                        <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Pé Diabético</p>
+                                        <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Doença do Pé Relacionada ao Diabetes</p>
                                     </div>
                                     <div class="text-right">
                                         <p class="text-sm text-gray-600">Avaliação de Enfermagem</p>
@@ -3746,7 +3746,7 @@
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <h1 class="text-3xl font-bold text-indigo-900">SIPEDIA</h1>
-                                        <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Pé Diabético</p>
+                                        <p class="font-medium text-indigo-600">Sistema Integrado ao Processo de Enfermagem - Doença do Pé Relacionada ao Diabetes</p>
                                     </div>
                                     <div class="text-right">
                                         <p class="text-sm text-gray-600">Avaliação de Enfermagem</p>

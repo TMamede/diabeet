@@ -3,7 +3,7 @@
 > Sistema Integrado ao Processo de Enfermagem — Pé Diabético
 
 Aplicação web para apoio ao processo de enfermagem no cuidado de pacientes com
-diabetes / pé diabético: cadastro de pacientes, questionários (autocuidado e
+doença do pé relacionada ao diabetes: cadastro de pacientes, questionários (autocuidado e
 qualidade de vida), prontuários com diagnósticos e intervenções, e geração de
 prontuário em PDF.
 

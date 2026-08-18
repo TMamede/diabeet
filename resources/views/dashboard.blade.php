@@ -24,12 +24,11 @@
                     <!-- Subtitle melhorada -->
                     <div class="max-w-6xl mx-auto mb-12">
                         <h2 class="mb-6 text-2xl font-bold text-gray-900 md:text-4xl">
-                            Sistema Integrado ao <span class="text-indigo-600">Processo de Enfermagem - Pé
-                                Diabético</span>
+                            Sistema Integrado de Apoio ao <span class="text-indigo-600">Processo de Enfermagem para a Doença do Pé Relacionada ao Diabetes</span>
                         </h2>
                         <p class="max-w-2xl mx-auto text-xl leading-relaxed text-gray-600">
                             Plataforma digital desenvolvida para subsidiar a aplicação do Processo de Enfermagem à
-                            pessoa com pé diabético, utilizando como referencial teórico a Teoria das Necessidades
+                            pessoa com doença do pé relacionada ao diabetes, utilizando como referencial teórico a Teoria das Necessidades
                             Humanas Básicas e a CIPE® (Classificação Internacional para a Prática de Enfermagem).
                         </p>
                     </div>
@@ -69,14 +68,13 @@
                                 Funcionalidades <span class="text-indigo-600">Principais</span>
                             </h3>
                             <p class="max-w-2xl mx-auto text-xl text-gray-600">
-                                Ferramentas especializadas para o cuidado completo do pé diabético
+                                Ferramentas especializadas para o cuidado da pessoa com doença do pé relacionada ao diabetes
                             </p>
                         </div>
 
-                        <div class="grid max-w-6xl grid-cols-1 gap-8 mx-auto md:grid-cols-2 lg:grid-cols-3">
+                        <div class="grid max-w-6xl grid-cols-1 gap-8 mx-auto md:grid-cols-2 lg:grid-cols-3 items-stretch">
                             <!-- Feature 1: Avaliação -->
-                            <div
-                                class="p-8 transition-all duration-300 transform border shadow-lg group bg-white/80 backdrop-blur-sm rounded-3xl hover:shadow-2xl hover:-translate-y-3 border-white/20">
+                            <div class="h-full p-8 transition-all duration-300 transform border shadow-lg group bg-white/80 backdrop-blur-sm rounded-3xl hover:shadow-2xl hover:-translate-y-3 border-white/20 flex flex-col">
                                 <div class="mb-6">
                                     <div
                                         class="flex items-center justify-center w-16 h-16 mx-auto transition-all duration-300 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-2xl group-hover:from-indigo-200 group-hover:to-indigo-300 group-hover:scale-110">
@@ -88,15 +86,15 @@
                                     </div>
                                 </div>
                                 <h4 class="mb-4 text-xl font-bold text-center text-indigo-900">Avaliação Completa</h4>
-                                <p class="leading-relaxed text-center text-gray-600">
-                                    Avaliação de Enfermagem especializada para diagnóstico preciso e intervenções em pé
-                                    diabético
+                                <p class="leading-relaxed text-center text-gray-600 flex-1">
+                                    Avaliação clínica sistematizada para o rastreio da doença do pé relacionada ao diabetes, 
+                                    apoiando a identificação de fatores de risco, o Processo de Enfermagem e o planejamento do cuidado.
                                 </p>
                             </div>
 
                             <!-- Feature 2: Prescrição -->
                             <div
-                                class="p-8 transition-all duration-300 transform border shadow-lg group bg-white/80 backdrop-blur-sm rounded-3xl hover:shadow-2xl hover:-translate-y-3 border-white/20">
+                                class="p-8 h-full transition-all duration-300 transform border shadow-lg group bg-white/80 backdrop-blur-sm rounded-3xl hover:shadow-2xl hover:-translate-y-3 border-white/20">
                                 <div class="mb-6">
                                     <div
                                         class="flex items-center justify-center w-16 h-16 mx-auto transition-all duration-300 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl group-hover:from-purple-200 group-hover:to-purple-300 group-hover:scale-110">
@@ -115,7 +113,7 @@
 
                             <!-- Feature 3: Diagnósticos -->
                             <div
-                                class="p-8 transition-all duration-300 transform border shadow-lg group bg-white/80 backdrop-blur-sm rounded-3xl hover:shadow-2xl hover:-translate-y-3 border-white/20 md:col-span-2 lg:col-span-1">
+                                class="p-8 h-full transition-all duration-300 transform border shadow-lg group bg-white/80 backdrop-blur-sm rounded-3xl hover:shadow-2xl hover:-translate-y-3 border-white/20 md:col-span-2 lg:col-span-1">
                                 <div class="mb-6">
                                     <div
                                         class="flex items-center justify-center w-16 h-16 mx-auto transition-all duration-300 bg-gradient-to-br from-blue-100 to-indigo-200 rounded-2xl group-hover:from-indigo-200 group-hover:to-indigo-300 group-hover:scale-110">
