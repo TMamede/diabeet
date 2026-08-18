@@ -25,7 +25,12 @@ RUN apt-get update && apt-get install -y \
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_pgsql pgsql zip gd mbstring exif pcntl bcmath opcache
-
+# Configura limites para upload de arquivos
+RUN { \
+    echo 'upload_max_filesize=40M'; \
+    echo 'post_max_size=40M'; \
+    echo 'memory_limit=512M'; \
+} > /usr/local/etc/php/conf.d/uploads.ini
 # Configure OPcache for production
 RUN { \
     echo 'opcache.memory_consumption=128'; \
