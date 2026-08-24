@@ -360,7 +360,7 @@ class CreatePaciente extends Component
         }
     }
 
-  public function submitForm()
+    public function submitForm()
     {
         //$this->validateStep();
 
@@ -434,24 +434,60 @@ class CreatePaciente extends Component
 
         // Associar medicamentos
         foreach ($this->medicamentos as $medicamentoData) {
+
+            $nome = trim($medicamentoData['nome_generico'] ?? '');
+            $via = $medicamentoData['via_id'] ?? null;
+            $horario = $medicamentoData['horario_med_id'] ?? null;
+            $dose = trim($medicamentoData['dose'] ?? '');
+
             $medicamento = Medicamento::firstOrCreate([
-                'nome_generico' => $medicamentoData['nome_generico'],
-                'via_id' => $medicamentoData['via_id'],
-                'horario_med_id' => $medicamentoData['horario_med_id'],
-                'dose' => $medicamentoData['dose'],
+                'nome_generico' => $nome,
+                'via_id' => $via,
+                'horario_med_id' => $horario,
+                'dose' => $dose,
             ]);
 
-            // Use syncWithoutDetaching para evitar a remoção de associações prévias
-            $paciente->medicamentos()->syncWithoutDetaching([$medicamento->id]);
+            $paciente->medicamentos()
+                ->syncWithoutDetaching([$medicamento->id]);
         }
 
         // Associar resultados
-        foreach ($this->resultados as $resultadoData) {
-            $resultado = Resultado::create([
-                'texto_resultado' => $resultadoData['texto_resultado'],
-                'data_exame' => $resultadoData['data_exame'],
+        foreach ($this->resultados as $index => $resultadoData) {
 
-                'paciente_id' => $paciente->id,  // Associar o resultado ao paciente
+            $texto = trim($resultadoData['texto_resultado'] ?? '');
+            $data = $resultadoData['data_exame'] ?? null;
+
+            // Os dois vazios = não informou resultado, então não cria nada
+            if ($texto === '' && empty($data)) {
+                continue;
+            }
+
+            // Informou o resultado, mas não informou a data
+            if ($texto !== '' && empty($data)) {
+                $this->addError(
+                    "resultados.$index.data_exame",
+                    'Informe a data do exame.'
+                );
+
+                DB::rollBack();
+                return;
+            }
+
+            // Informou a data, mas não informou o resultado
+            if (!empty($data) && $texto === '') {
+                $this->addError(
+                    "resultados.$index.texto_resultado",
+                    'Informe o resultado do exame.'
+                );
+
+                DB::rollBack();
+                return;
+            }
+
+            Resultado::create([
+                'texto_resultado' => $texto,
+                'data_exame' => $data,
+                'paciente_id' => $paciente->id,
             ]);
         }
 
