@@ -24,7 +24,7 @@
                     <!-- Subtitle melhorada -->
                     <div class="max-w-6xl mx-auto mb-12">
                         <h2 class="mb-6 text-2xl font-bold text-gray-900 md:text-4xl">
-                            Sistema Integrado de Apoio ao <span class="text-indigo-600">Processo de Enfermagem para a Doença do Pé Relacionada ao Diabetes</span>
+                            Sistema Integrado de Apoio ao <span class="text-indigo-600">Processo de Enfermagem para Pessoas com a Doença do Pé Relacionada ao Diabetes</span>
                         </h2>
                         <p class="max-w-2xl mx-auto text-xl leading-relaxed text-gray-600">
                             Plataforma digital desenvolvida para subsidiar a aplicação do Processo de Enfermagem à
@@ -68,7 +68,7 @@
                                 Funcionalidades <span class="text-indigo-600">Principais</span>
                             </h3>
                             <p class="max-w-2xl mx-auto text-xl text-gray-600">
-                                Ferramentas especializadas para o cuidado da pessoa com doença do pé relacionada ao diabetes
+                                Ferramentas especializadas para o cuidado da pessoa com a doença do pé relacionada ao diabetes
                             </p>
                         </div>
 

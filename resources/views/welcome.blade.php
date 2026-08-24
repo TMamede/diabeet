@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIPEDIA - Sistema Integrado ao Processo de Enfermagem - Doença do Pé Relacionada ao Diabetes</title>
+    <title>SIPEDIA - Sistema Integrado de Apoio ao Processo de Enfermagem para Pessoas com a Doença do Pé Relacionada ao Diabetes</title>
 
     <!-- Fonts -->
     <link rel="icon" href="{{ asset('bluepe.svg') }}" type="image/svg+xml">

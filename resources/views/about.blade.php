@@ -22,7 +22,7 @@
                             class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">SIPEDIA</span>
                     </h1>
                     <p class="max-w-3xl mx-auto text-xl text-gray-600">
-                        Sistema Integrado ao Processo de Enfermagem - Doença do pé relacionada ao diabetes.
+                        Sistema Integrado ao Processo de Enfermagem para Pessoas com a Doença do Pé Relacionada ao Diabetes.
                     </p>
                 </div>
 
@@ -32,7 +32,6 @@
                         <div class="mb-12 text-center">
                             <h2 class="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">Bem-vindo ao SIPEDIA</h2>
                             <p class="max-w-4xl mx-auto text-lg leading-relaxed text-gray-600">
-                                Sistema Integrado ao Processo de Enfermagem – Doença do Pé Relacionada ao Diabetes 
                                 Tecnologia digital desenvolvida para apoiar a consulta de enfermagem, qualificar o cuidado e fortalecer a tomada de decisão clínica baseada em evidências.
                             </p>
                         </div>
