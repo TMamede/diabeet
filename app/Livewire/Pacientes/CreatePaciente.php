@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\Rule;
-
+use Illuminate\Support\Facades\DB;
 class CreatePaciente extends Component
 {
     public $currentStep = 1;
@@ -197,7 +197,7 @@ class CreatePaciente extends Component
 
     public function nextStep()
     {
-        //$this->validateStep();
+        $this->validateStep();
 
         $this->currentStep++;
     }
@@ -269,7 +269,8 @@ class CreatePaciente extends Component
             // Step 2
             'tipo_diabetes_id.required' => 'O tipo de diabetes é obrigatório.',
             'tipo_diabetes_id.exists' => 'O tipo de diabetes selecionado é inválido.',
-
+            'tempo_diagnostico.required' => 'O tempo de diagnóstico é obrigatório.',
+            'tempo_diagnostico.integer' => 'O tempo de diagnóstico deve ser um número inteiro.',
             'cirurgia_motivo.max' => 'O motivo da cirurgia não pode ter mais que 255 caracteres.',
             'amputacao_onde.max' => 'O campo "onde foi a amputação" não pode ter mais que 255 caracteres.',
             'amputacao_quando.date' => 'Informe uma data válida para a amputação.',
@@ -343,14 +344,14 @@ class CreatePaciente extends Component
         } elseif ($this->currentStep == 3) {
             $this->validate([
                 'medicamentos.*.nome_generico' => 'required|string|max:255|no_badwords',
-                'medicamentos.*.via_id' => 'required|exists:via,id|no_badwords',
-                'medicamentos.*.horario_med_id' => 'required|exists:horario,id',
+                'medicamentos.*.via_id' => 'required|exists:vias,id',
+                'medicamentos.*.horario_med_id' => 'required|exists:horario_meds,id',
                 'medicamentos.*.dose' => 'required|string|max:255|no_badwords',
             ]);
         } elseif ($this->currentStep == 4) {
             $this->validate([
-                'resultados.*.texto_resultado' => 'string',
-                'data_exame' => 'required|date|no_badwords',
+                'resultados.*.texto_resultado' => 'nullable|string|no_badwords',
+                'resultados.*.data_exame' => 'nullable|date',
             ]);
         } elseif ($this->currentStep == 5) {
             $this->validate([
@@ -359,7 +360,7 @@ class CreatePaciente extends Component
         }
     }
 
-    public function submitForm()
+  public function submitForm()
     {
         //$this->validateStep();
 
