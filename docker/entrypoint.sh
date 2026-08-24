@@ -57,8 +57,18 @@ if [ "$APP_ENV" = "production" ]; then
     php artisan event:cache
 fi
 
-# Create storage link if not exists
-php artisan storage:link 2>/dev/null || true
+
+if [ -d "/var/www/public/build" ]; then
+    echo "==> Frontend assets encontrados."
+else
+    echo "==> AVISO: /var/www/public/build não encontrado."
+fi
+
+# Create storage link if it does not exist
+if [ ! -L "/var/www/public/storage" ]; then
+    echo "==> Creating storage symlink..."
+    ln -s /var/www/storage/app/public /var/www/public/storage || true
+fi
 
 echo "==> Entrypoint complete. Starting application..."
 
