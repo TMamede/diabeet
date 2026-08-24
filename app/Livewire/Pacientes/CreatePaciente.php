@@ -217,7 +217,8 @@ class CreatePaciente extends Component
 
             'email.required' => 'O campo email é obrigatório.',
             'email.email' => 'Informe um endereço de email válido.',
-
+            'email.unique' => 'Este e-mail já está cadastrado.',
+            
             'nome.required' => 'O nome é obrigatório.',
 
             'prontuario.required' => 'O prontuário é obrigatório.',
@@ -306,7 +307,7 @@ class CreatePaciente extends Component
         if ($this->currentStep == 1) {
             $this->validate([
                 'cpf' => ['required', 'digits:11', Rule::unique('pacientes', 'cpf')],
-                'email' => ['required', 'email'],
+                'email' => ['required', 'email', Rule::unique('pacientes', 'email')],
                 'nome' => 'required|string|max:255|no_badwords',
                 'prontuario' => 'required|string|max:255',
                 'data_nasc' => 'required|date',
@@ -362,7 +363,7 @@ class CreatePaciente extends Component
 
     public function submitForm()
     {
-        //$this->validateStep();
+        $this->validateStep();
 
         $endereco = Endereco::where('rua', $this->rua)
             ->where('numero', $this->numero)
