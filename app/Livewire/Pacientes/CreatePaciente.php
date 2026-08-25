@@ -218,7 +218,7 @@ class CreatePaciente extends Component
             'email.required' => 'O campo email é obrigatório.',
             'email.email' => 'Informe um endereço de email válido.',
             'email.unique' => 'Este e-mail já está cadastrado.',
-            
+
             'nome.required' => 'O nome é obrigatório.',
 
             'prontuario.required' => 'O prontuário é obrigatório.',
@@ -364,145 +364,145 @@ class CreatePaciente extends Component
     public function submitForm()
     {
         $this->validateStep();
+        DB::beginTransaction();
+        try {
+            $endereco = Endereco::where('rua', $this->rua)
+                ->where('numero', $this->numero)
+                ->where('cep', $this->cep)
+                ->where('bairro', $this->bairro)
+                ->where('cidade', $this->cidade)
+                ->where('uf', $this->uf)
+                ->first();
 
-        $endereco = Endereco::where('rua', $this->rua)
-            ->where('numero', $this->numero)
-            ->where('cep', $this->cep)
-            ->where('bairro', $this->bairro)
-            ->where('cidade', $this->cidade)
-            ->where('uf', $this->uf)
-            ->first();
-
-        if (!$endereco) {
-            // Address does not exist, create new address
-            $endereco = Endereco::create([
-                'rua' => $this->rua,
-                'numero' => $this->numero,
-                'cep' => $this->cep,
-                'bairro' => $this->bairro,
-                'cidade' => $this->cidade,
-                'uf' => $this->uf,
-            ]);
-        }
-
-        // Criar o paciente
-        $paciente = Paciente::create([
-            'cpf' => $this->cpf,
-            'email' => $this->email,
-            'nome' => $this->nome,
-            'prontuario' => $this->prontuario,
-            'data_nasc' => $this->data_nasc,
-            'sexo' => $this->sexo,
-            'orientacao_sexual_id' => $this->orientacao_sexual_id,
-            'estado_civil_id' => $this->estado_civil_id,
-            'etnia_id' => $this->etnia_id,
-            'endereco_id' => $endereco->id,
-            'ocupacao' => $this->ocupacao,
-            'renda_familiar' => $this->renda_familiar,
-            'beneficio_id' => $this->beneficio_id,
-            'reside_id' => $this->reside_id,
-            'num_pss_casa' => $this->num_pss_casa,
-            'user_id' => Auth::id(),
-            'unidade_saude_id' => $this->idUnidadeSelected,
-            // 'historico_id' será definido após criar o histórico
-        ]);
-
-
-        if (is_null($this->amputacao_onde) || trim($this->amputacao_onde) === '') {
-            $this->amputacao_onde = 'Não realizou';
-        }
-        if (is_null($this->n_cigarros) || trim($this->n_cigarros) === '') {
-            $this->n_cigarros = '0';
-        }
-
-        // Criar o histórico
-        $historico = Historico::create([
-            'tipo_diabetes_id' => $this->tipo_diabetes_id,
-            'tempo_diagnostico' => $this->tempo_diagnostico,
-            'cirurgia_motivo' => $this->cirurgia_motivo,
-            'amputacao_onde' => $this->amputacao_onde,
-            'amputacao_quando' => $this->amputacao_quando,
-            'n_cigarros' => $this->n_cigarros,
-            'inicio_tabagismo' => $this->inicio_tabagismo,
-            'inicio_etilismo' => $this->inicio_etilismo,
-            'medicamento_alergia' => $this->medicamento_alergia,
-            'alimento_alergia' => $this->alimento_alergia,
-        ]);
-
-        // Atualizar o paciente com o histórico
-        $paciente->historico_id = $historico->id;
-        $paciente->save();
-
-        // Associar medicamentos
-        foreach ($this->medicamentos as $medicamentoData) {
-
-            $nome = trim($medicamentoData['nome_generico'] ?? '');
-            $via = $medicamentoData['via_id'] ?? null;
-            $horario = $medicamentoData['horario_med_id'] ?? null;
-            $dose = trim($medicamentoData['dose'] ?? '');
-
-            $medicamento = Medicamento::firstOrCreate([
-                'nome_generico' => $nome,
-                'via_id' => $via,
-                'horario_med_id' => $horario,
-                'dose' => $dose,
-            ]);
-
-            $paciente->medicamentos()
-                ->syncWithoutDetaching([$medicamento->id]);
-        }
-
-        // Associar resultados
-        foreach ($this->resultados as $index => $resultadoData) {
-
-            $texto = trim($resultadoData['texto_resultado'] ?? '');
-            $data = $resultadoData['data_exame'] ?? null;
-
-            // Os dois vazios = não informou resultado, então não cria nada
-            if ($texto === '' && empty($data)) {
-                continue;
+            if (!$endereco) {
+                // Address does not exist, create new address
+                $endereco = Endereco::create([
+                    'rua' => $this->rua,
+                    'numero' => $this->numero,
+                    'cep' => $this->cep,
+                    'bairro' => $this->bairro,
+                    'cidade' => $this->cidade,
+                    'uf' => $this->uf,
+                ]);
             }
 
-            // Informou o resultado, mas não informou a data
-            if ($texto !== '' && empty($data)) {
-                $this->addError(
-                    "resultados.$index.data_exame",
-                    'Informe a data do exame.'
-                );
-
-                DB::rollBack();
-                return;
-            }
-
-            // Informou a data, mas não informou o resultado
-            if (!empty($data) && $texto === '') {
-                $this->addError(
-                    "resultados.$index.texto_resultado",
-                    'Informe o resultado do exame.'
-                );
-
-                DB::rollBack();
-                return;
-            }
-
-            Resultado::create([
-                'texto_resultado' => $texto,
-                'data_exame' => $data,
-                'paciente_id' => $paciente->id,
+            // Criar o paciente
+            $paciente = Paciente::create([
+                'cpf' => $this->cpf,
+                'email' => $this->email,
+                'nome' => $this->nome,
+                'prontuario' => $this->prontuario,
+                'data_nasc' => $this->data_nasc,
+                'sexo' => $this->sexo,
+                'orientacao_sexual_id' => $this->orientacao_sexual_id,
+                'estado_civil_id' => $this->estado_civil_id,
+                'etnia_id' => $this->etnia_id,
+                'endereco_id' => $endereco->id,
+                'ocupacao' => $this->ocupacao,
+                'renda_familiar' => $this->renda_familiar,
+                'beneficio_id' => $this->beneficio_id,
+                'reside_id' => $this->reside_id,
+                'num_pss_casa' => $this->num_pss_casa,
+                'user_id' => Auth::id(),
+                'unidade_saude_id' => $this->idUnidadeSelected,
+                // 'historico_id' será definido após criar o histórico
             ]);
+
+
+            if (is_null($this->amputacao_onde) || trim($this->amputacao_onde) === '') {
+                $this->amputacao_onde = 'Não realizou';
+            }
+            if (is_null($this->n_cigarros) || trim($this->n_cigarros) === '') {
+                $this->n_cigarros = '0';
+            }
+
+            // Criar o histórico
+            $historico = Historico::create([
+                'tipo_diabetes_id' => $this->tipo_diabetes_id,
+                'tempo_diagnostico' => $this->tempo_diagnostico,
+                'cirurgia_motivo' => $this->cirurgia_motivo,
+                'amputacao_onde' => $this->amputacao_onde,
+                'amputacao_quando' => $this->amputacao_quando,
+                'n_cigarros' => $this->n_cigarros,
+                'inicio_tabagismo' => $this->inicio_tabagismo,
+                'inicio_etilismo' => $this->inicio_etilismo,
+                'medicamento_alergia' => $this->medicamento_alergia,
+                'alimento_alergia' => $this->alimento_alergia,
+            ]);
+
+            // Atualizar o paciente com o histórico
+            $paciente->historico_id = $historico->id;
+            $paciente->save();
+
+            // Associar medicamentos
+            foreach ($this->medicamentos as $medicamentoData) {
+
+                $nome = trim($medicamentoData['nome_generico'] ?? '');
+                $via = $medicamentoData['via_id'] ?? null;
+                $horario = $medicamentoData['horario_med_id'] ?? null;
+                $dose = trim($medicamentoData['dose'] ?? '');
+
+                $medicamento = Medicamento::firstOrCreate([
+                    'nome_generico' => $nome,
+                    'via_id' => $via,
+                    'horario_med_id' => $horario,
+                    'dose' => $dose,
+                ]);
+
+                $paciente->medicamentos()
+                    ->syncWithoutDetaching([$medicamento->id]);
+            }
+
+            // Associar resultados
+            foreach ($this->resultados as $index => $resultadoData) {
+
+                $texto = trim($resultadoData['texto_resultado'] ?? '');
+                $data = $resultadoData['data_exame'] ?? null;
+
+                // Os dois vazios = não informou resultado, então não cria nada
+                if ($texto === '' && empty($data)) {
+                    continue;
+                }
+
+                // Informou o resultado, mas não informou a data
+                if ($texto !== '' && empty($data)) {
+                    $this->addError(
+                        "resultados.$index.data_exame",
+                        'Informe a data do exame.'
+                    );
+
+                    DB::rollBack();
+                    return;
+                }
+
+
+                Resultado::create([
+                    'texto_resultado' => $texto,
+                    'data_exame' => $data,
+                    'paciente_id' => $paciente->id,
+                ]);
+            }
+
+            foreach ($this->comorbidades as $comorbidadeId) {
+                $historico->comorbidades()->attach($comorbidadeId);
+            }
+
+            // Associar alergias ao histórico
+            foreach ($this->alergias as $alergiaId) {
+                $historico->alergias()->attach($alergiaId);
+            }
+            DB::commit();
+            // Resetar o formulário ou redirecionar conforme necessário
+            session()->flash('message', 'Paciente cadastrado com sucesso!');
+            return redirect()->route('paciente.index');
+        } catch (\Throwable $e) {
+
+            DB::rollBack();
+
+            report($e);
+
+            throw $e;
         }
 
-        foreach ($this->comorbidades as $comorbidadeId) {
-            $historico->comorbidades()->attach($comorbidadeId);
-        }
-
-        // Associar alergias ao histórico
-        foreach ($this->alergias as $alergiaId) {
-            $historico->alergias()->attach($alergiaId);
-        }
-
-        // Resetar o formulário ou redirecionar conforme necessário
-        session()->flash('message', 'Paciente cadastrado com sucesso!');
-        return redirect()->route('paciente.index');
     }
 }
