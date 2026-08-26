@@ -94,18 +94,18 @@
 
                                         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                                             @foreach ([
-        ['label' => 'Nome Completo', 'value' => $selectedPaciente->nome, 'icon' => 'user'],
-        ['label' => 'CPF', 'value' => $selectedPaciente->cpf, 'icon' => 'document'],
-        ['label' => 'Email', 'value' => $selectedPaciente->email, 'icon' => 'mail'],
-        ['label' => 'Prontuário', 'value' => $selectedPaciente->prontuario, 'icon' => 'clipboard'],
-        ['label' => 'Data de Nascimento', 'value' => $selectedPaciente->data_nasc, 'icon' => 'calendar'],
+        ['label' => 'Nome Completo', 'value' => $selectedPaciente?->nome, 'icon' => 'user'],
+        ['label' => 'CPF', 'value' => $selectedPaciente?->cpf, 'icon' => 'document'],
+        ['label' => 'Email', 'value' => $selectedPaciente?->email, 'icon' => 'mail'],
+        ['label' => 'Prontuário', 'value' => $selectedPaciente?->prontuario, 'icon' => 'clipboard'],
+        ['label' => 'Data de Nascimento', 'value' => $selectedPaciente?->data_nasc, 'icon' => 'calendar'],
         ['label' => 'Sexo', 'value' => $sexo, 'icon' => 'identification'],
-        ['label' => 'Orientação Sexual', 'value' => $selectedPaciente->orientacao_sexual->descricao, 'icon' => 'heart'],
-        ['label' => 'Estado Civil', 'value' => $selectedPaciente->estado_civil->descricao, 'icon' => 'users'],
-        ['label' => 'Etnia', 'value' => $selectedPaciente->etnia->descricao, 'icon' => 'globe'],
-        ['label' => 'Ocupação', 'value' => $selectedPaciente->ocupacao, 'icon' => 'briefcase'],
-        ['label' => 'Renda Familiar', 'value' => $selectedPaciente->renda_familiar, 'icon' => 'currency-dollar'],
-        ['label' => 'Benefício', 'value' => $selectedPaciente->beneficio->descricao, 'icon' => 'shield-check'],
+        ['label' => 'Orientação Sexual', 'value' => $selectedPaciente?->orientacao_sexual?->descricao, 'icon' => 'heart'],
+        ['label' => 'Estado Civil', 'value' => $selectedPaciente?->estado_civil?->descricao, 'icon' => 'users'],
+        ['label' => 'Etnia', 'value' => $selectedPaciente?->etnia?->descricao, 'icon' => 'globe'],
+        ['label' => 'Ocupação', 'value' => $selectedPaciente?->ocupacao, 'icon' => 'briefcase'],
+        ['label' => 'Renda Familiar', 'value' => $selectedPaciente?->renda_familiar, 'icon' => 'currency-dollar'],
+        ['label' => 'Benefício', 'value' => $selectedPaciente?->beneficio?->descricao, 'icon' => 'shield-check'],
     ] as $item)
                                                 <div class="p-4 border border-gray-100 bg-gray-50 rounded-xl">
                                                     <label
@@ -120,7 +120,7 @@
                                         <div class="pt-6 mt-8 border-t border-gray-200">
                                             <h4 class="mb-4 text-lg font-semibold text-gray-800">Endereço</h4>
                                             <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-                                                @foreach ([['label' => 'Rua', 'value' => $selectedPaciente->endereco->rua], ['label' => 'Número', 'value' => $selectedPaciente->endereco->numero], ['label' => 'Bairro', 'value' => $selectedPaciente->endereco->bairro], ['label' => 'Cidade', 'value' => $selectedPaciente->endereco->cidade], ['label' => 'UF', 'value' => $selectedPaciente->endereco->uf], ['label' => 'Quem reside em casa', 'value' => $selectedPaciente->reside->descricao], ['label' => 'Número de pessoas', 'value' => $selectedPaciente->num_pss_casa]] as $item)
+                                                @foreach ([['label' => 'Rua', 'value' => $selectedPaciente?->endereco?->rua], ['label' => 'Número', 'value' => $selectedPaciente?->endereco?->numero], ['label' => 'Bairro', 'value' => $selectedPaciente?->endereco?->bairro], ['label' => 'Cidade', 'value' => $selectedPaciente?->endereco?->cidade], ['label' => 'UF', 'value' => $selectedPaciente?->endereco?->uf], ['label' => 'Quem reside em casa', 'value' => $selectedPaciente?->reside?->descricao], ['label' => 'Número de pessoas', 'value' => $selectedPaciente?->num_pss_casa]] as $item)
                                                     <div class="p-4 border border-gray-100 bg-gray-50 rounded-xl">
                                                         <label
                                                             class="block mb-1 text-sm font-medium text-gray-600">{{ $item['label'] }}</label>
@@ -153,7 +153,7 @@
                                         </div>
 
                                         <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2">
-                                            @foreach ([['label' => 'Tipo de Diabetes', 'value' => $selectedPaciente->historico->tipo_diabetes->tipo], ['label' => 'Motivo de Cirurgia', 'value' => $selectedPaciente->historico->cirurgia_motivo], ['label' => 'Local da Amputação', 'value' => $selectedPaciente->historico->amputacao_onde], ['label' => 'Data da Amputação', 'value' => $selectedPaciente->historico->amputacao_quando], ['label' => 'Cigarros por Dia', 'value' => $selectedPaciente->historico->n_cigarros], ['label' => 'Início do Tabagismo', 'value' => $selectedPaciente->historico->inicio_tabagismo], ['label' => 'Início do Etilismo', 'value' => $selectedPaciente->historico->inicio_etilismo]] as $item)
+                                            @foreach ([['label' => 'Tipo de Diabetes', 'value' => $selectedPaciente?->historico?->tipo_diabetes?->tipo], ['label' => 'Motivo de Cirurgia', 'value' => $selectedPaciente?->historico?->cirurgia_motivo], ['label' => 'Local da Amputação', 'value' => $selectedPaciente?->historico?->amputacao_onde], ['label' => 'Data da Amputação', 'value' => $selectedPaciente?->historico?->amputacao_quando], ['label' => 'Cigarros por Dia', 'value' => $selectedPaciente?->historico?->n_cigarros], ['label' => 'Início do Tabagismo', 'value' => $selectedPaciente?->historico?->inicio_tabagismo], ['label' => 'Início do Etilismo', 'value' => $selectedPaciente?->historico?->inicio_etilismo]] as $item)
                                                 <div class="p-4 border border-gray-100 bg-gray-50 rounded-xl">
                                                     <label
                                                         class="block mb-2 text-sm font-medium text-gray-600">{{ $item['label'] }}</label>
@@ -176,7 +176,7 @@
                                                     Comorbidades
                                                 </h4>
                                                 <div class="space-y-3">
-                                                    @forelse ($selectedPaciente->historico->comorbidades as $comorbidade)
+                                                    @forelse ($selectedPaciente?->historico?->comorbidades ?? [] as $comorbidade)
                                                         <div class="p-3 bg-white border border-red-200 rounded-lg">
                                                             <span
                                                                 class="font-medium text-gray-800">{{ $comorbidade->descricao }}</span>
@@ -201,7 +201,7 @@
                                                     Alergias
                                                 </h4>
                                                 <div class="space-y-3">
-                                                    @forelse ($selectedPaciente->historico->alergias as $alergia)
+                                                    @forelse ($selectedPaciente?->historico?->alergias ?? [] as $alergia)
                                                         <div class="p-3 bg-white border border-orange-200 rounded-lg">
                                                             <span
                                                                 class="font-medium text-gray-800">{{ $alergia->descricao }}</span>
@@ -235,7 +235,7 @@
                                         </div>
 
                                         <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                                            @forelse ($selectedPaciente->medicamentos as $medicamento)
+                                            @forelse ($selectedPaciente?->medicamentos?->all() as $medicamento)
                                                 <div class="p-6 border border-green-100 bg-green-50 rounded-xl">
                                                     <h4 class="mb-4 text-lg font-semibold text-green-800">
                                                         {{ $medicamento->nome_generico }}</h4>
@@ -288,7 +288,7 @@
                                         </div>
 
                                         <div class="space-y-4">
-                                            @forelse ($selectedPaciente->resultados as $resultado)
+                                            @forelse ($selectedPaciente?->resultados?->all() as $resultado)
                                                 <div class="p-6 border border-blue-100 bg-blue-50 rounded-xl">
                                                     <div class="flex items-start justify-between mb-3">
                                                         <h4 class="text-lg font-semibold text-blue-800">Resultado
@@ -330,14 +330,14 @@
 
                                         <div class="p-6 border border-teal-100 bg-teal-50 rounded-xl">
                                             <h4 class="text-xl font-semibold text-teal-800">
-                                                {{ $selectedPaciente->unidade_saude->ubs }}</h4>
+                                                {{ $selectedPaciente?->unidade_saude?->ubs }}</h4>
                                             <p class="mt-1 text-sm text-gray-600">
-                                                {{ $selectedPaciente->unidade_saude->telefone }}<br>
-                                                {{ $selectedPaciente->unidade_saude->endereco->rua }} -
-                                                {{ $selectedPaciente->unidade_saude->endereco->numero }}<br>
-                                                {{ $selectedPaciente->unidade_saude->endereco->bairro }}<br>
-                                                {{ $selectedPaciente->unidade_saude->endereco->cidade }} -
-                                                {{ $selectedPaciente->unidade_saude->endereco->uf }}
+                                                {{ $selectedPaciente?->unidade_saude?->telefone }}<br>
+                                                {{ $selectedPaciente?->unidade_saude?->endereco?->rua }} -
+                                                {{ $selectedPaciente?->unidade_saude?->endereco?->numero }}<br>
+                                                {{ $selectedPaciente?->unidade_saude?->endereco?->bairro }}<br>
+                                                {{ $selectedPaciente?->unidade_saude?->endereco?->cidade }} -
+                                                {{ $selectedPaciente?->unidade_saude?->endereco?->uf }}
                                             </p>
 
                                         </div>
@@ -3274,8 +3274,8 @@
                                         </label>
 
                                         <div class="relative">
-                                            <input type="file" id="imagem_avaliacao_pe"
-                                                wire:model="imagem_avaliacao_pe" class="hidden">
+                                            <input type="file" id="imagem_avaliacao_pe" accept="image/jpeg,image/png"
+                                                wire:model.live="imagem_avaliacao_pe" class="hidden">
                                             <label for="imagem_avaliacao_pe"
                                                 class="flex items-center justify-center w-full px-6 py-8 border-2 border-gray-300 border-dashed cursor-pointer rounded-xl hover:border-indigo-400 hover:bg-indigo-50 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-200">
                                                 <div class="text-center">

@@ -61,7 +61,7 @@ class CreateQuestionario extends Component
 
     protected $messages = [
         'imagem_avaliacao_pe.image' => 'O arquivo deve ser uma imagem.',
-        'imagem_avaliacao_pe.max' => 'A imagem não pode ser maior que 1MB.',
+        'imagem_avaliacao_pe.max' => 'A imagem não pode ser maior que 2MB.',
     ];
 
     // Etapa 1 - Mostrar Paciente
@@ -796,7 +796,7 @@ class CreateQuestionario extends Component
             'avaliacao_ferida_id' => 'required|exists:avaliacao_feridas,id',
             'aplicacao_laserterapia' => 'required|boolean',
             'terapia_fotodinamica' => 'required|boolean',
-            'imagem_avaliacao_pe' => 'image|max:2048',
+            'imagem_avaliacao_pe' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
         ];
 
         $messages = [
