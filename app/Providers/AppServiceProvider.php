@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use App\Helpers\Badword;
+use Illuminate\Support\Facades\URL;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -20,9 +21,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-    Validator::extend('no_badwords', function ($attribute, $value, $parameters, $validator) {
-        return ! Badword::contains($value);
-    }, 'Esse campo contém palavras inadequadas.');
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
+        Validator::extend('no_badwords', function ($attribute, $value, $parameters, $validator) {
+            return !Badword::contains($value);
+        }, 'Esse campo contém palavras inadequadas.');
     }
 
 }
