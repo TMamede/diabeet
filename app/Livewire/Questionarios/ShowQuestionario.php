@@ -448,7 +448,9 @@ class ShowQuestionario extends Component
             'esquerdo' => [],
         ];
 
-        $integridades = $this->questionario->nss_biologica->integridade_cutanea;
+        $integridades = $this->questionario->nss_biologica->integridade_cutanea
+            ->filter(fn($item) => $item->comprimento !== null)
+            ->values();
 
         // Define ladoSelecionado com base nos dados do banco
         $ladosPreenchidos = $integridades->pluck('lado')->unique()->values();
@@ -474,7 +476,7 @@ class ShowQuestionario extends Component
                     'regiao_pe_id' => $item->regiao_pe_id,
                     'localizacao_lesao_id' => $item->localizacao_lesao_id,
                     'lesao_amputacao' => $item->lesao_amputacao,
-                    'bordas_ferida_id' => $item->borda_ferida_id,
+                    'bordas_ferida_id' => $item->bordas_ferida_id,
                     'edema' => $item->edema,
                     'quantidade_exudato_id' => $item->quantidade_exudato_id,
                     'odor_exudato' => $item->odor_exudato,
@@ -625,24 +627,24 @@ class ShowQuestionario extends Component
         return redirect()->route('questionario.show-autocuidado', ['id' => $this->questionario->id]);
     }
     public function changeStep($step)
-{
-    // $this->validateStep();
+    {
+        // $this->validateStep();
 
-    if ((int) $step === 5) {
-        return redirect()->route(
-            'questionario.show-qualidade',
-            ['id' => $this->questionario->id]
-        );
-    }
-    if ((int) $step === 6) {
-        return redirect()->route(
-            'questionario.show-autocuidado',
-            ['id' => $this->questionario->id]
-        );
-    }
+        if ((int) $step === 5) {
+            return redirect()->route(
+                'questionario.show-qualidade',
+                ['id' => $this->questionario->id]
+            );
+        }
+        if ((int) $step === 6) {
+            return redirect()->route(
+                'questionario.show-autocuidado',
+                ['id' => $this->questionario->id]
+            );
+        }
 
-    $this->currentStep = (int) $step;
-}
+        $this->currentStep = (int) $step;
+    }
     public function backToSearch()
     {
         return redirect()->route('questionario.index');

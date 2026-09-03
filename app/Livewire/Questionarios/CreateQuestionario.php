@@ -532,7 +532,9 @@ class CreateQuestionario extends Component
             'esquerdo' => [],
         ];
 
-        $integridades = $this->questionario->nss_biologica->integridade_cutanea;
+        $integridades = $this->questionario->nss_biologica->integridade_cutanea
+            ->filter(fn($item) => $item->comprimento !== null)
+            ->values();
 
         // Define ladoSelecionado com base nos dados do banco
         $ladosPreenchidos = $integridades->pluck('lado')->unique()->values();
@@ -558,7 +560,7 @@ class CreateQuestionario extends Component
                     'regiao_pe_id' => $item->regiao_pe_id,
                     'localizacao_lesao_id' => $item->localizacao_lesao_id,
                     'lesao_amputacao' => $item->lesao_amputacao,
-                    'bordas_ferida_id' => $item->borda_ferida_id,
+                    'bordas_ferida_id' => $item->bordas_ferida_id,
                     'edema' => $item->edema,
                     'quantidade_exudato_id' => $item->quantidade_exudato_id,
                     'odor_exudato' => $item->odor_exudato,
@@ -700,988 +702,988 @@ class CreateQuestionario extends Component
         $this->currentStep--;
     }
 
-   public function validateStep()
-{
-    if ($this->currentStep == 2) {
-
-        $rules = [
-            'orientado' => 'required|boolean',
-            'comportamento_regulacao_neuro_id' => 'required|exists:comportamento_regulacao_neuros,id',
-
-            'olho_direito' => 'required|boolean',
-            'olho_esquerdo' => 'required|boolean',
-            'ouvido' => 'required|boolean',
-            'analise_tato_id' => 'required|exists:analise_tatos,id',
-            'risco_queda' => 'required|boolean',
-
-            'liquido_diario' => 'required|numeric|min:0',
-            'tipo_pele_id' => 'required|exists:tipo_peles,id',
-
-            'alimento_consumo_id' => 'required|exists:alimento_consumos,id',
-            'refeicaos' => 'nullable|array',
-            'restricaos' => 'nullable|array',
-
-            'horas_sono' => 'required|numeric|min:0',
-            'acorda_noite' => 'required|boolean',
-            'qualidade_sono_id' => 'required|exists:qualidade_sonos,id',
-            'problema_sonos' => 'nullable|array',
-            'medicamentos_sono' => 'required|string|max:255|no_badwords',
-
-            'realiza' => 'required|boolean',
-            'frequencia_exercicio_id' => 'required|exists:frequencia_exercicios,id',
-            'duracao' => 'required|numeric|min:0',
-
-            'zona_moradia_id' => 'required|exists:zona_moradias,id',
-            'luz_publica' => 'required|boolean',
-            'coleta_lixo' => 'required|boolean',
-            'agua_tratada' => 'required|boolean',
-            'rede_esgoto_id' => 'required|exists:rede_esgotos,id',
-            'animais_domesticos' => 'required|boolean',
-
-            'altura' => 'required|numeric|min:0',
-            'peso' => 'required|numeric|min:0',
-            'circunferencia_abdnominal' => 'required|numeric|min:0',
-            'glicemia_capilar' => 'required|numeric|min:0',
-            'jejum' => 'required|boolean',
-            'pos_prandial' => 'required|boolean',
-
-            'temp_enchimento_capilar' => 'required|numeric|min:0',
-            'frequencia_respiratoria' => 'required|numeric|min:0',
-            'satO2' => 'required|numeric|min:0',
-
-            'temperatura' => 'required|numeric|min:0',
-
-            'dor_urinar' => 'required|boolean',
-            'incontinencia_urina' => 'required|boolean',
-            'uso_laxante' => 'required|boolean',
-            'uso_fraldas' => 'required|boolean',
-            'dor_eliminacoes' => 'required|boolean',
-            'incontinencia_eliminacao' => 'required|boolean',
-            'constipacao' => 'required|boolean',
-            'diarreia' => 'required|boolean',
-            'equipamento_externo' => 'required|max:255|no_badwords',
-
-            'vida_sex_ativa' => 'required|boolean',
-            'disturbio_sexuals' => 'nullable|array',
-
-            'tipo_locomocaos' => 'nullable|array',
-            'sapato_adequado' => 'required|boolean',
-            'sandalia_cicatrizacao' => 'required|boolean',
-
-            'pressao_arterial' => 'required|numeric|min:0',
-            'frequencia_cardiaca' => 'required|numeric|min:0',
-            'psatp_direito' => 'required|numeric|min:0',
-            'psap_direito' => 'required|numeric|min:0',
-            'psab_direito' => 'required|numeric|min:0',
-            'psatp_esquerdo' => 'required|numeric|min:0',
-            'psap_esquerdo' => 'required|numeric|min:0',
-            'psab_esquerdo' => 'required|numeric|min:0',
-
-            'sintomas_percepcaos' => 'nullable|array',
-            'pe_neuropatico' => 'required|boolean',
-            'arco_desabado' => 'required|boolean',
-            'valgismo' => 'required|boolean',
-            'dedos_em_garra' => 'required|boolean',
-            'estado_unhas_id' => 'required|exists:estado_unhas,id',
-            'corte_unhas' => 'required|boolean',
-            'fissuras' => 'required|boolean',
-            'calosidades' => 'required|boolean',
-            'micose' => 'required|boolean',
-            'percepcao_direito' => 'required|boolean',
-            'percepcao_esquerdo' => 'required|boolean',
-
-            'limpeza_lesaos' => 'nullable|array',
-            'coberturas' => 'nullable|array',
-            'desbridamento_id' => 'required|exists:desbridamentos,id',
-            'avaliacao_ferida_id' => 'required|exists:avaliacao_feridas,id',
-            'aplicacao_laserterapia' => 'required|boolean',
-            'terapia_fotodinamica' => 'required|boolean',
-            'imagem_avaliacao_pe' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-        ];
-
-        $messages = [
-
-            // =========================================================
-            // REGULAÇÃO NEUROLÓGICA
-            // =========================================================
+    public function validateStep()
+    {
+        if ($this->currentStep == 2) {
+
+            $rules = [
+                'orientado' => 'required|boolean',
+                'comportamento_regulacao_neuro_id' => 'required|exists:comportamento_regulacao_neuros,id',
+
+                'olho_direito' => 'required|boolean',
+                'olho_esquerdo' => 'required|boolean',
+                'ouvido' => 'required|boolean',
+                'analise_tato_id' => 'required|exists:analise_tatos,id',
+                'risco_queda' => 'required|boolean',
+
+                'liquido_diario' => 'required|numeric|min:0',
+                'tipo_pele_id' => 'required|exists:tipo_peles,id',
+
+                'alimento_consumo_id' => 'required|exists:alimento_consumos,id',
+                'refeicaos' => 'nullable|array',
+                'restricaos' => 'nullable|array',
+
+                'horas_sono' => 'required|numeric|min:0',
+                'acorda_noite' => 'required|boolean',
+                'qualidade_sono_id' => 'required|exists:qualidade_sonos,id',
+                'problema_sonos' => 'nullable|array',
+                'medicamentos_sono' => 'required|string|max:255|no_badwords',
+
+                'realiza' => 'required|boolean',
+                'frequencia_exercicio_id' => 'required|exists:frequencia_exercicios,id',
+                'duracao' => 'required|numeric|min:0',
+
+                'zona_moradia_id' => 'required|exists:zona_moradias,id',
+                'luz_publica' => 'required|boolean',
+                'coleta_lixo' => 'required|boolean',
+                'agua_tratada' => 'required|boolean',
+                'rede_esgoto_id' => 'required|exists:rede_esgotos,id',
+                'animais_domesticos' => 'required|boolean',
+
+                'altura' => 'required|numeric|min:0',
+                'peso' => 'required|numeric|min:0',
+                'circunferencia_abdnominal' => 'required|numeric|min:0',
+                'glicemia_capilar' => 'required|numeric|min:0',
+                'jejum' => 'required|boolean',
+                'pos_prandial' => 'required|boolean',
+
+                'temp_enchimento_capilar' => 'required|numeric|min:0',
+                'frequencia_respiratoria' => 'required|numeric|min:0',
+                'satO2' => 'required|numeric|min:0',
+
+                'temperatura' => 'required|numeric|min:0',
+
+                'dor_urinar' => 'required|boolean',
+                'incontinencia_urina' => 'required|boolean',
+                'uso_laxante' => 'required|boolean',
+                'uso_fraldas' => 'required|boolean',
+                'dor_eliminacoes' => 'required|boolean',
+                'incontinencia_eliminacao' => 'required|boolean',
+                'constipacao' => 'required|boolean',
+                'diarreia' => 'required|boolean',
+                'equipamento_externo' => 'required|max:255|no_badwords',
+
+                'vida_sex_ativa' => 'required|boolean',
+                'disturbio_sexuals' => 'nullable|array',
+
+                'tipo_locomocaos' => 'nullable|array',
+                'sapato_adequado' => 'required|boolean',
+                'sandalia_cicatrizacao' => 'required|boolean',
+
+                'pressao_arterial' => 'required|numeric|min:0',
+                'frequencia_cardiaca' => 'required|numeric|min:0',
+                'psatp_direito' => 'required|numeric|min:0',
+                'psap_direito' => 'required|numeric|min:0',
+                'psab_direito' => 'required|numeric|min:0',
+                'psatp_esquerdo' => 'required|numeric|min:0',
+                'psap_esquerdo' => 'required|numeric|min:0',
+                'psab_esquerdo' => 'required|numeric|min:0',
+
+                'sintomas_percepcaos' => 'nullable|array',
+                'pe_neuropatico' => 'required|boolean',
+                'arco_desabado' => 'required|boolean',
+                'valgismo' => 'required|boolean',
+                'dedos_em_garra' => 'required|boolean',
+                'estado_unhas_id' => 'required|exists:estado_unhas,id',
+                'corte_unhas' => 'required|boolean',
+                'fissuras' => 'required|boolean',
+                'calosidades' => 'required|boolean',
+                'micose' => 'required|boolean',
+                'percepcao_direito' => 'required|boolean',
+                'percepcao_esquerdo' => 'required|boolean',
+
+                'limpeza_lesaos' => 'nullable|array',
+                'coberturas' => 'nullable|array',
+                'desbridamento_id' => 'required|exists:desbridamentos,id',
+                'avaliacao_ferida_id' => 'required|exists:avaliacao_feridas,id',
+                'aplicacao_laserterapia' => 'required|boolean',
+                'terapia_fotodinamica' => 'required|boolean',
+                'imagem_avaliacao_pe' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
+            ];
+
+            $messages = [
+
+                // =========================================================
+                // REGULAÇÃO NEUROLÓGICA
+                // =========================================================
 
-            'orientado.required' =>
-                'Informe se o paciente está orientado.',
-            'orientado.boolean' =>
-                'A informação sobre orientação deve ser sim ou não.',
-
-            'comportamento_regulacao_neuro_id.required' =>
-                'Selecione o comportamento de regulação neurológica.',
-            'comportamento_regulacao_neuro_id.exists' =>
-                'O comportamento de regulação neurológica selecionado é inválido.',
-
-
-            // =========================================================
-            // PERCEPÇÃO DOS SENTIDOS
-            // =========================================================
-
-            'olho_direito.required' =>
-                'Informe a condição do olho direito.',
-            'olho_direito.boolean' =>
-                'A informação do olho direito deve ser sim ou não.',
-
-            'olho_esquerdo.required' =>
-                'Informe a condição do olho esquerdo.',
-            'olho_esquerdo.boolean' =>
-                'A informação do olho esquerdo deve ser sim ou não.',
-
-            'ouvido.required' =>
-                'Informe a condição da audição.',
-            'ouvido.boolean' =>
-                'A informação da audição deve ser sim ou não.',
-
-            'analise_tato_id.required' =>
-                'Selecione a análise do tato.',
-            'analise_tato_id.exists' =>
-                'A análise do tato selecionada é inválida.',
-
-            'risco_queda.required' =>
-                'Informe se há risco de queda.',
-            'risco_queda.boolean' =>
-                'A informação sobre risco de queda deve ser sim ou não.',
-
-
-            // =========================================================
-            // HIDRATAÇÃO
-            // =========================================================
-
-            'liquido_diario.required' =>
-                'Informe a quantidade de líquido ingerida diariamente.',
-            'liquido_diario.numeric' =>
-                'A quantidade de líquido deve ser um número.',
-            'liquido_diario.min' =>
-                'A quantidade de líquido não pode ser negativa.',
-
-            'tipo_pele_id.required' =>
-                'Selecione o tipo de pele.',
-            'tipo_pele_id.exists' =>
-                'O tipo de pele selecionado é inválido.',
-
-
-            // =========================================================
-            // NUTRIÇÃO
-            // =========================================================
-
-            'alimento_consumo_id.required' =>
-                'Selecione o tipo de alimento consumido.',
-            'alimento_consumo_id.exists' =>
-                'O tipo de alimento selecionado é inválido.',
-
-            'refeicaos.array' =>
-                'As refeições selecionadas devem estar em formato válido.',
-
-            'restricaos.array' =>
-                'As restrições alimentares selecionadas devem estar em formato válido.',
-
-
-            // =========================================================
-            // SONO
-            // =========================================================
-
-            'horas_sono.required' =>
-                'Informe a quantidade de horas de sono.',
-            'horas_sono.numeric' =>
-                'A quantidade de horas de sono deve ser um número.',
-            'horas_sono.min' =>
-                'A quantidade de horas de sono não pode ser negativa.',
-
-            'acorda_noite.required' =>
-                'Informe se o paciente acorda durante a noite.',
-            'acorda_noite.boolean' =>
-                'A informação sobre acordar durante a noite deve ser sim ou não.',
-
-            'qualidade_sono_id.required' =>
-                'Selecione a qualidade do sono.',
-            'qualidade_sono_id.exists' =>
-                'A qualidade do sono selecionada é inválida.',
-
-            'problema_sonos.array' =>
-                'Os problemas de sono selecionados devem estar em formato válido.',
-
-            'medicamentos_sono.required' =>
-                'Informe os medicamentos utilizados para dormir.',
-            'medicamentos_sono.string' =>
-                'Os medicamentos utilizados para dormir devem ser informados como texto.',
-            'medicamentos_sono.max' =>
-                'A informação sobre medicamentos para dormir não pode ultrapassar 255 caracteres.',
-            'medicamentos_sono.no_badwords' =>
-                'A informação sobre medicamentos contém palavras inadequadas.',
-
-
-            // =========================================================
-            // EXERCÍCIO
-            // =========================================================
-
-            'realiza.required' =>
-                'Informe se o paciente realiza exercícios físicos.',
-            'realiza.boolean' =>
-                'A informação sobre realização de exercícios deve ser sim ou não.',
-
-            'frequencia_exercicio_id.required' =>
-                'Selecione a frequência dos exercícios.',
-            'frequencia_exercicio_id.exists' =>
-                'A frequência de exercícios selecionada é inválida.',
-
-            'duracao.required' =>
-                'Informe a duração dos exercícios.',
-            'duracao.numeric' =>
-                'A duração dos exercícios deve ser um número.',
-            'duracao.min' =>
-                'A duração dos exercícios não pode ser negativa.',
-
-
-            // =========================================================
-            // MORADIA
-            // =========================================================
-
-            'zona_moradia_id.required' =>
-                'Selecione a zona de moradia.',
-            'zona_moradia_id.exists' =>
-                'A zona de moradia selecionada é inválida.',
-
-            'luz_publica.required' =>
-                'Informe se há iluminação pública.',
-            'luz_publica.boolean' =>
-                'A informação sobre iluminação pública deve ser sim ou não.',
-
-            'coleta_lixo.required' =>
-                'Informe se há coleta de lixo.',
-            'coleta_lixo.boolean' =>
-                'A informação sobre coleta de lixo deve ser sim ou não.',
-
-            'agua_tratada.required' =>
-                'Informe se há acesso à água tratada.',
-            'agua_tratada.boolean' =>
-                'A informação sobre água tratada deve ser sim ou não.',
-
-            'rede_esgoto_id.required' =>
-                'Selecione a rede de esgoto.',
-            'rede_esgoto_id.exists' =>
-                'A rede de esgoto selecionada é inválida.',
-
-            'animais_domesticos.required' =>
-                'Informe se há animais domésticos.',
-            'animais_domesticos.boolean' =>
-                'A informação sobre animais domésticos deve ser sim ou não.',
-
-
-            // =========================================================
-            // REGULAÇÃO HORMONAL
-            // =========================================================
-
-            'altura.required' =>
-                'Informe a altura do paciente.',
-            'altura.numeric' =>
-                'A altura deve ser um número.',
-            'altura.min' =>
-                'A altura não pode ser negativa.',
-
-            'peso.required' =>
-                'Informe o peso do paciente.',
-            'peso.numeric' =>
-                'O peso deve ser um número.',
-            'peso.min' =>
-                'O peso não pode ser negativo.',
-
-            'circunferencia_abdnominal.required' =>
-                'Informe a circunferência abdominal.',
-            'circunferencia_abdnominal.numeric' =>
-                'A circunferência abdominal deve ser um número.',
-            'circunferencia_abdnominal.min' =>
-                'A circunferência abdominal não pode ser negativa.',
-
-            'glicemia_capilar.required' =>
-                'Informe a glicemia capilar.',
-            'glicemia_capilar.numeric' =>
-                'A glicemia capilar deve ser um número.',
-            'glicemia_capilar.min' =>
-                'A glicemia capilar não pode ser negativa.',
-
-            'jejum.required' =>
-                'Informe se a glicemia foi medida em jejum.',
-            'jejum.boolean' =>
-                'A informação sobre jejum deve ser sim ou não.',
-
-            'pos_prandial.required' =>
-                'Informe se a glicemia foi medida após a refeição.',
-            'pos_prandial.boolean' =>
-                'A informação sobre o período pós-prandial deve ser sim ou não.',
-
-
-            // =========================================================
-            // OXIGENAÇÃO
-            // =========================================================
-
-            'temp_enchimento_capilar.required' =>
-                'Informe o tempo de enchimento capilar.',
-            'temp_enchimento_capilar.numeric' =>
-                'O tempo de enchimento capilar deve ser um número.',
-            'temp_enchimento_capilar.min' =>
-                'O tempo de enchimento capilar não pode ser negativo.',
-
-            'frequencia_respiratoria.required' =>
-                'Informe a frequência respiratória.',
-            'frequencia_respiratoria.numeric' =>
-                'A frequência respiratória deve ser um número.',
-            'frequencia_respiratoria.min' =>
-                'A frequência respiratória não pode ser negativa.',
-
-            'satO2.required' =>
-                'Informe a saturação de oxigênio.',
-            'satO2.numeric' =>
-                'A saturação de oxigênio deve ser um número.',
-            'satO2.min' =>
-                'A saturação de oxigênio não pode ser negativa.',
-
-
-            // =========================================================
-            // TEMPERATURA
-            // =========================================================
-
-            'temperatura.required' =>
-                'Informe a temperatura do paciente.',
-            'temperatura.numeric' =>
-                'A temperatura deve ser um número.',
-            'temperatura.min' =>
-                'A temperatura não pode ser negativa.',
-
-
-            // =========================================================
-            // ELIMINAÇÃO
-            // =========================================================
-
-            'dor_urinar.required' =>
-                'Informe se o paciente sente dor ao urinar.',
-            'dor_urinar.boolean' =>
-                'A informação sobre dor ao urinar deve ser sim ou não.',
-
-            'incontinencia_urina.required' =>
-                'Informe se o paciente apresenta incontinência urinária.',
-            'incontinencia_urina.boolean' =>
-                'A informação sobre incontinência urinária deve ser sim ou não.',
-
-            'uso_laxante.required' =>
-                'Informe se o paciente utiliza laxantes.',
-            'uso_laxante.boolean' =>
-                'A informação sobre uso de laxantes deve ser sim ou não.',
-
-            'uso_fraldas.required' =>
-                'Informe se o paciente utiliza fraldas.',
-            'uso_fraldas.boolean' =>
-                'A informação sobre uso de fraldas deve ser sim ou não.',
-
-            'dor_eliminacoes.required' =>
-                'Informe se o paciente sente dor durante as eliminações.',
-            'dor_eliminacoes.boolean' =>
-                'A informação sobre dor nas eliminações deve ser sim ou não.',
-
-            'incontinencia_eliminacao.required' =>
-                'Informe se o paciente apresenta incontinência na eliminação.',
-            'incontinencia_eliminacao.boolean' =>
-                'A informação sobre incontinência na eliminação deve ser sim ou não.',
-
-            'constipacao.required' =>
-                'Informe se o paciente apresenta constipação.',
-            'constipacao.boolean' =>
-                'A informação sobre constipação deve ser sim ou não.',
-
-            'diarreia.required' =>
-                'Informe se o paciente apresenta diarreia.',
-            'diarreia.boolean' =>
-                'A informação sobre diarreia deve ser sim ou não.',
-
-            'equipamento_externo.required' =>
-                'Informe o equipamento externo utilizado.',
-            'equipamento_externo.max' =>
-                'A informação sobre o equipamento externo não pode ultrapassar 255 caracteres.',
-            'equipamento_externo.no_badwords' =>
-                'A informação sobre o equipamento externo contém palavras inadequadas.',
-
-
-            // =========================================================
-            // SEXUALIDADE
-            // =========================================================
-
-            'vida_sex_ativa.required' =>
-                'Informe se o paciente possui vida sexual ativa.',
-            'vida_sex_ativa.boolean' =>
-                'A informação sobre vida sexual ativa deve ser sim ou não.',
-
-            'disturbio_sexuals.array' =>
-                'Os distúrbios sexuais selecionados devem estar em formato válido.',
-
-
-            // =========================================================
-            // LOCOMOÇÃO
-            // =========================================================
-
-            'tipo_locomocaos.array' =>
-                'Os tipos de locomoção selecionados devem estar em formato válido.',
-
-            'sapato_adequado.required' =>
-                'Informe se o paciente utiliza sapato adequado.',
-            'sapato_adequado.boolean' =>
-                'A informação sobre o sapato adequado deve ser sim ou não.',
-
-            'sandalia_cicatrizacao.required' =>
-                'Informe se o paciente utiliza sandália de cicatrização.',
-            'sandalia_cicatrizacao.boolean' =>
-                'A informação sobre a sandália de cicatrização deve ser sim ou não.',
-
-
-            // =========================================================
-            // REGULAÇÃO VASCULAR
-            // =========================================================
-
-            'pressao_arterial.required' =>
-                'Informe a pressão arterial.',
-            'pressao_arterial.numeric' =>
-                'A pressão arterial deve ser um número.',
-            'pressao_arterial.min' =>
-                'A pressão arterial não pode ser negativa.',
-
-            'frequencia_cardiaca.required' =>
-                'Informe a frequência cardíaca.',
-            'frequencia_cardiaca.numeric' =>
-                'A frequência cardíaca deve ser um número.',
-            'frequencia_cardiaca.min' =>
-                'A frequência cardíaca não pode ser negativa.',
-
-            'psatp_direito.required' =>
-                'Informe a pressão arterial do pé direito.',
-            'psatp_direito.numeric' =>
-                'A pressão arterial do pé direito deve ser um número.',
-            'psatp_direito.min' =>
-                'A pressão arterial do pé direito não pode ser negativa.',
-
-            'psap_direito.required' =>
-                'Informe a pressão do pé direito.',
-            'psap_direito.numeric' =>
-                'A pressão do pé direito deve ser um número.',
-            'psap_direito.min' =>
-                'A pressão do pé direito não pode ser negativa.',
-
-            'psab_direito.required' =>
-                'Informe a pressão arterial do pé direito.',
-            'psab_direito.numeric' =>
-                'A pressão arterial do pé direito deve ser um número.',
-            'psab_direito.min' =>
-                'A pressão arterial do pé direito não pode ser negativa.',
-
-            'psatp_esquerdo.required' =>
-                'Informe a pressão arterial do pé esquerdo.',
-            'psatp_esquerdo.numeric' =>
-                'A pressão arterial do pé esquerdo deve ser um número.',
-            'psatp_esquerdo.min' =>
-                'A pressão arterial do pé esquerdo não pode ser negativa.',
-
-            'psap_esquerdo.required' =>
-                'Informe a pressão do pé esquerdo.',
-            'psap_esquerdo.numeric' =>
-                'A pressão do pé esquerdo deve ser um número.',
-            'psap_esquerdo.min' =>
-                'A pressão do pé esquerdo não pode ser negativa.',
-
-            'psab_esquerdo.required' =>
-                'Informe a pressão arterial do pé esquerdo.',
-            'psab_esquerdo.numeric' =>
-                'A pressão arterial do pé esquerdo deve ser um número.',
-            'psab_esquerdo.min' =>
-                'A pressão arterial do pé esquerdo não pode ser negativa.',
-
-
-            // =========================================================
-            // SENSO DE PERCEPÇÃO
-            // =========================================================
-
-            'sintomas_percepcaos.array' =>
-                'Os sintomas de percepção selecionados devem estar em formato válido.',
-
-            'pe_neuropatico.required' =>
-                'Informe se o pé é neuropático.',
-            'pe_neuropatico.boolean' =>
-                'A informação sobre pé neuropático deve ser sim ou não.',
-
-            'arco_desabado.required' =>
-                'Informe se há arco desabado.',
-            'arco_desabado.boolean' =>
-                'A informação sobre arco desabado deve ser sim ou não.',
-
-            'valgismo.required' =>
-                'Informe se há valgismo.',
-            'valgismo.boolean' =>
-                'A informação sobre valgismo deve ser sim ou não.',
-
-            'dedos_em_garra.required' =>
-                'Informe se há dedos em garra.',
-            'dedos_em_garra.boolean' =>
-                'A informação sobre dedos em garra deve ser sim ou não.',
-
-            'estado_unhas_id.required' =>
-                'Selecione o estado das unhas.',
-            'estado_unhas_id.exists' =>
-                'O estado das unhas selecionado é inválido.',
-
-            'corte_unhas.required' =>
-                'Informe se o corte das unhas está adequado.',
-            'corte_unhas.boolean' =>
-                'A informação sobre corte das unhas deve ser sim ou não.',
-
-            'fissuras.required' =>
-                'Informe se há fissuras.',
-            'fissuras.boolean' =>
-                'A informação sobre fissuras deve ser sim ou não.',
-
-            'calosidades.required' =>
-                'Informe se há calosidades.',
-            'calosidades.boolean' =>
-                'A informação sobre calosidades deve ser sim ou não.',
-
-            'micose.required' =>
-                'Informe se há micose.',
-            'micose.boolean' =>
-                'A informação sobre micose deve ser sim ou não.',
-
-            'percepcao_direito.required' =>
-                'Informe a percepção do pé direito.',
-            'percepcao_direito.boolean' =>
-                'A informação sobre percepção do pé direito deve ser sim ou não.',
-
-            'percepcao_esquerdo.required' =>
-                'Informe a percepção do pé esquerdo.',
-            'percepcao_esquerdo.boolean' =>
-                'A informação sobre percepção do pé esquerdo deve ser sim ou não.',
-
-
-            // =========================================================
-            // CUIDADO DA FERIDA
-            // =========================================================
-
-            'limpeza_lesaos.array' =>
-                'As opções de limpeza das lesões selecionadas devem estar em formato válido.',
-
-            'coberturas.array' =>
-                'As coberturas selecionadas devem estar em formato válido.',
-
-            'desbridamento_id.required' =>
-                'Selecione o tipo de desbridamento.',
-            'desbridamento_id.exists' =>
-                'O desbridamento selecionado é inválido.',
-
-            'avaliacao_ferida_id.required' =>
-                'Selecione a avaliação da ferida.',
-            'avaliacao_ferida_id.exists' =>
-                'A avaliação da ferida selecionada é inválida.',
-
-            'aplicacao_laserterapia.required' =>
-                'Informe se foi realizada aplicação de laserterapia.',
-            'aplicacao_laserterapia.boolean' =>
-                'A informação sobre aplicação de laserterapia deve ser sim ou não.',
-
-            'terapia_fotodinamica.required' =>
-                'Informe se foi realizada terapia fotodinâmica.',
-            'terapia_fotodinamica.boolean' =>
-                'A informação sobre terapia fotodinâmica deve ser sim ou não.',
-
-            'imagem_avaliacao_pe.image' =>
-                'O arquivo enviado para avaliação do pé deve ser uma imagem.',
-            'imagem_avaliacao_pe.max' =>
-                'A imagem de avaliação do pé não pode ultrapassar 2 MB.',
-        ];
-
-
-        // =============================================================
-        // CAMPOS ESPECÍFICOS DE CADA PÉ
-        // =============================================================
-
-        foreach (['direito', 'esquerdo'] as $lado) {
-
-            $deveValidar = match ($this->ladoSelecionado) {
-                'direito' => $lado === 'direito',
-                'esquerdo' => $lado === 'esquerdo',
-                'ambos' => true,
-                default => false,
-            };
-
-            if ($deveValidar) {
-
-                $rules["dados.$lado.comprimento"] =
-                    'required|numeric|min:0';
-
-                $rules["dados.$lado.largura"] =
-                    'required|numeric|min:0';
-
-                $rules["dados.$lado.regiao_pe_id"] =
-                    'required|exists:regiao_pes,id';
-
-                $rules["dados.$lado.localizacao_lesao_id"] =
-                    'required|exists:localizacao_lesaos,id';
-
-                $rules["dados.$lado.lesao_amputacao"] =
-                    'required|boolean';
-
-                $rules["dados.$lado.bordas_ferida_id"] =
-                    'required|exists:bordas_feridas,id';
-
-                $rules["dados.$lado.pele_periferida_id"] =
-                    'required|exists:pele_periferidas,id';
-
-                $rules["dados.$lado.profundidade_id"] =
-                    'required|exists:profundidades,id';
-
-                $rules["dados.$lado.tipo_tecido_ferida_id"] =
-                    'required|exists:tipo_tecido_feridas,id';
-
-                $rules["dados.$lado.aspecto_exudato_id"] =
-                    'required|exists:aspecto_exudatos,id';
+                'orientado.required' =>
+                    'Informe se o paciente está orientado.',
+                'orientado.boolean' =>
+                    'A informação sobre orientação deve ser sim ou não.',
+
+                'comportamento_regulacao_neuro_id.required' =>
+                    'Selecione o comportamento de regulação neurológica.',
+                'comportamento_regulacao_neuro_id.exists' =>
+                    'O comportamento de regulação neurológica selecionado é inválido.',
+
+
+                // =========================================================
+                // PERCEPÇÃO DOS SENTIDOS
+                // =========================================================
+
+                'olho_direito.required' =>
+                    'Informe a condição do olho direito.',
+                'olho_direito.boolean' =>
+                    'A informação do olho direito deve ser sim ou não.',
+
+                'olho_esquerdo.required' =>
+                    'Informe a condição do olho esquerdo.',
+                'olho_esquerdo.boolean' =>
+                    'A informação do olho esquerdo deve ser sim ou não.',
+
+                'ouvido.required' =>
+                    'Informe a condição da audição.',
+                'ouvido.boolean' =>
+                    'A informação da audição deve ser sim ou não.',
+
+                'analise_tato_id.required' =>
+                    'Selecione a análise do tato.',
+                'analise_tato_id.exists' =>
+                    'A análise do tato selecionada é inválida.',
+
+                'risco_queda.required' =>
+                    'Informe se há risco de queda.',
+                'risco_queda.boolean' =>
+                    'A informação sobre risco de queda deve ser sim ou não.',
+
+
+                // =========================================================
+                // HIDRATAÇÃO
+                // =========================================================
+
+                'liquido_diario.required' =>
+                    'Informe a quantidade de líquido ingerida diariamente.',
+                'liquido_diario.numeric' =>
+                    'A quantidade de líquido deve ser um número.',
+                'liquido_diario.min' =>
+                    'A quantidade de líquido não pode ser negativa.',
+
+                'tipo_pele_id.required' =>
+                    'Selecione o tipo de pele.',
+                'tipo_pele_id.exists' =>
+                    'O tipo de pele selecionado é inválido.',
+
+
+                // =========================================================
+                // NUTRIÇÃO
+                // =========================================================
+
+                'alimento_consumo_id.required' =>
+                    'Selecione o tipo de alimento consumido.',
+                'alimento_consumo_id.exists' =>
+                    'O tipo de alimento selecionado é inválido.',
+
+                'refeicaos.array' =>
+                    'As refeições selecionadas devem estar em formato válido.',
+
+                'restricaos.array' =>
+                    'As restrições alimentares selecionadas devem estar em formato válido.',
+
+
+                // =========================================================
+                // SONO
+                // =========================================================
+
+                'horas_sono.required' =>
+                    'Informe a quantidade de horas de sono.',
+                'horas_sono.numeric' =>
+                    'A quantidade de horas de sono deve ser um número.',
+                'horas_sono.min' =>
+                    'A quantidade de horas de sono não pode ser negativa.',
+
+                'acorda_noite.required' =>
+                    'Informe se o paciente acorda durante a noite.',
+                'acorda_noite.boolean' =>
+                    'A informação sobre acordar durante a noite deve ser sim ou não.',
+
+                'qualidade_sono_id.required' =>
+                    'Selecione a qualidade do sono.',
+                'qualidade_sono_id.exists' =>
+                    'A qualidade do sono selecionada é inválida.',
+
+                'problema_sonos.array' =>
+                    'Os problemas de sono selecionados devem estar em formato válido.',
+
+                'medicamentos_sono.required' =>
+                    'Informe os medicamentos utilizados para dormir.',
+                'medicamentos_sono.string' =>
+                    'Os medicamentos utilizados para dormir devem ser informados como texto.',
+                'medicamentos_sono.max' =>
+                    'A informação sobre medicamentos para dormir não pode ultrapassar 255 caracteres.',
+                'medicamentos_sono.no_badwords' =>
+                    'A informação sobre medicamentos contém palavras inadequadas.',
+
+
+                // =========================================================
+                // EXERCÍCIO
+                // =========================================================
+
+                'realiza.required' =>
+                    'Informe se o paciente realiza exercícios físicos.',
+                'realiza.boolean' =>
+                    'A informação sobre realização de exercícios deve ser sim ou não.',
+
+                'frequencia_exercicio_id.required' =>
+                    'Selecione a frequência dos exercícios.',
+                'frequencia_exercicio_id.exists' =>
+                    'A frequência de exercícios selecionada é inválida.',
+
+                'duracao.required' =>
+                    'Informe a duração dos exercícios.',
+                'duracao.numeric' =>
+                    'A duração dos exercícios deve ser um número.',
+                'duracao.min' =>
+                    'A duração dos exercícios não pode ser negativa.',
+
+
+                // =========================================================
+                // MORADIA
+                // =========================================================
+
+                'zona_moradia_id.required' =>
+                    'Selecione a zona de moradia.',
+                'zona_moradia_id.exists' =>
+                    'A zona de moradia selecionada é inválida.',
+
+                'luz_publica.required' =>
+                    'Informe se há iluminação pública.',
+                'luz_publica.boolean' =>
+                    'A informação sobre iluminação pública deve ser sim ou não.',
+
+                'coleta_lixo.required' =>
+                    'Informe se há coleta de lixo.',
+                'coleta_lixo.boolean' =>
+                    'A informação sobre coleta de lixo deve ser sim ou não.',
+
+                'agua_tratada.required' =>
+                    'Informe se há acesso à água tratada.',
+                'agua_tratada.boolean' =>
+                    'A informação sobre água tratada deve ser sim ou não.',
+
+                'rede_esgoto_id.required' =>
+                    'Selecione a rede de esgoto.',
+                'rede_esgoto_id.exists' =>
+                    'A rede de esgoto selecionada é inválida.',
+
+                'animais_domesticos.required' =>
+                    'Informe se há animais domésticos.',
+                'animais_domesticos.boolean' =>
+                    'A informação sobre animais domésticos deve ser sim ou não.',
+
+
+                // =========================================================
+                // REGULAÇÃO HORMONAL
+                // =========================================================
+
+                'altura.required' =>
+                    'Informe a altura do paciente.',
+                'altura.numeric' =>
+                    'A altura deve ser um número.',
+                'altura.min' =>
+                    'A altura não pode ser negativa.',
+
+                'peso.required' =>
+                    'Informe o peso do paciente.',
+                'peso.numeric' =>
+                    'O peso deve ser um número.',
+                'peso.min' =>
+                    'O peso não pode ser negativo.',
+
+                'circunferencia_abdnominal.required' =>
+                    'Informe a circunferência abdominal.',
+                'circunferencia_abdnominal.numeric' =>
+                    'A circunferência abdominal deve ser um número.',
+                'circunferencia_abdnominal.min' =>
+                    'A circunferência abdominal não pode ser negativa.',
+
+                'glicemia_capilar.required' =>
+                    'Informe a glicemia capilar.',
+                'glicemia_capilar.numeric' =>
+                    'A glicemia capilar deve ser um número.',
+                'glicemia_capilar.min' =>
+                    'A glicemia capilar não pode ser negativa.',
+
+                'jejum.required' =>
+                    'Informe se a glicemia foi medida em jejum.',
+                'jejum.boolean' =>
+                    'A informação sobre jejum deve ser sim ou não.',
+
+                'pos_prandial.required' =>
+                    'Informe se a glicemia foi medida após a refeição.',
+                'pos_prandial.boolean' =>
+                    'A informação sobre o período pós-prandial deve ser sim ou não.',
+
+
+                // =========================================================
+                // OXIGENAÇÃO
+                // =========================================================
+
+                'temp_enchimento_capilar.required' =>
+                    'Informe o tempo de enchimento capilar.',
+                'temp_enchimento_capilar.numeric' =>
+                    'O tempo de enchimento capilar deve ser um número.',
+                'temp_enchimento_capilar.min' =>
+                    'O tempo de enchimento capilar não pode ser negativo.',
+
+                'frequencia_respiratoria.required' =>
+                    'Informe a frequência respiratória.',
+                'frequencia_respiratoria.numeric' =>
+                    'A frequência respiratória deve ser um número.',
+                'frequencia_respiratoria.min' =>
+                    'A frequência respiratória não pode ser negativa.',
+
+                'satO2.required' =>
+                    'Informe a saturação de oxigênio.',
+                'satO2.numeric' =>
+                    'A saturação de oxigênio deve ser um número.',
+                'satO2.min' =>
+                    'A saturação de oxigênio não pode ser negativa.',
+
+
+                // =========================================================
+                // TEMPERATURA
+                // =========================================================
+
+                'temperatura.required' =>
+                    'Informe a temperatura do paciente.',
+                'temperatura.numeric' =>
+                    'A temperatura deve ser um número.',
+                'temperatura.min' =>
+                    'A temperatura não pode ser negativa.',
+
+
+                // =========================================================
+                // ELIMINAÇÃO
+                // =========================================================
+
+                'dor_urinar.required' =>
+                    'Informe se o paciente sente dor ao urinar.',
+                'dor_urinar.boolean' =>
+                    'A informação sobre dor ao urinar deve ser sim ou não.',
+
+                'incontinencia_urina.required' =>
+                    'Informe se o paciente apresenta incontinência urinária.',
+                'incontinencia_urina.boolean' =>
+                    'A informação sobre incontinência urinária deve ser sim ou não.',
+
+                'uso_laxante.required' =>
+                    'Informe se o paciente utiliza laxantes.',
+                'uso_laxante.boolean' =>
+                    'A informação sobre uso de laxantes deve ser sim ou não.',
+
+                'uso_fraldas.required' =>
+                    'Informe se o paciente utiliza fraldas.',
+                'uso_fraldas.boolean' =>
+                    'A informação sobre uso de fraldas deve ser sim ou não.',
+
+                'dor_eliminacoes.required' =>
+                    'Informe se o paciente sente dor durante as eliminações.',
+                'dor_eliminacoes.boolean' =>
+                    'A informação sobre dor nas eliminações deve ser sim ou não.',
+
+                'incontinencia_eliminacao.required' =>
+                    'Informe se o paciente apresenta incontinência na eliminação.',
+                'incontinencia_eliminacao.boolean' =>
+                    'A informação sobre incontinência na eliminação deve ser sim ou não.',
+
+                'constipacao.required' =>
+                    'Informe se o paciente apresenta constipação.',
+                'constipacao.boolean' =>
+                    'A informação sobre constipação deve ser sim ou não.',
+
+                'diarreia.required' =>
+                    'Informe se o paciente apresenta diarreia.',
+                'diarreia.boolean' =>
+                    'A informação sobre diarreia deve ser sim ou não.',
+
+                'equipamento_externo.required' =>
+                    'Informe o equipamento externo utilizado.',
+                'equipamento_externo.max' =>
+                    'A informação sobre o equipamento externo não pode ultrapassar 255 caracteres.',
+                'equipamento_externo.no_badwords' =>
+                    'A informação sobre o equipamento externo contém palavras inadequadas.',
+
+
+                // =========================================================
+                // SEXUALIDADE
+                // =========================================================
+
+                'vida_sex_ativa.required' =>
+                    'Informe se o paciente possui vida sexual ativa.',
+                'vida_sex_ativa.boolean' =>
+                    'A informação sobre vida sexual ativa deve ser sim ou não.',
+
+                'disturbio_sexuals.array' =>
+                    'Os distúrbios sexuais selecionados devem estar em formato válido.',
+
+
+                // =========================================================
+                // LOCOMOÇÃO
+                // =========================================================
+
+                'tipo_locomocaos.array' =>
+                    'Os tipos de locomoção selecionados devem estar em formato válido.',
+
+                'sapato_adequado.required' =>
+                    'Informe se o paciente utiliza sapato adequado.',
+                'sapato_adequado.boolean' =>
+                    'A informação sobre o sapato adequado deve ser sim ou não.',
+
+                'sandalia_cicatrizacao.required' =>
+                    'Informe se o paciente utiliza sandália de cicatrização.',
+                'sandalia_cicatrizacao.boolean' =>
+                    'A informação sobre a sandália de cicatrização deve ser sim ou não.',
+
+
+                // =========================================================
+                // REGULAÇÃO VASCULAR
+                // =========================================================
+
+                'pressao_arterial.required' =>
+                    'Informe a pressão arterial.',
+                'pressao_arterial.numeric' =>
+                    'A pressão arterial deve ser um número.',
+                'pressao_arterial.min' =>
+                    'A pressão arterial não pode ser negativa.',
+
+                'frequencia_cardiaca.required' =>
+                    'Informe a frequência cardíaca.',
+                'frequencia_cardiaca.numeric' =>
+                    'A frequência cardíaca deve ser um número.',
+                'frequencia_cardiaca.min' =>
+                    'A frequência cardíaca não pode ser negativa.',
+
+                'psatp_direito.required' =>
+                    'Informe a pressão arterial do pé direito.',
+                'psatp_direito.numeric' =>
+                    'A pressão arterial do pé direito deve ser um número.',
+                'psatp_direito.min' =>
+                    'A pressão arterial do pé direito não pode ser negativa.',
+
+                'psap_direito.required' =>
+                    'Informe a pressão do pé direito.',
+                'psap_direito.numeric' =>
+                    'A pressão do pé direito deve ser um número.',
+                'psap_direito.min' =>
+                    'A pressão do pé direito não pode ser negativa.',
+
+                'psab_direito.required' =>
+                    'Informe a pressão arterial do pé direito.',
+                'psab_direito.numeric' =>
+                    'A pressão arterial do pé direito deve ser um número.',
+                'psab_direito.min' =>
+                    'A pressão arterial do pé direito não pode ser negativa.',
+
+                'psatp_esquerdo.required' =>
+                    'Informe a pressão arterial do pé esquerdo.',
+                'psatp_esquerdo.numeric' =>
+                    'A pressão arterial do pé esquerdo deve ser um número.',
+                'psatp_esquerdo.min' =>
+                    'A pressão arterial do pé esquerdo não pode ser negativa.',
+
+                'psap_esquerdo.required' =>
+                    'Informe a pressão do pé esquerdo.',
+                'psap_esquerdo.numeric' =>
+                    'A pressão do pé esquerdo deve ser um número.',
+                'psap_esquerdo.min' =>
+                    'A pressão do pé esquerdo não pode ser negativa.',
+
+                'psab_esquerdo.required' =>
+                    'Informe a pressão arterial do pé esquerdo.',
+                'psab_esquerdo.numeric' =>
+                    'A pressão arterial do pé esquerdo deve ser um número.',
+                'psab_esquerdo.min' =>
+                    'A pressão arterial do pé esquerdo não pode ser negativa.',
+
+
+                // =========================================================
+                // SENSO DE PERCEPÇÃO
+                // =========================================================
+
+                'sintomas_percepcaos.array' =>
+                    'Os sintomas de percepção selecionados devem estar em formato válido.',
+
+                'pe_neuropatico.required' =>
+                    'Informe se o pé é neuropático.',
+                'pe_neuropatico.boolean' =>
+                    'A informação sobre pé neuropático deve ser sim ou não.',
+
+                'arco_desabado.required' =>
+                    'Informe se há arco desabado.',
+                'arco_desabado.boolean' =>
+                    'A informação sobre arco desabado deve ser sim ou não.',
+
+                'valgismo.required' =>
+                    'Informe se há valgismo.',
+                'valgismo.boolean' =>
+                    'A informação sobre valgismo deve ser sim ou não.',
+
+                'dedos_em_garra.required' =>
+                    'Informe se há dedos em garra.',
+                'dedos_em_garra.boolean' =>
+                    'A informação sobre dedos em garra deve ser sim ou não.',
+
+                'estado_unhas_id.required' =>
+                    'Selecione o estado das unhas.',
+                'estado_unhas_id.exists' =>
+                    'O estado das unhas selecionado é inválido.',
+
+                'corte_unhas.required' =>
+                    'Informe se o corte das unhas está adequado.',
+                'corte_unhas.boolean' =>
+                    'A informação sobre corte das unhas deve ser sim ou não.',
+
+                'fissuras.required' =>
+                    'Informe se há fissuras.',
+                'fissuras.boolean' =>
+                    'A informação sobre fissuras deve ser sim ou não.',
+
+                'calosidades.required' =>
+                    'Informe se há calosidades.',
+                'calosidades.boolean' =>
+                    'A informação sobre calosidades deve ser sim ou não.',
+
+                'micose.required' =>
+                    'Informe se há micose.',
+                'micose.boolean' =>
+                    'A informação sobre micose deve ser sim ou não.',
+
+                'percepcao_direito.required' =>
+                    'Informe a percepção do pé direito.',
+                'percepcao_direito.boolean' =>
+                    'A informação sobre percepção do pé direito deve ser sim ou não.',
+
+                'percepcao_esquerdo.required' =>
+                    'Informe a percepção do pé esquerdo.',
+                'percepcao_esquerdo.boolean' =>
+                    'A informação sobre percepção do pé esquerdo deve ser sim ou não.',
+
+
+                // =========================================================
+                // CUIDADO DA FERIDA
+                // =========================================================
+
+                'limpeza_lesaos.array' =>
+                    'As opções de limpeza das lesões selecionadas devem estar em formato válido.',
+
+                'coberturas.array' =>
+                    'As coberturas selecionadas devem estar em formato válido.',
+
+                'desbridamento_id.required' =>
+                    'Selecione o tipo de desbridamento.',
+                'desbridamento_id.exists' =>
+                    'O desbridamento selecionado é inválido.',
+
+                'avaliacao_ferida_id.required' =>
+                    'Selecione a avaliação da ferida.',
+                'avaliacao_ferida_id.exists' =>
+                    'A avaliação da ferida selecionada é inválida.',
+
+                'aplicacao_laserterapia.required' =>
+                    'Informe se foi realizada aplicação de laserterapia.',
+                'aplicacao_laserterapia.boolean' =>
+                    'A informação sobre aplicação de laserterapia deve ser sim ou não.',
+
+                'terapia_fotodinamica.required' =>
+                    'Informe se foi realizada terapia fotodinâmica.',
+                'terapia_fotodinamica.boolean' =>
+                    'A informação sobre terapia fotodinâmica deve ser sim ou não.',
+
+                'imagem_avaliacao_pe.image' =>
+                    'O arquivo enviado para avaliação do pé deve ser uma imagem.',
+                'imagem_avaliacao_pe.max' =>
+                    'A imagem de avaliação do pé não pode ultrapassar 2 MB.',
+            ];
+
+
+            // =============================================================
+            // CAMPOS ESPECÍFICOS DE CADA PÉ
+            // =============================================================
+
+            foreach (['direito', 'esquerdo'] as $lado) {
+
+                $deveValidar = match ($this->ladoSelecionado) {
+                    'direito' => $lado === 'direito',
+                    'esquerdo' => $lado === 'esquerdo',
+                    'ambos' => true,
+                    default => false,
+                };
+
+                if ($deveValidar) {
+
+                    $rules["dados.$lado.comprimento"] =
+                        'required|numeric|min:0';
+
+                    $rules["dados.$lado.largura"] =
+                        'required|numeric|min:0';
+
+                    $rules["dados.$lado.regiao_pe_id"] =
+                        'required|exists:regiao_pes,id';
+
+                    $rules["dados.$lado.localizacao_lesao_id"] =
+                        'required|exists:localizacao_lesaos,id';
+
+                    $rules["dados.$lado.lesao_amputacao"] =
+                        'required|boolean';
+
+                    $rules["dados.$lado.bordas_ferida_id"] =
+                        'required|exists:bordas_feridas,id';
+
+                    $rules["dados.$lado.pele_periferida_id"] =
+                        'required|exists:pele_periferidas,id';
+
+                    $rules["dados.$lado.profundidade_id"] =
+                        'required|exists:profundidades,id';
+
+                    $rules["dados.$lado.tipo_tecido_ferida_id"] =
+                        'required|exists:tipo_tecido_feridas,id';
+
+                    $rules["dados.$lado.aspecto_exudato_id"] =
+                        'required|exists:aspecto_exudatos,id';
 
-                $rules["dados.$lado.quantidade_exudato_id"] =
-                    'required|exists:quantidade_exudatos,id';
-
-                $rules["dados.$lado.edema"] =
-                    'required|boolean';
-
-                $rules["dados.$lado.odor_exudato"] =
-                    'required|boolean';
+                    $rules["dados.$lado.quantidade_exudato_id"] =
+                        'required|exists:quantidade_exudatos,id';
+
+                    $rules["dados.$lado.edema"] =
+                        'required|boolean';
+
+                    $rules["dados.$lado.odor_exudato"] =
+                        'required|boolean';
 
-                $rules["dados.$lado.dor"] =
-                    'required|integer|min:0|max:10';
+                    $rules["dados.$lado.dor"] =
+                        'required|integer|min:0|max:10';
 
-                $rules["dados.$lado.sinais_infeccao"] =
-                    'nullable|array';
+                    $rules["dados.$lado.sinais_infeccao"] =
+                        'nullable|array';
 
 
-                // -----------------------------------------------------
-                // Comprimento
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Comprimento
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.comprimento.required"] =
-                    "Informe o comprimento da lesão do pé $lado.";
+                    $messages["dados.$lado.comprimento.required"] =
+                        "Informe o comprimento da lesão do pé $lado.";
 
-                $messages["dados.$lado.comprimento.numeric"] =
-                    "O comprimento da lesão do pé $lado deve ser um número.";
+                    $messages["dados.$lado.comprimento.numeric"] =
+                        "O comprimento da lesão do pé $lado deve ser um número.";
 
-                $messages["dados.$lado.comprimento.min"] =
-                    "O comprimento da lesão do pé $lado não pode ser negativo.";
+                    $messages["dados.$lado.comprimento.min"] =
+                        "O comprimento da lesão do pé $lado não pode ser negativo.";
 
 
-                // -----------------------------------------------------
-                // Largura
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Largura
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.largura.required"] =
-                    "Informe a largura da lesão do pé $lado.";
+                    $messages["dados.$lado.largura.required"] =
+                        "Informe a largura da lesão do pé $lado.";
 
-                $messages["dados.$lado.largura.numeric"] =
-                    "A largura da lesão do pé $lado deve ser um número.";
+                    $messages["dados.$lado.largura.numeric"] =
+                        "A largura da lesão do pé $lado deve ser um número.";
 
-                $messages["dados.$lado.largura.min"] =
-                    "A largura da lesão do pé $lado não pode ser negativa.";
+                    $messages["dados.$lado.largura.min"] =
+                        "A largura da lesão do pé $lado não pode ser negativa.";
 
 
-                // -----------------------------------------------------
-                // Região
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Região
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.regiao_pe_id.required"] =
-                    "Selecione a região do pé $lado.";
+                    $messages["dados.$lado.regiao_pe_id.required"] =
+                        "Selecione a região do pé $lado.";
 
-                $messages["dados.$lado.regiao_pe_id.exists"] =
-                    "A região selecionada para o pé $lado é inválida.";
+                    $messages["dados.$lado.regiao_pe_id.exists"] =
+                        "A região selecionada para o pé $lado é inválida.";
 
 
-                // -----------------------------------------------------
-                // Localização da lesão
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Localização da lesão
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.localizacao_lesao_id.required"] =
-                    "Selecione a localização da lesão do pé $lado.";
+                    $messages["dados.$lado.localizacao_lesao_id.required"] =
+                        "Selecione a localização da lesão do pé $lado.";
 
-                $messages["dados.$lado.localizacao_lesao_id.exists"] =
-                    "A localização da lesão do pé $lado selecionada é inválida.";
+                    $messages["dados.$lado.localizacao_lesao_id.exists"] =
+                        "A localização da lesão do pé $lado selecionada é inválida.";
 
 
-                // -----------------------------------------------------
-                // Lesão / amputação
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Lesão / amputação
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.lesao_amputacao.required"] =
-                    "Informe se há lesão ou amputação no pé $lado.";
+                    $messages["dados.$lado.lesao_amputacao.required"] =
+                        "Informe se há lesão ou amputação no pé $lado.";
 
-                $messages["dados.$lado.lesao_amputacao.boolean"] =
-                    "A informação sobre lesão ou amputação do pé $lado deve ser sim ou não.";
+                    $messages["dados.$lado.lesao_amputacao.boolean"] =
+                        "A informação sobre lesão ou amputação do pé $lado deve ser sim ou não.";
 
 
-                // -----------------------------------------------------
-                // Bordas
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Bordas
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.bordas_ferida_id.required"] =
-                    "Selecione as bordas da ferida do pé $lado.";
+                    $messages["dados.$lado.bordas_ferida_id.required"] =
+                        "Selecione as bordas da ferida do pé $lado.";
 
-                $messages["dados.$lado.bordas_ferida_id.exists"] =
-                    "As bordas da ferida do pé $lado selecionadas são inválidas.";
+                    $messages["dados.$lado.bordas_ferida_id.exists"] =
+                        "As bordas da ferida do pé $lado selecionadas são inválidas.";
 
 
-                // -----------------------------------------------------
-                // Pele periférica
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Pele periférica
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.pele_periferida_id.required"] =
-                    "Selecione o estado da pele periférica do pé $lado.";
+                    $messages["dados.$lado.pele_periferida_id.required"] =
+                        "Selecione o estado da pele periférica do pé $lado.";
 
-                $messages["dados.$lado.pele_periferida_id.exists"] =
-                    "O estado da pele periférica do pé $lado selecionado é inválido.";
+                    $messages["dados.$lado.pele_periferida_id.exists"] =
+                        "O estado da pele periférica do pé $lado selecionado é inválido.";
 
 
-                // -----------------------------------------------------
-                // Profundidade
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Profundidade
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.profundidade_id.required"] =
-                    "Selecione a profundidade da ferida do pé $lado.";
+                    $messages["dados.$lado.profundidade_id.required"] =
+                        "Selecione a profundidade da ferida do pé $lado.";
 
-                $messages["dados.$lado.profundidade_id.exists"] =
-                    "A profundidade da ferida do pé $lado selecionada é inválida.";
+                    $messages["dados.$lado.profundidade_id.exists"] =
+                        "A profundidade da ferida do pé $lado selecionada é inválida.";
 
 
-                // -----------------------------------------------------
-                // Tipo de tecido
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Tipo de tecido
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.tipo_tecido_ferida_id.required"] =
-                    "Selecione o tipo de tecido da ferida do pé $lado.";
+                    $messages["dados.$lado.tipo_tecido_ferida_id.required"] =
+                        "Selecione o tipo de tecido da ferida do pé $lado.";
 
-                $messages["dados.$lado.tipo_tecido_ferida_id.exists"] =
-                    "O tipo de tecido da ferida do pé $lado selecionado é inválido.";
+                    $messages["dados.$lado.tipo_tecido_ferida_id.exists"] =
+                        "O tipo de tecido da ferida do pé $lado selecionado é inválido.";
 
 
-                // -----------------------------------------------------
-                // Aspecto do exsudato
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Aspecto do exsudato
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.aspecto_exudato_id.required"] =
-                    "Selecione o aspecto do exsudato do pé $lado.";
+                    $messages["dados.$lado.aspecto_exudato_id.required"] =
+                        "Selecione o aspecto do exsudato do pé $lado.";
 
-                $messages["dados.$lado.aspecto_exudato_id.exists"] =
-                    "O aspecto do exsudato do pé $lado selecionado é inválido.";
+                    $messages["dados.$lado.aspecto_exudato_id.exists"] =
+                        "O aspecto do exsudato do pé $lado selecionado é inválido.";
 
 
-                // -----------------------------------------------------
-                // Quantidade de exsudato
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Quantidade de exsudato
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.quantidade_exudato_id.required"] =
-                    "Selecione a quantidade de exsudato do pé $lado.";
+                    $messages["dados.$lado.quantidade_exudato_id.required"] =
+                        "Selecione a quantidade de exsudato do pé $lado.";
 
-                $messages["dados.$lado.quantidade_exudato_id.exists"] =
-                    "A quantidade de exsudato do pé $lado selecionada é inválida.";
+                    $messages["dados.$lado.quantidade_exudato_id.exists"] =
+                        "A quantidade de exsudato do pé $lado selecionada é inválida.";
 
 
-                // -----------------------------------------------------
-                // Edema
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Edema
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.edema.required"] =
-                    "Informe se há edema no pé $lado.";
+                    $messages["dados.$lado.edema.required"] =
+                        "Informe se há edema no pé $lado.";
 
-                $messages["dados.$lado.edema.boolean"] =
-                    "A informação sobre edema do pé $lado deve ser sim ou não.";
+                    $messages["dados.$lado.edema.boolean"] =
+                        "A informação sobre edema do pé $lado deve ser sim ou não.";
 
 
-                // -----------------------------------------------------
-                // Odor
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Odor
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.odor_exudato.required"] =
-                    "Informe se há odor no exsudato do pé $lado.";
+                    $messages["dados.$lado.odor_exudato.required"] =
+                        "Informe se há odor no exsudato do pé $lado.";
 
-                $messages["dados.$lado.odor_exudato.boolean"] =
-                    "A informação sobre odor do exsudato do pé $lado deve ser sim ou não.";
+                    $messages["dados.$lado.odor_exudato.boolean"] =
+                        "A informação sobre odor do exsudato do pé $lado deve ser sim ou não.";
 
 
-                // -----------------------------------------------------
-                // Dor
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Dor
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.dor.required"] =
-                    "Informe a intensidade da dor do pé $lado.";
+                    $messages["dados.$lado.dor.required"] =
+                        "Informe a intensidade da dor do pé $lado.";
 
-                $messages["dados.$lado.dor.integer"] =
-                    "A intensidade da dor do pé $lado deve ser um número inteiro.";
+                    $messages["dados.$lado.dor.integer"] =
+                        "A intensidade da dor do pé $lado deve ser um número inteiro.";
 
-                $messages["dados.$lado.dor.min"] =
-                    "A intensidade da dor do pé $lado não pode ser menor que 0.";
+                    $messages["dados.$lado.dor.min"] =
+                        "A intensidade da dor do pé $lado não pode ser menor que 0.";
 
-                $messages["dados.$lado.dor.max"] =
-                    "A intensidade da dor do pé $lado não pode ser maior que 10.";
+                    $messages["dados.$lado.dor.max"] =
+                        "A intensidade da dor do pé $lado não pode ser maior que 10.";
 
 
-                // -----------------------------------------------------
-                // Sinais de infecção
-                // -----------------------------------------------------
+                    // -----------------------------------------------------
+                    // Sinais de infecção
+                    // -----------------------------------------------------
 
-                $messages["dados.$lado.sinais_infeccao.array"] =
-                    "Os sinais de infecção do pé $lado devem estar em formato válido.";
+                    $messages["dados.$lado.sinais_infeccao.array"] =
+                        "Os sinais de infecção do pé $lado devem estar em formato válido.";
+                }
             }
+
+            $this->validate($rules, $messages);
+
+
+        } elseif ($this->currentStep == 3) {
+
+            $rules = [
+                'monitoramento_glicemia_dia' => 'required|integer|min:0',
+                'cuidado_pes' => 'required|boolean',
+                'uso_sapato' => 'required|boolean',
+                'alimentacao' => 'required|boolean',
+                'regime_terapeutico' => 'required|boolean',
+
+                'recreacaos' => 'nullable|array',
+
+                'acompanhado' => 'required|boolean',
+                'opnioes_de_si' => 'required|boolean',
+                'auxiliador' => 'required|string|max:255|no_badwords',
+                'emocionals' => 'nullable|array',
+
+                'apoio' => 'required|boolean',
+                'interacao_social' => 'required|boolean',
+            ];
+
+            $messages = [
+
+                // =========================================================
+                // AUTOCUIDADO / CONTROLE
+                // =========================================================
+
+                'monitoramento_glicemia_dia.required' =>
+                    'Informe a quantidade de monitoramentos de glicemia por dia.',
+                'monitoramento_glicemia_dia.integer' =>
+                    'A quantidade de monitoramentos deve ser um número inteiro.',
+                'monitoramento_glicemia_dia.min' =>
+                    'A quantidade de monitoramentos não pode ser negativa.',
+
+                'cuidado_pes.required' =>
+                    'Informe se o paciente realiza cuidados com os pés.',
+                'cuidado_pes.boolean' =>
+                    'A informação sobre cuidados com os pés deve ser sim ou não.',
+
+                'uso_sapato.required' =>
+                    'Informe se o paciente utiliza sapato adequado.',
+                'uso_sapato.boolean' =>
+                    'A informação sobre uso de sapato deve ser sim ou não.',
+
+                'alimentacao.required' =>
+                    'Informe se o paciente segue uma alimentação adequada.',
+                'alimentacao.boolean' =>
+                    'A informação sobre alimentação deve ser sim ou não.',
+
+                'regime_terapeutico.required' =>
+                    'Informe se o paciente segue o regime terapêutico.',
+                'regime_terapeutico.boolean' =>
+                    'A informação sobre o regime terapêutico deve ser sim ou não.',
+
+                'recreacaos.array' =>
+                    'As atividades de recreação selecionadas devem estar em formato válido.',
+
+
+                // =========================================================
+                // AUTOIMAGEM / RELAÇÕES
+                // =========================================================
+
+                'acompanhado.required' =>
+                    'Informe se o paciente é acompanhado.',
+                'acompanhado.boolean' =>
+                    'A informação sobre acompanhamento deve ser sim ou não.',
+
+                'opnioes_de_si.required' =>
+                    'Informe a opinião do paciente sobre si mesmo.',
+                'opnioes_de_si.boolean' =>
+                    'A informação sobre opinião de si mesmo deve ser sim ou não.',
+
+                'auxiliador.required' =>
+                    'Informe quem auxilia o paciente.',
+                'auxiliador.string' =>
+                    'O auxiliar deve ser informado como texto.',
+                'auxiliador.max' =>
+                    'A informação sobre o auxiliar não pode ultrapassar 255 caracteres.',
+                'auxiliador.no_badwords' =>
+                    'A informação sobre o auxiliar contém palavras inadequadas.',
+
+                'emocionals.array' =>
+                    'As informações emocionais selecionadas devem estar em formato válido.',
+
+
+                // =========================================================
+                // APOIO / INTERAÇÃO SOCIAL
+                // =========================================================
+
+                'apoio.required' =>
+                    'Informe se o paciente possui apoio.',
+                'apoio.boolean' =>
+                    'A informação sobre apoio deve ser sim ou não.',
+
+                'interacao_social.required' =>
+                    'Informe sobre a interação social do paciente.',
+                'interacao_social.boolean' =>
+                    'A informação sobre interação social deve ser sim ou não.',
+            ];
+
+            $this->validate($rules, $messages);
+
+
+        } elseif ($this->currentStep == 4) {
+
+            $rules = [
+                'religiao' => $this->e_religioso === 'nao'
+                    ? 'nullable|string|max:255|no_badwords'
+                    : 'required|string|max:255|no_badwords',
+
+                'impressoes' => 'required|string|no_badwords',
+            ];
+
+            $messages = [
+
+                // =========================================================
+                // RELIGIÃO
+                // =========================================================
+
+                'religiao.required' =>
+                    'Informe a religião do paciente.',
+
+                'religiao.string' =>
+                    'A religião deve ser informada como texto.',
+
+                'religiao.max' =>
+                    'A religião não pode ultrapassar 255 caracteres.',
+
+                'religiao.no_badwords' =>
+                    'A informação sobre religião contém palavras inadequadas.',
+
+
+                // =========================================================
+                // IMPRESSÕES
+                // =========================================================
+
+                'impressoes.required' =>
+                    'Informe suas impressões sobre a avaliação.',
+
+                'impressoes.string' =>
+                    'As impressões devem ser informadas como texto.',
+
+                'impressoes.no_badwords' =>
+                    'As impressões contêm palavras inadequadas.',
+            ];
+
+            $this->validate($rules, $messages);
         }
-
-        $this->validate($rules, $messages);
-
-
-    } elseif ($this->currentStep == 3) {
-
-        $rules = [
-            'monitoramento_glicemia_dia' => 'required|integer|min:0',
-            'cuidado_pes' => 'required|boolean',
-            'uso_sapato' => 'required|boolean',
-            'alimentacao' => 'required|boolean',
-            'regime_terapeutico' => 'required|boolean',
-
-            'recreacaos' => 'nullable|array',
-
-            'acompanhado' => 'required|boolean',
-            'opnioes_de_si' => 'required|boolean',
-            'auxiliador' => 'required|string|max:255|no_badwords',
-            'emocionals' => 'nullable|array',
-
-            'apoio' => 'required|boolean',
-            'interacao_social' => 'required|boolean',
-        ];
-
-        $messages = [
-
-            // =========================================================
-            // AUTOCUIDADO / CONTROLE
-            // =========================================================
-
-            'monitoramento_glicemia_dia.required' =>
-                'Informe a quantidade de monitoramentos de glicemia por dia.',
-            'monitoramento_glicemia_dia.integer' =>
-                'A quantidade de monitoramentos deve ser um número inteiro.',
-            'monitoramento_glicemia_dia.min' =>
-                'A quantidade de monitoramentos não pode ser negativa.',
-
-            'cuidado_pes.required' =>
-                'Informe se o paciente realiza cuidados com os pés.',
-            'cuidado_pes.boolean' =>
-                'A informação sobre cuidados com os pés deve ser sim ou não.',
-
-            'uso_sapato.required' =>
-                'Informe se o paciente utiliza sapato adequado.',
-            'uso_sapato.boolean' =>
-                'A informação sobre uso de sapato deve ser sim ou não.',
-
-            'alimentacao.required' =>
-                'Informe se o paciente segue uma alimentação adequada.',
-            'alimentacao.boolean' =>
-                'A informação sobre alimentação deve ser sim ou não.',
-
-            'regime_terapeutico.required' =>
-                'Informe se o paciente segue o regime terapêutico.',
-            'regime_terapeutico.boolean' =>
-                'A informação sobre o regime terapêutico deve ser sim ou não.',
-
-            'recreacaos.array' =>
-                'As atividades de recreação selecionadas devem estar em formato válido.',
-
-
-            // =========================================================
-            // AUTOIMAGEM / RELAÇÕES
-            // =========================================================
-
-            'acompanhado.required' =>
-                'Informe se o paciente é acompanhado.',
-            'acompanhado.boolean' =>
-                'A informação sobre acompanhamento deve ser sim ou não.',
-
-            'opnioes_de_si.required' =>
-                'Informe a opinião do paciente sobre si mesmo.',
-            'opnioes_de_si.boolean' =>
-                'A informação sobre opinião de si mesmo deve ser sim ou não.',
-
-            'auxiliador.required' =>
-                'Informe quem auxilia o paciente.',
-            'auxiliador.string' =>
-                'O auxiliar deve ser informado como texto.',
-            'auxiliador.max' =>
-                'A informação sobre o auxiliar não pode ultrapassar 255 caracteres.',
-            'auxiliador.no_badwords' =>
-                'A informação sobre o auxiliar contém palavras inadequadas.',
-
-            'emocionals.array' =>
-                'As informações emocionais selecionadas devem estar em formato válido.',
-
-
-            // =========================================================
-            // APOIO / INTERAÇÃO SOCIAL
-            // =========================================================
-
-            'apoio.required' =>
-                'Informe se o paciente possui apoio.',
-            'apoio.boolean' =>
-                'A informação sobre apoio deve ser sim ou não.',
-
-            'interacao_social.required' =>
-                'Informe sobre a interação social do paciente.',
-            'interacao_social.boolean' =>
-                'A informação sobre interação social deve ser sim ou não.',
-        ];
-
-        $this->validate($rules, $messages);
-
-
-    } elseif ($this->currentStep == 4) {
-
-        $rules = [
-            'religiao' => $this->e_religioso === 'nao'
-                ? 'nullable|string|max:255|no_badwords'
-                : 'required|string|max:255|no_badwords',
-
-            'impressoes' => 'required|string|no_badwords',
-        ];
-
-        $messages = [
-
-            // =========================================================
-            // RELIGIÃO
-            // =========================================================
-
-            'religiao.required' =>
-                'Informe a religião do paciente.',
-
-            'religiao.string' =>
-                'A religião deve ser informada como texto.',
-
-            'religiao.max' =>
-                'A religião não pode ultrapassar 255 caracteres.',
-
-            'religiao.no_badwords' =>
-                'A informação sobre religião contém palavras inadequadas.',
-
-
-            // =========================================================
-            // IMPRESSÕES
-            // =========================================================
-
-            'impressoes.required' =>
-                'Informe suas impressões sobre a avaliação.',
-
-            'impressoes.string' =>
-                'As impressões devem ser informadas como texto.',
-
-            'impressoes.no_badwords' =>
-                'As impressões contêm palavras inadequadas.',
-        ];
-
-        $this->validate($rules, $messages);
     }
-}
     public function ColetarProntuario($questionario)
     {
 
@@ -2421,10 +2423,14 @@ class CreateQuestionario extends Component
             'cuidado_ferida_id' => $cuidado_ferida->id,
         ]);
 
-        $integridades_cutaneas = [];
-
         foreach (['direito', 'esquerdo'] as $lado) {
-            if (!empty($this->dados[$lado])) {
+            $deveSalvar = match ($this->ladoSelecionado) {
+                'direito' => $lado === 'direito',
+                'esquerdo' => $lado === 'esquerdo',
+                'ambos' => true,
+                default => false,
+            };
+            if ($deveSalvar) {
                 $integridade = Integridade_cutanea::create([
                     'lado' => $lado,
                     'nss_biologicas_id' => $nss_biologicas->id,
@@ -2444,12 +2450,14 @@ class CreateQuestionario extends Component
                     'dor' => $this->dados[$lado]['dor'] ?? null,
                 ]);
 
-                foreach ($this->sinais_infeccao_direito as $id) {
-                    $integridade->sinaisInfeccaoDireito()->attach($id, ['lado' => 'direito']);
-                }
-
-                foreach ($this->sinais_infeccao_esquerdo as $id) {
-                    $integridade->sinaisInfeccaoEsquerdo()->attach($id, ['lado' => 'esquerdo']);
+                if ($lado === 'direito') {
+                    foreach ($this->sinais_infeccao_direito as $id) {
+                        $integridade->sinaisInfeccaoDireito()->attach($id, ['lado' => 'direito']);
+                    }
+                } else {
+                    foreach ($this->sinais_infeccao_esquerdo as $id) {
+                        $integridade->sinaisInfeccaoEsquerdo()->attach($id, ['lado' => 'esquerdo']);
+                    }
                 }
             }
         }

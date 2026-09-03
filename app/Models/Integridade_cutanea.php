@@ -16,7 +16,7 @@ class Integridade_cutanea extends Model
     }
     public function borda_ferida()
     {
-        return $this->belongsTo(Bordas_ferida::class);
+        return $this->belongsTo(Bordas_ferida::class, 'bordas_ferida_id');
     }
     public function quantidade_exudato()
     {
