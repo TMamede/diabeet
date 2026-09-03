@@ -245,7 +245,7 @@
                                                                 <span
                                                                     class="text-sm font-medium text-gray-600">Horário:</span>
                                                                 <span
-                                                                    class="text-sm text-gray-800">{{ $medicamento->horario_med->descricao }}</span>
+                                                                    class="text-sm text-gray-800">{{ $medicamento->horario_descricao }}</span>
                                                             </div>
                                                             <div class="flex justify-between">
                                                                 <span
