@@ -53,6 +53,7 @@ class CadastroPacienteSeeder extends Seeder
         DB::table('tipo_diabetes')->insert([
             ['tipo' => 'DM1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['tipo' => 'DM2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['tipo' => 'Outra(s)', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // Inserir comorbidades
@@ -69,6 +70,7 @@ class CadastroPacienteSeeder extends Seeder
             ['descricao' => 'Tireoide de Hashimoto', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Hipertireodismo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Hipotireodismo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Cardiopatia', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // Inserir alergias

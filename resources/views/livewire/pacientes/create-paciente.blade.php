@@ -153,7 +153,7 @@
                                                 <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                                                     <x-select label="Benefício" id="beneficio_id"
                                                         wire:model.lazy="beneficio_id" :options="$beneficios" />
-                                                    <x-select label="Tipo de Residência" id="reside_id"
+                                                    <x-select label="Com quem reside" id="reside_id"
                                                         wire:model.lazy="reside_id" :options="$resides" />
                                                 </div>
                                             </div>
