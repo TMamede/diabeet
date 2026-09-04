@@ -126,6 +126,7 @@ class QuestionarioSeeder extends Seeder
             ['descricao' => '1x/semana', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => '2x/semana', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => '3x/semana', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => '4x ou mais', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         DB::table('zona_moradias')->insert([
@@ -199,7 +200,7 @@ class QuestionarioSeeder extends Seeder
             ['descricao' => 'Pele Brilhante', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Pele Descamativa', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Presenca de Hematomas', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Claudicacao', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Claudicação', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Cianose', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
@@ -254,8 +255,6 @@ class QuestionarioSeeder extends Seeder
             ['descricao' => 'Ácido Graxo Essencial', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Hidrogel', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Cloreto de Dialquil Carbamoil', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Creme', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Spray', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         // bordas_feridas
