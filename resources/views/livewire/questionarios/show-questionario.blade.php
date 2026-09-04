@@ -595,19 +595,22 @@
                                             <div class="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2">
                                                 <!-- Tipo de Pele -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
-                                                    <label for="tipo_pele_id"
+                                                    <label
                                                         class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
                                                         Pele:
                                                     </label>
-                                                    <select wire:model="tipo_pele_id" id="tipo_pele_id"
-                                                        class="w-full px-4 py-3 text-sm text-gray-700 bg-white border-2 border-gray-200 sm:text-base rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
-                                                        <option value="">Selecione</option>
-                                                        @foreach ($tipoPeles as $pele)
-                                                            <option value="{{ $pele->id }}">
-                                                                {{ $pele->descricao }}</option>
+                                                    <div class="space-y-3">
+                                                        @foreach ($tiposPeleList as $pele)
+                                                            <label class="flex items-center cursor-pointer">
+                                                                <input type="checkbox" wire:model="tipos_pele"
+                                                                    value="{{ $pele->id }}" id="pele-{{ $pele->id }}"
+                                                                    class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                                                <span
+                                                                    class="ml-3 font-medium text-gray-700">{{ $pele->descricao }}</span>
+                                                            </label>
                                                         @endforeach
-                                                    </select>
-                                                    @error('tipo_pele_id')
+                                                    </div>
+                                                    @error('tipos_pele')
                                                         <span
                                                             class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                                     @enderror
@@ -1248,58 +1251,6 @@
                                                 @endif
                                             </div>
 
-                                            <!-- Jejum e Pós-Prandial -->
-                                            <div class="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2">
-                                                <!-- Jejum -->
-                                                <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
-                                                    <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
-                                                        Jejum:
-                                                    </label>
-                                                    <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
-                                                        <label class="flex items-center cursor-pointer">
-                                                            <input type="radio" wire:model="jejum" value="1"
-                                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                            <span class="ml-3 font-medium text-gray-700">Sim</span>
-                                                        </label>
-                                                        <label class="flex items-center cursor-pointer">
-                                                            <input type="radio" wire:model="jejum" value="0"
-                                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                            <span class="ml-3 font-medium text-gray-700">Não</span>
-                                                        </label>
-                                                    </div>
-                                                    @error('jejum')
-                                                        <span
-                                                            class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-
-                                                <!-- Pós-Prandial -->
-                                                <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
-                                                    <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
-                                                        Pós-Prandial:
-                                                    </label>
-                                                    <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
-                                                        <label class="flex items-center cursor-pointer">
-                                                            <input type="radio" wire:model="pos_prandial"
-                                                                value="1"
-                                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                            <span class="ml-3 font-medium text-gray-700">Sim</span>
-                                                        </label>
-                                                        <label class="flex items-center cursor-pointer">
-                                                            <input type="radio" wire:model="pos_prandial"
-                                                                value="0"
-                                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
-                                                            <span class="ml-3 font-medium text-gray-700">Não</span>
-                                                        </label>
-                                                    </div>
-                                                    @error('pos_prandial')
-                                                        <span
-                                                            class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
                                         </div>
 
                                         <!-- Seção Oxigenação -->
@@ -1824,18 +1775,36 @@
                                             <div class="grid grid-cols-1 gap-6 mb-6 sm:gap-8 sm:mb-8 lg:grid-cols-2">
                                                 <!-- Pressão Arterial -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
-                                                    <label for="pressao_arterial"
+                                                    <label
                                                         class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
-                                                        Pressão arterial:
+                                                        Pressão arterial (mmHg):
                                                     </label>
-                                                    <input type="text" wire:model="pressao_arterial"
-                                                        id="pressao_arterial"
-                                                        class="w-full px-3 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 sm:px-4 sm:py-3 sm:text-base rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
-                                                        placeholder="Digite a pressão arterial em mmHg">
-                                                    @error('pressao_arterial')
-                                                        <span
-                                                            class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                                    @enderror
+                                                    <div class="grid grid-cols-2 gap-4">
+                                                        <div>
+                                                            <label for="pressao_sistolica"
+                                                                class="block mb-2 text-sm font-medium text-gray-700">Sistólica</label>
+                                                            <input type="number" wire:model="pressao_sistolica"
+                                                                id="pressao_sistolica"
+                                                                class="w-full px-3 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 sm:px-4 sm:py-3 sm:text-base rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                                placeholder="Ex: 120">
+                                                            @error('pressao_sistolica')
+                                                                <span
+                                                                    class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                        <div>
+                                                            <label for="pressao_diastolica"
+                                                                class="block mb-2 text-sm font-medium text-gray-700">Diastólica</label>
+                                                            <input type="number" wire:model="pressao_diastolica"
+                                                                id="pressao_diastolica"
+                                                                class="w-full px-3 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 sm:px-4 sm:py-3 sm:text-base rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                                placeholder="Ex: 80">
+                                                            @error('pressao_diastolica')
+                                                                <span
+                                                                    class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                                 <!-- Frequência Cardíaca -->
@@ -2707,21 +2676,25 @@
                                                             </div>
 
                                                             <div>
-                                                                <label for="tipo_tecido_ferida_direito_id"
+                                                                <label
                                                                     class="block mb-2 text-base font-semibold text-gray-800 md:text-lg">
                                                                     Tipo de Tecido no Leito:
                                                                 </label>
-                                                                <select
-                                                                    wire:model="dados.direito.tipo_tecido_ferida_id"
-                                                                    id="tipo_tecido_ferida_direito_id"
-                                                                    class="w-full px-4 py-3 text-sm text-gray-700 bg-white border-2 border-gray-200 md:text-base rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
-                                                                    <option value="">Selecione</option>
+                                                                <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
                                                                     @foreach ($tiposTecido as $tipo)
-                                                                        <option value="{{ $tipo->id }}">
-                                                                            {{ $tipo->descricao }}</option>
+                                                                        <label
+                                                                            class="flex items-center cursor-pointer">
+                                                                            <input type="checkbox"
+                                                                                wire:model="tipos_tecido_ferida_direito"
+                                                                                value="{{ $tipo->id }}"
+                                                                                id="tipo_tecido_ferida_direito_{{ $tipo->id }}"
+                                                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                                                            <span
+                                                                                class="ml-3 font-medium text-gray-700">{{ $tipo->descricao }}</span>
+                                                                        </label>
                                                                     @endforeach
-                                                                </select>
-                                                                @error('dados.direito.tipo_tecido_ferida_id')
+                                                                </div>
+                                                                @error('tipos_tecido_ferida_direito')
                                                                     <span
                                                                         class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                                                 @enderror
@@ -3142,21 +3115,25 @@
                                                             </div>
 
                                                             <div>
-                                                                <label for="tipo_tecido_ferida_esquerdo_id"
+                                                                <label
                                                                     class="block mb-2 text-base font-semibold text-gray-800 md:text-lg">
                                                                     Tipo de Tecido no Leito:
                                                                 </label>
-                                                                <select
-                                                                    wire:model="dados.esquerdo.tipo_tecido_ferida_id"
-                                                                    id="tipo_tecido_ferida_esquerdo_id"
-                                                                    class="w-full px-4 py-3 text-sm text-gray-700 bg-white border-2 border-gray-200 md:text-base rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
-                                                                    <option value="">Selecione</option>
+                                                                <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
                                                                     @foreach ($tiposTecido as $tipo)
-                                                                        <option value="{{ $tipo->id }}">
-                                                                            {{ $tipo->descricao }}</option>
+                                                                        <label
+                                                                            class="flex items-center cursor-pointer">
+                                                                            <input type="checkbox"
+                                                                                wire:model="tipos_tecido_ferida_esquerdo"
+                                                                                value="{{ $tipo->id }}"
+                                                                                id="tipo_tecido_ferida_esquerdo_{{ $tipo->id }}"
+                                                                                class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                                                            <span
+                                                                                class="ml-3 font-medium text-gray-700">{{ $tipo->descricao }}</span>
+                                                                        </label>
                                                                     @endforeach
-                                                                </select>
-                                                                @error('dados.esquerdo.tipo_tecido_ferida_id')
+                                                                </div>
+                                                                @error('tipos_tecido_ferida_esquerdo')
                                                                     <span
                                                                         class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                                                 @enderror
@@ -3406,6 +3383,20 @@
                                                         <span
                                                             class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                                     @enderror
+
+                                                    <div class="mt-4">
+                                                        <label for="outras_limpezas"
+                                                            class="block mb-2 text-sm font-medium text-gray-700">Outros
+                                                            (opcional)</label>
+                                                        <input type="text" wire:model.lazy="outras_limpezas"
+                                                            id="outras_limpezas"
+                                                            class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                                            placeholder="Descreva outra forma de limpeza não listada...">
+                                                        @error('outras_limpezas')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
                                                 </div>
 
                                                 <!-- Coberturas/Correlatos -->
@@ -3429,6 +3420,20 @@
                                                         <span
                                                             class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                                     @enderror
+
+                                                    <div class="mt-4">
+                                                        <label for="outras_coberturas"
+                                                            class="block mb-2 text-sm font-medium text-gray-700">Outros
+                                                            (opcional)</label>
+                                                        <input type="text" wire:model.lazy="outras_coberturas"
+                                                            id="outras_coberturas"
+                                                            class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                                            placeholder="Descreva outra cobertura/correlato não listado...">
+                                                        @error('outras_coberturas')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
                                                 </div>
                                             </div>
 

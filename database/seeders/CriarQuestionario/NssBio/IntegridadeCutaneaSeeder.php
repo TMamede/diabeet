@@ -17,7 +17,7 @@ class IntegridadeCutaneaSeeder extends Seeder
         $faker = Faker::create();
 
         foreach (range(1, 10) as $index) {
-            DB::table('integridade_cutaneas')->insert([
+            $integridadeId = DB::table('integridade_cutaneas')->insertGetId([
                 'lado' => $faker->randomElement(['direito', 'esquerdo']),
                 'nss_biologicas_id' => 1,
                 'comprimento' => $faker->randomFloat(2, 1, 100),
@@ -30,10 +30,16 @@ class IntegridadeCutaneaSeeder extends Seeder
                 'quantidade_exudato_id' => $faker->numberBetween(1, 4),
                 'odor_exudato' => $faker->boolean,
                 'aspecto_exudato_id' => $faker->numberBetween(1, 6),
-                'tipo_tecido_ferida_id' => $faker->numberBetween(1, 4),
                 'profundidade_id' => $faker->numberBetween(1, 2),
                 'pele_periferida_id' => $faker->numberBetween(1, 10),
                 'dor' => $faker->numberBetween(0, 10),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            DB::table('integridade_cutanea_tipo_tecido_ferida')->insert([
+                'integridade_cutanea_id' => $integridadeId,
+                'tipo_tecido_ferida_id' => $faker->numberBetween(1, 4),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
