@@ -126,8 +126,9 @@ class QuestionarioSeeder extends Seeder
             ['descricao' => '1x/semana', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => '2x/semana', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => '3x/semana', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => '4x ou mais', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
+        // "4x ou mais" é adicionada pela migration 2026_09_04_100000_fix_claudicacao_and_add_frequencia_exercicio,
+        // que cobre tanto instalações novas quanto bancos já semeados anteriormente.
 
         DB::table('zona_moradias')->insert([
             ['descricao' => 'Urbana', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
