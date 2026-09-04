@@ -64,21 +64,22 @@ class ShowQuestionario extends Component
     //Etapa 2 - Necessidades Biológicas
     public $regulacao_neuro, $orientado, $comportamento_regulacao_neuro_id;
     public $percepcao_sentido, $olho_direito, $olho_esquerdo, $ouvido, $analise_tato_id, $risco_queda;
-    public $hidratacao, $liquido_diario, $tipo_pele_id;
+    public $hidratacao, $liquido_diario, $tipos_pele = [], $tiposPeleList = [];
     public $nutricao, $alimento_consumo_id, $refeicaos = [], $refeicaosList = [], $restricaos = [], $restricaosList = [];
     public $sono, $horas_sono, $acorda_noite, $qualidade_sono_id, $problema_sonos = [], $problemaSonoList = [], $medicamentos_sono;
     public $exercicio_fisico, $realiza, $frequencia_exercicio_id, $duracao;
     public $abrigo, $zona_moradia_id, $luz_publica, $coleta_lixo, $agua_tratada, $rede_esgoto_id, $animais_domesticos;
-    public $regulacao_hormonal, $altura, $peso, $imc, $classificacao, $circunferencia_abdnominal, $glicemia_capilar, $jejum, $pos_prandial;
+    public $regulacao_hormonal, $altura, $peso, $imc, $classificacao, $circunferencia_abdnominal, $glicemia_capilar;
     public $oxigenacao, $temp_enchimento_capilar, $frequencia_respiratoria, $satO2;
     public $regulacao_termica, $temperatura, $classificacaoTemperatura;
     public $eliminacao, $dor_urinar, $incontinencia_urina, $uso_laxante, $uso_fraldas, $dor_eliminacoes, $incontinencia_eliminacao, $constipacao, $diarreia, $equipamento_externo;
     public $sexualidade, $vida_sex_ativa, $disturbio_sexuals = [], $disturbiosSexualList = [];
     public $locomocao, $tipo_locomocaos = [], $tiposLocomocaoList = [], $sapato_adequado, $sandalia_cicatrizacao;
-    public $regulacao_vascular, $pressao_arterial, $frequencia_cardiaca, $psatp_direito, $psap_direito, $psab_direito, $psatp_esquerdo, $psap_esquerdo, $psab_esquerdo;
+    public $regulacao_vascular, $pressao_sistolica, $pressao_diastolica, $frequencia_cardiaca, $psatp_direito, $psap_direito, $psab_direito, $psatp_esquerdo, $psap_esquerdo, $psab_esquerdo;
     public $senso_percepcao, $sintomas_percepcaos = [], $sintomasPercepcaoList = [], $pe_neuropatico, $arco_desabado, $valgismo, $dedos_em_garra, $estado_unhas_id;
     public $corte_unhas, $fissuras, $calosidades, $micose, $teste_senso_percepcao_id = null, $percepcao_direito, $percepcao_esquerdo;
     public $desbridamento_id, $avaliacao_ferida_id, $aplicacao_laserterapia, $terapia_fotodinamica;
+    public $outras_limpezas = null, $outras_coberturas = null;
     public $cuidado_ferida, $coberturas = [], $coberturasList = [], $limpeza_lesaos = [], $limpezaLesaosList = [], $sinais_infeccaos = [], $sinaisInfeccaoList = [];
     public $regiao_pe_id;
 
@@ -109,6 +110,8 @@ class ShowQuestionario extends Component
 
     public $sinais_infeccao_direito = [];
     public $sinais_infeccao_esquerdo = [];
+    public $tipos_tecido_ferida_direito = [];
+    public $tipos_tecido_ferida_esquerdo = [];
 
     public $dados = [
         'direito' => [
@@ -122,7 +125,6 @@ class ShowQuestionario extends Component
             'quantidade_exudato_id' => null,
             'odor_exudato' => null,
             'aspecto_exudato_id' => null,
-            'tipo_tecido_ferida_id' => null,
             'profundidade_id' => null,
             'pele_periferida_id' => null,
             'dor' => null,
@@ -139,7 +141,6 @@ class ShowQuestionario extends Component
             'quantidade_exudato_id' => null,
             'odor_exudato' => null,
             'aspecto_exudato_id' => null,
-            'tipo_tecido_ferida_id' => null,
             'profundidade_id' => null,
             'pele_periferida_id' => null,
             'dor' => null,
@@ -336,6 +337,7 @@ class ShowQuestionario extends Component
         $this->questionario = Questionario::with([
             'nss_sociais.recreacoes', // Carregando as recreações do questionário
             'nss_sociais.cuidado.emocionais', // Carregando os emocionais do questionário
+            'nss_biologica.hidratacao.tipos_pele', // Carregando os tipos de pele
             'nss_biologica.nutricao.refeicoes', // Carregando as refeições do questionário
             'nss_biologica.nutricao.restricoes_alimentar', // Carregando as restrições alimentares
             'nss_biologica.sono.problemas_sono', // Carregando os problemas de sono
@@ -372,7 +374,8 @@ class ShowQuestionario extends Component
         $this->risco_queda = $this->questionario->nss_biologica->percepcao_sentidos->risco_queda;
 
         $this->liquido_diario = $this->questionario->nss_biologica->hidratacao->liquido_diario;
-        $this->tipo_pele_id = $this->questionario->nss_biologica->hidratacao->tipo_pele_id;
+        $this->tiposPeleList = \App\Models\Tipo_pele::all();
+        $this->tipos_pele = $this->questionario->nss_biologica->hidratacao->tipos_pele->pluck('id')->toArray();
 
         $this->alimento_consumo_id = $this->questionario->nss_biologica->nutricao->alimento_consumo_id;
 
@@ -396,8 +399,7 @@ class ShowQuestionario extends Component
         $this->peso = $this->questionario->nss_biologica->regulacao_hormonal->peso;
         $this->circunferencia_abdnominal = $this->questionario->nss_biologica->regulacao_hormonal->circunferencia_abdnominal;
         $this->glicemia_capilar = $this->questionario->nss_biologica->regulacao_hormonal->glicemia_capilar;
-        $this->jejum = $this->questionario->nss_biologica->regulacao_hormonal->jejum;
-        $this->pos_prandial = $this->questionario->nss_biologica->regulacao_hormonal->pos_prandial;
+        $this->estado_glicemia = $this->questionario->nss_biologica->regulacao_hormonal->jejum ? 1 : 0;
 
         $this->temp_enchimento_capilar = $this->questionario->nss_biologica->oxigenacao->temp_enchimento_capilar;
         $this->frequencia_respiratoria = $this->questionario->nss_biologica->oxigenacao->frequencia_respiratoria;
@@ -420,7 +422,8 @@ class ShowQuestionario extends Component
         $this->sapato_adequado = $this->questionario->nss_biologica->locomocao->sapato_adequado;
         $this->sandalia_cicatrizacao = $this->questionario->nss_biologica->locomocao->sandalia_cicatrizacao;
 
-        $this->pressao_arterial = $this->questionario->nss_biologica->regulacao_vascular->pressao_arterial;
+        $this->pressao_sistolica = $this->questionario->nss_biologica->regulacao_vascular->pressao_sistolica;
+        $this->pressao_diastolica = $this->questionario->nss_biologica->regulacao_vascular->pressao_diastolica;
         $this->frequencia_cardiaca = $this->questionario->nss_biologica->regulacao_vascular->frequencia_cardiaca;
         $this->psatp_direito = $this->questionario->nss_biologica->regulacao_vascular->psatp_direito;
         $this->psap_direito = $this->questionario->nss_biologica->regulacao_vascular->psap_direito;
@@ -481,18 +484,21 @@ class ShowQuestionario extends Component
                     'quantidade_exudato_id' => $item->quantidade_exudato_id,
                     'odor_exudato' => $item->odor_exudato,
                     'aspecto_exudato_id' => $item->aspecto_exudato_id,
-                    'tipo_tecido_ferida_id' => $item->tipo_tecido_ferida_id,
                     'profundidade_id' => $item->profundidade_id,
                     'pele_periferida_id' => $item->pele_periferida_id,
                     'dor' => $item->dor,
                     'sinais_infeccao' => $sinais,
                 ];
 
+                $tecidos = $item->tipos_tecido_ferida->pluck('id')->toArray();
+
                 // Preenche os modelos usados nos checkboxes
                 if ($lado === 'direito') {
                     $this->sinais_infeccao_direito = $sinais;
+                    $this->tipos_tecido_ferida_direito = $tecidos;
                 } elseif ($lado === 'esquerdo') {
                     $this->sinais_infeccao_esquerdo = $sinais;
+                    $this->tipos_tecido_ferida_esquerdo = $tecidos;
                 }
             }
         }
@@ -501,6 +507,8 @@ class ShowQuestionario extends Component
         $this->avaliacao_ferida_id = $this->questionario->nss_biologica->cuidado_ferida->avaliacao_ferida_id;
         $this->aplicacao_laserterapia = $this->questionario->nss_biologica->cuidado_ferida->aplicacao_laserterapia;
         $this->terapia_fotodinamica = $this->questionario->nss_biologica->cuidado_ferida->terapia_fotodinamica;
+        $this->outras_limpezas = $this->questionario->nss_biologica->cuidado_ferida->outras_limpezas;
+        $this->outras_coberturas = $this->questionario->nss_biologica->cuidado_ferida->outras_coberturas;
 
         $this->apoio = $this->questionario->nss_sociais->comunicacao->apoio;
         $this->interacao_social = $this->questionario->nss_sociais->comunicacao->interacao_social;
@@ -573,7 +581,6 @@ class ShowQuestionario extends Component
             'sinaisInfeccaoList' => $this->sinaisInfeccaoList,
             'comportamentosNeuro' => \App\Models\Comportamento_regulacao_neuro::all(),
             'analiseTatos' => \App\Models\Analise_tato::all(),
-            'tipoPeles' => \App\Models\Tipo_pele::all(),
             'alimentoConsumos' => \App\Models\Alimento_consumo::all(),
             'qualidadeSonos' => \App\Models\Qualidade_sono::all(),
             'frequenciasExercicio' => \App\Models\Frequencia_exercicio::all(),

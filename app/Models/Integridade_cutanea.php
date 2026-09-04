@@ -30,9 +30,9 @@ class Integridade_cutanea extends Model
     {
         return $this->belongsTo(Aspecto_exudato::class);
     }
-    public function tipo_tecido_ferida()
+    public function tipos_tecido_ferida()
     {
-        return $this->belongsTo(Tipo_tecido_ferida::class);
+        return $this->belongsToMany(Tipo_tecido_ferida::class, 'integridade_cutanea_tipo_tecido_ferida');
     }
     public function pele_periferida()
     {
