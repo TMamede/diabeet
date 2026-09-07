@@ -18,7 +18,8 @@ class RegulacaoVascularSeeder extends Seeder
 
         foreach (range(1, 10) as $index) {
             DB::table('regulacao_vasculars')->insert([
-                'pressao_arterial' => $faker->numberBetween(80, 180),          // Valores de pressão arterial sistólica em mmHg
+                'pressao_sistolica' => $faker->numberBetween(90, 180),         // Pressão arterial sistólica em mmHg
+                'pressao_diastolica' => $faker->numberBetween(60, 110),        // Pressão arterial diastólica em mmHg
                 'frequencia_cardiaca' => $faker->numberBetween(60, 130),       // Frequência cardíaca em bpm
                 'psatp_direito' => $faker->randomFloat(1, 0.5, 1.5),           // Valor entre 0.5 e 1.5
                 'psap_direito' => $faker->randomFloat(1, 0.5, 1.5),

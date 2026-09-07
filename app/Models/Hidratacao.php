@@ -10,9 +10,9 @@ class Hidratacao extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function tipo_pele()
+    public function tipos_pele()
     {
-        return $this->belongsTo(Tipo_pele::class);
+        return $this->belongsToMany(Tipo_pele::class, 'hidratacao_tipo_pele');
     }
     public function nss_biologicas()
     {

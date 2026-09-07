@@ -96,22 +96,23 @@ class CreateQuestionario extends Component
     //Etapa 2 - Necessidades Biológicas
     public $regulacao_neuro, $orientado, $comportamento_regulacao_neuro_id;
     public $percepcao_sentido, $olho_direito, $olho_esquerdo, $ouvido, $analise_tato_id, $risco_queda;
-    public $hidratacao, $liquido_diario, $tipo_pele_id;
+    public $hidratacao, $liquido_diario, $tipos_pele = [], $tiposPeleList = [];
     public $nutricao, $alimento_consumo_id, $refeicaos = [], $refeicaosList = [], $restricaos = [], $restricaosList = [];
     public $sono, $horas_sono, $acorda_noite, $qualidade_sono_id, $problema_sonos = [], $problemaSonoList = [], $medicamentos_sono;
     public $exercicio_fisico, $realiza, $frequencia_exercicio_id, $duracao;
     public $abrigo, $zona_moradia_id, $luz_publica, $coleta_lixo, $agua_tratada, $rede_esgoto_id, $animais_domesticos;
-    public $regulacao_hormonal, $altura, $peso, $imc, $classificacao, $circunferencia_abdnominal, $glicemia_capilar, $jejum, $pos_prandial;
+    public $regulacao_hormonal, $altura, $peso, $imc, $classificacao, $circunferencia_abdnominal, $glicemia_capilar;
     public $oxigenacao, $temp_enchimento_capilar, $frequencia_respiratoria, $satO2;
     public $regulacao_termica, $temperatura, $classificacaoTemperatura;
     public $eliminacao, $dor_urinar, $incontinencia_urina, $uso_laxante, $uso_fraldas, $dor_eliminacoes, $incontinencia_eliminacao, $constipacao, $diarreia, $equipamento_externo;
     public $sexualidade, $vida_sex_ativa, $disturbio_sexuals = [], $disturbiosSexualList = [];
     public $locomocao, $tipo_locomocaos = [], $tiposLocomocaoList = [], $sapato_adequado, $sandalia_cicatrizacao;
-    public $regulacao_vascular, $pressao_arterial, $frequencia_cardiaca, $psatp_direito, $psap_direito, $psab_direito, $psatp_esquerdo, $psap_esquerdo, $psab_esquerdo;
+    public $regulacao_vascular, $pressao_sistolica, $pressao_diastolica, $frequencia_cardiaca, $psatp_direito, $psap_direito, $psab_direito, $psatp_esquerdo, $psap_esquerdo, $psab_esquerdo;
     public $senso_percepcao, $sintomas_percepcaos = [], $sintomasPercepcaoList = [], $pe_neuropatico, $arco_desabado, $valgismo, $dedos_em_garra, $estado_unhas_id;
     public $corte_unhas, $fissuras, $calosidades, $micose, $teste_senso_percepcao_id = null, $percepcao_direito, $percepcao_esquerdo;
     public $desbridamento_id, $avaliacao_ferida_id, $aplicacao_laserterapia, $terapia_fotodinamica;
     public $cuidado_ferida, $coberturas = [], $coberturasList = [], $limpeza_lesaos = [], $limpezaLesaosList = [], $sinais_infeccaos = [], $sinaisInfeccaoList = [];
+    public $outras_limpezas = null, $outras_coberturas = null;
     public $regiao_pe_id;
     //Etapa 3 - Necessidades Sociais
     public $aprendizagem, $monitoramento_glicemia_dia, $cuidado_pes, $uso_sapato, $alimentacao, $regime_terapeutico;
@@ -139,6 +140,8 @@ class CreateQuestionario extends Component
 
     public $sinais_infeccao_direito = [];
     public $sinais_infeccao_esquerdo = [];
+    public $tipos_tecido_ferida_direito = [];
+    public $tipos_tecido_ferida_esquerdo = [];
 
     public $dados = [
         'direito' => [
@@ -152,7 +155,6 @@ class CreateQuestionario extends Component
             'quantidade_exudato_id' => null,
             'odor_exudato' => null,
             'aspecto_exudato_id' => null,
-            'tipo_tecido_ferida_id' => null,
             'profundidade_id' => null,
             'pele_periferida_id' => null,
             'dor' => null,
@@ -169,7 +171,6 @@ class CreateQuestionario extends Component
             'quantidade_exudato_id' => null,
             'odor_exudato' => null,
             'aspecto_exudato_id' => null,
-            'tipo_tecido_ferida_id' => null,
             'profundidade_id' => null,
             'pele_periferida_id' => null,
             'dor' => null,
@@ -405,6 +406,7 @@ class CreateQuestionario extends Component
         $this->limpezaLesaosList = Limpeza_lesao::all();
         $this->coberturasList = Cobertura_ferida::all();
         $this->sinaisInfeccaoList = Sinais_infeccao::all();
+        $this->tiposPeleList = \App\Models\Tipo_pele::all();
     }
     public $IdQuestionario, $enfermeiro;
 
@@ -416,6 +418,7 @@ class CreateQuestionario extends Component
         $this->questionario = Questionario::with([
             'nss_sociais.recreacoes',
             'nss_sociais.cuidado.emocionais',
+            'nss_biologica.hidratacao.tipos_pele',
             'nss_biologica.nutricao.refeicoes',
             'nss_biologica.nutricao.restricoes_alimentar',
             'nss_biologica.sono.problemas_sono',
@@ -456,7 +459,8 @@ class CreateQuestionario extends Component
         $this->risco_queda = $this->questionario->nss_biologica->percepcao_sentidos->risco_queda;
 
         $this->liquido_diario = $this->questionario->nss_biologica->hidratacao->liquido_diario;
-        $this->tipo_pele_id = $this->questionario->nss_biologica->hidratacao->tipo_pele_id;
+        $this->tiposPeleList = \App\Models\Tipo_pele::all();
+        $this->tipos_pele = $this->questionario->nss_biologica->hidratacao->tipos_pele->pluck('id')->toArray();
 
         $this->alimento_consumo_id = $this->questionario->nss_biologica->nutricao->alimento_consumo_id;
 
@@ -480,8 +484,7 @@ class CreateQuestionario extends Component
         $this->peso = $this->questionario->nss_biologica->regulacao_hormonal->peso;
         $this->circunferencia_abdnominal = $this->questionario->nss_biologica->regulacao_hormonal->circunferencia_abdnominal;
         $this->glicemia_capilar = $this->questionario->nss_biologica->regulacao_hormonal->glicemia_capilar;
-        $this->jejum = $this->questionario->nss_biologica->regulacao_hormonal->jejum;
-        $this->pos_prandial = $this->questionario->nss_biologica->regulacao_hormonal->pos_prandial;
+        $this->estado_glicemia = $this->questionario->nss_biologica->regulacao_hormonal->jejum ? 1 : 0;
 
         $this->temp_enchimento_capilar = $this->questionario->nss_biologica->oxigenacao->temp_enchimento_capilar;
         $this->frequencia_respiratoria = $this->questionario->nss_biologica->oxigenacao->frequencia_respiratoria;
@@ -504,7 +507,8 @@ class CreateQuestionario extends Component
         $this->sapato_adequado = $this->questionario->nss_biologica->locomocao->sapato_adequado;
         $this->sandalia_cicatrizacao = $this->questionario->nss_biologica->locomocao->sandalia_cicatrizacao;
 
-        $this->pressao_arterial = $this->questionario->nss_biologica->regulacao_vascular->pressao_arterial;
+        $this->pressao_sistolica = $this->questionario->nss_biologica->regulacao_vascular->pressao_sistolica;
+        $this->pressao_diastolica = $this->questionario->nss_biologica->regulacao_vascular->pressao_diastolica;
         $this->frequencia_cardiaca = $this->questionario->nss_biologica->regulacao_vascular->frequencia_cardiaca;
         $this->psatp_direito = $this->questionario->nss_biologica->regulacao_vascular->psatp_direito;
         $this->psap_direito = $this->questionario->nss_biologica->regulacao_vascular->psap_direito;
@@ -565,18 +569,21 @@ class CreateQuestionario extends Component
                     'quantidade_exudato_id' => $item->quantidade_exudato_id,
                     'odor_exudato' => $item->odor_exudato,
                     'aspecto_exudato_id' => $item->aspecto_exudato_id,
-                    'tipo_tecido_ferida_id' => $item->tipo_tecido_ferida_id,
                     'profundidade_id' => $item->profundidade_id,
                     'pele_periferida_id' => $item->pele_periferida_id,
                     'dor' => $item->dor,
                     'sinais_infeccao' => $sinais,
                 ];
 
+                $tecidos = $item->tipos_tecido_ferida->pluck('id')->toArray();
+
                 // Preenche os modelos usados nos checkboxes
                 if ($lado === 'direito') {
                     $this->sinais_infeccao_direito = $sinais;
+                    $this->tipos_tecido_ferida_direito = $tecidos;
                 } elseif ($lado === 'esquerdo') {
                     $this->sinais_infeccao_esquerdo = $sinais;
+                    $this->tipos_tecido_ferida_esquerdo = $tecidos;
                 }
             }
         }
@@ -585,6 +592,8 @@ class CreateQuestionario extends Component
         $this->avaliacao_ferida_id = $this->questionario->nss_biologica->cuidado_ferida->avaliacao_ferida_id;
         $this->aplicacao_laserterapia = $this->questionario->nss_biologica->cuidado_ferida->aplicacao_laserterapia;
         $this->terapia_fotodinamica = $this->questionario->nss_biologica->cuidado_ferida->terapia_fotodinamica;
+        $this->outras_limpezas = $this->questionario->nss_biologica->cuidado_ferida->outras_limpezas;
+        $this->outras_coberturas = $this->questionario->nss_biologica->cuidado_ferida->outras_coberturas;
 
         $this->apoio = $this->questionario->nss_sociais->comunicacao->apoio;
         $this->interacao_social = $this->questionario->nss_sociais->comunicacao->interacao_social;
@@ -671,7 +680,6 @@ class CreateQuestionario extends Component
             'sinaisInfeccaoList' => $this->sinaisInfeccaoList,
             'comportamentosNeuro' => \App\Models\Comportamento_regulacao_neuro::all(),
             'analiseTatos' => \App\Models\Analise_tato::all(),
-            'tipoPeles' => \App\Models\Tipo_pele::all(),
             'alimentoConsumos' => \App\Models\Alimento_consumo::all(),
             'qualidadeSonos' => \App\Models\Qualidade_sono::all(),
             'frequenciasExercicio' => \App\Models\Frequencia_exercicio::all(),
@@ -717,7 +725,8 @@ class CreateQuestionario extends Component
                 'risco_queda' => 'required|boolean',
 
                 'liquido_diario' => 'required|numeric|min:0',
-                'tipo_pele_id' => 'required|exists:tipo_peles,id',
+                'tipos_pele' => 'required|array|min:1',
+                'tipos_pele.*' => 'exists:tipo_peles,id',
 
                 'alimento_consumo_id' => 'required|exists:alimento_consumos,id',
                 'refeicaos' => 'nullable|array',
@@ -744,8 +753,7 @@ class CreateQuestionario extends Component
                 'peso' => 'required|numeric|min:0',
                 'circunferencia_abdnominal' => 'required|numeric|min:0',
                 'glicemia_capilar' => 'required|numeric|min:0',
-                'jejum' => 'required|boolean',
-                'pos_prandial' => 'required|boolean',
+                'estado_glicemia' => 'required|in:0,1',
 
                 'temp_enchimento_capilar' => 'required|numeric|min:0',
                 'frequencia_respiratoria' => 'required|numeric|min:0',
@@ -770,7 +778,8 @@ class CreateQuestionario extends Component
                 'sapato_adequado' => 'required|boolean',
                 'sandalia_cicatrizacao' => 'required|boolean',
 
-                'pressao_arterial' => 'required|numeric|min:0',
+                'pressao_sistolica' => 'required|numeric|min:0|max:300',
+                'pressao_diastolica' => 'required|numeric|min:0|max:300',
                 'frequencia_cardiaca' => 'required|numeric|min:0',
                 'psatp_direito' => 'required|numeric|min:0',
                 'psap_direito' => 'required|numeric|min:0',
@@ -794,6 +803,8 @@ class CreateQuestionario extends Component
 
                 'limpeza_lesaos' => 'nullable|array',
                 'coberturas' => 'nullable|array',
+                'outras_limpezas' => 'nullable|string|max:500|no_badwords',
+                'outras_coberturas' => 'nullable|string|max:500|no_badwords',
                 'desbridamento_id' => 'required|exists:desbridamentos,id',
                 'avaliacao_ferida_id' => 'required|exists:avaliacao_feridas,id',
                 'aplicacao_laserterapia' => 'required|boolean',
@@ -859,10 +870,12 @@ class CreateQuestionario extends Component
                 'liquido_diario.min' =>
                     'A quantidade de líquido não pode ser negativa.',
 
-                'tipo_pele_id.required' =>
-                    'Selecione o tipo de pele.',
-                'tipo_pele_id.exists' =>
-                    'O tipo de pele selecionado é inválido.',
+                'tipos_pele.required' =>
+                    'Selecione ao menos um tipo de pele.',
+                'tipos_pele.min' =>
+                    'Selecione ao menos um tipo de pele.',
+                'tipos_pele.*.exists' =>
+                    'Um dos tipos de pele selecionados é inválido.',
 
 
                 // =========================================================
@@ -1004,15 +1017,10 @@ class CreateQuestionario extends Component
                 'glicemia_capilar.min' =>
                     'A glicemia capilar não pode ser negativa.',
 
-                'jejum.required' =>
-                    'Informe se a glicemia foi medida em jejum.',
-                'jejum.boolean' =>
-                    'A informação sobre jejum deve ser sim ou não.',
-
-                'pos_prandial.required' =>
-                    'Informe se a glicemia foi medida após a refeição.',
-                'pos_prandial.boolean' =>
-                    'A informação sobre o período pós-prandial deve ser sim ou não.',
+                'estado_glicemia.required' =>
+                    'Informe o estado da glicemia (em jejum ou pós-prandial).',
+                'estado_glicemia.in' =>
+                    'O estado da glicemia deve ser "Em Jejum" ou "Duas horas após as refeições".',
 
 
                 // =========================================================
@@ -1140,12 +1148,23 @@ class CreateQuestionario extends Component
                 // REGULAÇÃO VASCULAR
                 // =========================================================
 
-                'pressao_arterial.required' =>
-                    'Informe a pressão arterial.',
-                'pressao_arterial.numeric' =>
-                    'A pressão arterial deve ser um número.',
-                'pressao_arterial.min' =>
-                    'A pressão arterial não pode ser negativa.',
+                'pressao_sistolica.required' =>
+                    'Informe a pressão arterial sistólica.',
+                'pressao_sistolica.numeric' =>
+                    'A pressão arterial sistólica deve ser um número.',
+                'pressao_sistolica.min' =>
+                    'A pressão arterial sistólica não pode ser negativa.',
+                'pressao_sistolica.max' =>
+                    'Informe uma pressão arterial sistólica válida.',
+
+                'pressao_diastolica.required' =>
+                    'Informe a pressão arterial diastólica.',
+                'pressao_diastolica.numeric' =>
+                    'A pressão arterial diastólica deve ser um número.',
+                'pressao_diastolica.min' =>
+                    'A pressão arterial diastólica não pode ser negativa.',
+                'pressao_diastolica.max' =>
+                    'Informe uma pressão arterial diastólica válida.',
 
                 'frequencia_cardiaca.required' =>
                     'Informe a frequência cardíaca.',
@@ -1336,8 +1355,11 @@ class CreateQuestionario extends Component
                     $rules["dados.$lado.profundidade_id"] =
                         'required|exists:profundidades,id';
 
-                    $rules["dados.$lado.tipo_tecido_ferida_id"] =
-                        'required|exists:tipo_tecido_feridas,id';
+                    $rules["tipos_tecido_ferida_$lado"] =
+                        'required|array|min:1';
+
+                    $rules["tipos_tecido_ferida_$lado.*"] =
+                        'exists:tipo_tecido_feridas,id';
 
                     $rules["dados.$lado.aspecto_exudato_id"] =
                         'required|exists:aspecto_exudatos,id';
@@ -1456,11 +1478,14 @@ class CreateQuestionario extends Component
                     // Tipo de tecido
                     // -----------------------------------------------------
 
-                    $messages["dados.$lado.tipo_tecido_ferida_id.required"] =
-                        "Selecione o tipo de tecido da ferida do pé $lado.";
+                    $messages["tipos_tecido_ferida_$lado.required"] =
+                        "Selecione ao menos um tipo de tecido da ferida do pé $lado.";
 
-                    $messages["dados.$lado.tipo_tecido_ferida_id.exists"] =
-                        "O tipo de tecido da ferida do pé $lado selecionado é inválido.";
+                    $messages["tipos_tecido_ferida_$lado.min"] =
+                        "Selecione ao menos um tipo de tecido da ferida do pé $lado.";
+
+                    $messages["tipos_tecido_ferida_$lado.*.exists"] =
+                        "Um dos tipos de tecido da ferida do pé $lado selecionados é inválido.";
 
 
                     // -----------------------------------------------------
@@ -2012,7 +2037,14 @@ class CreateQuestionario extends Component
                 'motivo' => 49,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->regulacao_vascular?->pressao_arterial == "12080",
+                'condicao' => (function () use ($questionario) {
+                    $sistolica = $questionario->nss_biologica?->regulacao_vascular?->pressao_sistolica;
+                    $diastolica = $questionario->nss_biologica?->regulacao_vascular?->pressao_diastolica;
+                    if ($sistolica === null || $diastolica === null) {
+                        return false;
+                    }
+                    return $sistolica >= 140 || $sistolica < 90 || $diastolica >= 90 || $diastolica < 60;
+                })(),
                 'origem' => 14,
                 'motivo' => 104,
             ],
@@ -2261,11 +2293,14 @@ class CreateQuestionario extends Component
                     $prontuario->motivos()->syncWithoutDetaching([$motivo]);
                 }
 
-                if (in_array(optional($analiseCutanea->tipo_tecido_ferida)->id, [3, 4])) {
-                    $mapaMotivos = [3 => 82, 4 => 83];
-                    $motivo = $mapaMotivos[$analiseCutanea->tipo_tecido_ferida->id];
+                $mapaMotivosTecido = [3 => 82, 4 => 83];
+                $tecidosSelecionados = $analiseCutanea->tipos_tecido_ferida->pluck('id');
+                $motivosTecido = $tecidosSelecionados
+                    ->intersect(array_keys($mapaMotivosTecido))
+                    ->map(fn($id) => $mapaMotivosTecido[$id]);
+                if ($motivosTecido->isNotEmpty()) {
                     $prontuario->origens()->syncWithoutDetaching([16]);
-                    $prontuario->motivos()->syncWithoutDetaching([$motivo]);
+                    $prontuario->motivos()->syncWithoutDetaching($motivosTecido->all());
                 }
 
                 if ($analiseCutanea->sinais_infeccao && $analiseCutanea->sinais_infeccao->isNotEmpty()) {
@@ -2300,10 +2335,10 @@ class CreateQuestionario extends Component
             'risco_queda' => $this->risco_queda,
         ]);
 
-        $hidratacao = Hidratacao::firstOrCreate([
+        $hidratacao = Hidratacao::create([
             'liquido_diario' => $this->liquido_diario,
-            'tipo_pele_id' => $this->tipo_pele_id,
         ]);
+        $hidratacao->tipos_pele()->sync($this->tipos_pele ?? []);
 
         $nutricao = Nutricao::create([
             'alimento_consumo_id' => $this->alimento_consumo_id,
@@ -2336,8 +2371,8 @@ class CreateQuestionario extends Component
             'peso' => $this->peso,
             'circunferencia_abdnominal' => $this->circunferencia_abdnominal,
             'glicemia_capilar' => $this->glicemia_capilar,
-            'jejum' => $this->jejum,
-            'pos_prandial' => $this->pos_prandial,
+            'jejum' => $this->estado_glicemia == 1,
+            'pos_prandial' => $this->estado_glicemia == 0,
         ]);
 
         $oxigenacao = Oxigenacao::firstOrCreate([
@@ -2372,7 +2407,8 @@ class CreateQuestionario extends Component
         ]);
 
         $regulacao_vascular = Regulacao_vascular::firstOrCreate([
-            'pressao_arterial' => $this->pressao_arterial,
+            'pressao_sistolica' => $this->pressao_sistolica,
+            'pressao_diastolica' => $this->pressao_diastolica,
             'frequencia_cardiaca' => $this->frequencia_cardiaca,
             'psatp_direito' => $this->psatp_direito,
             'psap_direito' => $this->psap_direito,
@@ -2402,6 +2438,8 @@ class CreateQuestionario extends Component
             'avaliacao_ferida_id' => $this->avaliacao_ferida_id,
             'aplicacao_laserterapia' => $this->aplicacao_laserterapia,
             'terapia_fotodinamica' => $this->terapia_fotodinamica,
+            'outras_limpezas' => $this->outras_limpezas,
+            'outras_coberturas' => $this->outras_coberturas,
         ]);
 
         $nss_biologicas = Nss_biologicas::create([
@@ -2444,11 +2482,15 @@ class CreateQuestionario extends Component
                     'quantidade_exudato_id' => $this->dados[$lado]['quantidade_exudato_id'] ?? null,
                     'odor_exudato' => $this->dados[$lado]['odor_exudato'] ?? null,
                     'aspecto_exudato_id' => $this->dados[$lado]['aspecto_exudato_id'] ?? null,
-                    'tipo_tecido_ferida_id' => $this->dados[$lado]['tipo_tecido_ferida_id'] ?? null,
                     'profundidade_id' => $this->dados[$lado]['profundidade_id'] ?? null,
                     'pele_periferida_id' => $this->dados[$lado]['pele_periferida_id'] ?? null,
                     'dor' => $this->dados[$lado]['dor'] ?? null,
                 ]);
+
+                $tecidosSelecionados = $lado === 'direito'
+                    ? $this->tipos_tecido_ferida_direito
+                    : $this->tipos_tecido_ferida_esquerdo;
+                $integridade->tipos_tecido_ferida()->sync($tecidosSelecionados ?? []);
 
                 if ($lado === 'direito') {
                     foreach ($this->sinais_infeccao_direito as $id) {

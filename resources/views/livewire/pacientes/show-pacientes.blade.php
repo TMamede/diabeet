@@ -683,10 +683,10 @@
                                             <div class="form-group">
                                                 <label for="inicio_tabagismo"
                                                     class="block mb-2 text-sm font-semibold text-gray-700">
-                                                    Início do Tabagismo
+                                                    Início do Tabagismo (idade em anos)
                                                 </label>
-                                                <input type="date" wire:model="inicio_tabagismo"
-                                                    id="inicio_tabagismo"
+                                                <input type="number" wire:model="inicio_tabagismo"
+                                                    id="inicio_tabagismo" min="0" max="120" placeholder="Ex: 18"
                                                     class="w-full px-4 py-3 border border-gray-200 bg-white/70 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:bg-white">
                                                 @error('inicio_tabagismo')
                                                     <span
@@ -698,10 +698,10 @@
                                             <div class="form-group">
                                                 <label for="inicio_etilismo"
                                                     class="block mb-2 text-sm font-semibold text-gray-700">
-                                                    Início do Etilismo
+                                                    Início do Etilismo (idade em anos)
                                                 </label>
                                                 <input type="number" wire:model="inicio_etilismo"
-                                                    id="inicio_etilismo"
+                                                    id="inicio_etilismo" min="0" max="120" placeholder="Ex: 18"
                                                     class="w-full px-4 py-3 border border-gray-200 bg-white/70 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:bg-white">
                                                 @error('inicio_etilismo')
                                                     <span
@@ -817,6 +817,21 @@
                                                             </label>
                                                         </div>
                                                     @endforeach
+                                                </div>
+
+                                                <div class="mt-6">
+                                                    <label for="outras_comorbidades"
+                                                        class="block mb-2 text-sm font-semibold text-gray-700">
+                                                        Outras comorbidades (opcional)
+                                                    </label>
+                                                    <textarea wire:model="outras_comorbidades" id="outras_comorbidades"
+                                                        rows="2"
+                                                        class="w-full px-4 py-3 border border-gray-200 bg-white/70 rounded-xl focus:border-red-500 focus:ring-2 focus:ring-red-200 focus:bg-white"
+                                                        placeholder="Descreva outras comorbidades não listadas acima..."></textarea>
+                                                    @error('outras_comorbidades')
+                                                        <span
+                                                            class="block mt-1 text-sm text-red-500">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -1116,31 +1131,15 @@
 
                                                     <!-- Horário -->
                                                     <div class="form-group lg:col-span-2">
-                                                        <label for="medicamentos.{{ $index }}.horario_med_id"
-                                                            class="block mb-2 text-sm font-semibold text-gray-700">Horário
-                                                            de Administração</label>
-                                                        <div class="relative">
-                                                            <select
-                                                                wire:model="medicamentos.{{ $index }}.horario_med_id"
-                                                                id="medicamentos.{{ $index }}.horario_med_id"
-                                                                class="w-full px-4 py-3 border border-gray-200 appearance-none bg-white/70 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:bg-white">
-                                                                <option value="">Selecione o horário</option>
-                                                                @foreach ($horarios_med as $horario)
-                                                                    <option value="{{ $horario->id }}">
-                                                                        {{ $horario->descricao }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                            <div
-                                                                class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                                                <svg class="w-5 h-5 text-gray-400" fill="none"
-                                                                    stroke="currentColor" viewBox="0 0 24 24">
-                                                                    <path stroke-linecap="round"
-                                                                        stroke-linejoin="round" stroke-width="2"
-                                                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                                </svg>
-                                                            </div>
-                                                        </div>
-                                                        @error('medicamentos.' . $index . '.horario_med_id')
+                                                        <label for="medicamentos.{{ $index }}.horario_descricao"
+                                                            class="block mb-2 text-sm font-semibold text-gray-700">Horário/Frequência
+                                                            da Medicação</label>
+                                                        <input type="text"
+                                                            wire:model="medicamentos.{{ $index }}.horario_descricao"
+                                                            id="medicamentos.{{ $index }}.horario_descricao"
+                                                            placeholder="Ex: 8h e 20h, ou 2x ao dia (manhã e noite)"
+                                                            class="w-full px-4 py-3 border border-gray-200 bg-white/70 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:bg-white">
+                                                        @error('medicamentos.' . $index . '.horario_descricao')
                                                             <span
                                                                 class="block mt-1 text-sm text-red-500">{{ $message }}</span>
                                                         @enderror

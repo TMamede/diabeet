@@ -286,6 +286,19 @@
                                             @error('comorbidades')
                                                 <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
                                             @enderror
+
+                                            <div class="mt-4">
+                                                <label for="outras_comorbidades"
+                                                    class="block mb-2 text-sm font-medium text-gray-700">Outras
+                                                    comorbidades (opcional)</label>
+                                                <textarea wire:model.lazy="outras_comorbidades" id="outras_comorbidades"
+                                                    rows="2"
+                                                    class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                                    placeholder="Descreva outras comorbidades não listadas acima..."></textarea>
+                                                @error('outras_comorbidades')
+                                                    <span class="mt-1 text-sm text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </section>
 
                                         <!-- Cirurgias -->
@@ -478,10 +491,11 @@
                                                         <div>
                                                             <label for="inicio_tabagismo"
                                                                 class="block mb-2 text-sm font-medium text-gray-700">Início
-                                                                do Tabagismo</label>
-                                                            <input type="date" wire:model.lazy="inicio_tabagismo"
-                                                                id="inicio_tabagismo"
-                                                                class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-pink-500 focus:border-pink-500">
+                                                                do Tabagismo (idade em anos)</label>
+                                                            <input type="number" wire:model.lazy="inicio_tabagismo"
+                                                                id="inicio_tabagismo" min="0" max="120"
+                                                                class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
+                                                                placeholder="Ex: 18">
                                                             @error('inicio_tabagismo')
                                                                 <span
                                                                     class="mt-1 text-sm text-red-500">{{ $message }}</span>
@@ -524,10 +538,11 @@
                                                         <div>
                                                             <label for="inicio_etilismo"
                                                                 class="block mb-2 text-sm font-medium text-gray-700">Início
-                                                                do Etilismo</label>
+                                                                do Etilismo (idade em anos)</label>
                                                             <input type="number" wire:model.lazy="inicio_etilismo"
-                                                                id="inicio_etilismo"
-                                                                class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                                                id="inicio_etilismo" min="0" max="120"
+                                                                class="block w-full p-3 transition-all duration-200 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                                                placeholder="Ex: 18">
                                                             @error('inicio_etilismo')
                                                                 <span
                                                                     class="mt-1 text-sm text-red-500">{{ $message }}</span>
@@ -727,11 +742,18 @@
                                                                     class="block mt-1 text-sm text-red-500">{{ $message }}</span>
                                                             @enderror
 
-                                                            <x-select label="Horário da Medicação"
-                                                                id="medicamentos.{{ $index }}.horario_med_id"
-                                                                wire:model.lazy="medicamentos.{{ $index }}.horario_med_id"
-                                                                :options="$horarios_med" />
-                                                            @error('medicamentos.' . $index . '.horario_med_id')
+                                                            <div class="group">
+                                                                <label for="medicamentos.{{ $index }}.horario_descricao"
+                                                                    class="block mb-1 text-sm font-medium text-gray-700">
+                                                                    Horário/Frequência da Medicação
+                                                                </label>
+                                                                <input type="text"
+                                                                    wire:model.lazy="medicamentos.{{ $index }}.horario_descricao"
+                                                                    id="medicamentos.{{ $index }}.horario_descricao"
+                                                                    placeholder="Ex: 8h e 20h, ou 2x ao dia (manhã e noite)"
+                                                                    class="block w-full px-4 py-3 bg-white border border-gray-200 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 bg-white/90">
+                                                            </div>
+                                                            @error('medicamentos.' . $index . '.horario_descricao')
                                                                 <span
                                                                     class="block mt-1 text-sm text-red-500">{{ $message }}</span>
                                                             @enderror

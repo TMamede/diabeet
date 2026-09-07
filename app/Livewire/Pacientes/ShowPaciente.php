@@ -30,6 +30,7 @@ class ShowPaciente extends Component
     public $tipo_diabetes_id, $tempo_diagnostico, $cirurgia_motivo, $amputacao_onde, $amputacao_quando;
     public $n_cigarros, $inicio_tabagismo, $inicio_etilismo;
     public $comorbidades = []; // Nova variável para comorbidades
+    public $outras_comorbidades = null;
     public $alergias = []; // Nova variável para alergias
     public $comorbidadesList = [];
     public $alergiasList = [];
@@ -38,7 +39,7 @@ class ShowPaciente extends Component
 
     // Etapa 3: Medicamentos
     public $medicamentos = [];
-    public $nome_generico, $via_id, $horario_med_id, $dose;
+    public $nome_generico, $via_id, $horario_descricao, $dose;
 
     // Etapa 4: Resultados
     public $resultados = [];
@@ -125,8 +126,13 @@ class ShowPaciente extends Component
             'amputacao_quando.date' => 'Informe uma data válida para a amputação.',
             'n_cigarros.integer' => 'O número de cigarros deve ser um número inteiro.',
             'n_cigarros.min' => 'O número de cigarros deve ser pelo menos 0.',
-            'inicio_tabagismo.date' => 'Informe uma data válida para o início do tabagismo.',
-            'inicio_etilismo.date' => 'Informe uma data válida para o início do etilismo.',
+            'inicio_tabagismo.integer' => 'Informe a idade (em anos) de início do tabagismo.',
+            'inicio_tabagismo.min' => 'A idade de início do tabagismo deve ser pelo menos 0.',
+            'inicio_tabagismo.max' => 'Informe uma idade válida para o início do tabagismo.',
+            'inicio_etilismo.integer' => 'Informe a idade (em anos) de início do etilismo.',
+            'inicio_etilismo.min' => 'A idade de início do etilismo deve ser pelo menos 0.',
+            'inicio_etilismo.max' => 'Informe uma idade válida para o início do etilismo.',
+            'outras_comorbidades.max' => 'O campo de outras comorbidades não pode ter mais que 1000 caracteres.',
             'comorbidades.array' => 'As comorbidades devem ser uma lista.',
             'alergias.array' => 'As alergias devem ser uma lista.',
 
@@ -135,8 +141,8 @@ class ShowPaciente extends Component
             'medicamentos.*.nome_generico.max' => 'O nome genérico do medicamento não pode ter mais que 255 caracteres.',
             'medicamentos.*.via_id.required' => 'A via de administração do medicamento é obrigatória.',
             'medicamentos.*.via_id.exists' => 'A via de administração selecionada é inválida.',
-            'medicamentos.*.horario_med_id.required' => 'O horario de administração do medicamento é obrigatória.',
-            'medicamentos.*.horario_med_id.exists' => 'O horario de administração selecionada é inválido.',
+            'medicamentos.*.horario_descricao.required' => 'O horário/frequência de administração do medicamento é obrigatório.',
+            'medicamentos.*.horario_descricao.max' => 'O horário/frequência do medicamento não pode ter mais que 255 caracteres.',
             'medicamentos.*.dose.required' => 'A dose do medicamento é obrigatória.',
             'medicamentos.*.dose.max' => 'A dose do medicamento não pode ter mais que 255 caracteres.',
 
@@ -197,6 +203,7 @@ class ShowPaciente extends Component
             $this->n_cigarros = $this->paciente->historico->n_cigarros;
             $this->inicio_tabagismo = $this->paciente->historico->inicio_tabagismo;
             $this->inicio_etilismo = $this->paciente->historico->inicio_etilismo;
+            $this->outras_comorbidades = $this->paciente->historico->outras_comorbidades;
             $this->medicamento_alergia = $this->paciente->historico->medicamento_alergia;
             $this->alimento_alergia = $this->paciente->historico->alimento_alergia;
 
@@ -222,7 +229,6 @@ class ShowPaciente extends Component
             'beneficios' => \App\Models\Beneficio::all(),
             'resides' => \App\Models\Reside::all(),
             'vias' => \App\Models\Via::all(),
-            'horarios_med' => \App\Models\HorarioMed::all(),
             'unidadesSaude' => \App\Models\Unidade_saude::all(),
             'comorbidadesList' => $this->comorbidadesList,
             'alergiasList' => $this->alergiasList,
@@ -262,8 +268,9 @@ class ShowPaciente extends Component
                 'amputacao_onde' => 'nullable|string|max:255',
                 'amputacao_quando' => 'nullable|date',
                 'n_cigarros' => 'nullable|integer|min:0',
-                'inicio_tabagismo' => 'nullable|date',
-                'inicio_etilismo' => 'nullable|integer',
+                'inicio_tabagismo' => 'nullable|integer|min:0|max:120',
+                'inicio_etilismo' => 'nullable|integer|min:0|max:120',
+                'outras_comorbidades' => 'nullable|string|max:1000',
                 'medicamento_alergia' => 'nullable|string|max:255',
                 'alimento_alergia' => 'nullable|string|max:255',
                 'comorbidades' => 'nullable|array',
@@ -273,7 +280,7 @@ class ShowPaciente extends Component
             $this->validate([
                 'medicamentos.*.nome_generico' => 'required|string|max:255',
                 'medicamentos.*.via_id' => 'required|exists:vias,id',
-                'medicamentos.*.horario_med_id' => 'required|exists:horario_meds,id',
+                'medicamentos.*.horario_descricao' => 'required|string|max:255',
                 'medicamentos.*.dose' => 'required|string|max:255',
             ]);
         } elseif ($this->currentStep == 4) {
@@ -391,7 +398,7 @@ class ShowPaciente extends Component
 
     public function addMedicamento()
     {
-        $this->medicamentos[] = ['nome_generico' => '', 'via_id' => '', 'horario_med_id' => '', 'dose' => ''];
+        $this->medicamentos[] = ['nome_generico' => '', 'via_id' => '', 'horario_descricao' => '', 'dose' => ''];
     }
 
     public function addResultado()
@@ -499,6 +506,7 @@ class ShowPaciente extends Component
                 'n_cigarros' => $this->n_cigarros,
                 'inicio_tabagismo' => $this->inicio_tabagismo,
                 'inicio_etilismo' => $this->inicio_etilismo,
+                'outras_comorbidades' => $this->outras_comorbidades,
                 'medicamento_alergia' => $this->medicamento_alergia,
                 'alimento_alergia' => $this->alimento_alergia,
             ]);
@@ -514,7 +522,7 @@ class ShowPaciente extends Component
                 [
                     'nome_generico' => $medicamentoData['nome_generico'],
                     'via_id' => $medicamentoData['via_id'],
-                    'horario_med_id' => $medicamentoData['horario_med_id'],
+                    'horario_descricao' => $medicamentoData['horario_descricao'],
                     'dose' => $medicamentoData['dose'],
                 ]
             );

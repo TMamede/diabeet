@@ -20,7 +20,8 @@ class Badword
         );
 
         foreach ($badWords as $word) {
-            if (str_contains($normalized, $word)) {
+            $pattern = '/(?<![\p{L}\p{N}])' . preg_quote($word, '/') . '(?![\p{L}\p{N}])/u';
+            if (preg_match($pattern, $normalized)) {
                 return true;
             }
         }

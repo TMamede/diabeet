@@ -95,11 +95,5 @@ class CadastroPacienteSeeder extends Seeder
             ['descricao' => 'Auricular', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
-        DB::table('horario_meds')->insert([
-            ['descricao' => 'Manhã', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Tarde', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Noite', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-
-        ]);
     }
 }
