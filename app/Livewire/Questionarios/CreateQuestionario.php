@@ -1645,7 +1645,7 @@ class CreateQuestionario extends Component
                     ? 'nullable|string|max:255|no_badwords'
                     : 'required|string|max:255|no_badwords',
 
-                'impressoes' => 'required|string|no_badwords',
+                'impressoes' => 'required|string',
             ];
 
             $messages = [
