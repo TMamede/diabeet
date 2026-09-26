@@ -92,6 +92,8 @@ class ShowQuestionario extends Component
 
     //Etapa 4 - Necessidades Espirituais e Finalização
     public $religiao, $e_religioso;
+    public $psp, $dap, $deformidade_pe, $historico_ulcera_pe, $amputacao_previa, $doenca_renal_terminal;
+    public $risco_ulceracao, $periodicidade_ulceracao;
 
     public $successMessage = '';
     public $IdQuestionario;
@@ -346,6 +348,7 @@ class ShowQuestionario extends Component
             'nss_biologica.senso_percepcao.sintomas_percepcao', // Carregando os sintomas de percepção
             'nss_biologica.cuidado_ferida.limpezas_lesao', // Carregando as limpezas de lesão
             'nss_biologica.cuidado_ferida.coberturas_ferida', // Carregando as coberturas de ferida
+            'estratificacaoRiscoUlceracao',
         ])->findOrFail($questionarioId);
 
         $this->IdQuestionario = $this->questionario->id;
@@ -362,6 +365,18 @@ class ShowQuestionario extends Component
         $this->enfermeiro = $this->questionario->user;
         $this->impressoes = $this->questionario->impressoes;
         $this->imagem_avaliacao_pe_url = $this->questionario->imagem_avaliacao_pe_url;
+
+        if ($this->questionario->estratificacaoRiscoUlceracao) {
+            $estratificacao = $this->questionario->estratificacaoRiscoUlceracao;
+            $this->psp = $estratificacao->psp;
+            $this->dap = $estratificacao->dap;
+            $this->deformidade_pe = $estratificacao->deformidade_pe;
+            $this->historico_ulcera_pe = $estratificacao->historico_ulcera_pe;
+            $this->amputacao_previa = $estratificacao->amputacao_previa;
+            $this->doenca_renal_terminal = $estratificacao->doenca_renal_terminal;
+            $this->risco_ulceracao = $estratificacao->risco;
+            $this->periodicidade_ulceracao = $estratificacao->periodicidade;
+        }
 
 
         $this->orientado = $this->questionario->nss_biologica->regulacao_neuro->orientado;

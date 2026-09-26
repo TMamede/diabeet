@@ -11,6 +11,7 @@ use App\Models\Comunicacao;
 use App\Models\Cuidado;
 use App\Models\Cuidado_ferida;
 use App\Models\Disturbio_sexual;
+use App\Models\EstratificacaoRiscoUlceracao;
 use App\Models\Eliminacao;
 use App\Models\Emocional;
 use App\Models\Exercicio_fisico;
@@ -124,6 +125,8 @@ class CreateQuestionario extends Component
     //Etapa 4 - Necessidades Espirituais e Finalização
     public $religiao = null, $e_religioso;
     public $impressoes;
+    public $psp, $dap, $deformidade_pe, $historico_ulcera_pe, $amputacao_previa, $doenca_renal_terminal;
+    public $risco_ulceracao_calculado, $periodicidade_ulceracao_calculada;
     //Etapa 5 
     public $origem, $motivo, $diagnostico, $intervencao;
 
@@ -427,6 +430,7 @@ class CreateQuestionario extends Component
             'nss_biologica.senso_percepcao.sintomas_percepcao',
             'nss_biologica.cuidado_ferida.limpezas_lesao',
             'nss_biologica.cuidado_ferida.coberturas_ferida',
+            'estratificacaoRiscoUlceracao',
             'user',
         ])
             ->where('paciente_id', $pacienteId)
@@ -447,6 +451,17 @@ class CreateQuestionario extends Component
         $this->enfermeiro = $this->questionario->user;
         $this->impressoes = $this->questionario->impressoes;
         $this->imagem_avaliacao_pe_url = $this->questionario->imagem_avaliacao_pe_url;
+
+        if ($this->questionario->estratificacaoRiscoUlceracao) {
+            $estratificacao = $this->questionario->estratificacaoRiscoUlceracao;
+            $this->psp = (int) $estratificacao->psp;
+            $this->dap = (int) $estratificacao->dap;
+            $this->deformidade_pe = (int) $estratificacao->deformidade_pe;
+            $this->historico_ulcera_pe = (int) $estratificacao->historico_ulcera_pe;
+            $this->amputacao_previa = (int) $estratificacao->amputacao_previa;
+            $this->doenca_renal_terminal = (int) $estratificacao->doenca_renal_terminal;
+            $this->atualizarEstratificacaoRisco();
+        }
 
 
         $this->orientado = $this->questionario->nss_biologica->regulacao_neuro->orientado;
@@ -1671,6 +1686,12 @@ class CreateQuestionario extends Component
                     : 'required|string|max:255|no_badwords',
 
                 'impressoes' => 'required|string',
+                'psp' => 'required|boolean',
+                'dap' => 'required|boolean',
+                'deformidade_pe' => 'required|boolean',
+                'historico_ulcera_pe' => 'required|boolean',
+                'amputacao_previa' => 'required|boolean',
+                'doenca_renal_terminal' => 'required|boolean',
             ];
 
             $messages = [
@@ -1704,6 +1725,13 @@ class CreateQuestionario extends Component
 
                 'impressoes.no_badwords' =>
                     'As impressões contêm palavras inadequadas.',
+
+                'psp.required' => 'Informe se há perda da sensibilidade protetora (PSP).',
+                'dap.required' => 'Informe se há doença arterial periférica (DAP).',
+                'deformidade_pe.required' => 'Informe se há deformidade no pé.',
+                'historico_ulcera_pe.required' => 'Informe se há histórico de úlcera no pé.',
+                'amputacao_previa.required' => 'Informe se há amputação prévia de membro inferior.',
+                'doenca_renal_terminal.required' => 'Informe se há doença renal em estágio terminal.',
             ];
 
             $this->validate($rules, $messages);
@@ -2311,6 +2339,74 @@ class CreateQuestionario extends Component
         }
     }
 
+    public function updated($propertyName)
+    {
+        if (in_array($propertyName, [
+            'psp',
+            'dap',
+            'deformidade_pe',
+            'historico_ulcera_pe',
+            'amputacao_previa',
+            'doenca_renal_terminal',
+        ], true)) {
+            $this->atualizarEstratificacaoRisco();
+        }
+    }
+
+    protected function atualizarEstratificacaoRisco()
+    {
+        $respostas = [
+            $this->psp,
+            $this->dap,
+            $this->deformidade_pe,
+            $this->historico_ulcera_pe,
+            $this->amputacao_previa,
+            $this->doenca_renal_terminal,
+        ];
+
+        if (in_array(null, $respostas, true)) {
+            $this->risco_ulceracao_calculado = null;
+            $this->periodicidade_ulceracao_calculada = null;
+            return;
+        }
+
+        $estratificacao = $this->calcularEstratificacaoRisco();
+        $this->risco_ulceracao_calculado = $estratificacao['risco'];
+        $this->periodicidade_ulceracao_calculada = $estratificacao['periodicidade'];
+    }
+
+    protected function calcularEstratificacaoRisco(): array
+    {
+        $psp = $this->valorMarcadoComoSim($this->psp);
+        $dap = $this->valorMarcadoComoSim($this->dap);
+        $deformidade = $this->valorMarcadoComoSim($this->deformidade_pe);
+        $historicoUlcera = $this->valorMarcadoComoSim($this->historico_ulcera_pe);
+        $amputacaoPrevia = $this->valorMarcadoComoSim($this->amputacao_previa);
+        $doencaRenalTerminal = $this->valorMarcadoComoSim($this->doenca_renal_terminal);
+
+        $fatorDeAltoRisco = $historicoUlcera || $amputacaoPrevia || $doencaRenalTerminal;
+
+        // A ordem é importante: o primeiro critério encontrado é o maior risco aplicável.
+        if (($psp || $dap) && $fatorDeAltoRisco) {
+            return ['risco' => 3, 'periodicidade' => 'A cada 1 a 3 meses'];
+        }
+
+        if (($psp && $dap) || ($psp && $deformidade) || ($dap && $deformidade)) {
+            return ['risco' => 2, 'periodicidade' => 'A cada 3 a 6 meses'];
+        }
+
+        if ($psp || $dap) {
+            return ['risco' => 1, 'periodicidade' => 'A cada 6 a 12 meses'];
+        }
+
+        return ['risco' => 0, 'periodicidade' => 'Anualmente'];
+    }
+
+    protected function valorMarcadoComoSim($valor): bool
+    {
+        return in_array($valor, [true, 1, '1'], true);
+    }
+
     public function submitForm()
     {
 
@@ -2547,6 +2643,19 @@ class CreateQuestionario extends Component
             'nss_espirituais_id' => $nss_espirituais->id,
             'impressoes' => $this->impressoes,
             'imagem_avaliacao_pe_url' => $path,
+        ]);
+
+        $estratificacao = $this->calcularEstratificacaoRisco();
+        EstratificacaoRiscoUlceracao::create([
+            'questionario_id' => $this->questionario->id,
+            'psp' => $this->valorMarcadoComoSim($this->psp),
+            'dap' => $this->valorMarcadoComoSim($this->dap),
+            'deformidade_pe' => $this->valorMarcadoComoSim($this->deformidade_pe),
+            'historico_ulcera_pe' => $this->valorMarcadoComoSim($this->historico_ulcera_pe),
+            'amputacao_previa' => $this->valorMarcadoComoSim($this->amputacao_previa),
+            'doenca_renal_terminal' => $this->valorMarcadoComoSim($this->doenca_renal_terminal),
+            'risco' => $estratificacao['risco'],
+            'periodicidade' => $estratificacao['periodicidade'],
         ]);
 
 

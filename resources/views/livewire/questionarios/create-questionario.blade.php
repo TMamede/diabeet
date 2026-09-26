@@ -3843,6 +3843,52 @@
                                     </div>
                                 </div>
 
+                                <!-- Estratificação do risco de ulceração dos pés -->
+                                <div class="mb-12">
+                                    <div class="mb-8">
+                                        <h2 class="mb-2 text-2xl font-bold text-indigo-900">Estratificação do risco de ulceração dos pés</h2>
+                                        <div class="w-24 h-1 rounded-full bg-gradient-to-r from-teal-500 to-teal-700"></div>
+                                        <p class="mt-3 text-sm text-gray-600">Marque conforme a avaliação clínica. O sistema calcula automaticamente o risco e a periodicidade recomendada.</p>
+                                    </div>
+
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        @foreach ([
+                                            'psp' => 'Há perda da sensibilidade protetora (PSP)?',
+                                            'dap' => 'Há doença arterial periférica (DAP)?',
+                                            'deformidade_pe' => 'Há deformidade no pé?',
+                                            'historico_ulcera_pe' => 'Há histórico de úlcera no pé?',
+                                            'amputacao_previa' => 'Há amputação prévia de membro inferior?',
+                                            'doenca_renal_terminal' => 'Há doença renal em estágio terminal?',
+                                        ] as $campo => $pergunta)
+                                            <div class="p-5 bg-white border border-teal-100 rounded-2xl">
+                                                <p class="mb-3 font-semibold text-gray-800">{{ $pergunta }}</p>
+                                                <div class="flex gap-6">
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model.live="{{ $campo }}" value="1" class="w-5 h-5 text-teal-600 border-2 border-gray-300 focus:ring-teal-500">
+                                                        <span class="ml-2 text-gray-700">Sim</span>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer">
+                                                        <input type="radio" wire:model.live="{{ $campo }}" value="0" class="w-5 h-5 text-teal-600 border-2 border-gray-300 focus:ring-teal-500">
+                                                        <span class="ml-2 text-gray-700">Não</span>
+                                                    </label>
+                                                </div>
+                                                @error($campo)
+                                                    <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        @endforeach
+                                    </div>
+
+                                    <div class="p-5 mt-6 border rounded-2xl {{ $risco_ulceracao_calculado === null ? 'border-gray-200 bg-gray-50' : 'border-teal-200 bg-teal-50' }}">
+                                        @if ($risco_ulceracao_calculado === null)
+                                            <p class="font-medium text-gray-700">Preencha todas as respostas para calcular a estratificação.</p>
+                                        @else
+                                            <p class="text-lg font-bold text-teal-900">Risco {{ $risco_ulceracao_calculado }}</p>
+                                            <p class="mt-1 text-gray-700">Próxima avaliação recomendada: {{ $periodicidade_ulceracao_calculada }}.</p>
+                                        @endif
+                                    </div>
+                                </div>
+
                                 <!-- Botões de Navegação -->
                                 <div class="flex items-center justify-between pt-8 border-t border-gray-200">
                                     <button type="button" wire:click="previousStep"

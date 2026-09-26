@@ -3995,6 +3995,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </fieldset disabled>
                             </div>
@@ -4129,6 +4130,40 @@
                                                         class="block mt-2 text-sm text-red-500">{{ $message }}</span>
                                                 @enderror
                                             </div>
+                                        </div>
+
+                                        <!-- Estratificação do risco de ulceração dos pés -->
+                                        <div class="mb-12">
+                                            <div class="mb-8">
+                                                <h2 class="mb-2 text-2xl font-bold text-indigo-900">Estratificação do risco de ulceração dos pés</h2>
+                                                <div class="w-24 h-1 rounded-full bg-gradient-to-r from-teal-500 to-teal-700"></div>
+                                            </div>
+
+                                            @if ($risco_ulceracao !== null)
+                                                <div class="grid gap-4 md:grid-cols-2">
+                                                    @foreach ([
+                                                        'Perda da sensibilidade protetora (PSP)' => $psp,
+                                                        'Doença arterial periférica (DAP)' => $dap,
+                                                        'Deformidade no pé' => $deformidade_pe,
+                                                        'Histórico de úlcera no pé' => $historico_ulcera_pe,
+                                                        'Amputação prévia de membro inferior' => $amputacao_previa,
+                                                        'Doença renal em estágio terminal' => $doenca_renal_terminal,
+                                                    ] as $rotulo => $resposta)
+                                                        <div class="p-4 bg-white border border-teal-100 rounded-xl">
+                                                            <p class="text-sm text-gray-600">{{ $rotulo }}</p>
+                                                            <p class="mt-1 font-semibold text-gray-800">{{ $resposta ? 'Sim' : 'Não' }}</p>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                                <div class="p-5 mt-6 border border-teal-200 bg-teal-50 rounded-2xl">
+                                                    <p class="text-lg font-bold text-teal-900">Risco {{ $risco_ulceracao }}</p>
+                                                    <p class="mt-1 text-gray-700">Próxima avaliação recomendada: {{ $periodicidade_ulceracao }}.</p>
+                                                </div>
+                                            @else
+                                                <div class="p-5 border border-gray-200 bg-gray-50 rounded-2xl">
+                                                    <p class="text-gray-700">A estratificação não foi registrada para esta avaliação.</p>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </fieldset disabled>

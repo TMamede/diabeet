@@ -61,4 +61,9 @@ class Questionario extends Model
     {
         return $this->hasOne(QuestionarioQualidade::class);
     }
+
+    public function estratificacaoRiscoUlceracao()
+    {
+        return $this->hasOne(EstratificacaoRiscoUlceracao::class);
+    }
 }
