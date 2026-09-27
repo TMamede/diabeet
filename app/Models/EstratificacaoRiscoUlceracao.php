@@ -9,6 +9,8 @@ class EstratificacaoRiscoUlceracao extends Model
 {
     use HasFactory;
 
+    protected $table = 'estratificacoes_risco_ulceracao';
+
     protected $guarded = ['id'];
 
     protected $casts = [
