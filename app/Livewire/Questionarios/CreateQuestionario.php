@@ -2424,7 +2424,7 @@ class CreateQuestionario extends Component
             return ['risco' => 1, 'periodicidade' => 'A cada 6 a 12 meses'];
         }
 
-        return ['risco' => 0, 'periodicidade' => 'Anualmente'];
+        return ['risco' => 0, 'periodicidade' => '1 vez ao ano'];
     }
 
     protected function valorMarcadoComoSim($valor): bool

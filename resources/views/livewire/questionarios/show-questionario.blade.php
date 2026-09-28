@@ -594,8 +594,9 @@
                                             </div>
 
                                             <div class="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2">
-                                                <!-- Integridade cutâneo-mucosa -->
-                                                <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
+                                                <div class="space-y-6 sm:space-y-8">
+                                                    <!-- Integridade cutâneo-mucosa -->
+                                                    <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Integridade Cutâneo-Mucosa Comprometida:
                                                     </label>
@@ -608,6 +609,23 @@
                                                             <input type="radio" wire:model="integridade_cutaneo_mucosa_comprometida" value="0" class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
                                                             <span class="ml-3 font-medium text-gray-700">Não</span>
                                                         </label>
+                                                    </div>
+                                                    </div>
+
+                                                    <!-- Volume de líquido diário -->
+                                                    <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
+                                                        <label for="liquido_diario"
+                                                            class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
+                                                            Volume de líquido diário ingerido:
+                                                        </label>
+                                                        <input type="number" wire:model="liquido_diario"
+                                                            id="liquido_diario"
+                                                            class="w-full px-4 py-3 text-sm text-gray-700 bg-white border-2 border-gray-200 sm:text-base rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                            placeholder="Digite em litros o valor de líquido diário">
+                                                        @error('liquido_diario')
+                                                            <span
+                                                                class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
 
@@ -634,21 +652,6 @@
                                                     @enderror
                                                 </div>
 
-                                                <!-- Volume de líquido diário -->
-                                                <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
-                                                    <label for="liquido_diario"
-                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
-                                                        Volume de líquido diário ingerido:
-                                                    </label>
-                                                    <input type="number" wire:model="liquido_diario"
-                                                        id="liquido_diario"
-                                                        class="w-full px-4 py-3 text-sm text-gray-700 bg-white border-2 border-gray-200 sm:text-base rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
-                                                        placeholder="Digite em litros o valor de líquido diário">
-                                                    @error('liquido_diario')
-                                                        <span
-                                                            class="block mt-2 text-sm text-red-500">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
                                             </div>
                                         </div>
 
