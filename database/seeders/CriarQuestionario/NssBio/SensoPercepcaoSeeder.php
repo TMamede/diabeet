@@ -18,8 +18,10 @@ class SensoPercepcaoSeeder extends Seeder
 
         foreach (range(1, 10) as $index) {
             DB::table('senso_percepcaos')->insert([
-                'pe_neuropatico' => $faker->boolean(),
-                'arco_desabado' => $faker->boolean(),
+                'arco_plantar_normal' => $faker->boolean(),
+                'pe_plano' => $faker->boolean(),
+                'pe_cavo' => $faker->boolean(),
+                'colapso_mediope' => $faker->boolean(),
                 'valgismo' => $faker->boolean(),
                 'dedos_em_garra' => $faker->boolean(),
                 'estado_unhas_id' => $faker->numberBetween(1, 5), // Assumindo que existam registros na tabela `estado_unhas`

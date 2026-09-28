@@ -97,7 +97,7 @@ class CreateQuestionario extends Component
     //Etapa 2 - Necessidades Biológicas
     public $regulacao_neuro, $orientado, $comportamento_regulacao_neuro_id;
     public $percepcao_sentido, $olho_direito, $olho_esquerdo, $ouvido, $analise_tato_id, $risco_queda;
-    public $hidratacao, $liquido_diario, $tipos_pele = [], $tiposPeleList = [];
+    public $hidratacao, $liquido_diario, $integridade_cutaneo_mucosa_comprometida, $tipos_pele = [], $tiposPeleList = [];
     public $nutricao, $alimento_consumo_id, $refeicaos = [], $refeicaosList = [], $restricaos = [], $restricaosList = [];
     public $sono, $horas_sono, $acorda_noite, $qualidade_sono_id, $problema_sonos = [], $problemaSonoList = [], $medicamentos_sono;
     public $exercicio_fisico, $realiza, $frequencia_exercicio_id, $duracao;
@@ -109,7 +109,7 @@ class CreateQuestionario extends Component
     public $sexualidade, $vida_sex_ativa, $disturbio_sexuals = [], $disturbiosSexualList = [];
     public $locomocao, $tipo_locomocaos = [], $tiposLocomocaoList = [], $sapato_adequado, $sandalia_cicatrizacao;
     public $regulacao_vascular, $pressao_sistolica, $pressao_diastolica, $frequencia_cardiaca, $psatp_direito, $psap_direito, $psab_direito, $psatp_esquerdo, $psap_esquerdo, $psab_esquerdo;
-    public $senso_percepcao, $sintomas_percepcaos = [], $sintomasPercepcaoList = [], $pe_neuropatico, $arco_desabado, $valgismo, $dedos_em_garra, $estado_unhas_id;
+    public $senso_percepcao, $sintomas_percepcaos = [], $sintomasPercepcaoList = [], $arco_plantar_normal, $pe_plano, $pe_cavo, $colapso_mediope, $valgismo, $dedos_em_garra, $estado_unhas_id;
     public $corte_unhas, $fissuras, $calosidades, $micose, $teste_senso_percepcao_id = null, $percepcao_direito, $percepcao_esquerdo;
     public $desbridamento_id, $avaliacao_ferida_id, $aplicacao_laserterapia, $terapia_fotodinamica;
     public $cuidado_ferida, $coberturas = [], $coberturasList = [], $limpeza_lesaos = [], $limpezaLesaosList = [], $sinais_infeccaos = [], $sinaisInfeccaoList = [];
@@ -474,6 +474,7 @@ class CreateQuestionario extends Component
         $this->risco_queda = $this->questionario->nss_biologica->percepcao_sentidos->risco_queda;
 
         $this->liquido_diario = $this->questionario->nss_biologica->hidratacao->liquido_diario;
+        $this->integridade_cutaneo_mucosa_comprometida = $this->questionario->nss_biologica->hidratacao->integridade_cutaneo_mucosa_comprometida;
         $this->tiposPeleList = \App\Models\Tipo_pele::all();
         $this->tipos_pele = $this->questionario->nss_biologica->hidratacao->tipos_pele->pluck('id')->toArray();
 
@@ -532,8 +533,10 @@ class CreateQuestionario extends Component
         $this->psap_esquerdo = $this->questionario->nss_biologica->regulacao_vascular->psap_esquerdo;
         $this->psab_esquerdo = $this->questionario->nss_biologica->regulacao_vascular->psab_esquerdo;
 
-        $this->pe_neuropatico = $this->questionario->nss_biologica->senso_percepcao->pe_neuropatico;
-        $this->arco_desabado = $this->questionario->nss_biologica->senso_percepcao->arco_desabado;
+        $this->arco_plantar_normal = $this->questionario->nss_biologica->senso_percepcao->arco_plantar_normal;
+        $this->pe_plano = $this->questionario->nss_biologica->senso_percepcao->pe_plano;
+        $this->pe_cavo = $this->questionario->nss_biologica->senso_percepcao->pe_cavo;
+        $this->colapso_mediope = $this->questionario->nss_biologica->senso_percepcao->colapso_mediope;
         $this->valgismo = $this->questionario->nss_biologica->senso_percepcao->valgismo;
         $this->dedos_em_garra = $this->questionario->nss_biologica->senso_percepcao->dedos_em_garra;
         $this->estado_unhas_id = $this->questionario->nss_biologica->senso_percepcao->estado_unhas_id;
@@ -740,6 +743,7 @@ class CreateQuestionario extends Component
                 'risco_queda' => 'required|boolean',
 
                 'liquido_diario' => 'required|numeric|min:0',
+                'integridade_cutaneo_mucosa_comprometida' => 'required|boolean',
                 'tipos_pele' => 'required|array|min:1',
                 'tipos_pele.*' => 'exists:tipo_peles,id',
 
@@ -804,8 +808,10 @@ class CreateQuestionario extends Component
                 'psab_esquerdo' => 'required|numeric|min:0',
 
                 'sintomas_percepcaos' => 'nullable|array',
-                'pe_neuropatico' => 'required|boolean',
-                'arco_desabado' => 'required|boolean',
+                'arco_plantar_normal' => 'required|boolean',
+                'pe_plano' => 'required|boolean',
+                'pe_cavo' => 'required|boolean',
+                'colapso_mediope' => 'required|boolean',
                 'valgismo' => 'required|boolean',
                 'dedos_em_garra' => 'required|boolean',
                 'estado_unhas_id' => 'required|exists:estado_unhas,id',
@@ -884,6 +890,11 @@ class CreateQuestionario extends Component
                     'A quantidade de líquido deve ser um número.',
                 'liquido_diario.min' =>
                     'A quantidade de líquido não pode ser negativa.',
+
+                'integridade_cutaneo_mucosa_comprometida.required' =>
+                    'Informe se a integridade cutâneo-mucosa está comprometida.',
+                'integridade_cutaneo_mucosa_comprometida.boolean' =>
+                    'A integridade cutâneo-mucosa deve ser informada como sim ou não.',
 
                 'tipos_pele.required' =>
                     'Selecione ao menos um tipo de pele.',
@@ -1238,15 +1249,14 @@ class CreateQuestionario extends Component
                 'sintomas_percepcaos.array' =>
                     'Os sintomas de percepção selecionados devem estar em formato válido.',
 
-                'pe_neuropatico.required' =>
-                    'Informe se o pé é neuropático.',
-                'pe_neuropatico.boolean' =>
-                    'A informação sobre pé neuropático deve ser sim ou não.',
-
-                'arco_desabado.required' =>
-                    'Informe se há arco desabado.',
-                'arco_desabado.boolean' =>
-                    'A informação sobre arco desabado deve ser sim ou não.',
+                'arco_plantar_normal.required' => 'Informe se o arco plantar é normal.',
+                'arco_plantar_normal.boolean' => 'A informação sobre arco plantar normal deve ser sim ou não.',
+                'pe_plano.required' => 'Informe se há pé plano.',
+                'pe_plano.boolean' => 'A informação sobre pé plano deve ser sim ou não.',
+                'pe_cavo.required' => 'Informe se há pé cavo.',
+                'pe_cavo.boolean' => 'A informação sobre pé cavo deve ser sim ou não.',
+                'colapso_mediope.required' => 'Informe se há colapso do mediopé.',
+                'colapso_mediope.boolean' => 'A informação sobre colapso do mediopé deve ser sim ou não.',
 
                 'valgismo.required' =>
                     'Informe se há valgismo.',
@@ -2161,12 +2171,12 @@ class CreateQuestionario extends Component
                 'motivo' => 66,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->senso_percepcao?->pe_neuropatico == 1,
+                'condicao' => $questionario->nss_biologica?->senso_percepcao?->pe_cavo == 1,
                 'origem' => 15,
                 'motivo' => 67,
             ],
             [
-                'condicao' => $questionario->nss_biologica?->senso_percepcao?->arco_desabado == 1,
+                'condicao' => $questionario->nss_biologica?->senso_percepcao?->colapso_mediope == 1,
                 'origem' => 15,
                 'motivo' => 68,
             ],
@@ -2345,6 +2355,17 @@ class CreateQuestionario extends Component
 
     public function updated($propertyName)
     {
+        if ($propertyName === 'arco_plantar_normal' && $this->valorMarcadoComoSim($this->arco_plantar_normal)) {
+            $this->pe_plano = 0;
+            $this->pe_cavo = 0;
+            $this->colapso_mediope = 0;
+        }
+
+        if (in_array($propertyName, ['pe_plano', 'pe_cavo', 'colapso_mediope'], true)
+            && $this->valorMarcadoComoSim($this->{$propertyName})) {
+            $this->arco_plantar_normal = 0;
+        }
+
         if (in_array($propertyName, [
             'psp',
             'dap',
@@ -2441,6 +2462,7 @@ class CreateQuestionario extends Component
 
         $hidratacao = Hidratacao::create([
             'liquido_diario' => $this->liquido_diario,
+            'integridade_cutaneo_mucosa_comprometida' => $this->integridade_cutaneo_mucosa_comprometida,
         ]);
         $hidratacao->tipos_pele()->sync($this->tipos_pele ?? []);
 
@@ -2523,8 +2545,10 @@ class CreateQuestionario extends Component
         ]);
 
         $senso_percepcao = Senso_percepcao::create([
-            'pe_neuropatico' => $this->pe_neuropatico,
-            'arco_desabado' => $this->arco_desabado,
+            'arco_plantar_normal' => $this->arco_plantar_normal,
+            'pe_plano' => $this->pe_plano,
+            'pe_cavo' => $this->pe_cavo,
+            'colapso_mediope' => $this->colapso_mediope,
             'valgismo' => $this->valgismo,
             'dedos_em_garra' => $this->dedos_em_garra,
             'estado_unhas_id' => $this->estado_unhas_id,

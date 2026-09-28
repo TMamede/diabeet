@@ -594,6 +594,23 @@
                                             </div>
 
                                             <div class="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2">
+                                                <!-- Integridade cutâneo-mucosa -->
+                                                <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
+                                                    <label class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
+                                                        Integridade Cutâneo-Mucosa Comprometida:
+                                                    </label>
+                                                    <div class="flex gap-6">
+                                                        <label class="flex items-center cursor-pointer">
+                                                            <input type="radio" wire:model="integridade_cutaneo_mucosa_comprometida" value="1" class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                            <span class="ml-3 font-medium text-gray-700">Sim</span>
+                                                        </label>
+                                                        <label class="flex items-center cursor-pointer">
+                                                            <input type="radio" wire:model="integridade_cutaneo_mucosa_comprometida" value="0" class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                            <span class="ml-3 font-medium text-gray-700">Não</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
                                                 <!-- Tipo de Pele -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
@@ -2073,57 +2090,93 @@
                                                 </div>
 
                                                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                                                    <!-- Pé Neuropático -->
+                                                    <!-- Arco plantar normal -->
                                                     <div class="p-4 bg-white border border-gray-200 rounded-xl">
                                                         <label class="block mb-3 text-sm font-semibold text-gray-800">
-                                                            Pé Neuropático (Cavus):
+                                                            Arco Plantar Normal:
                                                         </label>
                                                         <div class="space-y-2">
                                                             <label class="flex items-center cursor-pointer">
-                                                                <input type="radio" wire:model="pe_neuropatico"
+                                                                <input type="radio" wire:model="arco_plantar_normal"
                                                                     value="1"
                                                                     class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
                                                                 <span
                                                                     class="ml-2 text-sm font-medium text-gray-700">Sim</span>
                                                             </label>
                                                             <label class="flex items-center cursor-pointer">
-                                                                <input type="radio" wire:model="pe_neuropatico"
+                                                                <input type="radio" wire:model="arco_plantar_normal"
                                                                     value="0"
                                                                     class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
                                                                 <span
                                                                     class="ml-2 text-sm font-medium text-gray-700">Não</span>
                                                             </label>
                                                         </div>
-                                                        @error('pe_neuropatico')
+                                                        @error('arco_plantar_normal')
                                                             <span
                                                                 class="block mt-2 text-xs text-red-500">{{ $message }}</span>
                                                         @enderror
                                                     </div>
 
-                                                    <!-- Arco Desabado -->
+                                                    <!-- Pé plano -->
                                                     <div class="p-4 bg-white border border-gray-200 rounded-xl">
                                                         <label class="block mb-3 text-sm font-semibold text-gray-800">
-                                                            Arco Desabado (Charcot):
+                                                            Pé Plano:
                                                         </label>
                                                         <div class="space-y-2">
                                                             <label class="flex items-center cursor-pointer">
-                                                                <input type="radio" wire:model="arco_desabado"
+                                                                <input type="radio" wire:model="pe_plano"
                                                                     value="1"
                                                                     class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
                                                                 <span
                                                                     class="ml-2 text-sm font-medium text-gray-700">Sim</span>
                                                             </label>
                                                             <label class="flex items-center cursor-pointer">
-                                                                <input type="radio" wire:model="arco_desabado"
+                                                                <input type="radio" wire:model="pe_plano"
                                                                     value="0"
                                                                     class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
                                                                 <span
                                                                     class="ml-2 text-sm font-medium text-gray-700">Não</span>
                                                             </label>
                                                         </div>
-                                                        @error('arco_desabado')
+                                                        @error('pe_plano')
                                                             <span
                                                                 class="block mt-2 text-xs text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <!-- Pé cavo -->
+                                                    <div class="p-4 bg-white border border-gray-200 rounded-xl">
+                                                        <label class="block mb-3 text-sm font-semibold text-gray-800">Pé Cavo:</label>
+                                                        <div class="space-y-2">
+                                                            <label class="flex items-center cursor-pointer">
+                                                                <input type="radio" wire:model="pe_cavo" value="1" class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                                <span class="ml-2 text-sm font-medium text-gray-700">Sim</span>
+                                                            </label>
+                                                            <label class="flex items-center cursor-pointer">
+                                                                <input type="radio" wire:model="pe_cavo" value="0" class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                                <span class="ml-2 text-sm font-medium text-gray-700">Não</span>
+                                                            </label>
+                                                        </div>
+                                                        @error('pe_cavo')
+                                                            <span class="block mt-2 text-xs text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <!-- Colapso do mediopé -->
+                                                    <div class="p-4 bg-white border border-gray-200 rounded-xl">
+                                                        <label class="block mb-3 text-sm font-semibold text-gray-800">Colapso do Mediopé:</label>
+                                                        <div class="space-y-2">
+                                                            <label class="flex items-center cursor-pointer">
+                                                                <input type="radio" wire:model="colapso_mediope" value="1" class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                                <span class="ml-2 text-sm font-medium text-gray-700">Sim</span>
+                                                            </label>
+                                                            <label class="flex items-center cursor-pointer">
+                                                                <input type="radio" wire:model="colapso_mediope" value="0" class="w-4 h-4 text-indigo-600 border-2 border-gray-300 focus:ring-indigo-500">
+                                                                <span class="ml-2 text-sm font-medium text-gray-700">Não</span>
+                                                            </label>
+                                                        </div>
+                                                        @error('colapso_mediope')
+                                                            <span class="block mt-2 text-xs text-red-500">{{ $message }}</span>
                                                         @enderror
                                                     </div>
 

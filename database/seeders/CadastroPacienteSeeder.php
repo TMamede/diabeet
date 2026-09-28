@@ -64,7 +64,7 @@ class CadastroPacienteSeeder extends Seeder
             ['descricao' => 'Doença Arterial Periferica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Dislipidemia', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Retinopatia Diabetica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['descricao' => 'Doença Renal Diabetica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descricao' => 'Doença renal em estágio avançado', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Neuropatia Diabetica', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Doenca Periodontal', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['descricao' => 'Tireoide de Hashimoto', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],

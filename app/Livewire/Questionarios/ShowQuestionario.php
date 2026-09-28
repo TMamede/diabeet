@@ -64,7 +64,7 @@ class ShowQuestionario extends Component
     //Etapa 2 - Necessidades Biológicas
     public $regulacao_neuro, $orientado, $comportamento_regulacao_neuro_id;
     public $percepcao_sentido, $olho_direito, $olho_esquerdo, $ouvido, $analise_tato_id, $risco_queda;
-    public $hidratacao, $liquido_diario, $tipos_pele = [], $tiposPeleList = [];
+    public $hidratacao, $liquido_diario, $integridade_cutaneo_mucosa_comprometida, $tipos_pele = [], $tiposPeleList = [];
     public $nutricao, $alimento_consumo_id, $refeicaos = [], $refeicaosList = [], $restricaos = [], $restricaosList = [];
     public $sono, $horas_sono, $acorda_noite, $qualidade_sono_id, $problema_sonos = [], $problemaSonoList = [], $medicamentos_sono;
     public $exercicio_fisico, $realiza, $frequencia_exercicio_id, $duracao;
@@ -76,7 +76,7 @@ class ShowQuestionario extends Component
     public $sexualidade, $vida_sex_ativa, $disturbio_sexuals = [], $disturbiosSexualList = [];
     public $locomocao, $tipo_locomocaos = [], $tiposLocomocaoList = [], $sapato_adequado, $sandalia_cicatrizacao;
     public $regulacao_vascular, $pressao_sistolica, $pressao_diastolica, $frequencia_cardiaca, $psatp_direito, $psap_direito, $psab_direito, $psatp_esquerdo, $psap_esquerdo, $psab_esquerdo;
-    public $senso_percepcao, $sintomas_percepcaos = [], $sintomasPercepcaoList = [], $pe_neuropatico, $arco_desabado, $valgismo, $dedos_em_garra, $estado_unhas_id;
+    public $senso_percepcao, $sintomas_percepcaos = [], $sintomasPercepcaoList = [], $arco_plantar_normal, $pe_plano, $pe_cavo, $colapso_mediope, $valgismo, $dedos_em_garra, $estado_unhas_id;
     public $corte_unhas, $fissuras, $calosidades, $micose, $teste_senso_percepcao_id = null, $percepcao_direito, $percepcao_esquerdo;
     public $desbridamento_id, $avaliacao_ferida_id, $aplicacao_laserterapia, $terapia_fotodinamica;
     public $outras_limpezas = null, $outras_coberturas = null;
@@ -389,6 +389,7 @@ class ShowQuestionario extends Component
         $this->risco_queda = $this->questionario->nss_biologica->percepcao_sentidos->risco_queda;
 
         $this->liquido_diario = $this->questionario->nss_biologica->hidratacao->liquido_diario;
+        $this->integridade_cutaneo_mucosa_comprometida = $this->questionario->nss_biologica->hidratacao->integridade_cutaneo_mucosa_comprometida;
         $this->tiposPeleList = \App\Models\Tipo_pele::all();
         $this->tipos_pele = $this->questionario->nss_biologica->hidratacao->tipos_pele->pluck('id')->toArray();
 
@@ -447,8 +448,10 @@ class ShowQuestionario extends Component
         $this->psap_esquerdo = $this->questionario->nss_biologica->regulacao_vascular->psap_esquerdo;
         $this->psab_esquerdo = $this->questionario->nss_biologica->regulacao_vascular->psab_esquerdo;
 
-        $this->pe_neuropatico = $this->questionario->nss_biologica->senso_percepcao->pe_neuropatico;
-        $this->arco_desabado = $this->questionario->nss_biologica->senso_percepcao->arco_desabado;
+        $this->arco_plantar_normal = $this->questionario->nss_biologica->senso_percepcao->arco_plantar_normal;
+        $this->pe_plano = $this->questionario->nss_biologica->senso_percepcao->pe_plano;
+        $this->pe_cavo = $this->questionario->nss_biologica->senso_percepcao->pe_cavo;
+        $this->colapso_mediope = $this->questionario->nss_biologica->senso_percepcao->colapso_mediope;
         $this->valgismo = $this->questionario->nss_biologica->senso_percepcao->valgismo;
         $this->dedos_em_garra = $this->questionario->nss_biologica->senso_percepcao->dedos_em_garra;
         $this->estado_unhas_id = $this->questionario->nss_biologica->senso_percepcao->estado_unhas_id;
