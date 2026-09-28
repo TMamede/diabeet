@@ -639,26 +639,29 @@ class ShowQuestionario extends Component
 
     public function nextStepFifth()
     {
-        // $this->validateStep();
-        return redirect()->route('questionario.show-qualidade', ['id' => $this->questionario->id]);
+        $this->currentStep = 5;
     }
 
     public function nextStepSixth()
     {
-        // $this->validateStep();
+        return redirect()->route('questionario.show-qualidade', ['id' => $this->questionario->id]);
+    }
+
+    public function nextStepSeventh()
+    {
         return redirect()->route('questionario.show-autocuidado', ['id' => $this->questionario->id]);
     }
     public function changeStep($step)
     {
         // $this->validateStep();
 
-        if ((int) $step === 5) {
+        if ((int) $step === 6) {
             return redirect()->route(
                 'questionario.show-qualidade',
                 ['id' => $this->questionario->id]
             );
         }
-        if ((int) $step === 6) {
+        if ((int) $step === 7) {
             return redirect()->route(
                 'questionario.show-autocuidado',
                 ['id' => $this->questionario->id]

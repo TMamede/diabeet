@@ -1686,12 +1686,6 @@ class CreateQuestionario extends Component
                     : 'required|string|max:255|no_badwords',
 
                 'impressoes' => 'required|string',
-                'psp' => 'required|boolean',
-                'dap' => 'required|boolean',
-                'deformidade_pe' => 'required|boolean',
-                'historico_ulcera_pe' => 'required|boolean',
-                'amputacao_previa' => 'required|boolean',
-                'doenca_renal_terminal' => 'required|boolean',
             ];
 
             $messages = [
@@ -1726,15 +1720,25 @@ class CreateQuestionario extends Component
                 'impressoes.no_badwords' =>
                     'As impressões contêm palavras inadequadas.',
 
+            ];
+
+            $this->validate($rules, $messages);
+        } elseif ($this->currentStep == 5) {
+            $this->validate([
+                'psp' => 'required|boolean',
+                'dap' => 'required|boolean',
+                'deformidade_pe' => 'required|boolean',
+                'historico_ulcera_pe' => 'required|boolean',
+                'amputacao_previa' => 'required|boolean',
+                'doenca_renal_terminal' => 'required|boolean',
+            ], [
                 'psp.required' => 'Informe se há perda da sensibilidade protetora (PSP).',
                 'dap.required' => 'Informe se há doença arterial periférica (DAP).',
                 'deformidade_pe.required' => 'Informe se há deformidade no pé.',
                 'historico_ulcera_pe.required' => 'Informe se há histórico de úlcera no pé.',
                 'amputacao_previa.required' => 'Informe se há amputação prévia de membro inferior.',
                 'doenca_renal_terminal.required' => 'Informe se há doença renal em estágio terminal.',
-            ];
-
-            $this->validate($rules, $messages);
+            ]);
         }
     }
     public function ColetarProntuario($questionario)
@@ -2409,6 +2413,10 @@ class CreateQuestionario extends Component
 
     public function submitForm()
     {
+        if ($this->currentStep !== 5) {
+            $this->nextStep();
+            return;
+        }
 
         if ($this->e_religioso === 'nao') {
             $this->religiao = 'Nenhuma';
