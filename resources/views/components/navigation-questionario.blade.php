@@ -4,10 +4,6 @@
         <!-- Background simplificado -->
         <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-purple-50"></div>
 
-
-      
-
-    
     </div>
 </div>
 
@@ -94,9 +90,27 @@
                     </button>
                 </li>
 
-                <!-- Questionário Qualidade de Vida -->
+                <!-- Estratificação -->
                 <li>
                     <button wire:click="nextStepFifth"
+                        class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-teal-50 hover:text-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-200">
+                        <div class="flex items-center justify-center w-12 h-12 mr-4 bg-teal-100 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor"
+                                class="w-5 h-5 font-bold bi bi-layers" viewBox="0 0 16 16">
+                                <path  stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+                                    d="M8.235 1.559a.5.5 0 0 0-.47 0l-7.5 4a.5.5 0 0 0 0 .882L3.188 8 .264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l2.922-1.559a.5.5 0 0 0 0-.882zm3.515 7.008L14.438 10 8 13.433 1.562 10 4.25 8.567l3.515 1.874a.5.5 0 0 0 .47 0zM8 9.433 1.562 6 8 2.567 14.438 6z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <span class="font-medium">Estratificação</span>
+                            <p class="text-sm text-gray-500">Risco de ulceração dos pés</p>
+                        </div>
+                    </button>
+                </li>
+
+                <!-- Questionário Qualidade de Vida -->
+                <li>
+                    <button wire:click="nextStepSixth"
                         class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-orange-50 hover:text-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-200">
                         <div class="flex items-center justify-center w-12 h-12 mr-4 bg-orange-100 rounded-lg">
                             <svg class="w-6 h-6 text-orange-600" fill="none" viewBox="0 0 24 24"
@@ -114,7 +128,7 @@
 
                 <!-- Questionário Autocuidado -->
                 <li>
-                    <button wire:click="nextStepSixth"
+                    <button wire:click="nextStepSeventh"
                         class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200">
                         <div class="flex items-center justify-center w-12 h-12 mr-4 rounded-lg bg-emerald-100">
                             <svg class="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24"

@@ -29,7 +29,7 @@
                             <!-- Search Section -->
                             <div class="max-w-4xl px-6 mx-auto mb-12">
                                 <div id="search-bar"
-                                    class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
+                                    class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                     <h3 class="mb-6 text-2xl font-semibold text-center text-gray-800">Pesquise o
                                         paciente</h3>
 
@@ -74,7 +74,7 @@
                             @if ($selectedPaciente)
                                 <!-- Dados Sociodemográficos -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
-                                    <div class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
+                                    <div class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-2xl">
@@ -135,7 +135,7 @@
 
                                 <!-- Histórico do Paciente -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
-                                    <div class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
+                                    <div class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl">
@@ -217,7 +217,7 @@
 
                                 <!-- Medicamentos -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
-                                    <div class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
+                                    <div class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                         <div class="flex items-center mb-8">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl">
@@ -311,7 +311,7 @@
 
                                 <!-- Unidade de Saúde -->
                                 <div class="max-w-6xl px-6 mx-auto mb-8">
-                                    <div class="p-8 border shadow-lg bg-white/80  rounded-3xl border-white/20">
+                                    <div class="p-8 border shadow-lg bg-white/80 rounded-3xl border-white/20">
                                         <div class="flex items-center mb-6">
                                             <div
                                                 class="flex items-center justify-center w-12 h-12 mr-4 bg-gradient-to-br from-teal-100 to-teal-200 rounded-2xl">
@@ -379,7 +379,7 @@
                     <div class="relative z-10 px-6 py-8">
                         <!-- Header -->
                         <div class="max-w-6xl mx-auto mb-8">
-                            <div class="p-6 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
+                            <div class="p-6 border shadow-lg bg-white/90 rounded-3xl border-white/20">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <h1 class="text-3xl font-bold text-indigo-900">SIPEDIA</h1>
@@ -395,7 +395,7 @@
 
                         <!-- Main Content -->
                         <div class="max-w-6xl mx-auto">
-                            <div class="p-8 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
+                            <div class="p-8 border shadow-lg bg-white/90 rounded-3xl border-white/20">
 
                                 <!-- Seção Regulação Neurológica -->
                                 <div class="pb-8 mb-10 border-b border-gray-200">
@@ -3376,7 +3376,7 @@
                     <div class="relative z-10 px-6 py-8">
                         <!-- Header -->
                         <div class="max-w-6xl mx-auto mb-8">
-                            <div class="p-6 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
+                            <div class="p-6 border shadow-lg bg-white/90 rounded-3xl border-white/20">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <h1 class="text-3xl font-bold text-indigo-900">SIPEDIA</h1>
@@ -3392,7 +3392,7 @@
 
                         <!-- Main Content -->
                         <div class="max-w-6xl mx-auto">
-                            <div class="p-8 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
+                            <div class="p-8 border shadow-lg bg-white/90 rounded-3xl border-white/20">
 
                                 <!-- Seção Aprendizagem - Educação a Saúde -->
                                 <div class="pb-8 mb-10 border-b border-gray-200">
@@ -3751,7 +3751,7 @@
                     <div class="relative z-10 px-6 py-8">
                         <!-- Header -->
                         <div class="max-w-6xl mx-auto mb-8">
-                            <div class="p-6 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
+                            <div class="p-6 border shadow-lg bg-white/90 rounded-3xl border-white/20">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <h1 class="text-3xl font-bold text-indigo-900">SIPEDIA</h1>
@@ -3768,7 +3768,7 @@
 
                         <!-- Main Content -->
                         <div class="max-w-6xl mx-auto">
-                            <div class="p-8 border shadow-lg  bg-white/90 rounded-3xl border-white/20">
+                            <div class="p-8 border shadow-lg bg-white/90 rounded-3xl border-white/20">
 
                                 <!-- Seção Religião/Espiritualidade -->
                                 <div class="pb-8 mb-10 border-b border-gray-200">
@@ -3856,9 +3856,10 @@
                                         Voltar
                                     </button>
 
-                                    <button type="submit"
-                                        class="flex items-center px-8 py-4 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl hover:from-teal-600 hover:to-teal-800 focus:outline-none focus:ring-4 focus:ring-teal-200">
-                                        Salvar
+                                    <button type="button" wire:click="nextStep"
+                                        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                                        class="flex items-center px-8 py-4 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-indigo-200">
+                                        Continuar
                                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -3876,6 +3877,70 @@
                         display: none !important;
                     }
                 </style>
+            @endif
+        </div>
+
+        <div x-show="step === 5" x-transition>
+            @if ($currentStep == 5)
+                <div class="min-h-screen bg-gradient-to-br from-teal-50 via-white to-indigo-50">
+                    <div class="max-w-6xl px-6 py-8 mx-auto">
+                        <div class="p-8 border shadow-lg bg-white/90 rounded-3xl border-white/20">
+                            <div class="mb-8">
+                                <h1 class="text-3xl font-bold text-indigo-900">Estratificação do risco de ulceração dos pés</h1>
+                                <div class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700"> </div>
+                                <p class="mt-4 text-gray-600">Marque conforme a avaliação clínica. O sistema calcula automaticamente o risco e a periodicidade recomendada.</p>
+                            </div>
+
+                            <div class="grid gap-5 md:grid-cols-2">
+                                @foreach ([
+                                    'psp' => 'Há perda da sensibilidade protetora (PSP)?',
+                                    'dap' => 'Há doença arterial periférica (DAP)?',
+                                    'deformidade_pe' => 'Há deformidade no pé?',
+                                    'historico_ulcera_pe' => 'Há histórico de úlcera no pé?',
+                                    'amputacao_previa' => 'Há amputação prévia de membro inferior?',
+                                    'doenca_renal_terminal' => 'Há doença renal em estágio terminal?',
+                                ] as $campo => $pergunta)
+                                    <div class="p-5 bg-white border border-gray-200 rounded-2xl">
+                                        <p class="mb-3 font-semibold text-gray-800">{{ $pergunta }}</p>
+                                        <div class="flex gap-6">
+                                            <label class="flex items-center cursor-pointer">
+                                                <input type="radio" wire:model.live="{{ $campo }}" value="1" class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
+                                                <span class="ml-2 text-gray-700">Sim</span>
+                                            </label>
+                                            <label class="flex items-center cursor-pointer">
+                                                <input type="radio" wire:model.live="{{ $campo }}" value="0" class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
+                                                <span class="ml-2 text-gray-700">Não</span>
+                                            </label>
+                                        </div>
+                                        @error($campo)
+                                            <span class="block mt-2 text-sm text-red-500">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <div class="p-5 mt-6 border rounded-2xl {{ $risco_ulceracao_calculado === null ? 'border-gray-200 bg-gray-50' : 'border-teal-200 bg-teal-50' }}">
+                                @if ($risco_ulceracao_calculado === null)
+                                    <p class="font-medium text-gray-700">Preencha todas as respostas para calcular a estratificação.</p>
+                                @else
+                                    <p class="text-lg font-bold text-teal-900">Risco {{ $risco_ulceracao_calculado }}</p>
+                                    <p class="mt-1 text-gray-700">Próxima avaliação recomendada: {{ $periodicidade_ulceracao_calculada }}.</p>
+                                @endif
+                            </div>
+
+                            <div class="flex items-center justify-between pt-8 mt-8 border-t border-gray-200">
+                                <button type="button" wire:click="previousStep" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                                    class="flex items-center px-8 py-4 text-lg font-semibold text-indigo-600 bg-white border-2 border-indigo-200 rounded-2xl hover:bg-indigo-50">
+                                    Voltar
+                                </button>
+                                <button type="submit"
+                                    class="flex items-center px-8 py-4 text-lg font-semibold text-white shadow-lg bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl hover:from-teal-600 hover:to-teal-800">
+                                    Salvar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endif
         </div>
     </form>

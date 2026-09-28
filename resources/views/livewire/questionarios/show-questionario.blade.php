@@ -1,5 +1,5 @@
 <div x-data="{ step: @entangle('currentStep') }">
-    <div class="mb-12 text-center lg:hidden px-4">
+    <div class="px-4 mb-12 text-center lg:hidden">
         <div class="inline-block p-6 mb-6 rounded-3xl">
             <h1 class="mb-2 text-4xl font-extrabold text-indigo-900 md:text-5xl">
                 SI<span class="text-indigo-600">PEDIA</span>
@@ -10,20 +10,21 @@
         <p class="mt-2 text-gray-600">Visualize as informações completas antes de iniciar a
             Avaliação de Enfermagem</p>
     </div>
-    <div class="px-4 sm:px-6 py-3 sm:py-4 lg:hidden">
+    <div class="px-4 py-3 sm:px-6 sm:py-4 lg:hidden">
         <div
-            class="block lg:hidden mb-1 px-4 sm:px-6 py-6 sm:py-8 border shadow-lg bg-white/80 rounded-2xl sm:rounded-3xl border-white/20">
-            <label class="block mb-3 text-sm sm:text-3xl font-semibold text-indigo-700 pl-2">
+            class="block px-4 py-6 mb-1 border shadow-lg lg:hidden sm:px-6 sm:py-8 bg-white/80 rounded-2xl sm:rounded-3xl border-white/20">
+            <label class="block pl-2 mb-3 text-sm font-semibold text-indigo-700 sm:text-3xl">
                 Navegue entre as seções
             </label>
             <select wire:change="changeStep($event.target.value)"
-                class="w-full bg-white text-indigo-900 text-sm sm:text-4xl px-3 sm:px-4 py-2 sm:py-3 border border-gray-200 bg-white/70 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:bg-white">
+                class="w-full px-3 py-2 text-sm text-indigo-900 bg-white border border-gray-200 sm:text-4xl sm:px-4 sm:py-3 bg-white/70 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:bg-white">
                 <option value="1">Dados do Paciente</option>
                 <option value="2">Necessidades Psicobiológicas</option>
                 <option value="3">Necessidades Psicossociais</option>
                 <option value="4">Necessidades PsicoEspirituais</option>
-                <option value="5">Qualidade de Vida</option>
-                <option value="6">Autocuidado</option>
+                <option value="5">Estratificação</option>
+                <option value="6">Qualidade de Vida</option>
+                <option value="7">Autocuidado</option>
             </select>
         </div>
     </div>
@@ -47,7 +48,7 @@
 
                         <div class="relative z-10 py-12">
                             <!-- Header Section -->
-                            <div class="mb-12 text-center hidden lg:block">
+                            <div class="hidden mb-12 text-center lg:block">
                                 <div class="inline-block p-6 mb-6 rounded-3xl">
                                     <h1 class="mb-2 text-4xl font-extrabold text-indigo-900 md:text-5xl">
                                         SI<span class="text-indigo-600">PEDIA</span>
@@ -359,17 +360,17 @@
 
                         <div class="relative z-10 px-4 py-8 sm:px-6 lg:px-8">
                             <!-- Header -->
-                            <div class="max-w-6xl mx-auto mb-8 hidden lg:block">
+                            <div class="hidden max-w-6xl mx-auto mb-8 lg:block">
                                 <div class="p-4 border shadow-lg sm:p-6 bg-white/90 rounded-3xl border-white/20">
                                     <div
                                         class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
                                         <div>
-                                            <h1 class="text-2xl font-bold sm:text-3xl text-indigo-900">SIPEDIA</h1>
-                                            <p class="text-sm font-medium sm:text-base text-indigo-600">Sistema Integrado de Apoio ao Processo de Enfermagem para Pessoas com a Doença do Pé Relacionada ao Diabetes</p>
+                                            <h1 class="text-2xl font-bold text-indigo-900 sm:text-3xl">SIPEDIA</h1>
+                                            <p class="text-sm font-medium text-indigo-600 sm:text-base">Sistema Integrado de Apoio ao Processo de Enfermagem para Pessoas com a Doença do Pé Relacionada ao Diabetes</p>
                                         </div>
                                         <div class="text-left sm:text-right">
                                             <p class="text-sm text-gray-600">Avaliação de enfermagem</p>
-                                            <p class="text-base font-semibold sm:text-lg text-gray-800">Necessidades
+                                            <p class="text-base font-semibold text-gray-800 sm:text-lg">Necessidades
                                                 Psicobiológicas</p>
                                         </div>
                                     </div>
@@ -385,7 +386,7 @@
                                         <!-- Seção Regulação Neurológica -->
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">
                                                     Regulação Neurológica</h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -396,7 +397,7 @@
                                                 <!-- Orientação tempo/espaço -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Orientado no tempo/espaço:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -422,7 +423,7 @@
                                                 <!-- Comportamento -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label for="comportamento_regulacao_neuro_id"
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Comportamento:
                                                     </label>
                                                     <select wire:model="comportamento_regulacao_neuro_id"
@@ -445,7 +446,7 @@
                                         <!-- Seção Percepção dos Órgãos do Sentido -->
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">
                                                     Percepção dos Órgãos do Sentido</h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -458,7 +459,7 @@
                                                 <!-- Olho direito -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Acuidade visual diminuída no olho direito:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -484,7 +485,7 @@
                                                 <!-- Olho esquerdo -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Acuidade visual diminuída no olho esquerdo:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -510,7 +511,7 @@
                                                 <!-- Audição -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Acuidade auditiva diminuída:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -537,7 +538,7 @@
                                                 <!-- Tato -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label for="analise_tato_id"
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Tato:
                                                     </label>
                                                     <select wire:model="analise_tato_id" id="analise_tato_id"
@@ -557,7 +558,7 @@
                                                 <!-- Risco de queda -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Risco de queda:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -585,7 +586,7 @@
                                         <!-- Seção Hidratação -->
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">
                                                     Hidratação</h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -596,7 +597,7 @@
                                                 <!-- Tipo de Pele -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Pele:
                                                     </label>
                                                     <div class="space-y-3">
@@ -619,7 +620,7 @@
                                                 <!-- Volume de líquido diário -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label for="liquido_diario"
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Volume de líquido diário ingerido:
                                                     </label>
                                                     <input type="number" wire:model="liquido_diario"
@@ -637,7 +638,7 @@
                                         <!-- Seção Nutrição -->
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">Nutrição
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">Nutrição
                                                 </h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -649,7 +650,7 @@
                                                 <!-- Refeições Diárias -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Refeições Diárias:
                                                     </label>
                                                     <div class="space-y-3">
@@ -673,7 +674,7 @@
                                                 <!-- Restrições Alimentares -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Restrições Alimentares:
                                                     </label>
                                                     <div class="space-y-3">
@@ -698,7 +699,7 @@
                                             <!-- Maior consumo -->
                                             <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                 <label for="alimento_consumo_id"
-                                                    class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                    class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                     Maior consumo de:
                                                 </label>
                                                 <select wire:model="alimento_consumo_id" id="alimento_consumo_id"
@@ -719,7 +720,7 @@
                                         <!-- Seção Sono e Repouso -->
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">Sono e
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">Sono e
                                                     Repouso</h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -732,7 +733,7 @@
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <div class="mb-6">
                                                         <label for="horas_sono"
-                                                            class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                            class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                             Horas de Sono:
                                                         </label>
                                                         <input type="number" wire:model="horas_sono" id="horas_sono"
@@ -746,7 +747,7 @@
 
                                                     <div class="mb-6">
                                                         <label
-                                                            class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                            class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                             Acorda à noite:
                                                         </label>
                                                         <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -771,7 +772,7 @@
 
                                                     <div>
                                                         <label for="qualidade_sono_id"
-                                                            class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                            class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                             Qualidade do Sono:
                                                         </label>
                                                         <select wire:model="qualidade_sono_id" id="qualidade_sono_id"
@@ -792,7 +793,7 @@
                                                 <!-- Problemas relacionados ao sono -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Problemas Relacionados ao Sono:
                                                     </label>
                                                     <div class="space-y-3">
@@ -817,7 +818,7 @@
                                             <!-- Medicamentos para dormir -->
                                             <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                 <label for="medicamentos_sono"
-                                                    class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                    class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                     Utilização de medicamentos para dormir - Classe medicamentosa:
                                                 </label>
                                                 <input type="text" wire:model="medicamentos_sono"
@@ -834,7 +835,7 @@
                                         <!-- Seção Exercícios Físicos -->
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">
                                                     Exercícios Físicos</h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -845,7 +846,7 @@
                                                 <!-- Realiza exercícios -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Realiza Exercícios Físicos:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -869,7 +870,7 @@
                                                 <!-- Frequência -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label for="frequencia_exercicio_id"
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Frequência de exercício físico:
                                                     </label>
                                                     <select wire:model="frequencia_exercicio_id"
@@ -890,7 +891,7 @@
                                                 <!-- Duração -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label for="duracao"
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Duração do exercício físico:
                                                     </label>
                                                     <input type="number" wire:model="duracao" id="duracao"
@@ -907,7 +908,7 @@
                                         <!-- Seção Abrigo -->
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">Abrigo
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">Abrigo
                                                 </h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -919,7 +920,7 @@
                                                 <!-- Zona de Moradia -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label for="zona_moradia_id"
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Zona de Moradia:
                                                     </label>
                                                     <select wire:model="zona_moradia_id" id="zona_moradia_id"
@@ -939,7 +940,7 @@
                                                 <!-- Rede de Esgoto -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label for="rede_esgoto_id"
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Rede de Esgoto:
                                                     </label>
                                                     <select wire:model="rede_esgoto_id" id="rede_esgoto_id"
@@ -962,7 +963,7 @@
                                                 <!-- Luz Pública -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Luz Pública:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -988,7 +989,7 @@
                                                 <!-- Coleta de Lixo -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Coleta de lixo:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1014,7 +1015,7 @@
                                                 <!-- Água Tratada -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Água tratada:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1040,7 +1041,7 @@
                                                 <!-- Animais Domésticos -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Presença de animais domésticos:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1068,7 +1069,7 @@
                                         <!-- Seção Regulação Hormonal -->
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">
                                                     Regulação Hormonal</h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -1079,7 +1080,7 @@
                                             <div
                                                 class="p-4 mb-6 border border-gray-100 sm:p-6 sm:mb-8 bg-gray-50 rounded-2xl">
                                                 <h3
-                                                    class="mb-4 text-lg font-semibold sm:mb-6 sm:text-xl text-gray-800">
+                                                    class="mb-4 text-lg font-semibold text-gray-800 sm:mb-6 sm:text-xl">
                                                     Cálculo do IMC</h3>
 
                                                 <div
@@ -1087,7 +1088,7 @@
                                                     <!-- Altura -->
                                                     <div>
                                                         <label for="altura"
-                                                            class="block mb-2 text-sm font-semibold sm:mb-3 sm:text-base lg:text-lg text-gray-800">
+                                                            class="block mb-2 text-sm font-semibold text-gray-800 sm:mb-3 sm:text-base lg:text-lg">
                                                             Altura (cm):
                                                         </label>
                                                         <input type="number" wire:model.defer="altura"
@@ -1099,7 +1100,7 @@
                                                     <!-- Peso -->
                                                     <div>
                                                         <label for="peso"
-                                                            class="block mb-2 text-sm font-semibold sm:mb-3 sm:text-base lg:text-lg text-gray-800">
+                                                            class="block mb-2 text-sm font-semibold text-gray-800 sm:mb-3 sm:text-base lg:text-lg">
                                                             Peso (kg):
                                                         </label>
                                                         <input type="number" wire:model.defer="peso" id="peso"
@@ -1124,16 +1125,16 @@
                                                             class="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                                                             <div class="flex flex-wrap items-center gap-2 sm:gap-4">
                                                                 <span
-                                                                    class="text-base font-semibold sm:text-lg text-gray-800">Seu
+                                                                    class="text-base font-semibold text-gray-800 sm:text-lg">Seu
                                                                     IMC é:</span>
                                                                 <span
-                                                                    class="px-3 py-1 text-base font-bold sm:text-lg text-indigo-800 bg-white rounded-lg">
+                                                                    class="px-3 py-1 text-base font-bold text-indigo-800 bg-white rounded-lg sm:text-lg">
                                                                     {{ number_format($imc, 2) }}
                                                                 </span>
                                                             </div>
                                                             <div class="flex flex-wrap items-center gap-2">
                                                                 <span
-                                                                    class="text-base sm:text-lg text-gray-700">Classificação:
+                                                                    class="text-base text-gray-700 sm:text-lg">Classificação:
                                                                 </span>
                                                                 <span
                                                                     class="text-base font-bold sm:text-lg {{ $corIMC }}">{{ $classificacao }}</span>
@@ -1147,13 +1148,13 @@
                                             <div
                                                 class="p-4 mb-6 border border-gray-100 sm:p-6 sm:mb-8 bg-gray-50 rounded-2xl">
                                                 <h3
-                                                    class="mb-4 text-lg font-semibold sm:mb-6 sm:text-xl text-gray-800">
+                                                    class="mb-4 text-lg font-semibold text-gray-800 sm:mb-6 sm:text-xl">
                                                     Circunferência Abdominal</h3>
 
                                                 <div class="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
                                                     <div>
                                                         <label for="circunferencia_abdnominal"
-                                                            class="block mb-2 text-sm font-semibold sm:mb-3 sm:text-base lg:text-lg text-gray-800">
+                                                            class="block mb-2 text-sm font-semibold text-gray-800 sm:mb-3 sm:text-base lg:text-lg">
                                                             Circunferência Abdominal (cm):
                                                         </label>
                                                         <input type="number" wire:model="circunferencia_abdnominal"
@@ -1179,7 +1180,7 @@
                                                     <div
                                                         class="p-3 mt-4 border border-indigo-200 sm:p-4 sm:mt-6 bg-indigo-50 rounded-xl">
                                                         <span
-                                                            class="text-base font-semibold sm:text-lg text-gray-800">Classificação
+                                                            class="text-base font-semibold text-gray-800 sm:text-lg">Classificação
                                                             da Circunferência Abdominal: </span>
                                                         <span
                                                             class="text-base font-bold sm:text-lg {{ $corCircunferencia }}">{{ $classificaoCirc }}</span>
@@ -1191,13 +1192,13 @@
                                             <div
                                                 class="p-4 mb-6 border border-gray-100 sm:p-6 sm:mb-8 bg-gray-50 rounded-2xl">
                                                 <h3
-                                                    class="mb-4 text-lg font-semibold sm:mb-6 sm:text-xl text-gray-800">
+                                                    class="mb-4 text-lg font-semibold text-gray-800 sm:mb-6 sm:text-xl">
                                                     Glicemia Capilar</h3>
 
                                                 <!-- Seleção do Estado Glicêmico -->
                                                 <div class="mb-4 sm:mb-6">
                                                     <label
-                                                        class="block mb-3 text-base font-semibold sm:mb-4 sm:text-lg text-gray-800">Estado
+                                                        class="block mb-3 text-base font-semibold text-gray-800 sm:mb-4 sm:text-lg">Estado
                                                         da Glicemia:</label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-4">
                                                         <button type="button" wire:click="$set('estado_glicemia', 1)"
@@ -1216,7 +1217,7 @@
                                                     <div class="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
                                                         <div>
                                                             <label for="glicemia_capilar"
-                                                                class="block mb-2 text-sm font-semibold sm:mb-3 sm:text-base lg:text-lg text-gray-800">
+                                                                class="block mb-2 text-sm font-semibold text-gray-800 sm:mb-3 sm:text-base lg:text-lg">
                                                                 Glicemia Capilar (mg/dl):
                                                             </label>
                                                             <input type="number" wire:model="glicemia_capilar"
@@ -1242,7 +1243,7 @@
                                                         <div
                                                             class="p-3 mt-4 border border-indigo-200 sm:p-4 sm:mt-6 bg-indigo-50 rounded-xl">
                                                             <span
-                                                                class="text-base font-semibold sm:text-lg text-gray-800">Classificação
+                                                                class="text-base font-semibold text-gray-800 sm:text-lg">Classificação
                                                                 da Glicemia Capilar: </span>
                                                             <span
                                                                 class="text-base font-bold sm:text-lg {{ $corGlicemia }}">{{ $classificacaoGlic }}</span>
@@ -1256,7 +1257,7 @@
                                         <!-- Seção Oxigenação -->
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">
                                                     Oxigenação</h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -1266,7 +1267,7 @@
                                                 <!-- Tempo de enchimento capilar -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label for="temp_enchimento_capilar"
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Tempo de enchimento capilar:
                                                     </label>
                                                     <input type="number" wire:model="temp_enchimento_capilar"
@@ -1282,7 +1283,7 @@
                                                 <!-- Frequência respiratória -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label for="frequencia_respiratoria"
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Frequência respiratória (irpm):
                                                     </label>
                                                     <input type="number" wire:model="frequencia_respiratoria"
@@ -1298,7 +1299,7 @@
                                                 <!-- SatO2 -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label for="satO2"
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         SatO2 (%):
                                                     </label>
                                                     <input type="number" wire:model="satO2" id="satO2"
@@ -1314,7 +1315,7 @@
 
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">
                                                     Regulação Térmica</h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -1325,7 +1326,7 @@
                                                 <div class="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
                                                     <div>
                                                         <label for="temperatura"
-                                                            class="block mb-3 text-base font-semibold sm:mb-4 sm:text-lg text-gray-800">
+                                                            class="block mb-3 text-base font-semibold text-gray-800 sm:mb-4 sm:text-lg">
                                                             Temperatura (°C):
                                                         </label>
                                                         <input type="number" wire:model="temperatura"
@@ -1352,7 +1353,7 @@
                                                     <div
                                                         class="p-3 mt-4 border border-indigo-200 sm:p-4 sm:mt-6 bg-indigo-50 rounded-xl">
                                                         <span
-                                                            class="text-base font-semibold sm:text-lg text-gray-800">Classificação
+                                                            class="text-base font-semibold text-gray-800 sm:text-lg">Classificação
                                                             da Temperatura: </span>
                                                         <span
                                                             class="text-base font-bold sm:text-lg {{ $corTemperatura }}">{{ $classificacaoTemperatura }}</span>
@@ -1364,7 +1365,7 @@
                                         <!-- Seção Eliminações -->
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">
                                                     Eliminações</h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -1376,7 +1377,7 @@
                                                 <!-- Dor ao urinar -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Dor ao urinar:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1402,7 +1403,7 @@
                                                 <!-- Incontinência urinária -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Incontinência urinária:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1431,7 +1432,7 @@
                                                 <!-- Dor eliminação gastrointestinal -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Dor - eliminação gastrointestinal:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1457,7 +1458,7 @@
                                                 <!-- Incontinência eliminação gastrointestinal -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Incontinência - eliminação gastrointestinal:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1486,7 +1487,7 @@
                                                 <!-- Constipação -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Constipação:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1512,7 +1513,7 @@
                                                 <!-- Diarreia -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Diarreia:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1541,7 +1542,7 @@
                                                 <!-- Uso de Laxante -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Uso de Laxante:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1567,7 +1568,7 @@
                                                 <!-- Uso de Fraldas -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Uso de Fraldas:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1594,7 +1595,7 @@
                                             <!-- Equipamento coletor -->
                                             <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                 <label for="equipamento_externo"
-                                                    class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                    class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                     Uso de equipamento coletor ou dispositivo externo:
                                                 </label>
                                                 <input type="text" wire:model="equipamento_externo"
@@ -1611,7 +1612,7 @@
                                         <!-- Seção Sexualidade -->
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">
                                                     Sexualidade</h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -1622,7 +1623,7 @@
                                                 <!-- Vida Sexual Ativa -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Vida Sexual Ativa:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1648,7 +1649,7 @@
                                                 <!-- Distúrbios Sexuais -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Distúrbios Sexuais:
                                                     </label>
                                                     <div class="space-y-3">
@@ -1673,7 +1674,7 @@
 
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">
                                                     Locomoção, Mecânica Corporal e Motilidade</h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -1684,7 +1685,7 @@
                                             <div
                                                 class="p-4 mb-6 border border-gray-100 sm:p-6 sm:mb-8 bg-gray-50 rounded-2xl">
                                                 <label
-                                                    class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                    class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                     Locomoção:
                                                 </label>
                                                 <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -1710,7 +1711,7 @@
                                                 <!-- Sapato adequado -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Sapato adequado:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1736,7 +1737,7 @@
                                                 <!-- Sandália de cicatrização -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Sandália de cicatrização/offloading:
                                                     </label>
                                                     <div class="flex flex-col gap-3 sm:flex-row sm:gap-6">
@@ -1764,7 +1765,7 @@
                                         <!-- Seção Regulação Vascular -->
                                         <div class="pb-8 mb-10 border-b border-gray-200">
                                             <div class="mb-6 sm:mb-8">
-                                                <h2 class="mb-2 text-xl font-bold sm:text-2xl text-indigo-900">
+                                                <h2 class="mb-2 text-xl font-bold text-indigo-900 sm:text-2xl">
                                                     Regulação Vascular</h2>
                                                 <div
                                                     class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700">
@@ -1776,7 +1777,7 @@
                                                 <!-- Pressão Arterial -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Pressão arterial (mmHg):
                                                     </label>
                                                     <div class="grid grid-cols-2 gap-4">
@@ -1810,7 +1811,7 @@
                                                 <!-- Frequência Cardíaca -->
                                                 <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                     <label for="frequencia_cardiaca"
-                                                        class="block mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                        class="block mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Frequência Cardíaca:
                                                     </label>
                                                     <input type="text" wire:model="frequencia_cardiaca"
@@ -1827,7 +1828,7 @@
                                             <!-- Seção ITB -->
                                             <div class="p-4 border border-gray-100 sm:p-6 bg-gray-50 rounded-2xl">
                                                 <div class="mb-4 sm:mb-6">
-                                                    <h3 class="mb-2 text-lg font-bold sm:text-xl text-indigo-800">
+                                                    <h3 class="mb-2 text-lg font-bold text-indigo-800 sm:text-xl">
                                                         Calcule o Índice Tornozelo Braço</h3>
                                                     <div
                                                         class="w-20 h-0.5 rounded-full bg-gradient-to-r from-indigo-400 to-indigo-600">
@@ -1837,7 +1838,7 @@
                                                 <!-- ITB Direito -->
                                                 <div
                                                     class="p-4 mb-6 bg-white border border-gray-200 sm:p-6 sm:mb-8 rounded-xl">
-                                                    <h4 class="mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                    <h4 class="mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Membro Inferior Direito</h4>
 
                                                     <div
@@ -1845,12 +1846,12 @@
                                                         <!-- PSATP Direito -->
                                                         <div>
                                                             <label for="psatp_direito"
-                                                                class="block mb-2 text-xs font-medium sm:text-sm text-gray-700">
+                                                                class="block mb-2 text-xs font-medium text-gray-700 sm:text-sm">
                                                                 Pressão Sistólica Artéria Tibial Posterior Direito
                                                             </label>
                                                             <input type="text" wire:model="psatp_direito"
                                                                 id="psatp_direito"
-                                                                class="w-full px-2 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 sm:px-3 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                                class="w-full px-2 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 rounded-lg sm:px-3 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
                                                                 placeholder="PSATP direito">
                                                             @error('psatp_direito')
                                                                 <span
@@ -1861,12 +1862,12 @@
                                                         <!-- PSAP Direito -->
                                                         <div>
                                                             <label for="psap_direito"
-                                                                class="block mb-2 text-xs font-medium sm:text-sm text-gray-700">
+                                                                class="block mb-2 text-xs font-medium text-gray-700 sm:text-sm">
                                                                 Pressão Sistólica Artéria Pediosa Direito
                                                             </label>
                                                             <input type="text" wire:model="psap_direito"
                                                                 id="psap_direito"
-                                                                class="w-full px-2 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 sm:px-3 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                                class="w-full px-2 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 rounded-lg sm:px-3 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
                                                                 placeholder="PSAP direito">
                                                             @error('psap_direito')
                                                                 <span
@@ -1877,12 +1878,12 @@
                                                         <!-- PSAB Direito -->
                                                         <div>
                                                             <label for="psab_direito"
-                                                                class="block mb-2 text-xs font-medium sm:text-sm text-gray-700">
+                                                                class="block mb-2 text-xs font-medium text-gray-700 sm:text-sm">
                                                                 Pressão Sistólica Artéria Braquial Direito
                                                             </label>
                                                             <input type="text" wire:model="psab_direito"
                                                                 id="psab_direito"
-                                                                class="w-full px-2 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 sm:px-3 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                                class="w-full px-2 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 rounded-lg sm:px-3 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
                                                                 placeholder="PSAB direito">
                                                             @error('psab_direito')
                                                                 <span
@@ -1902,19 +1903,19 @@
                                                     <!-- Resultado ITB Direito -->
                                                     @if ($itbD)
                                                         <div
-                                                            class="p-3 border border-gray-200 sm:p-4 rounded-lg bg-gradient-to-r from-gray-50 to-gray-100">
+                                                            class="p-3 border border-gray-200 rounded-lg sm:p-4 bg-gradient-to-r from-gray-50 to-gray-100">
                                                             <div
                                                                 class="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                                                                 <div class="flex items-center gap-2">
                                                                     <span
-                                                                        class="text-xs font-medium sm:text-sm text-gray-600">ITB
+                                                                        class="text-xs font-medium text-gray-600 sm:text-sm">ITB
                                                                         Direito:</span>
                                                                     <span
                                                                         class="text-base font-bold sm:text-lg {{ $corITBD }}">{{ $itbD }}</span>
                                                                 </div>
                                                                 <div class="flex items-center gap-2">
                                                                     <span
-                                                                        class="text-xs font-medium sm:text-sm text-gray-600">Classificação:</span>
+                                                                        class="text-xs font-medium text-gray-600 sm:text-sm">Classificação:</span>
                                                                     <span
                                                                         class="text-base font-bold sm:text-lg {{ $corITBD }}">{{ $classITBD }}</span>
                                                                 </div>
@@ -1925,7 +1926,7 @@
 
                                                 <!-- ITB Esquerdo -->
                                                 <div class="p-4 bg-white border border-gray-200 sm:p-6 rounded-xl">
-                                                    <h4 class="mb-4 text-base font-semibold sm:text-lg text-gray-800">
+                                                    <h4 class="mb-4 text-base font-semibold text-gray-800 sm:text-lg">
                                                         Membro Inferior Esquerdo</h4>
 
                                                     <div
@@ -1933,12 +1934,12 @@
                                                         <!-- PSATP Esquerdo -->
                                                         <div>
                                                             <label for="psatp_esquerdo"
-                                                                class="block mb-2 text-xs font-medium sm:text-sm text-gray-700">
+                                                                class="block mb-2 text-xs font-medium text-gray-700 sm:text-sm">
                                                                 Pressão Sistólica Artéria Tibial Posterior Esquerdo
                                                             </label>
                                                             <input type="text" wire:model="psatp_esquerdo"
                                                                 id="psatp_esquerdo"
-                                                                class="w-full px-2 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 sm:px-3 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                                class="w-full px-2 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 rounded-lg sm:px-3 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
                                                                 placeholder="PSATP esquerdo">
                                                             @error('psatp_esquerdo')
                                                                 <span
@@ -1949,12 +1950,12 @@
                                                         <!-- PSAP Esquerdo -->
                                                         <div>
                                                             <label for="psap_esquerdo"
-                                                                class="block mb-2 text-xs font-medium sm:text-sm text-gray-700">
+                                                                class="block mb-2 text-xs font-medium text-gray-700 sm:text-sm">
                                                                 Pressão Sistólica Artéria Pediosa Esquerdo
                                                             </label>
                                                             <input type="text" wire:model="psap_esquerdo"
                                                                 id="psap_esquerdo"
-                                                                class="w-full px-2 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 sm:px-3 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                                class="w-full px-2 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 rounded-lg sm:px-3 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
                                                                 placeholder="PSAP esquerdo">
                                                             @error('psap_esquerdo')
                                                                 <span
@@ -1965,12 +1966,12 @@
                                                         <!-- PSAB Esquerdo -->
                                                         <div>
                                                             <label for="psab_esquerdo"
-                                                                class="block mb-2 text-xs font-medium sm:text-sm text-gray-700">
+                                                                class="block mb-2 text-xs font-medium text-gray-700 sm:text-sm">
                                                                 Pressão Sistólica Artéria Braquial Esquerdo
                                                             </label>
                                                             <input type="text" wire:model="psab_esquerdo"
                                                                 id="psab_esquerdo"
-                                                                class="w-full px-2 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 sm:px-3 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                                                class="w-full px-2 py-2 text-sm text-gray-700 bg-white border-2 border-gray-200 rounded-lg sm:px-3 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
                                                                 placeholder="PSAB esquerdo">
                                                             @error('psab_esquerdo')
                                                                 <span
@@ -1990,19 +1991,19 @@
                                                     <!-- Resultado ITB Esquerdo -->
                                                     @if ($itbE)
                                                         <div
-                                                            class="p-3 border border-gray-200 sm:p-4 rounded-lg bg-gradient-to-r from-gray-50 to-gray-100">
+                                                            class="p-3 border border-gray-200 rounded-lg sm:p-4 bg-gradient-to-r from-gray-50 to-gray-100">
                                                             <div
                                                                 class="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                                                                 <div class="flex items-center gap-2">
                                                                     <span
-                                                                        class="text-xs font-medium sm:text-sm text-gray-600">ITB
+                                                                        class="text-xs font-medium text-gray-600 sm:text-sm">ITB
                                                                         Esquerdo:</span>
                                                                     <span
                                                                         class="text-base font-bold sm:text-lg {{ $corITBE }}">{{ $itbE }}</span>
                                                                 </div>
                                                                 <div class="flex items-center gap-2">
                                                                     <span
-                                                                        class="text-xs font-medium sm:text-sm text-gray-600">Classificação:</span>
+                                                                        class="text-xs font-medium text-gray-600 sm:text-sm">Classificação:</span>
                                                                     <span
                                                                         class="text-base font-bold sm:text-lg {{ $corITBE }}">{{ $classITBE }}</span>
                                                                 </div>
@@ -2326,7 +2327,7 @@
                                             <!-- Teste de Sensopercepção -->
                                             <div class="p-4 border border-gray-100 md:p-6 bg-gray-50 rounded-2xl">
                                                 <div class="mb-6">
-                                                    <h3 class="mb-2 text-lg font-bold md:text-xl text-indigo-800">
+                                                    <h3 class="mb-2 text-lg font-bold text-indigo-800 md:text-xl">
                                                         Teste de Sensopercepção</h3>
                                                     <div
                                                         class="w-20 h-0.5 rounded-full bg-gradient-to-r from-indigo-400 to-indigo-600">
@@ -2543,7 +2544,7 @@
                                                     <div
                                                         class="p-4 mb-8 border border-gray-100 md:p-6 bg-gray-50 rounded-2xl">
                                                         <h3
-                                                            class="mb-6 text-lg font-semibold md:text-xl text-indigo-900">
+                                                            class="mb-6 text-lg font-semibold text-indigo-900 md:text-xl">
                                                             Lesão em Pé Direito</h3>
 
                                                         <!-- Dimensões -->
@@ -2982,7 +2983,7 @@
                                                     <div
                                                         class="p-4 mb-8 border border-gray-100 md:p-6 bg-gray-50 rounded-2xl">
                                                         <h3
-                                                            class="mb-6 text-lg font-semibold md:text-xl text-indigo-900">
+                                                            class="mb-6 text-lg font-semibold text-indigo-900 md:text-xl">
                                                             Lesão em Pé Esquerdo</h3>
 
                                                         <!-- Dimensões -->
@@ -3634,7 +3635,7 @@
 
                         <div class="relative z-10 px-6 py-8">
                             <!-- Header -->
-                            <div class="max-w-6xl mx-auto mb-8 lg:block hidden">
+                            <div class="hidden max-w-6xl mx-auto mb-8 lg:block">
                                 <div class="p-6 border shadow-lg bg-white/90 rounded-3xl border-white/20">
                                     <div class="flex items-center justify-between">
                                         <div>
@@ -3995,6 +3996,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </fieldset disabled>
                             </div>
@@ -4029,7 +4031,7 @@
 
                         <div class="relative z-10 px-6 py-8">
                             <!-- Header -->
-                            <div class="max-w-6xl mx-auto mb-8 hidden lg:block">
+                            <div class="hidden max-w-6xl mx-auto mb-8 lg:block">
                                 <div class="p-6 border shadow-lg bg-white/90 rounded-3xl border-white/20">
                                     <div class="flex items-center justify-between">
                                         <div>
@@ -4130,9 +4132,56 @@
                                                 @enderror
                                             </div>
                                         </div>
+
                                     </div>
                                 </fieldset disabled>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+    </div>
+
+    <div x-show="step === 5" x-transition>
+        @if ($currentStep == 5)
+            <div class="min-h-screen bg-gradient-to-br from-teal-50 via-white to-indigo-50">
+                <div class="flex">
+                    <div class="hidden w-[320px] lg:block">
+                        <x-navigation-questionario />
+                    </div>
+                    <div class="flex-1 px-6 py-8">
+                        <div class="max-w-6xl p-8 mx-auto bg-white border shadow-lg rounded-3xl border-white/20">
+                            <div class="mb-8">
+                                <h1 class="text-3xl font-bold text-indigo-900">Estratificação do risco de ulceração dos pés</h1>
+                                <div class="w-24 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700"> </div>
+                            </div>
+
+                            @if ($risco_ulceracao !== null)
+                                <div class="grid gap-4 md:grid-cols-2">
+                                    @foreach ([
+                                        'Perda da sensibilidade protetora (PSP)' => $psp,
+                                        'Doença arterial periférica (DAP)' => $dap,
+                                        'Deformidade no pé' => $deformidade_pe,
+                                        'Histórico de úlcera no pé' => $historico_ulcera_pe,
+                                        'Amputação prévia de membro inferior' => $amputacao_previa,
+                                        'Doença renal em estágio terminal' => $doenca_renal_terminal,
+                                    ] as $rotulo => $resposta)
+                                        <div class="p-4 bg-white border border-purple-100 rounded-xl">
+                                            <p class="text-sm text-gray-600">{{ $rotulo }}</p>
+                                            <p class="mt-1 font-semibold text-gray-800">{{ $resposta ? 'Sim' : 'Não' }}</p>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="p-5 mt-6 border border-teal-200 bg-teal-50 rounded-2xl">
+                                    <p class="text-lg font-bold text-teal-900">Risco {{ $risco_ulceracao }}</p>
+                                    <p class="mt-1 text-gray-700">Próxima avaliação recomendada: {{ $periodicidade_ulceracao }}.</p>
+                                </div>
+                            @else
+                                <div class="p-5 border border-gray-200 bg-gray-50 rounded-2xl">
+                                    <p class="text-gray-700">A estratificação não foi registrada para esta avaliação.</p>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
