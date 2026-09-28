@@ -4,10 +4,6 @@
         <!-- Background simplificado -->
         <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-purple-50"></div>
 
-
-      
-
-    
     </div>
 </div>
 
@@ -98,9 +94,11 @@
                 <li>
                     <button wire:click="nextStepFifth"
                         class="flex items-center w-full p-4 text-left text-gray-800 rounded-lg hover:bg-teal-50 hover:text-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-200">
-                        <div class="flex items-center justify-center w-12 h-12 mr-4 rounded-lg bg-teal-100">
-                            <svg class="w-6 h-6 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        <div class="flex items-center justify-center w-12 h-12 mr-4 bg-teal-100 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor"
+                                class="w-5 h-5 font-bold bi bi-layers" viewBox="0 0 16 16">
+                                <path  stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+                                    d="M8.235 1.559a.5.5 0 0 0-.47 0l-7.5 4a.5.5 0 0 0 0 .882L3.188 8 .264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l2.922-1.559a.5.5 0 0 0 0-.882zm3.515 7.008L14.438 10 8 13.433 1.562 10 4.25 8.567l3.515 1.874a.5.5 0 0 0 .47 0zM8 9.433 1.562 6 8 2.567 14.438 6z" />
                             </svg>
                         </div>
                         <div class="flex-1">
