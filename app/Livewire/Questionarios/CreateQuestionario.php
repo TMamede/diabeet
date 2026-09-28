@@ -2378,7 +2378,7 @@ class CreateQuestionario extends Component
         }
     }
 
-    protected function atualizarEstratificacaoRisco()
+    public function atualizarEstratificacaoRisco()
     {
         $respostas = [
             $this->psp,

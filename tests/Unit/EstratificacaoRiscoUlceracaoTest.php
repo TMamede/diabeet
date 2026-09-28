@@ -76,3 +76,24 @@ it('não calcula risco enquanto faltar uma das seis respostas obrigatórias', fu
     expect($componente->risco_ulceracao_calculado)->toBeNull()
         ->and($componente->periodicidade_ulceracao_calculada)->toBeNull();
 });
+
+it('recalcula a classificação ao mudar uma resposta já preenchida', function () {
+    $componente = new CreateQuestionario();
+    $componente->psp = '1';
+    $componente->dap = '0';
+    $componente->deformidade_pe = '0';
+    $componente->historico_ulcera_pe = '0';
+    $componente->amputacao_previa = '0';
+    $componente->doenca_renal_terminal = '0';
+
+    $componente->updated('psp');
+
+    expect($componente->risco_ulceracao_calculado)->toBe(1)
+        ->and($componente->periodicidade_ulceracao_calculada)->toBe('A cada 6 a 12 meses');
+
+    $componente->dap = '1';
+    $componente->updated('dap');
+
+    expect($componente->risco_ulceracao_calculado)->toBe(2)
+        ->and($componente->periodicidade_ulceracao_calculada)->toBe('A cada 3 a 6 meses');
+});
