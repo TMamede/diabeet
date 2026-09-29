@@ -3963,11 +3963,11 @@
                                         <p class="mb-3 font-semibold text-gray-800">{{ $pergunta }}</p>
                                         <div class="flex gap-6">
                                             <label class="flex items-center cursor-pointer">
-                                                <input type="radio" wire:model.live="{{ $campo }}" value="1" class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
+                                                <input type="radio" wire:model="{{ $campo }}" wire:change="atualizarEstratificacaoRisco" value="1" class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
                                                 <span class="ml-2 text-gray-700">Sim</span>
                                             </label>
                                             <label class="flex items-center cursor-pointer">
-                                                <input type="radio" wire:model.live="{{ $campo }}" value="0" class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
+                                                <input type="radio" wire:model="{{ $campo }}" wire:change="atualizarEstratificacaoRisco" value="0" class="w-5 h-5 text-indigo-600 border-2 border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
                                                 <span class="ml-2 text-gray-700">Não</span>
                                             </label>
                                         </div>

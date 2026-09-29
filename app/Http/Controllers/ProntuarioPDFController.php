@@ -21,6 +21,7 @@ class ProntuarioPDFController extends Controller
 
             $prontuario = Prontuario::with([
                 'questionario.paciente:id,nome,prontuario',
+                'questionario.estratificacaoRiscoUlceracao',
                 'origens:id,descricao',
                 'motivos:id,descricao,origem_id',
                 'motivos.diagnosticos:id,descricao',

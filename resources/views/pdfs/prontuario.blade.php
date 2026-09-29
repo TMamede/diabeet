@@ -208,6 +208,18 @@
 
     @endif
 
+    @if ($prontuario->questionario->estratificacaoRiscoUlceracao)
+        <div class="section">
+            <div class="section-title">Estratificação do risco de ulceração dos pés</div>
+            <div class="content">
+                <strong>Classificação:</strong>
+                Risco {{ $prontuario->questionario->estratificacaoRiscoUlceracao->risco }}<br>
+                <strong>Próxima avaliação recomendada:</strong>
+                {{ $prontuario->questionario->estratificacaoRiscoUlceracao->periodicidade }}.
+            </div>
+        </div>
+    @endif
+
 </body>
 
 </html>
