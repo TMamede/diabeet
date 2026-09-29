@@ -104,9 +104,9 @@ php artisan serve
 Acesse: <http://127.0.0.1:8000>
 
 > ⚠️ **`--seed` só no primeiro provisionamento.** Os seeders populam tabelas de
-> referência (questionários, diagnósticos, intervenções) **e criam um usuário
-> administrador padrão**. Rodar `db:seed` de novo tenta recriar esse usuário e
-> falha (e-mail único). Em atualizações use apenas `php artisan migrate`.
+> referência (questionários, diagnósticos e intervenções). Em atualizações use
+> apenas `php artisan migrate`. Administradores devem ser criados manualmente,
+> com senha exclusiva e forte.
 
 ---
 
@@ -169,11 +169,8 @@ php artisan migrate --seed   # cria o schema + dados de referência (1ª vez)
 php artisan migrate:fresh --seed   # DESTRÓI tudo e recria (somente dev)
 ```
 
-**Usuário administrador padrão** criado pelo seed (troque a senha após o
-primeiro acesso, e altere as credenciais antes de qualquer ambiente exposto):
-
-- E-mail: `gestor@master.com`
-- Senha: `patinho`
+Após o primeiro provisionamento, crie manualmente o usuário administrador com
+uma senha exclusiva e forte.
 
 ---
 
@@ -240,8 +237,8 @@ php artisan key:generate --force
 
 # 5. Migrations (sem prompt interativo)
 php artisan migrate --force
-# Apenas no PRIMEIRO deploy, para carregar dados de referência + admin:
-php artisan db:seed --force
+# Apenas no PRIMEIRO deploy, para carregar dados de referência:
+php artisan db:seed --class=ProductionSeeder --force
 
 # 6. Storage
 php artisan storage:link
@@ -263,7 +260,7 @@ Checklist de segurança em produção:
 
 - `APP_DEBUG=false` e `APP_ENV=production`.
 - HTTPS ativo + `SESSION_SECURE_COOKIE=true`.
-- **Troque a senha do usuário `gestor@master.com`** (ou não rode o seed de admin).
+- Crie administradores manualmente, com senhas exclusivas e fortes; nunca mantenha credenciais no código.
 - Não exponha a porta `5432` do Postgres à internet.
 - Configure um mailer real (ou um endpoint compatível com a API do Mailpit) para
   o reset de senha funcionar — veja [FAQ](#faq).
@@ -365,8 +362,8 @@ Node/NPM. Enquanto elas existirem, `npm install` + `npm run build` são
 obrigatórios no deploy.
 
 **Por que o `--seed` não deve rodar sempre?**
-Os seeders criam o usuário admin (`gestor@master.com`, e-mail único). Reexecutar
-falha por violação de unicidade. Rode o seed só no primeiro provisionamento.
+Os seeders servem para inserir dados de referência em uma instalação inicial.
+Rode-os somente nesse momento; em atualizações, use apenas migrations.
 
 **Como funciona o reset de senha?**
 O `User::sendPasswordResetNotification()` envia o e-mail via **API HTTP do
@@ -383,9 +380,9 @@ usar o mailer configurado (`MAIL_MAILER`).
 - [ ] `composer install` (`--no-dev --optimize-autoloader` em produção)
 - [ ] `php artisan key:generate`
 - [ ] `docker compose up -d` (ou apontar para um Postgres existente)
-- [ ] `php artisan migrate --seed` (**apenas no 1º provisionamento**)
+- [ ] `php artisan migrate` e `php artisan db:seed --class=ProductionSeeder --force` (**apenas no 1º provisionamento**)
 - [ ] `php artisan storage:link`
 - [ ] `npm install && npm run build` (enquanto houver `@vite`)
 - [ ] Produção: `php artisan optimize` + permissões em `storage/` e `bootstrap/cache/`
-- [ ] Trocar a senha do usuário admin padrão
+- [ ] Criar manualmente o usuário administrador com senha exclusiva e forte
 - [ ] Dev: `php artisan serve` | Produção: Nginx + PHP-FPM sobre `public/`

@@ -18,6 +18,8 @@ services:
       DB_DATABASE: ${DB_DATABASE:-diabeet}
       DB_USERNAME: ${DB_USERNAME:-postgres}
       DB_PASSWORD: ${DB_PASSWORD:-password}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
     volumes:
       - app_storage:/var/www/storage
     networks:
